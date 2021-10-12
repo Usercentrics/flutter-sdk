@@ -1,10 +1,9 @@
 package com.usercentrics.sdk.flutter.bridge
 
-import android.app.Activity
-import com.usercentrics.sdk.flutter.extension.FlutterResult
-import io.flutter.plugin.common.MethodCall
+import com.usercentrics.sdk.flutter.api.FlutterMethodCall
+import com.usercentrics.sdk.flutter.api.FlutterResult
 
 internal interface MethodBridge {
     val name: String
-    fun invoke(call: MethodCall, result: FlutterResult, activity: Activity?)
+    fun invoke(call: FlutterMethodCall, result: FlutterResult)
 }

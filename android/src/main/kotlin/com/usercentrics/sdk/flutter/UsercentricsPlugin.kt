@@ -1,10 +1,15 @@
 package com.usercentrics.sdk.flutter
 
-import android.content.Context
+import android.app.Activity
 import android.content.Intent
 import androidx.annotation.NonNull
+import com.usercentrics.sdk.flutter.api.FlutterActivityProvider
+import com.usercentrics.sdk.flutter.api.FlutterAssetsProvider
+import com.usercentrics.sdk.flutter.api.FlutterMethodCallWrapper
+import com.usercentrics.sdk.flutter.api.ResultAwareMethod
 import com.usercentrics.sdk.flutter.bridge.*
 import io.flutter.embedding.engine.plugins.FlutterPlugin
+import io.flutter.embedding.engine.plugins.FlutterPlugin.FlutterAssets
 import io.flutter.embedding.engine.plugins.activity.ActivityAware
 import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding
 import io.flutter.plugin.common.MethodCall
@@ -17,25 +22,25 @@ import io.flutter.plugin.common.PluginRegistry
 class UsercentricsPlugin : FlutterPlugin,
     MethodCallHandler,
     ActivityAware,
-    PluginRegistry.ActivityResultListener {
-
-    companion object {
-        internal var applicationContext: Context? = null
-            private set
-
-        internal var flutterAssets: FlutterPlugin.FlutterAssets? = null
-            private set
-    }
+    PluginRegistry.ActivityResultListener,
+    FlutterActivityProvider,
+    FlutterAssetsProvider {
 
     private lateinit var channel: MethodChannel
     private var activityBinding: ActivityPluginBinding? = null
+    private var flutterAssets: FlutterAssets? = null
 
     private val methods: Map<String, MethodBridge> by lazy {
         listOf(
-            InitializeBridge(),
+            InitializeBridge(
+                activityProvider = this
+            ),
             ResetBridge(),
             IsReadyBridge(),
-            ShowCMPBridge(),
+            ShowCMPBridge(
+                assetsProvider = this,
+                activityProvider = this
+            ),
             GetConsentsBridge(),
             GetControllerIdBridge(),
             GetTCStringBridge(),
@@ -47,7 +52,7 @@ class UsercentricsPlugin : FlutterPlugin,
         runCatching {
             val method = methods[call.method]
             if (method != null) {
-                method.invoke(call, result, activityBinding?.activity)
+                method.invoke(FlutterMethodCallWrapper(call), result)
             } else {
                 result.notImplemented()
             }
@@ -69,6 +74,11 @@ class UsercentricsPlugin : FlutterPlugin,
         return false
     }
 
+    override fun provide(): Activity? = activityBinding?.activity
+
+    override fun getAssetFilePathByName(assetFileName: String): String? =
+        flutterAssets?.getAssetFilePathByName(assetFileName)
+
     //region Plugin lifecycle
     override fun onAttachedToEngine(@NonNull binding: FlutterPlugin.FlutterPluginBinding) {
         flutterAssets = binding.flutterAssets
@@ -82,7 +92,6 @@ class UsercentricsPlugin : FlutterPlugin,
     }
 
     override fun onAttachedToActivity(activityBinding: ActivityPluginBinding) {
-        applicationContext = activityBinding.activity.applicationContext
         this.activityBinding = activityBinding.apply {
             addActivityResultListener(this@UsercentricsPlugin)
         }

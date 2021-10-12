@@ -1,29 +1,35 @@
 package com.usercentrics.sdk.flutter.bridge
 
-import android.app.Activity
 import android.content.Intent
 import com.usercentrics.sdk.UsercentricsActivityContract
-import com.usercentrics.sdk.flutter.extension.FlutterResult
+import com.usercentrics.sdk.flutter.api.*
 import com.usercentrics.sdk.flutter.serializer.UISettingsSerializer
 import com.usercentrics.sdk.flutter.serializer.UserResponseSerializer
-import io.flutter.plugin.common.MethodCall
 
-internal class ShowCMPBridge : MethodBridge, ResultAwareMethod {
+internal class ShowCMPBridge(
+    assetsProvider: FlutterAssetsProvider,
+    private val activityProvider: FlutterActivityProvider
+) : MethodBridge, ResultAwareMethod {
 
     companion object {
         private const val showCMPRequestCode = 81420
     }
+
+    private val settingsSerializer = UISettingsSerializer(assetsProvider, activityProvider)
 
     private var pendingResult: FlutterResult? = null
 
     override val name: String
         get() = "showCMP"
 
-    override fun invoke(call: MethodCall, result: FlutterResult, activity: Activity?) {
-        val settings = UISettingsSerializer().deserialize(call.arguments)
-        val intent = UsercentricsActivityContract().createIntent(activity!!, settings)
-        this.pendingResult = result
-        activity.startActivityForResult(intent, showCMPRequestCode)
+    override fun invoke(call: FlutterMethodCall, result: FlutterResult) {
+        assert(name == call.method)
+        val settings = settingsSerializer.deserialize(call.arguments)
+        activityProvider.provide()?.let { activity ->
+            val intent = UsercentricsActivityContract().createIntent(activity, settings)
+            this.pendingResult = result
+            activity.startActivityForResult(intent, showCMPRequestCode)
+        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?): Boolean {

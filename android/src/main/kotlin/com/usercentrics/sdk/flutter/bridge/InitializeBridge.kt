@@ -1,18 +1,20 @@
 package com.usercentrics.sdk.flutter.bridge
 
-import android.app.Activity
 import com.usercentrics.sdk.Usercentrics
-import com.usercentrics.sdk.flutter.UsercentricsPlugin
-import com.usercentrics.sdk.flutter.extension.FlutterResult
+import com.usercentrics.sdk.flutter.api.FlutterActivityProvider
+import com.usercentrics.sdk.flutter.api.FlutterMethodCall
+import com.usercentrics.sdk.flutter.api.FlutterResult
 import com.usercentrics.sdk.flutter.serializer.InitializeOptionsSerializer
-import io.flutter.plugin.common.MethodCall
 
-internal class InitializeBridge : MethodBridge {
+internal class InitializeBridge(
+    private val activityProvider: FlutterActivityProvider
+) : MethodBridge {
 
     override val name: String
         get() = "initialize"
 
-    override fun invoke(call: MethodCall, result: FlutterResult, activity: Activity?) {
+    override fun invoke(call: FlutterMethodCall, result: FlutterResult) {
+        assert(name == call.method)
         // Avoid the Already Initialized Runtime Exception
         // because it messes with the Hot Reload Flutter System
         // (Dart VM restart and the JVM don't)
@@ -29,7 +31,9 @@ internal class InitializeBridge : MethodBridge {
 
         if (!alreadyInitialized) {
             val options = InitializeOptionsSerializer().deserialize(call.arguments)
-            Usercentrics.initialize(UsercentricsPlugin.applicationContext!!, options)
+            activityProvider.provide()?.applicationContext?.let {
+                Usercentrics.initialize(it, options)
+            }
         }
 
         result.success(null)
