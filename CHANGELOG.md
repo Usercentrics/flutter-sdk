@@ -1,0 +1,1 @@
+[Release Notes](https://docs.usercentrics.com/cmp_in_app_sdk/latest/about/history/)%

@@ -1,0 +1,33 @@
+PODS:
+  - Flutter (1.0.0)
+  - Usercentrics (2.0.1)
+  - usercentrics_sdk (2.0.1):
+    - Flutter
+    - UsercentricsUI (= 2.0.1)
+  - UsercentricsUI (2.0.1):
+    - Usercentrics (= 2.0.1)
+
+DEPENDENCIES:
+  - Flutter (from `Flutter`)
+  - usercentrics_sdk (from `.symlinks/plugins/usercentrics_sdk/ios`)
+
+SPEC REPOS:
+  trunk:
+    - Usercentrics
+    - UsercentricsUI
+
+EXTERNAL SOURCES:
+  Flutter:
+    :path: Flutter
+  usercentrics_sdk:
+    :path: ".symlinks/plugins/usercentrics_sdk/ios"
+
+SPEC CHECKSUMS:
+  Flutter: 50d75fe2f02b26cc09d224853bb45737f8b3214a
+  Usercentrics: af3644ae390750b77c34d5a9435758fa1d91343d
+  usercentrics_sdk: 23ddea9cdbf3fff5b2a4ae0ac2e9a6788ff7dd55
+  UsercentricsUI: da22ffb838fefa7b64ad3e1f7f31597e8006a8b7
+
+PODFILE CHECKSUM: 96bfafe4340d2ac975d63c8c91bbf1282ea6dadd
+
+COCOAPODS: 1.10.1
