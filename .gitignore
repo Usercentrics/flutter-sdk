@@ -1,4 +1,7 @@
+.DS_Store
+
 ### Flutter ###
+
 # Flutter/Dart/Pub related
 **/doc/api/
 .dart_tool/
@@ -64,28 +67,3 @@ pubspec.lock
 !**/ios/**/default.pbxuser
 !**/ios/**/default.perspectivev3
 !/packages/flutter_tools/test/data/dart_dependencies_test/**/.packages
-
-# IntelliJ related
-#*.iml
-#*.ipr
-#*.iws
-#.idea/shelf
-#.idea/workspace.xml
-#.idea/**/workspace.xml
-#.idea/**/tasks.xml
-#.idea/**/usage.statistics.xml
-#.idea/**/dictionaries
-#.idea/**/shelf
-#.idea/**/contentModel.xml
-#.idea/**/dataSources/
-#.idea/**/dataSources.ids
-#.idea/**/dataSources.local.xml
-#.idea/**/sqlDataSources.xml
-#.idea/**/dynamic.xml
-#.idea/**/uiDesigner.xml
-#.idea/**/dbnavigator.xml
-#.idea/**/gradle.xml
-#.idea/**/libraries
-#.idea/modules.xml
-#.idea/*.iml
-#.idea/modules
