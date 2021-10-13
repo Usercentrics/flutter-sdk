@@ -18,7 +18,7 @@ class InitializeBridgeUnitTest {
             arguments = mapOf(
                 "settingsId" to "AAAAA",
                 "loggerLevel" to "DEBUG",
-                "timeoutMillis" to 1000L,
+                "timeoutMillis" to 1000,
                 "version" to "1.2.3"
             )
         )
