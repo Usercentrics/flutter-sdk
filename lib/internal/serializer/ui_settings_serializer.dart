@@ -9,7 +9,7 @@ class UISettingsSerializer {
   }) =>
       {
         'showCloseButton': showCloseButton,
-        'customLogo': customLogo?.asset,
+        'customLogo': customLogo?.assetPath,
         'customFont': _serializeFont(customFont),
       };
 

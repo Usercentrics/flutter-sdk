@@ -23,10 +23,10 @@ class _MyAppState extends State<MyApp> {
     _initializeUsercentrics();
   }
 
-  Future<void> _initializeUsercentrics() async {
+  void _initializeUsercentrics() {
     /// Initialize Usercentrics with your configuration only once.
     /// We should not call `initialize` directly inside [build].
-    await Usercentrics.initialize(
+    Usercentrics.initialize(
       settingsId: 'Yi9N3aXia',
       // loggerLevel: UsercentricsLoggerLevel.debug,
     );

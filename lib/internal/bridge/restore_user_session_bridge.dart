@@ -2,10 +2,22 @@ import 'package:flutter/services.dart';
 import 'package:usercentrics_sdk/internal/serializer/ready_status_serializer.dart';
 import 'package:usercentrics_sdk/model/ready_status.dart';
 
-class RestoreUserSessionBridge {
+abstract class RestoreUserSessionBridge {
+  const RestoreUserSessionBridge();
+
+  Future<UsercentricsReadyStatus> invoke({
+    required MethodChannel channel,
+    required String controllerId,
+  });
+}
+
+class MethodChannelRestoreUserSession extends RestoreUserSessionBridge {
+  const MethodChannelRestoreUserSession();
+
   static const String _name = 'restoreUserSession';
 
-  static Future<UsercentricsReadyStatus> invoke({
+  @override
+  Future<UsercentricsReadyStatus> invoke({
     required MethodChannel channel,
     required String controllerId,
   }) async {

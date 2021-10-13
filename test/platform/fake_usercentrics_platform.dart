@@ -52,7 +52,7 @@ class FakeUsercentricsPlatform extends UsercentricsPlatform {
   String? initializeVersionArgument;
 
   @override
-  Future<void> initialize({
+  void initialize({
     required String settingsId,
     String? defaultLanguage,
     UsercentricsLoggerLevel? loggerLevel,
@@ -65,7 +65,6 @@ class FakeUsercentricsPlatform extends UsercentricsPlatform {
     initializeLoggerLevelArgument = loggerLevel;
     initializeTimeoutMillisArgument = timeoutMillis;
     initializeVersionArgument = version;
-    return Future.value(null);
   }
 
   var resetCount = 0;
@@ -114,5 +113,5 @@ class FakeUsercentricsPlatform extends UsercentricsPlatform {
   Future<UsercentricsReadyStatus> get status {
     statusCount++;
     return Future.value(statusAnswer!);
-  };
+  }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
+import 'package:usercentrics_sdk/all.dart';
 import 'package:usercentrics_sdk/model/logger_level.dart';
 import 'package:usercentrics_sdk/usercentrics.dart';
 
@@ -9,14 +10,15 @@ void main() {
     Usercentrics.delegatePackingProperty = null;
   });
 
-  test('creation', () {
+  test('initialize', () {
     final delegate = FakeUsercentricsPlatform();
     Usercentrics.delegatePackingProperty = delegate;
-    final settingsId = "ABC";
-    final defaultLanguage = "en";
-    final loggerLevel = UsercentricsLoggerLevel.debug;
-    final timeoutMillis = 10000;
-    final version = "1.1.1";
+
+    const settingsId = "ABC";
+    const defaultLanguage = "en";
+    const loggerLevel = UsercentricsLoggerLevel.debug;
+    const timeoutMillis = 10000;
+    const version = "1.1.1";
 
     Usercentrics.initialize(
       settingsId: settingsId,
@@ -33,22 +35,111 @@ void main() {
     expect(delegate.initializeTimeoutMillisArgument, timeoutMillis);
     expect(delegate.initializeVersionArgument, version);
   });
-}
 
-// const MethodChannel channel = MethodChannel('usercentrics');
-//
-// TestWidgetsFlutterBinding.ensureInitialized();
-//
-// setUp(() {
-//   channel.setMockMethodCallHandler((MethodCall methodCall) async {
-//     return '42';
-//   });
-// });
-//
-// tearDown(() {
-//   channel.setMockMethodCallHandler(null);
-// });
-//
-// test('getPlatformVersion', () async {
-//   expect(await Usercentrics.platformVersion, '42');
-// });
+  test('reset', () {
+    final delegate = FakeUsercentricsPlatform();
+    Usercentrics.delegatePackingProperty = delegate;
+
+    Usercentrics.reset();
+
+    expect(delegate.resetCount, 1);
+  });
+
+  test('status', () async {
+    const expectedStatus = UsercentricsReadyStatus(
+      shouldShowCMP: true,
+      consents: [],
+    );
+    final delegate = FakeUsercentricsPlatform(statusAnswer: expectedStatus);
+    Usercentrics.delegatePackingProperty = delegate;
+
+    final result = await Usercentrics.status;
+
+    expect(delegate.statusCount, 1);
+    expect(result, expectedStatus);
+  });
+
+  test('showCMP', () async {
+    const expectedResponse = UsercentricsConsentUserResponse(
+      controllerId: "abc",
+      userInteraction: UsercentricsUserInteraction.acceptAll,
+      consents: [],
+    );
+    final delegate = FakeUsercentricsPlatform(showCMPAnswer: expectedResponse);
+    Usercentrics.delegatePackingProperty = delegate;
+
+    const showCloseButton = true;
+    const customLogo = UsercentricsImage(assetPath: "asset/logo.png");
+    const customFont = UsercentricsFont(
+      fontAssetPath: "asset/font.ttf",
+      fontSize: 20,
+    );
+
+    final result = await Usercentrics.showCMP(
+      showCloseButton: showCloseButton,
+      customLogo: customLogo,
+      customFont: customFont,
+    );
+
+    expect(delegate.showCMPCount, 1);
+    expect(delegate.showCMPcustomFontArgument, customFont);
+    expect(delegate.showCMPcustomLogoArgument, customLogo);
+    expect(delegate.showCMPshowCloseButtonArgument, showCloseButton);
+    expect(result, expectedResponse);
+  });
+
+  test('getConsents', () async {
+    const expectedConsents = <UsercentricsServiceConsent>[];
+    final delegate =
+        FakeUsercentricsPlatform(getConsentsAnswer: expectedConsents);
+    Usercentrics.delegatePackingProperty = delegate;
+
+    final result = await Usercentrics.getConsents();
+
+    expect(delegate.getConsentsCount, 1);
+    expect(result, expectedConsents);
+  });
+
+  test('getControllerId', () async {
+    const expectedControllerId = "ABC";
+    final delegate =
+        FakeUsercentricsPlatform(getControllerIdAnswer: expectedControllerId);
+    Usercentrics.delegatePackingProperty = delegate;
+
+    final result = await Usercentrics.getControllerId();
+
+    expect(delegate.getControllerIdCount, 1);
+    expect(result, expectedControllerId);
+  });
+
+  test('getTCString', () async {
+    const expectedTCSting = "ABC";
+    final delegate =
+        FakeUsercentricsPlatform(getTCStringAnswer: expectedTCSting);
+    Usercentrics.delegatePackingProperty = delegate;
+
+    final result = await Usercentrics.getTCString();
+
+    expect(delegate.getTCStringCount, 1);
+    expect(result, expectedTCSting);
+  });
+
+  test('restoreUserSession', () async {
+    const expectedStatus = UsercentricsReadyStatus(
+      shouldShowCMP: true,
+      consents: [],
+    );
+    final delegate =
+        FakeUsercentricsPlatform(restoreUserSessionAnswer: expectedStatus);
+    Usercentrics.delegatePackingProperty = delegate;
+
+    const controllerId = "ABC";
+
+    final result =
+        await Usercentrics.restoreUserSession(controllerId: controllerId);
+
+    expect(delegate.restoreUserSessionCount, 1);
+    expect(delegate.restoreUserSessionControllerIdArgument, controllerId);
+    expect(result, expectedStatus);
+  });
+}

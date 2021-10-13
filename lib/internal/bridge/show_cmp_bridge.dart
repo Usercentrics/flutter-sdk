@@ -2,10 +2,24 @@ import 'package:flutter/services.dart';
 import 'package:usercentrics_sdk/all.dart';
 import 'package:usercentrics_sdk/internal/serializer/serializer.dart';
 
-class ShowCMPBridge {
+abstract class ShowCMPBridge {
+  const ShowCMPBridge();
+
+  Future<UsercentricsConsentUserResponse?> invoke({
+    required MethodChannel channel,
+    bool? showCloseButton,
+    UsercentricsImage? customLogo,
+    UsercentricsFont? customFont,
+  });
+}
+
+class MethodChannelShowCMP extends ShowCMPBridge {
+  const MethodChannelShowCMP();
+
   static const String _name = 'showCMP';
 
-  static Future<UsercentricsConsentUserResponse?> invoke({
+  @override
+  Future<UsercentricsConsentUserResponse?> invoke({
     required MethodChannel channel,
     bool? showCloseButton,
     UsercentricsImage? customLogo,

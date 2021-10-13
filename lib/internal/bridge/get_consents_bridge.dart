@@ -2,10 +2,21 @@ import 'package:flutter/services.dart';
 import 'package:usercentrics_sdk/internal/serializer/consent_serializer.dart';
 import 'package:usercentrics_sdk/model/service_consent.dart';
 
-class GetConsentsBridge {
+abstract class GetConsentsBridge {
+  const GetConsentsBridge();
+
+  Future<List<UsercentricsServiceConsent>> invoke({
+    required MethodChannel channel,
+  });
+}
+
+class MethodChannelGetConsents extends GetConsentsBridge {
+  const MethodChannelGetConsents();
+
   static const String _name = 'getConsents';
 
-  static Future<List<UsercentricsServiceConsent>> invoke({
+  @override
+  Future<List<UsercentricsServiceConsent>> invoke({
     required MethodChannel channel,
   }) async {
     final result = channel.invokeMethod(_name);
