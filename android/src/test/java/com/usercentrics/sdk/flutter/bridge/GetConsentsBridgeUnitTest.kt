@@ -16,6 +16,16 @@ import org.junit.Test
 class GetConsentsBridgeUnitTest {
 
     companion object {
+        private val mockGetConsents = listOf(
+            UsercentricsServiceConsent(
+                templateId = "ABC",
+                status = false,
+                dataProcessor = "TheProcessor",
+                type = UsercentricsConsentType.EXPLICIT,
+                version = "1.3.4"
+            )
+        )
+
         // Data from a real call of the debugger
         private val mockCall = FakeFlutterMethodCall(method = "getConsents", arguments = null)
         private val expectedResultPayload = listOf(
@@ -48,20 +58,8 @@ class GetConsentsBridgeUnitTest {
     @Test
     fun testInvoke() {
         val usercentricsSDK = mockk<UsercentricsSDK>()
-        every { usercentricsSDK.getConsents() }.returns(
-            listOf(
-                UsercentricsServiceConsent(
-                    templateId = "ABC",
-                    status = false,
-                    dataProcessor = "TheProcessor",
-                    type = UsercentricsConsentType.EXPLICIT,
-                    version = "1.3.4"
-                )
-            )
-        )
-        val usercentricsProxy = FakeUsercentricsProxy(
-            instanceAnswer = usercentricsSDK
-        )
+        every { usercentricsSDK.getConsents() }.returns(mockGetConsents)
+        val usercentricsProxy = FakeUsercentricsProxy(usercentricsSDK)
         val instance = GetConsentsBridge(usercentricsProxy)
         val result = FakeFlutterResult()
 
