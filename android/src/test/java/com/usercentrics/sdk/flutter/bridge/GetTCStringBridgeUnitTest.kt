@@ -7,10 +7,11 @@ import com.usercentrics.sdk.flutter.api.FakeUsercentricsProxy
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
-import org.junit.Assert
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertThrows
 import org.junit.Test
 
-class GetTCStringBridgeTest {
+class GetTCStringBridgeUnitTest {
 
     companion object {
         private const val mockGetTCString = "AAAAAAAAAAAAAAA"
@@ -23,7 +24,7 @@ class GetTCStringBridgeTest {
     @Test
     fun testName() {
         val instance = GetTCStringBridge(FakeUsercentricsProxy())
-        Assert.assertEquals("getTCString", instance.name)
+        assertEquals("getTCString", instance.name)
     }
 
     @Test
@@ -31,7 +32,7 @@ class GetTCStringBridgeTest {
         val instance = GetTCStringBridge(FakeUsercentricsProxy())
         val call = FakeFlutterMethodCall(method = "otherName", arguments = null)
 
-        Assert.assertThrows(AssertionError::class.java) {
+        assertThrows(AssertionError::class.java) {
             instance.invoke(call, FakeFlutterResult())
         }
     }
@@ -48,8 +49,8 @@ class GetTCStringBridgeTest {
 
         verify(exactly = 1) { usercentricsSDK.getTCString() }
 
-        Assert.assertEquals(1, result.successCount)
-        Assert.assertEquals(expectedResultPayload, result.successResultArgument)
+        assertEquals(1, result.successCount)
+        assertEquals(expectedResultPayload, result.successResultArgument)
     }
 
 }

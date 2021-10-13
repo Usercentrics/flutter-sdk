@@ -8,6 +8,7 @@ import com.usercentrics.sdk.errors.UsercentricsError
 
 internal class FakeUsercentricsProxy(
     private val instanceAnswer: UsercentricsSDK? = null,
+    private val isReadyAnswer: Any? = null
 ) : UsercentricsProxy {
 
     override val instance: UsercentricsSDK
@@ -23,14 +24,25 @@ internal class FakeUsercentricsProxy(
         initializeOptionsArgument = options
     }
 
+    var isReadyCount: Int = 0
+        private set
+
     override fun isReady(
         onSuccess: (UsercentricsReadyStatus) -> Unit,
         onFailure: (UsercentricsError) -> Unit
     ) {
-        TODO("Not yet implemented")
+        isReadyCount++
+        if (isReadyAnswer is UsercentricsReadyStatus) {
+            onSuccess(isReadyAnswer)
+        } else if (isReadyAnswer is UsercentricsError) {
+            onFailure(isReadyAnswer)
+        }
     }
 
+    var resetCount: Int = 0
+        private set
+
     override fun reset() {
-        TODO("Not yet implemented")
+        resetCount++
     }
 }

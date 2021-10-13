@@ -18,11 +18,11 @@ class GetConsentsBridgeUnitTest {
     companion object {
         private val mockGetConsents = listOf(
             UsercentricsServiceConsent(
-                templateId = "ABC",
+                templateId = "ocv9HNX_g",
                 status = false,
-                dataProcessor = "TheProcessor",
+                dataProcessor = "Facebook SDK",
                 type = UsercentricsConsentType.EXPLICIT,
-                version = "1.3.4"
+                version = "1.0.1"
             )
         )
 
@@ -30,11 +30,11 @@ class GetConsentsBridgeUnitTest {
         private val mockCall = FakeFlutterMethodCall(method = "getConsents", arguments = null)
         private val expectedResultPayload = listOf(
             mapOf(
-                "templateId" to "ABC",
+                "templateId" to "ocv9HNX_g",
                 "status" to false,
                 "type" to "EXPLICIT",
-                "version" to "1.3.4",
-                "dataProcessor" to "TheProcessor",
+                "version" to "1.0.1",
+                "dataProcessor" to "Facebook SDK",
             )
         )
     }
