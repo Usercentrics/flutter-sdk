@@ -15,7 +15,7 @@ internal class InitializeOptionsSerializer : DataDeserializer<UsercentricsOption
             options.loggerLevel = UsercentricsLoggerLevel.valueOf(it as String)
         }
         value["timeoutMillis"]?.let {
-            options.timeoutMillis = it as Long
+            options.timeoutMillis = (it as Int).toLong()
         }
         value["version"]?.let {
             options.version = it as String

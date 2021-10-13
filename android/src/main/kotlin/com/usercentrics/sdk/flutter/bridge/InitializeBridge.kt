@@ -1,13 +1,11 @@
 package com.usercentrics.sdk.flutter.bridge
 
-import com.usercentrics.sdk.Usercentrics
-import com.usercentrics.sdk.flutter.api.FlutterActivityProvider
-import com.usercentrics.sdk.flutter.api.FlutterMethodCall
-import com.usercentrics.sdk.flutter.api.FlutterResult
+import com.usercentrics.sdk.flutter.api.*
 import com.usercentrics.sdk.flutter.serializer.InitializeOptionsSerializer
 
 internal class InitializeBridge(
-    private val activityProvider: FlutterActivityProvider
+    private val activityProvider: FlutterActivityProvider,
+    private val usercentrics: UsercentricsProxy = UsercentricsProxySingleton
 ) : MethodBridge {
 
     override val name: String
@@ -21,7 +19,7 @@ internal class InitializeBridge(
         // TODO: replace this workaround with a catch of the AlreadyInitializedException
         val alreadyInitialized = runCatching {
             var isReadyInvoked = false
-            Usercentrics.isReady({
+            usercentrics.isReady({
                 isReadyInvoked = true
             }, {
                 isReadyInvoked = true
@@ -31,9 +29,7 @@ internal class InitializeBridge(
 
         if (!alreadyInitialized) {
             val options = InitializeOptionsSerializer().deserialize(call.arguments)
-            activityProvider.provide()?.applicationContext?.let {
-                Usercentrics.initialize(it, options)
-            }
+            usercentrics.initialize(activityProvider.provide()?.applicationContext, options)
         }
 
         result.success(null)

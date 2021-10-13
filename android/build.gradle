@@ -53,4 +53,7 @@ dependencies {
     implementation "com.usercentrics.sdk:usercentrics-ui:$usercentrics_version"
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    testImplementation 'junit:junit:4.13.2'
+    testImplementation "io.mockk:mockk:1.12.0"
 }
