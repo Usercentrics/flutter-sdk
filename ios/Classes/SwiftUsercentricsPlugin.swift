@@ -1,5 +1,6 @@
 import Flutter
 import UIKit
+import Usercentrics
 
 public class SwiftUsercentricsPlugin: NSObject, FlutterPlugin {
 
@@ -22,7 +23,8 @@ public class SwiftUsercentricsPlugin: NSObject, FlutterPlugin {
             ResetBridge(),
             ShowCMPBridge(assetProvider: assetProvider),
             GetControllerIdBridge(),
-            GetConsentsBridge(),
+            GetConsentsBridge(consentSerializer: ConsentSerializer(),
+                              usercentricsSDK: UsercentricsCore.shared),
             GetTCStringBridge(),
             RestoreUserSessionBridge(),
         ]

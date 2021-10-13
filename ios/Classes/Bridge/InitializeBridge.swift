@@ -16,7 +16,7 @@ struct InitializeBridge : MethodBridge {
             alreadyInitialized = true
         }
 
-        if (!alreadyInitialized) {
+        if !alreadyInitialized {
             let options = InitializeOptionsSerializer().deserialize(value: call.arguments)
             UsercentricsCore.configure(options: options)
         }
