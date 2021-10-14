@@ -2,15 +2,13 @@ import Usercentrics
 
 struct GetConsentsBridge : MethodBridge {
     let name: String = "getConsents"
-    let consentSerializer: ConsentSerializer
     let usercentricsSDK: UsercentricsSDK
+    let consentSerializer: ConsentSerializer = ConsentSerializer()
 
     func invoke(_ call: FlutterMethodCall, _ result: @escaping FlutterResult) {
-        guard call.method == name else {
-            result(FlutterMethodNotImplemented)
-            return
+        validateAndInvoke(call, result) {
+            let consents = usercentricsSDK.getConsents()
+            result(consents.map { consentSerializer.serialize(value: $0) })
         }
-        let consents = usercentricsSDK.getConsents()
-        result(consents.map { consentSerializer.serialize(value: $0) })
     }
 }

@@ -8,8 +8,11 @@ struct UISettingsSerializer : DataDeserializer {
 
     let loggerLevelSerializer = UsercentricsLoggerLevelSerializer()
 
-    func deserialize(value: Any?) -> UsercentricsUISettings {
-        let dict = value as! Dictionary<String,Any>
+    func deserialize(value: Any?) throws -> UsercentricsUISettings {
+        guard
+            let dict = value as? Dictionary<String, Any>
+        else { throw DataDeserializerError.invalidData }
+
         var settings = UsercentricsUISettings()
 
         if let showCloseButton = dict["showCloseButton"] as? Bool {

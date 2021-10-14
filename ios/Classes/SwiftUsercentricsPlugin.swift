@@ -11,22 +11,23 @@ public class SwiftUsercentricsPlugin: NSObject, FlutterPlugin {
   }
 
     let assetProvider: FlutterAssetProvider
+    var usercentricsManager: UsercentricsManagerProtocol
 
-    init(assetProvider: FlutterAssetProvider) {
+    init(assetProvider: FlutterAssetProvider, usercentricsManager: UsercentricsManagerProtocol = UsercentricsManager()) {
         self.assetProvider = assetProvider
+        self.usercentricsManager = usercentricsManager
     }
 
     lazy var methods: [String : MethodBridge] = {
         let bridges: [MethodBridge] = [
-            InitializeBridge(),
-            IsReadyBridge(),
-            ResetBridge(),
+            InitializeBridge(usercentricsManager: usercentricsManager),
+            IsReadyBridge(usercentricsManager: usercentricsManager),
+            ResetBridge(usercentricsManager: usercentricsManager),
             ShowCMPBridge(assetProvider: assetProvider),
-            GetControllerIdBridge(),
-            GetConsentsBridge(consentSerializer: ConsentSerializer(),
-                              usercentricsSDK: UsercentricsCore.shared),
-            GetTCStringBridge(),
-            RestoreUserSessionBridge(),
+            GetControllerIdBridge(usercentricsSDK: usercentricsManager.shared),
+            GetConsentsBridge(usercentricsSDK: usercentricsManager.shared),
+            GetTCStringBridge(usercentricsSDK: usercentricsManager.shared),
+            RestoreUserSessionBridge(usercentricsSDK: usercentricsManager.shared),
         ]
         return bridges.reduce([String : MethodBridge]()) { dict, value in
             var dict = dict

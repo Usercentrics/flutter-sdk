@@ -3,15 +3,19 @@ import XCTest
 @testable import Usercentrics
 @testable import usercentrics_sdk
 
-class GetConsentsBridgeTest: XCTestCase {
+class GetConsentsBridgeTest: XCTestCase, BaseBridgeTestProtocol {
 
-    private var bridge: GetConsentsBridge!
     private var usercentrics: FakeUsercentricsSDK!
+    var bridgeName: String!
+    var bridge: MethodBridge!
+
 
     override func setUp() {
+        bridgeName = "getConsents"
+
         usercentrics = FakeUsercentricsSDK()
-        bridge = GetConsentsBridge(consentSerializer: ConsentSerializer(),
-                                   usercentricsSDK: usercentrics)
+        bridge = GetConsentsBridge(usercentricsSDK: usercentrics)
+
         super.setUp()
     }
 
@@ -21,17 +25,11 @@ class GetConsentsBridgeTest: XCTestCase {
     }
 
     func testName() {
-        XCTAssertEqual("getConsents", bridge.name)
+        testNameProtocol()
     }
 
     func testInvokeWithOtherName() {
-        let expectation =  XCTestExpectation(description: "resultCompletion")
-        let resultCompletion: FlutterResult = { result in
-            XCTAssertEqual(result as! NSObject, FlutterMethodNotImplemented)
-            expectation.fulfill()
-        }
-        bridge.invoke(FakeFlutterMethodCall(methodName: "otherName"), resultCompletion)
-        wait(for: [expectation], timeout: 2.0)
+        testInvokeWithOtherNameProtocol()
     }
 
     func testInvoke() {
@@ -45,6 +43,14 @@ class GetConsentsBridgeTest: XCTestCase {
 
         let expectation =  XCTestExpectation(description: "resultCompletion")
         let resultCompletion: FlutterResult = { result in
+            guard
+                let result = result as? [[String: Any]],
+                let firstResultElement = result.first,
+                !firstResultElement.isEmpty
+            else {
+                XCTFail()
+                return
+            }
 
             let expectedResult = [
                 "templateId": data.templateId,
@@ -54,18 +60,19 @@ class GetConsentsBridgeTest: XCTestCase {
                 "dataProcessor": data.dataProcessor,
             ]
 
+            firstResultElement.forEach { key, value in
+                guard let element = expectedResult[key] else {
+                    XCTFail()
+                    return
+                }
 
-            let result = result as? [[String:Any]]
-            XCTAssertNotNil(result)
-
-            result!.first!.forEach { key, value in
-                XCTAssertEqual(String(describing: expectedResult[key]!), String(describing: value))
+                XCTAssertEqual(String(describing: element), String(describing: value))
             }
 
             expectation.fulfill()
         }
 
-        bridge.invoke(FakeFlutterMethodCall(methodName: "getConsents"), resultCompletion)
+        bridge.invoke(FakeFlutterMethodCall(methodName: bridgeName), resultCompletion)
         wait(for: [expectation], timeout: 2.0)
     }
 }
