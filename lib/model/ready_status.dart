@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:usercentrics_sdk/model/service_consent.dart';
 
 class UsercentricsReadyStatus {
@@ -15,7 +16,7 @@ class UsercentricsReadyStatus {
       other is UsercentricsReadyStatus &&
           runtimeType == other.runtimeType &&
           shouldShowCMP == other.shouldShowCMP &&
-          consents == other.consents;
+          listEquals(consents, other.consents);
 
   @override
   int get hashCode => shouldShowCMP.hashCode + consents.hashCode;

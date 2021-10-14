@@ -28,15 +28,14 @@ class MethodChannelInitialize extends InitializeBridge {
     UsercentricsLoggerLevel? loggerLevel,
     int? timeoutMillis,
     String? version,
-  }) =>
-      channel.invokeMethod(
-        _name,
-        InitializeOptionsSerializer.serialize(
-          settingsId: settingsId,
-          defaultLanguage: defaultLanguage,
-          loggerLevel: loggerLevel,
-          timeoutMillis: timeoutMillis,
-          version: version,
-        ),
-      );
+  }) {
+    final arguments = InitializeOptionsSerializer.serialize(
+      settingsId: settingsId,
+      defaultLanguage: defaultLanguage,
+      loggerLevel: loggerLevel,
+      timeoutMillis: timeoutMillis,
+      version: version,
+    );
+    channel.invokeMethod(_name, arguments);
+  }
 }

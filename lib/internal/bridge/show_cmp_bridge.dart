@@ -25,14 +25,12 @@ class MethodChannelShowCMP extends ShowCMPBridge {
     UsercentricsImage? customLogo,
     UsercentricsFont? customFont,
   }) async {
-    final result = await channel.invokeMethod(
-      _name,
-      UISettingsSerializer.serialize(
-        showCloseButton: showCloseButton,
-        customLogo: customLogo,
-        customFont: customFont,
-      ),
+    final arguments = UISettingsSerializer.serialize(
+      showCloseButton: showCloseButton,
+      customLogo: customLogo,
+      customFont: customFont,
     );
+    final result = await channel.invokeMethod(_name, arguments);
     return result == null
         ? Future.value(null)
         : Future.value(UserResponseSerializer.deserialize(result));
