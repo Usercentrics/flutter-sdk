@@ -97,8 +97,9 @@ class MethodChannelUsercentrics extends UsercentricsPlatform {
   }
 
   @override
-  Future<UsercentricsReadyStatus> restoreUserSession(
-      {required String controllerId}) async {
+  Future<UsercentricsReadyStatus> restoreUserSession({
+    required String controllerId,
+  }) async {
     await _ensureIsReady();
     return await restoreUserSessionBridge.invoke(
         channel: _channel, controllerId: controllerId);
