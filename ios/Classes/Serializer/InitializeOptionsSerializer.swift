@@ -6,9 +6,12 @@ struct InitializeOptionsSerializer : DataDeserializer {
 
     let loggerLevelSerializer = UsercentricsLoggerLevelSerializer()
 
-    func deserialize(value: Any?) -> UsercentricsOptions {
-        let dict = value as! Dictionary<String,Any>
-        let options = UsercentricsOptions(settingsId: dict["settingsId"] as! String)
+    func deserialize(value: Any?) throws -> UsercentricsOptions {
+        guard let dict = value as? Dictionary<String, Any>,
+              let settingsId = dict["settingsId"] as? String
+        else { throw DataDeserializerError.invalidData }
+        
+        let options = UsercentricsOptions(settingsId: settingsId)
 
         if let defaultLanguage = dict["defaultLanguage"] as? String {
             options.defaultLanguage = defaultLanguage
@@ -20,8 +23,12 @@ struct InitializeOptionsSerializer : DataDeserializer {
             }
         }
 
-        if let timeoutMillis = dict["timeoutMillis"] as? Int64 {
-            options.timeoutMillis = timeoutMillis
+        if let timeoutMillis = dict["timeoutMillis"] as? Int {
+            options.timeoutMillis = Int64(timeoutMillis)
+        }
+
+        if let version = dict["version"] as? String {
+            options.version = version
         }
 
         return options

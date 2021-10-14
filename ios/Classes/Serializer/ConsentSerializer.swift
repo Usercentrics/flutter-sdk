@@ -1,7 +1,6 @@
 import Usercentrics
 
 struct ConsentSerializer : DataSerializer {
-
     typealias T = UsercentricsServiceConsent
 
     func serialize(value: UsercentricsServiceConsent) -> Any {

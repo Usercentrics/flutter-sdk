@@ -1,5 +1,6 @@
 import Flutter
 import UIKit
+import Usercentrics
 
 public class SwiftUsercentricsPlugin: NSObject, FlutterPlugin {
 
@@ -10,21 +11,23 @@ public class SwiftUsercentricsPlugin: NSObject, FlutterPlugin {
   }
 
     let assetProvider: FlutterAssetProvider
+    var usercentricsManager: UsercentricsManagerProtocol
 
-    init(assetProvider: FlutterAssetProvider) {
+    init(assetProvider: FlutterAssetProvider, usercentricsManager: UsercentricsManagerProtocol = UsercentricsManager()) {
         self.assetProvider = assetProvider
+        self.usercentricsManager = usercentricsManager
     }
 
     lazy var methods: [String : MethodBridge] = {
         let bridges: [MethodBridge] = [
-            InitializeBridge(),
-            IsReadyBridge(),
-            ResetBridge(),
+            InitializeBridge(usercentricsManager: usercentricsManager),
+            IsReadyBridge(usercentricsManager: usercentricsManager),
+            ResetBridge(usercentricsManager: usercentricsManager),
             ShowCMPBridge(assetProvider: assetProvider),
-            GetControllerIdBridge(),
-            GetConsentsBridge(),
-            GetTCStringBridge(),
-            RestoreUserSessionBridge(),
+            GetControllerIdBridge(usercentricsManager: usercentricsManager),
+            GetConsentsBridge(usercentricsManager: usercentricsManager),
+            GetTCStringBridge(usercentricsManager: usercentricsManager),
+            RestoreUserSessionBridge(usercentricsManager: usercentricsManager),
         ]
         return bridges.reduce([String : MethodBridge]()) { dict, value in
             var dict = dict

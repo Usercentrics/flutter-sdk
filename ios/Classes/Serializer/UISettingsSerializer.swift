@@ -8,8 +8,11 @@ struct UISettingsSerializer : DataDeserializer {
 
     let loggerLevelSerializer = UsercentricsLoggerLevelSerializer()
 
-    func deserialize(value: Any?) -> UsercentricsUISettings {
-        let dict = value as! Dictionary<String,Any>
+    func deserialize(value: Any?) throws -> UsercentricsUISettings {
+        guard
+            let dict = value as? Dictionary<String, Any>
+        else { throw DataDeserializerError.invalidData }
+
         var settings = UsercentricsUISettings()
 
         if let showCloseButton = dict["showCloseButton"] as? Bool {
@@ -29,7 +32,8 @@ struct UISettingsSerializer : DataDeserializer {
 
     func deserializeImage(value: String) -> UIImage? {
         let path = assetProvider.lookupKey(forAsset: value)
-        return UIImage(named: path)
+        let image = UIImage(named: path)
+        return image
     }
 
     func deserializeFont(value: Dictionary<String,Any>) -> UIFont? {
@@ -40,14 +44,11 @@ struct UISettingsSerializer : DataDeserializer {
            let cgFont = CGFont(fontDataProvider),
            let fontName = cgFont.fullName {
 
-            let uiFont = UIFont(name: String(describing: fontName), size: fontSize)
-
-            if (uiFont == nil) {
-                // Register font and retry to create it
+            if let uiFont = UIFont(name: String(describing: fontName), size: fontSize) {
+                return uiFont
+            } else {
                 UIFont.register(from: cgFont)
                 return UIFont(name: String(describing: fontName), size: fontSize)
-            } else {
-                return uiFont
             }
         }
         return nil

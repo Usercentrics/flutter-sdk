@@ -9,9 +9,7 @@ struct ReadyStatusSerializer : DataSerializer {
     func serialize(value: UsercentricsReadyStatus) -> Any {
         return [
             "shouldShowCMP": value.shouldShowCMP,
-            "consents": value.consents.map({ consent in
-                consentSerializer.serialize(value: consent)
-            })
+            "consents": value.consents.map { consentSerializer.serialize(value: $0) }
         ]
 
     }

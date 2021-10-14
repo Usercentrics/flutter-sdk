@@ -11,9 +11,7 @@ struct UserResponseSerializer : DataSerializer {
         return [
             "controllerId": value.controllerId,
             "userInteraction": userInteractionSerializer.serialize(value: value.userInteraction),
-            "consents": value.consents.map({ consent in
-                consentSerializer.serialize(value: consent)
-            })
+            "consents": value.consents.map { consentSerializer.serialize(value: $0) }
         ]
 
     }
