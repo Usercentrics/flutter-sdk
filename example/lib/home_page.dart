@@ -35,7 +35,6 @@ class _HomePageState extends State<HomePage> {
     // https://docs.usercentrics.com/cmp_in_app_sdk/latest/apply_consent/apply-consent/#apply-consent-to-each-service
   }
 
-  // ignore_for_file: avoid_print
   void _showCMP({required bool showCloseButton}) async {
     try {
       final response = await Usercentrics.showCMP(

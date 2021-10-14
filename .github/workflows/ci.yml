@@ -50,7 +50,7 @@ jobs:
 
   build-android:
     if: "(github.ref != 'refs/heads/master')"
-    name: Build
+    name: Build Android
     needs: test
     runs-on: ubuntu-latest
     container: cirrusci/flutter:stable
@@ -65,7 +65,7 @@ jobs:
 
   build-ios:
     if: "(github.ref != 'refs/heads/master')"
-    name: Build
+    name: Build iOS
     needs: test
     runs-on: macos-latest
     container: cirrusci/flutter:stable
