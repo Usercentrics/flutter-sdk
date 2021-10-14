@@ -1,4 +1,4 @@
-import 'package:flutter_test/flutter_test.dart';
+import 'package:test/test.dart';
 import 'package:usercentrics_sdk/all.dart';
 import 'package:usercentrics_sdk/model/logger_level.dart';
 import 'package:usercentrics_sdk/usercentrics.dart';

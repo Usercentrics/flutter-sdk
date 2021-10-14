@@ -68,7 +68,9 @@ class _HomePageState extends State<HomePage> {
               child: const Text("Show Usercentrics UI"),
             ),
             ElevatedButton(
-              onPressed: () => _showCMP(showCloseButton: true), // TODO
+              onPressed: () {
+                Usercentrics.getControllerId();
+              }, // TODO
               child: const Text("Custom UI"),
             ),
           ],

@@ -17,6 +17,7 @@ class MethodChannelGetTCString extends GetTCStringBridge {
   Future<String> invoke({
     required MethodChannel channel,
   }) async {
-    return (await channel.invokeMethod(_name)) as String;
+    final result = await channel.invokeMethod(_name);
+    return result as String;
   }
 }

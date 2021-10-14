@@ -19,7 +19,7 @@ class MethodChannelGetConsents extends GetConsentsBridge {
   Future<List<UsercentricsServiceConsent>> invoke({
     required MethodChannel channel,
   }) async {
-    final result = channel.invokeMethod(_name);
+    final result = await channel.invokeMethod(_name);
     return (result as List)
         .map((e) => ConsentSerializer.deserialize(e))
         .toList();

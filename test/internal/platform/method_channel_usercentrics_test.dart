@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:flutter_test/flutter_test.dart';
+import 'package:test/test.dart';
 import 'package:usercentrics_sdk/all.dart';
 import 'package:usercentrics_sdk/internal/bridge/bridge.dart';
 import 'package:usercentrics_sdk/internal/platform/method_channel_usercentrics.dart';
@@ -16,7 +16,7 @@ import '../bridge/fake_show_cmp_bridge.dart';
 
 void main() {
   group('initialize', () {
-    test('default', () async {
+    test('default', () {
       final instance = MethodChannelUsercentrics();
       expect(instance.initializeBridge,
           const TypeMatcher<MethodChannelInitialize>());
@@ -77,7 +77,7 @@ void main() {
   });
 
   group('reset', () {
-    test('default', () async {
+    test('default', () {
       final instance = MethodChannelUsercentrics();
       expect(instance.resetBridge, const TypeMatcher<MethodChannelReset>());
     });
@@ -125,7 +125,7 @@ void main() {
   });
 
   group('showCMP', () {
-    test('default', () async {
+    test('default', () {
       final instance = MethodChannelUsercentrics();
       expect(instance.showCMPBridge, const TypeMatcher<MethodChannelShowCMP>());
     });
@@ -176,7 +176,7 @@ void main() {
   });
 
   group('getConsents', () {
-    test('default', () async {
+    test('default', () {
       final instance = MethodChannelUsercentrics();
       expect(instance.getConsentsBridge,
           const TypeMatcher<MethodChannelGetConsents>());
@@ -220,7 +220,7 @@ void main() {
   });
 
   group('getControllerId', () {
-    test('default', () async {
+    test('default', () {
       final instance = MethodChannelUsercentrics();
       expect(instance.getControllerIdBridge,
           const TypeMatcher<MethodChannelGetControllerId>());
@@ -256,7 +256,7 @@ void main() {
   });
 
   group('getTCString', () {
-    test('default', () async {
+    test('default', () {
       final instance = MethodChannelUsercentrics();
       expect(instance.getTCStringBridge,
           const TypeMatcher<MethodChannelGetTCString>());
@@ -292,7 +292,7 @@ void main() {
   });
 
   group('restoreUserSession', () {
-    test('default', () async {
+    test('default', () {
       final instance = MethodChannelUsercentrics();
       expect(instance.restoreUserSessionBridge,
           const TypeMatcher<MethodChannelRestoreUserSession>());

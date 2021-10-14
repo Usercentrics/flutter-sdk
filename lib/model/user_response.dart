@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:usercentrics_sdk/model/service_consent.dart';
 import 'package:usercentrics_sdk/model/user_interaction.dart';
 
@@ -19,7 +20,7 @@ class UsercentricsConsentUserResponse {
           runtimeType == other.runtimeType &&
           controllerId == other.controllerId &&
           userInteraction == other.userInteraction &&
-          consents == other.consents;
+          listEquals(consents, other.consents);
 
   @override
   int get hashCode =>
