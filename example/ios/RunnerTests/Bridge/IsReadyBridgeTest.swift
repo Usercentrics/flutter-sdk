@@ -33,10 +33,6 @@ class IsReadyBridgeTest: XCTestCase, BaseBridgeTestProtocol {
         testNameProtocol()
     }
 
-    func testInvokeWithOtherName() {
-        testInvokeWithOtherNameProtocol()
-    }
-
     func testInvoke() {
         usercentrics.readyStatus = UsercentricsReadyStatus(shouldShowCMP: false,
                                                            consents: [

@@ -25,10 +25,6 @@ class InitializeBridgeTest: XCTestCase, BaseBridgeTestProtocol {
         testNameProtocol()
     }
 
-    func testInvokeWithOtherName() {
-        testInvokeWithOtherNameProtocol()
-    }
-
     func testInvokeWithInvalidArguments() {
         let expectation =  XCTestExpectation(description: "resultCompletion")
         let resultCompletion: FlutterResult = { [unowned self] result in

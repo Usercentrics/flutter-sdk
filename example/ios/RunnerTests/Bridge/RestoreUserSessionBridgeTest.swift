@@ -20,7 +20,7 @@ class RestoreUserSessionBridgeTest: XCTestCase, BaseBridgeTestProtocol {
 
     override func setUp() {
         usercentrics = FakeUsercentricsSDK()
-        bridge = RestoreUserSessionBridge(usercentricsSDK: usercentrics)
+        bridge = RestoreUserSessionBridge(usercentricsManager: FakeUsercentricsManager(shared: usercentrics))
         super.setUp()
     }
 
@@ -31,10 +31,6 @@ class RestoreUserSessionBridgeTest: XCTestCase, BaseBridgeTestProtocol {
 
     func testName() {
         testNameProtocol()
-    }
-
-    func testInvokeWithOtherName() {
-        testInvokeWithOtherNameProtocol()
     }
 
     func testInvoke() {

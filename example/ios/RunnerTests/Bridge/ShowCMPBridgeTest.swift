@@ -24,8 +24,4 @@ class ShowCMPBridgeTest: XCTestCase, BaseBridgeTestProtocol {
     func testName() {
         testNameProtocol()
     }
-
-    func testInvokeWithOtherName() {
-        testInvokeWithOtherNameProtocol()
-    }
 }

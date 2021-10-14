@@ -14,7 +14,7 @@ class GetConsentsBridgeTest: XCTestCase, BaseBridgeTestProtocol {
         bridgeName = "getConsents"
 
         usercentrics = FakeUsercentricsSDK()
-        bridge = GetConsentsBridge(usercentricsSDK: usercentrics)
+        bridge = GetConsentsBridge(usercentricsManager: FakeUsercentricsManager(shared: usercentrics))
 
         super.setUp()
     }
@@ -26,10 +26,6 @@ class GetConsentsBridgeTest: XCTestCase, BaseBridgeTestProtocol {
 
     func testName() {
         testNameProtocol()
-    }
-
-    func testInvokeWithOtherName() {
-        testInvokeWithOtherNameProtocol()
     }
 
     func testInvoke() {

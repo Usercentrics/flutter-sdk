@@ -25,10 +25,6 @@ class ResetBridgeTest: XCTestCase, BaseBridgeTestProtocol {
         testNameProtocol()
     }
 
-    func testInvokeWithOtherName() {
-        testInvokeWithOtherNameProtocol()
-    }
-
     func testInvoke() {
         let expectation =  XCTestExpectation(description: "resultCompletion")
         let resultCompletion: FlutterResult = { [unowned self] result in

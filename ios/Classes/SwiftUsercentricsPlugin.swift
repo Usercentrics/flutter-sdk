@@ -24,10 +24,10 @@ public class SwiftUsercentricsPlugin: NSObject, FlutterPlugin {
             IsReadyBridge(usercentricsManager: usercentricsManager),
             ResetBridge(usercentricsManager: usercentricsManager),
             ShowCMPBridge(assetProvider: assetProvider),
-            GetControllerIdBridge(usercentricsSDK: usercentricsManager.shared),
-            GetConsentsBridge(usercentricsSDK: usercentricsManager.shared),
-            GetTCStringBridge(usercentricsSDK: usercentricsManager.shared),
-            RestoreUserSessionBridge(usercentricsSDK: usercentricsManager.shared),
+            GetControllerIdBridge(usercentricsManager: usercentricsManager),
+            GetConsentsBridge(usercentricsManager: usercentricsManager),
+            GetTCStringBridge(usercentricsManager: usercentricsManager),
+            RestoreUserSessionBridge(usercentricsManager: usercentricsManager),
         ]
         return bridges.reduce([String : MethodBridge]()) { dict, value in
             var dict = dict

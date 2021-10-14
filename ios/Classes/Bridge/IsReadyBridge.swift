@@ -6,14 +6,13 @@ struct IsReadyBridge : MethodBridge {
     let usercentricsManager: UsercentricsManagerProtocol
 
     func invoke(_ call: FlutterMethodCall, _ result: @escaping FlutterResult) {
-        validateAndInvoke(call, result) {
-            self.usercentricsManager.isReady { status in
-                result(ReadyStatusSerializer().serialize(value: status))
-            } onFailure: { error in
-                result(FlutterError(code: "usercentrics_flutter_isReady_error",
-                                    message: error.localizedDescription,
-                                    details: nil ))
-            }
+        assert(call.method == name)
+        self.usercentricsManager.isReady { status in
+            result(ReadyStatusSerializer().serialize(value: status))
+        } onFailure: { error in
+            result(FlutterError(code: "usercentrics_flutter_isReady_error",
+                                message: error.localizedDescription,
+                                details: nil ))
         }
     }
 }

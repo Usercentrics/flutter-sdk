@@ -2,14 +2,16 @@ import Foundation
 import Usercentrics
 
 protocol UsercentricsManagerProtocol {
-    var shared: UsercentricsSDK { mutating get }
+    var shared: UsercentricsSDK { get }
     func isReady(onSuccess: @escaping ((UsercentricsReadyStatus) -> Void), onFailure: @escaping ((Error) -> Void))
     func configure(options: UsercentricsOptions)
     func reset()
 }
 
 struct UsercentricsManager: UsercentricsManagerProtocol {
-    lazy var shared: UsercentricsSDK = UsercentricsCore.shared
+    var shared: UsercentricsSDK {
+        UsercentricsCore.shared
+    }
 
     func isReady(onSuccess: @escaping ((UsercentricsReadyStatus) -> Void), onFailure: @escaping ((Error) -> Void)) {
         UsercentricsCore.isReady(onSuccess: onSuccess, onFailure: onFailure)

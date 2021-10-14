@@ -6,9 +6,8 @@ struct ResetBridge : MethodBridge {
     let usercentricsManager: UsercentricsManagerProtocol
 
     func invoke(_ call: FlutterMethodCall, _ result: @escaping FlutterResult) {
-        validateAndInvoke(call, result) {
-            usercentricsManager.reset()
-            result(nil)
-        }
+        assert(call.method == name)
+        usercentricsManager.reset()
+        result(nil)
     }
 }
