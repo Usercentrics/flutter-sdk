@@ -1,4 +1,4 @@
-package com.usercentrics.sdk.flutter.bridge
+package com.usercentrics.sdk.flutter.api
 
 import android.content.Intent
 

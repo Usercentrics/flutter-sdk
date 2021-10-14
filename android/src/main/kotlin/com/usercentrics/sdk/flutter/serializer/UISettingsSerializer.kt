@@ -1,17 +1,19 @@
 package com.usercentrics.sdk.flutter.serializer
 
-import android.content.Context
-import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Typeface
 import com.usercentrics.sdk.UsercentricsFont
 import com.usercentrics.sdk.UsercentricsImage
 import com.usercentrics.sdk.UsercentricsUISettings
-import com.usercentrics.sdk.flutter.UsercentricsPlugin
+import com.usercentrics.sdk.flutter.api.FlutterActivityProvider
+import com.usercentrics.sdk.flutter.api.FlutterAssetsProvider
 
-internal class UISettingsSerializer : DataDeserializer<UsercentricsUISettings> {
+internal class UISettingsSerializer(
+    private val assetsProvider: FlutterAssetsProvider,
+    private val activityProvider: FlutterActivityProvider
+) : DataDeserializer<UsercentricsUISettings> {
 
-    override fun deserialize(value: Any): UsercentricsUISettings {
+    override fun deserialize(value: Any?): UsercentricsUISettings {
         value as Map<*, *>
         return UsercentricsUISettings(
             showCloseButton = value["showCloseButton"] as? Boolean? ?: false,
@@ -25,8 +27,9 @@ internal class UISettingsSerializer : DataDeserializer<UsercentricsUISettings> {
 
         val typeface = fontMap["fontAssetPath"]?.let {
             val fontAssetPath =
-                UsercentricsPlugin.flutterAssets?.getAssetFilePathByName(it as String)
-            Typeface.createFromAsset(UsercentricsPlugin.applicationContext?.assets, fontAssetPath)
+                assetsProvider.getAssetFilePathByName(it as String) ?: return@let null
+            val assets = activityProvider.provide()?.assets ?: return@let null
+            Typeface.createFromAsset(assets, fontAssetPath)
         }
         val size = fontMap["fontSize"] as? Double
 
@@ -41,16 +44,10 @@ internal class UISettingsSerializer : DataDeserializer<UsercentricsUISettings> {
     private fun deserializeImage(imageAsset: String?): UsercentricsImage? {
         imageAsset ?: return null
 
-        imageAsset?.let {
-            val path = UsercentricsPlugin.flutterAssets?.getAssetFilePathByName(it)
-            val bitmap = getBitmapFromAsset(UsercentricsPlugin.applicationContext!!, path!!)
-            return@deserializeImage UsercentricsImage.ImageBitmap(bitmap)
-        }
-
-        return null
+        val path = assetsProvider.getAssetFilePathByName(imageAsset) ?: return null
+        val assets = activityProvider.provide()?.assets ?: return null
+        val bitmap = assets.open(path).use { BitmapFactory.decodeStream(it) }
+        return UsercentricsImage.ImageBitmap(bitmap)
     }
-
-    private fun getBitmapFromAsset(context: Context, path: String): Bitmap =
-        context.assets.open(path).use { BitmapFactory.decodeStream(it) }
 
 }

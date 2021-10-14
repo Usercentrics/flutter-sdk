@@ -1,17 +1,20 @@
 package com.usercentrics.sdk.flutter.bridge
 
-import android.app.Activity
-import com.usercentrics.sdk.Usercentrics
-import com.usercentrics.sdk.flutter.extension.FlutterResult
-import io.flutter.plugin.common.MethodCall
+import com.usercentrics.sdk.flutter.api.FlutterMethodCall
+import com.usercentrics.sdk.flutter.api.FlutterResult
+import com.usercentrics.sdk.flutter.api.UsercentricsProxy
+import com.usercentrics.sdk.flutter.api.UsercentricsProxySingleton
 
-internal class GetTCStringBridge : MethodBridge {
+internal class GetTCStringBridge(
+    private val usercentrics: UsercentricsProxy = UsercentricsProxySingleton
+) : MethodBridge {
 
     override val name: String
         get() = "getTCString"
 
-    override fun invoke(call: MethodCall, result: FlutterResult, activity: Activity?) {
-        result.success(Usercentrics.instance.getTCString())
+    override fun invoke(call: FlutterMethodCall, result: FlutterResult) {
+        assert(name == call.method)
+        result.success(usercentrics.instance.getTCString())
     }
 
 }

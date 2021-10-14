@@ -5,7 +5,7 @@ import com.usercentrics.sdk.models.common.UsercentricsLoggerLevel
 
 internal class InitializeOptionsSerializer : DataDeserializer<UsercentricsOptions> {
 
-    override fun deserialize(value: Any): UsercentricsOptions {
+    override fun deserialize(value: Any?): UsercentricsOptions {
         value as Map<*, *>
         val options = UsercentricsOptions(value["settingsId"] as String)
         value["defaultLanguage"]?.let {
@@ -15,7 +15,7 @@ internal class InitializeOptionsSerializer : DataDeserializer<UsercentricsOption
             options.loggerLevel = UsercentricsLoggerLevel.valueOf(it as String)
         }
         value["timeoutMillis"]?.let {
-            options.timeoutMillis = it as Long
+            options.timeoutMillis = (it as Int).toLong()
         }
         value["version"]?.let {
             options.version = it as String

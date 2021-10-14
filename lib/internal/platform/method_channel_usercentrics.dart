@@ -1,17 +1,39 @@
 import 'dart:async';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:usercentrics_sdk/internal/bridge/bridge.dart';
 import 'package:usercentrics_sdk/model/model.dart';
 import 'package:usercentrics_sdk/platform/usercentrics_platform.dart';
 
 class MethodChannelUsercentrics extends UsercentricsPlatform {
+  MethodChannelUsercentrics({
+    this.initializeBridge = const MethodChannelInitialize(),
+    this.isReadyBridge = const MethodChannelIsReady(),
+    this.getConsentsBridge = const MethodChannelGetConsents(),
+    this.getControllerIdBridge = const MethodChannelGetControllerId(),
+    this.getTCStringBridge = const MethodChannelGetTCString(),
+    this.resetBridge = const MethodChannelReset(),
+    this.restoreUserSessionBridge = const MethodChannelRestoreUserSession(),
+    this.showCMPBridge = const MethodChannelShowCMP(),
+  });
+
   static const MethodChannel _channel = MethodChannel('usercentrics');
 
-  Completer? _isReadyCompleter;
+  final InitializeBridge initializeBridge;
+  final IsReadyBridge isReadyBridge;
+  final GetConsentsBridge getConsentsBridge;
+  final GetControllerIdBridge getControllerIdBridge;
+  final GetTCStringBridge getTCStringBridge;
+  final ResetBridge resetBridge;
+  final RestoreUserSessionBridge restoreUserSessionBridge;
+  final ShowCMPBridge showCMPBridge;
+
+  @visibleForTesting
+  Completer? isReadyCompleter;
 
   @override
-  Future<void> initialize({
+  void initialize({
     required String settingsId,
     String? defaultLanguage,
     UsercentricsLoggerLevel? loggerLevel,
@@ -19,8 +41,8 @@ class MethodChannelUsercentrics extends UsercentricsPlatform {
     String? version,
   }) async {
     _ensureNotInitialized();
-    _isReadyCompleter = Completer();
-    InitializeBridge.invoke(
+    isReadyCompleter = Completer();
+    initializeBridge.invoke(
       channel: _channel,
       settingsId: settingsId,
       defaultLanguage: defaultLanguage,
@@ -28,18 +50,18 @@ class MethodChannelUsercentrics extends UsercentricsPlatform {
       timeoutMillis: timeoutMillis,
       version: version,
     );
-    status.whenComplete(() => _isReadyCompleter?.complete());
+    status.whenComplete(() => isReadyCompleter?.complete());
   }
 
   @override
   void reset() {
-    _isReadyCompleter = null;
-    ResetBridge.invoke(channel: _channel);
+    isReadyCompleter = null;
+    resetBridge.invoke(channel: _channel);
   }
 
   @override
   Future<UsercentricsReadyStatus> get status =>
-      IsReadyBridge.invoke(channel: _channel);
+      isReadyBridge.invoke(channel: _channel);
 
   @override
   Future<UsercentricsConsentUserResponse?> showCMP({
@@ -48,7 +70,7 @@ class MethodChannelUsercentrics extends UsercentricsPlatform {
     UsercentricsFont? customFont,
   }) async {
     await _ensureIsReady();
-    return await ShowCMPBridge.invoke(
+    return await showCMPBridge.invoke(
       channel: _channel,
       showCloseButton: showCloseButton,
       customLogo: customLogo,
@@ -56,42 +78,44 @@ class MethodChannelUsercentrics extends UsercentricsPlatform {
     );
   }
 
-  void _ensureNotInitialized() {
-    if (_isReadyCompleter != null) {
-      throw const AlreadyInitializedException();
-    }
-  }
-
-  Future<void> _ensureIsReady() async {
-    final completer = _isReadyCompleter;
-    if (completer == null) {
-      throw const NotInitializedException();
-    }
-    await completer.future;
-  }
-
   @override
   Future<List<UsercentricsServiceConsent>> getConsents() async {
     await _ensureIsReady();
-    return await GetConsentsBridge.invoke(channel: _channel);
+    return await getConsentsBridge.invoke(channel: _channel);
   }
 
   @override
   Future<String> getControllerId() async {
     await _ensureIsReady();
-    return await GetControllerIdBridge.invoke(channel: _channel);
+    return await getControllerIdBridge.invoke(channel: _channel);
   }
 
   @override
   Future<String> getTCString() async {
     await _ensureIsReady();
-    return await GetTCStringBridge.invoke(channel: _channel);
+    return await getTCStringBridge.invoke(channel: _channel);
   }
 
   @override
-  Future<UsercentricsReadyStatus> restoreUserSession({required String controllerId}) async {
+  Future<UsercentricsReadyStatus> restoreUserSession(
+      {required String controllerId}) async {
     await _ensureIsReady();
-    return await RestoreUserSessionBridge.invoke(channel: _channel, controllerId: controllerId);
+    return await restoreUserSessionBridge.invoke(
+        channel: _channel, controllerId: controllerId);
+  }
+
+  void _ensureNotInitialized() {
+    if (isReadyCompleter != null) {
+      throw const AlreadyInitializedException();
+    }
+  }
+
+  Future<void> _ensureIsReady() async {
+    final completer = isReadyCompleter;
+    if (completer == null) {
+      throw const NotInitializedException();
+    }
+    await completer.future;
   }
 }
 

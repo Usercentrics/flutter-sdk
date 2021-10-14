@@ -1,26 +1,20 @@
 class UsercentricsImage {
   const UsercentricsImage({
-    required this.asset,
+    required this.assetPath,
   });
 
-  factory UsercentricsImage.asset(String assetName) {
-    return UsercentricsImage(
-      asset: assetName,
-    );
-  }
-
-  final String asset;
+  final String assetPath;
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is UsercentricsImage &&
           runtimeType == other.runtimeType &&
-          asset == other.asset;
+          assetPath == other.assetPath;
 
   @override
-  int get hashCode => asset.hashCode;
+  int get hashCode => assetPath.hashCode;
 
   @override
-  String toString() => "$UsercentricsImage(asset: $asset)";
+  String toString() => "$UsercentricsImage(assetPath: $assetPath)";
 }

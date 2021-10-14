@@ -1,10 +1,12 @@
+import 'package:usercentrics_sdk/internal/platform/method_channel_usercentrics.dart';
 import 'package:usercentrics_sdk/model/model.dart';
-import 'package:usercentrics_sdk/platform/method_channel_usercentrics.dart';
 
 abstract class UsercentricsPlatform {
-  static late UsercentricsPlatform instance = MethodChannelUsercentrics();
+  const UsercentricsPlatform();
 
-  Future<void> initialize({
+  static UsercentricsPlatform instance = MethodChannelUsercentrics();
+
+  void initialize({
     required String settingsId,
     String? defaultLanguage,
     UsercentricsLoggerLevel? loggerLevel,
@@ -28,5 +30,6 @@ abstract class UsercentricsPlatform {
 
   Future<String> getTCString();
 
-  Future<UsercentricsReadyStatus> restoreUserSession({required String controllerId});
+  Future<UsercentricsReadyStatus> restoreUserSession(
+      {required String controllerId});
 }

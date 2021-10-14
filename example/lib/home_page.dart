@@ -38,7 +38,7 @@ class _HomePageState extends State<HomePage> {
     try {
       final response = await Usercentrics.showCMP(
         showCloseButton: showCloseButton,
-        customLogo: UsercentricsImage.asset('images/flutter-logo.png'),
+        customLogo: const UsercentricsImage(assetPath: 'images/flutter-logo.png'),
         // customFont: const UsercentricsFont(
         //   fontAssetPath: 'fonts/Lora-VariableFont_wght.ttf',
         //   fontSize: 15,

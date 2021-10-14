@@ -1,8 +1,16 @@
 import 'package:flutter/services.dart';
 
-class ResetBridge {
+abstract class ResetBridge {
+  const ResetBridge();
+
+  void invoke({required MethodChannel channel});
+}
+
+class MethodChannelReset extends ResetBridge {
+  const MethodChannelReset();
+
   static const String _name = 'reset';
 
-  static void invoke({required MethodChannel channel}) =>
-      channel.invokeMethod(_name);
+  @override
+  void invoke({required MethodChannel channel}) => channel.invokeMethod(_name);
 }

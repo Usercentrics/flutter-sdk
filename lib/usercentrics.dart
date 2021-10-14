@@ -19,7 +19,7 @@ class Usercentrics {
     return delegatePackingProperty ??= UsercentricsPlatform.instance;
   }
 
-  static Future<void> initialize({
+  static void initialize({
     required String settingsId,
     String? defaultLanguage,
     UsercentricsLoggerLevel? loggerLevel,
@@ -56,7 +56,8 @@ class Usercentrics {
 
   static Future<String> getTCString() => _delegate.getTCString();
 
-  static Future<UsercentricsReadyStatus> restoreUserSession(
-          {required String controllerId}) =>
+  static Future<UsercentricsReadyStatus> restoreUserSession({
+    required String controllerId,
+  }) =>
       _delegate.restoreUserSession(controllerId: controllerId);
 }

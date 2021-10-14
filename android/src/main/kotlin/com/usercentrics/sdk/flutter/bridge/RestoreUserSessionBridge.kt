@@ -1,12 +1,14 @@
 package com.usercentrics.sdk.flutter.bridge
 
-import android.app.Activity
-import com.usercentrics.sdk.Usercentrics
-import com.usercentrics.sdk.flutter.extension.FlutterResult
+import com.usercentrics.sdk.flutter.api.FlutterMethodCall
+import com.usercentrics.sdk.flutter.api.FlutterResult
+import com.usercentrics.sdk.flutter.api.UsercentricsProxy
+import com.usercentrics.sdk.flutter.api.UsercentricsProxySingleton
 import com.usercentrics.sdk.flutter.serializer.ReadyStatusSerializer
-import io.flutter.plugin.common.MethodCall
 
-internal class RestoreUserSessionBridge : MethodBridge {
+internal class RestoreUserSessionBridge(
+    private val usercentrics: UsercentricsProxy = UsercentricsProxySingleton
+) : MethodBridge {
 
     companion object {
         private const val restoreUserSessionErrorCode =
@@ -16,8 +18,9 @@ internal class RestoreUserSessionBridge : MethodBridge {
     override val name: String
         get() = "restoreUserSession"
 
-    override fun invoke(call: MethodCall, result: FlutterResult, activity: Activity?) {
-        Usercentrics.instance.restoreUserSession(
+    override fun invoke(call: FlutterMethodCall, result: FlutterResult) {
+        assert(name == call.method)
+        usercentrics.instance.restoreUserSession(
             controllerId = call.arguments as String,
             onSuccess = {
                 result.success(ReadyStatusSerializer().serialize(it))
