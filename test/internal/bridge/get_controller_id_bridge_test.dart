@@ -4,8 +4,10 @@ import 'package:usercentrics_sdk/internal/bridge/bridge.dart';
 
 void main() {
   // Data from a real call of the debugger
-  const mockResponse = "8620135313b043696b806868b20da905886a3a2598ddddc2b52973f9807d6b45";
-  const expectedResult = "8620135313b043696b806868b20da905886a3a2598ddddc2b52973f9807d6b45";
+  const mockResponse =
+      "8620135313b043696b806868b20da905886a3a2598ddddc2b52973f9807d6b45";
+  const expectedResult =
+      "8620135313b043696b806868b20da905886a3a2598ddddc2b52973f9807d6b45";
 
   const MethodChannel channel = MethodChannel('usercentrics');
   TestWidgetsFlutterBinding.ensureInitialized();

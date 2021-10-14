@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:usercentrics_sdk/all.dart';
@@ -34,11 +35,13 @@ class _HomePageState extends State<HomePage> {
     // https://docs.usercentrics.com/cmp_in_app_sdk/latest/apply_consent/apply-consent/#apply-consent-to-each-service
   }
 
+  // ignore_for_file: avoid_print
   void _showCMP({required bool showCloseButton}) async {
     try {
       final response = await Usercentrics.showCMP(
         showCloseButton: showCloseButton,
-        customLogo: const UsercentricsImage(assetPath: 'images/flutter-logo.png'),
+        customLogo:
+            const UsercentricsImage(assetPath: 'images/flutter-logo.png'),
         // customFont: const UsercentricsFont(
         //   fontAssetPath: 'fonts/Lora-VariableFont_wght.ttf',
         //   fontSize: 15,
@@ -66,12 +69,6 @@ class _HomePageState extends State<HomePage> {
             ElevatedButton(
               onPressed: () => _showCMP(showCloseButton: true),
               child: const Text("Show Usercentrics UI"),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                Usercentrics.getControllerId();
-              }, // TODO
-              child: const Text("Custom UI"),
             ),
           ],
         ),
