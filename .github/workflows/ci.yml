@@ -60,7 +60,7 @@ jobs:
         uses: actions/cache@v2
         with:
           path: ./example/android/ci-cache/gradle
-          key: ${{ runner.os }}-${{ steps.get-date.outputs.date }}-${{ hashFiles('**/lockfiles') }}
+          key: ${{ runner.os }}-${{ steps.test-android.outputs.date }}
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Get dependencies
