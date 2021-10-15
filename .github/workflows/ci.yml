@@ -59,12 +59,12 @@ jobs:
         uses: actions/checkout@v2
       - name: Get dependencies
         run: flutter pub get
-      - name: Gradle
+      - name: Setup Gradle
         working-directory: ./example/android
         run: ../../scripts/setup_gradle.sh
       - name: Run all tests
         working-directory: ./example/android
-        run: gradle :usercentrics_sdk:test
+        run: ./gradlew :usercentrics_sdk:test
 
   build-android:
     if: "(github.ref != 'refs/heads/master')"
