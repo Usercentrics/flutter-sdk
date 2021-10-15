@@ -67,7 +67,7 @@ jobs:
             ./example/android/ci-cache/gradle
             ./example/android/gradle/wrapper/gradle-wrapper.jar
             ./example/android/gradlew
-          key: ${{ runner.os }}-gradle-${{ env.GRADLE_VERSION }}
+          key: ${{ runner.os }}-cache-gradle-${{ env.GRADLE_VERSION }}
       - run: ls
       - run: ls ./example/android/
       - run: ls ./example/android/ci-cache/gradle
@@ -80,14 +80,52 @@ jobs:
         run: ../../scripts/setup_gradle.sh ${{ env.GRADLE_VERSION }}
       - name: Validate Gradle
         working-directory: ./example/android
-        run: ./gradlew wrapper --gradle-version ${{ env.GRADLE_VERSION }} --distribution-type all
+        run: ./gradlew wrapper --gradle-version ${{ env.GRADLE_VERSION }} --distribution-type bin
       - name: Run all tests
         working-directory: ./example/android
         run: ./gradlew :usercentrics_sdk:test
 
-  test-ios:
-    name: Test iOS
-    #    needs: [ lint, format ]
+#  test-ios:
+#    name: Test iOS
+#    #    needs: [ lint, format ]
+#    runs-on: macos-latest
+#
+#    steps:
+#      - name: Checkout code
+#        uses: actions/checkout@v2
+#      - name: Setup Flutter
+#        uses: subosito/flutter-action@v1
+#        with:
+#          channel: 'stable'
+#      - name: Get dependencies
+#        run: flutter pub get
+#      - name: Setup Pods
+#        working-directory: ./example/ios
+#        run: pod install
+#      - name: Run all tests
+#        working-directory: ./example/ios
+#        run: ../../scripts/ios_unit_tests.sh
+#
+#  build-android:
+#    if: "(github.ref != 'refs/heads/master')"
+#    name: Build Android
+##    needs: [ test-flutter, test-android, test-ios ]
+#    runs-on: ubuntu-latest
+#    container: cirrusci/flutter:stable
+#
+#    steps:
+#      - name: Checkout code
+#        uses: actions/checkout@v2
+#      - name: Get dependencies
+#        run: flutter pub get
+#      - name: Build
+#        working-directory: ./example
+#        run: flutter build apk
+
+  build-ios:
+    if: "(github.ref != 'refs/heads/master')"
+    name: Build iOS
+#    needs: test
     runs-on: macos-latest
 
     steps:
@@ -99,42 +137,6 @@ jobs:
           channel: 'stable'
       - name: Get dependencies
         run: flutter pub get
-      - name: Setup Pods
-        working-directory: ./example/ios
-        run: pod install
-      - name: Run all tests
-        working-directory: ./example/ios
-        run: ../../scripts/ios_unit_tests.sh
-
-  build-android:
-    if: "(github.ref != 'refs/heads/master')"
-    name: Build Android
-#    needs: [ test-flutter, test-android, test-ios ]
-    runs-on: ubuntu-latest
-    container: cirrusci/flutter:stable
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-      - name: Get dependencies
-        run: flutter pub get
       - name: Build
         working-directory: ./example
-        run: flutter build apk
-
-#  build-ios:
-#    if: "(github.ref != 'refs/heads/master')"
-#    name: Build iOS
-#    needs: test
-#    runs-on: macos-latest
-#    container: cirrusci/flutter:stable
-#
-#    steps:
-#      - name: Checkout code
-#        uses: actions/checkout@v2
-#      - name: Get dependencies
-#        working-directory: ./example
-#        run: flutter pub get
-#      - name: Build
-#        working-directory: ./example
-#        run: flutter build ios
+        run: flutter build ios
