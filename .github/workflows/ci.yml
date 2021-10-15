@@ -8,53 +8,58 @@ on:
   workflow_dispatch:
 
 jobs:
-  format:
-    name: Format
-    runs-on: ubuntu-latest
-    container: cirrusci/flutter:stable
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-      - name: Check format
-        run: scripts/check_format.sh
-
-  lint:
-    name: Lint
-    runs-on: ubuntu-latest
-    container: cirrusci/flutter:stable
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-      - name: Get dependencies
-        run: flutter pub get
-      - name: Lint using flutter analyze
-        run: flutter analyze
-
-  test-flutter:
-    name: Test Flutter
-    needs: [ lint, format ]
-    runs-on: ubuntu-latest
-    container: cirrusci/flutter:stable
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-      - name: Get dependencies
-        run: flutter pub get
-      - name: Run all tests
-        run: flutter test --reporter=expanded --coverage
-      - name: Check coverage
-        run: dart scripts/check_coverage.dart coverage/lcov.info
+#  format:
+#    name: Format
+#    runs-on: ubuntu-latest
+#    container: cirrusci/flutter:stable
+#
+#    steps:
+#      - name: Checkout code
+#        uses: actions/checkout@v2
+#      - name: Check format
+#        run: scripts/check_format.sh
+#
+#  lint:
+#    name: Lint
+#    runs-on: ubuntu-latest
+#    container: cirrusci/flutter:stable
+#
+#    steps:
+#      - name: Checkout code
+#        uses: actions/checkout@v2
+#      - name: Get dependencies
+#        run: flutter pub get
+#      - name: Lint using flutter analyze
+#        run: flutter analyze
+#
+#  test-flutter:
+#    name: Test Flutter
+#    needs: [ lint, format ]
+#    runs-on: ubuntu-latest
+#    container: cirrusci/flutter:stable
+#
+#    steps:
+#      - name: Checkout code
+#        uses: actions/checkout@v2
+#      - name: Get dependencies
+#        run: flutter pub get
+#      - name: Run all tests
+#        run: flutter test --reporter=expanded --coverage
+#      - name: Check coverage
+#        run: dart scripts/check_coverage.dart coverage/lcov.info
 
   test-android:
     name: Test Android
-    needs: [ lint, format ]
+#    needs: [ lint, format ]
     runs-on: ubuntu-latest
     container: cirrusci/flutter:stable
 
     steps:
+      - name: Save/Restore cache
+        uses: actions/cache@v2
+          with:
+            path: ./example/android/ci-cache
+            key: ${{ runner.os }}-${{ steps.get-date.outputs.date }}-${{ hashFiles('**/lockfiles') }}
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Get dependencies
