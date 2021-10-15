@@ -55,11 +55,12 @@ jobs:
     container: cirrusci/flutter:stable
 
     steps:
-      - uses: actions/cache@v2
-          id: cache-gradle
-          with:
-            path: ./example/android/ci-cache/gradle
-            key: ${{ runner.os }}-${{ steps.get-date.outputs.date }}-${{ hashFiles('**/lockfiles') }}
+      - name: Cache Gradle
+        id: cache-gradle
+        uses: actions/cache@v2
+        with:
+          path: ./example/android/ci-cache/gradle
+          key: ${{ runner.os }}-${{ steps.get-date.outputs.date }}-${{ hashFiles('**/lockfiles') }}
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Get dependencies
