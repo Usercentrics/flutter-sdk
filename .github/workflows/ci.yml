@@ -73,21 +73,21 @@ jobs:
         working-directory: ./example/android
         run: ./gradlew :usercentrics_sdk:test
 
-#  build-android:
-#    if: "(github.ref != 'refs/heads/master')"
-#    name: Build Android
+  build-android:
+    if: "(github.ref != 'refs/heads/master')"
+    name: Build Android
 #    needs: [ test-flutter, test-android ]
-#    runs-on: ubuntu-latest
-#    container: cirrusci/flutter:stable
-#
-#    steps:
-#      - name: Checkout code
-#        uses: actions/checkout@v2
-#      - name: Get dependencies
-#        run: flutter pub get
-#      - name: Build
-#        working-directory: ./example
-#        run: flutter build apk
+    runs-on: ubuntu-latest
+    container: cirrusci/flutter:stable
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Get dependencies
+        run: flutter pub get
+      - name: Build
+        working-directory: ./example
+        run: flutter build apk
 
 #  build-ios:
 #    if: "(github.ref != 'refs/heads/master')"
