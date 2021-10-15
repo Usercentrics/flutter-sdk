@@ -68,10 +68,6 @@ jobs:
             ./example/android/gradle/wrapper/gradle-wrapper.jar
             ./example/android/gradlew
           key: ${{ runner.os }}-cache-gradle-${{ env.GRADLE_VERSION }}
-      - run: ls
-      - run: ls ./example/android/
-      - run: ls ./example/android/ci-cache/gradle
-      - run: ls ./example/android/gradle/wrapper/
       - name: Get dependencies
         run: flutter pub get
       - name: Setup Gradle
