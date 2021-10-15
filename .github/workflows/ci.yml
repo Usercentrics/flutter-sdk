@@ -75,6 +75,7 @@ jobs:
         working-directory: ./example/android
         run: ../../scripts/setup_gradle.sh ${{ env.GRADLE_VERSION }}
       - name: Validate Gradle
+        working-directory: ./example/android
         run: ./gradlew wrapper --gradle-version ${{ env.GRADLE_VERSION }} --distribution-type all
       - name: Run all tests
         working-directory: ./example/android
