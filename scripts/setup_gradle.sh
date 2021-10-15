@@ -12,6 +12,6 @@ rm gradle-6.7-bin.zip
 
 cd ../../
 
-export PATH="$(pwd)/ci-cache/gradle/gradle-6.7/bin/gradle:$PATH"
+./ci-cache/gradle/gradle-6.7/bin/gradle wrapper --gradle-version 6.7 --distribution-type all
 
-gradle wrapper --gradle-version 6.7 --distribution-type all
+export PATH="$(pwd)/ci-cache/gradle/gradle-6.7/bin/gradle:$PATH"
