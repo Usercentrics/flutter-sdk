@@ -81,10 +81,31 @@ jobs:
         working-directory: ./example/android
         run: ./gradlew :usercentrics_sdk:test
 
+  test-ios:
+    name: Test iOS
+    #    needs: [ lint, format ]
+    runs-on: macos-latest
+    env:
+      FLUTTER_VERSION: 2.5.2
+
+    steps:
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v1.3.2
+        with:
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+      - name: Get dependencies
+        run: flutter pub get
+      - name: Setup Pods
+        working-directory: ./example/ios
+        run: pod install
+      - name: Run all tests
+        working-directory: ./example/ios
+        run: ../../scripts/ios_unit_tests.sh
+
   build-android:
     if: "(github.ref != 'refs/heads/master')"
     name: Build Android
-#    needs: [ test-flutter, test-android ]
+#    needs: [ test-flutter, test-android, test-ios ]
     runs-on: ubuntu-latest
     container: cirrusci/flutter:stable
 
