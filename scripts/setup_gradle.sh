@@ -10,4 +10,6 @@ curl -L -s "https://services.gradle.org/distributions/gradle-$GRADLE_VERSION-bin
 unzip gradle-6.7-bin.zip
 rm gradle-6.7-bin.zip
 
+cd ../../
+
 ./ci-cache/gradle/gradle-6.7/bin/gradle wrapper --gradle-version 6.7 --distribution-type all
