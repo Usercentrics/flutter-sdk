@@ -32,8 +32,8 @@ jobs:
       - name: Lint using flutter analyze
         run: flutter analyze
 
-  test:
-    name: Test
+  test-flutter:
+    name: Test Flutter
     needs: [ lint, format ]
     runs-on: ubuntu-latest
     container: cirrusci/flutter:stable
@@ -48,10 +48,25 @@ jobs:
       - name: Check coverage
         run: dart scripts/check_coverage.dart coverage/lcov.info
 
+  test-android:
+    name: Test Android
+    needs: [ lint, format ]
+    runs-on: ubuntu-latest
+    container: cirrusci/flutter:stable
+#    container: circleci/android:api-30
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Get dependencies
+        run: flutter pub get
+      - name: Run all tests
+        run: gradle :usercentrics_sdk:test
+
   build-android:
     if: "(github.ref != 'refs/heads/master')"
     name: Build Android
-    needs: test
+    needs: [ test-flutter, test-android ]
     runs-on: ubuntu-latest
     container: cirrusci/flutter:stable
 
@@ -59,21 +74,25 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Get dependencies
+        working-directory: ./example
         run: flutter pub get
       - name: Build
+        working-directory: ./example
         run: flutter build apk
 
-  build-ios:
-    if: "(github.ref != 'refs/heads/master')"
-    name: Build iOS
-    needs: test
-    runs-on: macos-latest
-    container: cirrusci/flutter:stable
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-      - name: Get dependencies
-        run: flutter pub get
-      - name: Build
-        run: flutter build ios
+#  build-ios:
+#    if: "(github.ref != 'refs/heads/master')"
+#    name: Build iOS
+#    needs: test
+#    runs-on: macos-latest
+#    container: cirrusci/flutter:stable
+#
+#    steps:
+#      - name: Checkout code
+#        uses: actions/checkout@v2
+#      - name: Get dependencies
+#        working-directory: ./example
+#        run: flutter pub get
+#      - name: Build
+#        working-directory: ./example
+#        run: flutter build ios
