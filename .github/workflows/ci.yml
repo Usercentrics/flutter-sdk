@@ -54,6 +54,7 @@ jobs:
     runs-on: ubuntu-latest
 #    container: cirrusci/flutter:stable
     container: circleci/android:api-30
+      options: --user root
 
     steps:
       - name: Checkout code
@@ -75,7 +76,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Get dependencies
-        working-directory: ./example
         run: flutter pub get
       - name: Build
         working-directory: ./example
