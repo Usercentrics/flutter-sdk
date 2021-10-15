@@ -52,19 +52,18 @@ jobs:
     name: Test Android
     needs: [ lint, format ]
     runs-on: ubuntu-latest
-    #    container: circleci/android:api-30
     container: cirrusci/flutter:stable
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-#      - name: Get dependencies
-#        run: flutter pub get
+      - name: Get dependencies
+        run: flutter pub get
       - name: Gradle
-        working-directory: ./example
-        run: gradle wrapper --gradle-version 6.7 --distribution-type all
+        working-directory: ./example/android
+        run: ../../scripts/setup_gradle.sh
       - name: Run all tests
-        working-directory: ./example
+        working-directory: ./example/android
         run: gradle :usercentrics_sdk:test
 
   build-android:
