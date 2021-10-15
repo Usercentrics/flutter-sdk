@@ -66,6 +66,10 @@ jobs:
             ./example/android/gradle/wrapper/gradle-wrapper.jar
             ./example/android/gradlew
           key: ${{ runner.os }}-gradle-${{ env.GRADLE_VERSION }}
+      - run: ls
+      - run: ls ./example/android/
+      - run: ls ./example/android/ci-cache/gradle
+      - run: ls ./example/android/gradle/wrapper/
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Get dependencies
@@ -85,14 +89,12 @@ jobs:
     name: Test iOS
     #    needs: [ lint, format ]
     runs-on: macos-latest
-    env:
-      FLUTTER_VERSION: 2.5.2
 
     steps:
       - name: Setup Flutter
-        uses: subosito/flutter-action@v1.3.2
+        uses: subosito/flutter-action@v1
         with:
-          flutter-version: ${{ env.FLUTTER_VERSION }}
+          channel: 'stable'
       - name: Get dependencies
         run: flutter pub get
       - name: Setup Pods
