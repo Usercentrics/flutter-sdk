@@ -1,4 +1,4 @@
-<img src="https://i.ibb.co/hH4HbGh/ic-launcher-foreground.png" height="100" alt="Usercentrics" />
+<img src="https://i.ibb.co/Pr2KmHg/uc-logo.png" height="110" alt="Usercentrics" />
 
 # Usercentrics
 
