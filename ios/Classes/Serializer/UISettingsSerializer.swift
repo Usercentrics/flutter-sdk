@@ -61,6 +61,7 @@ extension UIFont {
     public static func register(from cgFont: CGFont) {
         guard CTFontManagerRegisterGraphicsFont(cgFont, nil) else {
             assert(false)
+            return
         }
     }
 }
