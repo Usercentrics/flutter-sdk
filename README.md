@@ -10,7 +10,7 @@
 
 ## Overview
 
-The Usercentrics Apps SDK is a native Consent Management Platform framework for mobile, TV and Unity applications, that enables the collection, documentation, and management of your user's privacy settings, in order to ensure legal compliance for different legal frameworks around the world.
+The Usercentrics Apps SDK is a native Consent Management Platform framework for mobile, TV, Web and Unity applications, that enables the collection, documentation, and management of your user's privacy settings, in order to ensure legal compliance for different legal frameworks around the world.
 
 <p align="center">
 <img src="https://docs.usercentrics.com/cmp_in_app_sdk/latest/assets/media/predefinedUI.png" alt="Usercentrics UI" />
@@ -29,17 +29,17 @@ Our SDK consists of 2 main components:
 
 ### Supported Platforms
 
-|               | Android | iOS |  Web  | tvOS | MacOS |
-|:-------------:|:-------:|:---:|:-----:|:----:|:-----:|
-| Core          |    ✅   |  ✅  |   ❌   |  ❌  |  ❌  |
-| UI            |    ✅   |  ✅  |   ❌   |  ❌  |  ❌  |
+|                  | Android | iOS |  Web  | tvOS | MacOS |
+|:----------------:|:-------:|:---:|:-----:|:----:|:-----:|
+| UsercentricsCore |    ✅   |  ✅  |   ❌   |  ❌  |  ❌  |
+| UsercentricsUI   |    ✅   |  ✅  |   ❌   |  ❌  |  ❌  |
 
 ### Requirements
 
 * Dart 2: >= 2.12
 * Flutter: >= 1.20
-* iOS >= 11
-* Android >= 4.1 (16)
+* iOS: >= 11
+* Android: >= 4.1 (16)
 
 ### Features
 * Easy installation via a package manager
@@ -57,7 +57,7 @@ Our SDK consists of 2 main components:
 * Reporting of User Interactions
 
 ## Usage
-TODO
+**TODO**
 
 ## Get an Account
 First step to get started with our SDK, is to create a Usercentrics Account, [get started with a free account](https://usercentrics.com/pricing/#mobile) or [request a quote](https://usercentrics.com/in-app-sdk/#in-app-demo) for your organization.
