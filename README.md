@@ -6,9 +6,11 @@
   <a href="https://github.com/Usercentrics/flutter-sdk/actions/workflows/ci.yml">
     <img alt="build and test status" src="https://github.com/Usercentrics/flutter-sdk/actions/workflows/ci.yml/badge.svg">
   </a>
-  ![version](https://img.shields.io/badge/version-2.0.1-blue)
+  <a href="https://github.com/Usercentrics/flutter-sdk/releases">
+    <img alt="Version" src="https://img.shields.io/badge/version-2.0.1-blue">
+  </a>
   <a href="https://twitter.com/intent/follow?screen_name=usercentrics">
-    <img src="https://img.shields.io/twitter/follow/shields_io?style=social&logo=twitter"
+    <img src="https://img.shields.io/twitter/follow/usercentrics?style=social&logo=twitter"
             alt="follow on Twitter">
   </a>
 </p>
