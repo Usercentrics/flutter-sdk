@@ -33,7 +33,7 @@ jobs:
         run: flutter analyze
 
   pub-dry-run:
-    name: Publish dry run
+    name: Publish Dry Run
     runs-on: ubuntu-latest
     container: cirrusci/flutter:stable
 
