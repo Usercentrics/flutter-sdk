@@ -33,16 +33,16 @@ jobs:
 #        run: flutter analyze
 #
 
-  pub-dry-run:
-    name: Publish dry run
-    runs-on: ubuntu-latest
-    container: cirrusci/flutter:stable
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-      - name: Run publish dry run
-        run: dart pub publish --dry-run
+#  pub-dry-run:
+#    name: Publish dry run
+#    runs-on: ubuntu-latest
+#    container: cirrusci/flutter:stable
+#
+#    steps:
+#      - name: Checkout code
+#        uses: actions/checkout@v2
+#      - name: Run publish dry run
+#        run: dart pub publish --dry-run
 
 
 
@@ -63,38 +63,38 @@ jobs:
 #      - name: Check coverage
 #        run: dart scripts/check_coverage.dart coverage/lcov.info
 
-  test-android:
-    name: Test Android
-#    needs: [ lint, format ]
-    runs-on: ubuntu-latest
-    container: cirrusci/flutter:stable
-    env:
-      GRADLE_VERSION: 6.7
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-      - name: Cache Gradle
-        id: cache-gradle
-        uses: actions/cache@v2
-        with:
-          path: |
-            ./example/android/ci-cache/gradle
-            ./example/android/gradle/wrapper/gradle-wrapper.jar
-            ./example/android/gradlew
-          key: ${{ runner.os }}-cache-gradle-${{ env.GRADLE_VERSION }}
-      - name: Get dependencies
-        run: flutter pub get
-      - name: Setup Gradle
-        if: steps.cache-gradle.outputs.cache-hit != 'true'
-        working-directory: ./example/android
-        run: ../../scripts/setup_gradle.sh ${{ env.GRADLE_VERSION }}
-      - name: Validate Gradle
-        working-directory: ./example/android
-        run: dart ../../scripts/check_gradle_version.dart
-      - name: Run all tests
-        working-directory: ./example/android
-        run: ./gradlew :usercentrics_sdk:test
+#  test-android:
+#    name: Test Android
+##    needs: [ lint, format ]
+#    runs-on: ubuntu-latest
+#    container: cirrusci/flutter:stable
+#    env:
+#      GRADLE_VERSION: 6.7
+#
+#    steps:
+#      - name: Checkout code
+#        uses: actions/checkout@v2
+#      - name: Cache Gradle
+#        id: cache-gradle
+#        uses: actions/cache@v2
+#        with:
+#          path: |
+#            ./example/android/ci-cache/gradle
+#            ./example/android/gradle/wrapper/gradle-wrapper.jar
+#            ./example/android/gradlew
+#          key: ${{ runner.os }}-cache-gradle-${{ env.GRADLE_VERSION }}
+#      - name: Get dependencies
+#        run: flutter pub get
+#      - name: Setup Gradle
+#        if: steps.cache-gradle.outputs.cache-hit != 'true'
+#        working-directory: ./example/android
+#        run: ../../scripts/setup_gradle.sh ${{ env.GRADLE_VERSION }}
+#      - name: Validate Gradle
+#        working-directory: ./example/android
+#        run: dart ../../scripts/check_gradle_version.dart
+#      - name: Run all tests
+#        working-directory: ./example/android
+#        run: ./gradlew :usercentrics_sdk:test
 
 #  test-ios:
 #    name: Test iOS
@@ -142,6 +142,10 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+      - name: Create Folder for certificates and profiles
+        run: |
+          mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
+          mkdir -p ~/Library/MobileDevice/Certificates/
       - name: Setup Flutter
         uses: subosito/flutter-action@v1
         with:
@@ -150,4 +154,4 @@ jobs:
         run: flutter pub get
       - name: Build
         working-directory: ./example
-        run: flutter build ios
+        run: flutter build ios --no-codesign
