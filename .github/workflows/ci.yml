@@ -76,7 +76,7 @@ jobs:
         run: ../../scripts/setup_gradle.sh ${{ env.GRADLE_VERSION }}
       - name: Validate Gradle
         working-directory: ./example/android
-        run: ./gradlew wrapper --gradle-version ${{ env.GRADLE_VERSION }} --distribution-type bin
+        run: dart ../../scripts/check_gradle_version.dart
       - name: Run all tests
         working-directory: ./example/android
         run: ./gradlew :usercentrics_sdk:test
