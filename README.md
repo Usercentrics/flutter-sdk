@@ -17,12 +17,8 @@ The Usercentrics Apps SDK is a native Consent Management Platform framework for 
 </p>
 
 Our SDK consists of 2 main components:
-
-**UsercentricsCore**
-        Contains all core functionality to collect, document and manage consent, as well as usability features like language detection or geolocation. You may use this component by itself, if you are planing to build your own CMP.
-
-**UsercentricsUI**
-        UI Component that hooks to UsercentricsCore to provide a ready to use CMP solution. This component allows endless customization possibilities and is built to make A/B testing effortless.
+- **UsercentricsCore**. Contains all core functionality to collect, document and manage consent, as well as usability features like language detection or geolocation. You may use this component by itself, if you are planing to build your own CMP.
+- **UsercentricsUI**. UI Component that hooks to UsercentricsCore to provide a ready to use CMP solution. This component allows endless customization possibilities and is built to make A/B testing effortless.
 
 ### Supported Legal Frameworks
 
