@@ -5,6 +5,9 @@ on:
     branches:
       - master
   pull_request:
+  release:
+    types:
+      - created
   workflow_dispatch:
 
 jobs:
@@ -145,3 +148,22 @@ jobs:
       - name: Build
         working-directory: ./example
         run: flutter build ios --debug --no-codesign --simulator
+
+  release:
+    name: Release
+    if: github.event_name == 'release'
+    needs: [ test-flutter, test-android, test-ios, build-android, build-ios ]
+    runs-on: ubuntu-latest
+    container: cirrusci/flutter:stable
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Validate version
+        run: dart scripts/check_release_version.dart ${{ github.ref }}
+      - name: Setup credentials
+        run: ./scripts/setup_pub_credentials.sh ${{ secrets.PUB_DEV_CREDENTIALS }}
+      - name: Get dependencies
+        run: flutter pub get
+      - name: Publish
+        run: flutter pub publish -f

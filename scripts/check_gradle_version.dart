@@ -25,8 +25,7 @@ Future<String> _getVersion() async {
   final versionString = versionResult.stdout as String;
   final versionLine = versionString
       .split("\n")
-      .where((element) => element.contains("Gradle"))
-      .first;
+      .firstWhere((element) => element.contains("Gradle"));
   return versionLine.split(' ').map((e) => e.trim()).last.replaceAll("!", "");
 }
 
@@ -39,8 +38,7 @@ Future<String> _getRequiredVersion() async {
       .toList();
 
   final distributionUrl = lines
-      .where((element) => element.contains("distributionUrl"))
-      .first
+      .firstWhere((element) => element.contains("distributionUrl"))
       .split("=")[1];
 
   return distributionUrl.split("-")[1];

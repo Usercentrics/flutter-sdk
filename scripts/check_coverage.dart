@@ -26,13 +26,11 @@ Future<double> _computeCoverage(String lcovFilePath) async {
   final lcovSummary = lcovResult.stdout as String;
   final lcovLinesLine = lcovSummary
       .split("\n")
-      .where((element) => element.contains("lines)"))
-      .first;
+      .firstWhere((element) => element.contains("lines)"));
   final linesCoveragePercentage = lcovLinesLine
       .split(' ')
       .map((e) => e.trim())
-      .where((e) => e.contains("%"))
-      .first;
+      .firstWhere((e) => e.contains("%"));
   return double.parse(linesCoveragePercentage.replaceAll("%", ""));
 }
 

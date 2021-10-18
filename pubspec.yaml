@@ -1,7 +1,14 @@
 name: usercentrics_sdk
 description: Usercentrics Flutter SDK.
-version: 2.0.1
 homepage: https://docs.usercentrics.com/#/in-app-sdk
+
+# Update version process:
+#  - pubspec.yaml
+#  - android/build.gradle
+#  - ios/usercentrics_sdk.podspec.json
+#  - CHANGELOG
+#  - README
+version: 2.0.1
 
 environment:
   sdk: ">=2.12.0 <3.0.0"
