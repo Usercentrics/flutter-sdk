@@ -1,28 +1,31 @@
+<img src="https://i.ibb.co/hH4HbGh/ic-launcher-foreground.png" height="100" alt="Usercentrics" />
+
 # Usercentrics
 
-<p align="center">
-<a href="https://github.com/Usercentrics/flutter-sdk/actions"><img src="https://github.com/Usercentrics/flutter-sdk/actions/workflows/ci/badge.svg" alt="CI/CD"></a>
+<p align="left">
+  <a href="https://github.com/Usercentrics/flutter-sdk/actions/workflows/ci.yml">
+    <img alt="build and test status" src="https://github.com/Usercentrics/flutter-sdk/actions/workflows/ci.yml/badge.svg">
+  </a>
 </p>
-
----
 
 ## Overview
 
 The Usercentrics Apps SDK is a native Consent Management Platform framework for mobile, TV and Unity applications, that enables the collection, documentation, and management of your user's privacy settings, in order to ensure legal compliance for different legal frameworks around the world.
 
 <p align="center">
-<img src="https://docs.usercentrics.com/cmp_in_app_sdk/latest/assets/media/predefinedUI.png" height="100" alt="Usercentrics" />
+<img src="https://docs.usercentrics.com/cmp_in_app_sdk/latest/assets/media/predefinedUI.png" alt="Usercentrics UI" />
 </p>
 
 Our SDK consists of 2 main components:
 
 **UsercentricsCore**
-:   Contains all core functionality to collect, document and manage consent, as well as usability features like language detection or geolocation. You may use this component by itself, if you are planing to build your own CMP.
+        Contains all core functionality to collect, document and manage consent, as well as usability features like language detection or geolocation. You may use this component by itself, if you are planing to build your own CMP.
 
 **UsercentricsUI**
-:   UI Component that hooks to UsercentricsCore to provide a ready to use CMP solution. This component allows endless customization possibilities and is built to make A/B testing effortless.
+        UI Component that hooks to UsercentricsCore to provide a ready to use CMP solution. This component allows endless customization possibilities and is built to make A/B testing effortless.
 
 ### Supported Legal Frameworks
+
 * 🇪🇺 GDPR - European Union's General Data Protection Regulation
 * 🇺🇸 CCPA - California's Consumer Privacy Act
 * 🇧🇷 LGPD - Brazil’s Lei Geral de Proteção de Dados
@@ -35,10 +38,12 @@ Our SDK consists of 2 main components:
 | Core          |    ✅   |  ✅  |   ❌   |  ❌  |  ❌  |
 | UI            |    ✅   |  ✅  |   ❌   |  ❌  |  ❌  |
 
-### Supported Dart & Flutter Versions
+### Requirements
 
 * Dart 2: >= 2.12
 * Flutter: >= 1.20
+* iOS >= 11
+* Android >= 4.1 (16)
 
 ### Features
 * Easy installation via a package manager
