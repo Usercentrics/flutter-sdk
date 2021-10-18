@@ -114,9 +114,8 @@ jobs:
         run: ../../scripts/ios_unit_tests.sh
 
   build-android:
-    if: "(github.ref != 'refs/heads/master')"
-    name: Build Android
-    needs: [ test-flutter, test-android, test-ios ]
+    name: Build Android Example
+    needs: [ lint, format, pub-dry-run ]
     runs-on: ubuntu-latest
     container: cirrusci/flutter:stable
 
@@ -130,9 +129,8 @@ jobs:
         run: flutter build apk
 
   build-ios:
-    if: "(github.ref != 'refs/heads/master')"
-    name: Build iOS
-    needs: [ test-flutter, test-android, test-ios ]
+    name: Build iOS Example
+    needs: [ lint, format, pub-dry-run ]
     runs-on: macos-latest
 
     steps:
