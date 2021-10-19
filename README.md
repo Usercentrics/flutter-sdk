@@ -68,7 +68,7 @@ Our SDK consists of 2 main components:
 1. Add Usercentrics to your project:
 
 ```bash
-flutter pub add pull_to_refresh
+flutter pub add usercentrics_sdk
 ```
 
 2. Add the import wherever you want to use it:
