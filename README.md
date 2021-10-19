@@ -17,7 +17,7 @@
 
 ## Overview
 
-The Usercentrics Apps SDK is a native Consent Management Platform framework for mobile, TV, Web and Unity applications, that enables the collection, documentation, and management of your user's privacy settings, in order to ensure legal compliance for different legal frameworks around the world.
+The Usercentrics Apps SDK is a Consent Management Platform framework for mobile, TV, Web, and Unity applications, that enables the collection, documentation, and management of your user's privacy settings, in order to ensure legal compliance for different legal frameworks around the world.
 
 <p align="center">
 <img src="https://docs.usercentrics.com/cmp_in_app_sdk/latest/assets/media/predefinedUI.png" alt="Usercentrics UI" />
@@ -81,9 +81,11 @@ import 'package:usercentrics_sdk/all.dart';
 
 ```dart
 Usercentrics.initialize(
-  settingsId: 'XXxXXxXX',
+  settingsId: 'XXxXXxXX', // For demo: 'Yi9N3aXia'
 );
 ```
+
+You have to [get an account](#get-an-account) in order to get your `settingsId`. Feel free to use 'Yi9N3aXia' to demo.
 
 4. Get the consent status of the user via `UsercentricsReadyStatus`:
 
@@ -106,13 +108,6 @@ try {
 void showCMP() async {
   try {
     final response = await Usercentrics.showCMP();
-
-    // response.consents -> List of Services with consent choices
-    // response.userInteraction -> [Accept All], [Deny All] (only essentials), 
-    //                             [Granular] (GDPR requirement) or 
-    //                             [No Interaction] (user closes the CMP without any answer)
-    // response.controllerId -> A generated ID, used to identify a unique user's privacy settings
-
     // Apply consent with response.consents
   } catch (error) {
     // Handle non-localized error
