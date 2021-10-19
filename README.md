@@ -80,12 +80,13 @@ import 'package:usercentrics_sdk/all.dart';
 3. Initialize Usercentrics with your configuration **only once** in the life of the application:
 
 ```dart
+// e.g place this inside the [initState] of the Entry Point Widget
 Usercentrics.initialize(
-  settingsId: 'XXxXXxXX', // For demo: 'Yi9N3aXia'
+  settingsId: 'XXxXXxXX',
 );
 ```
 
-You have to [get an account](#get-an-account) in order to get your `settingsId`. Feel free to use 'Yi9N3aXia' to demo.
+You have to [get an account](#get-an-account) in order to get your `settingsId`. You can use `Yi9N3aXia` to demo.
 
 4. Get the consent status of the user via `UsercentricsReadyStatus`:
 
