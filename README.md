@@ -81,7 +81,7 @@ import 'package:usercentrics_sdk/all.dart';
 
 ```dart
 Usercentrics.initialize(
-  settingsId: 'Yi9N3aXia',
+  settingsId: 'XXxXXxXX',
 );
 ```
 
@@ -102,7 +102,7 @@ try {
 
 5. Present the UsercentricsUI in order to collect consent:
 
-```
+```dart
 void showCMP() async {
   try {
     final response = await Usercentrics.showCMP();
