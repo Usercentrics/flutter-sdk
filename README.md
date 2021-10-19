@@ -64,7 +64,95 @@ Our SDK consists of 2 main components:
 * Reporting of User Interactions
 
 ## Usage
-**TODO**
+
+1. Add Usercentrics to your project:
+
+```bash
+flutter pub add pull_to_refresh
+```
+
+2. Add the import wherever you want to use it:
+
+```dart
+import 'package:usercentrics_sdk/all.dart';
+```
+
+3. Initialize Usercentrics with your configuration **only once** in the life of the application:
+
+```dart
+Usercentrics.initialize(
+  settingsId: 'Yi9N3aXia',
+);
+```
+
+4. Get the consent status of the user via `UsercentricsReadyStatus`:
+
+```dart
+try {
+  final status = await Usercentrics.status;
+  if (status.shouldShowCMP) {
+    // Collect Consent
+  } else {
+    // Apply consent with status.consents
+  }
+} catch (error) {
+  // Handle non-localized error
+}
+```
+
+5. Present the UsercentricsUI in order to collect consent:
+
+```
+void showCMP() async {
+  try {
+    final response = await Usercentrics.showCMP();
+
+    // response.consents -> List of Services with consent choices
+    // response.userInteraction -> [Accept All], [Deny All] (only essentials), 
+    //                             [Granular] (GDPR requirement) or 
+    //                             [No Interaction] (user closes the CMP without any answer)
+    // response.controllerId -> A generated ID, used to identify a unique user's privacy settings
+
+    // Apply consent with response.consents
+  } catch (error) {
+    // Handle non-localized error
+  }
+}
+```
+
+6. To know how to apply consent properly, restore user session, inject session to a webview, and much more, visit our [documentation website](https://docs.usercentrics.com/cmp_in_app_sdk).
+
+### Testing
+
+You can use your own Usercentrics to test the integration or any other functionality. 
+
+1. Implement your own `UsercentricsPlatform` manually or using a mock library such as `mockito`:
+
+```dart
+class FakeUsercentrics extends UsercentricsPlatform {
+  ...
+}
+```
+
+2. Inject your instance in the testing `delegatePackingProperty` variable:
+
+```dart
+testWidgets('Initializes Usercentrics', (WidgetTester tester) async {
+  final usercentrics = FakeUsercentrics();
+  Usercentrics.delegatePackingProperty = usercentrics;
+
+  await tester.pumpWidget(const MyApp());
+
+  expect(usercentrics.initializeCount, 1);
+});
+```
+
+3. Clear the instance after the test in order to prevent the tests from interfering with each other:
+```dart
+tearDown(() {
+  Usercentrics.delegatePackingProperty = null;
+});
+```
 
 ## Get an Account
 First step to get started with our SDK, is to create a Usercentrics Account, [get started with a free account](https://usercentrics.com/pricing/#mobile) or [request a quote](https://usercentrics.com/in-app-sdk/#in-app-demo) for your organization.
