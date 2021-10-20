@@ -120,13 +120,17 @@ void showCMP() async {
 
 ## Troubleshooting
 
-??? warning "[Android] Incompatible Kotlin Version"
-    If you have an incompatible Kotlin version you may see the following error when you run app on Android:
-    ```
-    e: Incompatible classes were found in dependencies. Remove them from the classpath or use '-Xskip-metadata-version-check' to suppress errors
-    ```
-    This error is easy to solve, you only need to increase the version that is usually in the `android/build.gradle` file. Use a recent stable Kotlin version, for example: `1.5.31`.
-    ![build.gradle](../assets/media/flutter/kotlin-version.png){: .center width=600px }
+<details>
+<summary>[Android] Incompatible Kotlin Version</summary>
+<p>
+If you have an incompatible Kotlin version you may see the following error when you run app on Android:
+```
+e: Incompatible classes were found in dependencies. Remove them from the classpath or use '-Xskip-metadata-version-check' to suppress errors
+```
+This error is easy to solve, you only need to increase the version that is usually in the `android/build.gradle` file. Use a recent stable Kotlin version, for example: `1.5.31`.
+![build.gradle](../assets/media/flutter/kotlin-version.png){: .center width=600px }
+</p>
+</details>  
 
 ??? warning "[Android] Multidex"
     If you support Android 5.0 or older devices and you don't have the [multidex](https://developer.android.com/studio/build/multidex) enabled in your project, you may see the following error when you run your app on Android:
