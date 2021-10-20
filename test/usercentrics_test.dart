@@ -1,7 +1,5 @@
 import 'package:test/test.dart';
-import 'package:usercentrics_sdk/all.dart';
-import 'package:usercentrics_sdk/model/logger_level.dart';
-import 'package:usercentrics_sdk/usercentrics.dart';
+import 'package:usercentrics_sdk/usercentrics_sdk.dart';
 
 import 'platform/fake_usercentrics_platform.dart';
 

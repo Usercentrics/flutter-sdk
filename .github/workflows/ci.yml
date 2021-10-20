@@ -155,6 +155,8 @@ jobs:
     needs: [ test-flutter, test-android, test-ios, build-android, build-ios ]
     runs-on: ubuntu-latest
     container: cirrusci/flutter:stable
+    env:
+      PUB_DEV_CREDENTIAL: secrets.PUB_DEV_CREDENTIAL
 
     steps:
       - name: Checkout code
@@ -162,7 +164,7 @@ jobs:
       - name: Validate version
         run: dart scripts/check_release_version.dart ${{ github.ref }}
       - name: Setup credentials
-        run: ./scripts/setup_pub_credentials.sh ${{ secrets.PUB_DEV_CREDENTIALS }}
+        run: ./scripts/setup_pub_credentials.sh
       - name: Get dependencies
         run: flutter pub get
       - name: Publish

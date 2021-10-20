@@ -1,6 +1,6 @@
 import 'package:flutter/services.dart';
-import 'package:usercentrics_sdk/all.dart';
-import 'package:usercentrics_sdk/internal/serializer/serializer.dart';
+import 'package:usercentrics_sdk/internal/internal.dart';
+import 'package:usercentrics_sdk/usercentrics_sdk.dart';
 
 abstract class ShowCMPBridge {
   const ShowCMPBridge();

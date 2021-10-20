@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:usercentrics_example/main.dart';
-import 'package:usercentrics_sdk/all.dart';
+import 'package:usercentrics_sdk/usercentrics_sdk.dart';
 
 import 'fake_usercentrics.dart';
 

@@ -23,10 +23,6 @@ The Usercentrics Apps SDK is a Consent Management Platform framework for mobile,
 <img src="https://docs.usercentrics.com/cmp_in_app_sdk/latest/assets/media/predefinedUI.png" alt="Usercentrics UI" />
 </p>
 
-Our SDK consists of 2 main components:
-- **UsercentricsCore**. Contains all core functionality to collect, document and manage consent, as well as usability features like language detection or geolocation. You may use this component by itself, if you are planing to build your own CMP.
-- **UsercentricsUI**. UI Component that hooks to UsercentricsCore to provide a ready to use CMP solution. This component allows endless customization possibilities and is built to make A/B testing effortless.
-
 ### Supported Legal Frameworks
 
 * 🇪🇺 GDPR - European Union's General Data Protection Regulation
@@ -36,10 +32,9 @@ Our SDK consists of 2 main components:
 
 ### Supported Platforms
 
-|                  | Android | iOS |  Web  | tvOS | MacOS |
-|:----------------:|:-------:|:---:|:-----:|:----:|:-----:|
-| UsercentricsCore |    ✅   |  ✅  |   ❌   |  ❌  |  ❌  |
-| UsercentricsUI   |    ✅   |  ✅  |   ❌   |  ❌  |  ❌  |
+| Android | iOS |  Web  | tvOS | MacOS |
+|:-------:|:---:|:-----:|:----:|:-----:|
+|    ✅   |  ✅  |   ❌   |  ❌  |  ❌  |
 
 ### Requirements
 
@@ -48,75 +43,13 @@ Our SDK consists of 2 main components:
 * iOS: >= 11
 * Android: >= 4.1 (16)
 
-### Features
-* Easy installation via a package manager
-* Methods to collect & update consent
-* Up-to-date legal information on more than 1,000 technology vendors
-* **UsercentricsUI** is a plug & play CMP solution with numerous customization options
-* Build your own CMP with our **UsercentricsCore** module, an API that provides all necessary data and action delegates
-* Device language detection
-* tvOS and Android TV support only when building your own CMP
-* Share the same settingsID between multiple apps and web applications
-* Cross-Device consent sharing
-* Consent continuity between an app and embedded WebViews. (Browser SDK is required)
-* Offline Handling
-* Reporting of service Opt-In rates
-* Reporting of User Interactions
-
 ## Usage
 
-1. Add Usercentrics to your project:
+To use our SDK, please visit our [documentation](https://docs.usercentrics.com/cmp_in_app_sdk/).
 
-```bash
-flutter pub add usercentrics_sdk
-```
+## Example
 
-2. Add the import wherever you want to use it:
-
-```dart
-import 'package:usercentrics_sdk/all.dart';
-```
-
-3. Initialize Usercentrics with your configuration **only once** in the life of the application:
-
-```dart
-// e.g place this inside the [initState] of the Entry Point Widget
-Usercentrics.initialize(
-  settingsId: 'XXxXXxXX',
-);
-```
-
-You have to [get an account](#get-an-account) in order to get your `settingsId`. You can use `Yi9N3aXia` to demo.
-
-4. Get the consent status of the user via `UsercentricsReadyStatus`:
-
-```dart
-try {
-  final status = await Usercentrics.status;
-  if (status.shouldShowCMP) {
-    // Collect Consent
-  } else {
-    // Apply consent with status.consents
-  }
-} catch (error) {
-  // Handle non-localized error
-}
-```
-
-5. Present the UsercentricsUI in order to collect consent:
-
-```dart
-void showCMP() async {
-  try {
-    final response = await Usercentrics.showCMP();
-    // Apply consent with response.consents
-  } catch (error) {
-    // Handle non-localized error
-  }
-}
-```
-
-6. To know how to apply consent properly, restore user session, inject session to a webview, and much more, visit our [documentation website](https://docs.usercentrics.com/cmp_in_app_sdk).
+See the [example](https://github.com/Usercentrics/flutter-sdk/tree/master/example) directory for a complete sample app using Usercentrics.
 
 ## Troubleshooting
 

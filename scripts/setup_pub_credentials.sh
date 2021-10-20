@@ -1,10 +1,8 @@
 #!/bin/sh -xe
 
-$CREDENTIAL=$1
-
 check_credentials() {
   echo "Check credentials"
-  if [ -z "$CREDENTIAL" ]; then
+  if [ -z "$PUB_DEV_CREDENTIAL" ]; then
     echo "Missing credential"
     exit 1
   fi
@@ -15,7 +13,7 @@ copy_credentials() {
   echo "Copy credentials"
   mkdir -p ~/.pub-cache
   cat <<EOF > ~/.pub-cache/credentials.json
-$CREDENTIAL
+$PUB_DEV_CREDENTIAL
 EOF
   echo "OK"
 }
