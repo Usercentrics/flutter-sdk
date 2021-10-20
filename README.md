@@ -132,7 +132,7 @@ e: Incompatible classes were found in dependencies. Remove them from the classpa
 
 This error is easy to solve, you only need to increase the version that is usually in the `android/build.gradle` file. Use a recent stable Kotlin version, for example: `1.5.31`.
 
-![build.gradle](https://docs.usercentrics.com/cmp_in_app_sdk/latest/assets/media/flutter/kotlin-version.png)
+![build.gradle](https://i.ibb.co/vBv9Tcy/kotlin-version.png)
 
 </p>
 </details>  
@@ -155,7 +155,7 @@ This error is easy to solve, you have to do the following:
 implementation "androidx.multidex:multidex:2.0.1"
 ```
 
-![Multidex dependency](https://docs.usercentrics.com/cmp_in_app_sdk/latest/assets/media/flutter/multidex-dep.png)
+![Multidex dependency](https://i.ibb.co/m9Y0YKx/multidex-dep.png)
 
 2. Enable the option in the application build `defaultConfig`. It is usually in the same `android/app/build.gradle` file.
 Use a recent stable Kotlin version, for example: `1.5.31`.
@@ -164,7 +164,7 @@ Use a recent stable Kotlin version, for example: `1.5.31`.
 multiDexEnabled true
 ```
 
-![Multidex enabled](https://docs.usercentrics.com/cmp_in_app_sdk/latest/assets/media/flutter/multidex-enabled.png){: .center width=600px }
+![Multidex enabled](https://i.ibb.co/9pHd0DS/multidex-enabled.png)
 
 3. Make your application class initialize multidex. There are several options to do that, in Flutter the easiest way is to add it to the manifest. The manifest is usually located at `android/app/src/main/AndroidManifest.xml`.
 
@@ -172,7 +172,7 @@ multiDexEnabled true
 android:name="androidx.multidex.MultiDexApplication"
 ```
 
-![Multidex application](https://docs.usercentrics.com/cmp_in_app_sdk/latest/assets/media/flutter/multidex-application.png)
+![Multidex application](https://i.ibb.co/1z10ZQw/multidex-application.png)
 
 </p>
 </details>
@@ -195,11 +195,11 @@ This error is easy to solve, you have to do the following:
 platform :ios, '11.0'
 ```
 
-![Podfile](https://docs.usercentrics.com/cmp_in_app_sdk/latest/assets/media/flutter/ios-target-podfile.png)
+![Podfile](https://i.ibb.co/rxScM0n/ios-target-podfile.png)
 
 2. Run `flutter pub get` again and open the iOS project using Xcode. It is usually located at `ios/Runner.xcworkspace`. Now, you have to select the `Runner` project and change the `Deployment Target` to the same version.
 
-![Xcode Project](https://docs.usercentrics.com/cmp_in_app_sdk/latest/assets/media/flutter/ios-target-project.png)
+![Xcode Project](https://i.ibb.co/jVz5ndP/ios-target-project.png)
 
 </p>
 </details>
