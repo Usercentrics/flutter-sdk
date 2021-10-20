@@ -2,6 +2,7 @@ import 'package:flutter/services.dart';
 import 'package:usercentrics_sdk/internal/serializer/consent_serializer.dart';
 import 'package:usercentrics_sdk/model/service_consent.dart';
 
+// ignore: public_member_api_docs
 abstract class GetConsentsBridge {
   const GetConsentsBridge();
 
@@ -10,6 +11,7 @@ abstract class GetConsentsBridge {
   });
 }
 
+// ignore: public_member_api_docs
 class MethodChannelGetConsents extends GetConsentsBridge {
   const MethodChannelGetConsents();
 
