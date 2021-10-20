@@ -63,7 +63,7 @@ class _HomePageState extends State<HomePage> {
         _applyConsent(status.consents);
       }
     } catch (error) {
-      // Handle error
+      // Handle non-localized error
     }
   }
 
