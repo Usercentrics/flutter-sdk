@@ -124,11 +124,14 @@ void showCMP() async {
 <summary>[Android] Incompatible Kotlin Version</summary>
 <p>
 If you have an incompatible Kotlin version you may see the following error when you run app on Android:
+
 ```
 e: Incompatible classes were found in dependencies. Remove them from the classpath or use '-Xskip-metadata-version-check' to suppress errors
 ```
+
 This error is easy to solve, you only need to increase the version that is usually in the `android/build.gradle` file. Use a recent stable Kotlin version, for example: `1.5.31`.
-![build.gradle](../assets/media/flutter/kotlin-version.png){: .center width=600px }
+![build.gradle](https://docs.usercentrics.com/cmp_in_app_sdk/latest/assets/media/flutter/kotlin-version.png){: .center width=600px }
+
 </p>
 </details>  
 
