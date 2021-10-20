@@ -38,10 +38,10 @@ The Usercentrics Apps SDK is a Consent Management Platform framework for mobile,
 
 ### Requirements
 
-* Dart 2: >= 2.12
-* Flutter: >= 1.20
-* iOS: >= 11
-* Android: >= 4.1 (16)
+* Dart 2.12 or higher
+* Flutter 1.20 or higher
+* iOS 11 or higher
+* Android 4.1 (16) or higher
 
 ## Usage
 
