@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:usercentrics_sdk/all.dart';
+import 'package:usercentrics_sdk/usercentrics_sdk.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();

@@ -1,7 +1,6 @@
 import 'package:flutter/foundation.dart';
+import 'package:usercentrics_sdk/model/model.dart';
 import 'package:usercentrics_sdk/platform/platform.dart';
-
-import 'model/model.dart';
 
 class Usercentrics {
   Usercentrics._();

@@ -2,4 +2,4 @@
 
 # 2.0.1
 
-- Initial Version of the library.
+- Initial version of the library.

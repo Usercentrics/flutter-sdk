@@ -1,9 +1,8 @@
 import 'dart:async';
 
 import 'package:test/test.dart';
-import 'package:usercentrics_sdk/all.dart';
-import 'package:usercentrics_sdk/internal/bridge/bridge.dart';
-import 'package:usercentrics_sdk/internal/platform/method_channel_usercentrics.dart';
+import 'package:usercentrics_sdk/internal/internal.dart';
+import 'package:usercentrics_sdk/usercentrics_sdk.dart';
 
 import '../bridge/fake_get_consents_bridge.dart';
 import '../bridge/fake_get_controller_id_bridge.dart';
