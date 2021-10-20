@@ -172,7 +172,7 @@ multiDexEnabled true
 android:name="androidx.multidex.MultiDexApplication"
 ```
 
-![Multidex application](https://i.ibb.co/1z10ZQw/multidex-application.png)
+![Multidex application](https://i.ibb.co/41zFWt5/multidex-application.png)
 
 </p>
 </details>
@@ -199,7 +199,7 @@ platform :ios, '11.0'
 
 2. Run `flutter pub get` again and open the iOS project using Xcode. It is usually located at `ios/Runner.xcworkspace`. Now, you have to select the `Runner` project and change the `Deployment Target` to the same version.
 
-![Xcode Project](https://i.ibb.co/jVz5ndP/ios-target-project.png)
+![Xcode Project](https://i.ibb.co/CJ6tRq3/ios-target-project.png)
 
 </p>
 </details>
