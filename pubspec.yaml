@@ -1,0 +1,36 @@
+name: usercentrics_sdk
+description: Usercentrics Flutter SDK.
+homepage: https://docs.usercentrics.com/#/in-app-sdk
+
+# Update version process:
+#  [X] pubspec.yaml
+#  [X] android/build.gradle
+#  [X] ios/usercentrics_sdk.podspec.json
+#  [X] CHANGELOG
+#  [X] README
+version: 2.0.1
+
+environment:
+  sdk: ">=2.12.0 <3.0.0"
+  flutter: ">=1.20.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^1.0.0
+  test: ^1.17.10
+
+# The following section is specific to Flutter.
+flutter:
+  # This section identifies this Flutter project as a plugin project.
+  plugin:
+    platforms:
+      android:
+        package: com.usercentrics.sdk.flutter
+        pluginClass: UsercentricsPlugin
+      ios:
+        pluginClass: UsercentricsPlugin

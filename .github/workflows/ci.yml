@@ -1,0 +1,169 @@
+name: CI/CD
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+  release:
+    types:
+      - created
+  workflow_dispatch:
+
+jobs:
+  format:
+    name: Format
+    runs-on: ubuntu-latest
+    container: cirrusci/flutter:stable
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Check format
+        run: scripts/check_format.sh
+
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    container: cirrusci/flutter:stable
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Get dependencies
+        run: flutter pub get
+      - name: Lint using flutter analyze
+        run: flutter analyze
+
+  pub-dry-run:
+    name: Publish Dry Run
+    runs-on: ubuntu-latest
+    container: cirrusci/flutter:stable
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Run publish dry run
+        run: dart pub publish --dry-run
+
+  test-flutter:
+    name: Test Flutter
+    needs: [ lint, format, pub-dry-run ]
+    runs-on: ubuntu-latest
+    container: cirrusci/flutter:stable
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Get dependencies
+        run: flutter pub get
+      - name: Run all tests
+        run: flutter test --reporter=expanded --coverage
+      - name: Check coverage
+        run: dart scripts/check_coverage.dart coverage/lcov.info
+
+  test-android:
+    name: Test Android
+    needs: [ lint, format, pub-dry-run ]
+    runs-on: ubuntu-latest
+    container: cirrusci/flutter:stable
+    env:
+      GRADLE_VERSION: 6.7
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Cache Gradle
+        id: cache-gradle
+        uses: actions/cache@v2
+        with:
+          path: |
+            ./example/android/ci-cache/gradle
+            ./example/android/gradle/wrapper/gradle-wrapper.jar
+            ./example/android/gradlew
+          key: ${{ runner.os }}-cache-gradle-${{ env.GRADLE_VERSION }}
+      - name: Get dependencies
+        run: flutter pub get
+      - name: Setup Gradle
+        if: steps.cache-gradle.outputs.cache-hit != 'true'
+        working-directory: ./example/android
+        run: ../../scripts/setup_gradle.sh ${{ env.GRADLE_VERSION }}
+      - name: Validate Gradle
+        working-directory: ./example/android
+        run: dart ../../scripts/check_gradle_version.dart
+      - name: Run all tests
+        working-directory: ./example/android
+        run: ./gradlew :usercentrics_sdk:test
+
+  test-ios:
+    name: Test iOS
+    needs: [ lint, format, pub-dry-run ]
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v1
+        with:
+          channel: 'stable'
+      - name: Get dependencies
+        run: flutter pub get
+      - name: Setup Pods
+        working-directory: ./example/ios
+        run: pod install
+      - name: Run all tests
+        working-directory: ./example/ios
+        run: ../../scripts/ios_unit_tests.sh
+
+  build-android:
+    name: Build Android Example
+    needs: [ lint, format, pub-dry-run ]
+    runs-on: ubuntu-latest
+    container: cirrusci/flutter:stable
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Get dependencies
+        run: flutter pub get
+      - name: Build
+        working-directory: ./example
+        run: flutter build apk
+
+  build-ios:
+    name: Build iOS Example
+    needs: [ lint, format, pub-dry-run ]
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v1
+        with:
+          channel: 'stable'
+      - name: Get dependencies
+        run: flutter pub get
+      - name: Build
+        working-directory: ./example
+        run: flutter build ios --debug --no-codesign --simulator
+
+  release:
+    name: Release
+    if: github.event_name == 'release'
+    needs: [ test-flutter, test-android, test-ios, build-android, build-ios ]
+    runs-on: ubuntu-latest
+    container: cirrusci/flutter:stable
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Validate version
+        run: dart scripts/check_release_version.dart ${{ github.ref }}
+      - name: Setup credentials
+        run: ./scripts/setup_pub_credentials.sh ${{ secrets.PUB_DEV_CREDENTIALS }}
+      - name: Get dependencies
+        run: flutter pub get
+      - name: Publish
+        run: flutter pub publish -f

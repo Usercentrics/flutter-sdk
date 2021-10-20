@@ -1,0 +1,1 @@
+enum UsercentricsConsentType { explicit, implicit }
