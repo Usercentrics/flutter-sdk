@@ -1,6 +1,8 @@
-/// This is the full Usercentrics API.
+/// The Usercentrics Apps SDK is a Consent Management Platform framework that ensures legal compliance for different legal frameworks.
+///
+/// Get started at [usercentrics.com](https://docs.usercentrics.com/cmp_in_app_sdk/) 🚀
 library usercentrics_sdk;
 
-export 'package:usercentrics_sdk/model/model.dart';
-export 'package:usercentrics_sdk/platform/platform.dart';
-export 'package:usercentrics_sdk/usercentrics.dart';
+export 'package:usercentrics_sdk/src/model/model.dart';
+export 'package:usercentrics_sdk/src/platform/platform.dart';
+export 'package:usercentrics_sdk/src/usercentrics.dart';
