@@ -1,6 +1,6 @@
 import 'package:flutter/src/services/platform_channel.dart';
-import 'package:usercentrics_sdk/internal/bridge/bridge.dart';
-import 'package:usercentrics_sdk/model/ready_status.dart';
+import 'package:usercentrics_sdk/src/internal/bridge/bridge.dart';
+import 'package:usercentrics_sdk/src/model/ready_status.dart';
 
 class FakeIsReadyBridge extends IsReadyBridge {
   FakeIsReadyBridge({

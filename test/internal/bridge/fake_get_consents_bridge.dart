@@ -1,6 +1,6 @@
 import 'package:flutter/src/services/platform_channel.dart';
-import 'package:usercentrics_sdk/internal/bridge/bridge.dart';
-import 'package:usercentrics_sdk/model/service_consent.dart';
+import 'package:usercentrics_sdk/src/internal/bridge/bridge.dart';
+import 'package:usercentrics_sdk/src/model/service_consent.dart';
 
 class FakeGetConsentsBridge extends GetConsentsBridge {
   FakeGetConsentsBridge({

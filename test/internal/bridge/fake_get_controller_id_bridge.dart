@@ -1,5 +1,5 @@
 import 'package:flutter/src/services/platform_channel.dart';
-import 'package:usercentrics_sdk/internal/bridge/bridge.dart';
+import 'package:usercentrics_sdk/src/internal/bridge/bridge.dart';
 
 class FakeGetControllerIdBridge extends GetControllerIdBridge {
   FakeGetControllerIdBridge({

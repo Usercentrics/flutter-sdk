@@ -1,8 +1,8 @@
 import 'package:flutter/src/services/platform_channel.dart';
-import 'package:usercentrics_sdk/internal/bridge/bridge.dart';
-import 'package:usercentrics_sdk/model/custom_font.dart';
-import 'package:usercentrics_sdk/model/custom_image.dart';
-import 'package:usercentrics_sdk/model/user_response.dart';
+import 'package:usercentrics_sdk/src/internal/bridge/bridge.dart';
+import 'package:usercentrics_sdk/src/model/custom_font.dart';
+import 'package:usercentrics_sdk/src/model/custom_image.dart';
+import 'package:usercentrics_sdk/src/model/user_response.dart';
 
 class FakeShowCMPBridge extends ShowCMPBridge {
   FakeShowCMPBridge({

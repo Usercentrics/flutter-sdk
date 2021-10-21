@@ -1,6 +1,6 @@
 import 'package:flutter/src/services/platform_channel.dart';
-import 'package:usercentrics_sdk/internal/bridge/bridge.dart';
-import 'package:usercentrics_sdk/model/logger_level.dart';
+import 'package:usercentrics_sdk/src/internal/bridge/bridge.dart';
+import 'package:usercentrics_sdk/src/model/logger_level.dart';
 
 class FakeInitializeBridge extends InitializeBridge {
   var invokeCount = 0;
