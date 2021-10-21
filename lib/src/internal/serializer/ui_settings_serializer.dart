@@ -1,5 +1,5 @@
-import 'package:usercentrics_sdk/model/custom_font.dart';
-import 'package:usercentrics_sdk/model/custom_image.dart';
+import 'package:usercentrics_sdk/src/model/custom_font.dart';
+import 'package:usercentrics_sdk/src/model/custom_image.dart';
 
 class UISettingsSerializer {
   static dynamic serialize({

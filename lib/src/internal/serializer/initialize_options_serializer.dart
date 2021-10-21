@@ -1,4 +1,4 @@
-import 'package:usercentrics_sdk/model/logger_level.dart';
+import 'package:usercentrics_sdk/src/model/logger_level.dart';
 
 import 'logger_level_serializer.dart';
 

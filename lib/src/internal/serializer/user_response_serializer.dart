@@ -1,6 +1,6 @@
-import 'package:usercentrics_sdk/internal/serializer/consent_serializer.dart';
-import 'package:usercentrics_sdk/internal/serializer/user_interaction_serializer.dart';
-import 'package:usercentrics_sdk/model/user_response.dart';
+import 'package:usercentrics_sdk/src/internal/serializer/consent_serializer.dart';
+import 'package:usercentrics_sdk/src/internal/serializer/user_interaction_serializer.dart';
+import 'package:usercentrics_sdk/src/model/user_response.dart';
 
 class UserResponseSerializer {
   static UsercentricsConsentUserResponse deserialize(dynamic value) {

@@ -1,6 +1,6 @@
 import 'package:flutter/services.dart';
-import 'package:usercentrics_sdk/internal/serializer/ready_status_serializer.dart';
-import 'package:usercentrics_sdk/model/ready_status.dart';
+import 'package:usercentrics_sdk/src/internal/serializer/ready_status_serializer.dart';
+import 'package:usercentrics_sdk/src/model/ready_status.dart';
 
 abstract class IsReadyBridge {
   const IsReadyBridge();

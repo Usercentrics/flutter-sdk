@@ -1,5 +1,5 @@
 name: usercentrics_sdk
-description: The Usercentrics Apps SDK is a Consent Management Platform framework for mobile, TV, Web, and Unity applications, that enables the collection, documentation, and management of your user's privacy settings, in order to ensure legal compliance for different legal frameworks around the world.
+description: The Usercentrics Apps SDK is a Consent Management Platform framework that ensures legal compliance for different legal frameworks.
 homepage: https://usercentrics.com
 documentation: https://docs.usercentrics.com/cmp_in_app_sdk/
 repository: https://github.com/Usercentrics/flutter-sdk/

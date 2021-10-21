@@ -1,10 +1,10 @@
-import 'package:usercentrics_sdk/model/custom_font.dart';
-import 'package:usercentrics_sdk/model/custom_image.dart';
-import 'package:usercentrics_sdk/model/logger_level.dart';
-import 'package:usercentrics_sdk/model/ready_status.dart';
-import 'package:usercentrics_sdk/model/service_consent.dart';
-import 'package:usercentrics_sdk/model/user_response.dart';
-import 'package:usercentrics_sdk/platform/usercentrics_platform.dart';
+import 'package:usercentrics_sdk/src/model/custom_font.dart';
+import 'package:usercentrics_sdk/src/model/custom_image.dart';
+import 'package:usercentrics_sdk/src/model/logger_level.dart';
+import 'package:usercentrics_sdk/src/model/ready_status.dart';
+import 'package:usercentrics_sdk/src/model/service_consent.dart';
+import 'package:usercentrics_sdk/src/model/user_response.dart';
+import 'package:usercentrics_sdk/src/platform/usercentrics_platform.dart';
 
 // Mock UsercentricsPlatform implementation
 class FakeUsercentricsPlatform extends UsercentricsPlatform {

@@ -1,7 +1,7 @@
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:usercentrics_sdk/internal/bridge/bridge.dart';
-import 'package:usercentrics_sdk/model/logger_level.dart';
+import 'package:usercentrics_sdk/src/internal/bridge/bridge.dart';
+import 'package:usercentrics_sdk/src/model/logger_level.dart';
 
 void main() {
   // Data from a real call of the debugger

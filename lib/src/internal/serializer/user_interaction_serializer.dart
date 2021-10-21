@@ -1,4 +1,4 @@
-import 'package:usercentrics_sdk/model/user_interaction.dart';
+import 'package:usercentrics_sdk/src/model/user_interaction.dart';
 
 class UserInteractionSerializer {
   static UsercentricsUserInteraction? deserialize(dynamic value) {

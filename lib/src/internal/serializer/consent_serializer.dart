@@ -1,5 +1,5 @@
-import 'package:usercentrics_sdk/internal/serializer/consent_type_serializer.dart';
-import 'package:usercentrics_sdk/model/service_consent.dart';
+import 'package:usercentrics_sdk/src/internal/serializer/consent_type_serializer.dart';
+import 'package:usercentrics_sdk/src/model/service_consent.dart';
 
 class ConsentSerializer {
   static UsercentricsServiceConsent deserialize(dynamic value) {

@@ -1,5 +1,5 @@
 import 'package:flutter/src/services/platform_channel.dart';
-import 'package:usercentrics_sdk/internal/bridge/get_tcstring_bridge.dart';
+import 'package:usercentrics_sdk/src/internal/bridge/get_tcstring_bridge.dart';
 
 class FakeGetTCStringBridge extends GetTCStringBridge {
   FakeGetTCStringBridge({

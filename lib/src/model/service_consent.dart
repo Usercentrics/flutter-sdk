@@ -1,4 +1,4 @@
-import 'package:usercentrics_sdk/model/consent_type.dart';
+import 'package:usercentrics_sdk/src/model/consent_type.dart';
 
 class UsercentricsServiceConsent {
   const UsercentricsServiceConsent({

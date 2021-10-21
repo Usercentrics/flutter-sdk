@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
-import 'package:usercentrics_sdk/model/service_consent.dart';
-import 'package:usercentrics_sdk/model/user_interaction.dart';
+import 'package:usercentrics_sdk/src/model/service_consent.dart';
+import 'package:usercentrics_sdk/src/model/user_interaction.dart';
 
 class UsercentricsConsentUserResponse {
   const UsercentricsConsentUserResponse({

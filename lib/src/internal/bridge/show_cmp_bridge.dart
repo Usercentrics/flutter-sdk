@@ -1,6 +1,6 @@
 import 'package:flutter/services.dart';
-import 'package:usercentrics_sdk/internal/internal.dart';
-import 'package:usercentrics_sdk/usercentrics_sdk.dart';
+import 'package:usercentrics_sdk/src/internal/internal.dart';
+import 'package:usercentrics_sdk/src/model/model.dart';
 
 abstract class ShowCMPBridge {
   const ShowCMPBridge();

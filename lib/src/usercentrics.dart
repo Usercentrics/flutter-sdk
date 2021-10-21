@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
-import 'package:usercentrics_sdk/model/model.dart';
-import 'package:usercentrics_sdk/platform/platform.dart';
+import 'package:usercentrics_sdk/src/model/model.dart';
+import 'package:usercentrics_sdk/src/platform/platform.dart';
 
 class Usercentrics {
   Usercentrics._();
@@ -8,9 +8,8 @@ class Usercentrics {
   // Cached & lazily loaded instance of [UsercentricsPlatform].
   // Avoids a [MethodChannelUsercentrics] being initialized until the user
   // starts using Usercentrics.
-  // The property is visible for testing to allow tests to set a mock
-  // instance directly as a static property since the class is not initialized.
-  // ignore: public_member_api_docs
+  /// The property is visible for testing to allow tests to set a mock
+  /// instance directly as a static property since the class is not initialized.
   @visibleForTesting
   static UsercentricsPlatform? delegatePackingProperty;
 
