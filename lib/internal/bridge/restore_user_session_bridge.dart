@@ -1,3 +1,6 @@
+/// {@nodoc}
+library restore_user_session_bridge;
+
 import 'package:flutter/services.dart';
 import 'package:usercentrics_sdk/internal/serializer/ready_status_serializer.dart';
 import 'package:usercentrics_sdk/model/ready_status.dart';

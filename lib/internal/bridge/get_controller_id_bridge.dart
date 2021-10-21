@@ -1,3 +1,6 @@
+/// {@nodoc}
+library get_controller_id_bridge;
+
 import 'package:flutter/services.dart';
 
 abstract class GetControllerIdBridge {

@@ -1,3 +1,6 @@
+/// {@nodoc}
+library reset_bridge;
+
 import 'package:flutter/services.dart';
 
 abstract class ResetBridge {

@@ -1,3 +1,6 @@
+/// {@nodoc}
+library initialize_bridge;
+
 import 'package:flutter/services.dart';
 import 'package:usercentrics_sdk/internal/serializer/initialize_options_serializer.dart';
 import 'package:usercentrics_sdk/model/logger_level.dart';

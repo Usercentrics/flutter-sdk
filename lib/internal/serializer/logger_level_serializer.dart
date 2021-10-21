@@ -1,3 +1,6 @@
+/// {@nodoc}
+library logger_level_serializer;
+
 import 'package:usercentrics_sdk/model/logger_level.dart';
 
 class LoggerLevelSerializer {

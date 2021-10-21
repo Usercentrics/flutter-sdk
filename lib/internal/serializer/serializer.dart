@@ -1,3 +1,6 @@
+/// {@nodoc}
+library serializer;
+
 export 'consent_serializer.dart';
 export 'consent_type_serializer.dart';
 export 'initialize_options_serializer.dart';

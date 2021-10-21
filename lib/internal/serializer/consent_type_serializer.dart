@@ -1,3 +1,6 @@
+/// {@nodoc}
+library consent_type_serializer;
+
 import 'package:usercentrics_sdk/model/consent_type.dart';
 
 class ConsentTypeSerializer {

@@ -1,3 +1,6 @@
+/// {@nodoc}
+library bridge;
+
 export 'get_consents_bridge.dart';
 export 'get_controller_id_bridge.dart';
 export 'get_tcstring_bridge.dart';

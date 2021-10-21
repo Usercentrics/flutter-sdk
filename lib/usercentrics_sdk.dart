@@ -1,3 +1,4 @@
+/// This is the full Usercentrics API.
 library usercentrics_sdk;
 
 export 'package:usercentrics_sdk/model/model.dart';

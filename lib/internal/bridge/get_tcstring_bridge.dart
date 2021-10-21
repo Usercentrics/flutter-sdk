@@ -1,3 +1,6 @@
+/// {@nodoc}
+library get_tcstring_bridge;
+
 import 'package:flutter/services.dart';
 
 abstract class GetTCStringBridge {

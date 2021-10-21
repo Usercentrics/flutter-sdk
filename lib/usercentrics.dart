@@ -5,13 +5,13 @@ import 'package:usercentrics_sdk/platform/platform.dart';
 class Usercentrics {
   Usercentrics._();
 
+  @visibleForTesting
   // Cached & lazily loaded instance of [UsercentricsPlatform].
   // Avoids a [MethodChannelUsercentrics] being initialized until the user
   // starts using Usercentrics.
   // The property is visible for testing to allow tests to set a mock
   // instance directly as a static property since the class is not initialized.
   // ignore: public_member_api_docs
-  @visibleForTesting
   static UsercentricsPlatform? delegatePackingProperty;
 
   static UsercentricsPlatform get _delegate {

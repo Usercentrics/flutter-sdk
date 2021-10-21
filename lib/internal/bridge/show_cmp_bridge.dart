@@ -1,3 +1,6 @@
+/// {@nodoc}
+library show_cmp_bridge;
+
 import 'package:flutter/services.dart';
 import 'package:usercentrics_sdk/internal/internal.dart';
 import 'package:usercentrics_sdk/usercentrics_sdk.dart';

@@ -1,3 +1,6 @@
+/// {@nodoc}
+library initialize_options_serializer;
+
 import 'package:usercentrics_sdk/model/logger_level.dart';
 
 import 'logger_level_serializer.dart';

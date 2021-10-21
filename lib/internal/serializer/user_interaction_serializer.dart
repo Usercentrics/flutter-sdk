@@ -1,3 +1,6 @@
+/// {@nodoc}
+library user_interaction_serializer;
+
 import 'package:usercentrics_sdk/model/user_interaction.dart';
 
 class UserInteractionSerializer {

@@ -1,3 +1,6 @@
+/// {@nodoc}
+library method_channel_usercentrics;
+
 import 'dart:async';
 
 import 'package:flutter/foundation.dart';

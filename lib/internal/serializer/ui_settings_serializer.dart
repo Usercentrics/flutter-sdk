@@ -1,3 +1,6 @@
+/// {@nodoc}
+library ui_settings_serializer;
+
 import 'package:usercentrics_sdk/model/custom_font.dart';
 import 'package:usercentrics_sdk/model/custom_image.dart';
 

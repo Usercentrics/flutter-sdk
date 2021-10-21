@@ -1,3 +1,6 @@
+/// {@nodoc}
+library ready_status_serializer;
+
 import 'package:usercentrics_sdk/internal/serializer/consent_serializer.dart';
 import 'package:usercentrics_sdk/model/ready_status.dart';
 
