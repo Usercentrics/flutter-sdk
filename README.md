@@ -40,21 +40,13 @@ The Usercentrics Apps SDK is a Consent Management Platform framework for mobile,
 
 * Dart 2.12 or higher
 * Flutter 1.20 or higher
+* Android 4.1 (API 16) or higher with Kotlin 1.5 or higher
 * iOS 11 or higher
-* Android 4.1 (16) or higher
 
-## Usage
-
-To use our SDK, please visit our [documentation](https://docs.usercentrics.com/cmp_in_app_sdk/).
-
-## Example
-
-See the [example](https://github.com/Usercentrics/flutter-sdk/tree/master/example) directory for a complete sample app using Usercentrics.
-
-## Troubleshooting
+To meet the requirements:
 
 <details>
-<summary>[Android] Incompatible Kotlin Version</summary>
+<summary>Android with Kotlin version lower than 1.5</summary>
 <p>
 
 If you have an incompatible Kotlin version you may see the following error when you run app on Android:
@@ -71,16 +63,20 @@ This error is easy to solve, you only need to increase the version that is usual
 </details>  
 
 <details>
-<summary>[Android] Multidex</summary>
+<summary>Android version lower than 5.0 (API 21)</summary>
 <p>
 
-If you support Android 5.0 or older devices and you don't have the [multidex](https://developer.android.com/studio/build/multidex) enabled in your project, you may see the following error when you run your app on Android:
+If you support an Android version lower than 5.0 and you don't have the [multidex](https://developer.android.com/studio/build/multidex) enabled in your project, you may see the following error when you run your app on Android:
 
 ```
 D8: Cannot fit requested classes in a single dex file (# methods: 66055 > 65536)
 ```
 
-This error is easy to solve, you have to do the following:
+You can change the minimum version of your application to 5.0 (API 21). That configuration is usually in the `android/app/build.gradle` file. Make sure that `minSdkVersion` is `21` or higher.
+
+![Multidex dependency](https://i.ibb.co/HXrzbWw/multidex-version.png)
+
+Although Android 5.0 version already supports 99% of all devices, if you still want to have support for Android 4.1 (API 16) you have to do the following:
 
 1. Add the multidex library to your application dependencies that is usually in the `android/app/build.gradle` file.
 
@@ -91,7 +87,6 @@ implementation "androidx.multidex:multidex:2.0.1"
 ![Multidex dependency](https://i.ibb.co/m9Y0YKx/multidex-dep.png)
 
 2. Enable the option in the application build `defaultConfig`. It is usually in the same `android/app/build.gradle` file.
-Use a recent stable Kotlin version, for example: `1.5.31`.
 
 ```groovy
 multiDexEnabled true
@@ -111,10 +106,10 @@ android:name="androidx.multidex.MultiDexApplication"
 </details>
 
 <details>
-<summary>[iOS] Incompatible Target Version</summary>
+<summary>iOS version lower than 11</summary>
 <p>
 
-If you have a iOS target version older than **11** or you have no version at all (it defaults to version 9) you may see the following error when you run your app on iOS:
+If you have a iOS target version lower than **11** or you have no version at all (it defaults to version 9) you may see the following error when you run your app on iOS:
 
 ```
 [!] Automatically assigning platform `iOS` with version `9.0` on target `Runner` because no platform was specified. Please specify a platform for this target in your Podfile. See `https://guides.cocoapods.org/syntax/podfile.html#platform`.
@@ -136,6 +131,14 @@ platform :ios, '11.0'
 
 </p>
 </details>
+
+## Usage
+
+To use our SDK, please visit our [documentation](https://docs.usercentrics.com/cmp_in_app_sdk/).
+
+## Example
+
+See the [example](https://github.com/Usercentrics/flutter-sdk/tree/master/example) directory for a complete sample app using Usercentrics.
 
 ## Testing
 
