@@ -132,9 +132,9 @@ platform :ios, '11.0'
 </p>
 </details>
 
-## Usage
+## Integration
 
-To use our SDK, please visit our [documentation](https://docs.usercentrics.com/cmp_in_app_sdk/).
+Continue to our [documentation](https://docs.usercentrics.com/cmp_in_app_sdk/) for a step by step integration guide.
 
 ## Example
 
