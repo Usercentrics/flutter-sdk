@@ -66,7 +66,7 @@ This error is easy to solve, you only need to increase the version that is usual
 <summary>Android version lower than 5.0 (API 21)</summary>
 <p>
 
-If you support an Android version lower than 5.0 and you don't have the [multidex](https://developer.android.com/studio/build/multidex) enabled in your project, you may see the following error when you run your app on Android:
+If you support an Android version lower than 5.0 (API 21) and you don't have the [multidex](https://developer.android.com/studio/build/multidex) enabled in your project, you may see the following error when you run your app on Android:
 
 ```
 D8: Cannot fit requested classes in a single dex file (# methods: 66055 > 65536)
