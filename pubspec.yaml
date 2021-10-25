@@ -9,7 +9,6 @@ repository: https://github.com/Usercentrics/flutter-sdk/
 #  [X] android/build.gradle
 #  [X] ios/usercentrics_sdk.podspec.json
 #  [X] CHANGELOG
-#  [X] README
 version: 2.0.1
 
 environment:
