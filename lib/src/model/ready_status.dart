@@ -8,7 +8,7 @@ class UsercentricsReadyStatus {
     required this.consents,
   });
 
-  /// [True], if consent has never been collected or some service has changed thus requiring a consent update. [False], if consent has been collected and no update is required.
+  /// True, if consent has never been collected or some service has changed thus requiring a consent update. False, if consent has been collected and no update is required.
   final bool shouldShowCMP;
 
   /// List of services with consent choices.

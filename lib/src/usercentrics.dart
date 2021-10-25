@@ -9,8 +9,7 @@ class Usercentrics {
   /// The property is visible for testing to allow tests to set a mock
   /// instance directly as a static property since the class is not initialized.
   /// Cached & lazily loaded instance of [UsercentricsPlatform].
-  /// Avoids a [MethodChannelUsercentrics] being initialized until the user
-  /// starts using Usercentrics.
+  /// By default, it does not get initialized until the user starts using Usercentrics.
   @visibleForTesting
   static UsercentricsPlatform? delegatePackingProperty;
 

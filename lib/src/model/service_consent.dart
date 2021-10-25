@@ -13,7 +13,7 @@ class UsercentricsServiceConsent {
   /// A unique ID that represents the legal specifications of the service.
   final String templateId;
 
-  /// [True] if consent was given, [False] if not.
+  /// True if consent was given, False if not.
   final bool status;
 
   /// The data controller that determines the purposes and the means of the processed data.The data processor is usually a third party external to the company. E.g. 'Google'.
