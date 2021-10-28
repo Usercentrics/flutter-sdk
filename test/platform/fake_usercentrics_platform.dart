@@ -1,3 +1,4 @@
+import 'package:usercentrics_sdk/src/model/cmp_data.dart';
 import 'package:usercentrics_sdk/src/model/custom_font.dart';
 import 'package:usercentrics_sdk/src/model/custom_image.dart';
 import 'package:usercentrics_sdk/src/model/logger_level.dart';
@@ -15,6 +16,7 @@ class FakeUsercentricsPlatform extends UsercentricsPlatform {
     this.restoreUserSessionAnswer,
     this.showCMPAnswer,
     this.statusAnswer,
+    this.cmpDataAnswer,
   });
 
   final List<UsercentricsServiceConsent>? getConsentsAnswer;
@@ -113,5 +115,14 @@ class FakeUsercentricsPlatform extends UsercentricsPlatform {
   Future<UsercentricsReadyStatus> get status {
     statusCount++;
     return Future.value(statusAnswer!);
+  }
+
+  final UsercentricsCMPData? cmpDataAnswer;
+  var cmpDataCount = 0;
+
+  @override
+  Future<UsercentricsCMPData> get cmpData {
+    cmpDataCount++;
+    return Future.value(cmpDataAnswer!);
   }
 }

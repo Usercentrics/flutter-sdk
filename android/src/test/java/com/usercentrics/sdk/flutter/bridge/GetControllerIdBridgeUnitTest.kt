@@ -4,6 +4,7 @@ import com.usercentrics.sdk.UsercentricsSDK
 import com.usercentrics.sdk.flutter.api.FakeFlutterMethodCall
 import com.usercentrics.sdk.flutter.api.FakeFlutterResult
 import com.usercentrics.sdk.flutter.api.FakeUsercentricsProxy
+import com.usercentrics.sdk.flutter.mock.GetControllerIdMock
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
@@ -12,14 +13,6 @@ import org.junit.Assert.assertThrows
 import org.junit.Test
 
 class GetControllerIdBridgeUnitTest {
-
-    companion object {
-        private const val mockGetControllerId = "8620135313b043696b806868b20da905886a3a2598ddddc2b52973f9807d6b45"
-
-        // Data from a real call of the debugger
-        private val mockCall = FakeFlutterMethodCall(method = "getControllerId", arguments = null)
-        private const val expectedResultPayload = "8620135313b043696b806868b20da905886a3a2598ddddc2b52973f9807d6b45"
-    }
 
     @Test
     fun testName() {
@@ -40,17 +33,17 @@ class GetControllerIdBridgeUnitTest {
     @Test
     fun testInvoke() {
         val usercentricsSDK = mockk<UsercentricsSDK>()
-        every { usercentricsSDK.getControllerId() }.returns(mockGetControllerId)
+        every { usercentricsSDK.getControllerId() }.returns(GetControllerIdMock.fake)
         val usercentricsProxy = FakeUsercentricsProxy(usercentricsSDK)
         val instance = GetControllerIdBridge(usercentricsProxy)
         val result = FakeFlutterResult()
 
-        instance.invoke(mockCall, result)
+        instance.invoke(GetControllerIdMock.call, result)
 
         verify(exactly = 1) { usercentricsSDK.getControllerId() }
 
         assertEquals(1, result.successCount)
-        assertEquals(expectedResultPayload, result.successResultArgument)
+        assertEquals(GetControllerIdMock.expected, result.successResultArgument)
     }
 
 }

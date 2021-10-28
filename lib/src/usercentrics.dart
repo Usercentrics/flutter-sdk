@@ -77,4 +77,7 @@ class Usercentrics {
     required String controllerId,
   }) =>
       _delegate.restoreUserSession(controllerId: controllerId);
+
+  /// Get all the CMP Data.
+  static Future<UsercentricsCMPData> get cmpData => _delegate.cmpData;
 }

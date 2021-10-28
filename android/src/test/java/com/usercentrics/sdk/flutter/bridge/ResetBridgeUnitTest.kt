@@ -3,17 +3,14 @@ package com.usercentrics.sdk.flutter.bridge
 import com.usercentrics.sdk.flutter.api.FakeFlutterMethodCall
 import com.usercentrics.sdk.flutter.api.FakeFlutterResult
 import com.usercentrics.sdk.flutter.api.FakeUsercentricsProxy
+import com.usercentrics.sdk.flutter.mock.ResetMock
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertThrows
 import org.junit.Test
 
 class ResetBridgeUnitTest {
 
-    companion object {
-        // Data from a real call of the debugger
-        private val mockCall = FakeFlutterMethodCall(method = "reset", arguments = null)
-        private val expectedResultPayload = null
-    }
+
 
     @Test
     fun testName() {
@@ -37,11 +34,11 @@ class ResetBridgeUnitTest {
         val instance = ResetBridge(usercentricsProxy)
         val result = FakeFlutterResult()
 
-        instance.invoke(mockCall, result)
+        instance.invoke(ResetMock.call, result)
 
         assertEquals(1, usercentricsProxy.resetCount)
         assertEquals(1, result.successCount)
-        assertEquals(expectedResultPayload, result.successResultArgument)
+        assertEquals(ResetMock.expected, result.successResultArgument)
     }
 
 }

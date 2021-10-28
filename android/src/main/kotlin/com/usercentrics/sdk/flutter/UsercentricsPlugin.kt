@@ -45,6 +45,7 @@ class UsercentricsPlugin : FlutterPlugin,
             GetControllerIdBridge(),
             GetTCStringBridge(),
             RestoreUserSessionBridge(),
+            GetCMPDataBridge(),
         ).map { it.name to it }.toMap()
     }
 

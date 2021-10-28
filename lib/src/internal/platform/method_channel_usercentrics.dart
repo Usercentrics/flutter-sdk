@@ -16,6 +16,7 @@ class MethodChannelUsercentrics extends UsercentricsPlatform {
     this.resetBridge = const MethodChannelReset(),
     this.restoreUserSessionBridge = const MethodChannelRestoreUserSession(),
     this.showCMPBridge = const MethodChannelShowCMP(),
+    this.getCMPDataBridge = const MethodChannelGetCMPData(),
   });
 
   static const MethodChannel _channel = MethodChannel('usercentrics');
@@ -28,6 +29,7 @@ class MethodChannelUsercentrics extends UsercentricsPlatform {
   final ResetBridge resetBridge;
   final RestoreUserSessionBridge restoreUserSessionBridge;
   final ShowCMPBridge showCMPBridge;
+  final GetCMPDataBridge getCMPDataBridge;
 
   @visibleForTesting
   Completer? isReadyCompleter;
@@ -103,6 +105,12 @@ class MethodChannelUsercentrics extends UsercentricsPlatform {
     await _ensureIsReady();
     return await restoreUserSessionBridge.invoke(
         channel: _channel, controllerId: controllerId);
+  }
+
+  @override
+  Future<UsercentricsCMPData> get cmpData async {
+    await _ensureIsReady();
+    return await getCMPDataBridge.invoke(channel: _channel);
   }
 
   void _ensureNotInitialized() {

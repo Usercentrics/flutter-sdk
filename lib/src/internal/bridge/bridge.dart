@@ -1,3 +1,4 @@
+export 'get_cmp_data_bridge.dart';
 export 'get_consents_bridge.dart';
 export 'get_controller_id_bridge.dart';
 export 'get_tcstring_bridge.dart';

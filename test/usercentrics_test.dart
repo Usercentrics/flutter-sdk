@@ -1,6 +1,7 @@
 import 'package:test/test.dart';
 import 'package:usercentrics_sdk/usercentrics_sdk.dart';
 
+import 'internal/bridge/get_cmp_data_bridge_test.dart';
 import 'platform/fake_usercentrics_platform.dart';
 
 void main() {
@@ -139,5 +140,15 @@ void main() {
     expect(delegate.restoreUserSessionCount, 1);
     expect(delegate.restoreUserSessionControllerIdArgument, controllerId);
     expect(result, expectedStatus);
+  });
+
+  test('getCMPData', () async {
+    final delegate = FakeUsercentricsPlatform(cmpDataAnswer: mockCMPData);
+    Usercentrics.delegatePackingProperty = delegate;
+
+    final result = await Usercentrics.cmpData;
+
+    expect(delegate.cmpDataCount, 1);
+    expect(result, mockCMPData);
   });
 }

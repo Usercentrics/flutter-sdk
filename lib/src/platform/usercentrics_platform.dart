@@ -32,4 +32,6 @@ abstract class UsercentricsPlatform {
 
   Future<UsercentricsReadyStatus> restoreUserSession(
       {required String controllerId});
+
+  Future<UsercentricsCMPData> get cmpData;
 }

@@ -52,4 +52,9 @@ class FakeUsercentrics extends UsercentricsPlatform {
 
   @override
   Future<UsercentricsReadyStatus> get status => throw UnimplementedError();
+
+  @override
+  Future<UsercentricsCMPData> get cmpData {
+    throw UnimplementedError();
+  }
 }

@@ -1,7 +1,7 @@
 package com.usercentrics.sdk.flutter.bridge
 
 import com.usercentrics.sdk.flutter.api.*
-import com.usercentrics.sdk.flutter.serializer.InitializeOptionsSerializer
+import com.usercentrics.sdk.flutter.serializer.deserializeOptions
 
 internal class InitializeBridge(
     private val activityProvider: FlutterActivityProvider,
@@ -16,7 +16,6 @@ internal class InitializeBridge(
         // Avoid the Already Initialized Runtime Exception
         // because it messes with the Hot Reload Flutter System
         // (Dart VM restart and the JVM don't)
-        // TODO: replace this workaround with a catch of the AlreadyInitializedException
         val alreadyInitialized = runCatching {
             var isReadyInvoked = false
             usercentrics.isReady({
@@ -28,7 +27,7 @@ internal class InitializeBridge(
         }.getOrElse { false }
 
         if (!alreadyInitialized) {
-            val options = InitializeOptionsSerializer().deserialize(call.arguments)
+            val options = call.arguments.deserializeOptions()
             usercentrics.initialize(activityProvider.provide()?.applicationContext, options)
         }
 
