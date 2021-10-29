@@ -22,6 +22,10 @@ After running the app you should see a screen like this:
 
 <img src="screenshot-usercentrics-ui.png" height="534" width="300"/>
 
+### CustomUI
+
+<img src="screenshot-custom-ui.png" height="534" width="300"/>
+
 ## Learn more
 
 - Check out the full [documentation](https://docs.usercentrics.com/cmp_in_app_sdk).

@@ -89,8 +89,7 @@ void main() {
 
   test('consents', () async {
     const expectedConsents = <UsercentricsServiceConsent>[];
-    final delegate =
-        FakeUsercentricsPlatform(consentsAnswer: expectedConsents);
+    final delegate = FakeUsercentricsPlatform(consentsAnswer: expectedConsents);
     Usercentrics.delegatePackingProperty = delegate;
 
     final result = await Usercentrics.consents;
@@ -113,8 +112,7 @@ void main() {
 
   test('tcString', () async {
     const expectedTCSting = "ABC";
-    final delegate =
-        FakeUsercentricsPlatform(tcStringAnswer: expectedTCSting);
+    final delegate = FakeUsercentricsPlatform(tcStringAnswer: expectedTCSting);
     Usercentrics.delegatePackingProperty = delegate;
 
     final result = await Usercentrics.tcString;

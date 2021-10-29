@@ -85,7 +85,8 @@ class TCFDataSerializer {
       flexiblePurposes: value['flexiblePurposes']?.cast<int>() ?? [],
       id: value['id'],
       legitimateInterestConsent: value['legitimateInterestConsent'],
-      legitimateInterestPurposes: value['legitimateInterestPurposes']?.cast<int>() ?? [],
+      legitimateInterestPurposes:
+          value['legitimateInterestPurposes']?.cast<int>() ?? [],
       name: value['name'],
       policyUrl: value['policyUrl'],
       purposes: value['purposes']?.cast<int>() ?? [],

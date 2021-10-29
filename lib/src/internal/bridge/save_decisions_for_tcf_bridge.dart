@@ -37,8 +37,9 @@ class MethodChannelSaveDecisionsForTCF extends SaveDecisionsForTCFBridge {
       {
         'tcfDecisions': TCFUserDecisionsSerializer.serialize(tcfDecisions),
         'fromLayer': TCFDecisionUILayerSerializer.serialize(fromLayer),
-        'serviceDecisions':
-            serviceDecisions.map((e) => UserDecisionSerializer.serialize(e)).toList(),
+        'serviceDecisions': serviceDecisions
+            .map((e) => UserDecisionSerializer.serialize(e))
+            .toList(),
         'consentType': ConsentTypeSerializer.serialize(consentType),
       },
     );
