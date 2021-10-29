@@ -28,7 +28,19 @@ public class SwiftUsercentricsPlugin: NSObject, FlutterPlugin {
             GetConsentsBridge(usercentrics: usercentrics),
             GetTCStringBridge(usercentrics: usercentrics),
             RestoreUserSessionBridge(usercentrics: usercentrics),
-            GetCMPDataBridge(usercentrics: usercentrics)
+            GetCMPDataBridge(usercentrics: usercentrics),
+            ChangeLanguageBridge(usercentrics: usercentrics),
+            AcceptAllBridge(usercentrics: usercentrics),
+            AcceptAllForTCFBridge(usercentrics: usercentrics),
+            DenyAllBridge(usercentrics: usercentrics),
+            DenyAllForTCFBridge(usercentrics: usercentrics),
+            SaveDecisionsBridge(usercentrics: usercentrics),
+            SaveDecisionsForTCFBridge(usercentrics: usercentrics),
+            SaveOptOutForCCPABridge(usercentrics: usercentrics),
+            SetCMPIdBridge(usercentrics: usercentrics),
+            GetUSPDataBridge(usercentrics: usercentrics),
+            GetTCFDataBridge(usercentrics: usercentrics),
+            GetUserSessionDataBridge(usercentrics: usercentrics)
         ]
         return bridges.reduce([String : MethodBridge]()) { dict, value in
             var dict = dict

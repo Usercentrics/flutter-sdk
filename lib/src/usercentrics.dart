@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:usercentrics_sdk/src/model/model.dart';
-import 'package:usercentrics_sdk/src/platform/platform.dart';
+import 'package:usercentrics_sdk/src/platform/usercentrics_platform.dart';
 
 /// The the entry point class for Usercentrics SDK.
 class Usercentrics {
@@ -80,4 +80,82 @@ class Usercentrics {
 
   /// Get all the CMP Data.
   static Future<UsercentricsCMPData> get cmpData => _delegate.cmpData;
+
+  /// Get the data that needs to be disclosed to the end-user if TCF is enabled.
+  static Future<TCFData> get tcfData => _delegate.tcfData;
+
+  /// Get the User's CCPA consent data.
+  static Future<CCPAData> get ccpaData => _delegate.ccpaData;
+
+  /// Get the User's Session Data that can be injected in a WebView with Usercentrics Browswer SDK.
+  static Future<String> get userSessionData => _delegate.userSessionData;
+
+  /// Set the CMP ID value required by IAB for custom UI.
+  static Future<void> setCmpIdForTCF({
+    required int id,
+  }) =>
+      _delegate.setCmpIdForTCF(id: id);
+
+  /// Change the CMP language.
+  static Future<void> changeLanguage({
+    required String language,
+  }) =>
+      _delegate.changeLanguage(language: language);
+
+  /// Accept all services.
+  static Future<List<UsercentricsServiceConsent>> acceptAll({
+    required UsercentricsConsentType consentType,
+  }) =>
+      _delegate.acceptAll(consentType: consentType);
+
+  /// Accept all services and TCF.
+  static Future<List<UsercentricsServiceConsent>> acceptAllForTCF({
+    required TCFDecisionUILayer fromLayer,
+    required UsercentricsConsentType consentType,
+  }) =>
+      _delegate.acceptAllForTCF(consentType: consentType, fromLayer: fromLayer);
+
+  /// Deny all services.
+  static Future<List<UsercentricsServiceConsent>> denyAll({
+    required UsercentricsConsentType consentType,
+  }) =>
+      _delegate.denyAll(consentType: consentType);
+
+  /// Deny all services and TCF.
+  static Future<List<UsercentricsServiceConsent>> denyAllForTCF({
+    required TCFDecisionUILayer fromLayer,
+    required UsercentricsConsentType consentType,
+  }) =>
+      _delegate.denyAllForTCF(consentType: consentType, fromLayer: fromLayer);
+
+  /// Save service decisions.
+  static Future<List<UsercentricsServiceConsent>> saveDecisions({
+    required List<UserDecision> decisions,
+    required UsercentricsConsentType consentType,
+  }) =>
+      _delegate.saveDecisions(decisions: decisions, consentType: consentType);
+
+  /// Save service and TCF decisions.
+  static Future<List<UsercentricsServiceConsent>> saveDecisionsForTCF({
+    required TCFUserDecisions tcfDecisions,
+    required TCFDecisionUILayer fromLayer,
+    required List<UserDecision> serviceDecisions,
+    required UsercentricsConsentType consentType,
+  }) =>
+      _delegate.saveDecisionsForTCF(
+        tcfDecisions: tcfDecisions,
+        fromLayer: fromLayer,
+        serviceDecisions: serviceDecisions,
+        consentType: consentType,
+      );
+
+  /// Save service and CCPA decisions.
+  static Future<List<UsercentricsServiceConsent>> saveOptOutForCCPA({
+    required bool isOptedOut,
+    required UsercentricsConsentType consentType,
+  }) =>
+      _delegate.saveOptOutForCCPA(
+        isOptedOut: isOptedOut,
+        consentType: consentType,
+      );
 }

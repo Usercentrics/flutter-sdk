@@ -1,7 +1,8 @@
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:usercentrics_sdk/src/internal/internal.dart';
-import 'package:usercentrics_sdk/src/model/model.dart';
+import 'package:usercentrics_sdk/src/internal/bridge/bridge.dart';
+import 'package:usercentrics_sdk/src/model/consent_type.dart';
+import 'package:usercentrics_sdk/src/model/service_consent.dart';
 
 void main() {
   // Data from the debugger
@@ -23,6 +24,8 @@ void main() {
       type: UsercentricsConsentType.explicit,
     )
   ];
+  const mockConsentType = UsercentricsConsentType.explicit;
+  const expectedArguments = "EXPLICIT";
 
   const MethodChannel channel = MethodChannel('usercentrics');
   TestWidgetsFlutterBinding.ensureInitialized();
@@ -39,12 +42,16 @@ void main() {
       receivedCall = methodCall;
       return mockResponse;
     });
-    const instance = MethodChannelGetConsents();
+    const instance = MethodChannelDenyAll();
 
-    final result = await instance.invoke(channel: channel);
+    final result = await instance.invoke(
+      channel: channel,
+      consentType: mockConsentType,
+    );
 
     expect(callCounter, 1);
-    expect(receivedCall?.method, 'getConsents');
+    expect(receivedCall?.method, 'denyAll');
+    expect(receivedCall?.arguments, expectedArguments);
     expect(result, expectedResult);
   });
 }

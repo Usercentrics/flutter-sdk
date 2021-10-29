@@ -1,4 +1,5 @@
 export 'package:usercentrics_sdk/src/model/category.dart';
+export 'package:usercentrics_sdk/src/model/ccpa_data.dart';
 export 'package:usercentrics_sdk/src/model/ccpa_settings.dart';
 export 'package:usercentrics_sdk/src/model/cmp_data.dart';
 export 'package:usercentrics_sdk/src/model/consent_type.dart';
@@ -13,6 +14,9 @@ export 'package:usercentrics_sdk/src/model/service.dart';
 export 'package:usercentrics_sdk/src/model/service_consent.dart';
 export 'package:usercentrics_sdk/src/model/settings.dart';
 export 'package:usercentrics_sdk/src/model/tcf2_settings.dart';
+export 'package:usercentrics_sdk/src/model/tcf_data.dart';
+export 'package:usercentrics_sdk/src/model/tcf_decision_ui_layer.dart';
+export 'package:usercentrics_sdk/src/model/user_decision.dart';
 export 'package:usercentrics_sdk/src/model/user_interaction.dart';
 export 'package:usercentrics_sdk/src/model/user_response.dart';
 export 'package:usercentrics_sdk/src/model/variant.dart';

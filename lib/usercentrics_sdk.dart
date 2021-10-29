@@ -4,5 +4,5 @@
 library usercentrics_sdk;
 
 export 'package:usercentrics_sdk/src/model/model.dart';
-export 'package:usercentrics_sdk/src/platform/platform.dart';
+export 'package:usercentrics_sdk/src/platform/usercentrics_platform.dart';
 export 'package:usercentrics_sdk/src/usercentrics.dart';

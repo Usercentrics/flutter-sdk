@@ -1,7 +1,9 @@
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:usercentrics_sdk/src/internal/internal.dart';
-import 'package:usercentrics_sdk/src/model/model.dart';
+import 'package:usercentrics_sdk/src/internal/bridge/bridge.dart';
+import 'package:usercentrics_sdk/src/model/consent_type.dart';
+import 'package:usercentrics_sdk/src/model/service_consent.dart';
+import 'package:usercentrics_sdk/src/model/tcf_decision_ui_layer.dart';
 
 void main() {
   // Data from the debugger
@@ -23,6 +25,12 @@ void main() {
       type: UsercentricsConsentType.explicit,
     )
   ];
+  const mockFromLayer = TCFDecisionUILayer.firstLayer;
+  const mockConsentType = UsercentricsConsentType.explicit;
+  const expectedArguments = {
+    "fromLayer": "FIRST_LAYER",
+    "consentType": "EXPLICIT"
+  };
 
   const MethodChannel channel = MethodChannel('usercentrics');
   TestWidgetsFlutterBinding.ensureInitialized();
@@ -39,12 +47,17 @@ void main() {
       receivedCall = methodCall;
       return mockResponse;
     });
-    const instance = MethodChannelGetConsents();
+    const instance = MethodChannelAcceptAllForTCF();
 
-    final result = await instance.invoke(channel: channel);
+    final result = await instance.invoke(
+      channel: channel,
+      fromLayer: mockFromLayer,
+      consentType: mockConsentType,
+    );
 
     expect(callCounter, 1);
-    expect(receivedCall?.method, 'getConsents');
+    expect(receivedCall?.method, 'acceptAllForTCF');
+    expect(receivedCall?.arguments, expectedArguments);
     expect(result, expectedResult);
   });
 }

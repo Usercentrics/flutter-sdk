@@ -17,6 +17,18 @@ class MethodChannelUsercentrics extends UsercentricsPlatform {
     this.restoreUserSessionBridge = const MethodChannelRestoreUserSession(),
     this.showCMPBridge = const MethodChannelShowCMP(),
     this.getCMPDataBridge = const MethodChannelGetCMPData(),
+    this.acceptAllBridge = const MethodChannelAcceptAll(),
+    this.acceptAllForTCFBridge = const MethodChannelAcceptAllForTCF(),
+    this.changeLanguageBridge = const MethodChannelChangeLanguage(),
+    this.denyAllBridge = const MethodChannelDenyAll(),
+    this.denyAllForTCFBridge = const MethodChannelDenyAllForTCF(),
+    this.getTCFDataBridge = const MethodChannelGetTCFData(),
+    this.getUserSessionDataBridge = const MethodChannelGetUserSessionData(),
+    this.getUSPDataBridge = const MethodChannelGetUSPData(),
+    this.saveDecisionsBridge = const MethodChannelSaveDecisions(),
+    this.saveDecisionsForTCFBridge = const MethodChannelSaveDecisionsForTCF(),
+    this.saveOptOutForCCPABridge = const MethodChannelSaveOptOutForCCPA(),
+    this.setCMPIdBridge = const MethodChannelSetCMPId(),
   });
 
   static const MethodChannel _channel = MethodChannel('usercentrics');
@@ -30,6 +42,18 @@ class MethodChannelUsercentrics extends UsercentricsPlatform {
   final RestoreUserSessionBridge restoreUserSessionBridge;
   final ShowCMPBridge showCMPBridge;
   final GetCMPDataBridge getCMPDataBridge;
+  final AcceptAllBridge acceptAllBridge;
+  final AcceptAllForTCFBridge acceptAllForTCFBridge;
+  final ChangeLanguageBridge changeLanguageBridge;
+  final DenyAllBridge denyAllBridge;
+  final DenyAllForTCFBridge denyAllForTCFBridge;
+  final GetTCFDataBridge getTCFDataBridge;
+  final GetUserSessionDataBridge getUserSessionDataBridge;
+  final GetUSPDataBridge getUSPDataBridge;
+  final SaveDecisionsBridge saveDecisionsBridge;
+  final SaveDecisionsForTCFBridge saveDecisionsForTCFBridge;
+  final SaveOptOutForCCPABridge saveOptOutForCCPABridge;
+  final SetCMPIdBridge setCMPIdBridge;
 
   @visibleForTesting
   Completer? isReadyCompleter;
@@ -111,6 +135,137 @@ class MethodChannelUsercentrics extends UsercentricsPlatform {
   Future<UsercentricsCMPData> get cmpData async {
     await _ensureIsReady();
     return await getCMPDataBridge.invoke(channel: _channel);
+  }
+
+  @override
+  Future<List<UsercentricsServiceConsent>> acceptAll({
+    required UsercentricsConsentType consentType,
+  }) async {
+    await _ensureIsReady();
+    return await acceptAllBridge.invoke(
+      channel: _channel,
+      consentType: consentType,
+    );
+  }
+
+  @override
+  Future<List<UsercentricsServiceConsent>> acceptAllForTCF({
+    required UsercentricsConsentType consentType,
+    required TCFDecisionUILayer fromLayer,
+  }) async {
+    await _ensureIsReady();
+    return await acceptAllForTCFBridge.invoke(
+      channel: _channel,
+      fromLayer: fromLayer,
+      consentType: consentType,
+    );
+  }
+
+  @override
+  // TODO: implement ccpaData
+  Future<CCPAData> get ccpaData async {
+    await _ensureIsReady();
+    return await getUSPDataBridge.invoke(channel: _channel);
+  }
+
+  @override
+  Future<void> changeLanguage({
+    required String language,
+  }) async {
+    await _ensureIsReady();
+    return await changeLanguageBridge.invoke(
+      channel: _channel,
+      language: language,
+    );
+  }
+
+  @override
+  Future<List<UsercentricsServiceConsent>> denyAll({
+    required UsercentricsConsentType consentType,
+  }) async {
+    await _ensureIsReady();
+    return await denyAllBridge.invoke(
+      channel: _channel,
+      consentType: consentType,
+    );
+  }
+
+  @override
+  Future<List<UsercentricsServiceConsent>> denyAllForTCF({
+    required UsercentricsConsentType consentType,
+    required TCFDecisionUILayer fromLayer,
+  }) async {
+    await _ensureIsReady();
+    return await denyAllForTCFBridge.invoke(
+      channel: _channel,
+      fromLayer: fromLayer,
+      consentType: consentType,
+    );
+  }
+
+  @override
+  Future<List<UsercentricsServiceConsent>> saveDecisions({
+    required List<UserDecision> decisions,
+    required UsercentricsConsentType consentType,
+  }) async {
+    await _ensureIsReady();
+    return await saveDecisionsBridge.invoke(
+      channel: _channel,
+      decisions: decisions,
+      consentType: consentType,
+    );
+  }
+
+  @override
+  Future<List<UsercentricsServiceConsent>> saveDecisionsForTCF({
+    required TCFUserDecisions tcfDecisions,
+    required TCFDecisionUILayer fromLayer,
+    required List<UserDecision> serviceDecisions,
+    required UsercentricsConsentType consentType,
+  }) async {
+    await _ensureIsReady();
+    return await saveDecisionsForTCFBridge.invoke(
+      channel: _channel,
+      tcfDecisions: tcfDecisions,
+      fromLayer: fromLayer,
+      serviceDecisions: serviceDecisions,
+      consentType: consentType,
+    );
+  }
+
+  @override
+  Future<List<UsercentricsServiceConsent>> saveOptOutForCCPA({
+    required bool isOptedOut,
+    required UsercentricsConsentType consentType,
+  }) async {
+    await _ensureIsReady();
+    return await saveOptOutForCCPABridge.invoke(
+      channel: _channel,
+      isOptedOut: isOptedOut,
+      consentType: consentType,
+    );
+  }
+
+  @override
+  Future<void> setCmpIdForTCF({
+    required int id,
+  }) async {
+    await _ensureIsReady();
+    return await setCMPIdBridge.invoke(channel: _channel, id: id);
+  }
+
+  @override
+  // TODO: implement tcfData
+  Future<TCFData> get tcfData async {
+    await _ensureIsReady();
+    return await getTCFDataBridge.invoke(channel: _channel);
+  }
+
+  @override
+  // TODO: implement userSessionData
+  Future<String> get userSessionData async {
+    await _ensureIsReady();
+    return await getUserSessionDataBridge.invoke(channel: _channel);
   }
 
   void _ensureNotInitialized() {

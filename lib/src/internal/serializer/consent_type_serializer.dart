@@ -10,4 +10,13 @@ class ConsentTypeSerializer {
     }
     return null;
   }
+
+  static dynamic serialize(UsercentricsConsentType value) {
+    switch (value) {
+      case UsercentricsConsentType.implicit:
+        return 'IMPLICIT';
+      case UsercentricsConsentType.explicit:
+        return 'EXPLICIT';
+    }
+  }
 }

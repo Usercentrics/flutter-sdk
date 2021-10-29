@@ -60,15 +60,11 @@ class _HomePageState extends State<HomePage> {
       if (status.shouldShowCMP) {
         _showCMP(showCloseButton: false);
       } else {
-        _applyConsent(status.consents);
+        applyConsent(status.consents);
       }
     } catch (error) {
       // Handle non-localized error
     }
-  }
-
-  void _applyConsent(List<UsercentricsServiceConsent>? consents) {
-    // https://docs.usercentrics.com/cmp_in_app_sdk/latest/apply_consent/apply-consent/#apply-consent-to-each-service
   }
 
   void _showCMP({required bool showCloseButton}) async {
@@ -87,7 +83,7 @@ class _HomePageState extends State<HomePage> {
       print("User Interaction -> ${response?.userInteraction}");
       print("Controller Id -> ${response?.controllerId}");
 
-      _applyConsent(response?.consents);
+      applyConsent(response?.consents);
     } catch (error) {
       // Handle error
     }
@@ -160,19 +156,19 @@ class CustomUIPage extends StatelessWidget {
                       child: const Text("Print UI Elements"),
                     ),
                     ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () => _acceptAll(cmpData.activeVariant),
                       child: const Text("Accept All"),
                     ),
                     ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () => _denyAll(cmpData.activeVariant),
                       child: const Text("Deny All"),
                     ),
                     ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () => _saveServices(cmpData.activeVariant),
                       child: const Text("Save Services"),
                     ),
                     ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () => _changeLanguage(cmpData),
                       child: const Text("Change Language"),
                     ),
                   ],
@@ -242,7 +238,7 @@ class CustomUIPage extends StatelessWidget {
     print("Save: ${ccpa?.btnSave}");
   }
 
-  void _printTCF(UsercentricsCMPData data) {
+  void _printTCF(UsercentricsCMPData data) async {
     print("Set your CMP ID");
     // Usercentrics.cmpId = 0; TODO
 
@@ -254,31 +250,30 @@ class CustomUIPage extends StatelessWidget {
     print("Second layer title: ${tcf2?.secondLayerTitle}");
     print("Second layer description: ${tcf2?.secondLayerDescription}");
 
-    // TCF Data
-    // final tcfData = Usercentrics.tcfData; TODO
-    // for (var purpose in tcfData.purposes) {
-    //   print("Purpose: ${purpose.name}");
-    // }
-    //
-    // for (var specialPurpose in tcfData.specialPurposes) {
-    //   print("Special Purpose: ${specialPurpose.name}");
-    // }
-    //
-    // for (var feature in tcfData.features) {
-    //   print("Feature: ${feature.name}");
-    // }
-    //
-    // for (var specialFeature in tcfData.specialFeatures) {
-    //   print("Special Feature: ${specialFeature.name}");
-    // }
-    //
-    // for (var stack in tcfData.stacks) {
-    //   print("Stack: ${stack.name}");
-    // }
-    //
-    // for (var vendor in tcfData.vendors) {
-    //   print("Vendor: ${vendor.name}");
-    // }
+    final tcfData = await Usercentrics.tcfData;
+    for (var purpose in tcfData.purposes) {
+      print("Purpose: ${purpose.name}");
+    }
+
+    for (var specialPurpose in tcfData.specialPurposes) {
+      print("Special Purpose: ${specialPurpose.name}");
+    }
+
+    for (var feature in tcfData.features) {
+      print("Feature: ${feature.name}");
+    }
+
+    for (var specialFeature in tcfData.specialFeatures) {
+      print("Special Feature: ${specialFeature.name}");
+    }
+
+    for (var stack in tcfData.stacks) {
+      print("Stack: ${stack.name}");
+    }
+
+    for (var vendor in tcfData.vendors) {
+      print("Vendor: ${vendor.name}");
+    }
 
     // Non-IAB data
     for (var category in data.categories) {
@@ -296,4 +291,129 @@ class CustomUIPage extends StatelessWidget {
 
     print("TCString ${Usercentrics.tcString}");
   }
+
+  void _changeLanguage(UsercentricsCMPData data) async {
+    try {
+      await Usercentrics.changeLanguage(language: "de");
+      _printUiElements(data);
+    } catch (error) {
+      // Handle non-localized error
+    }
+  }
+
+  void _acceptAll(UsercentricsVariant activeVariant) async {
+    List<UsercentricsServiceConsent> consents;
+    switch (activeVariant) {
+      case UsercentricsVariant.default_:
+        consents = await Usercentrics.acceptAll(
+          consentType: UsercentricsConsentType.explicit,
+        );
+        break;
+      case UsercentricsVariant.ccpa:
+        consents = await Usercentrics.saveOptOutForCCPA(
+          isOptedOut: false,
+          consentType: UsercentricsConsentType.explicit,
+        );
+        break;
+      case UsercentricsVariant.tcf:
+        consents = await Usercentrics.acceptAllForTCF(
+          consentType: UsercentricsConsentType.explicit,
+          fromLayer: TCFDecisionUILayer.firstLayer,
+        );
+        break;
+    }
+    applyConsent(consents);
+  }
+
+  void _denyAll(UsercentricsVariant activeVariant) async {
+    List<UsercentricsServiceConsent> consents;
+    switch (activeVariant) {
+      case UsercentricsVariant.default_:
+        consents = await Usercentrics.denyAll(
+          consentType: UsercentricsConsentType.explicit,
+        );
+        break;
+      case UsercentricsVariant.ccpa:
+        consents = await Usercentrics.saveOptOutForCCPA(
+          isOptedOut: true,
+          consentType: UsercentricsConsentType.explicit,
+        );
+        break;
+      case UsercentricsVariant.tcf:
+        consents = await Usercentrics.denyAllForTCF(
+          consentType: UsercentricsConsentType.explicit,
+          fromLayer: TCFDecisionUILayer.firstLayer,
+        );
+        break;
+    }
+    applyConsent(consents);
+  }
+
+  void _saveServices(UsercentricsVariant activeVariant) async {
+    List<UsercentricsServiceConsent>? consents;
+    switch (activeVariant) {
+      case UsercentricsVariant.default_:
+        consents = await Usercentrics.saveDecisions(
+          decisions: _decisionsExample(),
+          consentType: UsercentricsConsentType.explicit,
+        );
+        break;
+      case UsercentricsVariant.ccpa:
+        print(
+            "NO ACTION FOR CCPA - This legal framework has no granular choices");
+        break;
+      case UsercentricsVariant.tcf:
+        consents = await Usercentrics.saveDecisionsForTCF(
+          tcfDecisions: TCFUserDecisions(
+            purposes: _purposesExample(),
+            specialFeatures: _specialFeaturesExample(),
+            vendors: _vendorsExample(),
+          ),
+          fromLayer: TCFDecisionUILayer.firstLayer,
+          serviceDecisions: _decisionsExample(),
+          consentType: UsercentricsConsentType.explicit,
+        );
+        break;
+    }
+    applyConsent(consents);
+  }
+
+  List<UserDecision> _decisionsExample() {
+    return [
+      const UserDecision(
+        serviceId: "SJKM9Ns_ibQ",
+        consent: false,
+      ),
+    ];
+  }
+
+  List<TCFUserDecisionOnPurpose> _purposesExample() {
+    return [
+      const TCFUserDecisionOnPurpose(
+        id: 123,
+        consent: false,
+        legitimateInterestConsent: true,
+      ),
+    ];
+  }
+
+  List<TCFUserDecisionOnSpecialFeature> _specialFeaturesExample() {
+    return [
+      const TCFUserDecisionOnSpecialFeature(
+        id: 222,
+        consent: false,
+      ),
+    ];
+  }
+
+  List<TCFUserDecisionOnVendor> _vendorsExample() {
+    return [
+      const TCFUserDecisionOnVendor(
+          id: 111, consent: false, legitimateInterestConsent: true),
+    ];
+  }
+}
+
+void applyConsent(List<UsercentricsServiceConsent>? consents) {
+  // https://docs.usercentrics.com/cmp_in_app_sdk/latest/apply_consent/apply-consent/#apply-consent-to-each-service
 }

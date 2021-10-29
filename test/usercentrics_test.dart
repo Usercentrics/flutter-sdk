@@ -87,37 +87,37 @@ void main() {
     expect(result, expectedResponse);
   });
 
-  test('getConsents', () async {
+  test('consents', () async {
     const expectedConsents = <UsercentricsServiceConsent>[];
     final delegate =
         FakeUsercentricsPlatform(consentsAnswer: expectedConsents);
     Usercentrics.delegatePackingProperty = delegate;
 
-    final result = await Usercentrics.getConsents();
+    final result = await Usercentrics.consents;
 
     expect(delegate.consentsCount, 1);
     expect(result, expectedConsents);
   });
 
-  test('getControllerId', () async {
+  test('controllerId', () async {
     const expectedControllerId = "ABC";
     final delegate =
         FakeUsercentricsPlatform(controllerIdAnswer: expectedControllerId);
     Usercentrics.delegatePackingProperty = delegate;
 
-    final result = await Usercentrics.getControllerId();
+    final result = await Usercentrics.controllerId;
 
     expect(delegate.controllerIdCount, 1);
     expect(result, expectedControllerId);
   });
 
-  test('getTCString', () async {
+  test('tcString', () async {
     const expectedTCSting = "ABC";
     final delegate =
         FakeUsercentricsPlatform(tcStringAnswer: expectedTCSting);
     Usercentrics.delegatePackingProperty = delegate;
 
-    final result = await Usercentrics.getTCString();
+    final result = await Usercentrics.tcString;
 
     expect(delegate.tcStringCount, 1);
     expect(result, expectedTCSting);
@@ -142,7 +142,7 @@ void main() {
     expect(result, expectedStatus);
   });
 
-  test('getCMPData', () async {
+  test('cmpData', () async {
     final delegate = FakeUsercentricsPlatform(cmpDataAnswer: mockCMPData);
     Usercentrics.delegatePackingProperty = delegate;
 

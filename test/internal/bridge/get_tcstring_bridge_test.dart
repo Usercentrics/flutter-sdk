@@ -3,7 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:usercentrics_sdk/src/internal/bridge/bridge.dart';
 
 void main() {
-  // Data from a real call of the debugger
+  // Data from the debugger
   const mockResponse =
       "CPRloMgPRloMgAFADBENBXCgALAAAH_AAAYgF5wAwBDACRAXmBgkAUAQwAkQFtALzAYIAAAA.YAAAAAAAAAAA";
   const expectedResult =

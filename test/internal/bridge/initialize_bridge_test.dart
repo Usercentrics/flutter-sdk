@@ -4,7 +4,7 @@ import 'package:usercentrics_sdk/src/internal/bridge/bridge.dart';
 import 'package:usercentrics_sdk/src/model/logger_level.dart';
 
 void main() {
-  // Data from a real call of the debugger
+  // Data from the debugger
   const mockResponse = null;
   const expectedArguments = {
     "settingsId": "Yi9N3aXia",

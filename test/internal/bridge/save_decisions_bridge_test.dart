@@ -1,7 +1,9 @@
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:usercentrics_sdk/src/internal/internal.dart';
-import 'package:usercentrics_sdk/src/model/model.dart';
+import 'package:usercentrics_sdk/src/internal/bridge/bridge.dart';
+import 'package:usercentrics_sdk/src/model/consent_type.dart';
+import 'package:usercentrics_sdk/src/model/service_consent.dart';
+import 'package:usercentrics_sdk/src/model/user_decision.dart';
 
 void main() {
   // Data from the debugger
@@ -23,6 +25,22 @@ void main() {
       type: UsercentricsConsentType.explicit,
     )
   ];
+  const mockDecisions = [
+    UserDecision(
+      serviceId: "abc",
+      consent: true,
+    ),
+  ];
+  const mockConsentType = UsercentricsConsentType.explicit;
+  const expectedArguments = {
+    "decisions": [
+      {
+        "serviceId": "abc",
+        "consent": true,
+      }
+    ],
+    "consentType": "EXPLICIT"
+  };
 
   const MethodChannel channel = MethodChannel('usercentrics');
   TestWidgetsFlutterBinding.ensureInitialized();
@@ -39,12 +57,17 @@ void main() {
       receivedCall = methodCall;
       return mockResponse;
     });
-    const instance = MethodChannelGetConsents();
+    const instance = MethodChannelSaveDecisions();
 
-    final result = await instance.invoke(channel: channel);
+    final result = await instance.invoke(
+      channel: channel,
+      decisions: mockDecisions,
+      consentType: mockConsentType,
+    );
 
     expect(callCounter, 1);
-    expect(receivedCall?.method, 'getConsents');
+    expect(receivedCall?.method, 'saveDecisions');
+    expect(receivedCall?.arguments, expectedArguments);
     expect(result, expectedResult);
   });
 }

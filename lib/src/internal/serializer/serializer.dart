@@ -1,4 +1,5 @@
 export 'category_serializer.dart';
+export 'ccpa_data_serializer.dart';
 export 'ccpa_settings_serializer.dart';
 export 'cmp_data_serializer.dart';
 export 'consent_serializer.dart';
@@ -12,7 +13,10 @@ export 'ready_status_serializer.dart';
 export 'service_serializer.dart';
 export 'settings_serializer.dart';
 export 'tcf2_settings_serializer.dart';
+export 'tcf_data_serializer.dart';
+export 'tcf_decision_ui_layer_serializer.dart';
 export 'ui_settings_serializer.dart';
+export 'user_decision_serializer.dart';
 export 'user_interaction_serializer.dart';
 export 'user_response_serializer.dart';
 export 'variant_serializer.dart';
