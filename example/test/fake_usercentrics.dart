@@ -22,17 +22,17 @@ class FakeUsercentrics extends UsercentricsPlatform {
   void reset() {}
 
   @override
-  Future<List<UsercentricsServiceConsent>> getConsents() {
+  Future<List<UsercentricsServiceConsent>> get consents {
     throw UnimplementedError();
   }
 
   @override
-  Future<String> getControllerId() {
+  Future<String> get controllerId {
     throw UnimplementedError();
   }
 
   @override
-  Future<String> getTCString() {
+  Future<String> get tcString {
     throw UnimplementedError();
   }
 

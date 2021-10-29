@@ -3,11 +3,11 @@ import Usercentrics
 struct ResetBridge : MethodBridge {
 
     let name: String = "reset"
-    let usercentricsManager: UsercentricsManagerProtocol
+    let usercentrics: UsercentricsProxyProtocol
 
     func invoke(_ call: FlutterMethodCall, _ result: @escaping FlutterResult) {
         assert(call.method == name)
-        usercentricsManager.reset()
+        usercentrics.reset()
         result(nil)
     }
 }

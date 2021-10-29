@@ -1,14 +1,14 @@
 import Foundation
 import Usercentrics
 
-protocol UsercentricsManagerProtocol {
+protocol UsercentricsProxyProtocol {
     var shared: UsercentricsSDK { get }
     func isReady(onSuccess: @escaping ((UsercentricsReadyStatus) -> Void), onFailure: @escaping ((Error) -> Void))
     func configure(options: UsercentricsOptions)
     func reset()
 }
 
-struct UsercentricsManager: UsercentricsManagerProtocol {
+struct UsercentricsProxy: UsercentricsProxyProtocol {
     var shared: UsercentricsSDK {
         UsercentricsCore.shared
     }

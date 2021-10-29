@@ -81,19 +81,19 @@ class MethodChannelUsercentrics extends UsercentricsPlatform {
   }
 
   @override
-  Future<List<UsercentricsServiceConsent>> getConsents() async {
+  Future<List<UsercentricsServiceConsent>> get consents async {
     await _ensureIsReady();
     return await getConsentsBridge.invoke(channel: _channel);
   }
 
   @override
-  Future<String> getControllerId() async {
+  Future<String> get controllerId async {
     await _ensureIsReady();
     return await getControllerIdBridge.invoke(channel: _channel);
   }
 
   @override
-  Future<String> getTCString() async {
+  Future<String> get tcString async {
     await _ensureIsReady();
     return await getTCStringBridge.invoke(channel: _channel);
   }

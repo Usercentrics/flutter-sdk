@@ -173,10 +173,10 @@ class FirstLayer {
     required this.descriptionShort,
   });
 
-  final bool isOverlayEnabled;
-  final bool isCategoryTogglesEnabled;
-  final bool hideButtonDeny;
-  final bool hideLanguageSwitch;
+  final bool? isOverlayEnabled;
+  final bool? isCategoryTogglesEnabled;
+  final bool? hideButtonDeny;
+  final bool? hideLanguageSwitch;
   final String title;
   final String descriptionDefault;
   final String descriptionShort;

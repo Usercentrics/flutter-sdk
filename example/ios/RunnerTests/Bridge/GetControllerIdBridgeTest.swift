@@ -12,7 +12,7 @@ class GetControllerIdBridgeTest: XCTestCase, BaseBridgeTestProtocol {
 
     override func setUp() {
         usercentrics = FakeUsercentricsSDK()
-        bridge = GetControllerIdBridge(usercentricsManager: FakeUsercentricsManager(shared: usercentrics))
+        bridge = GetControllerIdBridge(usercentrics: FakeUsercentricsProxy(shared: usercentrics))
         super.setUp()
     }
 

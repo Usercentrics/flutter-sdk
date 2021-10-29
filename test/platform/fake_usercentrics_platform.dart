@@ -10,40 +10,40 @@ import 'package:usercentrics_sdk/src/platform/usercentrics_platform.dart';
 // Mock UsercentricsPlatform implementation
 class FakeUsercentricsPlatform extends UsercentricsPlatform {
   FakeUsercentricsPlatform({
-    this.getConsentsAnswer,
-    this.getControllerIdAnswer,
-    this.getTCStringAnswer,
+    this.consentsAnswer,
+    this.controllerIdAnswer,
+    this.tcStringAnswer,
     this.restoreUserSessionAnswer,
     this.showCMPAnswer,
     this.statusAnswer,
     this.cmpDataAnswer,
   });
 
-  final List<UsercentricsServiceConsent>? getConsentsAnswer;
-  var getConsentsCount = 0;
+  final List<UsercentricsServiceConsent>? consentsAnswer;
+  var consentsCount = 0;
 
   @override
-  Future<List<UsercentricsServiceConsent>> getConsents() {
-    getConsentsCount++;
-    return Future.value(getConsentsAnswer!);
+  Future<List<UsercentricsServiceConsent>> get consents() {
+    consentsCount++;
+    return Future.value(consentsAnswer!);
   }
 
-  final String? getControllerIdAnswer;
-  var getControllerIdCount = 0;
+  final String? controllerIdAnswer;
+  var controllerIdCount = 0;
 
   @override
-  Future<String> getControllerId() {
-    getControllerIdCount++;
-    return Future.value(getControllerIdAnswer!);
+  Future<String> get controllerId {
+    controllerIdCount++;
+    return Future.value(controllerIdAnswer!);
   }
 
-  final String? getTCStringAnswer;
-  var getTCStringCount = 0;
+  final String? tcStringAnswer;
+  var tcStringCount = 0;
 
   @override
-  Future<String> getTCString() {
-    getTCStringCount++;
-    return Future.value(getTCStringAnswer!);
+  Future<String> get tcString {
+    tcStringCount++;
+    return Future.value(tcStringAnswer!);
   }
 
   var initializeCount = 0;

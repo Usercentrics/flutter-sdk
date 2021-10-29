@@ -62,14 +62,14 @@ class Usercentrics {
       );
 
   /// Get the complete list of [UsercentricsServiceConsent] with the last status of the user.
-  static Future<List<UsercentricsServiceConsent>> getConsents() =>
-      _delegate.getConsents();
+  static Future<List<UsercentricsServiceConsent>> get consents =>
+      _delegate.consents;
 
   /// Get a Usercentrics generated ID, used to identify a user's consent history.
-  static Future<String> getControllerId() => _delegate.getControllerId();
+  static Future<String> get controllerId => _delegate.controllerId;
 
   /// Get the IAB consent string.
-  static Future<String> getTCString() => _delegate.getTCString();
+  static Future<String> get tcString => _delegate.tcString;
 
   /// Restore a user session in another Usercentrics supported platform.
   /// - The [controllerId] is a Usercentrics generated ID, used to identify a user's consent history.

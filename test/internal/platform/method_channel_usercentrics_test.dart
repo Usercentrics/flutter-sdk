@@ -202,7 +202,7 @@ void main() {
       instance.isReadyCompleter = Completer();
       instance.isReadyCompleter?.complete();
 
-      final response = await instance.getConsents();
+      final response = await instance.consents;
 
       expect(getConsentsBridge.invokeCount, 1);
       expect(getConsentsBridge.invokeChannelArgument?.name, "usercentrics");
@@ -214,7 +214,7 @@ void main() {
       instance.isReadyCompleter = null;
 
       expect(
-        () => instance.getConsents(),
+        () => instance.consents,
         throwsA(const TypeMatcher<NotInitializedException>()),
       );
     });
@@ -238,7 +238,7 @@ void main() {
       instance.isReadyCompleter = Completer();
       instance.isReadyCompleter?.complete();
 
-      final response = await instance.getControllerId();
+      final response = await instance.controllerId;
 
       expect(getControllerIdBridge.invokeCount, 1);
       expect(getControllerIdBridge.invokeChannelArgument?.name, "usercentrics");
@@ -250,7 +250,7 @@ void main() {
       instance.isReadyCompleter = null;
 
       expect(
-        () => instance.getControllerId(),
+        () => instance.controllerId,
         throwsA(const TypeMatcher<NotInitializedException>()),
       );
     });
@@ -274,7 +274,7 @@ void main() {
       instance.isReadyCompleter = Completer();
       instance.isReadyCompleter?.complete();
 
-      final response = await instance.getTCString();
+      final response = await instance.tcString;
 
       expect(getTCStringBridge.invokeCount, 1);
       expect(getTCStringBridge.invokeChannelArgument?.name, "usercentrics");
@@ -286,7 +286,7 @@ void main() {
       instance.isReadyCompleter = null;
 
       expect(
-        () => instance.getTCString(),
+        () => instance.tcString,
         throwsA(const TypeMatcher<NotInitializedException>()),
       );
     });

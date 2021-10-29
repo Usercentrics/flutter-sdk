@@ -8,11 +8,11 @@ class ResetBridgeTest: XCTestCase, BaseBridgeTestProtocol {
     var bridgeName: String! = "reset"
     var bridge: MethodBridge!
 
-    private var usercentrics: FakeUsercentricsManager!
+    private var usercentrics: FakeUsercentricsProxy!
 
     override func setUp() {
-        usercentrics = FakeUsercentricsManager()
-        bridge = ResetBridge(usercentricsManager: usercentrics)
+        usercentrics = FakeUsercentricsProxy()
+        bridge = ResetBridge(usercentrics: usercentrics)
         super.setUp()
     }
 

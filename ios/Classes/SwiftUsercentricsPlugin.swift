@@ -11,23 +11,24 @@ public class SwiftUsercentricsPlugin: NSObject, FlutterPlugin {
   }
 
     let assetProvider: FlutterAssetProvider
-    var usercentricsManager: UsercentricsManagerProtocol
+    let usercentrics: UsercentricsProxyProtocol
 
-    init(assetProvider: FlutterAssetProvider, usercentricsManager: UsercentricsManagerProtocol = UsercentricsManager()) {
+    init(assetProvider: FlutterAssetProvider, usercentrics: UsercentricsProxyProtocol = UsercentricsProxy()) {
         self.assetProvider = assetProvider
-        self.usercentricsManager = usercentricsManager
+        self.usercentrics = usercentrics
     }
 
     lazy var methods: [String : MethodBridge] = {
         let bridges: [MethodBridge] = [
-            InitializeBridge(usercentricsManager: usercentricsManager),
-            IsReadyBridge(usercentricsManager: usercentricsManager),
-            ResetBridge(usercentricsManager: usercentricsManager),
+            InitializeBridge(usercentrics: usercentrics),
+            IsReadyBridge(usercentrics: usercentrics),
+            ResetBridge(usercentrics: usercentrics),
             ShowCMPBridge(assetProvider: assetProvider),
-            GetControllerIdBridge(usercentricsManager: usercentricsManager),
-            GetConsentsBridge(usercentricsManager: usercentricsManager),
-            GetTCStringBridge(usercentricsManager: usercentricsManager),
-            RestoreUserSessionBridge(usercentricsManager: usercentricsManager),
+            GetControllerIdBridge(usercentrics: usercentrics),
+            GetConsentsBridge(usercentrics: usercentrics),
+            GetTCStringBridge(usercentrics: usercentrics),
+            RestoreUserSessionBridge(usercentrics: usercentrics),
+            GetCMPDataBridge(usercentrics: usercentrics)
         ]
         return bridges.reduce([String : MethodBridge]()) { dict, value in
             var dict = dict

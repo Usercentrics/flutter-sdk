@@ -286,14 +286,14 @@ class CustomUIPage extends StatelessWidget {
     }
 
     for (var service in data.services) {
-      print(
-          "Data processor: ${service.dataProcessor} with Template Id: ${service.templateId}");
+      print("Data processor: ${service.dataProcessor} with "
+          "Template Id: ${service.templateId}");
     }
 
     print("Accept All button: ${tcf2?.buttonsAcceptAllLabel}");
     print("Deny button: ${tcf2?.buttonsDenyAllLabel}");
     print("Save button: ${tcf2?.buttonsSaveLabel}");
 
-    print("TCString ${Usercentrics.getTCString()}");
+    print("TCString ${Usercentrics.tcString}");
   }
 }

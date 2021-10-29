@@ -1,12 +1,12 @@
 import Usercentrics
 
-struct GetControllerIdBridge : MethodBridge {
-
-    let name: String = "getControllerId"
+struct GetCMPDataBridge : MethodBridge {
+    let name: String = "getCMPData"
     let usercentrics: UsercentricsProxyProtocol
 
     func invoke(_ call: FlutterMethodCall, _ result: @escaping FlutterResult) {
         assert(call.method == name)
-        result(usercentrics.shared.getControllerId())
+        let cmpData = usercentrics.shared.getCMPData()
+        result(cmpData.serialize())
     }
 }

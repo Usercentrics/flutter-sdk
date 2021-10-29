@@ -53,7 +53,7 @@ private fun UsercentricsSettings.serialize(): Any {
 //        "googleConsentMode" to googleConsentMode,
 //        "appIds" to appIds,
 //        "privacyButtonUrls" to privacyButtonUrls,
-//    "styles" to styles.serialize(),
+//        "styles" to styles.serialize(),
 //        "interactionAnalytics" to interactionAnalytics,
     )
 }

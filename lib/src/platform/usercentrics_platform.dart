@@ -24,11 +24,11 @@ abstract class UsercentricsPlatform {
     UsercentricsFont? customFont,
   });
 
-  Future<List<UsercentricsServiceConsent>> getConsents();
+  Future<List<UsercentricsServiceConsent>> get consents;
 
-  Future<String> getControllerId();
+  Future<String> get controllerId;
 
-  Future<String> getTCString();
+  Future<String> get tcString;
 
   Future<UsercentricsReadyStatus> restoreUserSession(
       {required String controllerId});

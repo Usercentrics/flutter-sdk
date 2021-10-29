@@ -90,36 +90,36 @@ void main() {
   test('getConsents', () async {
     const expectedConsents = <UsercentricsServiceConsent>[];
     final delegate =
-        FakeUsercentricsPlatform(getConsentsAnswer: expectedConsents);
+        FakeUsercentricsPlatform(consentsAnswer: expectedConsents);
     Usercentrics.delegatePackingProperty = delegate;
 
     final result = await Usercentrics.getConsents();
 
-    expect(delegate.getConsentsCount, 1);
+    expect(delegate.consentsCount, 1);
     expect(result, expectedConsents);
   });
 
   test('getControllerId', () async {
     const expectedControllerId = "ABC";
     final delegate =
-        FakeUsercentricsPlatform(getControllerIdAnswer: expectedControllerId);
+        FakeUsercentricsPlatform(controllerIdAnswer: expectedControllerId);
     Usercentrics.delegatePackingProperty = delegate;
 
     final result = await Usercentrics.getControllerId();
 
-    expect(delegate.getControllerIdCount, 1);
+    expect(delegate.controllerIdCount, 1);
     expect(result, expectedControllerId);
   });
 
   test('getTCString', () async {
     const expectedTCSting = "ABC";
     final delegate =
-        FakeUsercentricsPlatform(getTCStringAnswer: expectedTCSting);
+        FakeUsercentricsPlatform(tcStringAnswer: expectedTCSting);
     Usercentrics.delegatePackingProperty = delegate;
 
     final result = await Usercentrics.getTCString();
 
-    expect(delegate.getTCStringCount, 1);
+    expect(delegate.tcStringCount, 1);
     expect(result, expectedTCSting);
   });
 

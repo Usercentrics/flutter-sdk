@@ -23,11 +23,12 @@
 		A297F400271709F800F7AF8A /* BaseBridgeTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A297F3FF271709F800F7AF8A /* BaseBridgeTest.swift */; };
 		A297F4022717106600F7AF8A /* GetTCStringBridgeTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A297F4012717106600F7AF8A /* GetTCStringBridgeTest.swift */; };
 		A297F404271710F200F7AF8A /* InitializeBridgeTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A297F403271710F200F7AF8A /* InitializeBridgeTest.swift */; };
-		A297F40A2717130C00F7AF8A /* FakeUsercentricsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A297F4092717130C00F7AF8A /* FakeUsercentricsManager.swift */; };
+		A297F40A2717130C00F7AF8A /* FakeUsercentricsProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = A297F4092717130C00F7AF8A /* FakeUsercentricsProxy.swift */; };
 		A297F40C2717219300F7AF8A /* IsReadyBridgeTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A297F40B2717219300F7AF8A /* IsReadyBridgeTest.swift */; };
 		A298576C2716DE6A0062F7F8 /* FakeUsercentricsSDK.swift in Sources */ = {isa = PBXBuildFile; fileRef = A298576B2716DE6A0062F7F8 /* FakeUsercentricsSDK.swift */; };
 		A2DF521E2716CA3200204F07 /* GetConsentsBridgeTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DF521D2716CA3200204F07 /* GetConsentsBridgeTest.swift */; };
 		A2DF52232716DA7900204F07 /* FakeFlutterMethodCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DF52222716DA7900204F07 /* FakeFlutterMethodCall.swift */; };
+		ADF3AD79272B02C200048F78 /* GetCMPDataBridgeTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF3AD78272B02C200048F78 /* GetCMPDataBridgeTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,12 +83,13 @@
 		A297F3FF271709F800F7AF8A /* BaseBridgeTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseBridgeTest.swift; sourceTree = "<group>"; };
 		A297F4012717106600F7AF8A /* GetTCStringBridgeTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTCStringBridgeTest.swift; sourceTree = "<group>"; };
 		A297F403271710F200F7AF8A /* InitializeBridgeTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitializeBridgeTest.swift; sourceTree = "<group>"; };
-		A297F4092717130C00F7AF8A /* FakeUsercentricsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeUsercentricsManager.swift; sourceTree = "<group>"; };
+		A297F4092717130C00F7AF8A /* FakeUsercentricsProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeUsercentricsProxy.swift; sourceTree = "<group>"; };
 		A297F40B2717219300F7AF8A /* IsReadyBridgeTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsReadyBridgeTest.swift; sourceTree = "<group>"; };
 		A298576B2716DE6A0062F7F8 /* FakeUsercentricsSDK.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeUsercentricsSDK.swift; sourceTree = "<group>"; };
 		A2DF52122716C91700204F07 /* RunnerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RunnerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2DF521D2716CA3200204F07 /* GetConsentsBridgeTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetConsentsBridgeTest.swift; sourceTree = "<group>"; };
 		A2DF52222716DA7900204F07 /* FakeFlutterMethodCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeFlutterMethodCall.swift; sourceTree = "<group>"; };
+		ADF3AD78272B02C200048F78 /* GetCMPDataBridgeTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCMPDataBridgeTest.swift; sourceTree = "<group>"; };
 		B9C54515ED1B28FA52FA9A2B /* Pods-Runner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug.xcconfig"; sourceTree = "<group>"; };
 		CDD1949C50BF03DFDCBBA200 /* Pods-RunnerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RunnerTests.debug.xcconfig"; path = "Target Support Files/Pods-RunnerTests/Pods-RunnerTests.debug.xcconfig"; sourceTree = "<group>"; };
 		CF3F2523997E35293D15256D /* Pods-RunnerTests.profile.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RunnerTests.profile.xcconfig"; path = "Target Support Files/Pods-RunnerTests/Pods-RunnerTests.profile.xcconfig"; sourceTree = "<group>"; };
@@ -207,6 +209,7 @@
 				A21C377B271821020089601C /* ResetBridgeTest.swift */,
 				A28883EC271824C4007E0C44 /* RestoreUserSessionBridgeTest.swift */,
 				A28883EE27182971007E0C44 /* ShowCMPBridgeTest.swift */,
+				ADF3AD78272B02C200048F78 /* GetCMPDataBridgeTest.swift */,
 			);
 			path = Bridge;
 			sourceTree = "<group>";
@@ -216,7 +219,7 @@
 			children = (
 				A2DF52222716DA7900204F07 /* FakeFlutterMethodCall.swift */,
 				A298576B2716DE6A0062F7F8 /* FakeUsercentricsSDK.swift */,
-				A297F4092717130C00F7AF8A /* FakeUsercentricsManager.swift */,
+				A297F4092717130C00F7AF8A /* FakeUsercentricsProxy.swift */,
 				A28883F027182BAF007E0C44 /* FakeFlutterAssetProvider.swift */,
 			);
 			path = Fake;
@@ -455,13 +458,14 @@
 				A297F4022717106600F7AF8A /* GetTCStringBridgeTest.swift in Sources */,
 				A298576C2716DE6A0062F7F8 /* FakeUsercentricsSDK.swift in Sources */,
 				A2DF52232716DA7900204F07 /* FakeFlutterMethodCall.swift in Sources */,
-				A297F40A2717130C00F7AF8A /* FakeUsercentricsManager.swift in Sources */,
+				A297F40A2717130C00F7AF8A /* FakeUsercentricsProxy.swift in Sources */,
 				A297F40C2717219300F7AF8A /* IsReadyBridgeTest.swift in Sources */,
 				A28883F127182BAF007E0C44 /* FakeFlutterAssetProvider.swift in Sources */,
 				A21C377C271821020089601C /* ResetBridgeTest.swift in Sources */,
 				A28883EF27182971007E0C44 /* ShowCMPBridgeTest.swift in Sources */,
 				A2DF521E2716CA3200204F07 /* GetConsentsBridgeTest.swift in Sources */,
 				A297F400271709F800F7AF8A /* BaseBridgeTest.swift in Sources */,
+				ADF3AD79272B02C200048F78 /* GetCMPDataBridgeTest.swift in Sources */,
 				A297F404271710F200F7AF8A /* InitializeBridgeTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
