@@ -1,10 +1,7 @@
 import Usercentrics
 
-struct UsercentricsLoggerLevelSerializer : DataDeserializer {
-
-    typealias T = UsercentricsLoggerLevel?
-
-    func deserialize(value: Any?) -> UsercentricsLoggerLevel? {
+extension UsercentricsLoggerLevel {
+    static func initialize(from value: Any) -> UsercentricsLoggerLevel? {
         let valueString = value as! String
         switch valueString {
         case "NONE":
@@ -19,8 +16,5 @@ struct UsercentricsLoggerLevelSerializer : DataDeserializer {
             assert(false)
             return nil
         }
-
     }
-
 }
-

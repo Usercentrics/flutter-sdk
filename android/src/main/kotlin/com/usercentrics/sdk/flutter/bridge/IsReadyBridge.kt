@@ -4,7 +4,7 @@ import com.usercentrics.sdk.flutter.api.FlutterMethodCall
 import com.usercentrics.sdk.flutter.api.FlutterResult
 import com.usercentrics.sdk.flutter.api.UsercentricsProxy
 import com.usercentrics.sdk.flutter.api.UsercentricsProxySingleton
-import com.usercentrics.sdk.flutter.serializer.ReadyStatusSerializer
+import com.usercentrics.sdk.flutter.serializer.serialize
 
 internal class IsReadyBridge(
     private val usercentrics: UsercentricsProxy = UsercentricsProxySingleton
@@ -21,7 +21,7 @@ internal class IsReadyBridge(
         assert(name == call.method)
         usercentrics.isReady(
             onSuccess = {
-                result.success(ReadyStatusSerializer().serialize(it))
+                result.success(it.serialize())
             },
             onFailure = {
                 result.error(

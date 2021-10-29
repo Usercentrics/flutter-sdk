@@ -4,6 +4,7 @@ import 'package:test/test.dart';
 import 'package:usercentrics_sdk/src/internal/internal.dart';
 import 'package:usercentrics_sdk/src/model/model.dart';
 
+import '../bridge/fake_get_cmp_data_bridge.dart';
 import '../bridge/fake_get_consents_bridge.dart';
 import '../bridge/fake_get_controller_id_bridge.dart';
 import '../bridge/fake_get_tcstring_bridge.dart';
@@ -12,6 +13,7 @@ import '../bridge/fake_is_ready_bridge.dart';
 import '../bridge/fake_reset_bridge.dart';
 import '../bridge/fake_restore_user_session_bridge.dart';
 import '../bridge/fake_show_cmp_bridge.dart';
+import '../bridge/get_cmp_data_bridge_test.dart';
 
 void main() {
   group('initialize', () {
@@ -200,7 +202,7 @@ void main() {
       instance.isReadyCompleter = Completer();
       instance.isReadyCompleter?.complete();
 
-      final response = await instance.getConsents();
+      final response = await instance.consents;
 
       expect(getConsentsBridge.invokeCount, 1);
       expect(getConsentsBridge.invokeChannelArgument?.name, "usercentrics");
@@ -212,7 +214,7 @@ void main() {
       instance.isReadyCompleter = null;
 
       expect(
-        () => instance.getConsents(),
+        () => instance.consents,
         throwsA(const TypeMatcher<NotInitializedException>()),
       );
     });
@@ -236,7 +238,7 @@ void main() {
       instance.isReadyCompleter = Completer();
       instance.isReadyCompleter?.complete();
 
-      final response = await instance.getControllerId();
+      final response = await instance.controllerId;
 
       expect(getControllerIdBridge.invokeCount, 1);
       expect(getControllerIdBridge.invokeChannelArgument?.name, "usercentrics");
@@ -248,7 +250,7 @@ void main() {
       instance.isReadyCompleter = null;
 
       expect(
-        () => instance.getControllerId(),
+        () => instance.controllerId,
         throwsA(const TypeMatcher<NotInitializedException>()),
       );
     });
@@ -272,7 +274,7 @@ void main() {
       instance.isReadyCompleter = Completer();
       instance.isReadyCompleter?.complete();
 
-      final response = await instance.getTCString();
+      final response = await instance.tcString;
 
       expect(getTCStringBridge.invokeCount, 1);
       expect(getTCStringBridge.invokeChannelArgument?.name, "usercentrics");
@@ -284,7 +286,7 @@ void main() {
       instance.isReadyCompleter = null;
 
       expect(
-        () => instance.getTCString(),
+        () => instance.tcString,
         throwsA(const TypeMatcher<NotInitializedException>()),
       );
     });
@@ -328,6 +330,41 @@ void main() {
 
       expect(
         () => instance.restoreUserSession(controllerId: "ABC"),
+        throwsA(const TypeMatcher<NotInitializedException>()),
+      );
+    });
+  });
+
+  group('cmpData', () {
+    test('default', () {
+      final instance = MethodChannelUsercentrics();
+      expect(instance.getCMPDataBridge,
+          const TypeMatcher<MethodChannelGetCMPData>());
+    });
+
+    test('success', () async {
+      final getCMPDataBridge = FakeGetCMPDataBridge(
+        invokeAnswer: mockCMPData,
+      );
+      final instance = MethodChannelUsercentrics(
+        getCMPDataBridge: getCMPDataBridge,
+      );
+      instance.isReadyCompleter = Completer();
+      instance.isReadyCompleter?.complete();
+
+      final response = await instance.cmpData;
+
+      expect(getCMPDataBridge.invokeCount, 1);
+      expect(getCMPDataBridge.invokeChannelArgument?.name, "usercentrics");
+      expect(response, mockCMPData);
+    });
+
+    test('when it is not ready', () {
+      final instance = MethodChannelUsercentrics();
+      instance.isReadyCompleter = null;
+
+      expect(
+        () => instance.cmpData,
         throwsA(const TypeMatcher<NotInitializedException>()),
       );
     });

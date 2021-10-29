@@ -3,10 +3,10 @@ import Usercentrics
 struct GetControllerIdBridge : MethodBridge {
 
     let name: String = "getControllerId"
-    let usercentricsManager: UsercentricsManagerProtocol
+    let usercentrics: UsercentricsProxyProtocol
 
     func invoke(_ call: FlutterMethodCall, _ result: @escaping FlutterResult) {
         assert(call.method == name)
-        result(usercentricsManager.shared.getControllerId())
+        result(usercentrics.shared.getControllerId())
     }
 }

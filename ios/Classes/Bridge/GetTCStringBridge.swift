@@ -3,10 +3,10 @@ import Usercentrics
 struct GetTCStringBridge : MethodBridge {
 
     let name: String = "getTCString"
-    let usercentricsManager: UsercentricsManagerProtocol
+    let usercentrics: UsercentricsProxyProtocol
 
     func invoke(_ call: FlutterMethodCall, _ result: @escaping FlutterResult) {
         assert(call.method == name)
-        result(usercentricsManager.shared.getTCString())
+        result(usercentrics.shared.getTCString())
     }
 }

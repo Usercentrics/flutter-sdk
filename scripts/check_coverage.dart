@@ -2,7 +2,7 @@
 
 import 'dart:io';
 
-const minCoverage = 70;
+const minCoverage = 50;
 
 // ignore_for_file: avoid_print
 void main(List<String> args) async {

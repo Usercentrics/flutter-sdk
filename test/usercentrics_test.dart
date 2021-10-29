@@ -1,6 +1,7 @@
 import 'package:test/test.dart';
 import 'package:usercentrics_sdk/usercentrics_sdk.dart';
 
+import 'internal/bridge/get_cmp_data_bridge_test.dart';
 import 'platform/fake_usercentrics_platform.dart';
 
 void main() {
@@ -86,39 +87,37 @@ void main() {
     expect(result, expectedResponse);
   });
 
-  test('getConsents', () async {
+  test('consents', () async {
     const expectedConsents = <UsercentricsServiceConsent>[];
-    final delegate =
-        FakeUsercentricsPlatform(getConsentsAnswer: expectedConsents);
+    final delegate = FakeUsercentricsPlatform(consentsAnswer: expectedConsents);
     Usercentrics.delegatePackingProperty = delegate;
 
-    final result = await Usercentrics.getConsents();
+    final result = await Usercentrics.consents;
 
-    expect(delegate.getConsentsCount, 1);
+    expect(delegate.consentsCount, 1);
     expect(result, expectedConsents);
   });
 
-  test('getControllerId', () async {
+  test('controllerId', () async {
     const expectedControllerId = "ABC";
     final delegate =
-        FakeUsercentricsPlatform(getControllerIdAnswer: expectedControllerId);
+        FakeUsercentricsPlatform(controllerIdAnswer: expectedControllerId);
     Usercentrics.delegatePackingProperty = delegate;
 
-    final result = await Usercentrics.getControllerId();
+    final result = await Usercentrics.controllerId;
 
-    expect(delegate.getControllerIdCount, 1);
+    expect(delegate.controllerIdCount, 1);
     expect(result, expectedControllerId);
   });
 
-  test('getTCString', () async {
+  test('tcString', () async {
     const expectedTCSting = "ABC";
-    final delegate =
-        FakeUsercentricsPlatform(getTCStringAnswer: expectedTCSting);
+    final delegate = FakeUsercentricsPlatform(tcStringAnswer: expectedTCSting);
     Usercentrics.delegatePackingProperty = delegate;
 
-    final result = await Usercentrics.getTCString();
+    final result = await Usercentrics.tcString;
 
-    expect(delegate.getTCStringCount, 1);
+    expect(delegate.tcStringCount, 1);
     expect(result, expectedTCSting);
   });
 
@@ -139,5 +138,15 @@ void main() {
     expect(delegate.restoreUserSessionCount, 1);
     expect(delegate.restoreUserSessionControllerIdArgument, controllerId);
     expect(result, expectedStatus);
+  });
+
+  test('cmpData', () async {
+    final delegate = FakeUsercentricsPlatform(cmpDataAnswer: mockCMPData);
+    Usercentrics.delegatePackingProperty = delegate;
+
+    final result = await Usercentrics.cmpData;
+
+    expect(delegate.cmpDataCount, 1);
+    expect(result, mockCMPData);
   });
 }

@@ -20,7 +20,7 @@ class RestoreUserSessionBridgeTest: XCTestCase, BaseBridgeTestProtocol {
 
     override func setUp() {
         usercentrics = FakeUsercentricsSDK()
-        bridge = RestoreUserSessionBridge(usercentricsManager: FakeUsercentricsManager(shared: usercentrics))
+        bridge = RestoreUserSessionBridge(usercentrics: FakeUsercentricsProxy(shared: usercentrics))
         super.setUp()
     }
 
@@ -34,7 +34,7 @@ class RestoreUserSessionBridgeTest: XCTestCase, BaseBridgeTestProtocol {
     }
 
     func testInvoke() {
-        usercentrics.restoreSuccess = .init(shouldShowCMP: false, consents: [consent])
+        usercentrics.restoreUSSuccess = .init(shouldShowCMP: false, consents: [consent])
 
         let expectation =  XCTestExpectation(description: "resultCompletion")
         let resultCompletion: FlutterResult = { result in
@@ -84,7 +84,7 @@ class RestoreUserSessionBridgeTest: XCTestCase, BaseBridgeTestProtocol {
     }
 
     func testInvokeWithErrorOnUsercentrics() {
-        usercentrics.restoreError = DataDeserializerError.invalidData
+        usercentrics.restoreUSError = UsercentricsFakeError()
 
         let expectation =  XCTestExpectation(description: "resultCompletion")
         let resultCompletion: FlutterResult = { result in

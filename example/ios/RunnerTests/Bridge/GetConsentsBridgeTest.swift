@@ -14,7 +14,7 @@ class GetConsentsBridgeTest: XCTestCase, BaseBridgeTestProtocol {
         bridgeName = "getConsents"
 
         usercentrics = FakeUsercentricsSDK()
-        bridge = GetConsentsBridge(usercentricsManager: FakeUsercentricsManager(shared: usercentrics))
+        bridge = GetConsentsBridge(usercentrics: FakeUsercentricsProxy(shared: usercentrics))
 
         super.setUp()
     }

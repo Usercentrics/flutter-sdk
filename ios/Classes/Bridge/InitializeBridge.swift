@@ -3,7 +3,7 @@ import Usercentrics
 struct InitializeBridge : MethodBridge {
 
     let name: String = "initialize"
-    let usercentricsManager: UsercentricsManagerProtocol
+    let usercentrics: UsercentricsProxyProtocol
 
     func invoke(_ call: FlutterMethodCall, _ result: @escaping FlutterResult) {
         assert(call.method == name)
@@ -14,23 +14,22 @@ struct InitializeBridge : MethodBridge {
         // TODO: replace this workaround with a catch of the AlreadyInitializedException
 
         var alreadyInitialized = false
-        usercentricsManager.isReady { _ in
+        usercentrics.isReady { _ in
             alreadyInitialized = true
         } onFailure: { _ in
             alreadyInitialized = true
         }
 
         if !alreadyInitialized {
-            do {
-                let options = try InitializeOptionsSerializer().deserialize(value: call.arguments)
-                usercentricsManager.configure(options: options)
-                result(nil)
-
-            } catch {
-                result(FlutterError(code: "usercentrics_flutter_Initialize_error",
-                                    message: error.localizedDescription,
-                                    details: nil))
+            guard
+                let options = UsercentricsOptions(from: call.arguments)
+            else {
+                assert(false)
+                return
             }
+
+            usercentrics.configure(options: options)
+            result(nil)
         }
     }
 }

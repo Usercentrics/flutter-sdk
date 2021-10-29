@@ -1,11 +1,8 @@
 import UsercentricsUI
 
-struct UsercentricsUserInteractionSerializer : DataSerializer {
-
-    typealias T = UsercentricsUserInteraction
-
-    func serialize(value: UsercentricsUserInteraction) -> Any {
-        switch value {
+extension UsercentricsUserInteraction {
+    func serialize() -> Any {
+        switch self {
         case .acceptAll:
             return "ACCEPT_ALL"
         case .denyAll:

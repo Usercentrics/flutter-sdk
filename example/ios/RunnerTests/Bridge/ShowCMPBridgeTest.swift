@@ -8,10 +8,10 @@ class ShowCMPBridgeTest: XCTestCase, BaseBridgeTestProtocol {
     var bridgeName: String! = "showCMP"
     var bridge: MethodBridge!
 
-    private var usercentrics: FakeUsercentricsManager!
+    private var usercentrics: FakeUsercentricsProxy!
 
     override func setUp() {
-        usercentrics = FakeUsercentricsManager()
+        usercentrics = FakeUsercentricsProxy()
         bridge = ShowCMPBridge(assetProvider: FakeFlutterAssetProvider())
         super.setUp()
     }

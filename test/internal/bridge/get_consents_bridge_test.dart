@@ -4,7 +4,7 @@ import 'package:usercentrics_sdk/src/internal/internal.dart';
 import 'package:usercentrics_sdk/src/model/model.dart';
 
 void main() {
-  // Data from a real call of the debugger
+  // Data from the debugger
   const mockResponse = [
     {
       "templateId": "SJKM9Ns_ibQ",

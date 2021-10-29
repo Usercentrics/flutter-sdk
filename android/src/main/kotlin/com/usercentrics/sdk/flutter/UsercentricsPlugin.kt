@@ -45,6 +45,19 @@ class UsercentricsPlugin : FlutterPlugin,
             GetControllerIdBridge(),
             GetTCStringBridge(),
             RestoreUserSessionBridge(),
+            GetCMPDataBridge(),
+            AcceptAllBridge(),
+            AcceptAllForTCFBridge(),
+            ChangeLanguageBridge(),
+            DenyAllBridge(),
+            DenyAllForTCFBridge(),
+            GetTCFDataBridge(),
+            GetUserSessionDataBridge(),
+            GetUSPDataBridge(),
+            SaveDecisionsBridge(),
+            SaveDecisionsForTCFBridge(),
+            SaveOptOutForCCPABridge(),
+            SetCMPIdBridge()
         ).map { it.name to it }.toMap()
     }
 

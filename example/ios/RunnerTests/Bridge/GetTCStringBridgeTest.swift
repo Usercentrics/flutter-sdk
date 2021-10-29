@@ -12,7 +12,7 @@ class GetTCStringBridgeTest: XCTestCase, BaseBridgeTestProtocol {
 
     override func setUp() {
         usercentrics = FakeUsercentricsSDK()
-        bridge = GetTCStringBridge(usercentricsManager: FakeUsercentricsManager(shared: usercentrics))
+        bridge = GetTCStringBridge(usercentrics: FakeUsercentricsProxy(shared: usercentrics))
         super.setUp()
     }
 

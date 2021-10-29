@@ -16,11 +16,11 @@ class IsReadyBridgeTest: XCTestCase, BaseBridgeTestProtocol {
         version: "1.0.1"
     )
 
-    private var usercentrics: FakeUsercentricsManager!
+    private var usercentrics: FakeUsercentricsProxy!
 
     override func setUp() {
-        usercentrics = FakeUsercentricsManager()
-        bridge = IsReadyBridge(usercentricsManager: usercentrics)
+        usercentrics = FakeUsercentricsProxy()
+        bridge = IsReadyBridge(usercentrics: usercentrics)
         super.setUp()
     }
 
@@ -68,7 +68,7 @@ class IsReadyBridgeTest: XCTestCase, BaseBridgeTestProtocol {
     }
 
     func testInvokeWithError() {
-        usercentrics.readyError = DataDeserializerError.invalidData
+        usercentrics.readyError = UsercentricsFakeError()
         
         let expectation =  XCTestExpectation(description: "resultCompletion")
         let resultCompletion: FlutterResult = { [unowned self] result in

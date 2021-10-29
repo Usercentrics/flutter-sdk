@@ -6,8 +6,8 @@
   <a href="https://github.com/Usercentrics/flutter-sdk/actions/workflows/ci.yml">
     <img alt="build and test status" src="https://github.com/Usercentrics/flutter-sdk/actions/workflows/ci.yml/badge.svg">
   </a>
-  <a href="https://github.com/Usercentrics/flutter-sdk/releases">
-    <img alt="Version" src="https://img.shields.io/badge/version-2.0.1-blue">
+  <a href="https://pub.dev/packages/usercentrics_sdk">
+    <img alt="Version" src="https://img.shields.io/pub/v/usercentrics_sdk">
   </a>
   <a href="https://twitter.com/intent/follow?screen_name=usercentrics">
     <img src="https://img.shields.io/twitter/follow/usercentrics?style=social&logo=twitter"

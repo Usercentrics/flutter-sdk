@@ -9,10 +9,10 @@ struct ShowCMPBridge : MethodBridge {
         assert(call.method == name)
         let controller : FlutterViewController? = UIApplication.shared.delegate?.window??.rootViewController as? FlutterViewController
 
-        let settings = try? UISettingsSerializer(assetProvider: assetProvider).deserialize(value: call.arguments)
+        let settings = UsercentricsUISettings(from: call.arguments, assetProvider: assetProvider)
         let predefinedUI = UsercentricsUserInterface.getPredefinedUI(settings: settings) { response in
             controller?.dismiss(animated: true, completion: nil)
-            result(UserResponseSerializer().serialize(value: response))
+            result(response.serialize())
         }
 
         if #available(iOS 13.0, *) { predefinedUI.isModalInPresentation = true }

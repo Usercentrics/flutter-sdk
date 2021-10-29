@@ -2,11 +2,11 @@ package com.usercentrics.sdk.flutter.bridge
 
 import android.content.Intent
 import com.usercentrics.sdk.flutter.api.*
-import com.usercentrics.sdk.flutter.serializer.UISettingsSerializer
-import com.usercentrics.sdk.flutter.serializer.UserResponseSerializer
+import com.usercentrics.sdk.flutter.serializer.deserializeUISettings
+import com.usercentrics.sdk.flutter.serializer.serialize
 
 internal class ShowCMPBridge(
-    assetsProvider: FlutterAssetsProvider,
+    private val assetsProvider: FlutterAssetsProvider,
     private val activityProvider: FlutterActivityProvider,
     private val activityProxy: UsercentricsActivityProxy = UsercentricsActivityProxyImpl(
         activityProvider
@@ -17,8 +17,6 @@ internal class ShowCMPBridge(
         private const val showCMPRequestCode = 81420
     }
 
-    private val settingsSerializer = UISettingsSerializer(assetsProvider, activityProvider)
-
     private var pendingResult: FlutterResult? = null
 
     override val name: String
@@ -27,7 +25,7 @@ internal class ShowCMPBridge(
     override fun invoke(call: FlutterMethodCall, result: FlutterResult) {
         assert(name == call.method)
         this.pendingResult = result
-        val settings = settingsSerializer.deserialize(call.arguments)
+        val settings = call.arguments.deserializeUISettings(assetsProvider, activityProvider)
         activityProxy.startForResult(settings, showCMPRequestCode)
     }
 
@@ -35,9 +33,7 @@ internal class ShowCMPBridge(
         if (requestCode != showCMPRequestCode) return false
 
         assert(pendingResult != null)
-        val response = activityProxy.parseResult(resultCode, data)?.let {
-            UserResponseSerializer().serialize(it)
-        }
+        val response = activityProxy.parseResult(resultCode, data)?.serialize()
         pendingResult?.success(response)
         pendingResult = null
 

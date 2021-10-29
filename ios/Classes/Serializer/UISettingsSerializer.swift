@@ -1,17 +1,10 @@
 import UsercentricsUI
 
-struct UISettingsSerializer : DataDeserializer {
-
-    let assetProvider: FlutterAssetProvider
-
-    typealias T = UsercentricsUISettings
-
-    let loggerLevelSerializer = UsercentricsLoggerLevelSerializer()
-
-    func deserialize(value: Any?) throws -> UsercentricsUISettings {
+extension UsercentricsUISettings {
+    init?(from value: Any?, assetProvider: FlutterAssetProvider) {
         guard
             let dict = value as? Dictionary<String, Any>
-        else { throw DataDeserializerError.invalidData }
+        else { return nil }
 
         var settings = UsercentricsUISettings()
 
@@ -20,23 +13,30 @@ struct UISettingsSerializer : DataDeserializer {
         }
 
         if let customLogo = dict["customLogo"] as? String {
-            settings.customLogo = deserializeImage(value: customLogo)
+            settings.customLogo = UIImage(from: customLogo, assetProvider: assetProvider)
         }
 
         if let customFont = dict["customFont"] as? Dictionary<String,Any> {
-            settings.customFont = deserializeFont(value: customFont)
+            settings.customFont = UIFont(from: customFont, assetProvider: assetProvider)
         }
 
-        return settings
+        self.init(customFont: settings.customFont,
+                  customLogo: settings.customLogo,
+                  showCloseButton: settings.showCloseButton)
     }
+}
 
-    func deserializeImage(value: String) -> UIImage? {
+
+extension UIImage {
+    convenience init?(from value: String, assetProvider: FlutterAssetProvider) {
         let path = assetProvider.lookupKey(forAsset: value)
-        let image = UIImage(named: path)
-        return image
+        self.init(named: path)
     }
+}
 
-    func deserializeFont(value: Dictionary<String,Any>) -> UIFont? {
+
+extension UIFont {
+    convenience init?(from value: Dictionary<String,Any>, assetProvider: FlutterAssetProvider) {
         if let fontAsset = value["fontAssetPath"] as? String,
            let fontSize = value["fontSize"] as? CGFloat,
            let url = Bundle.main.url(forResource: assetProvider.lookupKey(forAsset: fontAsset), withExtension: nil),
@@ -44,20 +44,15 @@ struct UISettingsSerializer : DataDeserializer {
            let cgFont = CGFont(fontDataProvider),
            let fontName = cgFont.fullName {
 
-            if let uiFont = UIFont(name: String(describing: fontName), size: fontSize) {
-                return uiFont
-            } else {
+            if UIFont(name: String(describing: fontName), size: fontSize) == nil {
                 UIFont.register(from: cgFont)
-                return UIFont(name: String(describing: fontName), size: fontSize)
             }
+            self.init(name: String(describing: fontName), size: fontSize)
+        } else {
+            return nil
         }
-        return nil
     }
 
-}
-
-
-extension UIFont {
     public static func register(from cgFont: CGFont) {
         guard CTFontManagerRegisterGraphicsFont(cgFont, nil) else {
             assert(false)

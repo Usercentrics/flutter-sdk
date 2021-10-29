@@ -8,11 +8,11 @@ class InitializeBridgeTest: XCTestCase, BaseBridgeTestProtocol {
     var bridgeName: String! = "initialize"
     var bridge: MethodBridge!
 
-    private var usercentrics: FakeUsercentricsManager!
+    private var usercentrics: FakeUsercentricsProxy!
 
     override func setUp() {
-        usercentrics = FakeUsercentricsManager()
-        bridge = InitializeBridge(usercentricsManager: usercentrics)
+        usercentrics = FakeUsercentricsProxy()
+        bridge = InitializeBridge(usercentrics: usercentrics)
         super.setUp()
     }
 
@@ -23,29 +23,6 @@ class InitializeBridgeTest: XCTestCase, BaseBridgeTestProtocol {
 
     func testName() {
         testNameProtocol()
-    }
-
-    func testInvokeWithInvalidArguments() {
-        let expectation =  XCTestExpectation(description: "resultCompletion")
-        let resultCompletion: FlutterResult = { [unowned self] result in
-            guard let result = result as? FlutterError else {
-                XCTFail()
-                return
-            }
-            
-            XCTAssertEqual(result.code, "usercentrics_flutter_Initialize_error")
-           
-            XCTAssertEqual(self.usercentrics.configureCount, 0)
-            XCTAssertEqual(self.usercentrics.isReadyCount, 1)
-            XCTAssertNil(self.usercentrics.configureOptions)
-
-            expectation.fulfill()
-        }
-
-        let method = FakeFlutterMethodCall(methodName: bridgeName)
-
-        bridge.invoke(method, resultCompletion)
-        wait(for: [expectation], timeout: 2.0)
     }
 
     func testInvoke() {

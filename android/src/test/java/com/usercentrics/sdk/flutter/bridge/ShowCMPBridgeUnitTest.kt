@@ -1,58 +1,12 @@
 package com.usercentrics.sdk.flutter.bridge
 
-import com.usercentrics.sdk.UsercentricsConsentUserResponse
-import com.usercentrics.sdk.UsercentricsServiceConsent
-import com.usercentrics.sdk.UsercentricsUISettings
-import com.usercentrics.sdk.UsercentricsUserInteraction
 import com.usercentrics.sdk.flutter.api.*
-import com.usercentrics.sdk.models.settings.UsercentricsConsentType
+import com.usercentrics.sdk.flutter.mock.ShowCMPMock
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertThrows
 import org.junit.Test
 
 class ShowCMPBridgeUnitTest {
-
-    companion object {
-        // Data from a real call of the debugger
-        private val mockCall = FakeFlutterMethodCall(
-            method = "showCMP", arguments = mapOf(
-                "customFont" to null,
-                "showCloseButton" to true,
-                "customLogo" to null
-            )
-        )
-        private val expectedSettingsPayload = UsercentricsUISettings(
-            customFont = null,
-            showCloseButton = true,
-            customLogo = null
-        )
-        private val mockActivityResponse = UsercentricsConsentUserResponse(
-            consents = listOf(
-                UsercentricsServiceConsent(
-                    templateId = "ocv9HNX_g",
-                    status = false,
-                    dataProcessor = "Facebook SDK",
-                    type = UsercentricsConsentType.EXPLICIT,
-                    version = "1.0.1"
-                )
-            ),
-            controllerId = "8620135313b043696b806868b20da905886a3a2598ddddc2b52973f9807d6b45",
-            userInteraction = UsercentricsUserInteraction.ACCEPT_ALL
-        )
-        private val expectedResultPayload = mapOf(
-            "controllerId" to "8620135313b043696b806868b20da905886a3a2598ddddc2b52973f9807d6b45",
-            "userInteraction" to "ACCEPT_ALL",
-            "consents" to listOf(
-                mapOf(
-                    "templateId" to "ocv9HNX_g",
-                    "status" to false,
-                    "type" to "EXPLICIT",
-                    "version" to "1.0.1",
-                    "dataProcessor" to "Facebook SDK",
-                )
-            )
-        )
-    }
 
     @Test
     fun testName() {
@@ -88,20 +42,20 @@ class ShowCMPBridgeUnitTest {
         )
         val result = FakeFlutterResult()
 
-        instance.invoke(mockCall, result)
+        instance.invoke(ShowCMPMock.call, result)
 
         assertEquals(1, usercentricsActivity.startForResultCount)
         assertEquals(81420, usercentricsActivity.startForResultRequestCode)
         assertEquals(
-            expectedSettingsPayload.customFont,
+            null,
             usercentricsActivity.startForResultSettingsArgument?.customFont
         )
         assertEquals(
-            expectedSettingsPayload.showCloseButton,
+            true,
             usercentricsActivity.startForResultSettingsArgument?.showCloseButton
         )
         assertEquals(
-            expectedSettingsPayload.customLogo,
+            null,
             usercentricsActivity.startForResultSettingsArgument?.customLogo
         )
     }
@@ -134,10 +88,10 @@ class ShowCMPBridgeUnitTest {
     }
 
     @Test
-    fun testOnActivityResultWithPendingResult() {
+    fun testOnActivityResultWithPendingResultWithData() {
         val resultCode = 123
         val usercentricsActivity = FakeUsercentricsActivityProxy(
-            parseResultAnswer = mockActivityResponse
+            parseResultAnswer = ShowCMPMock.fakeActivityResponseWithData
         )
         val instance = ShowCMPBridge(
             FakeFlutterAssetsProvider(),
@@ -147,15 +101,38 @@ class ShowCMPBridgeUnitTest {
         val result = FakeFlutterResult()
 
         // Pending result
-        instance.invoke(mockCall, result)
+        instance.invoke(ShowCMPMock.call, result)
 
         instance.onActivityResult(81420, resultCode, null)
 
         assertEquals(1, usercentricsActivity.parseResultCount)
         assertEquals(resultCode, usercentricsActivity.parseResultResultCodeArgument)
         assertEquals(1, result.successCount)
-        assertEquals(expectedResultPayload, result.successResultArgument)
+        assertEquals(ShowCMPMock.expectedWithData, result.successResultArgument)
+    }
 
+    @Test
+    fun testOnActivityResultWithPendingResultWithoutData() {
+        val resultCode = 123
+        val usercentricsActivity = FakeUsercentricsActivityProxy(
+            parseResultAnswer = ShowCMPMock.fakeActivityResponseWithoutData
+        )
+        val instance = ShowCMPBridge(
+            FakeFlutterAssetsProvider(),
+            FakeFlutterActivityProvider(),
+            usercentricsActivity
+        )
+        val result = FakeFlutterResult()
+
+        // Pending result
+        instance.invoke(ShowCMPMock.call, result)
+
+        instance.onActivityResult(81420, resultCode, null)
+
+        assertEquals(1, usercentricsActivity.parseResultCount)
+        assertEquals(resultCode, usercentricsActivity.parseResultResultCodeArgument)
+        assertEquals(1, result.successCount)
+        assertEquals(ShowCMPMock.expectedWithoutData, result.successResultArgument)
     }
 
 }
