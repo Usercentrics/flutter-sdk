@@ -29,7 +29,8 @@ class MethodChannelSaveDecisions extends SaveDecisionsBridge {
     final result = await channel.invokeMethod(
       _name,
       {
-        'decisions': decisions.map((e) => UserDecisionSerializer.serialize(e)).toList(),
+        'decisions':
+            decisions.map((e) => UserDecisionSerializer.serialize(e)).toList(),
         'consentType': ConsentTypeSerializer.serialize(consentType),
       },
     );
