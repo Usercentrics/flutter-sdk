@@ -25,7 +25,7 @@ internal class RestoreUserSessionMock {
         val call =
             FakeFlutterMethodCall(
                 method = "restoreUserSession",
-                arguments = "8620135313b043696b806868b20da905886a3a2598ddddc2b52973f9807d6b45"
+                arguments = "8620139AAAAAAAAAAAAAAAdddc2b52973f9807d6b45"
             )
         val expected = mapOf(
             "shouldShowCMP" to false,
@@ -40,6 +40,6 @@ internal class RestoreUserSessionMock {
             )
         )
         val expectedControllerId =
-            "8620135313b043696b806868b20da905886a3a2598ddddc2b52973f9807d6b45"
+            "8620139AAAAAAAAAAAAAAAdddc2b52973f9807d6b45"
     }
 }

@@ -6,7 +6,6 @@ import com.usercentrics.sdk.flutter.api.FakeFlutterMethodCall
 import com.usercentrics.sdk.flutter.api.FakeFlutterResult
 import com.usercentrics.sdk.flutter.api.FakeUsercentricsProxy
 import com.usercentrics.sdk.flutter.mock.InitializeMock
-import com.usercentrics.sdk.models.common.UsercentricsLoggerLevel
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertThrows
 import org.junit.Test
@@ -50,14 +49,26 @@ class InitializeBridgeUnitTest {
 
         assertEquals(1, activityProvider.provideCount)
         assertEquals(1, usercentricsProxy.initializeCount)
-        assertEquals("AAAAA", usercentricsProxy.initializeOptionsArgument?.settingsId)
         assertEquals(
-            UsercentricsLoggerLevel.DEBUG,
+            InitializeMock.callWithDataSettingsId,
+            usercentricsProxy.initializeOptionsArgument?.settingsId
+        )
+        assertEquals(
+            InitializeMock.callWithDataLoggerLevel,
             usercentricsProxy.initializeOptionsArgument?.loggerLevel
         )
-        assertEquals("en", usercentricsProxy.initializeOptionsArgument?.defaultLanguage)
-        assertEquals(1000L, usercentricsProxy.initializeOptionsArgument?.timeoutMillis)
-        assertEquals("1.2.3", usercentricsProxy.initializeOptionsArgument?.version)
+        assertEquals(
+            InitializeMock.callWithDataDefaultLanguage,
+            usercentricsProxy.initializeOptionsArgument?.defaultLanguage
+        )
+        assertEquals(
+            InitializeMock.callWithDataTimeoutMillis,
+            usercentricsProxy.initializeOptionsArgument?.timeoutMillis
+        )
+        assertEquals(
+            InitializeMock.callWithDataVersion,
+            usercentricsProxy.initializeOptionsArgument?.version
+        )
         assertEquals(1, result.successCount)
         assertEquals(InitializeMock.expected, result.successResultArgument)
     }
@@ -73,7 +84,10 @@ class InitializeBridgeUnitTest {
 
         assertEquals(1, activityProvider.provideCount)
         assertEquals(1, usercentricsProxy.initializeCount)
-        assertEquals("AAAAA", usercentricsProxy.initializeOptionsArgument?.settingsId)
+        assertEquals(
+            InitializeMock.callWithoutDataSettingsId,
+            usercentricsProxy.initializeOptionsArgument?.settingsId
+        )
         val defaultOptions = UsercentricsOptions("")
         assertEquals(
             defaultOptions.loggerLevel,

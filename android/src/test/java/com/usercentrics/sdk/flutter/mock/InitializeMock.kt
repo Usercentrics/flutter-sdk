@@ -1,6 +1,7 @@
 package com.usercentrics.sdk.flutter.mock
 
 import com.usercentrics.sdk.flutter.api.FakeFlutterMethodCall
+import com.usercentrics.sdk.models.common.UsercentricsLoggerLevel
 
 internal class InitializeMock {
     companion object {
@@ -15,6 +16,11 @@ internal class InitializeMock {
                 "version" to "1.2.3"
             )
         )
+        val callWithDataSettingsId = "AAAAA"
+        val callWithDataDefaultLanguage = "en"
+        val callWithDataLoggerLevel = UsercentricsLoggerLevel.DEBUG
+        val callWithDataTimeoutMillis = 1000L
+        val callWithDataVersion = "1.2.3"
         val callWithoutData = FakeFlutterMethodCall(
             method = "initialize",
             arguments = mapOf(
@@ -25,6 +31,7 @@ internal class InitializeMock {
                 "version" to null
             )
         )
+        val callWithoutDataSettingsId = "AAAAA"
         val expected: Any? = null
     }
 
