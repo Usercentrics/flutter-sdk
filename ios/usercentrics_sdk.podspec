@@ -1,11 +1,11 @@
 Pod::Spec.new do |s|
   s.name             = 'usercentrics_sdk'
-  s.version          = '2.0.1'
+  s.version          = '2.0.2'
   s.summary          = 'Usercentrics Flutter SDK.'
   s.description      = <<-DESC
   Usercentrics Flutter SDK.
                        DESC
-  s.homepage         = 'https://docs.usercentrics.com/#/in-app-sdk'
+  s.homepage         = 'https://docs.usercentrics.com/cmp_in_app_sdk/latest/'
   s.license          = { :file => '../LICENSE' }
   s.author           = { 'Usercentrics' => 'developer@usercentrics.com' }
   s.source           = { :path => '.' }

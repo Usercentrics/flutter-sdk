@@ -50,6 +50,7 @@ class UsercentricsService {
     required this.deviceStorageDisclosureUrl,
     required this.isDeactivated,
     required this.disableLegalBasis,
+    required this.isEssential,
   });
 
   /// The template ID of the service.
@@ -105,6 +106,7 @@ class UsercentricsService {
   final String deviceStorageDisclosureUrl;
   final bool? isDeactivated;
   final bool? disableLegalBasis;
+  final bool isEssential;
 
   @override
   bool operator ==(Object other) =>
@@ -157,7 +159,8 @@ class UsercentricsService {
           usesNonCookieAccess == other.usesNonCookieAccess &&
           deviceStorageDisclosureUrl == other.deviceStorageDisclosureUrl &&
           isDeactivated == other.isDeactivated &&
-          disableLegalBasis == other.disableLegalBasis;
+          disableLegalBasis == other.disableLegalBasis &&
+          isEssential == other.isEssential;
 
   @override
   int get hashCode =>
@@ -207,7 +210,8 @@ class UsercentricsService {
       usesNonCookieAccess.hashCode +
       deviceStorageDisclosureUrl.hashCode +
       isDeactivated.hashCode +
-      disableLegalBasis.hashCode;
+      disableLegalBasis.hashCode +
+      isEssential.hashCode;
 
   @override
   String toString() =>

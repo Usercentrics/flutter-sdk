@@ -660,6 +660,7 @@ internal class GetCMPDataMock {
                 "deviceStorageDisclosureUrl" to null,
                 "isDeactivated" to false,
                 "disableLegalBasis" to false,
+                "isEssential" to false,
             )
         )
     }

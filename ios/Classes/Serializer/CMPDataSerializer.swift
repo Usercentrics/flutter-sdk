@@ -379,6 +379,7 @@ extension UsercentricsService {
             "isDeactivated" : Bool(from: self.isDeactivated) as Any,
             //        "isAutoUpdateAllowed" : self.isAutoUpdateAllowed,
             "disableLegalBasis" : Bool(from: self.disableLegalBasis) as Any,
+            "isEssential" : self.isEssential,
         ]
     }
 }

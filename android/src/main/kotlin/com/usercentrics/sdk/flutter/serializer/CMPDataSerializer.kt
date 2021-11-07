@@ -350,6 +350,7 @@ private fun UsercentricsService.serialize(): Any {
         "isDeactivated" to isDeactivated,
 //        "isAutoUpdateAllowed" to isAutoUpdateAllowed,
         "disableLegalBasis" to disableLegalBasis,
+        "isEssential" to isEssential
     )
 }
 

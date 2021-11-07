@@ -50,6 +50,7 @@ class ServiceSerializer {
       deviceStorageDisclosureUrl: value['deviceStorageDisclosureUrl'] ?? "",
       isDeactivated: value['isDeactivated'],
       disableLegalBasis: value['disableLegalBasis'],
+      isEssential: value['isEssential'],
     );
   }
 }

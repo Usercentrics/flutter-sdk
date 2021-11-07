@@ -321,6 +321,7 @@ const _responseServices = [
     "deviceStorageDisclosureUrl": null,
     "isDeactivated": false,
     "disableLegalBasis": false,
+    "isEssential": false,
   }
 ];
 
@@ -399,6 +400,7 @@ const _expectedServices = [
     deviceStorageDisclosureUrl: "",
     isDeactivated: false,
     disableLegalBasis: false,
+    isEssential: false,
   )
 ];
 
