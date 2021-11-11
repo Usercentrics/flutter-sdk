@@ -7,9 +7,9 @@ repository: https://github.com/Usercentrics/flutter-sdk/
 # Update version process:
 #  [X] pubspec.yaml
 #  [X] android/build.gradle
-#  [X] ios/usercentrics_sdk.podspec.json
+#  [X] ios/usercentrics_sdk.podspec + pod install
 #  [X] CHANGELOG
-version: 2.0.2
+version: 2.0.3
 
 environment:
   sdk: ">=2.12.0 <3.0.0"
