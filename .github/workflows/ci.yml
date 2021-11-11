@@ -164,7 +164,7 @@ jobs:
     runs-on: ubuntu-latest
     container: cirrusci/flutter:stable
     env:
-      PUB_DEV_CREDENTIAL: secrets.PUB_DEV_CREDENTIAL
+      PUB_DEV_CREDENTIAL: ${{ secrets.PUB_DEV_CREDENTIAL }}
 
     steps:
       - name: Checkout code
