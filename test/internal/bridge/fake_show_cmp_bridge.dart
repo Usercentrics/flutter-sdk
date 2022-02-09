@@ -4,7 +4,7 @@ import 'package:usercentrics_sdk/src/model/custom_font.dart';
 import 'package:usercentrics_sdk/src/model/custom_image.dart';
 import 'package:usercentrics_sdk/src/model/user_response.dart';
 
-class FakeShowCMPBridge extends ShowCMPBridge {
+class FakeShowCMPBridge extends ShowFirstLayerBridge {
   FakeShowCMPBridge({
     this.invokeAnswer,
   });

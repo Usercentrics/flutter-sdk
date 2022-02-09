@@ -2,21 +2,20 @@ package com.usercentrics.sdk.flutter.serializer
 
 import android.graphics.BitmapFactory
 import android.graphics.Typeface
+import com.usercentrics.sdk.BannerSettings
 import com.usercentrics.sdk.UsercentricsFont
 import com.usercentrics.sdk.UsercentricsImage
-import com.usercentrics.sdk.UsercentricsUISettings
 import com.usercentrics.sdk.flutter.api.FlutterActivityProvider
 import com.usercentrics.sdk.flutter.api.FlutterAssetsProvider
 
-internal fun Any?.deserializeUISettings(
+internal fun Any?.deserializeBannerSettings(
     assetsProvider: FlutterAssetsProvider,
     activityProvider: FlutterActivityProvider
-): UsercentricsUISettings {
-    this as Map<*, *>
-    return UsercentricsUISettings(
-        showCloseButton = this["showCloseButton"] as? Boolean? ?: false,
-        customLogo = this["customLogo"].deserializeImage(assetsProvider, activityProvider),
-        customFont = this["customFont"].deserializeFont(assetsProvider, activityProvider)
+): BannerSettings? {
+    if (this !is Map<*, *>) return null
+    return BannerSettings(
+        logo = this["logo"].deserializeImage(assetsProvider, activityProvider),
+        font = this["font"].deserializeFont(assetsProvider, activityProvider)
     )
 }
 

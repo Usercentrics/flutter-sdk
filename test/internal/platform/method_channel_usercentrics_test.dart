@@ -128,7 +128,7 @@ void main() {
   group('showCMP', () {
     test('default', () {
       final instance = MethodChannelUsercentrics();
-      expect(instance.showCMPBridge, const TypeMatcher<MethodChannelShowCMP>());
+      expect(instance.showCMPBridge, const TypeMatcher<MethodChannelShowFirstLayer>());
     });
 
     test('success', () async {

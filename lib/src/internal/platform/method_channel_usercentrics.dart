@@ -15,7 +15,8 @@ class MethodChannelUsercentrics extends UsercentricsPlatform {
     this.getTCStringBridge = const MethodChannelGetTCString(),
     this.resetBridge = const MethodChannelReset(),
     this.restoreUserSessionBridge = const MethodChannelRestoreUserSession(),
-    this.showCMPBridge = const MethodChannelShowCMP(),
+    this.showFirstLayerBridge = const MethodChannelShowFirstLayer(),
+    this.showSecondLayerBridge = const MethodChannelShowSecondLayer(),
     this.getCMPDataBridge = const MethodChannelGetCMPData(),
     this.acceptAllBridge = const MethodChannelAcceptAll(),
     this.acceptAllForTCFBridge = const MethodChannelAcceptAllForTCF(),
@@ -40,7 +41,8 @@ class MethodChannelUsercentrics extends UsercentricsPlatform {
   final GetTCStringBridge getTCStringBridge;
   final ResetBridge resetBridge;
   final RestoreUserSessionBridge restoreUserSessionBridge;
-  final ShowCMPBridge showCMPBridge;
+  final ShowFirstLayerBridge showFirstLayerBridge;
+  final ShowSecondLayerBridge showSecondLayerBridge;
   final GetCMPDataBridge getCMPDataBridge;
   final AcceptAllBridge acceptAllBridge;
   final AcceptAllForTCFBridge acceptAllForTCFBridge;
@@ -90,17 +92,32 @@ class MethodChannelUsercentrics extends UsercentricsPlatform {
       isReadyBridge.invoke(channel: _channel);
 
   @override
-  Future<UsercentricsConsentUserResponse?> showCMP({
-    bool? showCloseButton,
-    UsercentricsImage? customLogo,
-    UsercentricsFont? customFont,
+  Future<UsercentricsConsentUserResponse?> showFirstLayer({
+    required UsercentricsLayout layout,
+    UsercentricsImage? logo,
+    UsercentricsFont? font,
   }) async {
     await _ensureIsReady();
-    return await showCMPBridge.invoke(
+    return await showFirstLayerBridge.invoke(
+      channel: _channel,
+      layout: layout,
+      logo: logo,
+      font: font,
+    );
+  }
+
+  @override
+  Future<UsercentricsConsentUserResponse?> showSecondLayer({
+    required bool showCloseButton,
+    UsercentricsImage? logo,
+    UsercentricsFont? font,
+  }) async {
+    await _ensureIsReady();
+    return await showSecondLayerBridge.invoke(
       channel: _channel,
       showCloseButton: showCloseButton,
-      customLogo: customLogo,
-      customFont: customFont,
+      logo: logo,
+      font: font,
     );
   }
 

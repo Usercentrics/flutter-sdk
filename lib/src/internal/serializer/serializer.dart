@@ -7,6 +7,7 @@ export 'consent_type_serializer.dart';
 export 'customization_serializer.dart';
 export 'initialize_options_serializer.dart';
 export 'labels_serializer.dart';
+export 'layout_serializer.dart';
 export 'location_serializer.dart';
 export 'logger_level_serializer.dart';
 export 'ready_status_serializer.dart';

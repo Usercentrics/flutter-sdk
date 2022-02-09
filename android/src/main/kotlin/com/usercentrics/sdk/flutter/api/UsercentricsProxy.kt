@@ -26,7 +26,12 @@ internal object UsercentricsProxySingleton : UsercentricsProxy {
         get() = Usercentrics.instance
 
     override fun initialize(context: Context?, options: UsercentricsOptions) {
-        if (context != null) {
+        context ?: return
+
+        // Avoid the Already Initialized Runtime Exception
+        // because it messes with the Hot Reload Flutter System
+        // (Dart VM restart and the JVM don't)
+        runCatching {
             Usercentrics.initialize(context, options)
         }
     }

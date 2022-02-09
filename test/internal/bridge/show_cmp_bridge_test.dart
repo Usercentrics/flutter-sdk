@@ -65,7 +65,7 @@ void main() {
       receivedCall = methodCall;
       return mockResponse;
     });
-    const instance = MethodChannelShowCMP();
+    const instance = MethodChannelShowFirstLayer();
 
     final result = await instance.invoke(
       channel: channel,

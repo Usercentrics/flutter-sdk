@@ -10,7 +10,7 @@ class ShowCMPBridgeUnitTest {
 
     @Test
     fun testName() {
-        val instance = ShowCMPBridge(
+        val instance = ShowFirstLayerBridge(
             FakeFlutterAssetsProvider(),
             FakeFlutterActivityProvider(),
             FakeUsercentricsActivityProxy()
@@ -20,7 +20,7 @@ class ShowCMPBridgeUnitTest {
 
     @Test
     fun testInvokeWithOtherName() {
-        val instance = ShowCMPBridge(
+        val instance = ShowFirstLayerBridge(
             FakeFlutterAssetsProvider(),
             FakeFlutterActivityProvider(),
             FakeUsercentricsActivityProxy()
@@ -35,7 +35,7 @@ class ShowCMPBridgeUnitTest {
     @Test
     fun testInvoke() {
         val usercentricsActivity = FakeUsercentricsActivityProxy()
-        val instance = ShowCMPBridge(
+        val instance = ShowFirstLayerBridge(
             FakeFlutterAssetsProvider(),
             FakeFlutterActivityProvider(),
             usercentricsActivity
@@ -62,7 +62,7 @@ class ShowCMPBridgeUnitTest {
 
     @Test
     fun testOnActivityResultWithOtherCode() {
-        val instance = ShowCMPBridge(
+        val instance = ShowFirstLayerBridge(
             FakeFlutterAssetsProvider(),
             FakeFlutterActivityProvider(),
             FakeUsercentricsActivityProxy()
@@ -76,7 +76,7 @@ class ShowCMPBridgeUnitTest {
 
     @Test
     fun testOnActivityResultWithNoPendingResult() {
-        val instance = ShowCMPBridge(
+        val instance = ShowFirstLayerBridge(
             FakeFlutterAssetsProvider(),
             FakeFlutterActivityProvider(),
             FakeUsercentricsActivityProxy()
@@ -93,7 +93,7 @@ class ShowCMPBridgeUnitTest {
         val usercentricsActivity = FakeUsercentricsActivityProxy(
             parseResultAnswer = ShowCMPMock.fakeActivityResponseWithData
         )
-        val instance = ShowCMPBridge(
+        val instance = ShowFirstLayerBridge(
             FakeFlutterAssetsProvider(),
             FakeFlutterActivityProvider(),
             usercentricsActivity
@@ -117,7 +117,7 @@ class ShowCMPBridgeUnitTest {
         val usercentricsActivity = FakeUsercentricsActivityProxy(
             parseResultAnswer = ShowCMPMock.fakeActivityResponseWithoutData
         )
-        val instance = ShowCMPBridge(
+        val instance = ShowFirstLayerBridge(
             FakeFlutterAssetsProvider(),
             FakeFlutterActivityProvider(),
             usercentricsActivity

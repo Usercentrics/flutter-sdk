@@ -18,4 +18,5 @@ export 'save_decisions_bridge.dart';
 export 'save_decisions_for_tcf_bridge.dart';
 export 'save_opt_out_for_ccpa_bridge.dart';
 export 'set_cmp_id_bridge.dart';
-export 'show_cmp_bridge.dart';
+export 'show_first_layer_bridge.dart';
+export 'show_second_layer_bridge.dart';

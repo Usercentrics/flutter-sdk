@@ -7,6 +7,7 @@ export 'package:usercentrics_sdk/src/model/custom_font.dart';
 export 'package:usercentrics_sdk/src/model/custom_image.dart';
 export 'package:usercentrics_sdk/src/model/customization.dart';
 export 'package:usercentrics_sdk/src/model/labels.dart';
+export 'package:usercentrics_sdk/src/model/layout.dart';
 export 'package:usercentrics_sdk/src/model/location.dart';
 export 'package:usercentrics_sdk/src/model/logger_level.dart';
 export 'package:usercentrics_sdk/src/model/ready_status.dart';
