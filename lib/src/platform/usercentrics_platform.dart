@@ -22,6 +22,7 @@ abstract class UsercentricsPlatform {
     required UsercentricsLayout layout,
     UsercentricsImage? logo,
     UsercentricsFont? font,
+    FirstLayerStyleSettings? settings,
   });
 
   Future<UsercentricsConsentUserResponse?> showSecondLayer({

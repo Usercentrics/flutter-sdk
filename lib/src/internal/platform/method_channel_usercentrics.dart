@@ -96,6 +96,7 @@ class MethodChannelUsercentrics extends UsercentricsPlatform {
     required UsercentricsLayout layout,
     UsercentricsImage? logo,
     UsercentricsFont? font,
+    FirstLayerStyleSettings? settings,
   }) async {
     await _ensureIsReady();
     return await showFirstLayerBridge.invoke(
@@ -103,6 +104,7 @@ class MethodChannelUsercentrics extends UsercentricsPlatform {
       layout: layout,
       logo: logo,
       font: font,
+      settings: settings,
     );
   }
 

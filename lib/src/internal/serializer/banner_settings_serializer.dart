@@ -1,5 +1,5 @@
-import 'package:usercentrics_sdk/src/model/custom_font.dart';
-import 'package:usercentrics_sdk/src/model/custom_image.dart';
+import 'package:usercentrics_sdk/src/model/font.dart';
+import 'package:usercentrics_sdk/src/model/image.dart';
 
 class BannerSettingsSerializer {
   static dynamic serialize({

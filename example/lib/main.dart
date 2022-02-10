@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:usercentrics_sdk/usercentrics_sdk.dart';
 
 import 'build_your_own_ui.dart';
+import 'first_layer_customization_example_1.dart';
+import 'first_layer_customization_example_2.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -68,15 +70,19 @@ class _HomePageState extends State<HomePage> {
     }
   }
 
-  void _showFirstLayer() async {
+  void _showFirstLayer({
+    UsercentricsLayout? layout,
+    FirstLayerStyleSettings? settings,
+  }) async {
     try {
       final response = await Usercentrics.showFirstLayer(
-        layout: UsercentricsLayout.sheet,
+        layout: layout ?? UsercentricsLayout.popupBottom,
         logo: const UsercentricsImage(assetPath: 'images/flutter-logo.png'),
         // font: const UsercentricsFont(
         //   fontAssetPath: 'fonts/Lora-VariableFont_wght.ttf',
         //   fontSize: 15,
         // ),
+        settings: settings,
       );
 
       _handleUserResponse(response);
@@ -116,10 +122,11 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: const Text('Usercentrics Flutter Sample'),
       ),
-      body: Center(
+      body: Padding(
+        padding: const EdgeInsets.all(50.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             ElevatedButton(
               onPressed: () => _showFirstLayer(),
@@ -128,6 +135,20 @@ class _HomePageState extends State<HomePage> {
             ElevatedButton(
               onPressed: () => _showSecondLayer(),
               child: const Text("Show Second Layer"),
+            ),
+            ElevatedButton(
+              onPressed: () => _showFirstLayer(
+                layout: UsercentricsLayout.popupBottom,
+                settings: firstLayerCustomizationExample1,
+              ),
+              child: const Text("Customization Example 1"),
+            ),
+            ElevatedButton(
+              onPressed: () => _showFirstLayer(
+                layout: UsercentricsLayout.full,
+                settings: firstLayerCustomizationExample2,
+              ),
+              child: const Text("Customization Example 2"),
             ),
             ElevatedButton(
               onPressed: () => Navigator.push(

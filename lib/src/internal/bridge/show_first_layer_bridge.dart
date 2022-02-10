@@ -10,6 +10,7 @@ abstract class ShowFirstLayerBridge {
     required UsercentricsLayout layout,
     UsercentricsImage? logo,
     UsercentricsFont? font,
+    FirstLayerStyleSettings? settings,
   });
 }
 
@@ -24,18 +25,19 @@ class MethodChannelShowFirstLayer extends ShowFirstLayerBridge {
     required UsercentricsLayout layout,
     UsercentricsImage? logo,
     UsercentricsFont? font,
+    FirstLayerStyleSettings? settings,
   }) async {
+    final arguments = {
+      'bannerSettings': BannerSettingsSerializer.serialize(
+        logo: logo,
+        font: font,
+      ),
+      'layout': LayoutSerializer.serialize(layout),
+      'settings': FirstLayerStyleSettingsSerializer.serialize(settings),
+    };
     final result = await channel.invokeMethod(
       _name,
-      {
-        'bannerSettings': BannerSettingsSerializer.serialize(
-          logo: logo,
-          font: font,
-        ),
-        'layout': LayoutSerializer.serialize(layout),
-        //             // TODO
-        // //            settings = argsMap["settings"].deserializeFirstLayerStyleSettings(),
-      },
+      arguments,
     );
     return result == null
         ? Future.value(null)
