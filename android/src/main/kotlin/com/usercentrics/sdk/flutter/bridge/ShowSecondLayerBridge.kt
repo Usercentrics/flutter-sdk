@@ -7,7 +7,7 @@ import com.usercentrics.sdk.flutter.serializer.serialize
 internal class ShowSecondLayerBridge(
     private val assetsProvider: FlutterAssetsProvider,
     private val activityProvider: FlutterActivityProvider,
-    private val banner: UsercentricsBannerProxy = UsercentricsBannerProxySingleton,
+    private val bannerProxy: UsercentricsBannerProxy,
 ) : MethodBridge {
 
     override val name: String
@@ -18,8 +18,7 @@ internal class ShowSecondLayerBridge(
 
         val argsMap = call.arguments as Map<*, *>
 
-        banner.showSecondLayer(
-            context = activityProvider.provide(),
+        bannerProxy.showSecondLayer(
             bannerSettings = argsMap["bannerSettings"].deserializeBannerSettings(
                 assetsProvider,
                 activityProvider

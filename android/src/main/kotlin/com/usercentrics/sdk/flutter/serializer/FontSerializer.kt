@@ -12,7 +12,7 @@ internal fun Any?.deserializeFont(
     if (this !is Map<*, *>) return null
 
     val typeface = this["fontAssetPath"]?.deserializeTypeface(assetsProvider, activityProvider)
-    val size = this["fontSize"] as? Double
+    val size = this["fontSize"] as? Number
 
     return if (typeface != null && size != null) {
         UsercentricsFont(

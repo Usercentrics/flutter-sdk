@@ -5,6 +5,7 @@ import androidx.annotation.NonNull
 import com.usercentrics.sdk.flutter.api.FlutterActivityProvider
 import com.usercentrics.sdk.flutter.api.FlutterAssetsProvider
 import com.usercentrics.sdk.flutter.api.FlutterMethodCallWrapper
+import com.usercentrics.sdk.flutter.api.UsercentricsBannerProxyImpl
 import com.usercentrics.sdk.flutter.bridge.*
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.embedding.engine.plugins.FlutterPlugin.FlutterAssets
@@ -35,11 +36,13 @@ class UsercentricsPlugin : FlutterPlugin,
             IsReadyBridge(),
             ShowFirstLayerBridge(
                 assetsProvider = this,
-                activityProvider = this
+                activityProvider = this,
+                bannerProxy = UsercentricsBannerProxyImpl(this),
             ),
             ShowSecondLayerBridge(
                 assetsProvider = this,
-                activityProvider = this
+                activityProvider = this,
+                bannerProxy = UsercentricsBannerProxyImpl(this),
             ),
             GetConsentsBridge(),
             GetControllerIdBridge(),

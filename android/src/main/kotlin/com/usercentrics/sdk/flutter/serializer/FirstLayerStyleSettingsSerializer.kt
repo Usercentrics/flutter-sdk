@@ -63,7 +63,7 @@ internal fun Any?.deserializeHeaderImageSettings(
         HeaderImageSettings.LogoSettings(
             image = image,
             alignment = this["alignment"]?.deserializeSectionAlignment(),
-            heightInDp = (this["height"] as? Double)?.toFloat()
+            heightInDp = (this["height"] as? Number)?.toFloat()
         )
     }
 }
@@ -83,7 +83,7 @@ internal fun Any?.deserializeTitleSettings(
         alignment = this["alignment"]?.deserializeSectionAlignment(),
         font = this["fontAssetPath"].deserializeTypeface(assetsProvider, activityProvider),
         textColor = (this["textColor"] as? String)?.deserializeColor(),
-        textSizeInSp = (this["textSize"] as? Double)?.toFloat(),
+        textSizeInSp = (this["textSize"] as? Number)?.toFloat(),
     )
 }
 
@@ -98,7 +98,7 @@ internal fun Any?.deserializeMessageSettings(
         font = this["fontAssetPath"].deserializeTypeface(assetsProvider, activityProvider),
         textColor = (this["textColor"] as? String)?.deserializeColor(),
         linkTextColor = (this["linkTextColor"] as? String)?.deserializeColor(),
-        textSizeInSp = (this["textSize"] as? Double)?.toFloat(),
+        textSizeInSp = (this["textSize"] as? Number)?.toFloat(),
     )
 }
 
@@ -115,7 +115,7 @@ internal fun Any?.deserializeButtonSettings(
         textColor = (this["textColor"] as? String)?.deserializeColor(),
         backgroundColor = (this["backgroundColor"] as? String)?.deserializeColor(),
         cornerRadius = this["cornerRadius"] as? Int,
-        textSizeInSp = (this["textSize"] as? Double)?.toFloat(),
+        textSizeInSp = (this["textSize"] as? Number)?.toFloat(),
     )
 }
 

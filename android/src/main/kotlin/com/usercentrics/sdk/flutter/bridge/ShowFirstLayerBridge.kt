@@ -9,7 +9,7 @@ import com.usercentrics.sdk.flutter.serializer.serialize
 internal class ShowFirstLayerBridge(
     private val assetsProvider: FlutterAssetsProvider,
     private val activityProvider: FlutterActivityProvider,
-    private val banner: UsercentricsBannerProxy = UsercentricsBannerProxySingleton,
+    private val bannerProxy: UsercentricsBannerProxy,
 ) : MethodBridge {
 
     override val name: String
@@ -20,8 +20,7 @@ internal class ShowFirstLayerBridge(
 
         val argsMap = call.arguments as Map<*, *>
 
-        banner.showFirstLayer(
-            context = activityProvider.provide(),
+        bannerProxy.showFirstLayer(
             bannerSettings = argsMap["bannerSettings"].deserializeBannerSettings(
                 assetsProvider,
                 activityProvider,

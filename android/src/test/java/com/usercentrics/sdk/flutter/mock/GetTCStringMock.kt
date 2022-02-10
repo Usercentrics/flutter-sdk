@@ -2,12 +2,12 @@ package com.usercentrics.sdk.flutter.mock
 
 import com.usercentrics.sdk.flutter.api.FakeFlutterMethodCall
 
-internal class GetTCStringMock {
-    companion object {
-         const val fake = "AAAAAAAAAAAAAAA"
+internal object GetTCStringMock {
 
-        // From the debugger
-         val call = FakeFlutterMethodCall(method = "getTCString", arguments = null)
-         const val expected = "AAAAAAAAAAAAAAA"
-    }
+    const val fake = "AAAAAAAAAAAAAAA"
+
+    // From the debugger
+    val call = FakeFlutterMethodCall(method = "getTCString", arguments = null)
+    const val expected = "AAAAAAAAAAAAAAA"
+
 }
