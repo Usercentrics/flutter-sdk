@@ -9,6 +9,19 @@ class ConsentSerializer {
       type: ConsentTypeSerializer.deserialize(value['type']),
       version: value['version'],
       dataProcessor: value['dataProcessor'],
+      isEssential: value['isEssential'],
+      history: (value['history'] as List)
+          .map((e) => _deserializeHistoryEntry(e))
+          .toList(),
+    );
+  }
+
+  static UsercentricsConsentHistoryEntry _deserializeHistoryEntry(
+      dynamic value) {
+    return UsercentricsConsentHistoryEntry(
+      status: value['status'],
+      timestampInMillis: value['timestampInMillis'],
+      type: ConsentTypeSerializer.deserialize(value['type']),
     );
   }
 }

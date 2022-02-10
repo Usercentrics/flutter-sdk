@@ -77,7 +77,7 @@ internal object ShowFirstLayerMock {
                 dataProcessor = "Facebook SDK",
                 type = UsercentricsConsentType.EXPLICIT,
                 version = "1.0.1",
-                isEssential = false,
+                isEssential = true,
                 history = listOf(
                     UsercentricsConsentHistoryEntry(
                         status = true,
@@ -100,6 +100,12 @@ internal object ShowFirstLayerMock {
                 "type" to "EXPLICIT",
                 "version" to "1.0.1",
                 "dataProcessor" to "Facebook SDK",
+                "isEssential" to true,
+                "history" to listOf(
+                    mapOf(
+                        "status" to true, "timestampInMillis" to 123L, "type" to "EXPLICIT",
+                    )
+                )
             )
         )
     )

@@ -249,6 +249,8 @@ void main() {
           dataProcessor: "123",
           version: "1.1.1",
           type: UsercentricsConsentType.explicit,
+          isEssential: true,
+          history: [],
         ),
       ];
       final getConsentsBridge = FakeGetConsentsBridge(

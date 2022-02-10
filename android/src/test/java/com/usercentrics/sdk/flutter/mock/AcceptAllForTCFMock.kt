@@ -41,6 +41,12 @@ internal object AcceptAllForTCFMock {
             "type" to "EXPLICIT",
             "version" to "1.0.1",
             "dataProcessor" to "Facebook SDK",
+            "isEssential" to true,
+            "history" to listOf(
+                mapOf(
+                    "status" to true, "timestampInMillis" to 123L, "type" to "EXPLICIT",
+                )
+            )
         )
     )
 }
