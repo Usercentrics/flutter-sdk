@@ -12,7 +12,8 @@ import '../bridge/fake_initialize_bridge.dart';
 import '../bridge/fake_is_ready_bridge.dart';
 import '../bridge/fake_reset_bridge.dart';
 import '../bridge/fake_restore_user_session_bridge.dart';
-import '../bridge/fake_show_cmp_bridge.dart';
+import '../bridge/fake_show_first_layer_bridge.dart';
+import '../bridge/fake_show_second_layer_bridge.dart';
 import '../bridge/get_cmp_data_bridge_test.dart';
 
 void main() {
@@ -125,10 +126,11 @@ void main() {
     });
   });
 
-  group('showCMP', () {
+  group('showFirstLayer', () {
     test('default', () {
       final instance = MethodChannelUsercentrics();
-      expect(instance.showCMPBridge, const TypeMatcher<MethodChannelShowFirstLayer>());
+      expect(instance.showFirstLayerBridge,
+          const TypeMatcher<MethodChannelShowFirstLayer>());
     });
 
     test('success', () async {
@@ -137,31 +139,34 @@ void main() {
         userInteraction: UsercentricsUserInteraction.acceptAll,
         consents: [],
       );
-      final showCMPBridge = FakeShowCMPBridge(
+      final showFirstLayerBridge = FakeShowFirstLayerBridge(
         invokeAnswer: expectedResponse,
       );
       final instance = MethodChannelUsercentrics(
-        showCMPBridge: showCMPBridge,
+        showFirstLayerBridge: showFirstLayerBridge,
       );
       instance.isReadyCompleter = Completer();
       instance.isReadyCompleter?.complete();
 
-      const showCloseButton = true;
-      const customLogo = UsercentricsImage(assetPath: "assetPath");
-      const customFont =
+      const layout = UsercentricsLayout.sheet;
+      const settings = FirstLayerStyleSettings(cornerRadius: 100);
+      const logo = UsercentricsImage(assetPath: "assetPath");
+      const font =
           UsercentricsFont(fontAssetPath: "fontAssetPath", fontSize: 12);
 
-      final response = await instance.showCMP(
-        showCloseButton: showCloseButton,
-        customLogo: customLogo,
-        customFont: customFont,
+      final response = await instance.showFirstLayer(
+        layout: layout,
+        settings: settings,
+        logo: logo,
+        font: font,
       );
 
-      expect(showCMPBridge.invokeCount, 1);
-      expect(showCMPBridge.invokeChannelArgument?.name, "usercentrics");
-      expect(showCMPBridge.invokeShowCloseButtonArgument, showCloseButton);
-      expect(showCMPBridge.invokeCustomLogoArgument, customLogo);
-      expect(showCMPBridge.invokeCustomFontArgument, customFont);
+      expect(showFirstLayerBridge.invokeCount, 1);
+      expect(showFirstLayerBridge.invokeChannelArgument?.name, "usercentrics");
+      expect(showFirstLayerBridge.invokeLayoutArgument, layout);
+      expect(showFirstLayerBridge.invokeSettingsArgument, settings);
+      expect(showFirstLayerBridge.invokeLogoArgument, logo);
+      expect(showFirstLayerBridge.invokeFontArgument, font);
       expect(response, expectedResponse);
     });
 
@@ -170,7 +175,60 @@ void main() {
       instance.isReadyCompleter = null;
 
       expect(
-        () => instance.showCMP(),
+        () => instance.showFirstLayer(layout: UsercentricsLayout.sheet),
+        throwsA(const TypeMatcher<NotInitializedException>()),
+      );
+    });
+  });
+
+  group('showSecondLayer', () {
+    test('default', () {
+      final instance = MethodChannelUsercentrics();
+      expect(instance.showSecondLayerBridge,
+          const TypeMatcher<MethodChannelShowSecondLayer>());
+    });
+
+    test('success', () async {
+      const expectedResponse = UsercentricsConsentUserResponse(
+        controllerId: "ABC",
+        userInteraction: UsercentricsUserInteraction.acceptAll,
+        consents: [],
+      );
+      final showSecondLayerBridge = FakeShowSecondLayerBridge(
+        invokeAnswer: expectedResponse,
+      );
+      final instance = MethodChannelUsercentrics(
+        showSecondLayerBridge: showSecondLayerBridge,
+      );
+      instance.isReadyCompleter = Completer();
+      instance.isReadyCompleter?.complete();
+
+      const showCloseButton = true;
+      const logo = UsercentricsImage(assetPath: "assetPath");
+      const font =
+          UsercentricsFont(fontAssetPath: "fontAssetPath", fontSize: 12);
+
+      final response = await instance.showSecondLayer(
+        showCloseButton: showCloseButton,
+        logo: logo,
+        font: font,
+      );
+
+      expect(showSecondLayerBridge.invokeCount, 1);
+      expect(showSecondLayerBridge.invokeChannelArgument?.name, "usercentrics");
+      expect(
+          showSecondLayerBridge.invokeShowCloseButtonArgument, showCloseButton);
+      expect(showSecondLayerBridge.invokeLogoArgument, logo);
+      expect(showSecondLayerBridge.invokeFontArgument, font);
+      expect(response, expectedResponse);
+    });
+
+    test('when it is not ready', () {
+      final instance = MethodChannelUsercentrics();
+      instance.isReadyCompleter = null;
+
+      expect(
+        () => instance.showFirstLayer(layout: UsercentricsLayout.sheet),
         throwsA(const TypeMatcher<NotInitializedException>()),
       );
     });

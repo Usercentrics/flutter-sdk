@@ -1,11 +1,11 @@
 import 'package:flutter/src/services/platform_channel.dart';
 import 'package:usercentrics_sdk/src/internal/bridge/bridge.dart';
-import 'package:usercentrics_sdk/src/model/custom_font.dart';
-import 'package:usercentrics_sdk/src/model/custom_image.dart';
+import 'package:usercentrics_sdk/src/model/font.dart';
+import 'package:usercentrics_sdk/src/model/image.dart';
 import 'package:usercentrics_sdk/src/model/user_response.dart';
 
-class FakeShowCMPBridge extends ShowFirstLayerBridge {
-  FakeShowCMPBridge({
+class FakeShowSecondLayerBridge extends ShowSecondLayerBridge {
+  FakeShowSecondLayerBridge({
     this.invokeAnswer,
   });
 
@@ -13,20 +13,20 @@ class FakeShowCMPBridge extends ShowFirstLayerBridge {
   var invokeCount = 0;
   MethodChannel? invokeChannelArgument;
   bool? invokeShowCloseButtonArgument;
-  UsercentricsImage? invokeCustomLogoArgument;
-  UsercentricsFont? invokeCustomFontArgument;
+  UsercentricsImage? invokeLogoArgument;
+  UsercentricsFont? invokeFontArgument;
 
   @override
   Future<UsercentricsConsentUserResponse?> invoke({
     required MethodChannel channel,
-    bool? showCloseButton,
-    UsercentricsImage? customLogo,
-    UsercentricsFont? customFont,
+    required bool showCloseButton,
+    UsercentricsImage? logo,
+    UsercentricsFont? font,
   }) {
     invokeCount++;
     invokeShowCloseButtonArgument = showCloseButton;
-    invokeCustomFontArgument = customFont;
-    invokeCustomLogoArgument = customLogo;
+    invokeLogoArgument = logo;
+    invokeFontArgument = font;
     invokeChannelArgument = channel;
     return Future.value(invokeAnswer!);
   }

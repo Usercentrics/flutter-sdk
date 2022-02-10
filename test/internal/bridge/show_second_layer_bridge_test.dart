@@ -35,18 +35,20 @@ void main() {
   );
   const expectedArguments = {
     "showCloseButton": true,
-    "customLogo": "images/flutter-logo.png",
-    "customFont": {
-      "fontAssetPath": "fonts/Lora-VariableFont_wght.ttf",
-      "fontSize": 20,
-    },
+    "bannerSettings": {
+      "logo": "images/flutter-logo.png",
+      "font": {
+        "fontAssetPath": "fonts/Lora-VariableFont_wght.ttf",
+        "fontSize": 20,
+      },
+    }
   };
   const mockShowCloseButton = true;
-  const mockCustomFont = UsercentricsFont(
+  const mockFont = UsercentricsFont(
     fontAssetPath: "fonts/Lora-VariableFont_wght.ttf",
     fontSize: 20,
   );
-  const mockCustomLogo = UsercentricsImage(
+  const mockLogo = UsercentricsImage(
     assetPath: "images/flutter-logo.png",
   );
 
@@ -65,17 +67,17 @@ void main() {
       receivedCall = methodCall;
       return mockResponse;
     });
-    const instance = MethodChannelShowFirstLayer();
+    const instance = MethodChannelShowSecondLayer();
 
     final result = await instance.invoke(
       channel: channel,
       showCloseButton: mockShowCloseButton,
-      customFont: mockCustomFont,
-      customLogo: mockCustomLogo,
+      font: mockFont,
+      logo: mockLogo,
     );
 
     expect(callCounter, 1);
-    expect(receivedCall?.method, 'showCMP');
+    expect(receivedCall?.method, 'showSecondLayer');
     expect(receivedCall?.arguments, expectedArguments);
     expect(result, expectedResult);
   });

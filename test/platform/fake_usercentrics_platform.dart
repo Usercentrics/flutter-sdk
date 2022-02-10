@@ -1,8 +1,10 @@
 import 'package:usercentrics_sdk/src/model/ccpa_data.dart';
 import 'package:usercentrics_sdk/src/model/cmp_data.dart';
 import 'package:usercentrics_sdk/src/model/consent_type.dart';
-import 'package:usercentrics_sdk/src/model/custom_font.dart';
-import 'package:usercentrics_sdk/src/model/custom_image.dart';
+import 'package:usercentrics_sdk/src/model/first_layer_style_settings.dart';
+import 'package:usercentrics_sdk/src/model/font.dart';
+import 'package:usercentrics_sdk/src/model/image.dart';
+import 'package:usercentrics_sdk/src/model/layout.dart';
 import 'package:usercentrics_sdk/src/model/logger_level.dart';
 import 'package:usercentrics_sdk/src/model/ready_status.dart';
 import 'package:usercentrics_sdk/src/model/service_consent.dart';
@@ -19,7 +21,8 @@ class FakeUsercentricsPlatform extends UsercentricsPlatform {
     this.controllerIdAnswer,
     this.tcStringAnswer,
     this.restoreUserSessionAnswer,
-    this.showCMPAnswer,
+    this.showFirstLayerAnswer,
+    this.showSecondLayerAnswer,
     this.statusAnswer,
     this.cmpDataAnswer,
     this.acceptAllAnswer,
@@ -104,23 +107,45 @@ class FakeUsercentricsPlatform extends UsercentricsPlatform {
     return Future.value(restoreUserSessionAnswer!);
   }
 
-  final UsercentricsConsentUserResponse? showCMPAnswer;
-  var showCMPCount = 0;
-  bool? showCMPshowCloseButtonArgument;
-  UsercentricsImage? showCMPcustomLogoArgument;
-  UsercentricsFont? showCMPcustomFontArgument;
+  final UsercentricsConsentUserResponse? showFirstLayerAnswer;
+  var showFirstLayerCount = 0;
+  UsercentricsLayout? showFirstLayerLayoutArgument;
+  UsercentricsImage? showFirstLayerLogoArgument;
+  UsercentricsFont? showFirstLayerFontArgument;
+  FirstLayerStyleSettings? showFirstLayerSettingsArgument;
 
   @override
-  Future<UsercentricsConsentUserResponse?> showCMP({
-    bool? showCloseButton,
-    UsercentricsImage? customLogo,
-    UsercentricsFont? customFont,
+  Future<UsercentricsConsentUserResponse?> showFirstLayer({
+    required UsercentricsLayout layout,
+    UsercentricsImage? logo,
+    UsercentricsFont? font,
+    FirstLayerStyleSettings? settings,
   }) {
-    showCMPCount++;
-    showCMPshowCloseButtonArgument = showCloseButton;
-    showCMPcustomLogoArgument = customLogo;
-    showCMPcustomFontArgument = customFont;
-    return Future.value(showCMPAnswer!);
+    showFirstLayerCount++;
+    showFirstLayerLayoutArgument = layout;
+    showFirstLayerLogoArgument = logo;
+    showFirstLayerFontArgument = font;
+    showFirstLayerSettingsArgument = settings;
+    return Future.value(showFirstLayerAnswer!);
+  }
+
+  final UsercentricsConsentUserResponse? showSecondLayerAnswer;
+  var showSecondLayerCount = 0;
+  UsercentricsImage? showSecondLayerLogoArgument;
+  UsercentricsFont? showSecondLayerFontArgument;
+  bool? showSecondLayerShowCloseButtonArgument;
+
+  @override
+  Future<UsercentricsConsentUserResponse?> showSecondLayer({
+    required bool showCloseButton,
+    UsercentricsImage? logo,
+    UsercentricsFont? font,
+  }) {
+    showSecondLayerCount++;
+    showSecondLayerLogoArgument = logo;
+    showSecondLayerFontArgument = font;
+    showSecondLayerShowCloseButtonArgument = showCloseButton;
+    return Future.value(showSecondLayerAnswer!);
   }
 
   final UsercentricsReadyStatus? statusAnswer;
