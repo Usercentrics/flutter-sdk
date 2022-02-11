@@ -8,6 +8,18 @@ extension UsercentricsServiceConsent {
             "type": self.type?.name as Any,
             "version": self.version,
             "dataProcessor": self.dataProcessor,
+            "isEssential": self.isEssential,
+            "history": self.history.map { $0.serialize() },
+        ]
+    }
+}
+
+extension UsercentricsConsentHistoryEntry {
+    func serialize() -> Any {
+        return [
+            "status": self.status,
+            "timestampInMillis": self.timestampInMillis,
+            "type": self.type.name as Any,
         ]
     }
 }

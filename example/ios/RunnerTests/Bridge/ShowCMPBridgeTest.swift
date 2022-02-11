@@ -12,7 +12,7 @@ class ShowCMPBridgeTest: XCTestCase, BaseBridgeTestProtocol {
 
     override func setUp() {
         usercentrics = FakeUsercentricsProxy()
-        bridge = ShowCMPBridge(assetProvider: FakeFlutterAssetProvider())
+        bridge = ShowFirstLayerBridge(assetProvider: FakeFlutterAssetProvider())
         super.setUp()
     }
 

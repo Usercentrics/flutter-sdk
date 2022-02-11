@@ -23,7 +23,7 @@ public class SwiftUsercentricsPlugin: NSObject, FlutterPlugin {
             InitializeBridge(usercentrics: usercentrics),
             IsReadyBridge(usercentrics: usercentrics),
             ResetBridge(usercentrics: usercentrics),
-            ShowCMPBridge(assetProvider: assetProvider),
+            ShowFirstLayerBridge(assetProvider: assetProvider),
             GetControllerIdBridge(usercentrics: usercentrics),
             GetConsentsBridge(usercentrics: usercentrics),
             GetTCStringBridge(usercentrics: usercentrics),

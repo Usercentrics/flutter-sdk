@@ -5,7 +5,7 @@ extension UsercentricsConsentUserResponse {
         return [
             "controllerId": self.controllerId,
             "userInteraction": self.userInteraction.serialize(),
-            "consents": self.consents.map { $0.serialize() }
+            "consents": self.consents.map { $0.serialize() },
         ]
     }
 }
