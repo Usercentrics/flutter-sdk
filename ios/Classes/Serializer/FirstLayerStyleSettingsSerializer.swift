@@ -26,7 +26,7 @@ extension HeaderImageSettings {
 
         guard
             let logoValue = dict["image"] as? String,
-                let logo = UIImage(from: logoValue, assetProvider: assetProvider)
+            let logo = UIImage(from: logoValue, assetProvider: assetProvider)
         else { return nil }
 
         if let isExtended = dict["isExtended"] as? Bool, isExtended {
@@ -62,11 +62,18 @@ extension MessageSettings {
                                      fontSizeValue: dict["textSize"] as? CGFloat,
                                      assetProvider: assetProvider)
 
-        self.init(font: font,
-                  textColor: UIColor(unsafeHex: dict["textColor"] as? String ?? ""),
-                  textAlignment: NSTextAlignment.from(enumString: dict["alignment"] as? String),
-                  linkTextColor: UIColor(unsafeHex: dict["linkTextColor"] as? String ?? ""),
-                  linkTextUnderline: false) // TODO
+        if let linkTextUnderline = dict["linkTextUnderline"] as? Bool {
+            self.init(font: font,
+                      textColor: UIColor(unsafeHex: dict["textColor"] as? String ?? ""),
+                      textAlignment: NSTextAlignment.from(enumString: dict["alignment"] as? String),
+                      linkTextColor: UIColor(unsafeHex: dict["linkTextColor"] as? String ?? ""),
+                      linkTextUnderline: linkTextUnderline)
+        } else {
+            self.init(font: font,
+                      textColor: UIColor(unsafeHex: dict["textColor"] as? String ?? ""),
+                      textAlignment: NSTextAlignment.from(enumString: dict["alignment"] as? String),
+                      linkTextColor: UIColor(unsafeHex: dict["linkTextColor"] as? String ?? ""))
+        }
     }
 }
 

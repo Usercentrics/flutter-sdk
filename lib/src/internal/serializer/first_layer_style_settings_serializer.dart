@@ -48,6 +48,7 @@ class FirstLayerStyleSettingsSerializer {
             'fontAssetPath': value.fontAssetPath,
             'textColor': _serializeColor(value.textColor),
             'linkTextColor': _serializeColor(value.linkTextColor),
+            'linkTextUnderline': value.linkTextUnderline,
             'textSize': value.textSize,
           };
   }

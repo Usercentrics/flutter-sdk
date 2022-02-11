@@ -19,6 +19,7 @@ final firstLayerCustomizationExample1 = FirstLayerStyleSettings(
     textSize: 16,
     textColor: Colors.black54,
     linkTextColor: Colors.black,
+    linkTextUnderline: true,
   ),
   cornerRadius: 50,
   buttonLayout: ButtonLayout.row(buttons: [

@@ -98,6 +98,7 @@ internal fun Any?.deserializeMessageSettings(
         font = this["fontAssetPath"].deserializeTypeface(assetsProvider, activityProvider),
         textColor = (this["textColor"] as? String)?.deserializeColor(),
         linkTextColor = (this["linkTextColor"] as? String)?.deserializeColor(),
+        underlineLink = this["linkTextUnderline"] as? Boolean,
         textSizeInSp = (this["textSize"] as? Number)?.toFloat(),
     )
 }

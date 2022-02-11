@@ -194,6 +194,7 @@ class MessageSettings {
     this.fontAssetPath,
     this.textColor,
     this.linkTextColor,
+    this.linkTextUnderline,
     this.textSize,
   });
 
@@ -209,6 +210,9 @@ class MessageSettings {
   /// The link color.
   final Color? linkTextColor;
 
+  /// True if links should be underlined, False if not.
+  final bool? linkTextUnderline;
+
   /// The text size.
   final double? textSize;
 
@@ -221,6 +225,7 @@ class MessageSettings {
           fontAssetPath == other.fontAssetPath &&
           textColor == other.textColor &&
           linkTextColor == other.linkTextColor &&
+          linkTextUnderline == other.linkTextUnderline &&
           textSize == other.textSize;
 
   @override
@@ -229,6 +234,7 @@ class MessageSettings {
       fontAssetPath.hashCode +
       textColor.hashCode +
       linkTextColor.hashCode +
+      linkTextUnderline.hashCode +
       textSize.hashCode;
 
   @override

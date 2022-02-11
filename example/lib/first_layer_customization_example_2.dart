@@ -18,6 +18,7 @@ final firstLayerCustomizationExample2 = FirstLayerStyleSettings(
     textSize: 14,
     textColor: Colors.white60,
     linkTextColor: Colors.white,
+    linkTextUnderline: false,
   ),
   buttonLayout: ButtonLayout.column(buttons: [
     const ButtonSettings(
