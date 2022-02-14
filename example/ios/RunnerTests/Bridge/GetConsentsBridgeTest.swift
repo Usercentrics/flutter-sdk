@@ -31,39 +31,42 @@ class GetConsentsBridgeTest: XCTestCase, BaseBridgeTestProtocol {
     func testInvoke() {
         let data = UsercentricsServiceConsent(templateId: "ABC",
                                               status: false,
+                                              history: [
+                                                UsercentricsConsentHistoryEntry(status: true, type: .explicit_, timestampInMillis: 123)
+                                              ],
                                               type: .explicit_,
                                               dataProcessor: "TheProcessor",
-                                              version: "1.3.4")
+                                              version: "1.3.4",
+                                              isEssential: true)
 
         usercentrics.getConsentsData = [data]
 
         let expectation =  XCTestExpectation(description: "resultCompletion")
         let resultCompletion: FlutterResult = { result in
+
             guard
-                let result = result as? [[String: Any]],
-                let firstResultElement = result.first,
-                !firstResultElement.isEmpty
+                let consentsMap = result as? [[String: Any]],
+                let consent = consentsMap.first
             else {
                 XCTFail()
                 return
             }
 
-            let expectedResult = [
-                "templateId": data.templateId,
-                "status": data.status,
-                "type": data.type?.name as Any,
-                "version": data.version,
-                "dataProcessor": data.dataProcessor,
-            ]
+            XCTAssertEqual(consentsMap.count, 1)
+            XCTAssertEqual(consent["version"] as! String, "1.3.4")
+            XCTAssertEqual(consent["dataProcessor"] as! String, "TheProcessor")
+            XCTAssertEqual(consent["templateId"] as! String, "ABC")
+            let historyMap = consent["history"] as? [[String: Any]]
+            XCTAssertEqual(historyMap?.count, 1)
+            let historyEntry = historyMap!.first!
+            XCTAssertEqual(historyEntry["status"] as! Bool, true)
+            XCTAssertEqual(historyEntry["type"] as! String, "EXPLICIT")
+            XCTAssertEqual(historyEntry["timestampInMillis"] as! Int64, 123)
+            XCTAssertEqual(consent["type"] as! String, "EXPLICIT")
+            XCTAssertEqual(consent["status"] as! Bool, false)
+            XCTAssertEqual(consent["isEssential"] as! Bool, true)
 
-            firstResultElement.forEach { key, value in
-                guard let element = expectedResult[key] else {
-                    XCTFail()
-                    return
-                }
-
-                XCTAssertEqual(String(describing: element), String(describing: value))
-            }
+            XCTAssertEqual(self.usercentrics.getConsentsDataCount, 1)
 
             expectation.fulfill()
         }

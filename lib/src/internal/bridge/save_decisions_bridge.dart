@@ -3,7 +3,6 @@ import 'package:usercentrics_sdk/src/internal/serializer/consent_serializer.dart
 import 'package:usercentrics_sdk/src/internal/serializer/consent_type_serializer.dart';
 import 'package:usercentrics_sdk/src/internal/serializer/user_decision_serializer.dart';
 import 'package:usercentrics_sdk/src/model/model.dart';
-import 'package:usercentrics_sdk/src/model/user_decision.dart';
 
 abstract class SaveDecisionsBridge {
   const SaveDecisionsBridge();

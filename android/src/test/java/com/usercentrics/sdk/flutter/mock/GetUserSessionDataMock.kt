@@ -2,9 +2,9 @@ package com.usercentrics.sdk.flutter.mock
 
 import com.usercentrics.sdk.flutter.api.FakeFlutterMethodCall
 
-internal class GetUserSessionDataMock {
-    companion object {
-        const val fake = """
+internal object GetUserSessionDataMock {
+
+    const val fake = """
             {
   "consents": [
     {
@@ -41,8 +41,8 @@ internal class GetUserSessionDataMock {
 }
         """
 
-        // From the debugger
-        val call = FakeFlutterMethodCall(method = "getUserSessionData", arguments = null)
-        const val expected = fake
-    }
+    // From the debugger
+    val call = FakeFlutterMethodCall(method = "getUserSessionData", arguments = null)
+    const val expected = fake
+
 }

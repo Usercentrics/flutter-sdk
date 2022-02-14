@@ -43,14 +43,6 @@ class FakeUsercentrics extends UsercentricsPlatform {
   }
 
   @override
-  Future<UsercentricsConsentUserResponse?> showCMP(
-      {bool? showCloseButton,
-      UsercentricsImage? customLogo,
-      UsercentricsFont? customFont}) {
-    throw UnimplementedError();
-  }
-
-  @override
   Future<UsercentricsReadyStatus> get status => throw UnimplementedError();
 
   @override
@@ -132,4 +124,23 @@ class FakeUsercentrics extends UsercentricsPlatform {
 
   @override
   Future<String> get userSessionData => throw UnimplementedError();
+
+  @override
+  Future<UsercentricsConsentUserResponse?> showFirstLayer({
+    required UsercentricsLayout layout,
+    UsercentricsImage? logo,
+    UsercentricsFont? font,
+    FirstLayerStyleSettings? settings,
+  }) {
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<UsercentricsConsentUserResponse?> showSecondLayer({
+    required bool showCloseButton,
+    UsercentricsImage? logo,
+    UsercentricsFont? font,
+  }) {
+    throw UnimplementedError();
+  }
 }

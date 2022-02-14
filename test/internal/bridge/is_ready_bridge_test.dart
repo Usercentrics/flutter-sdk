@@ -14,6 +14,14 @@ void main() {
         "type": "EXPLICIT",
         "version": "10.4.5",
         "dataProcessor": "Facebook Connect",
+        "isEssential": true,
+        "history": [
+          {
+            "status": true,
+            "timestampInMillis": 123,
+            "type": "EXPLICIT",
+          }
+        ]
       },
     ],
   };
@@ -26,6 +34,14 @@ void main() {
         dataProcessor: "Facebook Connect",
         version: "10.4.5",
         type: UsercentricsConsentType.explicit,
+        isEssential: true,
+        history: [
+          UsercentricsConsentHistoryEntry(
+            status: true,
+            timestampInMillis: 123,
+            type: UsercentricsConsentType.explicit,
+          )
+        ],
       ),
     ],
   );

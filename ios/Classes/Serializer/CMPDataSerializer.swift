@@ -21,7 +21,7 @@ extension UsercentricsSettings {
             "displayOnlyForEU" : self.displayOnlyForEU,
             "urlConsentInfo" : self.urlConsentInfo,
             "updatedAt" : self.updatedAt as Any,
-            "secondLayer" : self.secondLayer?.serialize() as Any,
+            "secondLayer" : self.secondLayer.serialize() as Any,
             "cookiePolicyUrl" : self.cookiePolicyUrl as Any,
             "tcf2" : self.tcf2?.serialize() as Any,
             "ccpa" : self.ccpa?.serialize() as Any,

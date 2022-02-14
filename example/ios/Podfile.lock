@@ -1,11 +1,11 @@
 PODS:
   - Flutter (1.0.0)
-  - Usercentrics (2.0.3)
-  - usercentrics_sdk (2.0.3):
+  - Usercentrics (2.2.1)
+  - usercentrics_sdk (2.2.1):
     - Flutter
-    - UsercentricsUI (= 2.0.3)
-  - UsercentricsUI (2.0.3):
-    - Usercentrics (= 2.0.3)
+    - UsercentricsUI (= 2.2.1)
+  - UsercentricsUI (2.2.1):
+    - Usercentrics (= 2.2.1)
 
 DEPENDENCIES:
   - Flutter (from `Flutter`)
@@ -24,9 +24,9 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Flutter: 50d75fe2f02b26cc09d224853bb45737f8b3214a
-  Usercentrics: 81317f8dd028f1d6220df01940e61f56444983ea
-  usercentrics_sdk: 95064966c4011949e029b6f36f7811153acdac23
-  UsercentricsUI: c4d4fb48888daf1b4862f7d4b716eefb51dc7886
+  Usercentrics: b7a933733e4ddbee50ca4579487e8c599113ba04
+  usercentrics_sdk: 7d2850a2ac0400d08612dd5a3393c43acaad2667
+  UsercentricsUI: b9baf7fb1cee7d184563cddefb3e500921c2cbeb
 
 PODFILE CHECKSUM: 723de1cf6e2f18b51eb3426c945e31134a750097
 

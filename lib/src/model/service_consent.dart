@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:usercentrics_sdk/src/model/consent_type.dart';
 
 /// The current status of a service.
@@ -8,6 +9,8 @@ class UsercentricsServiceConsent {
     required this.dataProcessor,
     required this.version,
     required this.type,
+    required this.isEssential,
+    required this.history,
   });
 
   /// A unique ID that represents the legal specifications of the service.
@@ -25,6 +28,12 @@ class UsercentricsServiceConsent {
   /// The type of the current consent status. E.g. 'Explicit'.
   final UsercentricsConsentType? type;
 
+  /// True if the service is essential, False if not.
+  final bool isEssential;
+
+  /// The consent history chronologically ordered.
+  final List<UsercentricsConsentHistoryEntry> history;
+
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
@@ -34,6 +43,8 @@ class UsercentricsServiceConsent {
           status == other.status &&
           dataProcessor == other.dataProcessor &&
           version == other.version &&
+          isEssential == other.isEssential &&
+          listEquals(history, other.history) &&
           type == other.type;
 
   @override
@@ -42,9 +53,46 @@ class UsercentricsServiceConsent {
       status.hashCode +
       dataProcessor.hashCode +
       version.hashCode +
+      isEssential.hashCode +
+      history.hashCode +
       type.hashCode;
 
   @override
   String toString() =>
-      "$UsercentricsServiceConsent(templateId: $templateId, status: $status, dataProcessor: $dataProcessor, version: $version, type: $type)";
+      "$UsercentricsServiceConsent(templateId: $templateId, status: $status, dataProcessor: $dataProcessor, version: $version, type: $type, isEssential: $isEssential)";
+}
+
+/// The consent history entry
+class UsercentricsConsentHistoryEntry {
+  const UsercentricsConsentHistoryEntry({
+    required this.status,
+    required this.timestampInMillis,
+    required this.type,
+  });
+
+  /// True if consent was given, False if not.
+  final bool status;
+
+  /// The UNIX timestamp in millisecons of the consent.
+  final int timestampInMillis;
+
+  /// The type of the current consent status. E.g. 'Explicit'.
+  final UsercentricsConsentType? type;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is UsercentricsConsentHistoryEntry &&
+          runtimeType == other.runtimeType &&
+          status == other.status &&
+          timestampInMillis == other.timestampInMillis &&
+          type == other.type;
+
+  @override
+  int get hashCode =>
+      status.hashCode + timestampInMillis.hashCode + type.hashCode;
+
+  @override
+  String toString() =>
+      "$UsercentricsConsentHistoryEntry(status: $status, timestampInMillis: $timestampInMillis, type: $type)";
 }

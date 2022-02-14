@@ -58,32 +58,66 @@ void main() {
     expect(result, expectedStatus);
   });
 
-  test('showCMP', () async {
+  test('showFirstLayer', () async {
     const expectedResponse = UsercentricsConsentUserResponse(
       controllerId: "abc",
       userInteraction: UsercentricsUserInteraction.acceptAll,
       consents: [],
     );
-    final delegate = FakeUsercentricsPlatform(showCMPAnswer: expectedResponse);
+    final delegate =
+        FakeUsercentricsPlatform(showFirstLayerAnswer: expectedResponse);
     Usercentrics.delegatePackingProperty = delegate;
 
-    const showCloseButton = true;
-    const customLogo = UsercentricsImage(assetPath: "asset/logo.png");
-    const customFont = UsercentricsFont(
+    const layout = UsercentricsLayout.sheet;
+    const settings = FirstLayerStyleSettings(cornerRadius: 100);
+    const logo = UsercentricsImage(assetPath: "asset/logo.png");
+    const font = UsercentricsFont(
       fontAssetPath: "asset/font.ttf",
       fontSize: 20,
     );
 
-    final result = await Usercentrics.showCMP(
-      showCloseButton: showCloseButton,
-      customLogo: customLogo,
-      customFont: customFont,
+    final result = await Usercentrics.showFirstLayer(
+      layout: layout,
+      settings: settings,
+      logo: logo,
+      font: font,
     );
 
-    expect(delegate.showCMPCount, 1);
-    expect(delegate.showCMPcustomFontArgument, customFont);
-    expect(delegate.showCMPcustomLogoArgument, customLogo);
-    expect(delegate.showCMPshowCloseButtonArgument, showCloseButton);
+    expect(delegate.showFirstLayerCount, 1);
+    expect(delegate.showFirstLayerLayoutArgument, layout);
+    expect(delegate.showFirstLayerFontArgument, font);
+    expect(delegate.showFirstLayerLogoArgument, logo);
+    expect(delegate.showFirstLayerSettingsArgument, settings);
+    expect(result, expectedResponse);
+  });
+
+  test('showSecondLayer', () async {
+    const expectedResponse = UsercentricsConsentUserResponse(
+      controllerId: "abc",
+      userInteraction: UsercentricsUserInteraction.acceptAll,
+      consents: [],
+    );
+    final delegate =
+        FakeUsercentricsPlatform(showSecondLayerAnswer: expectedResponse);
+    Usercentrics.delegatePackingProperty = delegate;
+
+    const showCloseButton = true;
+    const logo = UsercentricsImage(assetPath: "asset/logo.png");
+    const font = UsercentricsFont(
+      fontAssetPath: "asset/font.ttf",
+      fontSize: 20,
+    );
+
+    final result = await Usercentrics.showSecondLayer(
+      showCloseButton: showCloseButton,
+      logo: logo,
+      font: font,
+    );
+
+    expect(delegate.showSecondLayerCount, 1);
+    expect(delegate.showSecondLayerFontArgument, font);
+    expect(delegate.showSecondLayerLogoArgument, logo);
+    expect(delegate.showSecondLayerShowCloseButtonArgument, showCloseButton);
     expect(result, expectedResponse);
   });
 

@@ -26,9 +26,9 @@ internal object UsercentricsProxySingleton : UsercentricsProxy {
         get() = Usercentrics.instance
 
     override fun initialize(context: Context?, options: UsercentricsOptions) {
-        if (context != null) {
-            Usercentrics.initialize(context, options)
-        }
+        context ?: return
+
+        Usercentrics.initialize(context, options)
     }
 
     override fun isReady(

@@ -18,10 +18,17 @@ abstract class UsercentricsPlatform {
 
   Future<UsercentricsReadyStatus> get status;
 
-  Future<UsercentricsConsentUserResponse?> showCMP({
-    bool? showCloseButton,
-    UsercentricsImage? customLogo,
-    UsercentricsFont? customFont,
+  Future<UsercentricsConsentUserResponse?> showFirstLayer({
+    required UsercentricsLayout layout,
+    UsercentricsImage? logo,
+    UsercentricsFont? font,
+    FirstLayerStyleSettings? settings,
+  });
+
+  Future<UsercentricsConsentUserResponse?> showSecondLayer({
+    required bool showCloseButton,
+    UsercentricsImage? logo,
+    UsercentricsFont? font,
   });
 
   Future<List<UsercentricsServiceConsent>> get consents;

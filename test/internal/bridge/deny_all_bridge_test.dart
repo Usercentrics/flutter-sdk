@@ -12,7 +12,15 @@ void main() {
       "status": true,
       "type": "EXPLICIT",
       "version": "10.4.5",
-      "dataProcessor": "Facebook Connect"
+      "dataProcessor": "Facebook Connect",
+      "isEssential": true,
+      "history": [
+        {
+          "status": true,
+          "timestampInMillis": 123,
+          "type": "EXPLICIT",
+        }
+      ]
     },
   ];
   const expectedResult = [
@@ -22,6 +30,14 @@ void main() {
       dataProcessor: "Facebook Connect",
       version: "10.4.5",
       type: UsercentricsConsentType.explicit,
+      isEssential: true,
+      history: [
+        UsercentricsConsentHistoryEntry(
+          status: true,
+          timestampInMillis: 123,
+          type: UsercentricsConsentType.explicit,
+        )
+      ],
     )
   ];
   const mockConsentType = UsercentricsConsentType.explicit;

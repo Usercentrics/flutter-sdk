@@ -1,12 +1,11 @@
 package com.usercentrics.sdk.flutter
 
 import android.app.Activity
-import android.content.Intent
 import androidx.annotation.NonNull
 import com.usercentrics.sdk.flutter.api.FlutterActivityProvider
 import com.usercentrics.sdk.flutter.api.FlutterAssetsProvider
 import com.usercentrics.sdk.flutter.api.FlutterMethodCallWrapper
-import com.usercentrics.sdk.flutter.api.ResultAwareMethod
+import com.usercentrics.sdk.flutter.api.UsercentricsBannerProxyImpl
 import com.usercentrics.sdk.flutter.bridge.*
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.embedding.engine.plugins.FlutterPlugin.FlutterAssets
@@ -16,13 +15,11 @@ import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
 import io.flutter.plugin.common.MethodChannel.Result
-import io.flutter.plugin.common.PluginRegistry
 
 /** UsercentricsPlugin */
 class UsercentricsPlugin : FlutterPlugin,
     MethodCallHandler,
     ActivityAware,
-    PluginRegistry.ActivityResultListener,
     FlutterActivityProvider,
     FlutterAssetsProvider {
 
@@ -37,9 +34,15 @@ class UsercentricsPlugin : FlutterPlugin,
             ),
             ResetBridge(),
             IsReadyBridge(),
-            ShowCMPBridge(
+            ShowFirstLayerBridge(
                 assetsProvider = this,
-                activityProvider = this
+                activityProvider = this,
+                bannerProxy = UsercentricsBannerProxyImpl(this),
+            ),
+            ShowSecondLayerBridge(
+                assetsProvider = this,
+                activityProvider = this,
+                bannerProxy = UsercentricsBannerProxyImpl(this),
             ),
             GetConsentsBridge(),
             GetControllerIdBridge(),
@@ -72,19 +75,10 @@ class UsercentricsPlugin : FlutterPlugin,
         }.onFailure {
             result.error(
                 "usercentrics_flutter_error",
-                "A fatal error has occurred: ${it.message}",
+                "An error has occurred: ${it.message}",
                 it
             )
         }
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?): Boolean {
-        methods.values.mapNotNull { it as? ResultAwareMethod }.forEach {
-            if (it.onActivityResult(requestCode, resultCode, data)) {
-                return@onActivityResult true
-            }
-        }
-        return false
     }
 
     override fun provide(): Activity? = activityBinding?.activity
@@ -105,13 +99,10 @@ class UsercentricsPlugin : FlutterPlugin,
     }
 
     override fun onAttachedToActivity(activityBinding: ActivityPluginBinding) {
-        this.activityBinding = activityBinding.apply {
-            addActivityResultListener(this@UsercentricsPlugin)
-        }
+        this.activityBinding = activityBinding
     }
 
     override fun onDetachedFromActivity() {
-        this.activityBinding?.removeActivityResultListener(this@UsercentricsPlugin)
         this.activityBinding = null
     }
 
