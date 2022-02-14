@@ -14,8 +14,23 @@ internal class InitializeBridge(
     override fun invoke(call: FlutterMethodCall, result: FlutterResult) {
         assert(name == call.method)
 
-        val options = call.arguments.deserializeOptions()
-        usercentrics.initialize(activityProvider.provide()?.applicationContext, options)
+        // Avoid the Already Initialized Runtime Exception
+        // because it messes with the Hot Reload Flutter System
+        // (Dart VM restart and the JVM don't)
+        val alreadyInitialized = runCatching {
+            var isReadyInvoked = false
+            usercentrics.isReady({
+                isReadyInvoked = true
+            }, {
+                isReadyInvoked = true
+            })
+            isReadyInvoked
+        }.getOrElse { false }
+
+        if (!alreadyInitialized) {
+            val options = call.arguments.deserializeOptions()
+            usercentrics.initialize(activityProvider.provide()?.applicationContext, options)
+        }
 
         result.success(null)
     }

@@ -75,7 +75,7 @@ class UsercentricsPlugin : FlutterPlugin,
         }.onFailure {
             result.error(
                 "usercentrics_flutter_error",
-                "A fatal error has occurred: ${it.message}",
+                "An error has occurred: ${it.message}",
                 it
             )
         }
