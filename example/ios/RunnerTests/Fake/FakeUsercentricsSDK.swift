@@ -5,8 +5,10 @@ import Foundation
 final class FakeUsercentricsSDK: UsercentricsSDK {
 
     var getConsentsData: [UsercentricsServiceConsent]?
+    var getConsentsDataCount = 0
 
     override func getConsents() -> [UsercentricsServiceConsent] {
+        getConsentsDataCount += 1
         return getConsentsData!
     }
 
