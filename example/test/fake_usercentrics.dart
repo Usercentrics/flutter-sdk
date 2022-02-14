@@ -132,4 +132,23 @@ class FakeUsercentrics extends UsercentricsPlatform {
 
   @override
   Future<String> get userSessionData => throw UnimplementedError();
+
+  @override
+  Future<UsercentricsConsentUserResponse?> showFirstLayer({
+    required UsercentricsLayout layout,
+    UsercentricsImage? logo,
+    UsercentricsFont? font,
+    FirstLayerStyleSettings? settings,
+  }) {
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<UsercentricsConsentUserResponse?> showSecondLayer({
+    required bool showCloseButton,
+    UsercentricsImage? logo,
+    UsercentricsFont? font,
+  }) {
+    throw UnimplementedError();
+  }
 }
