@@ -4,8 +4,6 @@ import 'package:usercentrics_sdk/src/internal/serializer/consent_type_serializer
 import 'package:usercentrics_sdk/src/internal/serializer/tcf_decision_ui_layer_serializer.dart';
 import 'package:usercentrics_sdk/src/internal/serializer/user_decision_serializer.dart';
 import 'package:usercentrics_sdk/src/model/model.dart';
-import 'package:usercentrics_sdk/src/model/tcf_decision_ui_layer.dart';
-import 'package:usercentrics_sdk/src/model/user_decision.dart';
 
 abstract class SaveDecisionsForTCFBridge {
   const SaveDecisionsForTCFBridge();

@@ -43,14 +43,6 @@ class FakeUsercentrics extends UsercentricsPlatform {
   }
 
   @override
-  Future<UsercentricsConsentUserResponse?> showCMP(
-      {bool? showCloseButton,
-      UsercentricsImage? customLogo,
-      UsercentricsFont? customFont}) {
-    throw UnimplementedError();
-  }
-
-  @override
   Future<UsercentricsReadyStatus> get status => throw UnimplementedError();
 
   @override

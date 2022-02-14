@@ -3,7 +3,6 @@ import 'package:usercentrics_sdk/src/internal/serializer/consent_serializer.dart
 import 'package:usercentrics_sdk/src/internal/serializer/consent_type_serializer.dart';
 import 'package:usercentrics_sdk/src/internal/serializer/tcf_decision_ui_layer_serializer.dart';
 import 'package:usercentrics_sdk/src/model/model.dart';
-import 'package:usercentrics_sdk/src/model/tcf_decision_ui_layer.dart';
 
 abstract class AcceptAllForTCFBridge {
   const AcceptAllForTCFBridge();

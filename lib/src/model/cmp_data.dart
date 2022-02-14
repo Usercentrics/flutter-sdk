@@ -1,9 +1,5 @@
 import 'package:flutter/foundation.dart';
-import 'package:usercentrics_sdk/src/model/category.dart';
-import 'package:usercentrics_sdk/src/model/location.dart';
 import 'package:usercentrics_sdk/src/model/model.dart';
-import 'package:usercentrics_sdk/src/model/service.dart';
-import 'package:usercentrics_sdk/src/model/variant.dart';
 
 /// The CMP data.
 class UsercentricsCMPData {
