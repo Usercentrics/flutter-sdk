@@ -73,6 +73,7 @@ const expectedArguments = {
       'fontAssetPath': null,
       'textColor': '#8a000000',
       'linkTextColor': '#ff000000',
+      'linkTextUnderline': false,
       'textSize': 16.0
     },
     'buttonLayout': [
@@ -128,6 +129,7 @@ final mockSettings = FirstLayerStyleSettings(
     textSize: 16,
     textColor: Colors.black54,
     linkTextColor: Colors.black,
+    linkTextUnderline: false,
   ),
   cornerRadius: 50,
   buttonLayout: ButtonLayout.row(buttons: [

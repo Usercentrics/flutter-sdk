@@ -23,6 +23,7 @@ internal object ShowFirstLayerMock {
                 "message" to mapOf(
                     "alignment" to "CENTER",
                     "textSize" to 16,
+                    "linkTextUnderline" to true,
                 ),
                 "buttonLayout" to listOf(
                     listOf(
@@ -50,6 +51,7 @@ internal object ShowFirstLayerMock {
         message = MessageSettings(
             alignment = SectionAlignment.CENTER,
             textSizeInSp = 16f,
+            underlineLink = true,
         ),
         buttonLayout = ButtonLayout.Grid(
             listOf(

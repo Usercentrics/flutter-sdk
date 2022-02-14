@@ -4,7 +4,6 @@ import com.usercentrics.sdk.PopupPosition
 import com.usercentrics.sdk.UsercentricsLayout
 import com.usercentrics.sdk.flutter.api.*
 import com.usercentrics.sdk.flutter.mock.ShowFirstLayerMock
-import com.usercentrics.sdk.flutter.mock.ShowSecondLayerMock
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertThrows
 import org.junit.Test
