@@ -15,36 +15,15 @@ protocol UsercentricsBannerProxyProtocol {
 
 struct UsercentricsBannerProxy: UsercentricsBannerProxyProtocol {
 
-    func createNavigationController() -> UINavigationController {
-        let flutterVC = UIApplication.shared.delegate?.window??.rootViewController as? FlutterViewController
-
-        let nav = UINavigationController()
-        nav.setNavigationBarHidden(true, animated: false)
-        nav.modalPresentationStyle = .overFullScreen
-        if #available(iOS 13.0, *) {
-            nav.isModalInPresentation = true
-        }
-        flutterVC?.present(nav, animated: false)
-
-        return nav
-    }
-
-    func dismissNavigationController() {
-        let flutterVC = UIApplication.shared.delegate?.window??.rootViewController as? FlutterViewController
-
-        flutterVC?.dismiss(animated: false)
-    }
-
     func showFirstLayer(bannerSettings: BannerSettings?,
                         layout: UsercentricsLayout,
                         settings: FirstLayerStyleSettings?,
                         completionHandler: @escaping (UsercentricsConsentUserResponse) -> Void) {
-        let navigationController = createNavigationController()
+        guard let flutterVC = UIApplication.shared.delegate?.window??.rootViewController as? FlutterViewController else { return }
 
-        UsercentricsBanner(bannerSettings:bannerSettings).showFirstLayer(hostView: navigationController,
+        UsercentricsBanner(bannerSettings:bannerSettings).showFirstLayer(hostView: flutterVC,
                                                                          layout: layout,
                                                                          settings: settings) { response in
-            dismissNavigationController()
             completionHandler(response)
         }
     }
@@ -52,11 +31,10 @@ struct UsercentricsBannerProxy: UsercentricsBannerProxyProtocol {
     func showSecondLayer(bannerSettings: BannerSettings?,
                          showCloseButton: Bool,
                          completionHandler: @escaping (UsercentricsConsentUserResponse) -> Void) {
-        let navigationController = createNavigationController()
+        guard let flutterVC = UIApplication.shared.delegate?.window??.rootViewController as? FlutterViewController else { return }
 
-        UsercentricsBanner(bannerSettings:bannerSettings).showSecondLayer(hostView: navigationController,
+        UsercentricsBanner(bannerSettings:bannerSettings).showSecondLayer(hostView: flutterVC,
                                                                           showCloseButton: showCloseButton) { response in
-            dismissNavigationController()
             completionHandler(response)
         }
     }
