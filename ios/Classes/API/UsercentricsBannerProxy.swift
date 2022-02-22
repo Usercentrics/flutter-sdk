@@ -55,8 +55,7 @@ struct UsercentricsBannerProxy: UsercentricsBannerProxyProtocol {
         let navigationController = createNavigationController()
 
         UsercentricsBanner(bannerSettings:bannerSettings).showSecondLayer(hostView: navigationController,
-                                                                          showCloseButton: showCloseButton,
-                                                                          presentationMode: SecondLayerPresentationMode.present) { response in
+                                                                          showCloseButton: showCloseButton) { response in
             dismissNavigationController()
             completionHandler(response)
         }

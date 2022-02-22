@@ -1,13 +1,22 @@
 import UsercentricsUI
 
-extension UIFont {
-    static func initialize(from value: Dictionary<String,Any>, assetProvider: FlutterAssetProvider) -> UIFont? {
-        if let fontAsset = value["fontAssetPath"] as? String {
-            return UIFont.initialize(from: fontAsset, fontSizeValue: value["fontSize"] as? CGFloat, assetProvider: assetProvider)
+extension BannerFont {
+
+    static func initialize(from value: Dictionary<String,Any>, assetProvider: FlutterAssetProvider) -> BannerFont? {
+        if let regularFontAsset = value["regularFontAssetPath"] as? String,
+           let boldFontAsset = value["boldFontAssetPath"] as? String,
+           let fontSizeValue = value["fontSize"] as? CGFloat,
+           let regularFont = UIFont.initialize(from: regularFontAsset, fontSizeValue: fontSizeValue, assetProvider: assetProvider),
+           let boldFont = UIFont.initialize(from: boldFontAsset, fontSizeValue: fontSizeValue, assetProvider: assetProvider) {
+            return BannerFont(regularFont: regularFont, boldFont: boldFont)
         } else {
             return nil
         }
     }
+
+}
+
+extension UIFont {
 
     static func initialize(from fontAssetValue: String?, fontSizeValue: CGFloat?, assetProvider: FlutterAssetProvider) -> UIFont? {
         let fontSize = fontSizeValue ?? UIFont.systemFontSize
@@ -19,7 +28,7 @@ extension UIFont {
 
         // Custom font
         if let fontAsset = fontAssetValue,
-        let url = Bundle.main.url(forResource: assetProvider.lookupKey(forAsset: fontAsset), withExtension: nil),
+           let url = Bundle.main.url(forResource: assetProvider.lookupKey(forAsset: fontAsset), withExtension: nil),
            let fontDataProvider = CGDataProvider(url: url as CFURL),
            let cgFont = CGFont(fontDataProvider),
            let fontName = cgFont.fullName {

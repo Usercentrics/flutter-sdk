@@ -36,7 +36,7 @@ class IsReadyBridgeTest: XCTestCase, BaseBridgeTestProtocol {
     }
 
     func testInvoke() {
-        usercentrics.readyStatus = UsercentricsReadyStatus(shouldShowCMP: false,
+        usercentrics.readyStatus = UsercentricsReadyStatus(shouldCollectConsent: false,
                                                            consents: [
                                                             consent
                                                            ])
@@ -45,7 +45,7 @@ class IsReadyBridgeTest: XCTestCase, BaseBridgeTestProtocol {
         let resultCompletion: FlutterResult = { [unowned self] result in
             guard
                 let result = result as? [String: Any],
-                let shouldShowCMP = result["shouldShowCMP"] as? Bool,
+                let shouldCollectConsent = result["shouldCollectConsent"] as? Bool,
                 let consentsMap = result["consents"] as? [[String: Any]],
                 let consent = consentsMap.first
             else {
@@ -53,7 +53,7 @@ class IsReadyBridgeTest: XCTestCase, BaseBridgeTestProtocol {
                 return
             }
 
-            XCTAssertEqual(shouldShowCMP, false)
+            XCTAssertEqual(shouldCollectConsent, false)
             XCTAssertEqual(consentsMap.count, 1)
             XCTAssertEqual(consent["version"] as! String, "1.0.1")
             XCTAssertEqual(consent["dataProcessor"] as! String, "Facebook SDK")

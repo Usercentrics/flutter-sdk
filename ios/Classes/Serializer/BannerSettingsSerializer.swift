@@ -11,9 +11,9 @@ extension BannerSettings {
             logo = UIImage(from: logoValue, assetProvider: assetProvider)
         }
 
-        var font: UIFont?
+        var font: BannerFont?
         if let fontValue = dict["font"] as? Dictionary<String,Any> {
-            font = UIFont.initialize(from: fontValue, assetProvider: assetProvider)
+            font = BannerFont.initialize(from: fontValue, assetProvider: assetProvider)
         }
 
         self.init(font: font,

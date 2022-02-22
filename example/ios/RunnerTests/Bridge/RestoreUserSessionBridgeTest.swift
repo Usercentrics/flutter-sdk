@@ -36,13 +36,13 @@ class RestoreUserSessionBridgeTest: XCTestCase, BaseBridgeTestProtocol {
     }
 
     func testInvoke() {
-        usercentrics.restoreUSSuccess = .init(shouldShowCMP: false, consents: [consent])
+        usercentrics.restoreUSSuccess = .init(shouldCollectConsent: false, consents: [consent])
 
         let expectation =  XCTestExpectation(description: "resultCompletion")
         let resultCompletion: FlutterResult = { result in
             guard
                 let result = result as? [String: Any],
-                let shouldShowCMP = result["shouldShowCMP"] as? Bool,
+                let shouldCollectConsent = result["shouldCollectConsent"] as? Bool,
                 let consentsMap = result["consents"] as? [[String: Any]],
                 let consent = consentsMap.first
             else {
@@ -50,7 +50,7 @@ class RestoreUserSessionBridgeTest: XCTestCase, BaseBridgeTestProtocol {
                 return
             }
 
-            XCTAssertEqual(shouldShowCMP, false)
+            XCTAssertEqual(shouldCollectConsent, false)
             XCTAssertEqual(consentsMap.count, 1)
             XCTAssertEqual(consent["version"] as! String, "1.0.1")
             XCTAssertEqual(consent["dataProcessor"] as! String, "Facebook SDK")
