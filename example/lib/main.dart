@@ -78,11 +78,11 @@ class _HomePageState extends State<HomePage> {
       final response = await Usercentrics.showFirstLayer(
         layout: layout ?? UsercentricsLayout.popupBottom,
         logo: const BannerImage(assetPath: 'images/flutter-logo.png'),
-        font: const BannerFont(
-          regularFontAssetPath: 'fonts/Lora-Regular.ttf',
-          boldFontAssetPath: 'fonts/Lora-Bold.ttf',
-          fontSize: 15,
-        ),
+        // font: const BannerFont(
+        //   regularFontAssetPath: 'fonts/Lora-Regular.ttf',
+        //   boldFontAssetPath: 'fonts/Lora-Bold.ttf',
+        //   fontSize: 15,
+        // ),
         settings: settings,
       );
 

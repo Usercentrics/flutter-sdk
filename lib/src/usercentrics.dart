@@ -46,24 +46,10 @@ class Usercentrics {
   /// Get the [UsercentricsReadyStatus] to catch the consent status of the user.
   static Future<UsercentricsReadyStatus> get status => _delegate.status;
 
-  /// Show the CMP with the UsercentricsUI to collect and manage consents.
-  /// - The [showCloseButton] show/hide the close button at the top-right corner of the CMP. If you are opening the CMP from your App's settings. We always recommend to enable a close button, so that users can easily dismiss the CMP. By default, close button is hidden.
-  /// - The [customLogo] sets an image as Logo to go at the top of your CMP. By default, it is null and that means that the CMP will use the logo defined at the Admin Interface.
-  /// - The [customFont] sets the font to be used in the CMP. By default, it is null and that means that the CMP will use the font defined at the Admin Interface.
-  @Deprecated('Use [showFirstLayer] and [showSecondLayer] instead')
-  static Future<UsercentricsConsentUserResponse?> showCMP({
-    bool? showCloseButton,
-    BannerImage? customLogo,
-    BannerFont? customFont,
-  }) {
-    // TODO
-    throw Exception("TODO");
-  }
-
   /// Show the Banner first layer to **collect** consents.
   /// - The [layout] of the banner.
-  /// - The [logo] sets an image as Logo to go at the top of your CMP. By default, it is null and that means that the CMP will use the logo defined at the Admin Interface.
-  /// - The [font] sets the font to be used in the CMP. By default, it is null and that means that the CMP will use the font defined at the Admin Interface.
+  /// - The [logo] sets an image as Logo to go at the top of your Banner. By default, it is null and that means that the Banner will use the logo defined at the Admin Interface.
+  /// - The [font] sets the font to be used in the Banner. By default, it is null and that means that the Banner will use the font defined at the Admin Interface.
   /// - The [settings] of the first layer that enables you to style this layer with a full granularity level.
   static Future<UsercentricsConsentUserResponse?> showFirstLayer({
     required UsercentricsLayout layout,
@@ -79,9 +65,9 @@ class Usercentrics {
       );
 
   /// Show the Banner second layer to **manage** consents.
-  /// - The [showCloseButton] show/hide the close button at the top-right corner of the CMP. If you are opening the CMP from your App's settings. We always recommend to enable a close button, so that users can easily dismiss the CMP. By default, close button is hidden.
-  /// - The [logo] sets an image as Logo to go at the top of your CMP. By default, it is null and that means that the CMP will use the logo defined at the Admin Interface.
-  /// - The [font] sets the font to be used in the CMP. By default, it is null and that means that the CMP will use the font defined at the Admin Interface.
+  /// - The [showCloseButton] show/hide the close button at the top-right corner of the Banner. If you are opening the Banner from your App's settings. We always recommend to enable a close button, so that users can easily dismiss the Banner. By default, close button is hidden.
+  /// - The [logo] sets an image as Logo to go at the top of your Banner. By default, it is null and that means that the Banner will use the logo defined at the Admin Interface.
+  /// - The [font] sets the font to be used in the Banner. By default, it is null and that means that the Banner will use the font defined at the Admin Interface.
   static Future<UsercentricsConsentUserResponse?> showSecondLayer({
     required bool showCloseButton,
     BannerImage? logo,
