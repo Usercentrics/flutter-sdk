@@ -8,7 +8,7 @@ import com.usercentrics.sdk.models.settings.UsercentricsConsentType
 
 internal object RestoreUserSessionMock {
     val fake = UsercentricsReadyStatus(
-        shouldShowCMP = false,
+        shouldCollectConsent = false,
         consents = listOf(
             UsercentricsServiceConsent(
                 templateId = "ocv9HNX_g",
@@ -35,7 +35,7 @@ internal object RestoreUserSessionMock {
             arguments = "8620139AAAAAAAAAAAAAAAdddc2b52973f9807d6b45"
         )
     val expected = mapOf(
-        "shouldShowCMP" to false,
+        "shouldCollectConsent" to false,
         "consents" to listOf(
             mapOf(
                 "templateId" to "ocv9HNX_g",

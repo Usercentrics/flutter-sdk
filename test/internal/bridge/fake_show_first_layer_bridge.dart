@@ -17,14 +17,14 @@ class FakeShowFirstLayerBridge extends ShowFirstLayerBridge {
   UsercentricsLayout? invokeLayoutArgument;
   FirstLayerStyleSettings? invokeSettingsArgument;
   UsercentricsImage? invokeLogoArgument;
-  UsercentricsFont? invokeFontArgument;
+  BannerFont? invokeFontArgument;
 
   @override
   Future<UsercentricsConsentUserResponse?> invoke({
     required MethodChannel channel,
     required UsercentricsLayout layout,
     UsercentricsImage? logo,
-    UsercentricsFont? font,
+    BannerFont? font,
     FirstLayerStyleSettings? settings,
   }) {
     invokeCount++;

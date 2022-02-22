@@ -6,7 +6,7 @@ import 'package:usercentrics_sdk/src/model/model.dart';
 void main() {
   // Data from the debugger
   const mockResponse = {
-    "shouldShowCMP": false,
+    "shouldCollectConsent": false,
     "consents": [
       {
         "templateId": "SJKM9Ns_ibQ",
@@ -26,7 +26,7 @@ void main() {
     ],
   };
   const expectedResult = UsercentricsReadyStatus(
-    shouldShowCMP: false,
+    shouldCollectConsent: false,
     consents: [
       UsercentricsServiceConsent(
         templateId: "SJKM9Ns_ibQ",

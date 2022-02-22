@@ -129,7 +129,7 @@ class FakeUsercentrics extends UsercentricsPlatform {
   Future<UsercentricsConsentUserResponse?> showFirstLayer({
     required UsercentricsLayout layout,
     UsercentricsImage? logo,
-    UsercentricsFont? font,
+    BannerFont? font,
     FirstLayerStyleSettings? settings,
   }) {
     throw UnimplementedError();
@@ -139,7 +139,7 @@ class FakeUsercentrics extends UsercentricsPlatform {
   Future<UsercentricsConsentUserResponse?> showSecondLayer({
     required bool showCloseButton,
     UsercentricsImage? logo,
-    UsercentricsFont? font,
+    BannerFont? font,
   }) {
     throw UnimplementedError();
   }

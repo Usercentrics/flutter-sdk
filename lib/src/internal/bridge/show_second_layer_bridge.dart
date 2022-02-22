@@ -9,7 +9,7 @@ abstract class ShowSecondLayerBridge {
     required MethodChannel channel,
     required bool showCloseButton,
     UsercentricsImage? logo,
-    UsercentricsFont? font,
+    BannerFont? font,
   });
 }
 
@@ -23,7 +23,7 @@ class MethodChannelShowSecondLayer extends ShowSecondLayerBridge {
     required MethodChannel channel,
     required bool showCloseButton,
     UsercentricsImage? logo,
-    UsercentricsFont? font,
+    BannerFont? font,
   }) async {
     final result = await channel.invokeMethod(
       _name,

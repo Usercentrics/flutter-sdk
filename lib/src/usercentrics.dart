@@ -54,7 +54,7 @@ class Usercentrics {
   static Future<UsercentricsConsentUserResponse?> showCMP({
     bool? showCloseButton,
     UsercentricsImage? customLogo,
-    UsercentricsFont? customFont,
+    BannerFont? customFont,
   }) {
     // TODO
     throw Exception("TODO");
@@ -68,7 +68,7 @@ class Usercentrics {
   static Future<UsercentricsConsentUserResponse?> showFirstLayer({
     required UsercentricsLayout layout,
     UsercentricsImage? logo,
-    UsercentricsFont? font,
+    BannerFont? font,
     FirstLayerStyleSettings? settings,
   }) =>
       _delegate.showFirstLayer(
@@ -85,7 +85,7 @@ class Usercentrics {
   static Future<UsercentricsConsentUserResponse?> showSecondLayer({
     required bool showCloseButton,
     UsercentricsImage? logo,
-    UsercentricsFont? font,
+    BannerFont? font,
   }) =>
       _delegate.showSecondLayer(
         showCloseButton: showCloseButton,

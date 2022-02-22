@@ -60,7 +60,7 @@ class _HomePageState extends State<HomePage> {
     try {
       final status = await Usercentrics.status;
 
-      if (status.shouldShowCMP) {
+      if (status.shouldCollectConsent) {
         _showFirstLayer();
       } else {
         applyConsent(status.consents);
@@ -78,10 +78,11 @@ class _HomePageState extends State<HomePage> {
       final response = await Usercentrics.showFirstLayer(
         layout: layout ?? UsercentricsLayout.popupBottom,
         logo: const UsercentricsImage(assetPath: 'images/flutter-logo.png'),
-        // font: const UsercentricsFont(
-        //   fontAssetPath: 'fonts/Lora-VariableFont_wght.ttf',
-        //   fontSize: 15,
-        // ),
+        font: const BannerFont(
+          regularFontAssetPath: 'fonts/Lora-Regular.ttf',
+          boldFontAssetPath: 'fonts/Lora-Bold.ttf',
+          fontSize: 15,
+        ),
         settings: settings,
       );
 

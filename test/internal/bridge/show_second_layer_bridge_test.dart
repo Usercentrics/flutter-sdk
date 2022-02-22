@@ -54,14 +54,16 @@ void main() {
     "bannerSettings": {
       "logo": "images/flutter-logo.png",
       "font": {
-        "fontAssetPath": "fonts/Lora-VariableFont_wght.ttf",
+        "regularFontAssetPath": "fonts/Lora-Regular.ttf",
+        "boldFontAssetPath": "fonts/Lora-Bold.ttf",
         "fontSize": 20,
       },
     }
   };
   const mockShowCloseButton = true;
-  const mockFont = UsercentricsFont(
-    fontAssetPath: "fonts/Lora-VariableFont_wght.ttf",
+  const mockFont = BannerFont(
+    regularFontAssetPath: "fonts/Lora-Regular.ttf",
+    boldFontAssetPath: "fonts/Lora-Bold.ttf",
     fontSize: 20,
   );
   const mockLogo = UsercentricsImage(

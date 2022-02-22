@@ -111,14 +111,14 @@ class FakeUsercentricsPlatform extends UsercentricsPlatform {
   var showFirstLayerCount = 0;
   UsercentricsLayout? showFirstLayerLayoutArgument;
   UsercentricsImage? showFirstLayerLogoArgument;
-  UsercentricsFont? showFirstLayerFontArgument;
+  BannerFont? showFirstLayerFontArgument;
   FirstLayerStyleSettings? showFirstLayerSettingsArgument;
 
   @override
   Future<UsercentricsConsentUserResponse?> showFirstLayer({
     required UsercentricsLayout layout,
     UsercentricsImage? logo,
-    UsercentricsFont? font,
+    BannerFont? font,
     FirstLayerStyleSettings? settings,
   }) {
     showFirstLayerCount++;
@@ -132,14 +132,14 @@ class FakeUsercentricsPlatform extends UsercentricsPlatform {
   final UsercentricsConsentUserResponse? showSecondLayerAnswer;
   var showSecondLayerCount = 0;
   UsercentricsImage? showSecondLayerLogoArgument;
-  UsercentricsFont? showSecondLayerFontArgument;
+  BannerFont? showSecondLayerFontArgument;
   bool? showSecondLayerShowCloseButtonArgument;
 
   @override
   Future<UsercentricsConsentUserResponse?> showSecondLayer({
     required bool showCloseButton,
     UsercentricsImage? logo,
-    UsercentricsFont? font,
+    BannerFont? font,
   }) {
     showSecondLayerCount++;
     showSecondLayerLogoArgument = logo;

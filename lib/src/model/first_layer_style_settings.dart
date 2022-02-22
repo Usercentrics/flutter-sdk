@@ -143,7 +143,7 @@ enum SectionAlignment { start, center, end }
 /// The title settings.
 class TitleSettings {
   /// Creates a TitleSettings.
-  ///   - The argument [fontAssetPath] is an asset font path. The font must be declared in the pubspec. E.g. 'fonts/Lora-VariableFont_wght.ttf' (from the example app).
+  ///   - The argument [fontAssetPath] is an asset font path. The font must be declared in the pubspec. E.g. 'fonts/Lora-Bold.ttf' (from the example app).
   const TitleSettings({
     this.alignment,
     this.fontAssetPath,
@@ -154,7 +154,7 @@ class TitleSettings {
   /// The text alignment.
   final SectionAlignment? alignment;
 
-  /// The font asset path. The font must be declared in the pubspec. E.g. 'fonts/Lora-VariableFont_wght.ttf' (from the example app).
+  /// The font asset path. The font must be declared in the pubspec. E.g. 'fonts/Lora-Bold.ttf' (from the example app).
   final String? fontAssetPath;
 
   /// The text color.
@@ -188,7 +188,7 @@ class TitleSettings {
 /// The message settings.
 class MessageSettings {
   /// Creates a MessageSettings.
-  ///   - The argument [fontAssetPath] is an asset font path. The font must be declared in the pubspec. E.g. 'fonts/Lora-VariableFont_wght.ttf' (from the example app).
+  ///   - The argument [fontAssetPath] is an asset font path. The font must be declared in the pubspec. E.g. 'fonts/Lora-Bold.ttf' (from the example app).
   const MessageSettings({
     this.alignment,
     this.fontAssetPath,
@@ -201,7 +201,7 @@ class MessageSettings {
   /// The text alignment.
   final SectionAlignment? alignment;
 
-  /// The font asset path. The font must be declared in the pubspec. E.g. 'fonts/Lora-VariableFont_wght.ttf' (from the example app).
+  /// The font asset path. The font must be declared in the pubspec. E.g. 'fonts/Lora-Bold.ttf' (from the example app).
   final String? fontAssetPath;
 
   /// The text color.
@@ -245,7 +245,7 @@ class MessageSettings {
 /// The button settings.
 class ButtonSettings {
   /// Creates a ButtonSettings.
-  ///   - The argument [fontAssetPath] is an asset font path. The font must be declared in the pubspec. E.g. 'fonts/Lora-VariableFont_wght.ttf' (from the example app).
+  ///   - The argument [fontAssetPath] is an asset font path. The font must be declared in the pubspec. E.g. 'fonts/Lora-Bold.ttf' (from the example app).
   const ButtonSettings({
     required this.type,
     this.backgroundColor,
@@ -265,7 +265,7 @@ class ButtonSettings {
   /// The corner radius.
   final int? cornerRadius;
 
-  /// The font asset path. The font must be declared in the pubspec. E.g. 'fonts/Lora-VariableFont_wght.ttf' (from the example app).
+  /// The font asset path. The font must be declared in the pubspec. E.g. 'fonts/Lora-Bold.ttf' (from the example app).
   final String? fontAssetPath;
 
   /// The text caps strategy.

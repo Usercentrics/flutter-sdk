@@ -95,7 +95,7 @@ class MethodChannelUsercentrics extends UsercentricsPlatform {
   Future<UsercentricsConsentUserResponse?> showFirstLayer({
     required UsercentricsLayout layout,
     UsercentricsImage? logo,
-    UsercentricsFont? font,
+    BannerFont? font,
     FirstLayerStyleSettings? settings,
   }) async {
     await _ensureIsReady();
@@ -112,7 +112,7 @@ class MethodChannelUsercentrics extends UsercentricsPlatform {
   Future<UsercentricsConsentUserResponse?> showSecondLayer({
     required bool showCloseButton,
     UsercentricsImage? logo,
-    UsercentricsFont? font,
+    BannerFont? font,
   }) async {
     await _ensureIsReady();
     return await showSecondLayerBridge.invoke(

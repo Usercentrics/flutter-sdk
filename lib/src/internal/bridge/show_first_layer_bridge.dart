@@ -9,7 +9,7 @@ abstract class ShowFirstLayerBridge {
     required MethodChannel channel,
     required UsercentricsLayout layout,
     UsercentricsImage? logo,
-    UsercentricsFont? font,
+    BannerFont? font,
     FirstLayerStyleSettings? settings,
   });
 }
@@ -24,7 +24,7 @@ class MethodChannelShowFirstLayer extends ShowFirstLayerBridge {
     required MethodChannel channel,
     required UsercentricsLayout layout,
     UsercentricsImage? logo,
-    UsercentricsFont? font,
+    BannerFont? font,
     FirstLayerStyleSettings? settings,
   }) async {
     final arguments = {
