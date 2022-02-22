@@ -110,7 +110,7 @@ const mockFont = BannerFont(
   boldFontAssetPath: "fonts/Lora-Bold.ttf",
   fontSize: 20,
 );
-const mockLogo = UsercentricsImage(
+const mockLogo = BannerImage(
   assetPath: "images/flutter-logo.png",
 );
 
@@ -119,7 +119,8 @@ const _buttonCornerRadius = 20;
 const _customFontPath = "fonts/AndadaPro.ttf";
 final mockSettings = FirstLayerStyleSettings(
   headerImage: HeaderImageSettings.extended(
-      image: const UsercentricsImage(assetPath: "images/header_extended.png")),
+    imageAssetPath: "images/header_extended.png",
+  ),
   title: const TitleSettings(
     alignment: SectionAlignment.start,
     fontAssetPath: _customFontPath,

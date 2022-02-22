@@ -1,15 +1,15 @@
 import UsercentricsUI
 
 extension FirstLayerStyleSettings {
-    init?(from value: Any?, assetProvider: FlutterAssetProvider) {
+    init?(from value: Any?, bannerFont: BannerFontHolder?, assetProvider: FlutterAssetProvider) {
         guard
             let dict = value as? Dictionary<String, Any>
         else { return nil }
 
         self.init(headerImage: HeaderImageSettings.from(dict: dict["headerImage"] as? NSDictionary, assetProvider: assetProvider),
-                  title: TitleSettings(from: dict["title"] as? NSDictionary, assetProvider: assetProvider),
-                  message: MessageSettings(from: dict["message"] as? NSDictionary, assetProvider: assetProvider),
-                  buttonLayout: ButtonLayout.from(dict: dict["buttonLayout"] as? [[NSDictionary]], assetProvider: assetProvider),
+                  title: TitleSettings(from: dict["title"] as? NSDictionary, fallbackFont: bannerFont?.boldFont, assetProvider: assetProvider),
+                  message: MessageSettings(from: dict["message"] as? NSDictionary, fallbackFont: bannerFont?.regularFont, assetProvider: assetProvider),
+                  buttonLayout: ButtonLayout.from(dict: dict["buttonLayout"] as? [[NSDictionary]], fallbackFont: bannerFont?.boldFont, assetProvider: assetProvider),
                   backgroundColor: UIColor(unsafeHex: dict["backgroundColor"] as? String),
                   cornerRadius: dict["cornerRadius"] as? CGFloat,
                   overlayColor: UIColor(unsafeHex: dict["overlayColor"] as? String))
@@ -41,11 +41,12 @@ extension HeaderImageSettings {
 }
 
 extension TitleSettings {
-    init?(from dict: NSDictionary?, assetProvider: FlutterAssetProvider) {
+    init?(from dict: NSDictionary?, fallbackFont: UIFont?, assetProvider: FlutterAssetProvider) {
         guard let dict = dict else { return nil }
 
         let font = UIFont.initialize(from: dict["fontAssetPath"] as? String,
                                      fontSizeValue: dict["textSize"] as? CGFloat,
+                                     fallbackFont: fallbackFont,
                                      assetProvider: assetProvider)
 
         self.init(font: font,
@@ -55,11 +56,12 @@ extension TitleSettings {
 }
 
 extension MessageSettings {
-    init?(from dict: NSDictionary?, assetProvider: FlutterAssetProvider) {
+    init?(from dict: NSDictionary?, fallbackFont: UIFont?, assetProvider: FlutterAssetProvider) {
         guard let dict = dict else { return nil }
 
         let font = UIFont.initialize(from: dict["fontAssetPath"] as? String,
                                      fontSizeValue: dict["textSize"] as? CGFloat,
+                                     fallbackFont: fallbackFont,
                                      assetProvider: assetProvider)
 
         if let linkTextUnderline = dict["linkTextUnderline"] as? Bool {
@@ -78,14 +80,14 @@ extension MessageSettings {
 }
 
 extension ButtonLayout {
-    static func from(dict: [[NSDictionary]]?, assetProvider: FlutterAssetProvider) -> ButtonLayout? {
+    static func from(dict: [[NSDictionary]]?, fallbackFont: UIFont?, assetProvider: FlutterAssetProvider) -> ButtonLayout? {
         guard let dict = dict else { return nil }
-        return .grid(buttons: dict.map { $0.compactMap { button in ButtonSettings(from: button, assetProvider: assetProvider) }})
+        return .grid(buttons: dict.map { $0.compactMap { button in ButtonSettings(from: button, fallbackFont: fallbackFont, assetProvider: assetProvider) }})
     }
 }
 
 extension ButtonSettings {
-    init?(from dict: NSDictionary?, assetProvider: FlutterAssetProvider) {
+    init?(from dict: NSDictionary?, fallbackFont: UIFont?, assetProvider: FlutterAssetProvider) {
         guard
             let dict = dict,
             let buttonTypeValue = dict["type"] as? String,
@@ -94,6 +96,7 @@ extension ButtonSettings {
 
         let font = UIFont.initialize(from: dict["fontAssetPath"] as? String,
                                      fontSizeValue: dict["textSize"] as? CGFloat,
+                                     fallbackFont: fallbackFont,
                                      assetProvider: assetProvider)
 
         self.init(type: buttonType,

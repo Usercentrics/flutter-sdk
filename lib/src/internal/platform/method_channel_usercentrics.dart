@@ -94,7 +94,7 @@ class MethodChannelUsercentrics extends UsercentricsPlatform {
   @override
   Future<UsercentricsConsentUserResponse?> showFirstLayer({
     required UsercentricsLayout layout,
-    UsercentricsImage? logo,
+    BannerImage? logo,
     BannerFont? font,
     FirstLayerStyleSettings? settings,
   }) async {
@@ -111,7 +111,7 @@ class MethodChannelUsercentrics extends UsercentricsPlatform {
   @override
   Future<UsercentricsConsentUserResponse?> showSecondLayer({
     required bool showCloseButton,
-    UsercentricsImage? logo,
+    BannerImage? logo,
     BannerFont? font,
   }) async {
     await _ensureIsReady();

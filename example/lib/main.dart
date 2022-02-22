@@ -77,7 +77,7 @@ class _HomePageState extends State<HomePage> {
     try {
       final response = await Usercentrics.showFirstLayer(
         layout: layout ?? UsercentricsLayout.popupBottom,
-        logo: const UsercentricsImage(assetPath: 'images/flutter-logo.png'),
+        logo: const BannerImage(assetPath: 'images/flutter-logo.png'),
         font: const BannerFont(
           regularFontAssetPath: 'fonts/Lora-Regular.ttf',
           boldFontAssetPath: 'fonts/Lora-Bold.ttf',
@@ -96,7 +96,7 @@ class _HomePageState extends State<HomePage> {
     try {
       final response = await Usercentrics.showSecondLayer(
         showCloseButton: true,
-        logo: const UsercentricsImage(assetPath: 'images/flutter-logo.png'),
+        logo: const BannerImage(assetPath: 'images/flutter-logo.png'),
         // font: const UsercentricsFont(
         //   fontAssetPath: 'fonts/Lora-VariableFont_wght.ttf',
         //   fontSize: 15,

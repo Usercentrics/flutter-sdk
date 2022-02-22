@@ -7,7 +7,8 @@ const _buttonCornerRadius = 50;
 final firstLayerCustomizationExample2 = FirstLayerStyleSettings(
   backgroundColor: Colors.black,
   headerImage: HeaderImageSettings.logo(
-      image: const UsercentricsImage(assetPath: "images/header_logo.png")),
+    imageAssetPath: "images/header_logo.png",
+  ),
   title: const TitleSettings(
     alignment: SectionAlignment.start,
     textColor: Colors.white,

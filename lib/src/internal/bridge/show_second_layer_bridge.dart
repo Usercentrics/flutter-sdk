@@ -8,7 +8,7 @@ abstract class ShowSecondLayerBridge {
   Future<UsercentricsConsentUserResponse?> invoke({
     required MethodChannel channel,
     required bool showCloseButton,
-    UsercentricsImage? logo,
+    BannerImage? logo,
     BannerFont? font,
   });
 }
@@ -22,7 +22,7 @@ class MethodChannelShowSecondLayer extends ShowSecondLayerBridge {
   Future<UsercentricsConsentUserResponse?> invoke({
     required MethodChannel channel,
     required bool showCloseButton,
-    UsercentricsImage? logo,
+    BannerImage? logo,
     BannerFont? font,
   }) async {
     final result = await channel.invokeMethod(

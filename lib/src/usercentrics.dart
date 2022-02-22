@@ -53,7 +53,7 @@ class Usercentrics {
   @Deprecated('Use [showFirstLayer] and [showSecondLayer] instead')
   static Future<UsercentricsConsentUserResponse?> showCMP({
     bool? showCloseButton,
-    UsercentricsImage? customLogo,
+    BannerImage? customLogo,
     BannerFont? customFont,
   }) {
     // TODO
@@ -67,7 +67,7 @@ class Usercentrics {
   /// - The [settings] of the first layer that enables you to style this layer with a full granularity level.
   static Future<UsercentricsConsentUserResponse?> showFirstLayer({
     required UsercentricsLayout layout,
-    UsercentricsImage? logo,
+    BannerImage? logo,
     BannerFont? font,
     FirstLayerStyleSettings? settings,
   }) =>
@@ -84,7 +84,7 @@ class Usercentrics {
   /// - The [font] sets the font to be used in the CMP. By default, it is null and that means that the CMP will use the font defined at the Admin Interface.
   static Future<UsercentricsConsentUserResponse?> showSecondLayer({
     required bool showCloseButton,
-    UsercentricsImage? logo,
+    BannerImage? logo,
     BannerFont? font,
   }) =>
       _delegate.showSecondLayer(

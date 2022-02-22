@@ -7,7 +7,8 @@ const _customFontPath = "fonts/AndadaPro.ttf";
 
 final firstLayerCustomizationExample1 = FirstLayerStyleSettings(
   headerImage: HeaderImageSettings.extended(
-      image: const UsercentricsImage(assetPath: "images/header_extended.png")),
+    imageAssetPath: "images/header_extended.png",
+  ),
   title: const TitleSettings(
     alignment: SectionAlignment.start,
     fontAssetPath: _customFontPath,

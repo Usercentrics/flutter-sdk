@@ -66,7 +66,7 @@ void main() {
     boldFontAssetPath: "fonts/Lora-Bold.ttf",
     fontSize: 20,
   );
-  const mockLogo = UsercentricsImage(
+  const mockLogo = BannerImage(
     assetPath: "images/flutter-logo.png",
   );
 

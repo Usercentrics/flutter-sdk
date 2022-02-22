@@ -70,7 +70,7 @@ void main() {
 
     const layout = UsercentricsLayout.sheet;
     const settings = FirstLayerStyleSettings(cornerRadius: 100);
-    const logo = UsercentricsImage(assetPath: "asset/logo.png");
+    const logo = BannerImage(assetPath: "asset/logo.png");
     const font = BannerFont(
       regularFontAssetPath: "asset/font-regular.ttf",
       boldFontAssetPath: "asset/font-bold.ttf",
@@ -103,7 +103,7 @@ void main() {
     Usercentrics.delegatePackingProperty = delegate;
 
     const showCloseButton = true;
-    const logo = UsercentricsImage(assetPath: "asset/logo.png");
+    const logo = BannerImage(assetPath: "asset/logo.png");
     const font = BannerFont(
       regularFontAssetPath: "asset/font-regular.ttf",
       boldFontAssetPath: "asset/font-bold.ttf",

@@ -1,18 +1,17 @@
-/// An asset image that Usercentrics can load.
 /// It consists of a [assetPath].
-class UsercentricsImage {
-  /// Creates a Usercentrics image.
+class BannerImage {
+  /// Creates an image.
   ///
   /// The argument [assetPath] is an asset image path. This image must be declared in the pubspec. E.g. 'images/flutter-logo.png' (from the example app).
   /// {@tool snippet}
   ///
   /// ```dart
-  /// UsercentricsImage(
+  /// BannerImage(
   ///   assetPath: 'images/flutter-logo.png',
   /// )
   /// ```
   /// {@end-tool}
-  const UsercentricsImage({
+  const BannerImage({
     required this.assetPath,
   });
 
@@ -22,7 +21,7 @@ class UsercentricsImage {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is UsercentricsImage &&
+      other is BannerImage &&
           runtimeType == other.runtimeType &&
           assetPath == other.assetPath;
 
@@ -30,5 +29,5 @@ class UsercentricsImage {
   int get hashCode => assetPath.hashCode;
 
   @override
-  String toString() => "$UsercentricsImage(assetPath: $assetPath)";
+  String toString() => "$BannerImage(assetPath: $assetPath)";
 }

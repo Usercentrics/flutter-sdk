@@ -15,7 +15,8 @@ struct ShowSecondLayerBridge : MethodBridge {
     func invoke(_ call: FlutterMethodCall, _ result: @escaping FlutterResult) {
         assert(call.method == name)
         let argsDict = call.arguments as! Dictionary<String, Any>
-        bannerProxy.showSecondLayer(bannerSettings: BannerSettings(from: argsDict["bannerSettings"], assetProvider: assetProvider),
+        let settingsHolder = BannerSettingsHolder.initialize(from: argsDict["bannerSettings"], assetProvider: assetProvider)
+        bannerProxy.showSecondLayer(bannerSettings: settingsHolder?.settings,
                                     showCloseButton: argsDict["showCloseButton"] as! Bool) { response in
             result(response.serialize())
         }

@@ -150,7 +150,7 @@ void main() {
 
       const layout = UsercentricsLayout.sheet;
       const settings = FirstLayerStyleSettings(cornerRadius: 100);
-      const logo = UsercentricsImage(assetPath: "assetPath");
+      const logo = BannerImage(assetPath: "assetPath");
       const font = BannerFont(
         regularFontAssetPath: "fonts/Lora-Regular.ttf",
         boldFontAssetPath: "fonts/Lora-Bold.ttf",
@@ -207,7 +207,7 @@ void main() {
       instance.isReadyCompleter?.complete();
 
       const showCloseButton = true;
-      const logo = UsercentricsImage(assetPath: "assetPath");
+      const logo = BannerImage(assetPath: "assetPath");
       const font = BannerFont(
         regularFontAssetPath: "fonts/Lora-Regular.ttf",
         boldFontAssetPath: "fonts/Lora-Bold.ttf",

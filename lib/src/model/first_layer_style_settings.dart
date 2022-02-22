@@ -1,7 +1,5 @@
 import 'dart:ui';
 
-import 'package:usercentrics_sdk/src/model/image.dart';
-
 /// The First Layer Settings.
 class FirstLayerStyleSettings {
   /// Creates a FirstLayerStyleSettings.
@@ -67,7 +65,7 @@ class FirstLayerStyleSettings {
 /// The header image settings.
 class HeaderImageSettings {
   const HeaderImageSettings._internal({
-    this.image,
+    this.imageAssetPath,
     this.height,
     this.isExtended,
     this.alignment,
@@ -75,23 +73,26 @@ class HeaderImageSettings {
   });
 
   /// Creates a HeaderImageSettings with logo configuration.
+  /// The argument [imageAssetPath] is an asset image path. This image must be declared in the pubspec. E.g. 'images/flutter-logo.png' (from the example app).
   factory HeaderImageSettings.logo({
-    required UsercentricsImage image,
+    required String imageAssetPath,
     double? height,
     SectionAlignment? alignment,
   }) {
     return HeaderImageSettings._internal(
-      image: image,
+      imageAssetPath: imageAssetPath,
       height: height,
       alignment: alignment,
     );
   }
 
   /// Creates a HeaderImageSettings with extendend image configuration.
+  /// The argument [imageAssetPath] is an asset image path. This image must be declared in the pubspec. E.g. 'images/flutter-logo.png' (from the example app).
   factory HeaderImageSettings.extended({
-    required UsercentricsImage image,
+    required String imageAssetPath,
   }) {
-    return HeaderImageSettings._internal(image: image, isExtended: true);
+    return HeaderImageSettings._internal(
+        imageAssetPath: imageAssetPath, isExtended: true);
   }
 
   /// Creates a HeaderImageSettings with hidden configuration.
@@ -100,7 +101,7 @@ class HeaderImageSettings {
   }
 
   /// Internal property.
-  final UsercentricsImage? image;
+  final String? imageAssetPath;
 
   /// Internal property.
   final double? height;
@@ -119,7 +120,7 @@ class HeaderImageSettings {
       identical(this, other) ||
       other is HeaderImageSettings &&
           runtimeType == other.runtimeType &&
-          image == other.image &&
+          imageAssetPath == other.imageAssetPath &&
           height == other.height &&
           alignment == other.alignment &&
           isExtended == other.isExtended &&
@@ -127,7 +128,7 @@ class HeaderImageSettings {
 
   @override
   int get hashCode =>
-      image.hashCode +
+      imageAssetPath.hashCode +
       height.hashCode +
       alignment.hashCode +
       isExtended.hashCode +
@@ -135,7 +136,7 @@ class HeaderImageSettings {
 
   @override
   String toString() =>
-      "$HeaderImageSettings(image: $image, height: $height, alignment: $alignment, isExtended: $isExtended, isHidden: $isHidden)";
+      "$HeaderImageSettings(imageAssetPath: $imageAssetPath, height: $height, alignment: $alignment, isExtended: $isExtended, isHidden: $isHidden)";
 }
 
 enum SectionAlignment { start, center, end }

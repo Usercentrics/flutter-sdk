@@ -3,7 +3,7 @@ import 'package:usercentrics_sdk/src/model/image.dart';
 
 class BannerSettingsSerializer {
   static dynamic serialize({
-    UsercentricsImage? logo,
+    BannerImage? logo,
     BannerFont? font,
   }) =>
       {

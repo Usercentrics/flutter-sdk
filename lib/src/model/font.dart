@@ -10,7 +10,7 @@ class BannerFont {
   /// {@tool snippet}
   ///
   /// ```dart
-  /// UsercentricsFont(
+  /// BannerFont(
   ///   regularFontAssetPath: 'fonts/Lora-Regular.ttf',
   ///   boldFontAssetPath: 'fonts/Lora-Bold.ttf',
   ///   fontSize: 15,
