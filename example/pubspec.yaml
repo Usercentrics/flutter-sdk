@@ -64,7 +64,8 @@ flutter:
   fonts:
     - family: Lora
       fonts:
-        - asset: fonts/Lora-VariableFont_wght.ttf
+        - asset: fonts/Lora-Regular.ttf
+        - asset: fonts/Lora-Bold.ttf
     - family: AndadaPro
       fonts:
         - asset: fonts/AndadaPro.ttf

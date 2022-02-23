@@ -3,19 +3,20 @@ import 'package:usercentrics_sdk/src/model/image.dart';
 
 class BannerSettingsSerializer {
   static dynamic serialize({
-    UsercentricsImage? logo,
-    UsercentricsFont? font,
+    BannerImage? logo,
+    BannerFont? font,
   }) =>
       {
         'logo': logo?.assetPath,
         'font': _serializeFont(font),
       };
 
-  static dynamic _serializeFont(UsercentricsFont? customFont) {
+  static dynamic _serializeFont(BannerFont? customFont) {
     return customFont == null
         ? null
         : {
-            'fontAssetPath': customFont.fontAssetPath,
+            'regularFontAssetPath': customFont.regularFontAssetPath,
+            'boldFontAssetPath': customFont.boldFontAssetPath,
             'fontSize': customFont.fontSize,
           };
   }

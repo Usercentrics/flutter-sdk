@@ -4,7 +4,7 @@ import com.usercentrics.sdk.UsercentricsReadyStatus
 
 internal fun UsercentricsReadyStatus.serialize(): Any {
     return mapOf(
-        "shouldShowCMP" to shouldShowCMP,
+        "shouldCollectConsent" to shouldCollectConsent,
         "consents" to consents.map { it.serialize() }
     )
 }

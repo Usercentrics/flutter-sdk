@@ -13,15 +13,15 @@ class FakeShowSecondLayerBridge extends ShowSecondLayerBridge {
   var invokeCount = 0;
   MethodChannel? invokeChannelArgument;
   bool? invokeShowCloseButtonArgument;
-  UsercentricsImage? invokeLogoArgument;
-  UsercentricsFont? invokeFontArgument;
+  BannerImage? invokeLogoArgument;
+  BannerFont? invokeFontArgument;
 
   @override
   Future<UsercentricsConsentUserResponse?> invoke({
     required MethodChannel channel,
     required bool showCloseButton,
-    UsercentricsImage? logo,
-    UsercentricsFont? font,
+    BannerImage? logo,
+    BannerFont? font,
   }) {
     invokeCount++;
     invokeShowCloseButtonArgument = showCloseButton;

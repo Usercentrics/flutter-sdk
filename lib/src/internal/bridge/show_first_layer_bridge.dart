@@ -8,8 +8,8 @@ abstract class ShowFirstLayerBridge {
   Future<UsercentricsConsentUserResponse?> invoke({
     required MethodChannel channel,
     required UsercentricsLayout layout,
-    UsercentricsImage? logo,
-    UsercentricsFont? font,
+    BannerImage? logo,
+    BannerFont? font,
     FirstLayerStyleSettings? settings,
   });
 }
@@ -23,8 +23,8 @@ class MethodChannelShowFirstLayer extends ShowFirstLayerBridge {
   Future<UsercentricsConsentUserResponse?> invoke({
     required MethodChannel channel,
     required UsercentricsLayout layout,
-    UsercentricsImage? logo,
-    UsercentricsFont? font,
+    BannerImage? logo,
+    BannerFont? font,
     FirstLayerStyleSettings? settings,
   }) async {
     final arguments = {

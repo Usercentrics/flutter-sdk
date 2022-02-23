@@ -46,7 +46,7 @@ void main() {
 
   test('status', () async {
     const expectedStatus = UsercentricsReadyStatus(
-      shouldShowCMP: true,
+      shouldCollectConsent: true,
       consents: [],
     );
     final delegate = FakeUsercentricsPlatform(statusAnswer: expectedStatus);
@@ -70,9 +70,10 @@ void main() {
 
     const layout = UsercentricsLayout.sheet;
     const settings = FirstLayerStyleSettings(cornerRadius: 100);
-    const logo = UsercentricsImage(assetPath: "asset/logo.png");
-    const font = UsercentricsFont(
-      fontAssetPath: "asset/font.ttf",
+    const logo = BannerImage(assetPath: "asset/logo.png");
+    const font = BannerFont(
+      regularFontAssetPath: "asset/font-regular.ttf",
+      boldFontAssetPath: "asset/font-bold.ttf",
       fontSize: 20,
     );
 
@@ -102,9 +103,10 @@ void main() {
     Usercentrics.delegatePackingProperty = delegate;
 
     const showCloseButton = true;
-    const logo = UsercentricsImage(assetPath: "asset/logo.png");
-    const font = UsercentricsFont(
-      fontAssetPath: "asset/font.ttf",
+    const logo = BannerImage(assetPath: "asset/logo.png");
+    const font = BannerFont(
+      regularFontAssetPath: "asset/font-regular.ttf",
+      boldFontAssetPath: "asset/font-bold.ttf",
       fontSize: 20,
     );
 
@@ -157,7 +159,7 @@ void main() {
 
   test('restoreUserSession', () async {
     const expectedStatus = UsercentricsReadyStatus(
-      shouldShowCMP: true,
+      shouldCollectConsent: true,
       consents: [],
     );
     final delegate =

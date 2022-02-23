@@ -9,7 +9,7 @@ import com.usercentrics.sdk.models.settings.UsercentricsConsentType
 internal object IsReadyMock {
 
     val fakeWithData = UsercentricsReadyStatus(
-        shouldShowCMP = false,
+        shouldCollectConsent = false,
         consents = listOf(
             UsercentricsServiceConsent(
                 templateId = "ocv9HNX_g",
@@ -29,14 +29,14 @@ internal object IsReadyMock {
         )
     )
     val fakeWithoutData = UsercentricsReadyStatus(
-        shouldShowCMP = false,
+        shouldCollectConsent = false,
         consents = listOf()
     )
 
     // From the debugger
     val call = FakeFlutterMethodCall(method = "isReady", arguments = null)
     val expectedWithData = mapOf(
-        "shouldShowCMP" to false,
+        "shouldCollectConsent" to false,
         "consents" to listOf(
             mapOf(
                 "templateId" to "ocv9HNX_g",
@@ -54,7 +54,7 @@ internal object IsReadyMock {
         )
     )
     val expectedWithoutData = mapOf(
-        "shouldShowCMP" to false,
+        "shouldCollectConsent" to false,
         "consents" to listOf<Any>()
     )
 

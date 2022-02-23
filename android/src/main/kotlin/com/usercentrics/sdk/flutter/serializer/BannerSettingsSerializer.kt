@@ -11,7 +11,7 @@ internal fun Any?.deserializeBannerSettings(
     if (this !is Map<*, *>) return null
     return BannerSettings(
         logo = this["logo"].deserializeImage(assetsProvider, activityProvider),
-        font = this["font"].deserializeFont(assetsProvider, activityProvider)
+        font = this["font"].deserializeBannerFont(assetsProvider, activityProvider)
     )
 }
 

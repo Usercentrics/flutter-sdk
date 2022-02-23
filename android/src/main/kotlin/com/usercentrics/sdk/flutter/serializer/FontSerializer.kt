@@ -1,22 +1,25 @@
 package com.usercentrics.sdk.flutter.serializer
 
 import android.graphics.Typeface
-import com.usercentrics.sdk.UsercentricsFont
+import com.usercentrics.sdk.BannerFont
 import com.usercentrics.sdk.flutter.api.FlutterActivityProvider
 import com.usercentrics.sdk.flutter.api.FlutterAssetsProvider
 
-internal fun Any?.deserializeFont(
+internal fun Any?.deserializeBannerFont(
     assetsProvider: FlutterAssetsProvider,
     activityProvider: FlutterActivityProvider
-): UsercentricsFont? {
+): BannerFont? {
     if (this !is Map<*, *>) return null
 
-    val typeface = this["fontAssetPath"]?.deserializeTypeface(assetsProvider, activityProvider)
+    val regularFont =
+        this["regularFontAssetPath"]?.deserializeTypeface(assetsProvider, activityProvider)
+    val boldFont = this["boldFontAssetPath"]?.deserializeTypeface(assetsProvider, activityProvider)
     val size = this["fontSize"] as? Number
 
-    return if (typeface != null && size != null) {
-        UsercentricsFont(
-            font = typeface,
+    return if (regularFont != null && boldFont != null && size != null) {
+        BannerFont(
+            regularFont = regularFont,
+            boldFont = boldFont,
             sizeInSp = size.toFloat()
         )
     } else null

@@ -1,4 +1,4 @@
-/// The CMP data.
+/// The location of the user.
 class UsercentricsLocation {
   const UsercentricsLocation({
     required this.countryCode,

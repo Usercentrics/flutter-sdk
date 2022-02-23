@@ -28,7 +28,7 @@ void main() {
       final initializeBridge = FakeInitializeBridge();
       final isReadyBridge = FakeIsReadyBridge(
         invokeAnswer: const UsercentricsReadyStatus(
-          shouldShowCMP: false,
+          shouldCollectConsent: false,
           consents: [],
         ),
       );
@@ -108,7 +108,7 @@ void main() {
 
     test('success', () async {
       const expectedStatus = UsercentricsReadyStatus(
-        shouldShowCMP: false,
+        shouldCollectConsent: false,
         consents: [],
       );
       final isReadyBridge = FakeIsReadyBridge(
@@ -150,9 +150,12 @@ void main() {
 
       const layout = UsercentricsLayout.sheet;
       const settings = FirstLayerStyleSettings(cornerRadius: 100);
-      const logo = UsercentricsImage(assetPath: "assetPath");
-      const font =
-          UsercentricsFont(fontAssetPath: "fontAssetPath", fontSize: 12);
+      const logo = BannerImage(assetPath: "assetPath");
+      const font = BannerFont(
+        regularFontAssetPath: "fonts/Lora-Regular.ttf",
+        boldFontAssetPath: "fonts/Lora-Bold.ttf",
+        fontSize: 12,
+      );
 
       final response = await instance.showFirstLayer(
         layout: layout,
@@ -204,9 +207,12 @@ void main() {
       instance.isReadyCompleter?.complete();
 
       const showCloseButton = true;
-      const logo = UsercentricsImage(assetPath: "assetPath");
-      const font =
-          UsercentricsFont(fontAssetPath: "fontAssetPath", fontSize: 12);
+      const logo = BannerImage(assetPath: "assetPath");
+      const font = BannerFont(
+        regularFontAssetPath: "fonts/Lora-Regular.ttf",
+        boldFontAssetPath: "fonts/Lora-Bold.ttf",
+        fontSize: 12,
+      );
 
       final response = await instance.showSecondLayer(
         showCloseButton: showCloseButton,
@@ -361,7 +367,7 @@ void main() {
 
     test('success', () async {
       const expectedStatus = UsercentricsReadyStatus(
-        shouldShowCMP: false,
+        shouldCollectConsent: false,
         consents: [],
       );
       final restoreUserSessionBridge = FakeRestoreUserSessionBridge(

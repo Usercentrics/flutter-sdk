@@ -20,15 +20,15 @@ abstract class UsercentricsPlatform {
 
   Future<UsercentricsConsentUserResponse?> showFirstLayer({
     required UsercentricsLayout layout,
-    UsercentricsImage? logo,
-    UsercentricsFont? font,
+    BannerImage? logo,
+    BannerFont? font,
     FirstLayerStyleSettings? settings,
   });
 
   Future<UsercentricsConsentUserResponse?> showSecondLayer({
     required bool showCloseButton,
-    UsercentricsImage? logo,
-    UsercentricsFont? font,
+    BannerImage? logo,
+    BannerFont? font,
   });
 
   Future<List<UsercentricsServiceConsent>> get consents;

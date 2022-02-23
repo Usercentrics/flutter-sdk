@@ -24,7 +24,7 @@ class FirstLayerStyleSettingsSerializer {
   static dynamic _serializeHeader(HeaderImageSettings? value) => value == null
       ? null
       : {
-          'image': value.image?.assetPath,
+          'image': value.imageAssetPath,
           'height': value.height,
           'isExtended': value.isExtended,
           'isHidden': value.isHidden,

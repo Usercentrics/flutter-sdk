@@ -49,7 +49,8 @@ const expectedArguments = {
   "bannerSettings": {
     "logo": "images/flutter-logo.png",
     "font": {
-      "fontAssetPath": "fonts/Lora-VariableFont_wght.ttf",
+      "regularFontAssetPath": "fonts/Lora-Regular.ttf",
+      "boldFontAssetPath": "fonts/Lora-Bold.ttf",
       "fontSize": 20,
     },
   },
@@ -104,11 +105,12 @@ const expectedArguments = {
   }
 };
 const mockLayout = UsercentricsLayout.sheet;
-const mockFont = UsercentricsFont(
-  fontAssetPath: "fonts/Lora-VariableFont_wght.ttf",
+const mockFont = BannerFont(
+  regularFontAssetPath: "fonts/Lora-Regular.ttf",
+  boldFontAssetPath: "fonts/Lora-Bold.ttf",
   fontSize: 20,
 );
-const mockLogo = UsercentricsImage(
+const mockLogo = BannerImage(
   assetPath: "images/flutter-logo.png",
 );
 
@@ -117,7 +119,8 @@ const _buttonCornerRadius = 20;
 const _customFontPath = "fonts/AndadaPro.ttf";
 final mockSettings = FirstLayerStyleSettings(
   headerImage: HeaderImageSettings.extended(
-      image: const UsercentricsImage(assetPath: "images/header_extended.png")),
+    imageAssetPath: "images/header_extended.png",
+  ),
   title: const TitleSettings(
     alignment: SectionAlignment.start,
     fontAssetPath: _customFontPath,
