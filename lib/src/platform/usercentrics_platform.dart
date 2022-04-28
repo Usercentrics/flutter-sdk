@@ -22,20 +22,21 @@ abstract class UsercentricsPlatform {
     required UsercentricsLayout layout,
     BannerImage? logo,
     BannerFont? font,
-    FirstLayerStyleSettings? settings,
+    LegalLinksSettings? links,
+    FirstLayerStyleSettings? firstLayerSettings,
+    SecondLayerStyleSettings? secondLayerSettings,
   });
 
   Future<UsercentricsConsentUserResponse?> showSecondLayer({
-    required bool showCloseButton,
     BannerImage? logo,
     BannerFont? font,
+    LegalLinksSettings? links,
+    SecondLayerStyleSettings? secondLayerSettings,
   });
 
   Future<List<UsercentricsServiceConsent>> get consents;
 
   Future<String> get controllerId;
-
-  Future<String> get tcString;
 
   Future<UsercentricsReadyStatus> restoreUserSession({
     required String controllerId,

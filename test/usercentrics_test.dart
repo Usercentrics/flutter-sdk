@@ -69,7 +69,8 @@ void main() {
     Usercentrics.delegatePackingProperty = delegate;
 
     const layout = UsercentricsLayout.sheet;
-    const settings = FirstLayerStyleSettings(cornerRadius: 100);
+    const firstLayerSettings = FirstLayerStyleSettings(cornerRadius: 100);
+    const secondLayerSettings = SecondLayerStyleSettings(showCloseButton: true);
     const logo = BannerImage(assetPath: "asset/logo.png");
     const font = BannerFont(
       regularFontAssetPath: "asset/font-regular.ttf",
@@ -79,7 +80,8 @@ void main() {
 
     final result = await Usercentrics.showFirstLayer(
       layout: layout,
-      settings: settings,
+      firstLayerSettings: firstLayerSettings,
+      secondLayerSettings: secondLayerSettings,
       logo: logo,
       font: font,
     );
@@ -88,7 +90,10 @@ void main() {
     expect(delegate.showFirstLayerLayoutArgument, layout);
     expect(delegate.showFirstLayerFontArgument, font);
     expect(delegate.showFirstLayerLogoArgument, logo);
-    expect(delegate.showFirstLayerSettingsArgument, settings);
+    expect(
+        delegate.showFirstLayerFirstLayerSettingsArgument, firstLayerSettings);
+    expect(delegate.showFirstLayerSecondLayerSettingsArgument,
+        secondLayerSettings);
     expect(result, expectedResponse);
   });
 
@@ -102,7 +107,7 @@ void main() {
         FakeUsercentricsPlatform(showSecondLayerAnswer: expectedResponse);
     Usercentrics.delegatePackingProperty = delegate;
 
-    const showCloseButton = true;
+    const secondLayerSettings = SecondLayerStyleSettings(showCloseButton: true);
     const logo = BannerImage(assetPath: "asset/logo.png");
     const font = BannerFont(
       regularFontAssetPath: "asset/font-regular.ttf",
@@ -111,7 +116,7 @@ void main() {
     );
 
     final result = await Usercentrics.showSecondLayer(
-      showCloseButton: showCloseButton,
+      secondLayerSettings: secondLayerSettings,
       logo: logo,
       font: font,
     );
@@ -119,7 +124,8 @@ void main() {
     expect(delegate.showSecondLayerCount, 1);
     expect(delegate.showSecondLayerFontArgument, font);
     expect(delegate.showSecondLayerLogoArgument, logo);
-    expect(delegate.showSecondLayerShowCloseButtonArgument, showCloseButton);
+    expect(delegate.showSecondLayerSecondLayerSettingsArgument,
+        secondLayerSettings);
     expect(result, expectedResponse);
   });
 
@@ -144,17 +150,6 @@ void main() {
 
     expect(delegate.controllerIdCount, 1);
     expect(result, expectedControllerId);
-  });
-
-  test('tcString', () async {
-    const expectedTCSting = "ABC";
-    final delegate = FakeUsercentricsPlatform(tcStringAnswer: expectedTCSting);
-    Usercentrics.delegatePackingProperty = delegate;
-
-    final result = await Usercentrics.tcString;
-
-    expect(delegate.tcStringCount, 1);
-    expect(result, expectedTCSting);
   });
 
   test('restoreUserSession', () async {

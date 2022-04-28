@@ -72,7 +72,7 @@ class _HomePageState extends State<HomePage> {
 
   void _showFirstLayer({
     UsercentricsLayout? layout,
-    FirstLayerStyleSettings? settings,
+    FirstLayerStyleSettings? firstLayerSettings,
   }) async {
     try {
       final response = await Usercentrics.showFirstLayer(
@@ -83,7 +83,11 @@ class _HomePageState extends State<HomePage> {
         //   boldFontAssetPath: 'fonts/Lora-Bold.ttf',
         //   fontSize: 15,
         // ),
-        settings: settings,
+        links: LegalLinksSettings.firstLayerOnly,
+        firstLayerSettings: firstLayerSettings,
+        secondLayerSettings: const SecondLayerStyleSettings(
+          showCloseButton: true,
+        ),
       );
 
       _handleUserResponse(response);
@@ -95,12 +99,20 @@ class _HomePageState extends State<HomePage> {
   void _showSecondLayer() async {
     try {
       final response = await Usercentrics.showSecondLayer(
-        showCloseButton: true,
         logo: const BannerImage(assetPath: 'images/flutter-logo.png'),
         // font: const UsercentricsFont(
         //   fontAssetPath: 'fonts/Lora-VariableFont_wght.ttf',
         //   fontSize: 15,
         // ),
+        secondLayerSettings: SecondLayerStyleSettings(
+          showCloseButton: true,
+          buttonLayout: ButtonLayout.row(
+            buttons: [
+              const ButtonSettings(type: ButtonType.save),
+              const ButtonSettings(type: ButtonType.acceptAll),
+            ],
+          ),
+        ),
       );
 
       _handleUserResponse(response);
@@ -140,14 +152,14 @@ class _HomePageState extends State<HomePage> {
             ElevatedButton(
               onPressed: () => _showFirstLayer(
                 layout: UsercentricsLayout.popupBottom,
-                settings: firstLayerCustomizationExample1,
+                firstLayerSettings: firstLayerCustomizationExample1,
               ),
               child: const Text("Customization Example 1"),
             ),
             ElevatedButton(
               onPressed: () => _showFirstLayer(
                 layout: UsercentricsLayout.full,
-                settings: firstLayerCustomizationExample2,
+                firstLayerSettings: firstLayerCustomizationExample2,
               ),
               child: const Text("Customization Example 2"),
             ),

@@ -1,18 +1,19 @@
 package com.usercentrics.sdk.flutter.api
 
-import com.usercentrics.sdk.*
+import com.usercentrics.sdk.BannerSettings
+import com.usercentrics.sdk.UsercentricsBanner
+import com.usercentrics.sdk.UsercentricsConsentUserResponse
+import com.usercentrics.sdk.UsercentricsLayout
 
 internal interface UsercentricsBannerProxy {
     fun showFirstLayer(
         bannerSettings: BannerSettings?,
         layout: UsercentricsLayout,
-        settings: FirstLayerStyleSettings?,
         callback: (UsercentricsConsentUserResponse?) -> Unit,
     )
 
     fun showSecondLayer(
         bannerSettings: BannerSettings?,
-        showCloseButton: Boolean,
         callback: (UsercentricsConsentUserResponse?) -> Unit,
     )
 }
@@ -24,20 +25,18 @@ internal class UsercentricsBannerProxyImpl(
     override fun showFirstLayer(
         bannerSettings: BannerSettings?,
         layout: UsercentricsLayout,
-        settings: FirstLayerStyleSettings?,
         callback: (UsercentricsConsentUserResponse?) -> Unit,
     ) {
         val context = activityProvider.provide() ?: return
-        UsercentricsBanner(context, bannerSettings).showFirstLayer(layout, settings, callback)
+        UsercentricsBanner(context, bannerSettings).showFirstLayer(layout, callback)
     }
 
     override fun showSecondLayer(
         bannerSettings: BannerSettings?,
-        showCloseButton: Boolean,
         callback: (UsercentricsConsentUserResponse?) -> Unit,
     ) {
         val context = activityProvider.provide() ?: return
-        UsercentricsBanner(context, bannerSettings).showSecondLayer(showCloseButton, callback)
+        UsercentricsBanner(context, bannerSettings).showSecondLayer(callback)
     }
 
 }

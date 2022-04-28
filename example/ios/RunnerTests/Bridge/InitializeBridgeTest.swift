@@ -31,7 +31,6 @@ class InitializeBridgeTest: XCTestCase, BaseBridgeTestProtocol {
             XCTAssertNil(result)
 
             XCTAssertEqual(self.usercentrics.configureCount, 1)
-            XCTAssertEqual(self.usercentrics.isReadyCount, 1)
             XCTAssertNotNil(self.usercentrics.configureOptions)
 
             XCTAssertEqual(self.usercentrics.configureOptions?.settingsId, "AAAAA")
@@ -54,7 +53,7 @@ class InitializeBridgeTest: XCTestCase, BaseBridgeTestProtocol {
         wait(for: [expectation], timeout: 2.0)
     }
 
-    func testInvokeTwiceShouldDoNothing() {
+    func testInvokeTwice() {
         let expectation =  XCTestExpectation(description: "resultCompletion")
         expectation.expectedFulfillmentCount = 2
         let resultCompletion: FlutterResult = { [unowned self] result in

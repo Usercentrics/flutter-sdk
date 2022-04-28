@@ -68,16 +68,20 @@ class ShowSecondLayerBridgeTest: XCTestCase, BaseBridgeTestProtocol {
             XCTAssertEqual(consent["isEssential"] as! Bool, true)
 
             XCTAssertEqual(self.bannerProxy.showSecondLayerCount, 1)
-            XCTAssertEqual(self.bannerProxy.showSecondLayerCloseButtonArg, true)
-            XCTAssertNil(self.bannerProxy.showSecondLayerBannerSettingsArg)
+            XCTAssertEqual(self.bannerProxy.showSecondLayerBannerSettingsArg?.links, LegalLinksSettings.none)
+            XCTAssertEqual(self.bannerProxy.showSecondLayerBannerSettingsArg?.secondLayerSettings?.showCloseButton, true)
 
             expectation.fulfill()
         }
 
         let call = FakeFlutterMethodCall(methodName: bridgeName)
         call.argumentsMap = [
-            "bannerSettings": nil,
-            "showCloseButton": true,
+            "bannerSettings": [
+                "links": "NONE",
+                "secondLayerSettings": [
+                    "showCloseButton": true,
+                ]
+            ],
         ]
         bridge.invoke(call, resultCompletion)
         wait(for: [expectation], timeout: 2.0)

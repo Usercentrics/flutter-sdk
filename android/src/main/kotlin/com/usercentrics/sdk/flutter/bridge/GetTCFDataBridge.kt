@@ -15,6 +15,8 @@ internal class GetTCFDataBridge(
 
     override fun invoke(call: FlutterMethodCall, result: FlutterResult) {
         assert(name == call.method)
-        result.success(usercentrics.instance.getTCFData().serialize())
+        usercentrics.instance.getTCFData {
+            result.success(it.serialize())
+        }
     }
 }

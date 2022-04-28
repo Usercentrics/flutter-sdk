@@ -50,33 +50,41 @@ class Usercentrics {
   /// - The [layout] of the banner.
   /// - The [logo] sets an image as Logo to go at the top of your Banner. By default, it is null and that means that the Banner will use the logo defined at the Admin Interface.
   /// - The [font] sets the font to be used in the Banner. By default, it is null and that means that the Banner will use the font defined at the Admin Interface.
-  /// - The [settings] of the first layer that enables you to style this layer with a full granularity level.
+  /// - The [links] shows/hides the legal links following the given criteria.
+  /// - The [firstLayerSettings] that enables you to style the first layer programmatically.
+  /// - The [secondLayerSettings] that enables you to style the second layer programmatically.
   static Future<UsercentricsConsentUserResponse?> showFirstLayer({
     required UsercentricsLayout layout,
     BannerImage? logo,
     BannerFont? font,
-    FirstLayerStyleSettings? settings,
+    LegalLinksSettings? links,
+    FirstLayerStyleSettings? firstLayerSettings,
+    SecondLayerStyleSettings? secondLayerSettings,
   }) =>
       _delegate.showFirstLayer(
         layout: layout,
         logo: logo,
         font: font,
-        settings: settings,
+        links: links,
+        firstLayerSettings: firstLayerSettings,
+        secondLayerSettings: secondLayerSettings,
       );
 
   /// Show the Banner second layer to **manage** consents.
-  /// - The [showCloseButton] show/hide the close button at the top-right corner of the Banner. If you are opening the Banner from your App's settings. We always recommend to enable a close button, so that users can easily dismiss the Banner. By default, close button is hidden.
   /// - The [logo] sets an image as Logo to go at the top of your Banner. By default, it is null and that means that the Banner will use the logo defined at the Admin Interface.
   /// - The [font] sets the font to be used in the Banner. By default, it is null and that means that the Banner will use the font defined at the Admin Interface.
+  /// - The [links] shows/hides the legal links following the given criteria.
+  /// - The [secondLayerSettings] that enables you to style the second layer programmatically.
   static Future<UsercentricsConsentUserResponse?> showSecondLayer({
-    required bool showCloseButton,
     BannerImage? logo,
     BannerFont? font,
+    LegalLinksSettings? links,
+    SecondLayerStyleSettings? secondLayerSettings,
   }) =>
       _delegate.showSecondLayer(
-        showCloseButton: showCloseButton,
         logo: logo,
         font: font,
+        secondLayerSettings: secondLayerSettings,
       );
 
   /// Get the complete list of [UsercentricsServiceConsent] with the last status of the user.
@@ -85,9 +93,6 @@ class Usercentrics {
 
   /// Get a Usercentrics generated ID, used to identify a user's consent history.
   static Future<String> get controllerId => _delegate.controllerId;
-
-  /// Get the IAB consent string.
-  static Future<String> get tcString => _delegate.tcString;
 
   /// Restore a user session in another Usercentrics supported platform.
   /// - The [controllerId] is a Usercentrics generated ID, used to identify a user's consent history.

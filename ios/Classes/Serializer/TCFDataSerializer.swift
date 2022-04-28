@@ -3,6 +3,7 @@ import Usercentrics
 extension TCFData {
     func serialize()-> Any {
         return[
+            "tcString" : tcString,
             "features" : features.map { $0.serialize() },
             "purposes" : purposes.map { $0.serialize() },
             "specialFeatures" : specialFeatures.map { $0.serialize() },

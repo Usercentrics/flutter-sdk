@@ -7,6 +7,8 @@ struct GetTCFDataBridge : MethodBridge {
 
     func invoke(_ call: FlutterMethodCall, _ result: @escaping FlutterResult) {
         assert(call.method == name)
-        result(usercentrics.shared.getTCFData().serialize())
+        usercentrics.shared.getTCFData() {
+            result($0.serialize())
+        }
     }
 }

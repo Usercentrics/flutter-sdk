@@ -23,7 +23,6 @@ internal class ShowSecondLayerBridge(
                 assetsProvider,
                 activityProvider
             ),
-            showCloseButton = argsMap["showCloseButton"] as Boolean,
         ) { response ->
             result.success(response?.serialize())
         }

@@ -69,44 +69,45 @@ class ShowFirstLayerBridgeTest: XCTestCase, BaseBridgeTestProtocol {
 
             XCTAssertEqual(self.bannerProxy.showFirstLayerCount, 1)
             XCTAssertEqual(self.bannerProxy.showFirstLayerLayoutArg, .popup(position: .center))
-            XCTAssertNil(self.bannerProxy.showFirstLayerBannerSettingsArg)
-
-            // TODO Assert style settings when the properties are visible
-//            XCTAssertEqual(self.bannerProxy.showFirstLayerSettingsArg?.headerImage?.height, 100.0)
+            XCTAssertEqual(self.bannerProxy.showFirstLayerBannerSettingsArg?.links, LegalLinksSettings.both)
+            XCTAssertEqual(self.bannerProxy.showFirstLayerBannerSettingsArg?.firstLayerSettings != nil, true)
+            // TODO Assert style settings
 
             expectation.fulfill()
         }
 
         let call = FakeFlutterMethodCall(methodName: bridgeName)
         call.argumentsMap = [
-            "bannerSettings": nil,
-            "layout": "POPUP_CENTER",
-            "settings": [
-                "headerImage": [
-                    "height": 100.0
-                ],
-                "title": [
-                    "alignment": "START",
-                    "textSize": 20.0
-                ],
-                "message": [
-                    "alignment": "END",
-                    "textColor": "#8a000000",
-                    "linkTextUnderline": true
-                ],
-                "buttonLayout": [
-                    [
-                        "type": "MORE",
-                        "cornerRadius": 20
+            "bannerSettings": [
+                "links": "BOTH",
+                "firstLayerSettings": [
+                    "headerImage": [
+                        "height": 100.0
                     ],
-                    [
-                        "type": "ACCEPT_ALL",
-                        "cornerRadius": 20
-                    ]
-                ],
-                "overlayColor": "#8a000011",
-                "cornerRadius": 50
-            ]
+                    "title": [
+                        "alignment": "START",
+                        "textSize": 20.0
+                    ],
+                    "message": [
+                        "alignment": "END",
+                        "textColor": "#8a000000",
+                        "linkTextUnderline": true
+                    ],
+                    "buttonLayout": [
+                        [
+                            "type": "MORE",
+                            "cornerRadius": 20
+                        ],
+                        [
+                            "type": "ACCEPT_ALL",
+                            "cornerRadius": 20
+                        ]
+                    ],
+                    "overlayColor": "#8a000011",
+                    "cornerRadius": 50
+                ]
+            ],
+            "layout": "POPUP_CENTER",
         ]
         bridge.invoke(call, resultCompletion)
         wait(for: [expectation], timeout: 2.0)

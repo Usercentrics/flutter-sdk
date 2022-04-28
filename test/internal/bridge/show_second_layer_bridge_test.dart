@@ -50,7 +50,6 @@ void main() {
     ],
   );
   const expectedArguments = {
-    "showCloseButton": true,
     "bannerSettings": {
       "logo": "images/flutter-logo.png",
       "font": {
@@ -58,9 +57,35 @@ void main() {
         "boldFontAssetPath": "fonts/Lora-Bold.ttf",
         "fontSize": 20,
       },
+      "links": "NONE",
+      "firstLayerSettings": null,
+      "secondLayerSettings": {
+        "showCloseButton": true,
+        'buttonLayout': [
+          [
+            {
+              'type': 'MORE',
+              'isAllCaps': null,
+              'fontAssetPath': null,
+              'textSize': null,
+              'textColor': null,
+              'backgroundColor': null,
+              'cornerRadius': null
+            },
+            {
+              'type': 'ACCEPT_ALL',
+              'isAllCaps': null,
+              'fontAssetPath': null,
+              'textSize': null,
+              'textColor': null,
+              'backgroundColor': null,
+              'cornerRadius': null
+            }
+          ]
+        ],
+      },
     }
   };
-  const mockShowCloseButton = true;
   const mockFont = BannerFont(
     regularFontAssetPath: "fonts/Lora-Regular.ttf",
     boldFontAssetPath: "fonts/Lora-Bold.ttf",
@@ -68,6 +93,17 @@ void main() {
   );
   const mockLogo = BannerImage(
     assetPath: "images/flutter-logo.png",
+  );
+  final mockSecondLayerSettings = SecondLayerStyleSettings(
+    showCloseButton: true,
+    buttonLayout: ButtonLayout.row(buttons: [
+      const ButtonSettings(
+        type: ButtonType.more,
+      ),
+      const ButtonSettings(
+        type: ButtonType.acceptAll,
+      ),
+    ]),
   );
 
   const MethodChannel channel = MethodChannel('usercentrics');
@@ -89,9 +125,10 @@ void main() {
 
     final result = await instance.invoke(
       channel: channel,
-      showCloseButton: mockShowCloseButton,
+      secondLayerSettings: mockSecondLayerSettings,
       font: mockFont,
       logo: mockLogo,
+      links: LegalLinksSettings.none,
     );
 
     expect(callCounter, 1);

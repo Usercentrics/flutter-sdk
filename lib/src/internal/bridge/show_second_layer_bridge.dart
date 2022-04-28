@@ -7,9 +7,10 @@ abstract class ShowSecondLayerBridge {
 
   Future<UsercentricsConsentUserResponse?> invoke({
     required MethodChannel channel,
-    required bool showCloseButton,
     BannerImage? logo,
     BannerFont? font,
+    LegalLinksSettings? links,
+    SecondLayerStyleSettings? secondLayerSettings,
   });
 }
 
@@ -21,9 +22,10 @@ class MethodChannelShowSecondLayer extends ShowSecondLayerBridge {
   @override
   Future<UsercentricsConsentUserResponse?> invoke({
     required MethodChannel channel,
-    required bool showCloseButton,
     BannerImage? logo,
     BannerFont? font,
+    LegalLinksSettings? links,
+    SecondLayerStyleSettings? secondLayerSettings,
   }) async {
     final result = await channel.invokeMethod(
       _name,
@@ -31,8 +33,9 @@ class MethodChannelShowSecondLayer extends ShowSecondLayerBridge {
         'bannerSettings': BannerSettingsSerializer.serialize(
           logo: logo,
           font: font,
+          links: links,
+          secondLayerSettings: secondLayerSettings,
         ),
-        'showCloseButton': showCloseButton,
       },
     );
     return result == null

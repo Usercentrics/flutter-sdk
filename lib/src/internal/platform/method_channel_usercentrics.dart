@@ -12,7 +12,6 @@ class MethodChannelUsercentrics extends UsercentricsPlatform {
     this.isReadyBridge = const MethodChannelIsReady(),
     this.getConsentsBridge = const MethodChannelGetConsents(),
     this.getControllerIdBridge = const MethodChannelGetControllerId(),
-    this.getTCStringBridge = const MethodChannelGetTCString(),
     this.resetBridge = const MethodChannelReset(),
     this.restoreUserSessionBridge = const MethodChannelRestoreUserSession(),
     this.showFirstLayerBridge = const MethodChannelShowFirstLayer(),
@@ -38,7 +37,6 @@ class MethodChannelUsercentrics extends UsercentricsPlatform {
   final IsReadyBridge isReadyBridge;
   final GetConsentsBridge getConsentsBridge;
   final GetControllerIdBridge getControllerIdBridge;
-  final GetTCStringBridge getTCStringBridge;
   final ResetBridge resetBridge;
   final RestoreUserSessionBridge restoreUserSessionBridge;
   final ShowFirstLayerBridge showFirstLayerBridge;
@@ -68,8 +66,9 @@ class MethodChannelUsercentrics extends UsercentricsPlatform {
     int? timeoutMillis,
     String? version,
   }) async {
-    _ensureNotInitialized();
+    final ongoingInit = isReadyCompleter;
     isReadyCompleter = Completer();
+    if (ongoingInit != null) await ongoingInit.future;
     initializeBridge.invoke(
       channel: _channel,
       settingsId: settingsId,
@@ -96,7 +95,9 @@ class MethodChannelUsercentrics extends UsercentricsPlatform {
     required UsercentricsLayout layout,
     BannerImage? logo,
     BannerFont? font,
-    FirstLayerStyleSettings? settings,
+    LegalLinksSettings? links,
+    FirstLayerStyleSettings? firstLayerSettings,
+    SecondLayerStyleSettings? secondLayerSettings,
   }) async {
     await _ensureIsReady();
     return await showFirstLayerBridge.invoke(
@@ -104,22 +105,26 @@ class MethodChannelUsercentrics extends UsercentricsPlatform {
       layout: layout,
       logo: logo,
       font: font,
-      settings: settings,
+      links: links,
+      firstLayerSettings: firstLayerSettings,
+      secondLayerSettings: secondLayerSettings,
     );
   }
 
   @override
   Future<UsercentricsConsentUserResponse?> showSecondLayer({
-    required bool showCloseButton,
     BannerImage? logo,
     BannerFont? font,
+    LegalLinksSettings? links,
+    SecondLayerStyleSettings? secondLayerSettings,
   }) async {
     await _ensureIsReady();
     return await showSecondLayerBridge.invoke(
       channel: _channel,
-      showCloseButton: showCloseButton,
       logo: logo,
       font: font,
+      links: links,
+      secondLayerSettings: secondLayerSettings,
     );
   }
 
@@ -133,12 +138,6 @@ class MethodChannelUsercentrics extends UsercentricsPlatform {
   Future<String> get controllerId async {
     await _ensureIsReady();
     return await getControllerIdBridge.invoke(channel: _channel);
-  }
-
-  @override
-  Future<String> get tcString async {
-    await _ensureIsReady();
-    return await getTCStringBridge.invoke(channel: _channel);
   }
 
   @override
@@ -287,12 +286,6 @@ class MethodChannelUsercentrics extends UsercentricsPlatform {
     return await getUserSessionDataBridge.invoke(channel: _channel);
   }
 
-  void _ensureNotInitialized() {
-    if (isReadyCompleter != null) {
-      throw const AlreadyInitializedException();
-    }
-  }
-
   Future<void> _ensureIsReady() async {
     final completer = isReadyCompleter;
     if (completer == null) {
@@ -300,16 +293,6 @@ class MethodChannelUsercentrics extends UsercentricsPlatform {
     }
     await completer.future;
   }
-}
-
-class AlreadyInitializedException implements Exception {
-  static const message =
-      "Usercentrics was already initialized, please ensure that you invoke 'Usercentrics.initialize()' only once";
-
-  const AlreadyInitializedException();
-
-  @override
-  String toString() => "$AlreadyInitializedException(message: $message)";
 }
 
 class NotInitializedException implements Exception {
