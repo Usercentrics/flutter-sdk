@@ -31,7 +31,6 @@ class InitializeBridgeTest: XCTestCase, BaseBridgeTestProtocol {
             XCTAssertNil(result)
 
             XCTAssertEqual(self.usercentrics.configureCount, 1)
-            XCTAssertEqual(self.usercentrics.isReadyCount, 1)
             XCTAssertNotNil(self.usercentrics.configureOptions)
 
             XCTAssertEqual(self.usercentrics.configureOptions?.settingsId, "AAAAA")
