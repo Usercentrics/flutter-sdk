@@ -21,7 +21,6 @@ class FakeUsercentricsPlatform extends UsercentricsPlatform {
   FakeUsercentricsPlatform({
     this.consentsAnswer,
     this.controllerIdAnswer,
-    this.tcStringAnswer,
     this.restoreUserSessionAnswer,
     this.showFirstLayerAnswer,
     this.showSecondLayerAnswer,
@@ -55,15 +54,6 @@ class FakeUsercentricsPlatform extends UsercentricsPlatform {
   Future<String> get controllerId {
     controllerIdCount++;
     return Future.value(controllerIdAnswer!);
-  }
-
-  final String? tcStringAnswer;
-  var tcStringCount = 0;
-
-  @override
-  Future<String> get tcString {
-    tcStringCount++;
-    return Future.value(tcStringAnswer!);
   }
 
   var initializeCount = 0;

@@ -32,11 +32,6 @@ class FakeUsercentrics extends UsercentricsPlatform {
   }
 
   @override
-  Future<String> get tcString {
-    throw UnimplementedError();
-  }
-
-  @override
   Future<UsercentricsReadyStatus> restoreUserSession(
       {required String controllerId}) {
     throw UnimplementedError();
