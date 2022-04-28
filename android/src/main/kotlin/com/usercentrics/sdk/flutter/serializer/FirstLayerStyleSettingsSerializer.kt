@@ -1,7 +1,5 @@
 package com.usercentrics.sdk.flutter.serializer
 
-import android.graphics.Color
-import androidx.annotation.ColorInt
 import com.usercentrics.sdk.*
 import com.usercentrics.sdk.flutter.api.FlutterActivityProvider
 import com.usercentrics.sdk.flutter.api.FlutterAssetsProvider
@@ -101,33 +99,4 @@ internal fun Any?.deserializeMessageSettings(
         underlineLink = this["linkTextUnderline"] as? Boolean,
         textSizeInSp = (this["textSize"] as? Number)?.toFloat(),
     )
-}
-
-internal fun Any?.deserializeButtonSettings(
-    assetsProvider: FlutterAssetsProvider,
-    activityProvider: FlutterActivityProvider,
-): ButtonSettings? {
-    if (this !is Map<*, *>) return null
-
-    return ButtonSettings(
-        type = this["type"]?.deserializeButtonType()!!,
-        isAllCaps = this["isAllCaps"] as? Boolean,
-        font = this["fontAssetPath"].deserializeTypeface(assetsProvider, activityProvider),
-        textColor = (this["textColor"] as? String)?.deserializeColor(),
-        backgroundColor = (this["backgroundColor"] as? String)?.deserializeColor(),
-        cornerRadius = this["cornerRadius"] as? Int,
-        textSizeInSp = (this["textSize"] as? Number)?.toFloat(),
-    )
-}
-
-internal fun Any?.deserializeButtonType(): ButtonType? {
-    if (this !is String) return null
-    return ButtonType.valueOf(this)
-}
-
-@ColorInt
-internal fun String.deserializeColor(): Int? {
-    return runCatching {
-        Color.parseColor(this)
-    }.getOrNull()
 }

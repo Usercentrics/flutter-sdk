@@ -1,9 +1,6 @@
 package com.usercentrics.sdk.flutter.mock
 
-import com.usercentrics.sdk.UsercentricsConsentHistoryEntry
-import com.usercentrics.sdk.UsercentricsConsentUserResponse
-import com.usercentrics.sdk.UsercentricsServiceConsent
-import com.usercentrics.sdk.UsercentricsUserInteraction
+import com.usercentrics.sdk.*
 import com.usercentrics.sdk.flutter.api.FakeFlutterMethodCall
 import com.usercentrics.sdk.models.settings.UsercentricsConsentType
 
@@ -12,11 +9,20 @@ internal object ShowSecondLayerMock {
     // From the debugger
     val call = FakeFlutterMethodCall(
         method = "showSecondLayer", arguments = mapOf(
-            "showCloseButton" to true,
             "bannerSettings" to mapOf(
                 "font" to null,
-                "logo" to null
+                "logo" to null,
+                "links" to "SECOND_LAYER_ONLY",
+                "secondLayerSettings" to mapOf(
+                    "showCloseButton" to true,
+                )
             )
+        )
+    )
+    val expectedBannerSettings = BannerSettings(
+        links = LegalLinksSettings.SECOND_LAYER_ONLY,
+        secondLayerSettings = SecondLayerStyleSettings(
+            showCloseButton = true,
         )
     )
     val fakeResponseWithData = UsercentricsConsentUserResponse(

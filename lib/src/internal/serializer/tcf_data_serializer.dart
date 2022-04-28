@@ -19,6 +19,7 @@ class TCFDataSerializer {
           (value['stacks'] as List).map((e) => _deserializeStack(e)).toList(),
       vendors:
           (value['vendors'] as List).map((e) => _deserializeVendor(e)).toList(),
+      tcString: value['tcString'],
     );
   }
 

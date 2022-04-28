@@ -11,7 +11,16 @@ internal fun Any?.deserializeBannerSettings(
     if (this !is Map<*, *>) return null
     return BannerSettings(
         logo = this["logo"].deserializeImage(assetsProvider, activityProvider),
-        font = this["font"].deserializeBannerFont(assetsProvider, activityProvider)
+        font = this["font"].deserializeBannerFont(assetsProvider, activityProvider),
+        links = this["links"].deserializeLegalLinksSettings(),
+        firstLayerSettings = this["firstLayerSettings"].deserializeFirstLayerStyleSettings(
+            assetsProvider,
+            activityProvider
+        ),
+        secondLayerSettings = this["secondLayerSettings"].deserializeSecondLayerStyleSettings(
+            assetsProvider,
+            activityProvider
+        ),
     )
 }
 

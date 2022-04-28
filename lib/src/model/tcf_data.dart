@@ -9,6 +9,7 @@ class TCFData {
     required this.specialPurposes,
     required this.stacks,
     required this.vendors,
+    required this.tcString,
   });
 
   /// A list of all the TCF features that need to be disclosed to the end-user if TCF is enabled.
@@ -31,8 +32,11 @@ class TCFData {
   /// features fields, but they will be flagged with isPartOfASelectedStack = true and include a non-null stackId.
   final List<TCFStack> stacks;
 
-  /// A list of all TCF vendors that need to be disclosed to the end-user if TCF is enabled */
+  /// A list of all TCF vendors that need to be disclosed to the end-user if TCF is enabled
   final List<TCFVendor> vendors;
+
+  /// The encoded IAB TCString
+  final String tcString;
 
   @override
   bool operator ==(Object other) =>
@@ -44,7 +48,8 @@ class TCFData {
           listEquals(specialFeatures, other.specialFeatures) &&
           listEquals(specialPurposes, other.specialPurposes) &&
           listEquals(stacks, other.stacks) &&
-          listEquals(vendors, other.vendors);
+          listEquals(vendors, other.vendors) &&
+          tcString == other.tcString;
 
   @override
   int get hashCode =>
@@ -53,10 +58,11 @@ class TCFData {
       specialFeatures.hashCode +
       specialPurposes.hashCode +
       stacks.hashCode +
-      vendors.hashCode;
+      vendors.hashCode +
+      tcString.hashCode;
 
   @override
-  String toString() => "$TCFData($hashCode)";
+  String toString() => "$TCFData($tcString)";
 }
 
 /// A TCF feature that needs to be disclosed to the end-user.

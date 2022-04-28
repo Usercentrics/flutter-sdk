@@ -6,6 +6,7 @@ import com.usercentrics.sdk.services.tcf.interfaces.*
 internal object GetTCFDataMock {
 
     val fake = TCFData(
+        tcString = "abc",
         features = listOf(
             TCFFeature(
                 purposeDescription = "Data from offline data sources can be combined with your online activity in support of one or more purposes",
@@ -100,6 +101,7 @@ internal object GetTCFDataMock {
     // From the debugger
     val call = FakeFlutterMethodCall(method = "getTCFData", arguments = null)
     val expected = mapOf(
+        "tcString" to "abc",
         "features" to listOf(
             mapOf(
                 "purposeDescription" to "Data from offline data sources can be combined with your online activity in support of one or more purposes",

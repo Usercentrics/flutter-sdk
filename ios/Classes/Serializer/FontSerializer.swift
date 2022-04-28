@@ -1,41 +1,18 @@
 import UsercentricsUI
 
-struct BannerFontHolder {
-    public let font: BannerFont
-    public let regularFont: UIFont
-    public let boldFont: UIFont
-
-    static func initialize(from value: Dictionary<String,Any>, assetProvider: FlutterAssetProvider) -> BannerFontHolder? {
+extension BannerFont {
+    static func initialize(from value: Dictionary<String,Any>, assetProvider: FlutterAssetProvider) -> BannerFont? {
         if let regularFontAsset = value["regularFontAssetPath"] as? String,
            let boldFontAsset = value["boldFontAssetPath"] as? String,
            let fontSizeValue = value["fontSize"] as? CGFloat,
            let regularFont = UIFont.initialize(from: regularFontAsset, fontSizeValue: fontSizeValue, fallbackFont: nil, assetProvider: assetProvider),
            let boldFont = UIFont.initialize(from: boldFontAsset, fontSizeValue: fontSizeValue, fallbackFont: nil, assetProvider: assetProvider) {
-            return BannerFontHolder(font: BannerFont(regularFont: regularFont, boldFont: boldFont),
-                                    regularFont: regularFont,
-                                    boldFont: boldFont)
+            return BannerFont(regularFont: regularFont, boldFont: boldFont)
         } else {
             return nil
         }
     }
 }
-
-// TODO Remove the holder class when the properties are public
-//extension BannerFont {
-//
-//    static func initialize(from value: Dictionary<String,Any>, assetProvider: FlutterAssetProvider) -> BannerFont? {
-//        if let regularFontAsset = value["regularFontAssetPath"] as? String,
-//           let boldFontAsset = value["boldFontAssetPath"] as? String,
-//           let fontSizeValue = value["fontSize"] as? CGFloat,
-//           let regularFont = UIFont.initialize(from: regularFontAsset, fontSizeValue: fontSizeValue, fallbackFont: nil, assetProvider: assetProvider),
-//           let boldFont = UIFont.initialize(from: boldFontAsset, fontSizeValue: fontSizeValue, fallbackFont: nil, assetProvider: assetProvider) {
-//            return BannerFont(regularFont: regularFont, boldFont: boldFont)
-//        } else {
-//            return nil
-//        }
-//    }
-//
-//}
 
 extension UIFont {
 

@@ -130,16 +130,19 @@ class FakeUsercentrics extends UsercentricsPlatform {
     required UsercentricsLayout layout,
     BannerImage? logo,
     BannerFont? font,
-    FirstLayerStyleSettings? settings,
+    LegalLinksSettings? links,
+    FirstLayerStyleSettings? firstLayerSettings,
+    SecondLayerStyleSettings? secondLayerSettings,
   }) {
     throw UnimplementedError();
   }
 
   @override
   Future<UsercentricsConsentUserResponse?> showSecondLayer({
-    required bool showCloseButton,
     BannerImage? logo,
     BannerFont? font,
+    LegalLinksSettings? links,
+    SecondLayerStyleSettings? secondLayerSettings,
   }) {
     throw UnimplementedError();
   }

@@ -9,7 +9,7 @@ class CustomizationSerializer {
       borderRadiusButton: value['borderRadiusButton'],
       overlayOpacity: value['overlayOpacity'],
       font: FontSerializer.deserialize(value['font']),
-      color: ColorSerializer.deserialize(value['color']),
+      color: CustomizationColorSerializer.deserialize(value['color']),
     );
   }
 }
@@ -23,7 +23,7 @@ class FontSerializer {
   }
 }
 
-class ColorSerializer {
+class CustomizationColorSerializer {
   static CustomizationColor deserialize(dynamic value) {
     return CustomizationColor(
       primary: value['primary'] ?? "",

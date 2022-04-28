@@ -54,7 +54,7 @@ class InitializeBridgeTest: XCTestCase, BaseBridgeTestProtocol {
         wait(for: [expectation], timeout: 2.0)
     }
 
-    func testInvokeTwiceShouldDoNothing() {
+    func testInvokeTwice() {
         let expectation =  XCTestExpectation(description: "resultCompletion")
         expectation.expectedFulfillmentCount = 2
         let resultCompletion: FlutterResult = { [unowned self] result in

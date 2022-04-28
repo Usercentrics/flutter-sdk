@@ -4,6 +4,8 @@ import 'package:usercentrics_sdk/src/model/first_layer_style_settings.dart';
 import 'package:usercentrics_sdk/src/model/font.dart';
 import 'package:usercentrics_sdk/src/model/image.dart';
 import 'package:usercentrics_sdk/src/model/layout.dart';
+import 'package:usercentrics_sdk/src/model/legal_links_settings.dart';
+import 'package:usercentrics_sdk/src/model/second_layer_style_settings.dart';
 import 'package:usercentrics_sdk/src/model/user_response.dart';
 
 class FakeShowFirstLayerBridge extends ShowFirstLayerBridge {
@@ -15,9 +17,11 @@ class FakeShowFirstLayerBridge extends ShowFirstLayerBridge {
   var invokeCount = 0;
   MethodChannel? invokeChannelArgument;
   UsercentricsLayout? invokeLayoutArgument;
-  FirstLayerStyleSettings? invokeSettingsArgument;
+  FirstLayerStyleSettings? invokeFirstLayerSettingsArgument;
+  SecondLayerStyleSettings? invokeSecondLayerSettingsArgument;
   BannerImage? invokeLogoArgument;
   BannerFont? invokeFontArgument;
+  LegalLinksSettings? invokeLinksArgument;
 
   @override
   Future<UsercentricsConsentUserResponse?> invoke({
@@ -25,11 +29,15 @@ class FakeShowFirstLayerBridge extends ShowFirstLayerBridge {
     required UsercentricsLayout layout,
     BannerImage? logo,
     BannerFont? font,
-    FirstLayerStyleSettings? settings,
+    LegalLinksSettings? links,
+    FirstLayerStyleSettings? firstLayerSettings,
+    SecondLayerStyleSettings? secondLayerSettings,
   }) {
     invokeCount++;
     invokeLayoutArgument = layout;
-    invokeSettingsArgument = settings;
+    invokeFirstLayerSettingsArgument = firstLayerSettings;
+    invokeSecondLayerSettingsArgument = secondLayerSettings;
+    invokeLinksArgument = links;
     invokeLogoArgument = logo;
     invokeFontArgument = font;
     invokeChannelArgument = channel;

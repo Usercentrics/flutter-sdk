@@ -53,56 +53,58 @@ const expectedArguments = {
       "boldFontAssetPath": "fonts/Lora-Bold.ttf",
       "fontSize": 20,
     },
+    "links": "BOTH",
+    "firstLayerSettings": {
+      'headerImage': {
+        'image': 'images/header_extended.png',
+        'height': null,
+        'isExtended': true,
+        'isHidden': null,
+        'alignment': null
+      },
+      'title': {
+        'alignment': 'START',
+        'fontAssetPath': 'fonts/AndadaPro.ttf',
+        'textColor': '#ff000000',
+        'textSize': 20.0
+      },
+      'message': {
+        'alignment': 'START',
+        'fontAssetPath': null,
+        'textColor': '#8a000000',
+        'linkTextColor': '#ff000000',
+        'linkTextUnderline': false,
+        'textSize': 16.0
+      },
+      'buttonLayout': [
+        [
+          {
+            'type': 'MORE',
+            'isAllCaps': null,
+            'fontAssetPath': 'fonts/AndadaPro.ttf',
+            'textSize': 16.0,
+            'textColor': '#ff000000',
+            'backgroundColor': '#00000000',
+            'cornerRadius': 20
+          },
+          {
+            'type': 'ACCEPT_ALL',
+            'isAllCaps': null,
+            'fontAssetPath': 'fonts/AndadaPro.ttf',
+            'textSize': 16.0,
+            'textColor': null,
+            'backgroundColor': null,
+            'cornerRadius': 20
+          }
+        ]
+      ],
+      'backgroundColor': null,
+      'overlayColor': null,
+      'cornerRadius': 50
+    },
+    "secondLayerSettings": null,
   },
   "layout": "SHEET",
-  "settings": {
-    'headerImage': {
-      'image': 'images/header_extended.png',
-      'height': null,
-      'isExtended': true,
-      'isHidden': null,
-      'alignment': null
-    },
-    'title': {
-      'alignment': 'START',
-      'fontAssetPath': 'fonts/AndadaPro.ttf',
-      'textColor': '#ff000000',
-      'textSize': 20.0
-    },
-    'message': {
-      'alignment': 'START',
-      'fontAssetPath': null,
-      'textColor': '#8a000000',
-      'linkTextColor': '#ff000000',
-      'linkTextUnderline': false,
-      'textSize': 16.0
-    },
-    'buttonLayout': [
-      [
-        {
-          'type': 'MORE',
-          'isAllCaps': null,
-          'fontAssetPath': 'fonts/AndadaPro.ttf',
-          'textSize': 16.0,
-          'textColor': '#ff000000',
-          'backgroundColor': '#00000000',
-          'cornerRadius': 20
-        },
-        {
-          'type': 'ACCEPT_ALL',
-          'isAllCaps': null,
-          'fontAssetPath': 'fonts/AndadaPro.ttf',
-          'textSize': 16.0,
-          'textColor': null,
-          'backgroundColor': null,
-          'cornerRadius': 20
-        }
-      ]
-    ],
-    'backgroundColor': null,
-    'overlayColor': null,
-    'cornerRadius': 50
-  }
 };
 const mockLayout = UsercentricsLayout.sheet;
 const mockFont = BannerFont(
@@ -117,7 +119,7 @@ const mockLogo = BannerImage(
 const _buttonTextSizeInSp = 16.0;
 const _buttonCornerRadius = 20;
 const _customFontPath = "fonts/AndadaPro.ttf";
-final mockSettings = FirstLayerStyleSettings(
+final mockFirstLayerSettings = FirstLayerStyleSettings(
   headerImage: HeaderImageSettings.extended(
     imageAssetPath: "images/header_extended.png",
   ),

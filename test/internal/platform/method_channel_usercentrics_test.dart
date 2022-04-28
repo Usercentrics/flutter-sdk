@@ -7,7 +7,6 @@ import 'package:usercentrics_sdk/src/model/model.dart';
 import '../bridge/fake_get_cmp_data_bridge.dart';
 import '../bridge/fake_get_consents_bridge.dart';
 import '../bridge/fake_get_controller_id_bridge.dart';
-import '../bridge/fake_get_tcstring_bridge.dart';
 import '../bridge/fake_initialize_bridge.dart';
 import '../bridge/fake_is_ready_bridge.dart';
 import '../bridge/fake_reset_bridge.dart';
@@ -64,17 +63,6 @@ void main() {
       expect(isReadyBridge.invokeChannelArgument?.name, "usercentrics");
 
       expect(instance.isReadyCompleter?.isCompleted, true);
-    });
-
-    test('more than once', () {
-      final instance = MethodChannelUsercentrics();
-      instance.isReadyCompleter = Completer();
-      instance.isReadyCompleter?.complete();
-
-      expect(
-        () => instance.initialize(settingsId: "ABC"),
-        throwsA(const TypeMatcher<AlreadyInitializedException>()),
-      );
     });
   });
 
@@ -149,7 +137,9 @@ void main() {
       instance.isReadyCompleter?.complete();
 
       const layout = UsercentricsLayout.sheet;
-      const settings = FirstLayerStyleSettings(cornerRadius: 100);
+      const firstLayerSettings = FirstLayerStyleSettings(cornerRadius: 100);
+      const secondLayerSettings =
+          SecondLayerStyleSettings(showCloseButton: true);
       const logo = BannerImage(assetPath: "assetPath");
       const font = BannerFont(
         regularFontAssetPath: "fonts/Lora-Regular.ttf",
@@ -159,7 +149,8 @@ void main() {
 
       final response = await instance.showFirstLayer(
         layout: layout,
-        settings: settings,
+        firstLayerSettings: firstLayerSettings,
+        secondLayerSettings: secondLayerSettings,
         logo: logo,
         font: font,
       );
@@ -167,7 +158,10 @@ void main() {
       expect(showFirstLayerBridge.invokeCount, 1);
       expect(showFirstLayerBridge.invokeChannelArgument?.name, "usercentrics");
       expect(showFirstLayerBridge.invokeLayoutArgument, layout);
-      expect(showFirstLayerBridge.invokeSettingsArgument, settings);
+      expect(showFirstLayerBridge.invokeFirstLayerSettingsArgument,
+          firstLayerSettings);
+      expect(showFirstLayerBridge.invokeSecondLayerSettingsArgument,
+          secondLayerSettings);
       expect(showFirstLayerBridge.invokeLogoArgument, logo);
       expect(showFirstLayerBridge.invokeFontArgument, font);
       expect(response, expectedResponse);
@@ -206,7 +200,8 @@ void main() {
       instance.isReadyCompleter = Completer();
       instance.isReadyCompleter?.complete();
 
-      const showCloseButton = true;
+      const secondLayerSettings =
+          SecondLayerStyleSettings(showCloseButton: true);
       const logo = BannerImage(assetPath: "assetPath");
       const font = BannerFont(
         regularFontAssetPath: "fonts/Lora-Regular.ttf",
@@ -215,15 +210,15 @@ void main() {
       );
 
       final response = await instance.showSecondLayer(
-        showCloseButton: showCloseButton,
+        secondLayerSettings: secondLayerSettings,
         logo: logo,
         font: font,
       );
 
       expect(showSecondLayerBridge.invokeCount, 1);
       expect(showSecondLayerBridge.invokeChannelArgument?.name, "usercentrics");
-      expect(
-          showSecondLayerBridge.invokeShowCloseButtonArgument, showCloseButton);
+      expect(showSecondLayerBridge.invokeSecondLayerSettingsArgument,
+          secondLayerSettings);
       expect(showSecondLayerBridge.invokeLogoArgument, logo);
       expect(showSecondLayerBridge.invokeFontArgument, font);
       expect(response, expectedResponse);
@@ -317,42 +312,6 @@ void main() {
 
       expect(
         () => instance.controllerId,
-        throwsA(const TypeMatcher<NotInitializedException>()),
-      );
-    });
-  });
-
-  group('getTCString', () {
-    test('default', () {
-      final instance = MethodChannelUsercentrics();
-      expect(instance.getTCStringBridge,
-          const TypeMatcher<MethodChannelGetTCString>());
-    });
-
-    test('success', () async {
-      const expectedResponse = "ABCD";
-      final getTCStringBridge = FakeGetTCStringBridge(
-        invokeAnswer: expectedResponse,
-      );
-      final instance = MethodChannelUsercentrics(
-        getTCStringBridge: getTCStringBridge,
-      );
-      instance.isReadyCompleter = Completer();
-      instance.isReadyCompleter?.complete();
-
-      final response = await instance.tcString;
-
-      expect(getTCStringBridge.invokeCount, 1);
-      expect(getTCStringBridge.invokeChannelArgument?.name, "usercentrics");
-      expect(response, expectedResponse);
-    });
-
-    test('when it is not ready', () {
-      final instance = MethodChannelUsercentrics();
-      instance.isReadyCompleter = null;
-
-      expect(
-        () => instance.tcString,
         throwsA(const TypeMatcher<NotInitializedException>()),
       );
     });

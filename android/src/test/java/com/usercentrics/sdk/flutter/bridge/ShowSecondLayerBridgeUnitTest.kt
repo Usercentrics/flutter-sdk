@@ -48,16 +48,8 @@ class ShowSecondLayerBridgeUnitTest {
 
         assertEquals(1, bannerProxy.showSecondLayerCount)
         assertEquals(
-            null,
-            bannerProxy.showSecondLayerBannerSettingsArgument?.font
-        )
-        assertEquals(
-            null,
-            bannerProxy.showSecondLayerBannerSettingsArgument?.logo
-        )
-        assertEquals(
-            true,
-            bannerProxy.showSecondLayerShowCloseButtonArgument
+            ShowSecondLayerMock.expectedBannerSettings,
+            bannerProxy.showSecondLayerBannerSettingsArgument
         )
         assertEquals(1, result.successCount)
         assertEquals(ShowSecondLayerMock.expectedWithData, result.successResultArgument)

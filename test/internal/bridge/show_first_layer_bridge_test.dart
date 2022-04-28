@@ -27,7 +27,9 @@ void main() {
     final result = await instance.invoke(
       channel: channel,
       layout: mockLayout,
-      settings: mockSettings,
+      firstLayerSettings: mockFirstLayerSettings,
+      secondLayerSettings: null,
+      links: LegalLinksSettings.both,
       font: mockFont,
       logo: mockLogo,
     );

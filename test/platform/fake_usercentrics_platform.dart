@@ -5,8 +5,10 @@ import 'package:usercentrics_sdk/src/model/first_layer_style_settings.dart';
 import 'package:usercentrics_sdk/src/model/font.dart';
 import 'package:usercentrics_sdk/src/model/image.dart';
 import 'package:usercentrics_sdk/src/model/layout.dart';
+import 'package:usercentrics_sdk/src/model/legal_links_settings.dart';
 import 'package:usercentrics_sdk/src/model/logger_level.dart';
 import 'package:usercentrics_sdk/src/model/ready_status.dart';
+import 'package:usercentrics_sdk/src/model/second_layer_style_settings.dart';
 import 'package:usercentrics_sdk/src/model/service_consent.dart';
 import 'package:usercentrics_sdk/src/model/tcf_data.dart';
 import 'package:usercentrics_sdk/src/model/tcf_decision_ui_layer.dart';
@@ -112,20 +114,26 @@ class FakeUsercentricsPlatform extends UsercentricsPlatform {
   UsercentricsLayout? showFirstLayerLayoutArgument;
   BannerImage? showFirstLayerLogoArgument;
   BannerFont? showFirstLayerFontArgument;
-  FirstLayerStyleSettings? showFirstLayerSettingsArgument;
+  LegalLinksSettings? showFirstLayerLinksArgument;
+  FirstLayerStyleSettings? showFirstLayerFirstLayerSettingsArgument;
+  SecondLayerStyleSettings? showFirstLayerSecondLayerSettingsArgument;
 
   @override
   Future<UsercentricsConsentUserResponse?> showFirstLayer({
     required UsercentricsLayout layout,
     BannerImage? logo,
     BannerFont? font,
-    FirstLayerStyleSettings? settings,
+    LegalLinksSettings? links,
+    FirstLayerStyleSettings? firstLayerSettings,
+    SecondLayerStyleSettings? secondLayerSettings,
   }) {
     showFirstLayerCount++;
     showFirstLayerLayoutArgument = layout;
     showFirstLayerLogoArgument = logo;
     showFirstLayerFontArgument = font;
-    showFirstLayerSettingsArgument = settings;
+    showFirstLayerLinksArgument = links;
+    showFirstLayerFirstLayerSettingsArgument = firstLayerSettings;
+    showFirstLayerSecondLayerSettingsArgument = secondLayerSettings;
     return Future.value(showFirstLayerAnswer!);
   }
 
@@ -133,18 +141,21 @@ class FakeUsercentricsPlatform extends UsercentricsPlatform {
   var showSecondLayerCount = 0;
   BannerImage? showSecondLayerLogoArgument;
   BannerFont? showSecondLayerFontArgument;
-  bool? showSecondLayerShowCloseButtonArgument;
+  LegalLinksSettings? showSecondLayerLinksArgument;
+  SecondLayerStyleSettings? showSecondLayerSecondLayerSettingsArgument;
 
   @override
   Future<UsercentricsConsentUserResponse?> showSecondLayer({
-    required bool showCloseButton,
     BannerImage? logo,
     BannerFont? font,
+    LegalLinksSettings? links,
+    SecondLayerStyleSettings? secondLayerSettings,
   }) {
     showSecondLayerCount++;
     showSecondLayerLogoArgument = logo;
     showSecondLayerFontArgument = font;
-    showSecondLayerShowCloseButtonArgument = showCloseButton;
+    showSecondLayerLinksArgument = links;
+    showSecondLayerSecondLayerSettingsArgument = secondLayerSettings;
     return Future.value(showSecondLayerAnswer!);
   }
 

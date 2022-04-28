@@ -136,6 +136,9 @@ class CustomUIPage extends StatelessWidget {
     print("Second layer description: ${tcf2?.secondLayerDescription}");
 
     final tcfData = await Usercentrics.tcfData;
+
+    print("TCString ${tcfData.tcString}");
+
     for (var purpose in tcfData.purposes) {
       print("Purpose: ${purpose.name}");
     }
@@ -173,8 +176,6 @@ class CustomUIPage extends StatelessWidget {
     print("Accept All button: ${tcf2?.buttonsAcceptAllLabel}");
     print("Deny button: ${tcf2?.buttonsDenyAllLabel}");
     print("Save button: ${tcf2?.buttonsSaveLabel}");
-
-    print("TCString ${Usercentrics.tcString}");
   }
 
   void _changeLanguage(UsercentricsCMPData data) async {

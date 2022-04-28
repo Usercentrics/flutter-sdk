@@ -18,12 +18,6 @@ final class FakeUsercentricsSDK: UsercentricsSDK {
         return getControllerIdData!
     }
 
-    var getTCStringData: String?
-
-    override func getTCString() -> String {
-        return getTCStringData!
-    }
-
     var restoreUSError: Error?
     var restoreUSSuccess: UsercentricsReadyStatus?
     var restoreUSControllerIdArg: String?

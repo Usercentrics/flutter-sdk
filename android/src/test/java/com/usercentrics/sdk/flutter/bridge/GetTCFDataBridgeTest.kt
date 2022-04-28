@@ -5,6 +5,7 @@ import com.usercentrics.sdk.flutter.api.FakeFlutterMethodCall
 import com.usercentrics.sdk.flutter.api.FakeFlutterResult
 import com.usercentrics.sdk.flutter.api.FakeUsercentricsProxy
 import com.usercentrics.sdk.flutter.mock.GetTCFDataMock
+import com.usercentrics.sdk.services.tcf.interfaces.TCFData
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
@@ -33,14 +34,16 @@ class GetTCFDataBridgeTest {
     @Test
     fun testInvoke() {
         val usercentricsSDK = mockk<UsercentricsSDK>()
-        every { usercentricsSDK.getTCFData() }.returns(GetTCFDataMock.fake)
+        every { usercentricsSDK.getTCFData(any()) }.answers {
+            (arg(0) as (TCFData) -> Unit)(GetTCFDataMock.fake)
+        }
         val usercentricsProxy = FakeUsercentricsProxy(usercentricsSDK)
         val instance = GetTCFDataBridge(usercentricsProxy)
         val result = FakeFlutterResult()
 
         instance.invoke(GetTCFDataMock.call, result)
 
-        verify(exactly = 1) { usercentricsSDK.getTCFData() }
+        verify(exactly = 1) { usercentricsSDK.getTCFData(any()) }
 
         assertEquals(1, result.successCount)
         assertEquals(GetTCFDataMock.expected, result.successResultArgument)

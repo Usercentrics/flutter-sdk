@@ -7,7 +7,6 @@ export 'get_cmp_data_bridge.dart';
 export 'get_consents_bridge.dart';
 export 'get_controller_id_bridge.dart';
 export 'get_tcf_data_bridge.dart';
-export 'get_tcstring_bridge.dart';
 export 'get_user_session_data_bridge.dart';
 export 'get_usp_data_bridge.dart';
 export 'initialize_bridge.dart';

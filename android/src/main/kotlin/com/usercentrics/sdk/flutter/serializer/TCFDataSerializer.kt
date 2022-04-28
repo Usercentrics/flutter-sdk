@@ -9,7 +9,8 @@ internal fun TCFData.serialize(): Any {
         "specialFeatures" to specialFeatures.map { it.serialize() },
         "specialPurposes" to specialPurposes.map { it.serialize() },
         "stacks" to stacks.map { it.serialize() },
-        "vendors" to vendors.map { it.serialize() }
+        "vendors" to vendors.map { it.serialize() },
+        "tcString" to tcString
     )
 }
 

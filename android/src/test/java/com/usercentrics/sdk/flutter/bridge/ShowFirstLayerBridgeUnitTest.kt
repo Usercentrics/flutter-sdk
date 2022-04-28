@@ -50,16 +50,8 @@ class ShowFirstLayerBridgeUnitTest {
 
         assertEquals(1, bannerProxy.showFirstLayerCount)
         assertEquals(
-            null,
-            bannerProxy.showFirstLayerBannerSettingsArgument?.font
-        )
-        assertEquals(
-            null,
-            bannerProxy.showFirstLayerBannerSettingsArgument?.logo
-        )
-        assertEquals(
-            ShowFirstLayerMock.expectedFirstLayerStyleSettings,
-            bannerProxy.showFirstLayerSettingsArgument
+            ShowFirstLayerMock.expectedBannerSettings,
+            bannerProxy.showFirstLayerBannerSettingsArgument
         )
         assertEquals(
             UsercentricsLayout.Popup(PopupPosition.CENTER),

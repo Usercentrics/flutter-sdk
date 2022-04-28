@@ -13,63 +13,67 @@ internal object ShowFirstLayerMock {
             "bannerSettings" to mapOf(
                 "font" to null,
                 "logo" to null,
-            ),
-            "settings" to mapOf(
-                "headerImage" to null,
-                "title" to mapOf(
-                    "alignment" to "END",
-                    "textSize" to 20.0,
+                "links" to "BOTH",
+                "firstLayerSettings" to mapOf(
+                    "headerImage" to null,
+                    "title" to mapOf(
+                        "alignment" to "END",
+                        "textSize" to 20.0,
+                    ),
+                    "message" to mapOf(
+                        "alignment" to "CENTER",
+                        "textSize" to 16,
+                        "linkTextUnderline" to true,
+                    ),
+                    "buttonLayout" to listOf(
+                        listOf(
+                            mapOf(
+                                "type" to "MORE",
+                                "textSize" to 16,
+                                "cornerRadius" to 20,
+                            ),
+                            mapOf(
+                                "type" to "ACCEPT_ALL",
+                                "textSize" to 16,
+                                "cornerRadius" to 20,
+                            ),
+                        )
+                    ),
+                    "cornerRadius" to 50
                 ),
-                "message" to mapOf(
-                    "alignment" to "CENTER",
-                    "textSize" to 16,
-                    "linkTextUnderline" to true,
-                ),
-                "buttonLayout" to listOf(
-                    listOf(
-                        mapOf(
-                            "type" to "MORE",
-                            "textSize" to 16,
-                            "cornerRadius" to 20,
-                        ),
-                        mapOf(
-                            "type" to "ACCEPT_ALL",
-                            "textSize" to 16,
-                            "cornerRadius" to 20,
-                        ),
-                    )
-                ),
-                "cornerRadius" to 50
             ),
         )
     )
-    val expectedFirstLayerStyleSettings = FirstLayerStyleSettings(
-        title = TitleSettings(
-            alignment = SectionAlignment.END,
-            textSizeInSp = 20f,
-        ),
-        message = MessageSettings(
-            alignment = SectionAlignment.CENTER,
-            textSizeInSp = 16f,
-            underlineLink = true,
-        ),
-        buttonLayout = ButtonLayout.Grid(
-            listOf(
+    val expectedBannerSettings = BannerSettings(
+        links = LegalLinksSettings.BOTH,
+        firstLayerSettings = FirstLayerStyleSettings(
+            title = TitleSettings(
+                alignment = SectionAlignment.END,
+                textSizeInSp = 20f,
+            ),
+            message = MessageSettings(
+                alignment = SectionAlignment.CENTER,
+                textSizeInSp = 16f,
+                underlineLink = true,
+            ),
+            buttonLayout = ButtonLayout.Grid(
                 listOf(
-                    ButtonSettings(
-                        type = ButtonType.MORE,
-                        textSizeInSp = 16f,
-                        cornerRadius = 20,
-                    ),
-                    ButtonSettings(
-                        type = ButtonType.ACCEPT_ALL,
-                        textSizeInSp = 16f,
-                        cornerRadius = 20,
-                    ),
+                    listOf(
+                        ButtonSettings(
+                            type = ButtonType.MORE,
+                            textSizeInSp = 16f,
+                            cornerRadius = 20,
+                        ),
+                        ButtonSettings(
+                            type = ButtonType.ACCEPT_ALL,
+                            textSizeInSp = 16f,
+                            cornerRadius = 20,
+                        ),
+                    )
                 )
-            )
-        ),
-        cornerRadius = 50,
+            ),
+            cornerRadius = 50,
+        )
     )
     val fakeResponseWithData = UsercentricsConsentUserResponse(
         consents = listOf(
