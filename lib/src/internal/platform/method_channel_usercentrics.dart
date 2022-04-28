@@ -67,8 +67,8 @@ class MethodChannelUsercentrics extends UsercentricsPlatform {
     String? version,
   }) async {
     final ongoingInit = isReadyCompleter;
-    if (ongoingInit != null) await ongoingInit.future;
     isReadyCompleter = Completer();
+    if (ongoingInit != null) await ongoingInit.future;
     initializeBridge.invoke(
       channel: _channel,
       settingsId: settingsId,
