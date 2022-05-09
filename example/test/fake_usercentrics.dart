@@ -14,6 +14,7 @@ class FakeUsercentrics extends UsercentricsPlatform {
     UsercentricsLoggerLevel? loggerLevel,
     int? timeoutMillis,
     String? version,
+    NetworkMode? networkMode,
   }) {
     initializeCount++;
   }

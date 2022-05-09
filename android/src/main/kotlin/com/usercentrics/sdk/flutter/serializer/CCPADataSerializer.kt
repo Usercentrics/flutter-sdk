@@ -7,6 +7,7 @@ internal fun CCPAData.serialize(): Any {
         "version" to version,
         "noticeGiven" to noticeGiven,
         "optedOut" to optedOut,
-        "lspact" to lspact
+        "lspact" to lspact,
+        "uspString" to toUSPString()
     )
 }

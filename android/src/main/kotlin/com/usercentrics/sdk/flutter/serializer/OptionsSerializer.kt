@@ -1,6 +1,7 @@
 package com.usercentrics.sdk.flutter.serializer
 
 import com.usercentrics.sdk.UsercentricsOptions
+import com.usercentrics.sdk.models.common.NetworkMode
 import com.usercentrics.sdk.models.common.UsercentricsLoggerLevel
 
 internal fun Any?.deserializeOptions(): UsercentricsOptions {
@@ -17,6 +18,9 @@ internal fun Any?.deserializeOptions(): UsercentricsOptions {
     }
     this["version"]?.let {
         options.version = it as String
+    }
+    this["networkMode"]?.let {
+        options.networkMode = NetworkMode.valueOf(it as String)
     }
     return options
 }

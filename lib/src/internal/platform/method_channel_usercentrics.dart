@@ -65,6 +65,7 @@ class MethodChannelUsercentrics extends UsercentricsPlatform {
     UsercentricsLoggerLevel? loggerLevel,
     int? timeoutMillis,
     String? version,
+    NetworkMode? networkMode,
   }) async {
     final ongoingInit = isReadyCompleter;
     isReadyCompleter = Completer();
@@ -76,6 +77,7 @@ class MethodChannelUsercentrics extends UsercentricsPlatform {
       loggerLevel: loggerLevel,
       timeoutMillis: timeoutMillis,
       version: version,
+      networkMode: networkMode,
     );
     status.whenComplete(() => isReadyCompleter?.complete());
   }

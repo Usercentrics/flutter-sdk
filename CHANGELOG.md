@@ -1,5 +1,19 @@
 [Release Notes](https://docs.usercentrics.com/cmp_in_app_sdk/latest/about/history/)
 
+# 2.5.0
+
+## Features
+
+- **[UI]** Controller ID section was redesigned to have a better UX.
+
+## Improvements
+
+- Improve stability and performance issues.
+
+## Resolved Issues
+
+- General bug fixes.
+
 # 2.4.0
 
 ## Features

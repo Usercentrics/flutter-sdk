@@ -15,6 +15,7 @@ export 'layout_serializer.dart';
 export 'legal_links_settings_serializer.dart';
 export 'location_serializer.dart';
 export 'logger_level_serializer.dart';
+export 'network_mode_serializer.dart';
 export 'ready_status_serializer.dart';
 export 'second_layer_style_settings_serializer.dart';
 export 'service_serializer.dart';
