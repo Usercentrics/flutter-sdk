@@ -12,7 +12,7 @@ class WebViewIntegrationPage extends StatefulWidget {
 }
 
 class WebViewIntegrationPageState extends State<WebViewIntegrationPage> {
-  WebViewController? controller = null;
+  WebViewController? controller;
 
   @override
   void initState() {
