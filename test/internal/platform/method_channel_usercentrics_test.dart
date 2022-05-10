@@ -41,6 +41,7 @@ void main() {
       const loggerLevel = UsercentricsLoggerLevel.debug;
       const timeoutMillis = 10000;
       const version = "1.1.1";
+      const networkMode = NetworkMode.eu;
 
       instance.initialize(
         settingsId: settingsId,
@@ -48,6 +49,7 @@ void main() {
         loggerLevel: loggerLevel,
         timeoutMillis: timeoutMillis,
         version: version,
+        networkMode: networkMode,
       );
       await instance.isReadyCompleter?.future;
 
@@ -58,6 +60,7 @@ void main() {
       expect(initializeBridge.invokeLoggerLevelArgument, loggerLevel);
       expect(initializeBridge.invokeTimeoutMillisArgument, timeoutMillis);
       expect(initializeBridge.invokeVersionArgument, version);
+      expect(initializeBridge.invokeNetworkModeArgument, networkMode);
 
       expect(isReadyBridge.invokeCount, 1);
       expect(isReadyBridge.invokeChannelArgument?.name, "usercentrics");

@@ -5,7 +5,7 @@
 ## Features
 
 - **[UI]** Controller ID section was redesigned to have a better UX.
-- `CCPAData` exposes the encoded `uspString`.
+- `ccpaData` exposes the encoded `uspString`.
 
 ## Improvements
 

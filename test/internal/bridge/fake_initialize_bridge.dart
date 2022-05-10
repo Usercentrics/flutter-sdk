@@ -1,6 +1,7 @@
 import 'package:flutter/src/services/platform_channel.dart';
 import 'package:usercentrics_sdk/src/internal/bridge/bridge.dart';
 import 'package:usercentrics_sdk/src/model/logger_level.dart';
+import 'package:usercentrics_sdk/src/model/network_mode.dart';
 
 class FakeInitializeBridge extends InitializeBridge {
   var invokeCount = 0;
@@ -10,6 +11,7 @@ class FakeInitializeBridge extends InitializeBridge {
   UsercentricsLoggerLevel? invokeLoggerLevelArgument;
   int? invokeTimeoutMillisArgument;
   String? invokeVersionArgument;
+  NetworkMode? invokeNetworkModeArgument;
 
   @override
   void invoke({
@@ -19,6 +21,7 @@ class FakeInitializeBridge extends InitializeBridge {
     UsercentricsLoggerLevel? loggerLevel,
     int? timeoutMillis,
     String? version,
+    NetworkMode? networkMode,
   }) {
     invokeCount++;
     invokeChannelArgument = channel;
@@ -27,5 +30,6 @@ class FakeInitializeBridge extends InitializeBridge {
     invokeLoggerLevelArgument = loggerLevel;
     invokeTimeoutMillisArgument = timeoutMillis;
     invokeVersionArgument = version;
+    invokeNetworkModeArgument = networkMode;
   }
 }
