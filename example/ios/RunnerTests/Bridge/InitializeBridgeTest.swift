@@ -37,6 +37,7 @@ class InitializeBridgeTest: XCTestCase, BaseBridgeTestProtocol {
             XCTAssertEqual(self.usercentrics.configureOptions?.loggerLevel, .debug)
             XCTAssertEqual(self.usercentrics.configureOptions?.timeoutMillis, 1000)
             XCTAssertEqual(self.usercentrics.configureOptions?.version, "1.2.3")
+            XCTAssertEqual(self.usercentrics.configureOptions?.networkMode, .eu)
 
             expectation.fulfill()
         }
@@ -46,7 +47,8 @@ class InitializeBridgeTest: XCTestCase, BaseBridgeTestProtocol {
             "settingsId": "AAAAA",
             "loggerLevel": "DEBUG",
             "timeoutMillis": 1000,
-            "version": "1.2.3"
+            "version": "1.2.3",
+            "networkMode": "EU"
         ]
 
         bridge.invoke(method, resultCompletion)

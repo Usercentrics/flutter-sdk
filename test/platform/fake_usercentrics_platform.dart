@@ -7,6 +7,7 @@ import 'package:usercentrics_sdk/src/model/image.dart';
 import 'package:usercentrics_sdk/src/model/layout.dart';
 import 'package:usercentrics_sdk/src/model/legal_links_settings.dart';
 import 'package:usercentrics_sdk/src/model/logger_level.dart';
+import 'package:usercentrics_sdk/src/model/network_mode.dart';
 import 'package:usercentrics_sdk/src/model/ready_status.dart';
 import 'package:usercentrics_sdk/src/model/second_layer_style_settings.dart';
 import 'package:usercentrics_sdk/src/model/service_consent.dart';
@@ -62,6 +63,7 @@ class FakeUsercentricsPlatform extends UsercentricsPlatform {
   UsercentricsLoggerLevel? initializeLoggerLevelArgument;
   int? initializeTimeoutMillisArgument;
   String? initializeVersionArgument;
+  NetworkMode? networkModeArgument;
 
   @override
   void initialize({
@@ -70,6 +72,7 @@ class FakeUsercentricsPlatform extends UsercentricsPlatform {
     UsercentricsLoggerLevel? loggerLevel,
     int? timeoutMillis,
     String? version,
+    NetworkMode? networkMode,
   }) {
     initializeCount++;
     initializeSettingsIdArgument = settingsId;
@@ -77,6 +80,7 @@ class FakeUsercentricsPlatform extends UsercentricsPlatform {
     initializeLoggerLevelArgument = loggerLevel;
     initializeTimeoutMillisArgument = timeoutMillis;
     initializeVersionArgument = version;
+    networkModeArgument = networkMode;
   }
 
   var resetCount = 0;

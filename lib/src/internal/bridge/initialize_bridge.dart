@@ -1,6 +1,7 @@
 import 'package:flutter/services.dart';
 import 'package:usercentrics_sdk/src/internal/serializer/initialize_options_serializer.dart';
 import 'package:usercentrics_sdk/src/model/logger_level.dart';
+import 'package:usercentrics_sdk/src/model/network_mode.dart';
 
 abstract class InitializeBridge {
   const InitializeBridge();
@@ -12,6 +13,7 @@ abstract class InitializeBridge {
     UsercentricsLoggerLevel? loggerLevel,
     int? timeoutMillis,
     String? version,
+    NetworkMode? networkMode,
   });
 }
 
@@ -28,6 +30,7 @@ class MethodChannelInitialize extends InitializeBridge {
     UsercentricsLoggerLevel? loggerLevel,
     int? timeoutMillis,
     String? version,
+    NetworkMode? networkMode,
   }) {
     final arguments = InitializeOptionsSerializer.serialize(
       settingsId: settingsId,
@@ -35,6 +38,7 @@ class MethodChannelInitialize extends InitializeBridge {
       loggerLevel: loggerLevel,
       timeoutMillis: timeoutMillis,
       version: version,
+      networkMode: networkMode,
     );
     channel.invokeMethod(_name, arguments);
   }

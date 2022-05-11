@@ -1,6 +1,7 @@
 package com.usercentrics.sdk.flutter.mock
 
 import com.usercentrics.sdk.flutter.api.FakeFlutterMethodCall
+import com.usercentrics.sdk.models.common.NetworkMode
 import com.usercentrics.sdk.models.common.UsercentricsLoggerLevel
 
 internal object InitializeMock {
@@ -13,7 +14,8 @@ internal object InitializeMock {
             "defaultLanguage" to "en",
             "loggerLevel" to "DEBUG",
             "timeoutMillis" to 1000,
-            "version" to "1.2.3"
+            "version" to "1.2.3",
+            "networkMode" to "EU",
         )
     )
     val callWithDataSettingsId = "AAAAA"
@@ -21,6 +23,7 @@ internal object InitializeMock {
     val callWithDataLoggerLevel = UsercentricsLoggerLevel.DEBUG
     val callWithDataTimeoutMillis = 1000L
     val callWithDataVersion = "1.2.3"
+    val callWithDataNetworkMode = NetworkMode.EU
     val callWithoutData = FakeFlutterMethodCall(
         method = "initialize",
         arguments = mapOf(
@@ -28,7 +31,8 @@ internal object InitializeMock {
             "defaultLanguage" to null,
             "loggerLevel" to null,
             "timeoutMillis" to null,
-            "version" to null
+            "version" to null,
+            "networkMode" to null,
         )
     )
     val callWithoutDataSettingsId = "AAAAA"

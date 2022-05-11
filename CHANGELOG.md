@@ -1,5 +1,21 @@
 [Release Notes](https://docs.usercentrics.com/cmp_in_app_sdk/latest/about/history/)
 
+# 2.5.0
+
+## Features
+
+- **[UI]** Controller ID section was redesigned to have a better UX.
+- `ccpaData` exposes the encoded `uspString`.
+
+## Improvements
+
+- Improve stability and performance issues.
+
+## Resolved Issues
+
+- General bug fixes.
+- **[iOS]** Access to `rootViewController` depending on API version.
+
 # 2.4.0
 
 ## Features
@@ -7,8 +23,8 @@
 - **[Customization]** You now have full control over the appearance of the First & Second Layer via our Admin Interface Style options and our Programmatic API. We have updated and extended our Programmatic API to simplify banner customization. 
 - **[UI]** Legal links are now added to our the First Layer, and can be hidden or shown as desired via programmatic API.
 - **[CCPA]** Consent button can now be customized via the Admin Interface.
-- **[API Update]** `getTCString` has been deprecated in favor of `getTCFData`. This method returns all neccessary data to be consumed related to TCF 2.0 framework.
-- **[API Update]** `getTCFData` is now async to provide accurate results when actions are still pending to be reflected.
+- **[API Update]** `tcString` has been deprecated in favor of `tcfData`. This method returns all neccessary data to be consumed related to TCF 2.0 framework.
+- **[API Update]** `tcfData` is now async to provide accurate results when actions are still pending to be reflected.
 
 ## Improvements
 

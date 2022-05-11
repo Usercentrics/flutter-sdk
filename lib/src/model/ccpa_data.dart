@@ -5,6 +5,7 @@ class CCPAData {
     required this.noticeGiven,
     required this.optedOut,
     required this.lspact,
+    required this.uspString,
   });
 
   /// CCPA version.
@@ -19,6 +20,9 @@ class CCPAData {
   /// Limited Service Provider Agreement Covered Transaction.
   final bool? lspact;
 
+  /// Encoded USP String.
+  final String uspString;
+
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
@@ -27,16 +31,18 @@ class CCPAData {
           version == other.version &&
           noticeGiven == other.noticeGiven &&
           optedOut == other.optedOut &&
-          lspact == other.lspact;
+          lspact == other.lspact &&
+          uspString == other.uspString;
 
   @override
   int get hashCode =>
       version.hashCode +
       noticeGiven.hashCode +
       optedOut.hashCode +
-      lspact.hashCode;
+      lspact.hashCode +
+      uspString.hashCode;
 
   @override
   String toString() =>
-      "$CCPAData(version: $version, noticeGiven: $noticeGiven, optedOut: $optedOut, lspact: $lspact)";
+      "$CCPAData(version: $version, noticeGiven: $noticeGiven, optedOut: $optedOut, lspact: $lspact, uspString: $uspString)";
 }

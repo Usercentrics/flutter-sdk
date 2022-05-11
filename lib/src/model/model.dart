@@ -13,6 +13,7 @@ export 'package:usercentrics_sdk/src/model/layout.dart';
 export 'package:usercentrics_sdk/src/model/legal_links_settings.dart';
 export 'package:usercentrics_sdk/src/model/location.dart';
 export 'package:usercentrics_sdk/src/model/logger_level.dart';
+export 'package:usercentrics_sdk/src/model/network_mode.dart';
 export 'package:usercentrics_sdk/src/model/ready_status.dart';
 export 'package:usercentrics_sdk/src/model/second_layer_style_settings.dart';
 export 'package:usercentrics_sdk/src/model/service.dart';

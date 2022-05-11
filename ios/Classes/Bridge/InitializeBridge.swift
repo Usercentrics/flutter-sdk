@@ -9,7 +9,7 @@ struct InitializeBridge : MethodBridge {
         assert(call.method == name)
 
         guard
-            let options = UsercentricsOptions(from: call.arguments)
+            let options = UsercentricsOptions.initialize(from: call.arguments)
         else {
             assert(false)
             return

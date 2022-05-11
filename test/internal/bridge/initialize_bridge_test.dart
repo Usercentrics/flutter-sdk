@@ -2,6 +2,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:usercentrics_sdk/src/internal/bridge/bridge.dart';
 import 'package:usercentrics_sdk/src/model/logger_level.dart';
+import 'package:usercentrics_sdk/src/model/network_mode.dart';
 
 void main() {
   // Data from the debugger
@@ -12,12 +13,14 @@ void main() {
     "loggerLevel": "DEBUG",
     "version": "1.0.0",
     "timeoutMillis": 20000,
+    "networkMode": "EU",
   };
   const mockSettingsId = 'Yi9N3aXia';
   const mockLoggerLevel = UsercentricsLoggerLevel.debug;
   const mockVersion = "1.0.0";
   const mockDefaultLanguage = "en";
   const mockTimeoutMillis = 20000;
+  const mockNetworkMode = NetworkMode.eu;
 
   const MethodChannel channel = MethodChannel('usercentrics');
   TestWidgetsFlutterBinding.ensureInitialized();
@@ -43,6 +46,7 @@ void main() {
       version: mockVersion,
       defaultLanguage: mockDefaultLanguage,
       timeoutMillis: mockTimeoutMillis,
+      networkMode: mockNetworkMode,
     );
 
     expect(callCounter, 1);

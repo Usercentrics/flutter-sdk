@@ -12,6 +12,7 @@ abstract class UsercentricsPlatform {
     UsercentricsLoggerLevel? loggerLevel,
     int? timeoutMillis,
     String? version,
+    NetworkMode? networkMode,
   });
 
   void reset();

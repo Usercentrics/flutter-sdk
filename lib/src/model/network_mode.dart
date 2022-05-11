@@ -1,0 +1,1 @@
+enum NetworkMode { world, eu }

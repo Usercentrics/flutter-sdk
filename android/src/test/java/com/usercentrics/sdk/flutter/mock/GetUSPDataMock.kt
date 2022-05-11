@@ -19,6 +19,7 @@ internal object GetUSPDataMock {
         "noticeGiven" to true,
         "optedOut" to false,
         "lspact" to null,
+        "uspString" to "1YN-",
     )
 
 }

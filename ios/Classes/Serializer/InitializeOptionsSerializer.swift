@@ -1,7 +1,8 @@
 import Usercentrics
 
 extension UsercentricsOptions {
-    convenience init?(from value: Any?) {
+
+    static func initialize(from value: Any?) -> UsercentricsOptions? {
         guard let dict = value as? Dictionary<String, Any>,
               let settingsId = dict["settingsId"] as? String
         else { return nil }
@@ -26,10 +27,13 @@ extension UsercentricsOptions {
             options.version = version
         }
 
-        self.init(settingsId: options.settingsId,
-                  defaultLanguage: options.defaultLanguage,
-                  version: options.version,
-                  timeoutMillis: options.timeoutMillis,
-                  loggerLevel: options.loggerLevel)
+        if let networkModeString = dict["networkMode"] as? String {
+            if let networkMode = NetworkMode.initialize(from: networkModeString) {
+                options.networkMode = networkMode
+            }
+        }
+
+        return options
     }
+    
 }

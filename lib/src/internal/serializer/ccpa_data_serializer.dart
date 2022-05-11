@@ -7,6 +7,7 @@ class CCPADataSerializer {
       noticeGiven: value['noticeGiven'],
       optedOut: value['optedOut'],
       lspact: value['lspact'],
+      uspString: value['uspString'],
     );
   }
 }

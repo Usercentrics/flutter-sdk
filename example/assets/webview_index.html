@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script>
+// Snippet from the implementation tab
+// Use legacy because old Android WebView implementation doesn't support the last one
+// https://admin.usercentrics.eu/#/v2/implementation?settingsId=XxXXxX
+function _addUsercentricsScript() {
+    var settingsId = 'Yi9N3aXia';
+    var script = document.createElement('script');
+    script.id = 'usercentrics-cmp';
+    script.setAttribute('data-settings-id', settingsId);
+    script.setAttribute('src', 'https://app.usercentrics.eu/browser-ui/latest/bundle_legacy.js');
+    script.async = true;
+    document.head.appendChild(script);
+}
+
+window.addEventListener("Usercentrics_userSessionData_injected", function(){
+    _addUsercentricsScript();
+});
+
+    </script>
+</head>
+<body>
+<center><p>In-App SDK to Browser SDK</p></center>
+</body>
+</html>

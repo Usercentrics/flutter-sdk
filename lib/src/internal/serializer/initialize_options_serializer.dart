@@ -1,6 +1,8 @@
 import 'package:usercentrics_sdk/src/model/logger_level.dart';
+import 'package:usercentrics_sdk/src/model/network_mode.dart';
 
 import 'logger_level_serializer.dart';
+import 'network_mode_serializer.dart';
 
 class InitializeOptionsSerializer {
   static dynamic serialize({
@@ -9,6 +11,7 @@ class InitializeOptionsSerializer {
     UsercentricsLoggerLevel? loggerLevel,
     int? timeoutMillis,
     String? version,
+    NetworkMode? networkMode,
   }) =>
       {
         'settingsId': settingsId,
@@ -16,5 +19,6 @@ class InitializeOptionsSerializer {
         'loggerLevel': LoggerLevelSerializer.serialize(loggerLevel),
         'timeoutMillis': timeoutMillis,
         'version': version,
+        'networkMode': NetworkModeSerializer.serialize(networkMode),
       };
 }

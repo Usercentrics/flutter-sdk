@@ -23,12 +23,14 @@ class Usercentrics {
   /// - The [loggerLevel] provides a set of logs in the standard output depending on the Level: [UsercentricsLoggerLevel.debug] (most detailed logs, includes every other level), [UsercentricsLoggerLevel.warning] (non-problematic operations) and [UsercentricsLoggerLevel.error] (relevant logs to any blocking problems). The default value is [UsercentricsLoggerLevel.none].
   /// - The [timeoutMillis] sets a timeout for network requests in milliseconds. The default value is 10000 milliseconds.
   /// - The [version] freezes the configuration version shown to your users, you may pass a specific version here. E.g. "3.0.4". The default value is "latest".
+  /// - The [networkMode] sets the network operation mode. Be careful, use this option only if we have confirmed that it is ready to use because it has a significant impact on the whole system's performance. The default value is "world".
   static void initialize({
     required String settingsId,
     String? defaultLanguage,
     UsercentricsLoggerLevel? loggerLevel,
     int? timeoutMillis,
     String? version,
+    NetworkMode? networkMode,
   }) =>
       _delegate.initialize(
         settingsId: settingsId,
@@ -36,6 +38,7 @@ class Usercentrics {
         loggerLevel: loggerLevel,
         timeoutMillis: timeoutMillis,
         version: version,
+        networkMode: networkMode,
       );
 
   /// {@template initialize}

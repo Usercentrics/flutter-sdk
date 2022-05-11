@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:usercentrics_example/webview_integration.dart';
 import 'package:usercentrics_sdk/usercentrics_sdk.dart';
 
 import 'build_your_own_ui.dart';
@@ -169,6 +170,14 @@ class _HomePageState extends State<HomePage> {
                 MaterialPageRoute(builder: (context) => const CustomUIPage()),
               ),
               child: const Text("Custom UI"),
+            ),
+            ElevatedButton(
+              onPressed: () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const WebViewIntegrationPage()),
+              ),
+              child: const Text("Webview Integration"),
             ),
           ],
         ),
