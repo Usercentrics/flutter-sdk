@@ -21,7 +21,7 @@ internal class FakeFlutterResult : FlutterResult {
     var errorDetailsArgument: Any? = null
         private set
 
-    override fun error(errorCode: String?, errorMessage: String?, errorDetails: Any?) {
+    override fun error(errorCode: String, errorMessage: String?, errorDetails: Any?) {
         errorCount++
         errorCodeArgument = errorCode
         errorMessageArgument = errorMessage
