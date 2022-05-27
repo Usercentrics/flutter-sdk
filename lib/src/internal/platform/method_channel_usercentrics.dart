@@ -297,7 +297,9 @@ class MethodChannelUsercentrics extends UsercentricsPlatform {
     }
     final error = await completer.future;
     if (error != null) {
-      final details = error is PlatformException ? error.message : null; // Remove PlatformException wrapper
+      final details = error is PlatformException
+          ? error.message
+          : null; // Remove PlatformException wrapper
       throw FailedInitializationException(details ?? error.toString());
     }
   }
