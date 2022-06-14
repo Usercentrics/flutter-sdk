@@ -111,6 +111,7 @@ jobs:
         uses: subosito/flutter-action@v1
         with:
           channel: 'stable'
+          architecture: arm64
       - name: Get dependencies
         run: flutter pub get
       - name: Setup Pods
@@ -151,6 +152,7 @@ jobs:
         uses: subosito/flutter-action@v1
         with:
           channel: 'stable'
+          architecture: arm64
       - name: Get dependencies
         run: flutter pub get
       - name: Build
