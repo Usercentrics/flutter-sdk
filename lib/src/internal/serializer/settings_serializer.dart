@@ -16,8 +16,8 @@ class SettingsSerializer {
       imprintUrl: value['imprintUrl'] ?? "",
       privacyPolicyUrl: value['privacyPolicyUrl'] ?? "",
       cookiePolicyUrl: value['cookiePolicyUrl'] ?? "",
-      bannerMessage: value['bannerMessage'] ?? "",
-      bannerMobileDescription: value['bannerMobileDescription'] ?? "",
+      firstLayerDescriptionHtml: value['firstLayerDescriptionHtml'] ?? "",
+      firstLayerMobileDescriptionHtml: value['firstLayerMobileDescriptionHtml'] ?? "",
       dataController: value['dataController'] ?? "",
       createdAt: value['createdAt'] ?? "",
       updatedAt: value['updatedAt'] ?? "",
@@ -71,8 +71,6 @@ class SecondLayerSerializer {
       tabsServicesIsEnabled: value['tabsServicesIsEnabled'],
       hideButtonDeny: value['hideButtonDeny'],
       hideLanguageSwitch: value['hideLanguageSwitch'],
-      title: value['title'] ?? "",
-      description: value['description'] ?? "",
     );
   }
 }

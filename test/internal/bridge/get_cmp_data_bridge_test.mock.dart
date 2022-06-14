@@ -25,8 +25,6 @@ const _responseSecondLayer = {
   "tabsServicesIsEnabled": true,
   "hideButtonDeny": false,
   "hideLanguageSwitch": false,
-  "title": "",
-  "description": "",
 };
 const _responseLabels = {
   "btnAcceptAll": "Accept All",
@@ -97,6 +95,9 @@ const _responseLabels = {
   "btnBannerReadMore": "Read more",
   "linkToDpaInfo": "Data Processing Agreement",
   "second": "second",
+  "consent": "Consent",
+  "secondLayerDescriptionHtml": "Second Layer Description",
+  "secondLayerTitle": "Second Layer Title",
 };
 const _responseTCF2Settings = {
   "firstLayerTitle": "Privacy Information",
@@ -233,10 +234,10 @@ const _responseSettings = {
   "showLanguageDropdown": true,
   "imprintUrl": "https://usercentrics.com/legal-notice/",
   "btnMoreInfoIsVisible": true,
-  "bannerMessage": "Privacy Settings test description.",
+  "firstLayerDescriptionHtml": "Privacy Settings test description.",
   "bannerMobileDescriptionIsActive": false,
   "dataController": "GDPR",
-  "bannerMobileDescription": "",
+  "firstLayerMobileDescriptionHtml": "",
   "version": "6.0.4",
   "isLatest": true,
   "language": "en",
@@ -473,6 +474,9 @@ const _expectedLabels = UsercentricsLabels(
   multipleDomains: "multiple subdomains may exist",
   storageInformationDescription:
       "Below you can see the longest potential duration for storage on a device, as set when using the cookie method of storage and if there are any other methods used.",
+  secondLayerDescriptionHtml: "Second Layer Description",
+  secondLayerTitle: "Second Layer Title",
+  consent: "Consent",
 );
 const _expectedFirstLayer = FirstLayer(
   descriptionDefault: "",
@@ -487,13 +491,11 @@ const _expectedFirstLayer = FirstLayer(
 const _expectedSecondLayer = SecondLayer(
     tabsServicesLabel: "Services",
     tabsCategoriesIsEnabled: true,
-    description: "",
     hideLanguageSwitch: false,
     tabsCategoriesLabel: "Categories",
     hideButtonDeny: false,
     tabsServicesIsEnabled: true,
-    isOverlayEnabled: true,
-    title: "");
+    isOverlayEnabled: true);
 const _expectedTCF2Settings = TCF2Settings(
     togglesSpecialFeaturesToggleOff: "Off",
     secondLayerTitle: "Privacy Settings Title",
@@ -629,10 +631,10 @@ const _expectedSettings = UsercentricsSettings(
   showLanguageDropdown: true,
   imprintUrl: "https://usercentrics.com/legal-notice/",
   btnMoreInfoIsVisible: true,
-  bannerMessage: "Privacy Settings test description.",
+  firstLayerDescriptionHtml: "Privacy Settings test description.",
   bannerMobileDescriptionIsActive: false,
   dataController: "GDPR",
-  bannerMobileDescription: "",
+  firstLayerMobileDescriptionHtml: "",
   version: "6.0.4",
   isLatest: true,
   language: "en",

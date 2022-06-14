@@ -7,6 +7,7 @@ class FakeInitializeBridge extends InitializeBridge {
   var invokeCount = 0;
   MethodChannel? invokeChannelArgument;
   String? invokeSettingsIdArgument;
+  String? invokeRuleSetIdArgument;
   String? invokeDefaultLanguageArgument;
   UsercentricsLoggerLevel? invokeLoggerLevelArgument;
   int? invokeTimeoutMillisArgument;
@@ -16,7 +17,8 @@ class FakeInitializeBridge extends InitializeBridge {
   @override
   void invoke({
     required MethodChannel channel,
-    required String settingsId,
+    String settingsId = "",
+    String ruleSetId = "",
     String? defaultLanguage,
     UsercentricsLoggerLevel? loggerLevel,
     int? timeoutMillis,
@@ -26,6 +28,7 @@ class FakeInitializeBridge extends InitializeBridge {
     invokeCount++;
     invokeChannelArgument = channel;
     invokeSettingsIdArgument = settingsId;
+    invokeRuleSetIdArgument = ruleSetId;
     invokeDefaultLanguageArgument = defaultLanguage;
     invokeLoggerLevelArgument = loggerLevel;
     invokeTimeoutMillisArgument = timeoutMillis;

@@ -6,7 +6,13 @@ import com.usercentrics.sdk.models.common.UsercentricsLoggerLevel
 
 internal fun Any?.deserializeOptions(): UsercentricsOptions {
     this as Map<*, *>
-    val options = UsercentricsOptions(this["settingsId"] as String)
+    val options = UsercentricsOptions()
+    this["settingsId"]?.let {
+        options.settingsId = it as String
+    }
+    this["ruleSetId"]?.let {
+        options.ruleSetId = it as String
+    }
     this["defaultLanguage"]?.let {
         options.defaultLanguage = it as String
     }

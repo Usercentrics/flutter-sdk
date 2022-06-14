@@ -11,6 +11,7 @@ internal object InitializeMock {
         method = "initialize",
         arguments = mapOf(
             "settingsId" to "AAAAA",
+            "ruleSetId" to "BBBBB",
             "defaultLanguage" to "en",
             "loggerLevel" to "DEBUG",
             "timeoutMillis" to 1000,
@@ -19,6 +20,7 @@ internal object InitializeMock {
         )
     )
     val callWithDataSettingsId = "AAAAA"
+    val callWithDataRuleSetId = "BBBBB"
     val callWithDataDefaultLanguage = "en"
     val callWithDataLoggerLevel = UsercentricsLoggerLevel.DEBUG
     val callWithDataTimeoutMillis = 1000L

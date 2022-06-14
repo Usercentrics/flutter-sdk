@@ -60,7 +60,8 @@ class MethodChannelUsercentrics extends UsercentricsPlatform {
 
   @override
   void initialize({
-    required String settingsId,
+    String settingsId = "",
+    String ruleSetId = "",
     String? defaultLanguage,
     UsercentricsLoggerLevel? loggerLevel,
     int? timeoutMillis,
@@ -73,6 +74,7 @@ class MethodChannelUsercentrics extends UsercentricsPlatform {
     initializeBridge.invoke(
       channel: _channel,
       settingsId: settingsId,
+      ruleSetId: ruleSetId,
       defaultLanguage: defaultLanguage,
       loggerLevel: loggerLevel,
       timeoutMillis: timeoutMillis,

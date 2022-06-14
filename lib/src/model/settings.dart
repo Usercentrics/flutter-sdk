@@ -16,8 +16,8 @@ class UsercentricsSettings {
     required this.imprintUrl,
     required this.privacyPolicyUrl,
     required this.cookiePolicyUrl,
-    required this.bannerMessage,
-    required this.bannerMobileDescription,
+    required this.firstLayerDescriptionHtml,
+    required this.firstLayerMobileDescriptionHtml,
     required this.dataController,
     required this.createdAt,
     required this.updatedAt,
@@ -52,8 +52,8 @@ class UsercentricsSettings {
   final String imprintUrl;
   final String privacyPolicyUrl;
   final String cookiePolicyUrl;
-  final String bannerMessage;
-  final String bannerMobileDescription;
+  final String firstLayerDescriptionHtml;
+  final String firstLayerMobileDescriptionHtml;
   final String dataController;
   final String createdAt;
   final String updatedAt;
@@ -92,8 +92,9 @@ class UsercentricsSettings {
           imprintUrl == other.imprintUrl &&
           privacyPolicyUrl == other.privacyPolicyUrl &&
           cookiePolicyUrl == other.cookiePolicyUrl &&
-          bannerMessage == other.bannerMessage &&
-          bannerMobileDescription == other.bannerMobileDescription &&
+          firstLayerDescriptionHtml == other.firstLayerDescriptionHtml &&
+          firstLayerMobileDescriptionHtml ==
+              other.firstLayerMobileDescriptionHtml &&
           dataController == other.dataController &&
           createdAt == other.createdAt &&
           updatedAt == other.updatedAt &&
@@ -131,8 +132,8 @@ class UsercentricsSettings {
       imprintUrl.hashCode +
       privacyPolicyUrl.hashCode +
       cookiePolicyUrl.hashCode +
-      bannerMessage.hashCode +
-      bannerMobileDescription.hashCode +
+      firstLayerDescriptionHtml.hashCode +
+      firstLayerMobileDescriptionHtml.hashCode +
       dataController.hashCode +
       createdAt.hashCode +
       updatedAt.hashCode +
@@ -217,8 +218,6 @@ class SecondLayer {
     required this.tabsServicesIsEnabled,
     required this.hideButtonDeny,
     required this.hideLanguageSwitch,
-    required this.title,
-    required this.description,
   });
 
   final String tabsCategoriesLabel;
@@ -228,8 +227,6 @@ class SecondLayer {
   final bool? tabsServicesIsEnabled;
   final bool? hideButtonDeny;
   final bool? hideLanguageSwitch;
-  final String title;
-  final String description;
 
   @override
   bool operator ==(Object other) =>
@@ -242,9 +239,7 @@ class SecondLayer {
           tabsCategoriesIsEnabled == other.tabsCategoriesIsEnabled &&
           tabsServicesIsEnabled == other.tabsServicesIsEnabled &&
           hideButtonDeny == other.hideButtonDeny &&
-          hideLanguageSwitch == other.hideLanguageSwitch &&
-          title == other.title &&
-          description == other.description;
+          hideLanguageSwitch == other.hideLanguageSwitch;
 
   @override
   int get hashCode =>
@@ -254,9 +249,7 @@ class SecondLayer {
       tabsCategoriesIsEnabled.hashCode +
       tabsServicesIsEnabled.hashCode +
       hideButtonDeny.hashCode +
-      hideLanguageSwitch.hashCode +
-      title.hashCode +
-      description.hashCode;
+      hideLanguageSwitch.hashCode;
 
   @override
   String toString() => "$SecondLayer($hashCode)";

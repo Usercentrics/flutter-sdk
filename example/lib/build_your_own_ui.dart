@@ -93,7 +93,7 @@ class CustomUIPage extends StatelessWidget {
     final settings = data.settings;
 
     print("Title: ${settings.labels.firstLayerTitle}");
-    print("Description: ${settings.bannerMessage}");
+    print("Description: ${settings.firstLayerDescriptionHtml}");
 
     print("data.settings: $settings");
     print("data.services: ${data.services}");

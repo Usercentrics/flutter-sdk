@@ -1,6 +1,7 @@
 package com.usercentrics.sdk.flutter.serializer
 
 import com.usercentrics.sdk.UsercentricsCMPData
+import com.usercentrics.sdk.secondLayerDescription
 import com.usercentrics.sdk.v2.location.data.UsercentricsLocation
 import com.usercentrics.sdk.v2.settings.data.*
 
@@ -32,10 +33,10 @@ private fun UsercentricsSettings.serialize(): Any {
         "showLanguageDropdown" to showLanguageDropdown,
         "imprintUrl" to imprintUrl,
         "btnMoreInfoIsVisible" to btnMoreInfoIsVisible,
-        "bannerMessage" to bannerMessage,
+        "firstLayerDescriptionHtml" to firstLayerDescriptionHtml,
         "bannerMobileDescriptionIsActive" to bannerMobileDescriptionIsActive,
         "dataController" to dataController,
-        "bannerMobileDescription" to bannerMobileDescription,
+        "firstLayerMobileDescriptionHtml" to firstLayerMobileDescriptionHtml,
         "version" to version,
         "isLatest" to isLatest,
         "language" to language,
@@ -122,6 +123,9 @@ private fun UsercentricsLabels.serialize(): Any {
         "btnBannerReadMore" to btnBannerReadMore,
         "linkToDpaInfo" to linkToDpaInfo,
         "second" to second,
+        "consent" to consent,
+        "secondLayerTitle" to secondLayerTitle,
+        "secondLayerDescriptionHtml" to secondLayerDescriptionHtml,
     )
 }
 
@@ -285,8 +289,6 @@ private fun SecondLayer.serialize(): Any {
         "hideButtonDeny" to hideButtonDeny,
         "hideLanguageSwitch" to hideLanguageSwitch,
 //        "side" to side.name,
-        "title" to title,
-        "description" to description,
     )
 }
 
@@ -367,7 +369,6 @@ private fun UsercentricsCategory.serialize(): Any {
 private fun UsercentricsLocation.serialize(): Any {
     return mapOf(
         "countryCode" to countryCode,
-        "countryName" to countryName,
         "regionCode" to regionCode,
         "isInEU" to isInEU(),
         "isInUS" to isInUS(),

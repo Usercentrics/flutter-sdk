@@ -9,7 +9,8 @@ class FakeUsercentrics extends UsercentricsPlatform {
 
   @override
   void initialize({
-    required String settingsId,
+    String settingsId = "",
+    String ruleSetId = "",
     String? defaultLanguage,
     UsercentricsLoggerLevel? loggerLevel,
     int? timeoutMillis,
