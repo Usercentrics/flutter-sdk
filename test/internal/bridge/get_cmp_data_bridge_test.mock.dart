@@ -265,8 +265,7 @@ const _responseCategories = [
 ];
 const _responseUserLocation = {
   "countryCode": "PT",
-  "countryName": "Portugal",
-  "regionCode": "",
+  "regionCode": "PTLX",
   "isInEU": true,
   "isInUS": false,
   "isInCalifornia": false,
@@ -345,8 +344,7 @@ const _expectedCategories = [
 ];
 const _expectedUserLocation = UsercentricsLocation(
   countryCode: "PT",
-  countryName: "Portugal",
-  regionCode: "",
+  regionCode: "PTLX",
   isInUS: false,
   isInCalifornia: false,
   isInEU: true,

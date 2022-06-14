@@ -17,7 +17,8 @@ class SettingsSerializer {
       privacyPolicyUrl: value['privacyPolicyUrl'] ?? "",
       cookiePolicyUrl: value['cookiePolicyUrl'] ?? "",
       firstLayerDescriptionHtml: value['firstLayerDescriptionHtml'] ?? "",
-      firstLayerMobileDescriptionHtml: value['firstLayerMobileDescriptionHtml'] ?? "",
+      firstLayerMobileDescriptionHtml:
+          value['firstLayerMobileDescriptionHtml'] ?? "",
       dataController: value['dataController'] ?? "",
       createdAt: value['createdAt'] ?? "",
       updatedAt: value['updatedAt'] ?? "",
