@@ -107,12 +107,11 @@ jobs:
           xcode-version: '13.0'
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: Rosetta
-        run: /usr/sbin/softwareupdate --install-rosetta --agree-to-license
       - name: Setup Flutter
         uses: subosito/flutter-action@v1
         with:
           channel: 'stable'
+          architecture: arm64
       - name: Get dependencies
         run: flutter pub get
       - name: Setup Pods
@@ -149,12 +148,11 @@ jobs:
           xcode-version: '13.0'
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: Rosetta
-        run: /usr/sbin/softwareupdate --install-rosetta --agree-to-license
       - name: Setup Flutter
         uses: subosito/flutter-action@v1
         with:
           channel: 'stable'
+          architecture: arm64
       - name: Get dependencies
         run: flutter pub get
       - name: Build
