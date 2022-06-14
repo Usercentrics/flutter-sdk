@@ -68,7 +68,7 @@ jobs:
     runs-on: ubuntu-latest
     container: cirrusci/flutter:stable
     env:
-      GRADLE_VERSION: 6.7
+      GRADLE_VERSION: 7.2
 
     steps:
       - name: Checkout code
