@@ -54,6 +54,10 @@ class InitializeBridgeUnitTest {
             usercentricsProxy.initializeOptionsArgument?.settingsId
         )
         assertEquals(
+            InitializeMock.callWithDataRuleSetId,
+            usercentricsProxy.initializeOptionsArgument?.ruleSetId
+        )
+        assertEquals(
             InitializeMock.callWithDataLoggerLevel,
             usercentricsProxy.initializeOptionsArgument?.loggerLevel
         )

@@ -37,6 +37,7 @@ void main() {
       );
 
       const settingsId = "ABC";
+      const ruleSetId = "QWER";
       const defaultLanguage = "en";
       const loggerLevel = UsercentricsLoggerLevel.debug;
       const timeoutMillis = 10000;
@@ -45,6 +46,7 @@ void main() {
 
       instance.initialize(
         settingsId: settingsId,
+        ruleSetId: ruleSetId,
         defaultLanguage: defaultLanguage,
         loggerLevel: loggerLevel,
         timeoutMillis: timeoutMillis,
@@ -56,6 +58,7 @@ void main() {
       expect(initializeBridge.invokeCount, 1);
       expect(initializeBridge.invokeChannelArgument?.name, "usercentrics");
       expect(initializeBridge.invokeSettingsIdArgument, settingsId);
+      expect(initializeBridge.invokeRuleSetIdArgument, ruleSetId);
       expect(initializeBridge.invokeDefaultLanguageArgument, defaultLanguage);
       expect(initializeBridge.invokeLoggerLevelArgument, loggerLevel);
       expect(initializeBridge.invokeTimeoutMillisArgument, timeoutMillis);

@@ -2,7 +2,6 @@
 class UsercentricsLocation {
   const UsercentricsLocation({
     required this.countryCode,
-    required this.countryName,
     required this.regionCode,
     required this.isInEU,
     required this.isInUS,
@@ -12,10 +11,7 @@ class UsercentricsLocation {
   /// The country code. E.g 'DE'.
   final String countryCode;
 
-  /// The country name in the local language. E.g 'Italy'.
-  final String countryName;
-
-  /// The region code following the local format. E.g 'CA'.
+  /// The region code following the local format. E.g 'USCA'.
   final String regionCode;
 
   /// True, if the location is inside the European Union. False, it not.
@@ -33,14 +29,12 @@ class UsercentricsLocation {
       other is UsercentricsLocation &&
           runtimeType == other.runtimeType &&
           countryCode == other.countryCode &&
-          countryName == other.countryName &&
           regionCode == other.regionCode;
 
   @override
-  int get hashCode =>
-      countryCode.hashCode + countryName.hashCode + regionCode.hashCode;
+  int get hashCode => countryCode.hashCode + regionCode.hashCode;
 
   @override
   String toString() =>
-      "$UsercentricsLocation(countryCode: $countryCode, countryName: $countryName, regionCode: $regionCode)";
+      "$UsercentricsLocation(countryCode: $countryCode, regionCode: $regionCode)";
 }

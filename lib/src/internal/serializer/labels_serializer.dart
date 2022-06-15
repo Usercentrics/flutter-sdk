@@ -66,6 +66,9 @@ class LabelsSerializer {
       btnBannerReadMore: value['btnBannerReadMore'] ?? "",
       linkToDpaInfo: value['linkToDpaInfo'] ?? "",
       second: value['second'] ?? "",
+      consent: value['consent'] ?? "",
+      secondLayerDescriptionHtml: value['secondLayerDescriptionHtml'] ?? "",
+      secondLayerTitle: value['secondLayerTitle'] ?? "",
     );
   }
 }

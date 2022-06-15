@@ -68,7 +68,7 @@ jobs:
     runs-on: ubuntu-latest
     container: cirrusci/flutter:stable
     env:
-      GRADLE_VERSION: 6.7
+      GRADLE_VERSION: 7.2
 
     steps:
       - name: Checkout code
@@ -108,7 +108,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Setup Flutter
-        uses: subosito/flutter-action@v1
+        uses: subosito/flutter-action@v2
         with:
           channel: 'stable'
       - name: Get dependencies
@@ -148,7 +148,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Setup Flutter
-        uses: subosito/flutter-action@v1
+        uses: subosito/flutter-action@v2
         with:
           channel: 'stable'
       - name: Get dependencies

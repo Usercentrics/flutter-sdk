@@ -8,7 +8,8 @@ abstract class InitializeBridge {
 
   void invoke({
     required MethodChannel channel,
-    required String settingsId,
+    String settingsId,
+    String ruleSetId,
     String? defaultLanguage,
     UsercentricsLoggerLevel? loggerLevel,
     int? timeoutMillis,
@@ -25,7 +26,8 @@ class MethodChannelInitialize extends InitializeBridge {
   @override
   void invoke({
     required MethodChannel channel,
-    required String settingsId,
+    String settingsId = "",
+    String ruleSetId = "",
     String? defaultLanguage,
     UsercentricsLoggerLevel? loggerLevel,
     int? timeoutMillis,
@@ -34,6 +36,7 @@ class MethodChannelInitialize extends InitializeBridge {
   }) {
     final arguments = InitializeOptionsSerializer.serialize(
       settingsId: settingsId,
+      ruleSetId: ruleSetId,
       defaultLanguage: defaultLanguage,
       loggerLevel: loggerLevel,
       timeoutMillis: timeoutMillis,

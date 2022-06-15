@@ -6,7 +6,8 @@ import 'network_mode_serializer.dart';
 
 class InitializeOptionsSerializer {
   static dynamic serialize({
-    required String settingsId,
+    String settingsId = "",
+    String ruleSetId = "",
     String? defaultLanguage,
     UsercentricsLoggerLevel? loggerLevel,
     int? timeoutMillis,
@@ -15,6 +16,7 @@ class InitializeOptionsSerializer {
   }) =>
       {
         'settingsId': settingsId,
+        'ruleSetId': ruleSetId,
         'defaultLanguage': defaultLanguage,
         'loggerLevel': LoggerLevelSerializer.serialize(loggerLevel),
         'timeoutMillis': timeoutMillis,

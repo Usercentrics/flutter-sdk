@@ -7,7 +7,8 @@ abstract class UsercentricsPlatform {
   static UsercentricsPlatform instance = MethodChannelUsercentrics();
 
   void initialize({
-    required String settingsId,
+    String settingsId,
+    String ruleSetId,
     String? defaultLanguage,
     UsercentricsLoggerLevel? loggerLevel,
     int? timeoutMillis,

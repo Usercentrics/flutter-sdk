@@ -56,11 +56,12 @@ class MethodChannelUsercentrics extends UsercentricsPlatform {
   final SetCMPIdBridge setCMPIdBridge;
 
   @visibleForTesting
-  Completer? isReadyCompleter;
+  Completer<Object?>? isReadyCompleter;
 
   @override
   void initialize({
-    required String settingsId,
+    String settingsId = "",
+    String ruleSetId = "",
     String? defaultLanguage,
     UsercentricsLoggerLevel? loggerLevel,
     int? timeoutMillis,
@@ -73,13 +74,16 @@ class MethodChannelUsercentrics extends UsercentricsPlatform {
     initializeBridge.invoke(
       channel: _channel,
       settingsId: settingsId,
+      ruleSetId: ruleSetId,
       defaultLanguage: defaultLanguage,
       loggerLevel: loggerLevel,
       timeoutMillis: timeoutMillis,
       version: version,
       networkMode: networkMode,
     );
-    status.whenComplete(() => isReadyCompleter?.complete());
+    status
+        .then((value) => isReadyCompleter?.complete(null))
+        .onError((error, stackTrace) => isReadyCompleter?.complete(error));
   }
 
   @override
@@ -293,8 +297,22 @@ class MethodChannelUsercentrics extends UsercentricsPlatform {
     if (completer == null) {
       throw const NotInitializedException();
     }
-    await completer.future;
+    final error = await completer.future;
+    if (error != null) {
+      // Remove PlatformException wrapper
+      final details = error is PlatformException ? error.message : null;
+      throw FailedInitializationException(details ?? error.toString());
+    }
   }
+}
+
+class FailedInitializationException implements Exception {
+  final String message;
+
+  const FailedInitializationException(this.message);
+
+  @override
+  String toString() => "$FailedInitializationException: $message";
 }
 
 class NotInitializedException implements Exception {
@@ -304,5 +322,5 @@ class NotInitializedException implements Exception {
   const NotInitializedException();
 
   @override
-  String toString() => "$NotInitializedException(message: $message)";
+  String toString() => "$NotInitializedException: $message";
 }

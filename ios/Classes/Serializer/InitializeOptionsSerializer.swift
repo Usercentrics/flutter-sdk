@@ -3,11 +3,18 @@ import Usercentrics
 extension UsercentricsOptions {
 
     static func initialize(from value: Any?) -> UsercentricsOptions? {
-        guard let dict = value as? Dictionary<String, Any>,
-              let settingsId = dict["settingsId"] as? String
+        guard let dict = value as? Dictionary<String, Any>
         else { return nil }
 
-        let options = UsercentricsOptions(settingsId: settingsId)
+        let options = UsercentricsOptions()
+
+        if let settingsId = dict["settingsId"] as? String {
+            options.settingsId = settingsId
+        }
+
+        if let ruleSetId = dict["ruleSetId"] as? String {
+            options.ruleSetId = ruleSetId
+        }
 
         if let defaultLanguage = dict["defaultLanguage"] as? String {
             options.defaultLanguage = defaultLanguage

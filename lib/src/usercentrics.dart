@@ -19,13 +19,15 @@ class Usercentrics {
 
   /// Initialize Usercentrics with the given arguments. Call this method only once in the whole life of the application. If you want to change the configuration and initialize again, please use the [reset] method before.
   /// - The [settingsId] is a Usercentrics generated ID, used to identify a unique CMP configuration.
+  /// - The [ruleSetId] is a Usercentrics generated ID, used to identify a set of CMP configurations.
   /// - The [defaultLanguage] sets the default language in the language selection hierarchy. E.g. "en", "de", "fr". The default value is empty.
   /// - The [loggerLevel] provides a set of logs in the standard output depending on the Level: [UsercentricsLoggerLevel.debug] (most detailed logs, includes every other level), [UsercentricsLoggerLevel.warning] (non-problematic operations) and [UsercentricsLoggerLevel.error] (relevant logs to any blocking problems). The default value is [UsercentricsLoggerLevel.none].
   /// - The [timeoutMillis] sets a timeout for network requests in milliseconds. The default value is 10000 milliseconds.
   /// - The [version] freezes the configuration version shown to your users, you may pass a specific version here. E.g. "3.0.4". The default value is "latest".
   /// - The [networkMode] sets the network operation mode. Be careful, use this option only if we have confirmed that it is ready to use because it has a significant impact on the whole system's performance. The default value is "world".
   static void initialize({
-    required String settingsId,
+    String settingsId = "",
+    String ruleSetId = "",
     String? defaultLanguage,
     UsercentricsLoggerLevel? loggerLevel,
     int? timeoutMillis,
@@ -34,6 +36,7 @@ class Usercentrics {
   }) =>
       _delegate.initialize(
         settingsId: settingsId,
+        ruleSetId: ruleSetId,
         defaultLanguage: defaultLanguage,
         loggerLevel: loggerLevel,
         timeoutMillis: timeoutMillis,

@@ -9,6 +9,7 @@ void main() {
   const mockResponse = null;
   const expectedArguments = {
     "settingsId": "Yi9N3aXia",
+    "ruleSetId": "XXxXXXYYyyyYY",
     "defaultLanguage": "en",
     "loggerLevel": "DEBUG",
     "version": "1.0.0",
@@ -16,6 +17,7 @@ void main() {
     "networkMode": "EU",
   };
   const mockSettingsId = 'Yi9N3aXia';
+  const mockRuleSetId = 'XXxXXXYYyyyYY';
   const mockLoggerLevel = UsercentricsLoggerLevel.debug;
   const mockVersion = "1.0.0";
   const mockDefaultLanguage = "en";
@@ -42,6 +44,7 @@ void main() {
     instance.invoke(
       channel: channel,
       settingsId: mockSettingsId,
+      ruleSetId: mockRuleSetId,
       loggerLevel: mockLoggerLevel,
       version: mockVersion,
       defaultLanguage: mockDefaultLanguage,

@@ -31,10 +31,10 @@ extension UsercentricsSettings {
             "showLanguageDropdown" : self.showLanguageDropdown,
             "imprintUrl" : self.imprintUrl as Any,
             "btnMoreInfoIsVisible" : self.btnMoreInfoIsVisible,
-            "bannerMessage" : self.bannerMessage as Any,
+            "firstLayerDescriptionHtml" : self.firstLayerDescriptionHtml as Any,
             "bannerMobileDescriptionIsActive" : self.bannerMobileDescriptionIsActive,
             "dataController" : self.dataController as Any,
-            "bannerMobileDescription" : self.bannerMobileDescription as Any,
+            "firstLayerMobileDescriptionHtml" : self.firstLayerMobileDescriptionHtml as Any,
             "version" : self.version,
             "isLatest" : Bool(from: self.isLatest) as Any,
             "language" : self.language,
@@ -123,6 +123,9 @@ extension UsercentricsLabels {
             "btnBannerReadMore" : self.btnBannerReadMore,
             "linkToDpaInfo" : self.linkToDpaInfo,
             "second" : self.second,
+            "consent" : self.consent,
+            "secondLayerDescriptionHtml" : self.secondLayerDescriptionHtml,
+            "secondLayerTitle" : self.secondLayerTitle
         ]
     }
 }
@@ -310,8 +313,6 @@ extension SecondLayer {
             "hideButtonDeny" : Bool(from: self.hideButtonDeny) as Any,
             "hideLanguageSwitch" : Bool(from: self.hideLanguageSwitch) as Any,
             //        "side" : self.side.name,
-            "title" : self.title as Any,
-            "description" : self.description,
         ]
     }
 }
@@ -399,7 +400,6 @@ extension UsercentricsLocation {
     func serialize() -> Any {
         return [
             "countryCode" : self.countryCode,
-            "countryName" : self.countryName,
             "regionCode" : self.regionCode,
             "isInEU" : self.isInEU(),
             "isInUS" : self.isInUS(),

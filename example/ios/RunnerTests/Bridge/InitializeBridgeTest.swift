@@ -34,6 +34,7 @@ class InitializeBridgeTest: XCTestCase, BaseBridgeTestProtocol {
             XCTAssertNotNil(self.usercentrics.configureOptions)
 
             XCTAssertEqual(self.usercentrics.configureOptions?.settingsId, "AAAAA")
+            XCTAssertEqual(self.usercentrics.configureOptions?.ruleSetId, "BBBBB")
             XCTAssertEqual(self.usercentrics.configureOptions?.loggerLevel, .debug)
             XCTAssertEqual(self.usercentrics.configureOptions?.timeoutMillis, 1000)
             XCTAssertEqual(self.usercentrics.configureOptions?.version, "1.2.3")
@@ -45,6 +46,7 @@ class InitializeBridgeTest: XCTestCase, BaseBridgeTestProtocol {
         let method = FakeFlutterMethodCall(methodName: bridgeName)
         method.argumentsMap = [
             "settingsId": "AAAAA",
+            "ruleSetId": "BBBBB",
             "loggerLevel": "DEBUG",
             "timeoutMillis": 1000,
             "version": "1.2.3",

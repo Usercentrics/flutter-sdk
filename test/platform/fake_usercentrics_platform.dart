@@ -59,6 +59,7 @@ class FakeUsercentricsPlatform extends UsercentricsPlatform {
 
   var initializeCount = 0;
   String? initializeSettingsIdArgument;
+  String? initializeRuleSetIdArgument;
   String? initializeDefaultLanguageArgument;
   UsercentricsLoggerLevel? initializeLoggerLevelArgument;
   int? initializeTimeoutMillisArgument;
@@ -67,7 +68,8 @@ class FakeUsercentricsPlatform extends UsercentricsPlatform {
 
   @override
   void initialize({
-    required String settingsId,
+    String settingsId = "",
+    String ruleSetId = "",
     String? defaultLanguage,
     UsercentricsLoggerLevel? loggerLevel,
     int? timeoutMillis,
@@ -76,6 +78,7 @@ class FakeUsercentricsPlatform extends UsercentricsPlatform {
   }) {
     initializeCount++;
     initializeSettingsIdArgument = settingsId;
+    initializeRuleSetIdArgument = ruleSetId;
     initializeDefaultLanguageArgument = defaultLanguage;
     initializeLoggerLevelArgument = loggerLevel;
     initializeTimeoutMillisArgument = timeoutMillis;

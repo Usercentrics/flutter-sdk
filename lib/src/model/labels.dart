@@ -61,6 +61,9 @@ class UsercentricsLabels {
     required this.btnBannerReadMore,
     required this.linkToDpaInfo,
     required this.second,
+    required this.consent,
+    required this.secondLayerDescriptionHtml,
+    required this.secondLayerTitle,
   });
 
   final String btnAcceptAll;
@@ -124,6 +127,9 @@ class UsercentricsLabels {
   final String btnBannerReadMore;
   final String linkToDpaInfo;
   final String second;
+  final String consent;
+  final String secondLayerDescriptionHtml;
+  final String secondLayerTitle;
 
   @override
   bool operator ==(Object other) =>
@@ -192,7 +198,10 @@ class UsercentricsLabels {
               other.storageInformationDescription &&
           btnBannerReadMore == other.btnBannerReadMore &&
           linkToDpaInfo == other.linkToDpaInfo &&
-          second == other.second;
+          second == other.second &&
+          consent == other.consent &&
+          secondLayerDescriptionHtml == other.secondLayerDescriptionHtml &&
+          secondLayerTitle == other.secondLayerTitle;
 
   @override
   int get hashCode =>
@@ -256,7 +265,10 @@ class UsercentricsLabels {
       storageInformationDescription.hashCode +
       btnBannerReadMore.hashCode +
       linkToDpaInfo.hashCode +
-      second.hashCode;
+      second.hashCode +
+      consent.hashCode +
+      secondLayerDescriptionHtml.hashCode +
+      secondLayerTitle.hashCode;
 
   @override
   String toString() => "$UsercentricsLabels($hashCode)";
