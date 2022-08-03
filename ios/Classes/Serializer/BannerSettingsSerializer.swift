@@ -7,29 +7,25 @@ extension BannerSettings {
             let dict = value as? Dictionary<String, Any>
         else { return nil }
 
-        var logo: UIImage?
-        if let logoValue = dict["logo"] as? String {
-            logo = UIImage(from: logoValue, assetProvider: assetProvider)
-        }
+        let generalStyleDict = dict["generalStyleSettings"] as? Dictionary<String, Any> ?? [:]
 
         var bannerFont: BannerFont?
-        if let fontValue = dict["font"] as? Dictionary<String,Any> {
+        if let fontValue = generalStyleDict["font"] as? Dictionary<String,Any> {
             bannerFont = BannerFont.initialize(from: fontValue, assetProvider: assetProvider)
         }
 
-        let links = LegalLinksSettings.from(enumString: dict["links"] as? String)
-
-        let firstLayerSettings = FirstLayerStyleSettings(from: dict["firstLayerSettings"],
+        let firstLayerSettings = FirstLayerStyleSettings(from: dict["firstLayerStyleSettings"],
                                                          bannerFont: bannerFont,
                                                          assetProvider: assetProvider)
 
-        let secondLayerSettings = SecondLayerStyleSettings(from: dict["secondLayerSettings"],
+        let secondLayerSettings = SecondLayerStyleSettings(from: dict["secondLayerStyleSettings"],
                                                            bannerFont: bannerFont,
                                                            assetProvider: assetProvider)
-        self.init(font: bannerFont,
-                  logo: logo,
-                  links: links,
-                  firstLayerSettings: firstLayerSettings,
-                  secondLayerSettings: secondLayerSettings)
+
+        let generalStyleSettings = GeneralStyleSettings(from: generalStyleDict, bannerFont: bannerFont, assetProvider: assetProvider)
+
+        self.init(generalStyleSettings: generalStyleSettings,
+                  firstLayerStyleSettings: firstLayerSettings,
+                  secondLayerStyleSettings: secondLayerSettings)
     }
 }

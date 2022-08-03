@@ -14,6 +14,7 @@ abstract class UsercentricsPlatform {
     int? timeoutMillis,
     String? version,
     NetworkMode? networkMode,
+    bool? consentMediation,
   });
 
   void reset();
@@ -22,17 +23,13 @@ abstract class UsercentricsPlatform {
 
   Future<UsercentricsConsentUserResponse?> showFirstLayer({
     required UsercentricsLayout layout,
-    BannerImage? logo,
-    BannerFont? font,
-    LegalLinksSettings? links,
+    GeneralStyleSettings? generalStyleSettings,
     FirstLayerStyleSettings? firstLayerSettings,
     SecondLayerStyleSettings? secondLayerSettings,
   });
 
   Future<UsercentricsConsentUserResponse?> showSecondLayer({
-    BannerImage? logo,
-    BannerFont? font,
-    LegalLinksSettings? links,
+    GeneralStyleSettings? generalStyleSettings,
     SecondLayerStyleSettings? secondLayerSettings,
   });
 

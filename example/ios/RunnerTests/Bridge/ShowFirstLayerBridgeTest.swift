@@ -69,8 +69,8 @@ class ShowFirstLayerBridgeTest: XCTestCase, BaseBridgeTestProtocol {
 
             XCTAssertEqual(self.bannerProxy.showFirstLayerCount, 1)
             XCTAssertEqual(self.bannerProxy.showFirstLayerLayoutArg, .popup(position: .center))
-            XCTAssertEqual(self.bannerProxy.showFirstLayerBannerSettingsArg?.links, LegalLinksSettings.both)
-            XCTAssertEqual(self.bannerProxy.showFirstLayerBannerSettingsArg?.firstLayerSettings != nil, true)
+            XCTAssertEqual(self.bannerProxy.showFirstLayerBannerSettingsArg?.generalStyleSettings?.links, LegalLinksSettings.both)
+            XCTAssertEqual(self.bannerProxy.showFirstLayerBannerSettingsArg?.firstLayerStyleSettings != nil, true)
             // TODO Assert style settings
 
             expectation.fulfill()
@@ -79,8 +79,7 @@ class ShowFirstLayerBridgeTest: XCTestCase, BaseBridgeTestProtocol {
         let call = FakeFlutterMethodCall(methodName: bridgeName)
         call.argumentsMap = [
             "bannerSettings": [
-                "links": "BOTH",
-                "firstLayerSettings": [
+                "firstLayerStyleSettings": [
                     "headerImage": [
                         "height": 100.0
                     ],
@@ -105,6 +104,9 @@ class ShowFirstLayerBridgeTest: XCTestCase, BaseBridgeTestProtocol {
                     ],
                     "overlayColor": "#8a000011",
                     "cornerRadius": 50
+                ],
+                "generalStyleSettings": [
+                    "links": "BOTH"
                 ]
             ],
             "layout": "POPUP_CENTER",

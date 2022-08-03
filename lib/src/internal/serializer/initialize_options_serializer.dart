@@ -13,6 +13,7 @@ class InitializeOptionsSerializer {
     int? timeoutMillis,
     String? version,
     NetworkMode? networkMode,
+    bool? consentMediation,
   }) =>
       {
         'settingsId': settingsId,
@@ -22,5 +23,6 @@ class InitializeOptionsSerializer {
         'timeoutMillis': timeoutMillis,
         'version': version,
         'networkMode': NetworkModeSerializer.serialize(networkMode),
+        'consentMediation': consentMediation
       };
 }

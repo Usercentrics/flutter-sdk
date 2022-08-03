@@ -29,9 +29,7 @@ void main() {
       layout: mockLayout,
       firstLayerSettings: mockFirstLayerSettings,
       secondLayerSettings: null,
-      links: LegalLinksSettings.both,
-      font: mockFont,
-      logo: mockLogo,
+      generalStyleSettings: mockGeneralStyleSettings,
     );
 
     expect(callCounter, 1);

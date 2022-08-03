@@ -15,6 +15,7 @@ void main() {
     "version": "1.0.0",
     "timeoutMillis": 20000,
     "networkMode": "EU",
+    'consentMediation': true
   };
   const mockSettingsId = 'Yi9N3aXia';
   const mockRuleSetId = 'XXxXXXYYyyyYY';
@@ -23,6 +24,7 @@ void main() {
   const mockDefaultLanguage = "en";
   const mockTimeoutMillis = 20000;
   const mockNetworkMode = NetworkMode.eu;
+  const mockConsentMediation = true;
 
   const MethodChannel channel = MethodChannel('usercentrics');
   TestWidgetsFlutterBinding.ensureInitialized();
@@ -42,15 +44,15 @@ void main() {
     const instance = MethodChannelInitialize();
 
     instance.invoke(
-      channel: channel,
-      settingsId: mockSettingsId,
-      ruleSetId: mockRuleSetId,
-      loggerLevel: mockLoggerLevel,
-      version: mockVersion,
-      defaultLanguage: mockDefaultLanguage,
-      timeoutMillis: mockTimeoutMillis,
-      networkMode: mockNetworkMode,
-    );
+        channel: channel,
+        settingsId: mockSettingsId,
+        ruleSetId: mockRuleSetId,
+        loggerLevel: mockLoggerLevel,
+        version: mockVersion,
+        defaultLanguage: mockDefaultLanguage,
+        timeoutMillis: mockTimeoutMillis,
+        networkMode: mockNetworkMode,
+        consentMediation: mockConsentMediation);
 
     expect(callCounter, 1);
     expect(receivedCall?.method, 'initialize');

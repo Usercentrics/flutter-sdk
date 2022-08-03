@@ -51,15 +51,8 @@ void main() {
   );
   const expectedArguments = {
     "bannerSettings": {
-      "logo": "images/flutter-logo.png",
-      "font": {
-        "regularFontAssetPath": "fonts/Lora-Regular.ttf",
-        "boldFontAssetPath": "fonts/Lora-Bold.ttf",
-        "fontSize": 20,
-      },
-      "links": "NONE",
-      "firstLayerSettings": null,
-      "secondLayerSettings": {
+      "firstLayerStyleSettings": null,
+      "secondLayerStyleSettings": {
         "showCloseButton": true,
         'buttonLayout': [
           [
@@ -84,6 +77,22 @@ void main() {
           ]
         ],
       },
+      "generalStyleSettings": {
+        'textColor': null,
+        'layerBackgroundColor': null,
+        'layerBackgroundSecondaryColor': null,
+        'linkColor': null,
+        'tabColor': null,
+        'bordersColor': null,
+        'toggleStyleSettings': null,
+        'font': {
+          'regularFontAssetPath': 'fonts/Lora-Regular.ttf',
+          'boldFontAssetPath': 'fonts/Lora-Bold.ttf',
+          'fontSize': 20.0
+        },
+        'logo': 'images/flutter-logo.png',
+        'links': 'NONE'
+      }
     }
   };
   const mockFont = BannerFont(
@@ -106,6 +115,9 @@ void main() {
     ]),
   );
 
+  const mockGeneralStyleSettings = GeneralStyleSettings(
+      font: mockFont, logo: mockLogo, links: LegalLinksSettings.none);
+
   const MethodChannel channel = MethodChannel('usercentrics');
   TestWidgetsFlutterBinding.ensureInitialized();
 
@@ -124,12 +136,9 @@ void main() {
     const instance = MethodChannelShowSecondLayer();
 
     final result = await instance.invoke(
-      channel: channel,
-      secondLayerSettings: mockSecondLayerSettings,
-      font: mockFont,
-      logo: mockLogo,
-      links: LegalLinksSettings.none,
-    );
+        channel: channel,
+        secondLayerSettings: mockSecondLayerSettings,
+        generalStyleSettings: mockGeneralStyleSettings);
 
     expect(callCounter, 1);
     expect(receivedCall?.method, 'showSecondLayer');

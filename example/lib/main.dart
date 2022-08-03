@@ -74,22 +74,16 @@ class HomePageState extends State<HomePage> {
   void _showFirstLayer({
     UsercentricsLayout? layout,
     FirstLayerStyleSettings? firstLayerSettings,
+    GeneralStyleSettings? generalStyleSettings,
   }) async {
     try {
       final response = await Usercentrics.showFirstLayer(
-        layout: layout ?? UsercentricsLayout.popupBottom,
-        logo: const BannerImage(assetPath: 'images/flutter-logo.png'),
-        // font: const BannerFont(
-        //   regularFontAssetPath: 'fonts/Lora-Regular.ttf',
-        //   boldFontAssetPath: 'fonts/Lora-Bold.ttf',
-        //   fontSize: 15,
-        // ),
-        links: LegalLinksSettings.firstLayerOnly,
-        firstLayerSettings: firstLayerSettings,
-        secondLayerSettings: const SecondLayerStyleSettings(
-          showCloseButton: true,
-        ),
-      );
+          layout: layout ?? UsercentricsLayout.popupBottom,
+          firstLayerSettings: firstLayerSettings,
+          secondLayerSettings: const SecondLayerStyleSettings(
+            showCloseButton: true,
+          ),
+          generalStyleSettings: generalStyleSettings);
 
       _handleUserResponse(response);
     } catch (error) {
@@ -100,11 +94,6 @@ class HomePageState extends State<HomePage> {
   void _showSecondLayer() async {
     try {
       final response = await Usercentrics.showSecondLayer(
-        logo: const BannerImage(assetPath: 'images/flutter-logo.png'),
-        // font: const UsercentricsFont(
-        //   fontAssetPath: 'fonts/Lora-VariableFont_wght.ttf',
-        //   fontSize: 15,
-        // ),
         secondLayerSettings: SecondLayerStyleSettings(
           showCloseButton: true,
           buttonLayout: ButtonLayout.row(
@@ -159,9 +148,9 @@ class HomePageState extends State<HomePage> {
             ),
             ElevatedButton(
               onPressed: () => _showFirstLayer(
-                layout: UsercentricsLayout.full,
-                firstLayerSettings: firstLayerCustomizationExample2,
-              ),
+                  layout: UsercentricsLayout.full,
+                  firstLayerSettings: firstLayerCustomizationExample2,
+                  generalStyleSettings: generalStyleCustomizationExample2),
               child: const Text("Customization Example 2"),
             ),
             ElevatedButton(

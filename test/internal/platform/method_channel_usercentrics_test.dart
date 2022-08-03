@@ -43,16 +43,17 @@ void main() {
       const timeoutMillis = 10000;
       const version = "1.1.1";
       const networkMode = NetworkMode.eu;
+      const consentMediation = true;
 
       instance.initialize(
-        settingsId: settingsId,
-        ruleSetId: ruleSetId,
-        defaultLanguage: defaultLanguage,
-        loggerLevel: loggerLevel,
-        timeoutMillis: timeoutMillis,
-        version: version,
-        networkMode: networkMode,
-      );
+          settingsId: settingsId,
+          ruleSetId: ruleSetId,
+          defaultLanguage: defaultLanguage,
+          loggerLevel: loggerLevel,
+          timeoutMillis: timeoutMillis,
+          version: version,
+          networkMode: networkMode,
+          consentMediation: consentMediation);
       await instance.isReadyCompleter?.future;
 
       expect(initializeBridge.invokeCount, 1);
@@ -64,6 +65,7 @@ void main() {
       expect(initializeBridge.invokeTimeoutMillisArgument, timeoutMillis);
       expect(initializeBridge.invokeVersionArgument, version);
       expect(initializeBridge.invokeNetworkModeArgument, networkMode);
+      expect(initializeBridge.invokeConsentMediationArgument, consentMediation);
 
       expect(isReadyBridge.invokeCount, 1);
       expect(isReadyBridge.invokeChannelArgument?.name, "usercentrics");
@@ -146,19 +148,20 @@ void main() {
       const firstLayerSettings = FirstLayerStyleSettings(cornerRadius: 100);
       const secondLayerSettings =
           SecondLayerStyleSettings(showCloseButton: true);
+
       const logo = BannerImage(assetPath: "assetPath");
       const font = BannerFont(
         regularFontAssetPath: "fonts/Lora-Regular.ttf",
         boldFontAssetPath: "fonts/Lora-Bold.ttf",
         fontSize: 12,
       );
+      const generalStyleSettings = GeneralStyleSettings(font: font, logo: logo);
 
       final response = await instance.showFirstLayer(
         layout: layout,
         firstLayerSettings: firstLayerSettings,
         secondLayerSettings: secondLayerSettings,
-        logo: logo,
-        font: font,
+        generalStyleSettings: generalStyleSettings,
       );
 
       expect(showFirstLayerBridge.invokeCount, 1);
@@ -168,8 +171,8 @@ void main() {
           firstLayerSettings);
       expect(showFirstLayerBridge.invokeSecondLayerSettingsArgument,
           secondLayerSettings);
-      expect(showFirstLayerBridge.invokeLogoArgument, logo);
-      expect(showFirstLayerBridge.invokeFontArgument, font);
+      expect(showFirstLayerBridge.invokeGeneralStyleSettingsArgument,
+          generalStyleSettings);
       expect(response, expectedResponse);
     });
 
@@ -214,19 +217,18 @@ void main() {
         boldFontAssetPath: "fonts/Lora-Bold.ttf",
         fontSize: 12,
       );
+      const generalStyleSettings = GeneralStyleSettings(font: font, logo: logo);
 
       final response = await instance.showSecondLayer(
-        secondLayerSettings: secondLayerSettings,
-        logo: logo,
-        font: font,
-      );
+          secondLayerSettings: secondLayerSettings,
+          generalStyleSettings: generalStyleSettings);
 
       expect(showSecondLayerBridge.invokeCount, 1);
       expect(showSecondLayerBridge.invokeChannelArgument?.name, "usercentrics");
       expect(showSecondLayerBridge.invokeSecondLayerSettingsArgument,
           secondLayerSettings);
-      expect(showSecondLayerBridge.invokeLogoArgument, logo);
-      expect(showSecondLayerBridge.invokeFontArgument, font);
+      expect(showSecondLayerBridge.invokeGeneralStyleSettingsArgument,
+          generalStyleSettings);
       expect(response, expectedResponse);
     });
 

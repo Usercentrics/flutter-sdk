@@ -15,6 +15,7 @@ abstract class InitializeBridge {
     int? timeoutMillis,
     String? version,
     NetworkMode? networkMode,
+    bool? consentMediation,
   });
 }
 
@@ -33,6 +34,7 @@ class MethodChannelInitialize extends InitializeBridge {
     int? timeoutMillis,
     String? version,
     NetworkMode? networkMode,
+    bool? consentMediation,
   }) {
     final arguments = InitializeOptionsSerializer.serialize(
       settingsId: settingsId,
@@ -42,6 +44,7 @@ class MethodChannelInitialize extends InitializeBridge {
       timeoutMillis: timeoutMillis,
       version: version,
       networkMode: networkMode,
+      consentMediation: consentMediation,
     );
     channel.invokeMethod(_name, arguments);
   }

@@ -67,20 +67,21 @@ class MethodChannelUsercentrics extends UsercentricsPlatform {
     int? timeoutMillis,
     String? version,
     NetworkMode? networkMode,
+    bool? consentMediation,
   }) async {
     final ongoingInit = isReadyCompleter;
     isReadyCompleter = Completer();
     if (ongoingInit != null) await ongoingInit.future;
     initializeBridge.invoke(
-      channel: _channel,
-      settingsId: settingsId,
-      ruleSetId: ruleSetId,
-      defaultLanguage: defaultLanguage,
-      loggerLevel: loggerLevel,
-      timeoutMillis: timeoutMillis,
-      version: version,
-      networkMode: networkMode,
-    );
+        channel: _channel,
+        settingsId: settingsId,
+        ruleSetId: ruleSetId,
+        defaultLanguage: defaultLanguage,
+        loggerLevel: loggerLevel,
+        timeoutMillis: timeoutMillis,
+        version: version,
+        networkMode: networkMode,
+        consentMediation: consentMediation);
     status
         .then((value) => isReadyCompleter?.complete(null))
         .onError((error, stackTrace) => isReadyCompleter?.complete(error));
@@ -99,9 +100,7 @@ class MethodChannelUsercentrics extends UsercentricsPlatform {
   @override
   Future<UsercentricsConsentUserResponse?> showFirstLayer({
     required UsercentricsLayout layout,
-    BannerImage? logo,
-    BannerFont? font,
-    LegalLinksSettings? links,
+    GeneralStyleSettings? generalStyleSettings,
     FirstLayerStyleSettings? firstLayerSettings,
     SecondLayerStyleSettings? secondLayerSettings,
   }) async {
@@ -109,9 +108,7 @@ class MethodChannelUsercentrics extends UsercentricsPlatform {
     return await showFirstLayerBridge.invoke(
       channel: _channel,
       layout: layout,
-      logo: logo,
-      font: font,
-      links: links,
+      generalStyleSettings: generalStyleSettings,
       firstLayerSettings: firstLayerSettings,
       secondLayerSettings: secondLayerSettings,
     );
@@ -119,17 +116,13 @@ class MethodChannelUsercentrics extends UsercentricsPlatform {
 
   @override
   Future<UsercentricsConsentUserResponse?> showSecondLayer({
-    BannerImage? logo,
-    BannerFont? font,
-    LegalLinksSettings? links,
+    GeneralStyleSettings? generalStyleSettings,
     SecondLayerStyleSettings? secondLayerSettings,
   }) async {
     await _ensureIsReady();
     return await showSecondLayerBridge.invoke(
       channel: _channel,
-      logo: logo,
-      font: font,
-      links: links,
+      generalStyleSettings: generalStyleSettings,
       secondLayerSettings: secondLayerSettings,
     );
   }

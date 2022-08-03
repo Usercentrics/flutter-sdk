@@ -10,19 +10,23 @@ internal object ShowSecondLayerMock {
     val call = FakeFlutterMethodCall(
         method = "showSecondLayer", arguments = mapOf(
             "bannerSettings" to mapOf(
-                "font" to null,
-                "logo" to null,
-                "links" to "SECOND_LAYER_ONLY",
-                "secondLayerSettings" to mapOf(
+                "secondLayerStyleSettings" to mapOf(
                     "showCloseButton" to true,
+                ),
+                "generalStyleSettings" to mapOf(
+                    "font" to null,
+                    "logo" to null,
+                    "links" to "SECOND_LAYER_ONLY",
                 )
             )
         )
     )
     val expectedBannerSettings = BannerSettings(
-        links = LegalLinksSettings.SECOND_LAYER_ONLY,
-        secondLayerSettings = SecondLayerStyleSettings(
+        secondLayerStyleSettings = SecondLayerStyleSettings(
             showCloseButton = true,
+        ),
+        generalStyleSettings = GeneralStyleSettings(
+            links = LegalLinksSettings.SECOND_LAYER_ONLY,
         )
     )
     val fakeResponseWithData = UsercentricsConsentUserResponse(

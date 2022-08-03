@@ -33,6 +33,7 @@ class Usercentrics {
     int? timeoutMillis,
     String? version,
     NetworkMode? networkMode,
+    bool? consentMediation,
   }) =>
       _delegate.initialize(
         settingsId: settingsId,
@@ -42,6 +43,7 @@ class Usercentrics {
         timeoutMillis: timeoutMillis,
         version: version,
         networkMode: networkMode,
+        consentMediation: consentMediation,
       );
 
   /// {@template initialize}
@@ -54,42 +56,31 @@ class Usercentrics {
 
   /// Show the Banner first layer to **collect** consents.
   /// - The [layout] of the banner.
-  /// - The [logo] sets an image as Logo to go at the top of your Banner. By default, it is null and that means that the Banner will use the logo defined at the Admin Interface.
-  /// - The [font] sets the font to be used in the Banner. By default, it is null and that means that the Banner will use the font defined at the Admin Interface.
-  /// - The [links] shows/hides the legal links following the given criteria.
+  /// - The [generalStyleSettings] that enables you to style general paramenters programmatically.
   /// - The [firstLayerSettings] that enables you to style the first layer programmatically.
   /// - The [secondLayerSettings] that enables you to style the second layer programmatically.
   static Future<UsercentricsConsentUserResponse?> showFirstLayer({
     required UsercentricsLayout layout,
-    BannerImage? logo,
-    BannerFont? font,
-    LegalLinksSettings? links,
+    GeneralStyleSettings? generalStyleSettings,
     FirstLayerStyleSettings? firstLayerSettings,
     SecondLayerStyleSettings? secondLayerSettings,
   }) =>
       _delegate.showFirstLayer(
         layout: layout,
-        logo: logo,
-        font: font,
-        links: links,
+        generalStyleSettings: generalStyleSettings,
         firstLayerSettings: firstLayerSettings,
         secondLayerSettings: secondLayerSettings,
       );
 
   /// Show the Banner second layer to **manage** consents.
-  /// - The [logo] sets an image as Logo to go at the top of your Banner. By default, it is null and that means that the Banner will use the logo defined at the Admin Interface.
-  /// - The [font] sets the font to be used in the Banner. By default, it is null and that means that the Banner will use the font defined at the Admin Interface.
-  /// - The [links] shows/hides the legal links following the given criteria.
+  /// - The [generalStyleSettings] that enables you to style general paramenters programmatically.
   /// - The [secondLayerSettings] that enables you to style the second layer programmatically.
   static Future<UsercentricsConsentUserResponse?> showSecondLayer({
-    BannerImage? logo,
-    BannerFont? font,
-    LegalLinksSettings? links,
+    GeneralStyleSettings? generalStyleSettings,
     SecondLayerStyleSettings? secondLayerSettings,
   }) =>
       _delegate.showSecondLayer(
-        logo: logo,
-        font: font,
+        generalStyleSettings: generalStyleSettings,
         secondLayerSettings: secondLayerSettings,
       );
 

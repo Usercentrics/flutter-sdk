@@ -28,5 +28,8 @@ internal fun Any?.deserializeOptions(): UsercentricsOptions {
     this["networkMode"]?.let {
         options.networkMode = NetworkMode.valueOf(it as String)
     }
+    this["consentMediation"]?.let {
+        options.consentMediation = it as Boolean
+    }
     return options
 }

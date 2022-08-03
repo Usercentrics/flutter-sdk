@@ -11,10 +11,7 @@ internal object ShowFirstLayerMock {
         method = "showFirstLayer", arguments = mapOf(
             "layout" to "POPUP_CENTER",
             "bannerSettings" to mapOf(
-                "font" to null,
-                "logo" to null,
-                "links" to "BOTH",
-                "firstLayerSettings" to mapOf(
+                "firstLayerStyleSettings" to mapOf(
                     "headerImage" to null,
                     "title" to mapOf(
                         "alignment" to "END",
@@ -41,12 +38,16 @@ internal object ShowFirstLayerMock {
                     ),
                     "cornerRadius" to 50
                 ),
+                "generalStyleSettings" to mapOf(
+                    "font" to null,
+                    "logo" to null,
+                    "links" to "BOTH",
+                )
             ),
         )
     )
     val expectedBannerSettings = BannerSettings(
-        links = LegalLinksSettings.BOTH,
-        firstLayerSettings = FirstLayerStyleSettings(
+        firstLayerStyleSettings = FirstLayerStyleSettings(
             title = TitleSettings(
                 alignment = SectionAlignment.END,
                 textSizeInSp = 20f,
@@ -73,6 +74,9 @@ internal object ShowFirstLayerMock {
                 )
             ),
             cornerRadius = 50,
+        ),
+        generalStyleSettings = GeneralStyleSettings(
+            links = LegalLinksSettings.BOTH,
         )
     )
     val fakeResponseWithData = UsercentricsConsentUserResponse(
