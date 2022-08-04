@@ -8,9 +8,7 @@ abstract class ShowFirstLayerBridge {
   Future<UsercentricsConsentUserResponse?> invoke({
     required MethodChannel channel,
     required UsercentricsLayout layout,
-    BannerImage? logo,
-    BannerFont? font,
-    LegalLinksSettings? links,
+    GeneralStyleSettings? generalStyleSettings,
     FirstLayerStyleSettings? firstLayerSettings,
     SecondLayerStyleSettings? secondLayerSettings,
   });
@@ -25,17 +23,13 @@ class MethodChannelShowFirstLayer extends ShowFirstLayerBridge {
   Future<UsercentricsConsentUserResponse?> invoke({
     required MethodChannel channel,
     required UsercentricsLayout layout,
-    BannerImage? logo,
-    BannerFont? font,
-    LegalLinksSettings? links,
+    GeneralStyleSettings? generalStyleSettings,
     FirstLayerStyleSettings? firstLayerSettings,
     SecondLayerStyleSettings? secondLayerSettings,
   }) async {
     final arguments = {
       'bannerSettings': BannerSettingsSerializer.serialize(
-        logo: logo,
-        font: font,
-        links: links,
+        generalStyleSettings: generalStyleSettings,
         firstLayerSettings: firstLayerSettings,
         secondLayerSettings: secondLayerSettings,
       ),

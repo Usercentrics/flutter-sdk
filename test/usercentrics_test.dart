@@ -77,19 +77,18 @@ void main() {
       boldFontAssetPath: "asset/font-bold.ttf",
       fontSize: 20,
     );
+    const generalStyleSettings = GeneralStyleSettings(font: font, logo: logo);
 
     final result = await Usercentrics.showFirstLayer(
-      layout: layout,
-      firstLayerSettings: firstLayerSettings,
-      secondLayerSettings: secondLayerSettings,
-      logo: logo,
-      font: font,
-    );
+        layout: layout,
+        firstLayerSettings: firstLayerSettings,
+        secondLayerSettings: secondLayerSettings,
+        generalStyleSettings: generalStyleSettings);
 
     expect(delegate.showFirstLayerCount, 1);
     expect(delegate.showFirstLayerLayoutArgument, layout);
-    expect(delegate.showFirstLayerFontArgument, font);
-    expect(delegate.showFirstLayerLogoArgument, logo);
+    expect(delegate.showFirstLayerGeneralStyleSettingsArgument,
+        generalStyleSettings);
     expect(
         delegate.showFirstLayerFirstLayerSettingsArgument, firstLayerSettings);
     expect(delegate.showFirstLayerSecondLayerSettingsArgument,
@@ -108,22 +107,22 @@ void main() {
     Usercentrics.delegatePackingProperty = delegate;
 
     const secondLayerSettings = SecondLayerStyleSettings(showCloseButton: true);
+
     const logo = BannerImage(assetPath: "asset/logo.png");
     const font = BannerFont(
       regularFontAssetPath: "asset/font-regular.ttf",
       boldFontAssetPath: "asset/font-bold.ttf",
       fontSize: 20,
     );
+    const generalStyleSettings = GeneralStyleSettings(font: font, logo: logo);
 
     final result = await Usercentrics.showSecondLayer(
-      secondLayerSettings: secondLayerSettings,
-      logo: logo,
-      font: font,
-    );
+        secondLayerSettings: secondLayerSettings,
+        generalStyleSettings: generalStyleSettings);
 
     expect(delegate.showSecondLayerCount, 1);
-    expect(delegate.showSecondLayerFontArgument, font);
-    expect(delegate.showSecondLayerLogoArgument, logo);
+    expect(delegate.showSecondLayerGeneralStyleSettingsArgument,
+        generalStyleSettings);
     expect(delegate.showSecondLayerSecondLayerSettingsArgument,
         secondLayerSettings);
     expect(result, expectedResponse);

@@ -2,10 +2,8 @@ import 'package:usercentrics_sdk/src/model/ccpa_data.dart';
 import 'package:usercentrics_sdk/src/model/cmp_data.dart';
 import 'package:usercentrics_sdk/src/model/consent_type.dart';
 import 'package:usercentrics_sdk/src/model/first_layer_style_settings.dart';
-import 'package:usercentrics_sdk/src/model/font.dart';
-import 'package:usercentrics_sdk/src/model/image.dart';
+import 'package:usercentrics_sdk/src/model/general_style_settings.dart';
 import 'package:usercentrics_sdk/src/model/layout.dart';
-import 'package:usercentrics_sdk/src/model/legal_links_settings.dart';
 import 'package:usercentrics_sdk/src/model/logger_level.dart';
 import 'package:usercentrics_sdk/src/model/network_mode.dart';
 import 'package:usercentrics_sdk/src/model/ready_status.dart';
@@ -65,6 +63,7 @@ class FakeUsercentricsPlatform extends UsercentricsPlatform {
   int? initializeTimeoutMillisArgument;
   String? initializeVersionArgument;
   NetworkMode? networkModeArgument;
+  bool? consentMediationArgument;
 
   @override
   void initialize({
@@ -75,6 +74,7 @@ class FakeUsercentricsPlatform extends UsercentricsPlatform {
     int? timeoutMillis,
     String? version,
     NetworkMode? networkMode,
+    bool? consentMediation,
   }) {
     initializeCount++;
     initializeSettingsIdArgument = settingsId;
@@ -84,6 +84,7 @@ class FakeUsercentricsPlatform extends UsercentricsPlatform {
     initializeTimeoutMillisArgument = timeoutMillis;
     initializeVersionArgument = version;
     networkModeArgument = networkMode;
+    consentMediationArgument = consentMediation;
   }
 
   var resetCount = 0;
@@ -109,26 +110,20 @@ class FakeUsercentricsPlatform extends UsercentricsPlatform {
   final UsercentricsConsentUserResponse? showFirstLayerAnswer;
   var showFirstLayerCount = 0;
   UsercentricsLayout? showFirstLayerLayoutArgument;
-  BannerImage? showFirstLayerLogoArgument;
-  BannerFont? showFirstLayerFontArgument;
-  LegalLinksSettings? showFirstLayerLinksArgument;
+  GeneralStyleSettings? showFirstLayerGeneralStyleSettingsArgument;
   FirstLayerStyleSettings? showFirstLayerFirstLayerSettingsArgument;
   SecondLayerStyleSettings? showFirstLayerSecondLayerSettingsArgument;
 
   @override
   Future<UsercentricsConsentUserResponse?> showFirstLayer({
     required UsercentricsLayout layout,
-    BannerImage? logo,
-    BannerFont? font,
-    LegalLinksSettings? links,
+    GeneralStyleSettings? generalStyleSettings,
     FirstLayerStyleSettings? firstLayerSettings,
     SecondLayerStyleSettings? secondLayerSettings,
   }) {
     showFirstLayerCount++;
     showFirstLayerLayoutArgument = layout;
-    showFirstLayerLogoArgument = logo;
-    showFirstLayerFontArgument = font;
-    showFirstLayerLinksArgument = links;
+    showFirstLayerGeneralStyleSettingsArgument = generalStyleSettings;
     showFirstLayerFirstLayerSettingsArgument = firstLayerSettings;
     showFirstLayerSecondLayerSettingsArgument = secondLayerSettings;
     return Future.value(showFirstLayerAnswer!);
@@ -136,22 +131,16 @@ class FakeUsercentricsPlatform extends UsercentricsPlatform {
 
   final UsercentricsConsentUserResponse? showSecondLayerAnswer;
   var showSecondLayerCount = 0;
-  BannerImage? showSecondLayerLogoArgument;
-  BannerFont? showSecondLayerFontArgument;
-  LegalLinksSettings? showSecondLayerLinksArgument;
+  GeneralStyleSettings? showSecondLayerGeneralStyleSettingsArgument;
   SecondLayerStyleSettings? showSecondLayerSecondLayerSettingsArgument;
 
   @override
   Future<UsercentricsConsentUserResponse?> showSecondLayer({
-    BannerImage? logo,
-    BannerFont? font,
-    LegalLinksSettings? links,
+    GeneralStyleSettings? generalStyleSettings,
     SecondLayerStyleSettings? secondLayerSettings,
   }) {
     showSecondLayerCount++;
-    showSecondLayerLogoArgument = logo;
-    showSecondLayerFontArgument = font;
-    showSecondLayerLinksArgument = links;
+    showSecondLayerGeneralStyleSettingsArgument = generalStyleSettings;
     showSecondLayerSecondLayerSettingsArgument = secondLayerSettings;
     return Future.value(showSecondLayerAnswer!);
   }

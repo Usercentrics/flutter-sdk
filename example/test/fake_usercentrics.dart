@@ -16,6 +16,7 @@ class FakeUsercentrics extends UsercentricsPlatform {
     int? timeoutMillis,
     String? version,
     NetworkMode? networkMode,
+    bool? consentMediation,
   }) {
     initializeCount++;
   }
@@ -125,9 +126,7 @@ class FakeUsercentrics extends UsercentricsPlatform {
   @override
   Future<UsercentricsConsentUserResponse?> showFirstLayer({
     required UsercentricsLayout layout,
-    BannerImage? logo,
-    BannerFont? font,
-    LegalLinksSettings? links,
+    GeneralStyleSettings? generalStyleSettings,
     FirstLayerStyleSettings? firstLayerSettings,
     SecondLayerStyleSettings? secondLayerSettings,
   }) {
@@ -136,9 +135,7 @@ class FakeUsercentrics extends UsercentricsPlatform {
 
   @override
   Future<UsercentricsConsentUserResponse?> showSecondLayer({
-    BannerImage? logo,
-    BannerFont? font,
-    LegalLinksSettings? links,
+    GeneralStyleSettings? generalStyleSettings,
     SecondLayerStyleSettings? secondLayerSettings,
   }) {
     throw UnimplementedError();

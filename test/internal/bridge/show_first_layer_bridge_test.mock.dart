@@ -47,14 +47,7 @@ const expectedResult = UsercentricsConsentUserResponse(
 );
 const expectedArguments = {
   "bannerSettings": {
-    "logo": "images/flutter-logo.png",
-    "font": {
-      "regularFontAssetPath": "fonts/Lora-Regular.ttf",
-      "boldFontAssetPath": "fonts/Lora-Bold.ttf",
-      "fontSize": 20,
-    },
-    "links": "BOTH",
-    "firstLayerSettings": {
+    "firstLayerStyleSettings": {
       'headerImage': {
         'image': 'images/header_extended.png',
         'height': null,
@@ -102,19 +95,27 @@ const expectedArguments = {
       'overlayColor': null,
       'cornerRadius': 50
     },
-    "secondLayerSettings": null,
+    "secondLayerStyleSettings": null,
+    "generalStyleSettings": {
+      'textColor': null,
+      'layerBackgroundColor': null,
+      'layerBackgroundSecondaryColor': null,
+      'linkColor': null,
+      'tabColor': null,
+      'bordersColor': null,
+      'toggleStyleSettings': null,
+      'font': {
+        'regularFontAssetPath': 'fonts/Lora-Regular.ttf',
+        'boldFontAssetPath': 'fonts/Lora-Bold.ttf',
+        'fontSize': 20.0
+      },
+      'logo': 'images/flutter-logo.png',
+      'links': 'BOTH'
+    }
   },
   "layout": "SHEET",
 };
 const mockLayout = UsercentricsLayout.sheet;
-const mockFont = BannerFont(
-  regularFontAssetPath: "fonts/Lora-Regular.ttf",
-  boldFontAssetPath: "fonts/Lora-Bold.ttf",
-  fontSize: 20,
-);
-const mockLogo = BannerImage(
-  assetPath: "images/flutter-logo.png",
-);
 
 const _buttonTextSizeInSp = 16.0;
 const _buttonCornerRadius = 20;
@@ -153,4 +154,19 @@ final mockFirstLayerSettings = FirstLayerStyleSettings(
       cornerRadius: _buttonCornerRadius,
     ),
   ]),
+);
+
+const mockFont = BannerFont(
+  regularFontAssetPath: "fonts/Lora-Regular.ttf",
+  boldFontAssetPath: "fonts/Lora-Bold.ttf",
+  fontSize: 20,
+);
+const mockLogo = BannerImage(
+  assetPath: "images/flutter-logo.png",
+);
+
+const mockGeneralStyleSettings = GeneralStyleSettings(
+  font: mockFont,
+  logo: mockLogo,
+  links: LegalLinksSettings.both,
 );

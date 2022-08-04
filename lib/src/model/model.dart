@@ -26,3 +26,4 @@ export 'package:usercentrics_sdk/src/model/user_decision.dart';
 export 'package:usercentrics_sdk/src/model/user_interaction.dart';
 export 'package:usercentrics_sdk/src/model/user_response.dart';
 export 'package:usercentrics_sdk/src/model/variant.dart';
+export 'package:usercentrics_sdk/src/model/general_style_settings.dart';

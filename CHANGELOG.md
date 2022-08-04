@@ -1,5 +1,18 @@
 [Release Notes](https://docs.usercentrics.com/cmp_in_app_sdk/latest/about/history/)
 
+# 2.7.0
+
+## Features
+
+- **[Dark Mode][Customization API]** Support Dark Mode and create advanced banner customizations with our updated [Customization API](https://docs.usercentrics.com/cmp_in_app_sdk/latest/collect_consent/usercentrics-ui/#programmatic-customization). :first_quarter_moon:
+- **[Beta][Consent Mediation]** Automatically apply consent to 3rd party SDKs with our [Consent Mediation](https://docs.usercentrics.com/cmp_in_app_sdk/latest/apply_consent/consent-mediation) feature. :partying_face:
+- UI improvements to history section.
+- Added additional customization options for TCF 2.0 banner.
+
+## Resolved Issues
+
+- Solved stability issues.
+
 # 2.6.1
 
 ## Improvements

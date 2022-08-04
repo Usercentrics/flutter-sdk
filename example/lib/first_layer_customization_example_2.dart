@@ -38,3 +38,15 @@ final firstLayerCustomizationExample2 = FirstLayerStyleSettings(
     ),
   ]),
 );
+
+const generalStyleCustomizationExample2 = GeneralStyleSettings(
+    logo: BannerImage(assetPath: 'images/flutter-logo.png'),
+    font: BannerFont(
+      regularFontAssetPath: 'fonts/Lora-Regular.ttf',
+      boldFontAssetPath: 'fonts/Lora-Bold.ttf',
+      fontSize: 15,
+    ),
+    links: LegalLinksSettings.firstLayerOnly,
+    textColor: Colors.white,
+    layerBackgroundColor: Colors.black,
+    layerBackgroundSecondaryColor: Colors.grey);

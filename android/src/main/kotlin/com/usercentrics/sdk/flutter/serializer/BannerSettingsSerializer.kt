@@ -8,16 +8,19 @@ internal fun Any?.deserializeBannerSettings(
     assetsProvider: FlutterAssetsProvider,
     activityProvider: FlutterActivityProvider
 ): BannerSettings? {
-    if (this !is Map<*, *>) return null
+    if (this !is Map<*, *>) {
+        return null
+    }
     return BannerSettings(
-        logo = this["logo"].deserializeImage(assetsProvider, activityProvider),
-        font = this["font"].deserializeBannerFont(assetsProvider, activityProvider),
-        links = this["links"].deserializeLegalLinksSettings(),
-        firstLayerSettings = this["firstLayerSettings"].deserializeFirstLayerStyleSettings(
+        firstLayerStyleSettings = this["firstLayerStyleSettings"].deserializeFirstLayerStyleSettings(
             assetsProvider,
             activityProvider
         ),
-        secondLayerSettings = this["secondLayerSettings"].deserializeSecondLayerStyleSettings(
+        secondLayerStyleSettings = this["secondLayerStyleSettings"].deserializeSecondLayerStyleSettings(
+            assetsProvider,
+            activityProvider
+        ),
+        generalStyleSettings = this["generalStyleSettings"].deserializeGeneralStyleSettings(
             assetsProvider,
             activityProvider
         ),
