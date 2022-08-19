@@ -139,7 +139,6 @@ const _responseTCF2Settings = {
   "disabledSpecialFeatures": [],
   "firstLayerShowDescriptions": false,
   "hideNonIabOnFirstLayer": false,
-  "resurfaceIABLegalBasisChanged": true,
   "resurfacePeriodEnded": true,
   "resurfacePurposeChanged": true,
   "resurfaceVendorAdded": true,
@@ -517,7 +516,6 @@ const _expectedTCF2Settings = TCF2Settings(
         "Your choices for this website will be applied globally, which means they will be available to other websites that set your choices globally.",
     togglesSpecialFeaturesToggleOn: "On",
     vendorSpecialFeatures: "Special Features",
-    resurfaceIABLegalBasisChanged: true,
     appLayerNoteResurface:
         "You can change your privacy settings or withdraw your consent at any time by opening the menu point Privacy Settings.",
     cmpVersion: 3,

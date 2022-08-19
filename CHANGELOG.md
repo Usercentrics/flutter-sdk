@@ -1,5 +1,21 @@
 [Release Notes](https://docs.usercentrics.com/cmp_in_app_sdk/latest/about/history/)
 
+# 2.7.1
+
+## Features
+
+* **[Restore User Session][TCF]** With this release, you will now be able to restore user sessions when using a TCF configuration. This feature however, needs to be enabled and approved. Please contact your Customer Success Manager for more information.
+
+## Improvements
+
+* API upgrades to improve performance and storage space usage.
+* **[TCF]** Updates to TCF logic, for custom use cases.
+
+## Resolved Issues
+
+* **[iOS][Dark Mode]** Solve issue where SDK was overwritting theme to always be "light".
+* Improvements to solve "NullPointerException" and unknown origin crashes.
+
 # 2.7.0
 
 ## Features
