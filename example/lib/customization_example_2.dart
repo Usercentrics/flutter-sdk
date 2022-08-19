@@ -3,8 +3,8 @@ import 'package:usercentrics_sdk/usercentrics_sdk.dart';
 
 const _buttonTextSizeInSp = 14.0;
 const _buttonCornerRadius = 50;
-const _dark = Color.fromARGB(255, 24,  24, 24);
-const _grey = Color.fromARGB(255, 42,  42, 42);
+const _dark = Color.fromARGB(255, 24, 24, 24);
+const _grey = Color.fromARGB(255, 42, 42, 42);
 
 final firstLayerCustomizationExample2 = FirstLayerStyleSettings(
   backgroundColor: _dark,
