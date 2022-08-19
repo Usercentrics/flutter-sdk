@@ -198,7 +198,6 @@ private fun TCF2Settings.serialize(): Any {
         "disabledSpecialFeatures" to disabledSpecialFeatures,
         "firstLayerShowDescriptions" to firstLayerShowDescriptions,
         "hideNonIabOnFirstLayer" to hideNonIabOnFirstLayer,
-        "resurfaceIABLegalBasisChanged" to resurfaceIABLegalBasisChanged,
         "resurfacePeriodEnded" to resurfacePeriodEnded,
         "resurfacePurposeChanged" to resurfacePurposeChanged,
         "resurfaceVendorAdded" to resurfaceVendorAdded,

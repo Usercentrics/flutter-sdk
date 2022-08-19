@@ -3,8 +3,8 @@ import 'package:usercentrics_example/webview_integration.dart';
 import 'package:usercentrics_sdk/usercentrics_sdk.dart';
 
 import 'build_your_own_ui.dart';
-import 'first_layer_customization_example_1.dart';
-import 'first_layer_customization_example_2.dart';
+import 'customization_example_1.dart';
+import 'customization_example_2.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -143,14 +143,16 @@ class HomePageState extends State<HomePage> {
               onPressed: () => _showFirstLayer(
                 layout: UsercentricsLayout.popupBottom,
                 firstLayerSettings: firstLayerCustomizationExample1,
+                generalStyleSettings: generalStyleCustomizationExample1,
               ),
               child: const Text("Customization Example 1"),
             ),
             ElevatedButton(
               onPressed: () => _showFirstLayer(
-                  layout: UsercentricsLayout.full,
-                  firstLayerSettings: firstLayerCustomizationExample2,
-                  generalStyleSettings: generalStyleCustomizationExample2),
+                layout: UsercentricsLayout.full,
+                firstLayerSettings: firstLayerCustomizationExample2,
+                generalStyleSettings: generalStyleCustomizationExample2,
+              ),
               child: const Text("Customization Example 2"),
             ),
             ElevatedButton(

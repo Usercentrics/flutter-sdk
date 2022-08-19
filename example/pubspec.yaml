@@ -72,3 +72,4 @@ flutter:
     - family: AndadaPro
       fonts:
         - asset: fonts/AndadaPro.ttf
+        - asset: fonts/AndadaPro-Bold.ttf
