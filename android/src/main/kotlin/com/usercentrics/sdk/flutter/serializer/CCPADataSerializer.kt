@@ -8,6 +8,6 @@ internal fun CCPAData.serialize(): Any {
         "noticeGiven" to noticeGiven,
         "optedOut" to optedOut,
         "lspact" to lspact,
-        "uspString" to toUSPString()
+        "uspString" to uspString
     )
 }
