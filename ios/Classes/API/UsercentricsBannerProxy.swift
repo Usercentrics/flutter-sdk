@@ -41,9 +41,9 @@ struct UsercentricsBannerProxy: UsercentricsBannerProxyProtocol {
                 .connectedScenes
                 .compactMap { $0 as? UIWindowScene }
                 .flatMap { $0.windows }
-                .first { $0.isKeyWindow }
+                .first { $1.isKeyWindow }
         } else {
-            window = UIApplication.shared.windows.first { $0.isKeyWindow }
+            window = UIApplication.shared.windows.first { $1.isKeyWindow }
         }
         return window?.rootViewController as? FlutterViewController
     }
