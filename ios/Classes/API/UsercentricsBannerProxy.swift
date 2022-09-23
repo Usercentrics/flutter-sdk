@@ -16,24 +16,24 @@ struct UsercentricsBannerProxy: UsercentricsBannerProxyProtocol {
     func showFirstLayer(bannerSettings: BannerSettings?,
                         layout: UsercentricsLayout,
                         completionHandler: @escaping (UsercentricsConsentUserResponse) -> Void) {
-        guard let flutterVC = getFlutterViewController() else { return }
+        guard let rootVC = getRootViewController() else { return }
 
-        UsercentricsBanner(bannerSettings: bannerSettings).showFirstLayer(hostView: flutterVC,
-                                                                         layout: layout) { response in
+        UsercentricsBanner(bannerSettings: bannerSettings).showFirstLayer(hostView: rootVC,
+                                                                          layout: layout) { response in
             completionHandler(response)
         }
     }
 
     func showSecondLayer(bannerSettings: BannerSettings?,
                          completionHandler: @escaping (UsercentricsConsentUserResponse) -> Void) {
-        guard let flutterVC = getFlutterViewController() else { return }
+        guard let rootVC = getRootViewController() else { return }
 
-        UsercentricsBanner(bannerSettings:bannerSettings).showSecondLayer(hostView: flutterVC) { response in
+        UsercentricsBanner(bannerSettings:bannerSettings).showSecondLayer(hostView: rootVC) { response in
             completionHandler(response)
         }
     }
 
-    func getFlutterViewController() -> FlutterViewController? {
+    func getRootViewController() -> UIViewController? {
         var window: UIWindow?
         if #available(iOS 13.0, *) {
             window = UIApplication
@@ -45,7 +45,7 @@ struct UsercentricsBannerProxy: UsercentricsBannerProxyProtocol {
         } else {
             window = UIApplication.shared.windows.first { $0.isKeyWindow }
         }
-        return window?.rootViewController as? FlutterViewController
+        return window?.rootViewController ?? window?.rootViewController?.presentedViewController
     }
 
 }

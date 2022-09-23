@@ -78,12 +78,13 @@ class HomePageState extends State<HomePage> {
   }) async {
     try {
       final response = await Usercentrics.showFirstLayer(
-          layout: layout ?? UsercentricsLayout.popupBottom,
-          firstLayerSettings: firstLayerSettings,
-          secondLayerSettings: const SecondLayerStyleSettings(
-            showCloseButton: true,
-          ),
-          generalStyleSettings: generalStyleSettings);
+        layout: layout ?? UsercentricsLayout.popupBottom,
+        firstLayerSettings: firstLayerSettings,
+        secondLayerSettings: const SecondLayerStyleSettings(
+          showCloseButton: true,
+        ),
+        generalStyleSettings: generalStyleSettings,
+      );
 
       _handleUserResponse(response);
     } catch (error) {
