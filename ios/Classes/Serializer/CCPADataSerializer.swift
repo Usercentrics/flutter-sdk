@@ -7,7 +7,7 @@ extension CCPAData {
             "noticeGiven": Bool(from: self.noticeGiven) as Any,
             "optedOut": Bool(from: self.optedOut) as Any,
             "lspact": Bool(from: self.lspact) as Any,
-            "uspString": toUSPString(),
+            "uspString": uspString,
         ]
     }
 }

@@ -45,7 +45,11 @@ struct UsercentricsBannerProxy: UsercentricsBannerProxyProtocol {
         } else {
             window = UIApplication.shared.windows.first { $0.isKeyWindow }
         }
-        return window?.rootViewController ?? window?.rootViewController?.presentedViewController
+        var viewController = window?.rootViewController
+        while viewController?.presentedViewController != nil {
+            viewController = viewController?.presentedViewController
+        }
+        return viewController
     }
 
 }
