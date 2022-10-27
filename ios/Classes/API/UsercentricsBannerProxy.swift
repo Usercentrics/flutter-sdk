@@ -16,40 +16,16 @@ struct UsercentricsBannerProxy: UsercentricsBannerProxyProtocol {
     func showFirstLayer(bannerSettings: BannerSettings?,
                         layout: UsercentricsLayout,
                         completionHandler: @escaping (UsercentricsConsentUserResponse) -> Void) {
-        guard let rootVC = getRootViewController() else { return }
-
-        UsercentricsBanner(bannerSettings: bannerSettings).showFirstLayer(hostView: rootVC,
-                                                                          layout: layout) { response in
+        UsercentricsBanner(bannerSettings: bannerSettings).showFirstLayer(layout: layout) { response in
             completionHandler(response)
         }
     }
 
     func showSecondLayer(bannerSettings: BannerSettings?,
                          completionHandler: @escaping (UsercentricsConsentUserResponse) -> Void) {
-        guard let rootVC = getRootViewController() else { return }
-
-        UsercentricsBanner(bannerSettings:bannerSettings).showSecondLayer(hostView: rootVC) { response in
+        UsercentricsBanner(bannerSettings:bannerSettings).showSecondLayer() { response in
             completionHandler(response)
         }
-    }
-
-    func getRootViewController() -> UIViewController? {
-        var window: UIWindow?
-        if #available(iOS 13.0, *) {
-            window = UIApplication
-                .shared
-                .connectedScenes
-                .compactMap { $0 as? UIWindowScene }
-                .flatMap { $0.windows }
-                .first { $0.isKeyWindow }
-        } else {
-            window = UIApplication.shared.windows.first { $0.isKeyWindow }
-        }
-        var viewController = window?.rootViewController
-        while viewController?.presentedViewController != nil {
-            viewController = viewController?.presentedViewController
-        }
-        return viewController
     }
 
 }
