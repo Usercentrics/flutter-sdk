@@ -120,6 +120,30 @@ class HomePageState extends State<HomePage> {
     applyConsent(response?.consents);
   }
 
+    // void chooseVariant() async{
+  //   final variant = await Usercentrics.aBTestingVariant;
+  //   switch(variant) {
+  //     case "variantA": {
+  //       _showFirstLayer(
+  //         //variantA Settings
+  //       );
+  //     }
+  //     break;
+  //     case "variantB": {
+  //       _showFirstLayer(
+  //         //variantB Settings
+  //       );
+  //     }
+  //     break;
+  //     default: {
+  //       _showFirstLayer(
+  //         //Default
+  //       );
+  //     }
+  //     break;
+  //   }
+  // }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

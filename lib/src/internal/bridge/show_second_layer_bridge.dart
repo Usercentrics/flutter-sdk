@@ -9,6 +9,7 @@ abstract class ShowSecondLayerBridge {
     required MethodChannel channel,
     GeneralStyleSettings? generalStyleSettings,
     SecondLayerStyleSettings? secondLayerSettings,
+    String? variant,
   });
 }
 
@@ -22,6 +23,7 @@ class MethodChannelShowSecondLayer extends ShowSecondLayerBridge {
     required MethodChannel channel,
     GeneralStyleSettings? generalStyleSettings,
     SecondLayerStyleSettings? secondLayerSettings,
+    String? variant
   }) async {
     final result = await channel.invokeMethod(
       _name,
@@ -29,6 +31,7 @@ class MethodChannelShowSecondLayer extends ShowSecondLayerBridge {
         'bannerSettings': BannerSettingsSerializer.serialize(
           generalStyleSettings: generalStyleSettings,
           secondLayerSettings: secondLayerSettings,
+          variant: variant
         ),
       },
     );

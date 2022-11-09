@@ -140,4 +140,13 @@ class FakeUsercentrics extends UsercentricsPlatform {
   }) {
     throw UnimplementedError();
   }
+
+  @override
+  Future<String> get aBTestingVariant => throw UnimplementedError();
+
+  @override
+  Future<void> setABTestingVariant({required String variant
+  }) {
+    throw UnimplementedError();
+  }
 }

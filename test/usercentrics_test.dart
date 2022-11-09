@@ -78,12 +78,14 @@ void main() {
       fontSize: 20,
     );
     const generalStyleSettings = GeneralStyleSettings(font: font, logo: logo);
+    const variant = "variantA";
 
     final result = await Usercentrics.showFirstLayer(
         layout: layout,
         firstLayerSettings: firstLayerSettings,
         secondLayerSettings: secondLayerSettings,
-        generalStyleSettings: generalStyleSettings);
+        generalStyleSettings: generalStyleSettings,
+        variant: variant);
 
     expect(delegate.showFirstLayerCount, 1);
     expect(delegate.showFirstLayerLayoutArgument, layout);
@@ -93,6 +95,7 @@ void main() {
         delegate.showFirstLayerFirstLayerSettingsArgument, firstLayerSettings);
     expect(delegate.showFirstLayerSecondLayerSettingsArgument,
         secondLayerSettings);
+    expect(delegate.showVariantArgument, variant);
     expect(result, expectedResponse);
   });
 
@@ -115,16 +118,19 @@ void main() {
       fontSize: 20,
     );
     const generalStyleSettings = GeneralStyleSettings(font: font, logo: logo);
+    const variant = "variantA";
 
     final result = await Usercentrics.showSecondLayer(
         secondLayerSettings: secondLayerSettings,
-        generalStyleSettings: generalStyleSettings);
+        generalStyleSettings: generalStyleSettings,
+        variant: variant);
 
     expect(delegate.showSecondLayerCount, 1);
     expect(delegate.showSecondLayerGeneralStyleSettingsArgument,
         generalStyleSettings);
     expect(delegate.showSecondLayerSecondLayerSettingsArgument,
         secondLayerSettings);
+    expect(delegate.showSecondLayerVariantArgument, variant);
     expect(result, expectedResponse);
   });
 

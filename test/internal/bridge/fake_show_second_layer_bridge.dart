@@ -20,6 +20,7 @@ class FakeShowSecondLayerBridge extends ShowSecondLayerBridge {
     required MethodChannel channel,
     GeneralStyleSettings? generalStyleSettings,
     SecondLayerStyleSettings? secondLayerSettings,
+    String? variant
   }) {
     invokeCount++;
     invokeSecondLayerSettingsArgument = secondLayerSettings;

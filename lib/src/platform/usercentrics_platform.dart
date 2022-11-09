@@ -91,4 +91,10 @@ abstract class UsercentricsPlatform {
     required bool isOptedOut,
     required UsercentricsConsentType consentType,
   });
+
+  Future<String> get aBTestingVariant;
+
+  Future<void> setABTestingVariant({
+    required String variant,
+  });
 }

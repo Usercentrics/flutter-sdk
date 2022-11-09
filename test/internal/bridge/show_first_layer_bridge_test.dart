@@ -30,6 +30,7 @@ void main() {
       firstLayerSettings: mockFirstLayerSettings,
       secondLayerSettings: null,
       generalStyleSettings: mockGeneralStyleSettings,
+      variant: mockVariant
     );
 
     expect(callCounter, 1);

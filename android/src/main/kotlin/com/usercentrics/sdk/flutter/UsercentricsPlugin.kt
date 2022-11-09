@@ -59,7 +59,9 @@ class UsercentricsPlugin : FlutterPlugin,
             SaveDecisionsBridge(),
             SaveDecisionsForTCFBridge(),
             SaveOptOutForCCPABridge(),
-            SetCMPIdBridge()
+            SetCMPIdBridge(),
+            GetABTestingVariantBridge(),
+            SetABTestingVariantBridge()
         ).map { it.name to it }.toMap()
     }
 

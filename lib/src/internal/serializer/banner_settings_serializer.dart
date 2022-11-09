@@ -10,6 +10,7 @@ class BannerSettingsSerializer {
     GeneralStyleSettings? generalStyleSettings,
     FirstLayerStyleSettings? firstLayerSettings,
     SecondLayerStyleSettings? secondLayerSettings,
+    String? variant
   }) =>
       {
         'firstLayerStyleSettings':
@@ -18,5 +19,6 @@ class BannerSettingsSerializer {
             SecondLayerStyleSettingsSerializer.serialize(secondLayerSettings),
         'generalStyleSettings':
             GeneralStyleSettingsSerializer.serialize(generalStyleSettings),
+        'variant': variant
       };
 }

@@ -11,6 +11,7 @@ abstract class ShowFirstLayerBridge {
     GeneralStyleSettings? generalStyleSettings,
     FirstLayerStyleSettings? firstLayerSettings,
     SecondLayerStyleSettings? secondLayerSettings,
+    String? variant
   });
 }
 
@@ -26,12 +27,14 @@ class MethodChannelShowFirstLayer extends ShowFirstLayerBridge {
     GeneralStyleSettings? generalStyleSettings,
     FirstLayerStyleSettings? firstLayerSettings,
     SecondLayerStyleSettings? secondLayerSettings,
+    String? variant,
   }) async {
     final arguments = {
       'bannerSettings': BannerSettingsSerializer.serialize(
         generalStyleSettings: generalStyleSettings,
         firstLayerSettings: firstLayerSettings,
         secondLayerSettings: secondLayerSettings,
+        variant: variant
       ),
       'layout': LayoutSerializer.serialize(layout),
     };

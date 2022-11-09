@@ -35,6 +35,7 @@ class FakeUsercentricsPlatform extends UsercentricsPlatform {
     this.ccpaDataAnswer,
     this.tcfDataAnswer,
     this.userSessionDataAnswer,
+    this.aBTestingVariantAnswer,
   });
 
   final List<UsercentricsServiceConsent>? consentsAnswer;
@@ -113,6 +114,7 @@ class FakeUsercentricsPlatform extends UsercentricsPlatform {
   GeneralStyleSettings? showFirstLayerGeneralStyleSettingsArgument;
   FirstLayerStyleSettings? showFirstLayerFirstLayerSettingsArgument;
   SecondLayerStyleSettings? showFirstLayerSecondLayerSettingsArgument;
+  String? showVariantArgument;
 
   @override
   Future<UsercentricsConsentUserResponse?> showFirstLayer({
@@ -120,12 +122,14 @@ class FakeUsercentricsPlatform extends UsercentricsPlatform {
     GeneralStyleSettings? generalStyleSettings,
     FirstLayerStyleSettings? firstLayerSettings,
     SecondLayerStyleSettings? secondLayerSettings,
+    String? variant
   }) {
     showFirstLayerCount++;
     showFirstLayerLayoutArgument = layout;
     showFirstLayerGeneralStyleSettingsArgument = generalStyleSettings;
     showFirstLayerFirstLayerSettingsArgument = firstLayerSettings;
     showFirstLayerSecondLayerSettingsArgument = secondLayerSettings;
+    showVariantArgument = variant;
     return Future.value(showFirstLayerAnswer!);
   }
 
@@ -133,15 +137,18 @@ class FakeUsercentricsPlatform extends UsercentricsPlatform {
   var showSecondLayerCount = 0;
   GeneralStyleSettings? showSecondLayerGeneralStyleSettingsArgument;
   SecondLayerStyleSettings? showSecondLayerSecondLayerSettingsArgument;
+  String? showSecondLayerVariantArgument;
 
   @override
   Future<UsercentricsConsentUserResponse?> showSecondLayer({
     GeneralStyleSettings? generalStyleSettings,
     SecondLayerStyleSettings? secondLayerSettings,
+    String? variant
   }) {
     showSecondLayerCount++;
     showSecondLayerGeneralStyleSettingsArgument = generalStyleSettings;
     showSecondLayerSecondLayerSettingsArgument = secondLayerSettings;
+    showSecondLayerVariantArgument = variant;
     return Future.value(showSecondLayerAnswer!);
   }
 
@@ -324,5 +331,24 @@ class FakeUsercentricsPlatform extends UsercentricsPlatform {
   Future<String> get userSessionData {
     userSessionDataCount++;
     return Future.value(userSessionDataAnswer!);
+  }
+
+  final String? aBTestingVariantAnswer;
+  var aBTestingVariantCount = 0;
+
+  @override
+  Future<String> get aBTestingVariant {
+    aBTestingVariantCount++;
+    return Future.value(aBTestingVariantAnswer!);
+  }
+
+  String? setABTestingVariantArgument;
+  var setABTestingVariantCount = 0;
+
+  @override
+  Future<void> setABTestingVariant({required String variant}) {
+    setABTestingVariantArgument = variant;
+    setABTestingVariantCount++;
+    return Future.value(null);
   }
 }

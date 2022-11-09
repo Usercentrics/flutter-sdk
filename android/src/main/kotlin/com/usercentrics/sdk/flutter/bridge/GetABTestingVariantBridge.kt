@@ -5,16 +5,14 @@ import com.usercentrics.sdk.flutter.api.FlutterResult
 import com.usercentrics.sdk.flutter.api.UsercentricsProxy
 import com.usercentrics.sdk.flutter.api.UsercentricsProxySingleton
 
-internal class SetCMPIdBridge(
+internal class GetABTestingVariantBridge(
     private val usercentrics: UsercentricsProxy = UsercentricsProxySingleton
-) : MethodBridge {
-
+): MethodBridge {
     override val name: String
-        get() = "setCMPId"
+        get() = "getABTestingVariant"
 
     override fun invoke(call: FlutterMethodCall, result: FlutterResult) {
         assert(name == call.method)
-        usercentrics.instance.setCMPId(call.arguments as Int)
-        result.success(null)
+        result.success(usercentrics.instance.getABTestingVariant())
     }
 }
