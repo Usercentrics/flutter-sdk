@@ -24,7 +24,7 @@ internal fun Any?.deserializeBannerSettings(
             assetsProvider,
             activityProvider
         ),
-        variant = this["variant"] as String
+        variant = this["variant"] as? String?
     )
 }
 
