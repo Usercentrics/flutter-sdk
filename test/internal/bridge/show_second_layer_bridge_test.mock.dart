@@ -3,7 +3,7 @@ part of 'show_second_layer_bridge_test.dart';
 
 const mockResponse = {
   "controllerId":
-  "8620135313b043696b806868b20da905886a3a2598ddddc2b52973f9807d6b45",
+      "8620135313b043696b806868b20da905886a3a2598ddddc2b52973f9807d6b45",
   "userInteraction": "ACCEPT_ALL",
   "consents": [
     {
@@ -25,7 +25,7 @@ const mockResponse = {
 };
 const expectedResult = UsercentricsConsentUserResponse(
   controllerId:
-  "8620135313b043696b806868b20da905886a3a2598ddddc2b52973f9807d6b45",
+      "8620135313b043696b806868b20da905886a3a2598ddddc2b52973f9807d6b45",
   userInteraction: UsercentricsUserInteraction.acceptAll,
   consents: [
     UsercentricsServiceConsent(

@@ -68,12 +68,11 @@ class Usercentrics {
     String? variant,
   }) =>
       _delegate.showFirstLayer(
-        layout: layout,
-        generalStyleSettings: generalStyleSettings,
-        firstLayerSettings: firstLayerSettings,
-        secondLayerSettings: secondLayerSettings,
-        variant: variant
-      );
+          layout: layout,
+          generalStyleSettings: generalStyleSettings,
+          firstLayerSettings: firstLayerSettings,
+          secondLayerSettings: secondLayerSettings,
+          variant: variant);
 
   /// Show the Banner second layer to **manage** consents.
   /// - The [generalStyleSettings] that enables you to style general paramenters programmatically.

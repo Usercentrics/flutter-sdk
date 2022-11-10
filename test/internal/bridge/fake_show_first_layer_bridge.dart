@@ -21,14 +21,13 @@ class FakeShowFirstLayerBridge extends ShowFirstLayerBridge {
   String? invokeVariantArgument;
 
   @override
-  Future<UsercentricsConsentUserResponse?> invoke({
-    required MethodChannel channel,
-    required UsercentricsLayout layout,
-    GeneralStyleSettings? generalStyleSettings,
-    FirstLayerStyleSettings? firstLayerSettings,
-    SecondLayerStyleSettings? secondLayerSettings,
-    String? variant
-  }) {
+  Future<UsercentricsConsentUserResponse?> invoke(
+      {required MethodChannel channel,
+      required UsercentricsLayout layout,
+      GeneralStyleSettings? generalStyleSettings,
+      FirstLayerStyleSettings? firstLayerSettings,
+      SecondLayerStyleSettings? secondLayerSettings,
+      String? variant}) {
     invokeCount++;
     invokeLayoutArgument = layout;
     invokeFirstLayerSettingsArgument = firstLayerSettings;

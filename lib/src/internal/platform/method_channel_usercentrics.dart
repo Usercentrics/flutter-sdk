@@ -9,31 +9,31 @@ import 'package:usercentrics_sdk/src/model/model.dart';
 import 'package:usercentrics_sdk/src/platform/usercentrics_platform.dart';
 
 class MethodChannelUsercentrics extends UsercentricsPlatform {
-  MethodChannelUsercentrics({
-    this.initializeBridge = const MethodChannelInitialize(),
-    this.isReadyBridge = const MethodChannelIsReady(),
-    this.getConsentsBridge = const MethodChannelGetConsents(),
-    this.getControllerIdBridge = const MethodChannelGetControllerId(),
-    this.resetBridge = const MethodChannelReset(),
-    this.restoreUserSessionBridge = const MethodChannelRestoreUserSession(),
-    this.showFirstLayerBridge = const MethodChannelShowFirstLayer(),
-    this.showSecondLayerBridge = const MethodChannelShowSecondLayer(),
-    this.getCMPDataBridge = const MethodChannelGetCMPData(),
-    this.acceptAllBridge = const MethodChannelAcceptAll(),
-    this.acceptAllForTCFBridge = const MethodChannelAcceptAllForTCF(),
-    this.changeLanguageBridge = const MethodChannelChangeLanguage(),
-    this.denyAllBridge = const MethodChannelDenyAll(),
-    this.denyAllForTCFBridge = const MethodChannelDenyAllForTCF(),
-    this.getTCFDataBridge = const MethodChannelGetTCFData(),
-    this.getUserSessionDataBridge = const MethodChannelGetUserSessionData(),
-    this.getUSPDataBridge = const MethodChannelGetUSPData(),
-    this.saveDecisionsBridge = const MethodChannelSaveDecisions(),
-    this.saveDecisionsForTCFBridge = const MethodChannelSaveDecisionsForTCF(),
-    this.saveOptOutForCCPABridge = const MethodChannelSaveOptOutForCCPA(),
-    this.setCMPIdBridge = const MethodChannelSetCMPId(),
-    this.getABTestingVariantBridge = const MethodChannelGetABTestingVariant(),
-    this.setABTestingVariantBridge = const MethodChannelSetABTestingVariant()
-  });
+  MethodChannelUsercentrics(
+      {this.initializeBridge = const MethodChannelInitialize(),
+      this.isReadyBridge = const MethodChannelIsReady(),
+      this.getConsentsBridge = const MethodChannelGetConsents(),
+      this.getControllerIdBridge = const MethodChannelGetControllerId(),
+      this.resetBridge = const MethodChannelReset(),
+      this.restoreUserSessionBridge = const MethodChannelRestoreUserSession(),
+      this.showFirstLayerBridge = const MethodChannelShowFirstLayer(),
+      this.showSecondLayerBridge = const MethodChannelShowSecondLayer(),
+      this.getCMPDataBridge = const MethodChannelGetCMPData(),
+      this.acceptAllBridge = const MethodChannelAcceptAll(),
+      this.acceptAllForTCFBridge = const MethodChannelAcceptAllForTCF(),
+      this.changeLanguageBridge = const MethodChannelChangeLanguage(),
+      this.denyAllBridge = const MethodChannelDenyAll(),
+      this.denyAllForTCFBridge = const MethodChannelDenyAllForTCF(),
+      this.getTCFDataBridge = const MethodChannelGetTCFData(),
+      this.getUserSessionDataBridge = const MethodChannelGetUserSessionData(),
+      this.getUSPDataBridge = const MethodChannelGetUSPData(),
+      this.saveDecisionsBridge = const MethodChannelSaveDecisions(),
+      this.saveDecisionsForTCFBridge = const MethodChannelSaveDecisionsForTCF(),
+      this.saveOptOutForCCPABridge = const MethodChannelSaveOptOutForCCPA(),
+      this.setCMPIdBridge = const MethodChannelSetCMPId(),
+      this.getABTestingVariantBridge = const MethodChannelGetABTestingVariant(),
+      this.setABTestingVariantBridge =
+          const MethodChannelSetABTestingVariant()});
 
   static const MethodChannel _channel = MethodChannel('usercentrics');
 
@@ -304,9 +304,10 @@ class MethodChannelUsercentrics extends UsercentricsPlatform {
   @override
   Future<void> setABTestingVariant({
     required String variant,
-}) async {
+  }) async {
     await _ensureIsReady();
-    return await setABTestingVariantBridge.invoke(channel: _channel, variant: variant);
+    return await setABTestingVariantBridge.invoke(
+        channel: _channel, variant: variant);
   }
 
   Future<void> _ensureIsReady() async {
@@ -341,4 +342,3 @@ class NotInitializedException implements Exception {
   @override
   String toString() => "$NotInitializedException: $message";
 }
-

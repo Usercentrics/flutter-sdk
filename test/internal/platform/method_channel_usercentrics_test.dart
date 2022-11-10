@@ -159,12 +159,11 @@ void main() {
       const generalStyleSettings = GeneralStyleSettings(font: font, logo: logo);
 
       final response = await instance.showFirstLayer(
-        layout: layout,
-        firstLayerSettings: firstLayerSettings,
-        secondLayerSettings: secondLayerSettings,
-        generalStyleSettings: generalStyleSettings,
-        variant: variant
-      );
+          layout: layout,
+          firstLayerSettings: firstLayerSettings,
+          secondLayerSettings: secondLayerSettings,
+          generalStyleSettings: generalStyleSettings,
+          variant: variant);
 
       expect(showFirstLayerBridge.invokeCount, 1);
       expect(showFirstLayerBridge.invokeChannelArgument?.name, "usercentrics");

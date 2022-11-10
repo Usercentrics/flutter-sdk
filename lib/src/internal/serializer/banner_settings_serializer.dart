@@ -6,12 +6,11 @@ import '../internal.dart';
 import 'general_style_settings_serializer.dart';
 
 class BannerSettingsSerializer {
-  static dynamic serialize({
-    GeneralStyleSettings? generalStyleSettings,
-    FirstLayerStyleSettings? firstLayerSettings,
-    SecondLayerStyleSettings? secondLayerSettings,
-    String? variant
-  }) =>
+  static dynamic serialize(
+          {GeneralStyleSettings? generalStyleSettings,
+          FirstLayerStyleSettings? firstLayerSettings,
+          SecondLayerStyleSettings? secondLayerSettings,
+          String? variant}) =>
       {
         'firstLayerStyleSettings':
             FirstLayerStyleSettingsSerializer.serialize(firstLayerSettings),

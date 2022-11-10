@@ -16,12 +16,11 @@ class FakeShowSecondLayerBridge extends ShowSecondLayerBridge {
   GeneralStyleSettings? invokeGeneralStyleSettingsArgument;
 
   @override
-  Future<UsercentricsConsentUserResponse?> invoke({
-    required MethodChannel channel,
-    GeneralStyleSettings? generalStyleSettings,
-    SecondLayerStyleSettings? secondLayerSettings,
-    String? variant
-  }) {
+  Future<UsercentricsConsentUserResponse?> invoke(
+      {required MethodChannel channel,
+      GeneralStyleSettings? generalStyleSettings,
+      SecondLayerStyleSettings? secondLayerSettings,
+      String? variant}) {
     invokeCount++;
     invokeSecondLayerSettingsArgument = secondLayerSettings;
     invokeGeneralStyleSettingsArgument = generalStyleSettings;

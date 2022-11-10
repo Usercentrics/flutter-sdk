@@ -25,13 +25,12 @@ void main() {
     const instance = MethodChannelShowFirstLayer();
 
     final result = await instance.invoke(
-      channel: channel,
-      layout: mockLayout,
-      firstLayerSettings: mockFirstLayerSettings,
-      secondLayerSettings: null,
-      generalStyleSettings: mockGeneralStyleSettings,
-      variant: mockVariant
-    );
+        channel: channel,
+        layout: mockLayout,
+        firstLayerSettings: mockFirstLayerSettings,
+        secondLayerSettings: null,
+        generalStyleSettings: mockGeneralStyleSettings,
+        variant: mockVariant);
 
     expect(callCounter, 1);
     expect(receivedCall?.method, 'showFirstLayer');

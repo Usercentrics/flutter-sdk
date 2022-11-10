@@ -19,20 +19,18 @@ class MethodChannelShowSecondLayer extends ShowSecondLayerBridge {
   static const String _name = 'showSecondLayer';
 
   @override
-  Future<UsercentricsConsentUserResponse?> invoke({
-    required MethodChannel channel,
-    GeneralStyleSettings? generalStyleSettings,
-    SecondLayerStyleSettings? secondLayerSettings,
-    String? variant
-  }) async {
+  Future<UsercentricsConsentUserResponse?> invoke(
+      {required MethodChannel channel,
+      GeneralStyleSettings? generalStyleSettings,
+      SecondLayerStyleSettings? secondLayerSettings,
+      String? variant}) async {
     final result = await channel.invokeMethod(
       _name,
       {
         'bannerSettings': BannerSettingsSerializer.serialize(
-          generalStyleSettings: generalStyleSettings,
-          secondLayerSettings: secondLayerSettings,
-          variant: variant
-        ),
+            generalStyleSettings: generalStyleSettings,
+            secondLayerSettings: secondLayerSettings,
+            variant: variant),
       },
     );
     return result == null

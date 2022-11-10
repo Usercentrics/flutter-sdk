@@ -3,10 +3,8 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:usercentrics_sdk/src/internal/bridge/get_ab_testing_variant_bridge.dart';
 
 void main() {
-  const mockResponse =
-      "variantA";
-  const expectedResult =
-      "variantA";
+  const mockResponse = "variantA";
+  const expectedResult = "variantA";
 
   const MethodChannel channel = MethodChannel("usercentrics");
   TestWidgetsFlutterBinding.ensureInitialized();

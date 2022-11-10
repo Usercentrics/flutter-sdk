@@ -129,6 +129,7 @@ class FakeUsercentrics extends UsercentricsPlatform {
     GeneralStyleSettings? generalStyleSettings,
     FirstLayerStyleSettings? firstLayerSettings,
     SecondLayerStyleSettings? secondLayerSettings,
+    String? variant,
   }) {
     throw UnimplementedError();
   }
@@ -137,6 +138,7 @@ class FakeUsercentrics extends UsercentricsPlatform {
   Future<UsercentricsConsentUserResponse?> showSecondLayer({
     GeneralStyleSettings? generalStyleSettings,
     SecondLayerStyleSettings? secondLayerSettings,
+    String? variant,
   }) {
     throw UnimplementedError();
   }
@@ -145,8 +147,7 @@ class FakeUsercentrics extends UsercentricsPlatform {
   Future<String> get aBTestingVariant => throw UnimplementedError();
 
   @override
-  Future<void> setABTestingVariant({required String variant
-  }) {
+  Future<void> setABTestingVariant({required String variant}) {
     throw UnimplementedError();
   }
 }

@@ -117,13 +117,12 @@ class FakeUsercentricsPlatform extends UsercentricsPlatform {
   String? showVariantArgument;
 
   @override
-  Future<UsercentricsConsentUserResponse?> showFirstLayer({
-    required UsercentricsLayout layout,
-    GeneralStyleSettings? generalStyleSettings,
-    FirstLayerStyleSettings? firstLayerSettings,
-    SecondLayerStyleSettings? secondLayerSettings,
-    String? variant
-  }) {
+  Future<UsercentricsConsentUserResponse?> showFirstLayer(
+      {required UsercentricsLayout layout,
+      GeneralStyleSettings? generalStyleSettings,
+      FirstLayerStyleSettings? firstLayerSettings,
+      SecondLayerStyleSettings? secondLayerSettings,
+      String? variant}) {
     showFirstLayerCount++;
     showFirstLayerLayoutArgument = layout;
     showFirstLayerGeneralStyleSettingsArgument = generalStyleSettings;
@@ -140,11 +139,10 @@ class FakeUsercentricsPlatform extends UsercentricsPlatform {
   String? showSecondLayerVariantArgument;
 
   @override
-  Future<UsercentricsConsentUserResponse?> showSecondLayer({
-    GeneralStyleSettings? generalStyleSettings,
-    SecondLayerStyleSettings? secondLayerSettings,
-    String? variant
-  }) {
+  Future<UsercentricsConsentUserResponse?> showSecondLayer(
+      {GeneralStyleSettings? generalStyleSettings,
+      SecondLayerStyleSettings? secondLayerSettings,
+      String? variant}) {
     showSecondLayerCount++;
     showSecondLayerGeneralStyleSettingsArgument = generalStyleSettings;
     showSecondLayerSecondLayerSettingsArgument = secondLayerSettings;

@@ -15,13 +15,8 @@ class MethodChannelSetABTestingVariant extends SetABTestingVariantBridge {
   static const String _name = 'setABTestingVariant';
 
   @override
-  Future<void> invoke({
-    required MethodChannel channel,
-    required String variant
-  }) async {
-    await channel.invokeMethod(
-        _name,
-        variant
-    );
+  Future<void> invoke(
+      {required MethodChannel channel, required String variant}) async {
+    await channel.invokeMethod(_name, variant);
   }
 }
