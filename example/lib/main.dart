@@ -75,6 +75,7 @@ class HomePageState extends State<HomePage> {
     UsercentricsLayout? layout,
     FirstLayerStyleSettings? firstLayerSettings,
     GeneralStyleSettings? generalStyleSettings,
+    String? variant,
   }) async {
     try {
       final response = await Usercentrics.showFirstLayer(
@@ -84,6 +85,7 @@ class HomePageState extends State<HomePage> {
           showCloseButton: true,
         ),
         generalStyleSettings: generalStyleSettings,
+        variant: variant
       );
 
       _handleUserResponse(response);
@@ -120,28 +122,25 @@ class HomePageState extends State<HomePage> {
     applyConsent(response?.consents);
   }
 
-    // void chooseVariant() async{
+  // void chooseVariant() async{
   //   final variant = await Usercentrics.aBTestingVariant;
-  //   switch(variant) {
-  //     case "variantA": {
-  //       _showFirstLayer(
-  //         //variantA Settings
-  //       );
-  //     }
-  //     break;
-  //     case "variantB": {
-  //       _showFirstLayer(
-  //         //variantB Settings
-  //       );
-  //     }
-  //     break;
-  //     default: {
-  //       _showFirstLayer(
-  //         //Default
-  //       );
-  //     }
-  //     break;
-  //   }
+    // switch(variant) {
+    //   case "variantA": {_showFirstLayer(/* variantA Settings */);}
+    //   break;
+    //   case "variantB": {_showFirstLayer(/* variantB Settings */);}
+    //   break;
+    //   default: {_showFirstLayer(/*Default*/);}
+    //   break;
+    // }
+    // // 'Activate with third-party tool' option
+    // switch(variant) {
+    //   case "variantA": {_showFirstLayer(/* variantA Settings */ variant: "variantA");}
+    //   break;
+    //   case "variantB": {_showFirstLayer(/* variantB Settings */ variant: "variantB");}
+    //   break;
+    //   default: {_showFirstLayer(/*Default*/);}
+    //   break;
+    // }
   // }
 
   @override

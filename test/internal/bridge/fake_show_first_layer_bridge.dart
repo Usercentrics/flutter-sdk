@@ -18,6 +18,7 @@ class FakeShowFirstLayerBridge extends ShowFirstLayerBridge {
   FirstLayerStyleSettings? invokeFirstLayerSettingsArgument;
   SecondLayerStyleSettings? invokeSecondLayerSettingsArgument;
   GeneralStyleSettings? invokeGeneralStyleSettingsArgument;
+  String? invokeVariantArgument;
 
   @override
   Future<UsercentricsConsentUserResponse?> invoke({
@@ -26,12 +27,14 @@ class FakeShowFirstLayerBridge extends ShowFirstLayerBridge {
     GeneralStyleSettings? generalStyleSettings,
     FirstLayerStyleSettings? firstLayerSettings,
     SecondLayerStyleSettings? secondLayerSettings,
+    String? variant
   }) {
     invokeCount++;
     invokeLayoutArgument = layout;
     invokeFirstLayerSettingsArgument = firstLayerSettings;
     invokeSecondLayerSettingsArgument = secondLayerSettings;
     invokeGeneralStyleSettingsArgument = generalStyleSettings;
+    invokeVariantArgument = variant;
     invokeChannelArgument = channel;
     return Future.value(invokeAnswer!);
   }

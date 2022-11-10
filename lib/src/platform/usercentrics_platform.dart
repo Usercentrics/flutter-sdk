@@ -26,11 +26,13 @@ abstract class UsercentricsPlatform {
     GeneralStyleSettings? generalStyleSettings,
     FirstLayerStyleSettings? firstLayerSettings,
     SecondLayerStyleSettings? secondLayerSettings,
+    String? variant,
   });
 
   Future<UsercentricsConsentUserResponse?> showSecondLayer({
     GeneralStyleSettings? generalStyleSettings,
     SecondLayerStyleSettings? secondLayerSettings,
+    String? variant
   });
 
   Future<List<UsercentricsServiceConsent>> get consents;

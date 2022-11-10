@@ -148,6 +148,7 @@ void main() {
       const firstLayerSettings = FirstLayerStyleSettings(cornerRadius: 100);
       const secondLayerSettings =
           SecondLayerStyleSettings(showCloseButton: true);
+      const variant = "variantA";
 
       const logo = BannerImage(assetPath: "assetPath");
       const font = BannerFont(
@@ -162,6 +163,7 @@ void main() {
         firstLayerSettings: firstLayerSettings,
         secondLayerSettings: secondLayerSettings,
         generalStyleSettings: generalStyleSettings,
+        variant: variant
       );
 
       expect(showFirstLayerBridge.invokeCount, 1);
@@ -173,6 +175,7 @@ void main() {
           secondLayerSettings);
       expect(showFirstLayerBridge.invokeGeneralStyleSettingsArgument,
           generalStyleSettings);
+      expect(showFirstLayerBridge.invokeVariantArgument, variant);
       expect(response, expectedResponse);
     });
 

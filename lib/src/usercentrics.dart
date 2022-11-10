@@ -65,12 +65,14 @@ class Usercentrics {
     GeneralStyleSettings? generalStyleSettings,
     FirstLayerStyleSettings? firstLayerSettings,
     SecondLayerStyleSettings? secondLayerSettings,
+    String? variant,
   }) =>
       _delegate.showFirstLayer(
         layout: layout,
         generalStyleSettings: generalStyleSettings,
         firstLayerSettings: firstLayerSettings,
         secondLayerSettings: secondLayerSettings,
+        variant: variant
       );
 
   /// Show the Banner second layer to **manage** consents.
@@ -80,10 +82,12 @@ class Usercentrics {
   static Future<UsercentricsConsentUserResponse?> showSecondLayer({
     GeneralStyleSettings? generalStyleSettings,
     SecondLayerStyleSettings? secondLayerSettings,
+    String? variant,
   }) =>
       _delegate.showSecondLayer(
         generalStyleSettings: generalStyleSettings,
         secondLayerSettings: secondLayerSettings,
+        variant: variant,
       );
 
   /// Get the complete list of [UsercentricsServiceConsent] with the last status of the user.
