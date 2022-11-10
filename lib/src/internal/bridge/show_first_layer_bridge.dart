@@ -7,7 +7,7 @@ abstract class ShowFirstLayerBridge {
 
   Future<UsercentricsConsentUserResponse?> invoke({
     required MethodChannel channel,
-    required UsercentricsLayout layout,
+    UsercentricsLayout? layout,
     GeneralStyleSettings? generalStyleSettings,
     FirstLayerStyleSettings? firstLayerSettings,
     SecondLayerStyleSettings? secondLayerSettings,
@@ -22,7 +22,7 @@ class MethodChannelShowFirstLayer extends ShowFirstLayerBridge {
   @override
   Future<UsercentricsConsentUserResponse?> invoke({
     required MethodChannel channel,
-    required UsercentricsLayout layout,
+    UsercentricsLayout? layout,
     GeneralStyleSettings? generalStyleSettings,
     FirstLayerStyleSettings? firstLayerSettings,
     SecondLayerStyleSettings? secondLayerSettings,

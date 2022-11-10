@@ -7,6 +7,9 @@ protocol UsercentricsBannerProxyProtocol {
                         layout: UsercentricsLayout,
                         completionHandler: @escaping (UsercentricsConsentUserResponse) -> Void)
 
+     func showFirstLayer(bannerSettings: BannerSettings?,
+                            completionHandler: @escaping (UsercentricsConsentUserResponse) -> Void)
+
     func showSecondLayer(bannerSettings: BannerSettings?,
                          completionHandler: @escaping (UsercentricsConsentUserResponse) -> Void)
 }
@@ -17,6 +20,13 @@ struct UsercentricsBannerProxy: UsercentricsBannerProxyProtocol {
                         layout: UsercentricsLayout,
                         completionHandler: @escaping (UsercentricsConsentUserResponse) -> Void) {
         UsercentricsBanner(bannerSettings: bannerSettings).showFirstLayer(layout: layout) { response in
+            completionHandler(response)
+        }
+    }
+
+    func showFirstLayer(bannerSettings: BannerSettings?,
+                        completionHandler: @escaping (UsercentricsConsentUserResponse) -> Void) {
+        UsercentricsBanner(bannerSettings: bannerSettings).showFirstLayer() { response in
             completionHandler(response)
         }
     }

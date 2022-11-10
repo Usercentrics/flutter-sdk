@@ -22,7 +22,7 @@ class FakeShowFirstLayerBridge extends ShowFirstLayerBridge {
   @override
   Future<UsercentricsConsentUserResponse?> invoke({
     required MethodChannel channel,
-    required UsercentricsLayout layout,
+    UsercentricsLayout? layout,
     GeneralStyleSettings? generalStyleSettings,
     FirstLayerStyleSettings? firstLayerSettings,
     SecondLayerStyleSettings? secondLayerSettings,

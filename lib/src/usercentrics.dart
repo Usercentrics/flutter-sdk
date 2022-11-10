@@ -60,7 +60,7 @@ class Usercentrics {
   /// - The [firstLayerSettings] that enables you to style the first layer programmatically.
   /// - The [secondLayerSettings] that enables you to style the second layer programmatically.
   static Future<UsercentricsConsentUserResponse?> showFirstLayer({
-    required UsercentricsLayout layout,
+    UsercentricsLayout? layout,
     GeneralStyleSettings? generalStyleSettings,
     FirstLayerStyleSettings? firstLayerSettings,
     SecondLayerStyleSettings? secondLayerSettings,

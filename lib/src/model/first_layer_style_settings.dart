@@ -1,6 +1,5 @@
 import 'dart:ui';
-
-import 'package:usercentrics_sdk/src/model/button_settings.dart';
+import '../../usercentrics_sdk.dart';
 
 /// The First Layer Settings.
 class FirstLayerStyleSettings {
@@ -13,6 +12,7 @@ class FirstLayerStyleSettings {
     this.backgroundColor,
     this.overlayColor,
     this.cornerRadius,
+    this.layout,
   });
 
   /// The header image settings.
@@ -36,6 +36,9 @@ class FirstLayerStyleSettings {
   /// The corner radious. This applies to the corners of the Popup/Sheet layout.
   final int? cornerRadius;
 
+  /// The type of layout chosen full/sheet/popupBottom/popupCenter
+  final UsercentricsLayout? layout;
+
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
@@ -47,7 +50,8 @@ class FirstLayerStyleSettings {
           buttonLayout == other.buttonLayout &&
           backgroundColor == other.backgroundColor &&
           overlayColor == other.overlayColor &&
-          cornerRadius == other.cornerRadius;
+          cornerRadius == other.cornerRadius &&
+          layout == other.layout;
 
   @override
   int get hashCode =>
@@ -57,11 +61,12 @@ class FirstLayerStyleSettings {
       buttonLayout.hashCode +
       backgroundColor.hashCode +
       overlayColor.hashCode +
-      cornerRadius.hashCode;
+      cornerRadius.hashCode +
+      layout.hashCode;
 
   @override
   String toString() =>
-      "$FirstLayerStyleSettings(headerImage: $headerImage, title: $title, message: $message, buttonLayout: $buttonLayout, backgroundColor: $backgroundColor, overlayColor: $overlayColor, cornerRadius: $cornerRadius)";
+      "$FirstLayerStyleSettings(headerImage: $headerImage, title: $title, message: $message, buttonLayout: $buttonLayout, backgroundColor: $backgroundColor, overlayColor: $overlayColor, cornerRadius: $cornerRadius, layout: $layout)";
 }
 
 /// The header image settings.

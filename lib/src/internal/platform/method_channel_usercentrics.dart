@@ -99,7 +99,7 @@ class MethodChannelUsercentrics extends UsercentricsPlatform {
 
   @override
   Future<UsercentricsConsentUserResponse?> showFirstLayer({
-    required UsercentricsLayout layout,
+    UsercentricsLayout? layout,
     GeneralStyleSettings? generalStyleSettings,
     FirstLayerStyleSettings? firstLayerSettings,
     SecondLayerStyleSettings? secondLayerSettings,

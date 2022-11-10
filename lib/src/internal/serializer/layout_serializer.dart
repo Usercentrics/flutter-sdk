@@ -1,8 +1,10 @@
 import 'package:usercentrics_sdk/src/model/layout.dart';
 
 class LayoutSerializer {
-  static dynamic serialize(UsercentricsLayout value) {
+  static dynamic serialize(UsercentricsLayout? value) {
     switch (value) {
+      case null:
+        return null;
       case UsercentricsLayout.full:
         return 'FULL';
       case UsercentricsLayout.sheet:

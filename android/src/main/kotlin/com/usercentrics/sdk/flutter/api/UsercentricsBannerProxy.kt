@@ -12,6 +12,10 @@ internal interface UsercentricsBannerProxy {
         callback: (UsercentricsConsentUserResponse?) -> Unit,
     )
 
+    fun showFirstLayer(
+        bannerSettings: BannerSettings?,
+        callback: (UsercentricsConsentUserResponse?) -> Unit,    )
+
     fun showSecondLayer(
         bannerSettings: BannerSettings?,
         callback: (UsercentricsConsentUserResponse?) -> Unit,
@@ -29,6 +33,14 @@ internal class UsercentricsBannerProxyImpl(
     ) {
         val context = activityProvider.provide() ?: return
         UsercentricsBanner(context, bannerSettings).showFirstLayer(layout, callback)
+    }
+
+    override fun showFirstLayer(
+        bannerSettings: BannerSettings?,
+        callback: (UsercentricsConsentUserResponse?) -> Unit,
+    ) {
+        val context = activityProvider.provide() ?: return
+        UsercentricsBanner(context, bannerSettings).showFirstLayer(callback)
     }
 
     override fun showSecondLayer(

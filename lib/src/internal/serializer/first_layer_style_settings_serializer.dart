@@ -18,6 +18,7 @@ class FirstLayerStyleSettingsSerializer {
           'backgroundColor': ColorSerializer.serialize(value.backgroundColor),
           'overlayColor': ColorSerializer.serialize(value.overlayColor),
           'cornerRadius': value.cornerRadius,
+          'layout': LayoutSerializer.serialize(value.layout),
         };
 
   static dynamic _serializeHeader(HeaderImageSettings? value) => value == null

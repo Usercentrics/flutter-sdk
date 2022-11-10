@@ -93,7 +93,8 @@ const expectedArguments = {
       ],
       'backgroundColor': null,
       'overlayColor': null,
-      'cornerRadius': 50
+      'cornerRadius': 50,
+      'layout': null
     },
     "secondLayerStyleSettings": null,
     "generalStyleSettings": {
