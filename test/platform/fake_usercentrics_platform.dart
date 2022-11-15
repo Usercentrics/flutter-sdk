@@ -6,7 +6,6 @@ import 'package:usercentrics_sdk/src/model/layout.dart';
 import 'package:usercentrics_sdk/src/model/logger_level.dart';
 import 'package:usercentrics_sdk/src/model/network_mode.dart';
 import 'package:usercentrics_sdk/src/model/ready_status.dart';
-import 'package:usercentrics_sdk/src/model/second_layer_style_settings.dart';
 import 'package:usercentrics_sdk/src/model/service_consent.dart';
 import 'package:usercentrics_sdk/src/model/tcf_data.dart';
 import 'package:usercentrics_sdk/src/model/tcf_decision_ui_layer.dart';

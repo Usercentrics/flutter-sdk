@@ -138,15 +138,15 @@ class HomePageState extends State<HomePage> {
     }
 
     // 'Activate with third-party tool' option
-    //final selectedVariant = WhateverTool.getABTestingVariant();
-    switch (variant) {
-      case "variantA":
-        return const BannerSettings(variant: "variantA");
-      case "variantB":
-        return const BannerSettings(variant: "variantB");
-      default:
-        return const BannerSettings();
-    }
+    // final selectedVariant = WhateverTool.getABTestingVariant();
+    // switch (variant) {
+    //   case "variantA":
+    //     return const BannerSettings(variant: "variantA");
+    //   case "variantB":
+    //     return const BannerSettings(variant: "variantB");
+    //   default:
+    //     return const BannerSettings();
+    // }
   }
 
   void bannerSettings() async {
