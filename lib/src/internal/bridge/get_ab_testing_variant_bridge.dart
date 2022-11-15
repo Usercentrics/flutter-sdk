@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 abstract class GetABTestingVariantBridge {
   const GetABTestingVariantBridge();
 
-  Future<String> invoke({
+  Future<String?> invoke({
     required MethodChannel channel,
   });
 }
@@ -14,8 +14,8 @@ class MethodChannelGetABTestingVariant extends GetABTestingVariantBridge {
   static const String _name = 'getABTestingVariant';
 
   @override
-  Future<String> invoke({required MethodChannel channel}) async {
+  Future<String?> invoke({required MethodChannel channel}) async {
     final result = await channel.invokeMethod(_name);
-    return result as String;
+    return result as String?;
   }
 }

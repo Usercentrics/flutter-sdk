@@ -1,9 +1,7 @@
 import 'package:flutter/src/services/platform_channel.dart';
 import 'package:usercentrics_sdk/src/internal/bridge/bridge.dart';
-import 'package:usercentrics_sdk/src/model/first_layer_style_settings.dart';
-import 'package:usercentrics_sdk/src/model/general_style_settings.dart';
+import 'package:usercentrics_sdk/src/model/banner_settings.dart';
 import 'package:usercentrics_sdk/src/model/layout.dart';
-import 'package:usercentrics_sdk/src/model/second_layer_style_settings.dart';
 import 'package:usercentrics_sdk/src/model/user_response.dart';
 
 class FakeShowFirstLayerBridge extends ShowFirstLayerBridge {
@@ -15,25 +13,17 @@ class FakeShowFirstLayerBridge extends ShowFirstLayerBridge {
   var invokeCount = 0;
   MethodChannel? invokeChannelArgument;
   UsercentricsLayout? invokeLayoutArgument;
-  FirstLayerStyleSettings? invokeFirstLayerSettingsArgument;
-  SecondLayerStyleSettings? invokeSecondLayerSettingsArgument;
-  GeneralStyleSettings? invokeGeneralStyleSettingsArgument;
-  String? invokeVariantArgument;
+  BannerSettings? invokeSettingsArgument;
 
   @override
-  Future<UsercentricsConsentUserResponse?> invoke(
-      {required MethodChannel channel,
-      required UsercentricsLayout layout,
-      GeneralStyleSettings? generalStyleSettings,
-      FirstLayerStyleSettings? firstLayerSettings,
-      SecondLayerStyleSettings? secondLayerSettings,
-      String? variant}) {
+  Future<UsercentricsConsentUserResponse?> invoke({
+    required MethodChannel channel,
+    required UsercentricsLayout layout,
+    BannerSettings? settings,
+  }) {
     invokeCount++;
     invokeLayoutArgument = layout;
-    invokeFirstLayerSettingsArgument = firstLayerSettings;
-    invokeSecondLayerSettingsArgument = secondLayerSettings;
-    invokeGeneralStyleSettingsArgument = generalStyleSettings;
-    invokeVariantArgument = variant;
+    invokeSettingsArgument = settings;
     invokeChannelArgument = channel;
     return Future.value(invokeAnswer!);
   }

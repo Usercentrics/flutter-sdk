@@ -9,31 +9,31 @@ import 'package:usercentrics_sdk/src/model/model.dart';
 import 'package:usercentrics_sdk/src/platform/usercentrics_platform.dart';
 
 class MethodChannelUsercentrics extends UsercentricsPlatform {
-  MethodChannelUsercentrics(
-      {this.initializeBridge = const MethodChannelInitialize(),
-      this.isReadyBridge = const MethodChannelIsReady(),
-      this.getConsentsBridge = const MethodChannelGetConsents(),
-      this.getControllerIdBridge = const MethodChannelGetControllerId(),
-      this.resetBridge = const MethodChannelReset(),
-      this.restoreUserSessionBridge = const MethodChannelRestoreUserSession(),
-      this.showFirstLayerBridge = const MethodChannelShowFirstLayer(),
-      this.showSecondLayerBridge = const MethodChannelShowSecondLayer(),
-      this.getCMPDataBridge = const MethodChannelGetCMPData(),
-      this.acceptAllBridge = const MethodChannelAcceptAll(),
-      this.acceptAllForTCFBridge = const MethodChannelAcceptAllForTCF(),
-      this.changeLanguageBridge = const MethodChannelChangeLanguage(),
-      this.denyAllBridge = const MethodChannelDenyAll(),
-      this.denyAllForTCFBridge = const MethodChannelDenyAllForTCF(),
-      this.getTCFDataBridge = const MethodChannelGetTCFData(),
-      this.getUserSessionDataBridge = const MethodChannelGetUserSessionData(),
-      this.getUSPDataBridge = const MethodChannelGetUSPData(),
-      this.saveDecisionsBridge = const MethodChannelSaveDecisions(),
-      this.saveDecisionsForTCFBridge = const MethodChannelSaveDecisionsForTCF(),
-      this.saveOptOutForCCPABridge = const MethodChannelSaveOptOutForCCPA(),
-      this.setCMPIdBridge = const MethodChannelSetCMPId(),
-      this.getABTestingVariantBridge = const MethodChannelGetABTestingVariant(),
-      this.setABTestingVariantBridge =
-          const MethodChannelSetABTestingVariant()});
+  MethodChannelUsercentrics({
+    this.initializeBridge = const MethodChannelInitialize(),
+    this.isReadyBridge = const MethodChannelIsReady(),
+    this.getConsentsBridge = const MethodChannelGetConsents(),
+    this.getControllerIdBridge = const MethodChannelGetControllerId(),
+    this.resetBridge = const MethodChannelReset(),
+    this.restoreUserSessionBridge = const MethodChannelRestoreUserSession(),
+    this.showFirstLayerBridge = const MethodChannelShowFirstLayer(),
+    this.showSecondLayerBridge = const MethodChannelShowSecondLayer(),
+    this.getCMPDataBridge = const MethodChannelGetCMPData(),
+    this.acceptAllBridge = const MethodChannelAcceptAll(),
+    this.acceptAllForTCFBridge = const MethodChannelAcceptAllForTCF(),
+    this.changeLanguageBridge = const MethodChannelChangeLanguage(),
+    this.denyAllBridge = const MethodChannelDenyAll(),
+    this.denyAllForTCFBridge = const MethodChannelDenyAllForTCF(),
+    this.getTCFDataBridge = const MethodChannelGetTCFData(),
+    this.getUserSessionDataBridge = const MethodChannelGetUserSessionData(),
+    this.getUSPDataBridge = const MethodChannelGetUSPData(),
+    this.saveDecisionsBridge = const MethodChannelSaveDecisions(),
+    this.saveDecisionsForTCFBridge = const MethodChannelSaveDecisionsForTCF(),
+    this.saveOptOutForCCPABridge = const MethodChannelSaveOptOutForCCPA(),
+    this.setCMPIdBridge = const MethodChannelSetCMPId(),
+    this.getABTestingVariantBridge = const MethodChannelGetABTestingVariant(),
+    this.setABTestingVariantBridge = const MethodChannelSetABTestingVariant(),
+  });
 
   static const MethodChannel _channel = MethodChannel('usercentrics');
 
@@ -106,34 +106,24 @@ class MethodChannelUsercentrics extends UsercentricsPlatform {
   @override
   Future<UsercentricsConsentUserResponse?> showFirstLayer({
     required UsercentricsLayout layout,
-    GeneralStyleSettings? generalStyleSettings,
-    FirstLayerStyleSettings? firstLayerSettings,
-    SecondLayerStyleSettings? secondLayerSettings,
-    String? variant,
+    BannerSettings? settings,
   }) async {
     await _ensureIsReady();
     return await showFirstLayerBridge.invoke(
       channel: _channel,
       layout: layout,
-      generalStyleSettings: generalStyleSettings,
-      firstLayerSettings: firstLayerSettings,
-      secondLayerSettings: secondLayerSettings,
-      variant: variant,
+      settings: settings,
     );
   }
 
   @override
   Future<UsercentricsConsentUserResponse?> showSecondLayer({
-    GeneralStyleSettings? generalStyleSettings,
-    SecondLayerStyleSettings? secondLayerSettings,
-    String? variant,
+    BannerSettings? settings,
   }) async {
     await _ensureIsReady();
     return await showSecondLayerBridge.invoke(
       channel: _channel,
-      generalStyleSettings: generalStyleSettings,
-      secondLayerSettings: secondLayerSettings,
-      variant: variant,
+      settings: settings,
     );
   }
 
@@ -296,7 +286,7 @@ class MethodChannelUsercentrics extends UsercentricsPlatform {
   }
 
   @override
-  Future<String> get aBTestingVariant async {
+  Future<String?> get aBTestingVariant async {
     await _ensureIsReady();
     return await getABTestingVariantBridge.invoke(channel: _channel);
   }

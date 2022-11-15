@@ -23,16 +23,12 @@ abstract class UsercentricsPlatform {
 
   Future<UsercentricsConsentUserResponse?> showFirstLayer({
     required UsercentricsLayout layout,
-    GeneralStyleSettings? generalStyleSettings,
-    FirstLayerStyleSettings? firstLayerSettings,
-    SecondLayerStyleSettings? secondLayerSettings,
-    String? variant,
+    BannerSettings? settings,
   });
 
-  Future<UsercentricsConsentUserResponse?> showSecondLayer(
-      {GeneralStyleSettings? generalStyleSettings,
-      SecondLayerStyleSettings? secondLayerSettings,
-      String? variant});
+  Future<UsercentricsConsentUserResponse?> showSecondLayer({
+    BannerSettings? settings,
+  });
 
   Future<List<UsercentricsServiceConsent>> get consents;
 
@@ -93,7 +89,7 @@ abstract class UsercentricsPlatform {
     required UsercentricsConsentType consentType,
   });
 
-  Future<String> get aBTestingVariant;
+  Future<String?> get aBTestingVariant;
 
   Future<void> setABTestingVariant({
     required String variant,

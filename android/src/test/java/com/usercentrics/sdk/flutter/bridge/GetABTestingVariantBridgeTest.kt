@@ -47,4 +47,20 @@ class GetABTestingVariantBridgeTest {
         assertEquals(1, result.successCount)
         assertEquals(GetABTestingVariantMock.expected, result.successResultArgument)
     }
+
+    @Test
+    fun testInvokeWhenNull() {
+        val usercentricsSDK = mockk<UsercentricsSDK>()
+        every { usercentricsSDK.getABTestingVariant() }.returns(null)
+        val usercentricsProxy = FakeUsercentricsProxy(usercentricsSDK)
+        val instance = GetABTestingVariantBridge(usercentricsProxy)
+        val result = FakeFlutterResult()
+
+        instance.invoke(GetABTestingVariantMock.call, result)
+
+        verify(exactly = 1) { usercentricsSDK.getABTestingVariant() }
+
+        assertEquals(1, result.successCount)
+        assertEquals(null, result.successResultArgument)
+    }
 }

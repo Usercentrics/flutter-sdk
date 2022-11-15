@@ -24,10 +24,13 @@ void main() {
     const instance = MethodChannelShowSecondLayer();
 
     final result = await instance.invoke(
-        channel: channel,
-        secondLayerSettings: mockSecondLayerSettings,
-        generalStyleSettings: mockGeneralStyleSettings,
-        variant: mockVariant);
+      channel: channel,
+      settings: BannerSettings(
+        secondLayer: mockSecondLayerSettings,
+        general: mockGeneralStyleSettings,
+        variant: mockVariant,
+      ),
+    );
 
     expect(callCounter, 1);
     expect(receivedCall?.method, 'showSecondLayer');
