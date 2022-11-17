@@ -126,18 +126,23 @@ class FakeUsercentrics extends UsercentricsPlatform {
   @override
   Future<UsercentricsConsentUserResponse?> showFirstLayer({
     required UsercentricsLayout layout,
-    GeneralStyleSettings? generalStyleSettings,
-    FirstLayerStyleSettings? firstLayerSettings,
-    SecondLayerStyleSettings? secondLayerSettings,
+    BannerSettings? settings,
   }) {
     throw UnimplementedError();
   }
 
   @override
   Future<UsercentricsConsentUserResponse?> showSecondLayer({
-    GeneralStyleSettings? generalStyleSettings,
-    SecondLayerStyleSettings? secondLayerSettings,
+    BannerSettings? settings,
   }) {
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<String?> get aBTestingVariant => throw UnimplementedError();
+
+  @override
+  Future<void> setABTestingVariant({required String variant}) {
     throw UnimplementedError();
   }
 }

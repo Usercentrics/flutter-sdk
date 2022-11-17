@@ -3,6 +3,8 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:usercentrics_sdk/src/internal/bridge/bridge.dart';
+import 'package:usercentrics_sdk/src/internal/bridge/get_ab_testing_variant_bridge.dart';
+import 'package:usercentrics_sdk/src/internal/bridge/set_ab_testing_variant_bridge.dart';
 import 'package:usercentrics_sdk/src/model/model.dart';
 import 'package:usercentrics_sdk/src/platform/usercentrics_platform.dart';
 
@@ -29,6 +31,8 @@ class MethodChannelUsercentrics extends UsercentricsPlatform {
     this.saveDecisionsForTCFBridge = const MethodChannelSaveDecisionsForTCF(),
     this.saveOptOutForCCPABridge = const MethodChannelSaveOptOutForCCPA(),
     this.setCMPIdBridge = const MethodChannelSetCMPId(),
+    this.getABTestingVariantBridge = const MethodChannelGetABTestingVariant(),
+    this.setABTestingVariantBridge = const MethodChannelSetABTestingVariant(),
   });
 
   static const MethodChannel _channel = MethodChannel('usercentrics');
@@ -54,6 +58,8 @@ class MethodChannelUsercentrics extends UsercentricsPlatform {
   final SaveDecisionsForTCFBridge saveDecisionsForTCFBridge;
   final SaveOptOutForCCPABridge saveOptOutForCCPABridge;
   final SetCMPIdBridge setCMPIdBridge;
+  final GetABTestingVariantBridge getABTestingVariantBridge;
+  final SetABTestingVariantBridge setABTestingVariantBridge;
 
   @visibleForTesting
   Completer<Object?>? isReadyCompleter;
@@ -100,30 +106,24 @@ class MethodChannelUsercentrics extends UsercentricsPlatform {
   @override
   Future<UsercentricsConsentUserResponse?> showFirstLayer({
     required UsercentricsLayout layout,
-    GeneralStyleSettings? generalStyleSettings,
-    FirstLayerStyleSettings? firstLayerSettings,
-    SecondLayerStyleSettings? secondLayerSettings,
+    BannerSettings? settings,
   }) async {
     await _ensureIsReady();
     return await showFirstLayerBridge.invoke(
       channel: _channel,
       layout: layout,
-      generalStyleSettings: generalStyleSettings,
-      firstLayerSettings: firstLayerSettings,
-      secondLayerSettings: secondLayerSettings,
+      settings: settings,
     );
   }
 
   @override
   Future<UsercentricsConsentUserResponse?> showSecondLayer({
-    GeneralStyleSettings? generalStyleSettings,
-    SecondLayerStyleSettings? secondLayerSettings,
+    BannerSettings? settings,
   }) async {
     await _ensureIsReady();
     return await showSecondLayerBridge.invoke(
       channel: _channel,
-      generalStyleSettings: generalStyleSettings,
-      secondLayerSettings: secondLayerSettings,
+      settings: settings,
     );
   }
 
@@ -283,6 +283,21 @@ class MethodChannelUsercentrics extends UsercentricsPlatform {
   Future<String> get userSessionData async {
     await _ensureIsReady();
     return await getUserSessionDataBridge.invoke(channel: _channel);
+  }
+
+  @override
+  Future<String?> get aBTestingVariant async {
+    await _ensureIsReady();
+    return await getABTestingVariantBridge.invoke(channel: _channel);
+  }
+
+  @override
+  Future<void> setABTestingVariant({
+    required String variant,
+  }) async {
+    await _ensureIsReady();
+    return await setABTestingVariantBridge.invoke(
+        channel: _channel, variant: variant);
   }
 
   Future<void> _ensureIsReady() async {

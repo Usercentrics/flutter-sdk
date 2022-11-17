@@ -56,32 +56,42 @@ class Usercentrics {
 
   /// Show the Banner first layer to **collect** consents.
   /// - The [layout] of the banner.
-  /// - The [generalStyleSettings] that enables you to style general paramenters programmatically.
-  /// - The [firstLayerSettings] that enables you to style the first layer programmatically.
-  /// - The [secondLayerSettings] that enables you to style the second layer programmatically.
+  /// - The [settings] that enables you to style the banner programmatically.
   static Future<UsercentricsConsentUserResponse?> showFirstLayer({
     required UsercentricsLayout layout,
-    GeneralStyleSettings? generalStyleSettings,
-    FirstLayerStyleSettings? firstLayerSettings,
-    SecondLayerStyleSettings? secondLayerSettings,
+    BannerSettings? settings,
+    @Deprecated('Use [settings] instead')
+        GeneralStyleSettings? generalStyleSettings,
+    @Deprecated('Use [settings] instead')
+        FirstLayerStyleSettings? firstLayerSettings,
+    @Deprecated('Use [settings] instead')
+        SecondLayerStyleSettings? secondLayerSettings,
   }) =>
       _delegate.showFirstLayer(
         layout: layout,
-        generalStyleSettings: generalStyleSettings,
-        firstLayerSettings: firstLayerSettings,
-        secondLayerSettings: secondLayerSettings,
+        settings: settings ??
+            BannerSettings(
+              general: generalStyleSettings,
+              firstLayer: firstLayerSettings,
+              secondLayer: secondLayerSettings,
+            ),
       );
 
   /// Show the Banner second layer to **manage** consents.
-  /// - The [generalStyleSettings] that enables you to style general paramenters programmatically.
-  /// - The [secondLayerSettings] that enables you to style the second layer programmatically.
+  /// - The [settings] that enables you to style the banner programmatically.
   static Future<UsercentricsConsentUserResponse?> showSecondLayer({
-    GeneralStyleSettings? generalStyleSettings,
-    SecondLayerStyleSettings? secondLayerSettings,
+    BannerSettings? settings,
+    @Deprecated('Use [settings] instead')
+        GeneralStyleSettings? generalStyleSettings,
+    @Deprecated('Use [settings] instead')
+        SecondLayerStyleSettings? secondLayerSettings,
   }) =>
       _delegate.showSecondLayer(
-        generalStyleSettings: generalStyleSettings,
-        secondLayerSettings: secondLayerSettings,
+        settings: settings ??
+            BannerSettings(
+              general: generalStyleSettings,
+              secondLayer: secondLayerSettings,
+            ),
       );
 
   /// Get the complete list of [UsercentricsServiceConsent] with the last status of the user.
@@ -110,11 +120,20 @@ class Usercentrics {
   /// Get the User's Session Data that can be injected in a WebView with Usercentrics Browswer SDK.
   static Future<String> get userSessionData => _delegate.userSessionData;
 
+  /// Get the a variant of the CMP to do A/B testing.
+  static Future<String?> get aBTestingVariant => _delegate.aBTestingVariant;
+
   /// Set the CMP ID value required by IAB for custom UI.
   static Future<void> setCmpIdForTCF({
     required int id,
   }) =>
       _delegate.setCmpIdForTCF(id: id);
+
+  /// Set the Variant for the A/B testing.
+  static Future<void> setABTestingVariant({
+    required String variant,
+  }) =>
+      _delegate.setABTestingVariant(variant: variant);
 
   /// Change the CMP language.
   static Future<void> changeLanguage({

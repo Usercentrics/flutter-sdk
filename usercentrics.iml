@@ -15,6 +15,7 @@
       <excludeFolder url="file://$MODULE_DIR$/example/ios/.symlinks/plugins/usercentrics_sdk/.dart_tool" />
       <excludeFolder url="file://$MODULE_DIR$/example/ios/.symlinks/plugins/usercentrics_sdk/build" />
     </content>
+    <orderEntry type="jdk" jdkName="Android API 32 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Dart SDK" level="project" />
     <orderEntry type="library" name="Flutter Plugins" level="project" />

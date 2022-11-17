@@ -111,7 +111,8 @@ const expectedArguments = {
       },
       'logo': 'images/flutter-logo.png',
       'links': 'BOTH'
-    }
+    },
+    "variant": "variantA"
   },
   "layout": "SHEET",
 };
@@ -170,3 +171,5 @@ const mockGeneralStyleSettings = GeneralStyleSettings(
   logo: mockLogo,
   links: LegalLinksSettings.both,
 );
+
+const mockVariant = "variantA";

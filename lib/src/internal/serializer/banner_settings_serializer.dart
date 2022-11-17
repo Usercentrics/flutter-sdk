@@ -1,22 +1,15 @@
-import 'package:usercentrics_sdk/src/model/first_layer_style_settings.dart';
-import 'package:usercentrics_sdk/src/model/general_style_settings.dart';
-
-import '../../model/second_layer_style_settings.dart';
-import '../internal.dart';
-import 'general_style_settings_serializer.dart';
+import 'package:usercentrics_sdk/src/internal/internal.dart';
+import 'package:usercentrics_sdk/src/internal/serializer/general_style_settings_serializer.dart';
+import 'package:usercentrics_sdk/src/model/banner_settings.dart';
 
 class BannerSettingsSerializer {
-  static dynamic serialize({
-    GeneralStyleSettings? generalStyleSettings,
-    FirstLayerStyleSettings? firstLayerSettings,
-    SecondLayerStyleSettings? secondLayerSettings,
-  }) =>
-      {
+  static dynamic serialize(BannerSettings? settings) => {
         'firstLayerStyleSettings':
-            FirstLayerStyleSettingsSerializer.serialize(firstLayerSettings),
+            FirstLayerStyleSettingsSerializer.serialize(settings?.firstLayer),
         'secondLayerStyleSettings':
-            SecondLayerStyleSettingsSerializer.serialize(secondLayerSettings),
+            SecondLayerStyleSettingsSerializer.serialize(settings?.secondLayer),
         'generalStyleSettings':
-            GeneralStyleSettingsSerializer.serialize(generalStyleSettings),
+            GeneralStyleSettingsSerializer.serialize(settings?.general),
+        'variant': settings?.variant,
       };
 }

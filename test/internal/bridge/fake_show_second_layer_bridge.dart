@@ -1,7 +1,6 @@
 import 'package:flutter/src/services/platform_channel.dart';
 import 'package:usercentrics_sdk/src/internal/bridge/bridge.dart';
-import 'package:usercentrics_sdk/src/model/general_style_settings.dart';
-import 'package:usercentrics_sdk/src/model/second_layer_style_settings.dart';
+import 'package:usercentrics_sdk/src/model/banner_settings.dart';
 import 'package:usercentrics_sdk/src/model/user_response.dart';
 
 class FakeShowSecondLayerBridge extends ShowSecondLayerBridge {
@@ -12,18 +11,15 @@ class FakeShowSecondLayerBridge extends ShowSecondLayerBridge {
   final UsercentricsConsentUserResponse? invokeAnswer;
   var invokeCount = 0;
   MethodChannel? invokeChannelArgument;
-  SecondLayerStyleSettings? invokeSecondLayerSettingsArgument;
-  GeneralStyleSettings? invokeGeneralStyleSettingsArgument;
+  BannerSettings? invokeSettingsArgument;
 
   @override
   Future<UsercentricsConsentUserResponse?> invoke({
     required MethodChannel channel,
-    GeneralStyleSettings? generalStyleSettings,
-    SecondLayerStyleSettings? secondLayerSettings,
+    BannerSettings? settings,
   }) {
     invokeCount++;
-    invokeSecondLayerSettingsArgument = secondLayerSettings;
-    invokeGeneralStyleSettingsArgument = generalStyleSettings;
+    invokeSettingsArgument = settings;
     invokeChannelArgument = channel;
     return Future.value(invokeAnswer!);
   }

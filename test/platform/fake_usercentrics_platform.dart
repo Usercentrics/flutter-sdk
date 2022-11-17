@@ -1,13 +1,11 @@
+import 'package:usercentrics_sdk/src/model/banner_settings.dart';
 import 'package:usercentrics_sdk/src/model/ccpa_data.dart';
 import 'package:usercentrics_sdk/src/model/cmp_data.dart';
 import 'package:usercentrics_sdk/src/model/consent_type.dart';
-import 'package:usercentrics_sdk/src/model/first_layer_style_settings.dart';
-import 'package:usercentrics_sdk/src/model/general_style_settings.dart';
 import 'package:usercentrics_sdk/src/model/layout.dart';
 import 'package:usercentrics_sdk/src/model/logger_level.dart';
 import 'package:usercentrics_sdk/src/model/network_mode.dart';
 import 'package:usercentrics_sdk/src/model/ready_status.dart';
-import 'package:usercentrics_sdk/src/model/second_layer_style_settings.dart';
 import 'package:usercentrics_sdk/src/model/service_consent.dart';
 import 'package:usercentrics_sdk/src/model/tcf_data.dart';
 import 'package:usercentrics_sdk/src/model/tcf_decision_ui_layer.dart';
@@ -35,6 +33,7 @@ class FakeUsercentricsPlatform extends UsercentricsPlatform {
     this.ccpaDataAnswer,
     this.tcfDataAnswer,
     this.userSessionDataAnswer,
+    this.aBTestingVariantAnswer,
   });
 
   final List<UsercentricsServiceConsent>? consentsAnswer;
@@ -110,38 +109,29 @@ class FakeUsercentricsPlatform extends UsercentricsPlatform {
   final UsercentricsConsentUserResponse? showFirstLayerAnswer;
   var showFirstLayerCount = 0;
   UsercentricsLayout? showFirstLayerLayoutArgument;
-  GeneralStyleSettings? showFirstLayerGeneralStyleSettingsArgument;
-  FirstLayerStyleSettings? showFirstLayerFirstLayerSettingsArgument;
-  SecondLayerStyleSettings? showFirstLayerSecondLayerSettingsArgument;
+  BannerSettings? showFirstLayerSettingsArgument;
 
   @override
   Future<UsercentricsConsentUserResponse?> showFirstLayer({
     required UsercentricsLayout layout,
-    GeneralStyleSettings? generalStyleSettings,
-    FirstLayerStyleSettings? firstLayerSettings,
-    SecondLayerStyleSettings? secondLayerSettings,
+    BannerSettings? settings,
   }) {
     showFirstLayerCount++;
     showFirstLayerLayoutArgument = layout;
-    showFirstLayerGeneralStyleSettingsArgument = generalStyleSettings;
-    showFirstLayerFirstLayerSettingsArgument = firstLayerSettings;
-    showFirstLayerSecondLayerSettingsArgument = secondLayerSettings;
+    showFirstLayerSettingsArgument = settings;
     return Future.value(showFirstLayerAnswer!);
   }
 
   final UsercentricsConsentUserResponse? showSecondLayerAnswer;
   var showSecondLayerCount = 0;
-  GeneralStyleSettings? showSecondLayerGeneralStyleSettingsArgument;
-  SecondLayerStyleSettings? showSecondLayerSecondLayerSettingsArgument;
+  BannerSettings? showSecondLayerSettingsArgument;
 
   @override
   Future<UsercentricsConsentUserResponse?> showSecondLayer({
-    GeneralStyleSettings? generalStyleSettings,
-    SecondLayerStyleSettings? secondLayerSettings,
+    BannerSettings? settings,
   }) {
     showSecondLayerCount++;
-    showSecondLayerGeneralStyleSettingsArgument = generalStyleSettings;
-    showSecondLayerSecondLayerSettingsArgument = secondLayerSettings;
+    showSecondLayerSettingsArgument = settings;
     return Future.value(showSecondLayerAnswer!);
   }
 
@@ -324,5 +314,24 @@ class FakeUsercentricsPlatform extends UsercentricsPlatform {
   Future<String> get userSessionData {
     userSessionDataCount++;
     return Future.value(userSessionDataAnswer!);
+  }
+
+  final String? aBTestingVariantAnswer;
+  var aBTestingVariantCount = 0;
+
+  @override
+  Future<String?> get aBTestingVariant {
+    aBTestingVariantCount++;
+    return Future.value(aBTestingVariantAnswer);
+  }
+
+  String? setABTestingVariantArgument;
+  var setABTestingVariantCount = 0;
+
+  @override
+  Future<void> setABTestingVariant({required String variant}) {
+    setABTestingVariantArgument = variant;
+    setABTestingVariantCount++;
+    return Future.value(null);
   }
 }

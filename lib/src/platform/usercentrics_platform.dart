@@ -23,14 +23,11 @@ abstract class UsercentricsPlatform {
 
   Future<UsercentricsConsentUserResponse?> showFirstLayer({
     required UsercentricsLayout layout,
-    GeneralStyleSettings? generalStyleSettings,
-    FirstLayerStyleSettings? firstLayerSettings,
-    SecondLayerStyleSettings? secondLayerSettings,
+    BannerSettings? settings,
   });
 
   Future<UsercentricsConsentUserResponse?> showSecondLayer({
-    GeneralStyleSettings? generalStyleSettings,
-    SecondLayerStyleSettings? secondLayerSettings,
+    BannerSettings? settings,
   });
 
   Future<List<UsercentricsServiceConsent>> get consents;
@@ -90,5 +87,11 @@ abstract class UsercentricsPlatform {
   Future<List<UsercentricsServiceConsent>> saveOptOutForCCPA({
     required bool isOptedOut,
     required UsercentricsConsentType consentType,
+  });
+
+  Future<String?> get aBTestingVariant;
+
+  Future<void> setABTestingVariant({
+    required String variant,
   });
 }

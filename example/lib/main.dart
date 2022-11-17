@@ -75,15 +75,18 @@ class HomePageState extends State<HomePage> {
     UsercentricsLayout? layout,
     FirstLayerStyleSettings? firstLayerSettings,
     GeneralStyleSettings? generalStyleSettings,
+    String? variant,
   }) async {
     try {
       final response = await Usercentrics.showFirstLayer(
         layout: layout ?? UsercentricsLayout.popupBottom,
-        firstLayerSettings: firstLayerSettings,
-        secondLayerSettings: const SecondLayerStyleSettings(
-          showCloseButton: true,
+        settings: BannerSettings(
+          firstLayer: firstLayerSettings,
+          secondLayer: const SecondLayerStyleSettings(
+            showCloseButton: true,
+          ),
+          general: generalStyleSettings,
         ),
-        generalStyleSettings: generalStyleSettings,
       );
 
       _handleUserResponse(response);
@@ -95,13 +98,15 @@ class HomePageState extends State<HomePage> {
   void _showSecondLayer() async {
     try {
       final response = await Usercentrics.showSecondLayer(
-        secondLayerSettings: SecondLayerStyleSettings(
-          showCloseButton: true,
-          buttonLayout: ButtonLayout.row(
-            buttons: [
-              const ButtonSettings(type: ButtonType.save),
-              const ButtonSettings(type: ButtonType.acceptAll),
-            ],
+        settings: BannerSettings(
+          secondLayer: SecondLayerStyleSettings(
+            showCloseButton: true,
+            buttonLayout: ButtonLayout.row(
+              buttons: [
+                const ButtonSettings(type: ButtonType.save),
+                const ButtonSettings(type: ButtonType.acceptAll),
+              ],
+            ),
           ),
         ),
       );
@@ -118,6 +123,69 @@ class HomePageState extends State<HomePage> {
     print("Controller Id -> ${response?.controllerId}");
 
     applyConsent(response?.consents);
+  }
+
+  static Future<BannerSettings> get abTestingBannerSettings async {
+    // 'Activate with Usercentrics' option
+    final variant = await Usercentrics.aBTestingVariant;
+    switch (variant) {
+      case "variantA":
+        return const BannerSettings(/* variantA Settings */);
+      case "variantB":
+        return const BannerSettings(/* variantB Settings */);
+      default:
+        return const BannerSettings(/* Default Settings */);
+    }
+
+    // 'Activate with third-party tool' option
+    // final selectedVariant = WhateverTool.getABTestingVariant();
+    // switch (variant) {
+    //   case "variantA":
+    //     return const BannerSettings(variant: "variantA");
+    //   case "variantB":
+    //     return const BannerSettings(variant: "variantB");
+    //   default:
+    //     return const BannerSettings();
+    // }
+  }
+
+  void bannerSettings() async {
+    final variant = await Usercentrics.aBTestingVariant;
+    switch (variant) {
+      case "variantA":
+        {
+          _showFirstLayer(/* variantA Settings */);
+        }
+        break;
+      case "variantB":
+        {
+          _showFirstLayer(/* variantB Settings */);
+        }
+        break;
+      default:
+        {
+          _showFirstLayer(/*Default*/);
+        }
+        break;
+    }
+    // 'Activate with third-party tool' option
+    switch (variant) {
+      case "variantA":
+        {
+          _showFirstLayer(/* variantA Settings */ variant: "variantA");
+        }
+        break;
+      case "variantB":
+        {
+          _showFirstLayer(/* variantB Settings */ variant: "variantB");
+        }
+        break;
+      default:
+        {
+          _showFirstLayer(/*Default*/);
+        }
+        break;
+    }
   }
 
   @override

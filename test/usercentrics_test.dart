@@ -78,21 +78,22 @@ void main() {
       fontSize: 20,
     );
     const generalStyleSettings = GeneralStyleSettings(font: font, logo: logo);
+    const variant = "variantA";
+    const bannerSettings = BannerSettings(
+      firstLayer: firstLayerSettings,
+      secondLayer: secondLayerSettings,
+      general: generalStyleSettings,
+      variant: variant,
+    );
 
     final result = await Usercentrics.showFirstLayer(
-        layout: layout,
-        firstLayerSettings: firstLayerSettings,
-        secondLayerSettings: secondLayerSettings,
-        generalStyleSettings: generalStyleSettings);
+      layout: layout,
+      settings: bannerSettings,
+    );
 
     expect(delegate.showFirstLayerCount, 1);
     expect(delegate.showFirstLayerLayoutArgument, layout);
-    expect(delegate.showFirstLayerGeneralStyleSettingsArgument,
-        generalStyleSettings);
-    expect(
-        delegate.showFirstLayerFirstLayerSettingsArgument, firstLayerSettings);
-    expect(delegate.showFirstLayerSecondLayerSettingsArgument,
-        secondLayerSettings);
+    expect(delegate.showFirstLayerSettingsArgument, bannerSettings);
     expect(result, expectedResponse);
   });
 
@@ -115,16 +116,19 @@ void main() {
       fontSize: 20,
     );
     const generalStyleSettings = GeneralStyleSettings(font: font, logo: logo);
+    const variant = "variantA";
+    const bannerSettings = BannerSettings(
+      secondLayer: secondLayerSettings,
+      general: generalStyleSettings,
+      variant: variant,
+    );
 
     final result = await Usercentrics.showSecondLayer(
-        secondLayerSettings: secondLayerSettings,
-        generalStyleSettings: generalStyleSettings);
+      settings: bannerSettings,
+    );
 
     expect(delegate.showSecondLayerCount, 1);
-    expect(delegate.showSecondLayerGeneralStyleSettingsArgument,
-        generalStyleSettings);
-    expect(delegate.showSecondLayerSecondLayerSettingsArgument,
-        secondLayerSettings);
+    expect(delegate.showSecondLayerSettingsArgument, bannerSettings);
     expect(result, expectedResponse);
   });
 

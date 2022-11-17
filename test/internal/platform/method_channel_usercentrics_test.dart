@@ -148,6 +148,7 @@ void main() {
       const firstLayerSettings = FirstLayerStyleSettings(cornerRadius: 100);
       const secondLayerSettings =
           SecondLayerStyleSettings(showCloseButton: true);
+      const variant = "variantA";
 
       const logo = BannerImage(assetPath: "assetPath");
       const font = BannerFont(
@@ -156,23 +157,22 @@ void main() {
         fontSize: 12,
       );
       const generalStyleSettings = GeneralStyleSettings(font: font, logo: logo);
+      const bannerSettings = BannerSettings(
+        firstLayer: firstLayerSettings,
+        secondLayer: secondLayerSettings,
+        general: generalStyleSettings,
+        variant: variant,
+      );
 
       final response = await instance.showFirstLayer(
         layout: layout,
-        firstLayerSettings: firstLayerSettings,
-        secondLayerSettings: secondLayerSettings,
-        generalStyleSettings: generalStyleSettings,
+        settings: bannerSettings,
       );
 
       expect(showFirstLayerBridge.invokeCount, 1);
       expect(showFirstLayerBridge.invokeChannelArgument?.name, "usercentrics");
       expect(showFirstLayerBridge.invokeLayoutArgument, layout);
-      expect(showFirstLayerBridge.invokeFirstLayerSettingsArgument,
-          firstLayerSettings);
-      expect(showFirstLayerBridge.invokeSecondLayerSettingsArgument,
-          secondLayerSettings);
-      expect(showFirstLayerBridge.invokeGeneralStyleSettingsArgument,
-          generalStyleSettings);
+      expect(showFirstLayerBridge.invokeSettingsArgument, bannerSettings);
       expect(response, expectedResponse);
     });
 
@@ -218,17 +218,18 @@ void main() {
         fontSize: 12,
       );
       const generalStyleSettings = GeneralStyleSettings(font: font, logo: logo);
+      const bannerSettings = BannerSettings(
+        secondLayer: secondLayerSettings,
+        general: generalStyleSettings,
+      );
 
       final response = await instance.showSecondLayer(
-          secondLayerSettings: secondLayerSettings,
-          generalStyleSettings: generalStyleSettings);
+        settings: bannerSettings,
+      );
 
       expect(showSecondLayerBridge.invokeCount, 1);
       expect(showSecondLayerBridge.invokeChannelArgument?.name, "usercentrics");
-      expect(showSecondLayerBridge.invokeSecondLayerSettingsArgument,
-          secondLayerSettings);
-      expect(showSecondLayerBridge.invokeGeneralStyleSettingsArgument,
-          generalStyleSettings);
+      expect(showSecondLayerBridge.invokeSettingsArgument, bannerSettings);
       expect(response, expectedResponse);
     });
 

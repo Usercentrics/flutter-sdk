@@ -27,9 +27,12 @@ void main() {
     final result = await instance.invoke(
       channel: channel,
       layout: mockLayout,
-      firstLayerSettings: mockFirstLayerSettings,
-      secondLayerSettings: null,
-      generalStyleSettings: mockGeneralStyleSettings,
+      settings: BannerSettings(
+        firstLayer: mockFirstLayerSettings,
+        secondLayer: null,
+        general: mockGeneralStyleSettings,
+        variant: mockVariant,
+      ),
     );
 
     expect(callCounter, 1);

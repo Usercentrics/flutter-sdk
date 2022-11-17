@@ -17,7 +17,8 @@ internal object ShowSecondLayerMock {
                     "font" to null,
                     "logo" to null,
                     "links" to "SECOND_LAYER_ONLY",
-                )
+                ),
+                "variant" to "variantA"
             )
         )
     )
@@ -27,7 +28,8 @@ internal object ShowSecondLayerMock {
         ),
         generalStyleSettings = GeneralStyleSettings(
             links = LegalLinksSettings.SECOND_LAYER_ONLY,
-        )
+        ),
+        variant = "variantA"
     )
     val fakeResponseWithData = UsercentricsConsentUserResponse(
         consents = listOf(
