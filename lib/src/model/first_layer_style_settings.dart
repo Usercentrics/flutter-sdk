@@ -68,7 +68,7 @@ class FirstLayerStyleSettings {
 
   @override
   String toString() =>
-      "$FirstLayerStyleSettings(headerImage: $headerImage, title: $title, message: $message, buttonLayout: $buttonLayout, backgroundColor: $backgroundColor, overlayColor: $overlayColor, cornerRadius: $cornerRadius)";
+      "$FirstLayerStyleSettings(layout: $layout, headerImage: $headerImage, title: $title, message: $message, buttonLayout: $buttonLayout, backgroundColor: $backgroundColor, overlayColor: $overlayColor, cornerRadius: $cornerRadius)";
 }
 
 /// The header image settings.
