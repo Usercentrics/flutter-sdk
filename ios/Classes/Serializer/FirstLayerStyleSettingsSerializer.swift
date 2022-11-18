@@ -12,7 +12,8 @@ extension FirstLayerStyleSettings {
                   buttonLayout: ButtonLayout.from(dict: dict["buttonLayout"] as? [[NSDictionary]], fallbackFont: bannerFont?.boldFont, assetProvider: assetProvider),
                   backgroundColor: UIColor(unsafeHex: dict["backgroundColor"] as? String),
                   cornerRadius: dict["cornerRadius"] as? CGFloat,
-                  overlayColor: UIColor(unsafeHex: dict["overlayColor"] as? String))
+                  overlayColor: UIColor(unsafeHex: dict["overlayColor"] as? String),
+                  layout: UsercentricsLayout.initialize(from: dict["layout"]))
     }
 }
 

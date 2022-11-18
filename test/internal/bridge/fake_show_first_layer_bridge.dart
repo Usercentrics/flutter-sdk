@@ -12,17 +12,17 @@ class FakeShowFirstLayerBridge extends ShowFirstLayerBridge {
   final UsercentricsConsentUserResponse? invokeAnswer;
   var invokeCount = 0;
   MethodChannel? invokeChannelArgument;
-  UsercentricsLayout? invokeLayoutArgument;
+  UsercentricsLayout? invokeLegacyLayoutArgument;
   BannerSettings? invokeSettingsArgument;
 
   @override
   Future<UsercentricsConsentUserResponse?> invoke({
     required MethodChannel channel,
-    required UsercentricsLayout layout,
+    UsercentricsLayout? legacyLayout,
     BannerSettings? settings,
   }) {
     invokeCount++;
-    invokeLayoutArgument = layout;
+    invokeLegacyLayoutArgument = legacyLayout;
     invokeSettingsArgument = settings;
     invokeChannelArgument = channel;
     return Future.value(invokeAnswer!);

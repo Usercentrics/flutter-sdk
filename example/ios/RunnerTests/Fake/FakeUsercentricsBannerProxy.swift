@@ -7,14 +7,11 @@ class FakeUsercentricsBannerProxy: UsercentricsBannerProxyProtocol {
 
     var showFirstLayerAnswer: UsercentricsConsentUserResponse? = nil
     var showFirstLayerCount = 0
-    var showFirstLayerLayoutArg: UsercentricsLayout? = nil
     var showFirstLayerBannerSettingsArg: BannerSettings? = nil
 
     func showFirstLayer(bannerSettings: BannerSettings?,
-                        layout: UsercentricsLayout,
                         completionHandler: @escaping (UsercentricsConsentUserResponse) -> Void) {
         showFirstLayerCount += 1
-        showFirstLayerLayoutArg = layout
         showFirstLayerBannerSettingsArg = bannerSettings
 
         completionHandler(showFirstLayerAnswer!)

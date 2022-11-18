@@ -9,9 +9,9 @@ internal object ShowFirstLayerMock {
     // From the debugger
     val call = FakeFlutterMethodCall(
         method = "showFirstLayer", arguments = mapOf(
-            "layout" to "POPUP_CENTER",
             "bannerSettings" to mapOf(
                 "firstLayerStyleSettings" to mapOf(
+                    "layout" to "POPUP_CENTER",
                     "headerImage" to null,
                     "title" to mapOf(
                         "alignment" to "END",
@@ -48,6 +48,7 @@ internal object ShowFirstLayerMock {
     )
     val expectedBannerSettings = BannerSettings(
         firstLayerStyleSettings = FirstLayerStyleSettings(
+            layout = UsercentricsLayout.Popup(PopupPosition.CENTER),
             title = TitleSettings(
                 alignment = SectionAlignment.END,
                 textSizeInSp = 20f,

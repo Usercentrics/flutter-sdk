@@ -22,7 +22,7 @@ abstract class UsercentricsPlatform {
   Future<UsercentricsReadyStatus> get status;
 
   Future<UsercentricsConsentUserResponse?> showFirstLayer({
-    required UsercentricsLayout layout,
+    UsercentricsLayout? legacyLayout,
     BannerSettings? settings,
   });
 

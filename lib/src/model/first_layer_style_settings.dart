@@ -1,11 +1,13 @@
 import 'dart:ui';
 
 import 'package:usercentrics_sdk/src/model/button_settings.dart';
+import 'package:usercentrics_sdk/src/model/layout.dart';
 
 /// The First Layer Settings.
 class FirstLayerStyleSettings {
   /// Creates a FirstLayerStyleSettings.
   const FirstLayerStyleSettings({
+    this.layout,
     this.headerImage,
     this.title,
     this.message,
@@ -14,6 +16,9 @@ class FirstLayerStyleSettings {
     this.overlayColor,
     this.cornerRadius,
   });
+
+  /// The banner layout settings.
+  final UsercentricsLayout? layout;
 
   /// The header image settings.
   final HeaderImageSettings? headerImage;
@@ -41,6 +46,7 @@ class FirstLayerStyleSettings {
       identical(this, other) ||
       other is FirstLayerStyleSettings &&
           runtimeType == other.runtimeType &&
+          layout == other.layout &&
           headerImage == other.headerImage &&
           title == other.title &&
           message == other.message &&
@@ -51,6 +57,7 @@ class FirstLayerStyleSettings {
 
   @override
   int get hashCode =>
+      layout.hashCode +
       headerImage.hashCode +
       title.hashCode +
       message.hashCode +
@@ -61,7 +68,7 @@ class FirstLayerStyleSettings {
 
   @override
   String toString() =>
-      "$FirstLayerStyleSettings(headerImage: $headerImage, title: $title, message: $message, buttonLayout: $buttonLayout, backgroundColor: $backgroundColor, overlayColor: $overlayColor, cornerRadius: $cornerRadius)";
+      "$FirstLayerStyleSettings(layout: $layout, headerImage: $headerImage, title: $title, message: $message, buttonLayout: $buttonLayout, backgroundColor: $backgroundColor, overlayColor: $overlayColor, cornerRadius: $cornerRadius)";
 }
 
 /// The header image settings.

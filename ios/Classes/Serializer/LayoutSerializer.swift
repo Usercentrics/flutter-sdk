@@ -2,7 +2,10 @@ import UsercentricsUI
 
 extension UsercentricsLayout {
     static func initialize(from value: Any?) -> UsercentricsLayout? {
-        let valueString = value as! String
+        guard
+            let valueString = value as? String
+        else { return nil }
+
         switch valueString {
         case "SHEET":
             return .sheet

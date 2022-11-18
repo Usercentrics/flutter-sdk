@@ -6,7 +6,8 @@ const _buttonCornerRadius = 20;
 const _customBoldFontPath = 'fonts/AndadaPro-Bold.ttf';
 const _customRegularFontPath = 'fonts/AndadaPro.ttf';
 
-final firstLayerCustomizationExample1 = FirstLayerStyleSettings(
+final _firstLayer = FirstLayerStyleSettings(
+  layout: UsercentricsLayout.popupBottom,
   headerImage: HeaderImageSettings.extended(
     imageAssetPath: "images/header_extended.png",
   ),
@@ -42,7 +43,7 @@ final firstLayerCustomizationExample1 = FirstLayerStyleSettings(
   ]),
 );
 
-const generalStyleCustomizationExample1 = GeneralStyleSettings(
+const _general = GeneralStyleSettings(
   logo: BannerImage(assetPath: 'images/flutter-logo.png'),
   font: BannerFont(
     regularFontAssetPath: _customRegularFontPath,
@@ -50,4 +51,12 @@ const generalStyleCustomizationExample1 = GeneralStyleSettings(
     fontSize: 15,
   ),
   links: LegalLinksSettings.secondLayerOnly,
+);
+
+final bannerSettingsCustomizationExample1 = BannerSettings(
+  firstLayer: _firstLayer,
+  secondLayer: const SecondLayerStyleSettings(
+    showCloseButton: true,
+  ),
+  general: _general,
 );

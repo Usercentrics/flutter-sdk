@@ -68,8 +68,8 @@ void main() {
         FakeUsercentricsPlatform(showFirstLayerAnswer: expectedResponse);
     Usercentrics.delegatePackingProperty = delegate;
 
-    const layout = UsercentricsLayout.sheet;
-    const firstLayerSettings = FirstLayerStyleSettings(cornerRadius: 100);
+    const firstLayerSettings = FirstLayerStyleSettings(
+        layout: UsercentricsLayout.sheet, cornerRadius: 100);
     const secondLayerSettings = SecondLayerStyleSettings(showCloseButton: true);
     const logo = BannerImage(assetPath: "asset/logo.png");
     const font = BannerFont(
@@ -87,12 +87,10 @@ void main() {
     );
 
     final result = await Usercentrics.showFirstLayer(
-      layout: layout,
       settings: bannerSettings,
     );
 
     expect(delegate.showFirstLayerCount, 1);
-    expect(delegate.showFirstLayerLayoutArgument, layout);
     expect(delegate.showFirstLayerSettingsArgument, bannerSettings);
     expect(result, expectedResponse);
   });

@@ -108,16 +108,14 @@ class FakeUsercentricsPlatform extends UsercentricsPlatform {
 
   final UsercentricsConsentUserResponse? showFirstLayerAnswer;
   var showFirstLayerCount = 0;
-  UsercentricsLayout? showFirstLayerLayoutArgument;
   BannerSettings? showFirstLayerSettingsArgument;
 
   @override
   Future<UsercentricsConsentUserResponse?> showFirstLayer({
-    required UsercentricsLayout layout,
+    UsercentricsLayout? legacyLayout,
     BannerSettings? settings,
   }) {
     showFirstLayerCount++;
-    showFirstLayerLayoutArgument = layout;
     showFirstLayerSettingsArgument = settings;
     return Future.value(showFirstLayerAnswer!);
   }

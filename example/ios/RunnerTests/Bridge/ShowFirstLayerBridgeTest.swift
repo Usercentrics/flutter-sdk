@@ -68,9 +68,9 @@ class ShowFirstLayerBridgeTest: XCTestCase, BaseBridgeTestProtocol {
             XCTAssertEqual(consent["isEssential"] as! Bool, true)
 
             XCTAssertEqual(self.bannerProxy.showFirstLayerCount, 1)
-            XCTAssertEqual(self.bannerProxy.showFirstLayerLayoutArg, .popup(position: .center))
             XCTAssertEqual(self.bannerProxy.showFirstLayerBannerSettingsArg?.generalStyleSettings?.links, LegalLinksSettings.both)
             XCTAssertEqual(self.bannerProxy.showFirstLayerBannerSettingsArg?.firstLayerStyleSettings != nil, true)
+            XCTAssertEqual(self.bannerProxy.showFirstLayerBannerSettingsArg?.firstLayerStyleSettings?.layout, .popup(position: .center))
             // TODO Assert style settings
 
             expectation.fulfill()
@@ -80,6 +80,7 @@ class ShowFirstLayerBridgeTest: XCTestCase, BaseBridgeTestProtocol {
         call.argumentsMap = [
             "bannerSettings": [
                 "firstLayerStyleSettings": [
+                    "layout": "POPUP_CENTER",
                     "headerImage": [
                         "height": 100.0
                     ],
@@ -108,8 +109,7 @@ class ShowFirstLayerBridgeTest: XCTestCase, BaseBridgeTestProtocol {
                 "generalStyleSettings": [
                     "links": "BOTH"
                 ]
-            ],
-            "layout": "POPUP_CENTER",
+            ]
         ]
         bridge.invoke(call, resultCompletion)
         wait(for: [expectation], timeout: 2.0)

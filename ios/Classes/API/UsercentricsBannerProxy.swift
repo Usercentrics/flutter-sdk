@@ -4,7 +4,6 @@ import UIKit
 
 protocol UsercentricsBannerProxyProtocol {
     func showFirstLayer(bannerSettings: BannerSettings?,
-                        layout: UsercentricsLayout,
                         completionHandler: @escaping (UsercentricsConsentUserResponse) -> Void)
 
     func showSecondLayer(bannerSettings: BannerSettings?,
@@ -14,9 +13,8 @@ protocol UsercentricsBannerProxyProtocol {
 struct UsercentricsBannerProxy: UsercentricsBannerProxyProtocol {
 
     func showFirstLayer(bannerSettings: BannerSettings?,
-                        layout: UsercentricsLayout,
                         completionHandler: @escaping (UsercentricsConsentUserResponse) -> Void) {
-        UsercentricsBanner(bannerSettings: bannerSettings).showFirstLayer(layout: layout) { response in
+        UsercentricsBanner(bannerSettings: bannerSettings).showFirstLayer { response in
             completionHandler(response)
         }
     }
