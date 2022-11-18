@@ -72,21 +72,11 @@ class HomePageState extends State<HomePage> {
   }
 
   void _showFirstLayer({
-    UsercentricsLayout? layout,
-    FirstLayerStyleSettings? firstLayerSettings,
-    GeneralStyleSettings? generalStyleSettings,
-    String? variant,
+    BannerSettings? settings,
   }) async {
     try {
       final response = await Usercentrics.showFirstLayer(
-        layout: layout ?? UsercentricsLayout.popupBottom,
-        settings: BannerSettings(
-          firstLayer: firstLayerSettings,
-          secondLayer: const SecondLayerStyleSettings(
-            showCloseButton: true,
-          ),
-          general: generalStyleSettings,
-        ),
+        settings: settings,
       );
 
       _handleUserResponse(response);
@@ -149,45 +139,6 @@ class HomePageState extends State<HomePage> {
     // }
   }
 
-  void bannerSettings() async {
-    final variant = await Usercentrics.aBTestingVariant;
-    switch (variant) {
-      case "variantA":
-        {
-          _showFirstLayer(/* variantA Settings */);
-        }
-        break;
-      case "variantB":
-        {
-          _showFirstLayer(/* variantB Settings */);
-        }
-        break;
-      default:
-        {
-          _showFirstLayer(/*Default*/);
-        }
-        break;
-    }
-    // 'Activate with third-party tool' option
-    switch (variant) {
-      case "variantA":
-        {
-          _showFirstLayer(/* variantA Settings */ variant: "variantA");
-        }
-        break;
-      case "variantB":
-        {
-          _showFirstLayer(/* variantB Settings */ variant: "variantB");
-        }
-        break;
-      default:
-        {
-          _showFirstLayer(/*Default*/);
-        }
-        break;
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -210,17 +161,13 @@ class HomePageState extends State<HomePage> {
             ),
             ElevatedButton(
               onPressed: () => _showFirstLayer(
-                layout: UsercentricsLayout.popupBottom,
-                firstLayerSettings: firstLayerCustomizationExample1,
-                generalStyleSettings: generalStyleCustomizationExample1,
+                settings: bannerSettingsCustomizationExample1,
               ),
               child: const Text("Customization Example 1"),
             ),
             ElevatedButton(
               onPressed: () => _showFirstLayer(
-                layout: UsercentricsLayout.full,
-                firstLayerSettings: firstLayerCustomizationExample2,
-                generalStyleSettings: generalStyleCustomizationExample2,
+                settings: bannerSettingsCustomizationExample2,
               ),
               child: const Text("Customization Example 2"),
             ),

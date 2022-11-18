@@ -58,17 +58,18 @@ class Usercentrics {
   /// - The [layout] of the banner.
   /// - The [settings] that enables you to style the banner programmatically.
   static Future<UsercentricsConsentUserResponse?> showFirstLayer({
-    required UsercentricsLayout layout,
     BannerSettings? settings,
-    @Deprecated('Use [settings] instead')
+    @Deprecated('Use [settings.firstLayer.layout] instead')
+        UsercentricsLayout? layout,
+    @Deprecated('Use [settings.general] instead')
         GeneralStyleSettings? generalStyleSettings,
-    @Deprecated('Use [settings] instead')
+    @Deprecated('Use [settings.firstLayer] instead')
         FirstLayerStyleSettings? firstLayerSettings,
-    @Deprecated('Use [settings] instead')
+    @Deprecated('Use [settings.secondLayer] instead')
         SecondLayerStyleSettings? secondLayerSettings,
   }) =>
       _delegate.showFirstLayer(
-        layout: layout,
+        legacyLayout: layout,
         settings: settings ??
             BannerSettings(
               general: generalStyleSettings,

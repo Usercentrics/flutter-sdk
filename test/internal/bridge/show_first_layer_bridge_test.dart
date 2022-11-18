@@ -26,7 +26,6 @@ void main() {
 
     final result = await instance.invoke(
       channel: channel,
-      layout: mockLayout,
       settings: BannerSettings(
         firstLayer: mockFirstLayerSettings,
         secondLayer: null,

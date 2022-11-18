@@ -165,13 +165,13 @@ void main() {
       );
 
       final response = await instance.showFirstLayer(
-        layout: layout,
+        legacyLayout: layout,
         settings: bannerSettings,
       );
 
       expect(showFirstLayerBridge.invokeCount, 1);
       expect(showFirstLayerBridge.invokeChannelArgument?.name, "usercentrics");
-      expect(showFirstLayerBridge.invokeLayoutArgument, layout);
+      expect(showFirstLayerBridge.invokeLegacyLayoutArgument, layout);
       expect(showFirstLayerBridge.invokeSettingsArgument, bannerSettings);
       expect(response, expectedResponse);
     });
@@ -181,7 +181,7 @@ void main() {
       instance.isReadyCompleter = null;
 
       expect(
-        () => instance.showFirstLayer(layout: UsercentricsLayout.sheet),
+        () => instance.showFirstLayer(),
         throwsA(const TypeMatcher<NotInitializedException>()),
       );
     });
@@ -238,7 +238,7 @@ void main() {
       instance.isReadyCompleter = null;
 
       expect(
-        () => instance.showFirstLayer(layout: UsercentricsLayout.sheet),
+        () => instance.showFirstLayer(),
         throwsA(const TypeMatcher<NotInitializedException>()),
       );
     });

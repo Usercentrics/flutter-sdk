@@ -7,7 +7,7 @@ abstract class ShowFirstLayerBridge {
 
   Future<UsercentricsConsentUserResponse?> invoke({
     required MethodChannel channel,
-    required UsercentricsLayout layout,
+    UsercentricsLayout? legacyLayout,
     BannerSettings? settings,
   });
 }
@@ -20,12 +20,12 @@ class MethodChannelShowFirstLayer extends ShowFirstLayerBridge {
   @override
   Future<UsercentricsConsentUserResponse?> invoke({
     required MethodChannel channel,
-    required UsercentricsLayout layout,
+    UsercentricsLayout? legacyLayout,
     BannerSettings? settings,
   }) async {
     final arguments = {
-      'bannerSettings': BannerSettingsSerializer.serialize(settings),
-      'layout': LayoutSerializer.serialize(layout),
+      'bannerSettings':
+          BannerSettingsSerializer.serialize(settings, legacyLayout),
     };
     final result = await channel.invokeMethod(
       _name,

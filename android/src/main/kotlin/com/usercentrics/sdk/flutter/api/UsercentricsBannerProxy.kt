@@ -3,12 +3,10 @@ package com.usercentrics.sdk.flutter.api
 import com.usercentrics.sdk.BannerSettings
 import com.usercentrics.sdk.UsercentricsBanner
 import com.usercentrics.sdk.UsercentricsConsentUserResponse
-import com.usercentrics.sdk.UsercentricsLayout
 
 internal interface UsercentricsBannerProxy {
     fun showFirstLayer(
         bannerSettings: BannerSettings?,
-        layout: UsercentricsLayout,
         callback: (UsercentricsConsentUserResponse?) -> Unit,
     )
 
@@ -24,11 +22,10 @@ internal class UsercentricsBannerProxyImpl(
 
     override fun showFirstLayer(
         bannerSettings: BannerSettings?,
-        layout: UsercentricsLayout,
         callback: (UsercentricsConsentUserResponse?) -> Unit,
     ) {
         val context = activityProvider.provide() ?: return
-        UsercentricsBanner(context, bannerSettings).showFirstLayer(layout, callback)
+        UsercentricsBanner(context, bannerSettings).showFirstLayer(callback)
     }
 
     override fun showSecondLayer(

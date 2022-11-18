@@ -9,6 +9,7 @@ internal fun Any?.deserializeFirstLayerStyleSettings(
     activityProvider: FlutterActivityProvider,
 ): FirstLayerStyleSettings? {
     if (this !is Map<*, *>) return null
+    val layout = this["layout"].deserializeLayout()
 
     val headerImage =
         this["headerImage"]?.deserializeHeaderImageSettings(assetsProvider, activityProvider)
@@ -31,6 +32,7 @@ internal fun Any?.deserializeFirstLayerStyleSettings(
     val cornerRadius = this["cornerRadius"] as? Int
 
     return FirstLayerStyleSettings(
+        layout = layout,
         headerImage = headerImage,
         title = title,
         message = message,

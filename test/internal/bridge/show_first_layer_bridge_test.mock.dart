@@ -48,6 +48,7 @@ const expectedResult = UsercentricsConsentUserResponse(
 const expectedArguments = {
   "bannerSettings": {
     "firstLayerStyleSettings": {
+      "layout": "SHEET",
       'headerImage': {
         'image': 'images/header_extended.png',
         'height': null,
@@ -114,14 +115,13 @@ const expectedArguments = {
     },
     "variant": "variantA"
   },
-  "layout": "SHEET",
 };
-const mockLayout = UsercentricsLayout.sheet;
 
 const _buttonTextSizeInSp = 16.0;
 const _buttonCornerRadius = 20;
 const _customFontPath = "fonts/AndadaPro.ttf";
 final mockFirstLayerSettings = FirstLayerStyleSettings(
+  layout: UsercentricsLayout.sheet,
   headerImage: HeaderImageSettings.extended(
     imageAssetPath: "images/header_extended.png",
   ),

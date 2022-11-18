@@ -2,7 +2,6 @@ package com.usercentrics.sdk.flutter.bridge
 
 import com.usercentrics.sdk.flutter.api.*
 import com.usercentrics.sdk.flutter.serializer.deserializeBannerSettings
-import com.usercentrics.sdk.flutter.serializer.deserializeLayout
 import com.usercentrics.sdk.flutter.serializer.serialize
 
 internal class ShowFirstLayerBridge(
@@ -24,7 +23,6 @@ internal class ShowFirstLayerBridge(
                 assetsProvider,
                 activityProvider,
             ),
-            layout = argsMap["layout"].deserializeLayout(),
         ) { response ->
             result.success(response?.serialize())
         }

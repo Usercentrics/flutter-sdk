@@ -92,7 +92,6 @@ void main() {
     );
 
     expect(delegate.showFirstLayerCount, 1);
-    expect(delegate.showFirstLayerLayoutArgument, layout);
     expect(delegate.showFirstLayerSettingsArgument, bannerSettings);
     expect(result, expectedResponse);
   });
