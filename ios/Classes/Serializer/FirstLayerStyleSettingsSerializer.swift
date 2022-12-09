@@ -6,14 +6,14 @@ extension FirstLayerStyleSettings {
             let dict = value as? Dictionary<String, Any>
         else { return nil }
 
-        self.init(headerImage: HeaderImageSettings.from(dict: dict["headerImage"] as? NSDictionary, assetProvider: assetProvider),
+        self.init(layout: UsercentricsLayout.initialize(from: dict["layout"]),
+                  headerImage: HeaderImageSettings.from(dict: dict["headerImage"] as? NSDictionary, assetProvider: assetProvider),
                   title: TitleSettings(from: dict["title"] as? NSDictionary, fallbackFont: bannerFont?.boldFont, assetProvider: assetProvider),
                   message: MessageSettings(from: dict["message"] as? NSDictionary, fallbackFont: bannerFont?.regularFont, assetProvider: assetProvider),
                   buttonLayout: ButtonLayout.from(dict: dict["buttonLayout"] as? [[NSDictionary]], fallbackFont: bannerFont?.boldFont, assetProvider: assetProvider),
                   backgroundColor: UIColor(unsafeHex: dict["backgroundColor"] as? String),
                   cornerRadius: dict["cornerRadius"] as? CGFloat,
-                  overlayColor: UIColor(unsafeHex: dict["overlayColor"] as? String),
-                  layout: UsercentricsLayout.initialize(from: dict["layout"]))
+                  overlayColor: UIColor(unsafeHex: dict["overlayColor"] as? String))
     }
 }
 

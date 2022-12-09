@@ -131,9 +131,9 @@ class HomePageState extends State<HomePage> {
     // final selectedVariant = WhateverTool.getABTestingVariant();
     // switch (variant) {
     //   case "variantA":
-    //     return const BannerSettings(variant: "variantA");
+    //     return const BannerSettings(variantName: "variantA");
     //   case "variantB":
-    //     return const BannerSettings(variant: "variantB");
+    //     return const BannerSettings(variantName: "variantB");
     //   default:
     //     return const BannerSettings();
     // }
