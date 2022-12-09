@@ -113,7 +113,7 @@ const expectedArguments = {
       'logo': 'images/flutter-logo.png',
       'links': 'BOTH'
     },
-    "variant": "variantA"
+    "variantName": "variantA"
   },
 };
 

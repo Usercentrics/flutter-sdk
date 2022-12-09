@@ -42,7 +42,7 @@ class SetABTestingVariantBridgeTest {
 
         verify(exactly = 1) {
             usercentricsSDK.setABTestingVariant(
-                variant = SetABTestingVariantMock.callABTestingVariant
+                variantName = SetABTestingVariantMock.callABTestingVariant
             )
         }
 

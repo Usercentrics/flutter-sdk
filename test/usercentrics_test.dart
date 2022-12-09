@@ -78,12 +78,12 @@ void main() {
       fontSize: 20,
     );
     const generalStyleSettings = GeneralStyleSettings(font: font, logo: logo);
-    const variant = "variantA";
+    const variantName = "variantA";
     const bannerSettings = BannerSettings(
       firstLayer: firstLayerSettings,
       secondLayer: secondLayerSettings,
       general: generalStyleSettings,
-      variant: variant,
+      variantName: variantName,
     );
 
     final result = await Usercentrics.showFirstLayer(
@@ -114,11 +114,11 @@ void main() {
       fontSize: 20,
     );
     const generalStyleSettings = GeneralStyleSettings(font: font, logo: logo);
-    const variant = "variantA";
+    const variantName = "variantA";
     const bannerSettings = BannerSettings(
       secondLayer: secondLayerSettings,
       general: generalStyleSettings,
-      variant: variant,
+      variantName: variantName,
     );
 
     final result = await Usercentrics.showSecondLayer(

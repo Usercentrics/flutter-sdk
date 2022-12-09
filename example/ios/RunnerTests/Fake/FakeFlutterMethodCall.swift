@@ -15,7 +15,8 @@ final class FakeFlutterMethodCall: FlutterMethodCall {
         return argumentsMap
     }
 
-    init(methodName: String) {
+    init(methodName: String, argumentsMap: Any? = nil) {
         self.methodName = methodName
+        self.argumentsMap = argumentsMap
     }
 }

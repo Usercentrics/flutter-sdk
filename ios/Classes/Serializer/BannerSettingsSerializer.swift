@@ -26,6 +26,7 @@ extension BannerSettings {
 
         self.init(generalStyleSettings: generalStyleSettings,
                   firstLayerStyleSettings: firstLayerSettings,
-                  secondLayerStyleSettings: secondLayerSettings)
+                  secondLayerStyleSettings: secondLayerSettings,
+                  variantName: dict["variantName"] as? String)
     }
 }

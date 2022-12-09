@@ -17,6 +17,6 @@ class BannerSettingsSerializer {
             SecondLayerStyleSettingsSerializer.serialize(settings?.secondLayer),
         'generalStyleSettings':
             GeneralStyleSettingsSerializer.serialize(settings?.general),
-        'variant': settings?.variant,
+        'variantName': settings?.variantName,
       };
 }

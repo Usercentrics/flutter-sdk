@@ -89,7 +89,7 @@ const expectedArguments = {
       'logo': 'images/flutter-logo.png',
       'links': 'NONE'
     },
-    "variant": 'variantA'
+    "variantName": 'variantA'
   }
 };
 const mockFont = BannerFont(

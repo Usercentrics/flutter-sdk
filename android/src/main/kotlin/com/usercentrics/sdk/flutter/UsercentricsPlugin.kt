@@ -62,7 +62,7 @@ class UsercentricsPlugin : FlutterPlugin,
             SetCMPIdBridge(),
             GetABTestingVariantBridge(),
             SetABTestingVariantBridge()
-        ).map { it.name to it }.toMap()
+        ).associateBy { it.name }
     }
 
     override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: Result) {

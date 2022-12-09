@@ -5,19 +5,19 @@ import 'package:usercentrics_sdk/src/model/second_layer_style_settings.dart';
 /// The Banner Settings.
 class BannerSettings {
   /// Creates a BannerSettings.
-  /// - The [variant] enables you to set the banner variant for A/B testing.
   /// - The [general] that enables you to style general style programmatically.
   /// - The [firstLayer] that enables you to style the first layer programmatically.
   /// - The [secondLayer] that enables you to style the second layer programmatically.
+  /// - The [variantName] enables you to set the banner variant for A/B testing.
   const BannerSettings({
-    this.variant,
     this.general,
     this.firstLayer,
     this.secondLayer,
+    this.variantName,
   });
 
   /// The banner variant for A/B testing.
-  final String? variant;
+  final String? variantName;
 
   /// The general style settings.
   final GeneralStyleSettings? general;
@@ -33,19 +33,19 @@ class BannerSettings {
       identical(this, other) ||
       other is BannerSettings &&
           runtimeType == other.runtimeType &&
-          variant == other.variant &&
+          variantName == other.variantName &&
           general == other.general &&
           firstLayer == other.firstLayer &&
           secondLayer == other.secondLayer;
 
   @override
   int get hashCode =>
-      variant.hashCode +
+      variantName.hashCode +
       general.hashCode +
       firstLayer.hashCode +
       secondLayer.hashCode;
 
   @override
   String toString() =>
-      "$BannerSettings(variant: $variant, general: $general, firstLayer: $firstLayer, secondLayer: $secondLayer)";
+      "$BannerSettings(variantName: $variantName, general: $general, firstLayer: $firstLayer, secondLayer: $secondLayer)";
 }

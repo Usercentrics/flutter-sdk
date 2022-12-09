@@ -161,7 +161,7 @@ void main() {
         firstLayer: firstLayerSettings,
         secondLayer: secondLayerSettings,
         general: generalStyleSettings,
-        variant: variant,
+        variantName: variant,
       );
 
       final response = await instance.showFirstLayer(
