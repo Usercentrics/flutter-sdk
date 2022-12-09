@@ -43,4 +43,18 @@ final class FakeUsercentricsSDK: UsercentricsSDK {
         getCMPDataCount += 1
         return getCMPDataAnswer!
     }
+
+    var getABTestingVariantAnswer: String?
+    var getABTestingVariantCount = 0
+    override func getABTestingVariant() -> String? {
+        getABTestingVariantCount += 1
+        return getABTestingVariantAnswer!
+    }
+
+    var setABTestingVariantArgument: String?
+    var setABTestingVariantCount = 0
+    override func setABTestingVariant(variantName: String) {
+        setABTestingVariantCount += 1
+        setABTestingVariantArgument = variantName
+    }
 }

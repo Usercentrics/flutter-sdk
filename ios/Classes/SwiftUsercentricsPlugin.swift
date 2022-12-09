@@ -40,7 +40,9 @@ public class SwiftUsercentricsPlugin: NSObject, FlutterPlugin {
             SetCMPIdBridge(usercentrics: usercentrics),
             GetUSPDataBridge(usercentrics: usercentrics),
             GetTCFDataBridge(usercentrics: usercentrics),
-            GetUserSessionDataBridge(usercentrics: usercentrics)
+            GetUserSessionDataBridge(usercentrics: usercentrics),
+            SetABTestingVariantBridge(usercentrics: usercentrics),
+            GetABTestingVariantBridge(usercentrics: usercentrics)
         ]
         return bridges.reduce([String : MethodBridge]()) { dict, value in
             var dict = dict

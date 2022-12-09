@@ -29,6 +29,8 @@
 		A2DF52232716DA7900204F07 /* FakeFlutterMethodCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DF52222716DA7900204F07 /* FakeFlutterMethodCall.swift */; };
 		AD7CFFD227BA807500567D62 /* FakeUsercentricsBannerProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7CFFD127BA807500567D62 /* FakeUsercentricsBannerProxy.swift */; };
 		AD7CFFD427BA8FD300567D62 /* ShowSecondLayerBridgeTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7CFFD327BA8FD300567D62 /* ShowSecondLayerBridgeTest.swift */; };
+		AD9067E029439C86008B4204 /* GetABTestingVariantBridgeTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9067DF29439C86008B4204 /* GetABTestingVariantBridgeTest.swift */; };
+		AD9067E229439D5F008B4204 /* SetABTestingVariantBridgeTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9067E129439D5F008B4204 /* SetABTestingVariantBridgeTest.swift */; };
 		ADF3AD79272B02C200048F78 /* GetCMPDataBridgeTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF3AD78272B02C200048F78 /* GetCMPDataBridgeTest.swift */; };
 /* End PBXBuildFile section */
 
@@ -88,6 +90,8 @@
 		A2DF52222716DA7900204F07 /* FakeFlutterMethodCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeFlutterMethodCall.swift; sourceTree = "<group>"; };
 		AD7CFFD127BA807500567D62 /* FakeUsercentricsBannerProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeUsercentricsBannerProxy.swift; sourceTree = "<group>"; };
 		AD7CFFD327BA8FD300567D62 /* ShowSecondLayerBridgeTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowSecondLayerBridgeTest.swift; sourceTree = "<group>"; };
+		AD9067DF29439C86008B4204 /* GetABTestingVariantBridgeTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetABTestingVariantBridgeTest.swift; sourceTree = "<group>"; };
+		AD9067E129439D5F008B4204 /* SetABTestingVariantBridgeTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetABTestingVariantBridgeTest.swift; sourceTree = "<group>"; };
 		ADF3AD78272B02C200048F78 /* GetCMPDataBridgeTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCMPDataBridgeTest.swift; sourceTree = "<group>"; };
 		DB69D98B4156601148DBEBCF /* Pods-Runner-RunnerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner-RunnerTests.release.xcconfig"; path = "Target Support Files/Pods-Runner-RunnerTests/Pods-Runner-RunnerTests.release.xcconfig"; sourceTree = "<group>"; };
 		DBF72223A1F26BB170908C60 /* Pods_Runner_RunnerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Runner_RunnerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -206,6 +210,8 @@
 				A28883EE27182971007E0C44 /* ShowFirstLayerBridgeTest.swift */,
 				AD7CFFD327BA8FD300567D62 /* ShowSecondLayerBridgeTest.swift */,
 				ADF3AD78272B02C200048F78 /* GetCMPDataBridgeTest.swift */,
+				AD9067DF29439C86008B4204 /* GetABTestingVariantBridgeTest.swift */,
+				AD9067E129439D5F008B4204 /* SetABTestingVariantBridgeTest.swift */,
 			);
 			path = Bridge;
 			sourceTree = "<group>";
@@ -459,10 +465,12 @@
 				A297F40C2717219300F7AF8A /* IsReadyBridgeTest.swift in Sources */,
 				A28883F127182BAF007E0C44 /* FakeFlutterAssetProvider.swift in Sources */,
 				A21C377C271821020089601C /* ResetBridgeTest.swift in Sources */,
+				AD9067E029439C86008B4204 /* GetABTestingVariantBridgeTest.swift in Sources */,
 				A28883EF27182971007E0C44 /* ShowFirstLayerBridgeTest.swift in Sources */,
 				A2DF521E2716CA3200204F07 /* GetConsentsBridgeTest.swift in Sources */,
 				AD7CFFD227BA807500567D62 /* FakeUsercentricsBannerProxy.swift in Sources */,
 				A297F400271709F800F7AF8A /* BaseBridgeTest.swift in Sources */,
+				AD9067E229439D5F008B4204 /* SetABTestingVariantBridgeTest.swift in Sources */,
 				ADF3AD79272B02C200048F78 /* GetCMPDataBridgeTest.swift in Sources */,
 				A297F404271710F200F7AF8A /* InitializeBridgeTest.swift in Sources */,
 			);
