@@ -30,7 +30,7 @@ void main() {
         firstLayer: mockFirstLayerSettings,
         secondLayer: null,
         general: mockGeneralStyleSettings,
-        variant: mockVariant,
+        variantName: mockVariant,
       ),
     );
 

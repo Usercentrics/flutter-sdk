@@ -28,7 +28,7 @@ void main() {
       settings: BannerSettings(
         secondLayer: mockSecondLayerSettings,
         general: mockGeneralStyleSettings,
-        variant: mockVariant,
+        variantName: mockVariant,
       ),
     );
 
