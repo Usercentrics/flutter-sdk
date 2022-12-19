@@ -101,6 +101,9 @@ const mockFont = BannerFont(
 const mockLogo = BannerImage(
   assetPath: "images/flutter-logo.png",
 );
+
+const mockDisableSystemBackButton = false;
+
 final mockSecondLayerSettings = SecondLayerStyleSettings(
   showCloseButton: true,
   buttonLayout: ButtonLayout.row(buttons: [
@@ -114,6 +117,7 @@ final mockSecondLayerSettings = SecondLayerStyleSettings(
 );
 
 const mockGeneralStyleSettings = GeneralStyleSettings(
-    font: mockFont, logo: mockLogo, links: LegalLinksSettings.none);
+    font: mockFont, logo: mockLogo, links: LegalLinksSettings.none,
+    disableSystemBackButton: mockDisableSystemBackButton);
 
 const mockVariant = "variantA";

@@ -163,6 +163,9 @@ const mockFont = BannerFont(
   boldFontAssetPath: "fonts/Lora-Bold.ttf",
   fontSize: 20,
 );
+
+const mockDisableSystemBackButton = false;
+
 const mockLogo = BannerImage(
   assetPath: "images/flutter-logo.png",
 );
@@ -171,6 +174,7 @@ const mockGeneralStyleSettings = GeneralStyleSettings(
   font: mockFont,
   logo: mockLogo,
   links: LegalLinksSettings.both,
+  disableSystemBackButton: mockDisableSystemBackButton,
 );
 
 const mockVariant = "variantA";
