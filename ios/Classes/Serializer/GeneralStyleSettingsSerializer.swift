@@ -23,6 +23,7 @@ extension GeneralStyleSettings {
                   linkColor: UIColor(unsafeHex: dict["linkColor"] as? String),
                   tabColor: UIColor(unsafeHex: dict["tabColor"] as? String),
                   bordersColor: UIColor(unsafeHex: dict["bordersColor"] as? String),
-                  toggleStyleSettings: toggleStyleSettings)
+                  toggleStyleSettings: toggleStyleSettings,
+                  disableSystemBackButton: dict["disableSystemBackButton"] as? Bool),
     }
 }

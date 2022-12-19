@@ -22,5 +22,6 @@ internal fun Any?.deserializeGeneralStyleSettings(
         logo = this["logo"].deserializeImage(assetsProvider, activityProvider),
         font = this["font"].deserializeBannerFont(assetsProvider, activityProvider),
         links = this["links"].deserializeLegalLinksSettings(),
+        disableSystemBackButton = this["disableSystemBackButton"] as? Boolean,
     )
 }

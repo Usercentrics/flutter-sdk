@@ -87,7 +87,8 @@ const expectedArguments = {
         'fontSize': 20.0
       },
       'logo': 'images/flutter-logo.png',
-      'links': 'NONE'
+      'links': 'NONE',
+      'disableSystemBackButton': false
     },
     "variantName": 'variantA'
   }

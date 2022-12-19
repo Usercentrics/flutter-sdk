@@ -21,6 +21,7 @@ class GeneralStyleSettingsSerializer {
           'font': _serializeFont(value.font),
           'logo': value.logo?.assetPath,
           'links': LegalLinksSettingsSerializer.serialize(value.links),
+          'disableSystemBackButton' : value.disableSystemBackButton,
         };
 
   static dynamic _serializeFont(BannerFont? customFont) {
