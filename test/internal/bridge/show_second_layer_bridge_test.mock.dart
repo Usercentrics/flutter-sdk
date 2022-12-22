@@ -87,7 +87,8 @@ const expectedArguments = {
         'fontSize': 20.0
       },
       'logo': 'images/flutter-logo.png',
-      'links': 'NONE'
+      'links': 'HIDDEN',
+      'disableSystemBackButton': false
     },
     "variantName": 'variantA'
   }
@@ -100,6 +101,8 @@ const mockFont = BannerFont(
 const mockLogo = BannerImage(
   assetPath: "images/flutter-logo.png",
 );
+const mockDisableSystemBackButton = false;
+
 final mockSecondLayerSettings = SecondLayerStyleSettings(
   showCloseButton: true,
   buttonLayout: ButtonLayout.row(buttons: [
@@ -113,6 +116,10 @@ final mockSecondLayerSettings = SecondLayerStyleSettings(
 );
 
 const mockGeneralStyleSettings = GeneralStyleSettings(
-    font: mockFont, logo: mockLogo, links: LegalLinksSettings.none);
+  font: mockFont,
+  logo: mockLogo,
+  links: LegalLinksSettings.hidden,
+  disableSystemBackButton: mockDisableSystemBackButton,
+);
 
 const mockVariant = "variantA";

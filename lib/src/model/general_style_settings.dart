@@ -16,6 +16,7 @@ class GeneralStyleSettings {
     this.font,
     this.logo,
     this.links,
+    this.disableSystemBackButton,
   });
 
   /// The text color.
@@ -48,6 +49,8 @@ class GeneralStyleSettings {
   /// The Legal Links Settings.
   final LegalLinksSettings? links;
 
+  final bool? disableSystemBackButton;
+
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
@@ -63,7 +66,8 @@ class GeneralStyleSettings {
           toggleStyleSettings == other.toggleStyleSettings &&
           font == other.font &&
           logo == other.logo &&
-          links == other.links;
+          links == other.links &&
+          disableSystemBackButton == other.disableSystemBackButton;
 
   @override
   int get hashCode =>
@@ -76,11 +80,12 @@ class GeneralStyleSettings {
       toggleStyleSettings.hashCode ^
       font.hashCode ^
       logo.hashCode ^
-      links.hashCode;
+      links.hashCode ^
+      disableSystemBackButton.hashCode;
 
   @override
   String toString() {
-    return 'GeneralStyleSettings{textColor: $textColor, layerBackgroundColor: $layerBackgroundColor, layerBackgroundSecondaryColor: $layerBackgroundSecondaryColor, linkColor: $linkColor, tabColor: $tabColor, bordersColor: $bordersColor, toggleStyleSettings: $toggleStyleSettings, font: $font, logo: $logo, links: $links}';
+    return 'GeneralStyleSettings{textColor: $textColor, layerBackgroundColor: $layerBackgroundColor, layerBackgroundSecondaryColor: $layerBackgroundSecondaryColor, linkColor: $linkColor, tabColor: $tabColor, bordersColor: $bordersColor, toggleStyleSettings: $toggleStyleSettings, font: $font, logo: $logo, links: $links, disableSystemBackButton: $disableSystemBackButton}';
   }
 }
 
@@ -98,7 +103,7 @@ class ToggleStyleSettings {
   /// The active background color.
   final Color? activeBackgroundColor;
 
-  /// The inactive backgroun color.
+  /// The inactive background color.
   final Color? inactiveBackgroundColor;
 
   /// The disabled background color.

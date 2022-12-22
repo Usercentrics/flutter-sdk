@@ -56,6 +56,7 @@ const _general = GeneralStyleSettings(
   bordersColor: _grey,
   layerBackgroundColor: _dark,
   layerBackgroundSecondaryColor: _grey,
+  disableSystemBackButton: false,
 );
 
 final bannerSettingsCustomizationExample2 = BannerSettings(

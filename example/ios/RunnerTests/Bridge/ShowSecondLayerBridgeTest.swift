@@ -68,7 +68,7 @@ class ShowSecondLayerBridgeTest: XCTestCase, BaseBridgeTestProtocol {
             XCTAssertEqual(consent["isEssential"] as! Bool, true)
 
             XCTAssertEqual(self.bannerProxy.showSecondLayerCount, 1)
-            XCTAssertEqual(self.bannerProxy.showSecondLayerBannerSettingsArg?.generalStyleSettings?.links, LegalLinksSettings.none)
+            XCTAssertEqual(self.bannerProxy.showSecondLayerBannerSettingsArg?.generalStyleSettings?.links, LegalLinksSettings.hidden)
             XCTAssertEqual(self.bannerProxy.showSecondLayerBannerSettingsArg?.secondLayerStyleSettings?.showCloseButton, true)
 
             expectation.fulfill()
@@ -81,7 +81,7 @@ class ShowSecondLayerBridgeTest: XCTestCase, BaseBridgeTestProtocol {
                     "showCloseButton": true,
                 ],
                 "generalStyleSettings": [
-                    "links": "NONE"
+                    "links": "HIDDEN"
                 ]
             ],
         ]
