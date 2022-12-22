@@ -11,8 +11,8 @@ class LegalLinksSettingsSerializer {
         return 'SECOND_LAYER_ONLY';
       case LegalLinksSettings.both:
         return 'BOTH';
-      case LegalLinksSettings.none:
-        return 'NONE';
+      case LegalLinksSettings.hidden:
+        return 'HIDDEN';
     }
   }
 }

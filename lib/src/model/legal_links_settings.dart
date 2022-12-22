@@ -1,1 +1,1 @@
-enum LegalLinksSettings { firstLayerOnly, secondLayerOnly, both, none }
+enum LegalLinksSettings { firstLayerOnly, secondLayerOnly, both, hidden }

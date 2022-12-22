@@ -9,8 +9,8 @@ extension LegalLinksSettings {
             return LegalLinksSettings.secondLayerOnly
         case "BOTH":
             return LegalLinksSettings.both
-        case "NONE":
-            return LegalLinksSettings.none
+        case "HIDDEN":
+            return LegalLinksSettings.hidden
         default:
             return nil
         }

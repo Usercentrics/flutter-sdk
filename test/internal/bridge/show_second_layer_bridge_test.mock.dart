@@ -87,7 +87,7 @@ const expectedArguments = {
         'fontSize': 20.0
       },
       'logo': 'images/flutter-logo.png',
-      'links': 'NONE',
+      'links': 'HIDDEN',
       'disableSystemBackButton': false
     },
     "variantName": 'variantA'
@@ -118,7 +118,7 @@ final mockSecondLayerSettings = SecondLayerStyleSettings(
 const mockGeneralStyleSettings = GeneralStyleSettings(
   font: mockFont,
   logo: mockLogo,
-  links: LegalLinksSettings.none,
+  links: LegalLinksSettings.hidden,
   disableSystemBackButton: mockDisableSystemBackButton,
 );
 
