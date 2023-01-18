@@ -5,7 +5,6 @@ class CustomizationSerializer {
     return UsercentricsCustomization(
       logoUrl: value['logoUrl'] ?? "",
       borderRadiusLayer: value['borderRadiusLayer'],
-      useBackgroundShadow: value['useBackgroundShadow'],
       borderRadiusButton: value['borderRadiusButton'],
       overlayOpacity: value['overlayOpacity'],
       font: FontSerializer.deserialize(value['font']),

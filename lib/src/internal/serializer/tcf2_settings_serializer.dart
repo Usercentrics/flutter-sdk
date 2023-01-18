@@ -36,8 +36,6 @@ class TCF2SettingsSerializer {
       purposeOneTreatment: value['purposeOneTreatment'],
       selectedVendorIds: value['selectedVendorIds']?.cast<int>() ?? [],
       gdprApplies: value['gdprApplies'],
-      consensuDomain: value['consensuDomain'] ?? "",
-      consensuScriptPath: value['consensuScriptPath'] ?? "",
       selectedStacks: value['selectedStacks']?.cast<int>() ?? [],
       disabledSpecialFeatures:
           value['disabledSpecialFeatures']?.cast<int>() ?? [],
@@ -46,7 +44,6 @@ class TCF2SettingsSerializer {
       resurfacePeriodEnded: value['resurfacePeriodEnded'],
       resurfacePurposeChanged: value['resurfacePurposeChanged'],
       resurfaceVendorAdded: value['resurfaceVendorAdded'],
-      vendorToggleAll: value['vendorToggleAll'],
       firstLayerDescription: value['firstLayerDescription'] ?? "",
       firstLayerAdditionalInfo: value['firstLayerAdditionalInfo'] ?? "",
       secondLayerDescription: value['secondLayerDescription'] ?? "",
@@ -55,7 +52,6 @@ class TCF2SettingsSerializer {
       togglesSpecialFeaturesToggleOff:
           value['togglesSpecialFeaturesToggleOff'] ?? "",
       appLayerNoteResurface: value['appLayerNoteResurface'] ?? "",
-      firstLayerNoteGlobal: value['firstLayerNoteGlobal'] ?? "",
       firstLayerNoteResurface: value['firstLayerNoteResurface'] ?? "",
     );
   }

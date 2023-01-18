@@ -5,14 +5,11 @@ class CCPASettings {
     required this.firstLayerTitle,
     required this.isActive,
     required this.showOnPageLoad,
-    required this.reshowCMP,
     required this.reshowAfterDays,
     required this.iabAgreementExists,
-    required this.firstLayerDescription,
     required this.appFirstLayerDescription,
     required this.firstLayerMobileDescriptionIsActive,
     required this.firstLayerMobileDescription,
-    required this.firstLayerHideLanguageSwitch,
     required this.secondLayerTitle,
     required this.secondLayerDescription,
     required this.secondLayerHideLanguageSwitch,
@@ -24,14 +21,11 @@ class CCPASettings {
   final String firstLayerTitle;
   final bool isActive;
   final bool showOnPageLoad;
-  final bool reshowCMP;
   final int reshowAfterDays;
   final bool iabAgreementExists;
-  final String firstLayerDescription;
   final String appFirstLayerDescription;
   final bool firstLayerMobileDescriptionIsActive;
   final String firstLayerMobileDescription;
-  final bool firstLayerHideLanguageSwitch;
   final String secondLayerTitle;
   final String secondLayerDescription;
   final bool secondLayerHideLanguageSwitch;
@@ -47,15 +41,12 @@ class CCPASettings {
           firstLayerTitle == other.firstLayerTitle &&
           isActive == other.isActive &&
           showOnPageLoad == other.showOnPageLoad &&
-          reshowCMP == other.reshowCMP &&
           reshowAfterDays == other.reshowAfterDays &&
           iabAgreementExists == other.iabAgreementExists &&
-          firstLayerDescription == other.firstLayerDescription &&
           appFirstLayerDescription == other.appFirstLayerDescription &&
           firstLayerMobileDescriptionIsActive ==
               other.firstLayerMobileDescriptionIsActive &&
           firstLayerMobileDescription == other.firstLayerMobileDescription &&
-          firstLayerHideLanguageSwitch == other.firstLayerHideLanguageSwitch &&
           secondLayerTitle == other.secondLayerTitle &&
           secondLayerDescription == other.secondLayerDescription &&
           secondLayerHideLanguageSwitch ==
@@ -69,14 +60,11 @@ class CCPASettings {
       firstLayerTitle.hashCode +
       isActive.hashCode +
       showOnPageLoad.hashCode +
-      reshowCMP.hashCode +
       reshowAfterDays.hashCode +
       iabAgreementExists.hashCode +
-      firstLayerDescription.hashCode +
       appFirstLayerDescription.hashCode +
       firstLayerMobileDescriptionIsActive.hashCode +
       firstLayerMobileDescription.hashCode +
-      firstLayerHideLanguageSwitch.hashCode +
       secondLayerTitle.hashCode +
       secondLayerDescription.hashCode +
       secondLayerHideLanguageSwitch.hashCode +
