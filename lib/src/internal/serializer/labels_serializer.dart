@@ -24,7 +24,6 @@ class LabelsSerializer {
       legalBasisList: value['legalBasisList'] ?? "",
       legalBasisInfo: value['legalBasisInfo'] ?? "",
       processingCompanyTitle: value['processingCompanyTitle'] ?? "",
-      retentionPeriod: value['retentionPeriod'] ?? "",
       technologiesUsed: value['technologiesUsed'] ?? "",
       technologiesUsedInfo: value['technologiesUsedInfo'] ?? "",
       cookiePolicyInfo: value['cookiePolicyInfo'] ?? "",

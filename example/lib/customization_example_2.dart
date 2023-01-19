@@ -26,13 +26,6 @@ final _firstLayer = FirstLayerStyleSettings(
   ),
   buttonLayout: ButtonLayout.column(buttons: [
     const ButtonSettings(
-      type: ButtonType.more,
-      textColor: Colors.white,
-      backgroundColor: Colors.transparent,
-      textSize: _buttonTextSizeInSp,
-      cornerRadius: _buttonCornerRadius,
-    ),
-    const ButtonSettings(
       type: ButtonType.acceptAll,
       textColor: Colors.black,
       backgroundColor: Colors.white,

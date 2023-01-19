@@ -21,7 +21,6 @@ class UsercentricsLabels {
     required this.legalBasisList,
     required this.legalBasisInfo,
     required this.processingCompanyTitle,
-    required this.retentionPeriod,
     required this.technologiesUsed,
     required this.technologiesUsedInfo,
     required this.cookiePolicyInfo,
@@ -87,7 +86,6 @@ class UsercentricsLabels {
   final String legalBasisList;
   final String legalBasisInfo;
   final String processingCompanyTitle;
-  final String retentionPeriod;
   final String technologiesUsed;
   final String technologiesUsedInfo;
   final String cookiePolicyInfo;
@@ -157,7 +155,6 @@ class UsercentricsLabels {
           legalBasisList == other.legalBasisList &&
           legalBasisInfo == other.legalBasisInfo &&
           processingCompanyTitle == other.processingCompanyTitle &&
-          retentionPeriod == other.retentionPeriod &&
           technologiesUsed == other.technologiesUsed &&
           technologiesUsedInfo == other.technologiesUsedInfo &&
           cookiePolicyInfo == other.cookiePolicyInfo &&
@@ -226,7 +223,6 @@ class UsercentricsLabels {
       legalBasisList.hashCode +
       legalBasisInfo.hashCode +
       processingCompanyTitle.hashCode +
-      retentionPeriod.hashCode +
       technologiesUsed.hashCode +
       technologiesUsedInfo.hashCode +
       cookiePolicyInfo.hashCode +

@@ -27,14 +27,6 @@ final _firstLayer = FirstLayerStyleSettings(
   cornerRadius: 50,
   buttonLayout: ButtonLayout.row(buttons: [
     const ButtonSettings(
-      type: ButtonType.more,
-      fontAssetPath: _customBoldFontPath,
-      backgroundColor: Colors.transparent,
-      textColor: Colors.black,
-      textSize: _buttonTextSizeInSp,
-      cornerRadius: _buttonCornerRadius,
-    ),
-    const ButtonSettings(
       type: ButtonType.acceptAll,
       fontAssetPath: _customBoldFontPath,
       textSize: _buttonTextSizeInSp,

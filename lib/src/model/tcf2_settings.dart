@@ -34,8 +34,6 @@ class TCF2Settings {
     required this.purposeOneTreatment,
     required this.selectedVendorIds,
     required this.gdprApplies,
-    required this.consensuDomain,
-    required this.consensuScriptPath,
     required this.selectedStacks,
     required this.disabledSpecialFeatures,
     required this.firstLayerShowDescriptions,
@@ -43,14 +41,12 @@ class TCF2Settings {
     required this.resurfacePeriodEnded,
     required this.resurfacePurposeChanged,
     required this.resurfaceVendorAdded,
-    required this.vendorToggleAll,
     required this.firstLayerDescription,
     required this.firstLayerAdditionalInfo,
     required this.secondLayerDescription,
     required this.togglesSpecialFeaturesToggleOn,
     required this.togglesSpecialFeaturesToggleOff,
     required this.appLayerNoteResurface,
-    required this.firstLayerNoteGlobal,
     required this.firstLayerNoteResurface,
   });
 
@@ -86,8 +82,6 @@ class TCF2Settings {
   final bool purposeOneTreatment;
   final List<int> selectedVendorIds;
   final bool gdprApplies;
-  final String consensuDomain;
-  final String consensuScriptPath;
   final List<int> selectedStacks;
   final List<int> disabledSpecialFeatures;
   final bool firstLayerShowDescriptions;
@@ -95,14 +89,12 @@ class TCF2Settings {
   final bool resurfacePeriodEnded;
   final bool resurfacePurposeChanged;
   final bool resurfaceVendorAdded;
-  final bool vendorToggleAll;
   final String firstLayerDescription;
   final String firstLayerAdditionalInfo;
   final String secondLayerDescription;
   final String togglesSpecialFeaturesToggleOn;
   final String togglesSpecialFeaturesToggleOff;
   final String appLayerNoteResurface;
-  final String firstLayerNoteGlobal;
   final String firstLayerNoteResurface;
 
   @override
@@ -144,8 +136,6 @@ class TCF2Settings {
           purposeOneTreatment == other.purposeOneTreatment &&
           listEquals(selectedVendorIds, other.selectedVendorIds) &&
           gdprApplies == other.gdprApplies &&
-          consensuDomain == other.consensuDomain &&
-          consensuScriptPath == other.consensuScriptPath &&
           listEquals(selectedStacks, other.selectedStacks) &&
           listEquals(disabledSpecialFeatures, other.disabledSpecialFeatures) &&
           firstLayerShowDescriptions == other.firstLayerShowDescriptions &&
@@ -153,7 +143,6 @@ class TCF2Settings {
           resurfacePeriodEnded == other.resurfacePeriodEnded &&
           resurfacePurposeChanged == other.resurfacePurposeChanged &&
           resurfaceVendorAdded == other.resurfaceVendorAdded &&
-          vendorToggleAll == other.vendorToggleAll &&
           firstLayerDescription == other.firstLayerDescription &&
           firstLayerAdditionalInfo == other.firstLayerAdditionalInfo &&
           secondLayerDescription == other.secondLayerDescription &&
@@ -162,7 +151,6 @@ class TCF2Settings {
           togglesSpecialFeaturesToggleOff ==
               other.togglesSpecialFeaturesToggleOff &&
           appLayerNoteResurface == other.appLayerNoteResurface &&
-          firstLayerNoteGlobal == other.firstLayerNoteGlobal &&
           firstLayerNoteResurface == other.firstLayerNoteResurface;
 
   @override
@@ -199,8 +187,6 @@ class TCF2Settings {
       purposeOneTreatment.hashCode +
       selectedVendorIds.hashCode +
       gdprApplies.hashCode +
-      consensuDomain.hashCode +
-      consensuScriptPath.hashCode +
       selectedStacks.hashCode +
       disabledSpecialFeatures.hashCode +
       firstLayerShowDescriptions.hashCode +
@@ -208,14 +194,12 @@ class TCF2Settings {
       resurfacePeriodEnded.hashCode +
       resurfacePurposeChanged.hashCode +
       resurfaceVendorAdded.hashCode +
-      vendorToggleAll.hashCode +
       firstLayerDescription.hashCode +
       firstLayerAdditionalInfo.hashCode +
       secondLayerDescription.hashCode +
       togglesSpecialFeaturesToggleOn.hashCode +
       togglesSpecialFeaturesToggleOff.hashCode +
       appLayerNoteResurface.hashCode +
-      firstLayerNoteGlobal.hashCode +
       firstLayerNoteResurface.hashCode;
 
   @override

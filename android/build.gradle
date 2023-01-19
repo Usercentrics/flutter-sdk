@@ -1,10 +1,10 @@
-def usercentrics_version = "2.7.9"
+def usercentrics_version = "2.7.10"
 
 group 'com.usercentrics.sdk.flutter'
 version usercentrics_version
 
 buildscript {
-    ext.kotlin_version = '1.7.10'
+    ext.kotlin_version = '1.8.0'
     repositories {
         google()
         mavenCentral()

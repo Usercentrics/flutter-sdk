@@ -2,7 +2,6 @@ class UsercentricsCustomization {
   const UsercentricsCustomization({
     required this.logoUrl,
     required this.borderRadiusLayer,
-    required this.useBackgroundShadow,
     required this.borderRadiusButton,
     required this.overlayOpacity,
     required this.font,
@@ -11,7 +10,6 @@ class UsercentricsCustomization {
 
   final String logoUrl;
   final int? borderRadiusLayer;
-  final bool? useBackgroundShadow;
   final int? borderRadiusButton;
   final double? overlayOpacity;
   final CustomizationFont? font;
@@ -24,7 +22,6 @@ class UsercentricsCustomization {
           runtimeType == other.runtimeType &&
           logoUrl == other.logoUrl &&
           borderRadiusLayer == other.borderRadiusLayer &&
-          useBackgroundShadow == other.useBackgroundShadow &&
           borderRadiusButton == other.borderRadiusButton &&
           overlayOpacity == other.overlayOpacity &&
           font == other.font &&
@@ -34,7 +31,6 @@ class UsercentricsCustomization {
   int get hashCode =>
       logoUrl.hashCode +
       borderRadiusLayer.hashCode +
-      useBackgroundShadow.hashCode +
       borderRadiusButton.hashCode +
       overlayOpacity.hashCode +
       font.hashCode +
