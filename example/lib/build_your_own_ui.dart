@@ -30,7 +30,7 @@ class CustomUIPage extends StatelessWidget {
                       padding: const EdgeInsets.all(16),
                       child: Text(
                         _getVariantName(cmpData.activeVariant),
-                        style: Theme.of(context).textTheme.headline5,
+                        style: Theme.of(context).textTheme.headlineSmall,
                       ),
                     ),
                     const Text(
