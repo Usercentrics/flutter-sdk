@@ -2,9 +2,9 @@ import Usercentrics
 
 extension Bool {
     init?(from value: KotlinBoolean?) {
-        if let value = value {
-            self.init(value.boolValue)
-        }
-        return nil
+        guard
+            let value = value
+        else { return nil }
+        self.init(value.boolValue)
     }
 }
