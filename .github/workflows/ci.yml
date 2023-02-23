@@ -98,13 +98,13 @@ jobs:
   test-ios:
     name: Test iOS
     needs: [ lint, format, pub-dry-run ]
-    runs-on: macos-11
+    runs-on: macos-12
 
     steps:
       - name: Setup code
         uses: maxim-lobanov/setup-xcode@v1
         with:
-          xcode-version: '13.0'
+          xcode-version: '14.2'
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Setup Flutter
@@ -138,13 +138,13 @@ jobs:
   build-ios:
     name: Build iOS Example
     needs: [ lint, format, pub-dry-run ]
-    runs-on: macos-11
+    runs-on: macos-12
 
     steps:
       - name: Setup code
         uses: maxim-lobanov/setup-xcode@v1
         with:
-          xcode-version: '13.0'
+          xcode-version: '14.2'
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Setup Flutter
