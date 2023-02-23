@@ -1,11 +1,11 @@
 PODS:
   - Flutter (1.0.0)
-  - Usercentrics (2.7.12)
-  - usercentrics_sdk (2.7.12):
+  - Usercentrics (2.7.13)
+  - usercentrics_sdk (2.7.13):
     - Flutter
-    - UsercentricsUI (= 2.7.12)
-  - UsercentricsUI (2.7.12):
-    - Usercentrics (= 2.7.12)
+    - UsercentricsUI (= 2.7.13)
+  - UsercentricsUI (2.7.13):
+    - Usercentrics (= 2.7.13)
   - webview_flutter_wkwebview (0.0.1):
     - Flutter
 
@@ -29,9 +29,9 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
-  Usercentrics: 2f135e895dab2f9e27de1120962112f5c68df7c0
-  usercentrics_sdk: c360cdafe4329e66e362987ee9898ba756f21fff
-  UsercentricsUI: cd16df692358178f7d45086e41377d2d98b636ff
+  Usercentrics: f407b79f073e031252197a6e833bb022e8b26a07
+  usercentrics_sdk: 1d009a6640523e8b6826c9046ccc285d4c829d00
+  UsercentricsUI: 67c266082fd46a74e9007aba54c2750d7626689f
   webview_flutter_wkwebview: b7e70ef1ddded7e69c796c7390ee74180182971f
 
 PODFILE CHECKSUM: 723de1cf6e2f18b51eb3426c945e31134a750097
