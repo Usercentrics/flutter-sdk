@@ -9,7 +9,7 @@ repository: https://github.com/Usercentrics/flutter-sdk/
 #  [X] android/build.gradle
 #  [X] ios/usercentrics_sdk.podspec + pod install/update
 #  [X] CHANGELOG
-version: 2.7.13
+version: 2.7.15
 
 environment:
   sdk: ">=2.17.1 <3.0.0"
