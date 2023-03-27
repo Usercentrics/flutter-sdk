@@ -161,5 +161,14 @@ jobs:
     name: Release
     if: github.event_name == 'release'
     needs: [ test-flutter, test-android, test-ios, build-android, build-ios ]
+    container: cirrusci/flutter:stable
+    permissions:
+      id-token: write
+    runs-on: ubuntu-latest
     steps:
-      - uses: dart-lang/setup-dart/.github/workflows/publish.yml
+      - uses: actions/checkout@v3
+      - uses: dart-lang/setup-dart@v1
+      - name: Install dependencies
+        run: dart pub get
+      - name: Publish
+        run: dart pub publish --force
