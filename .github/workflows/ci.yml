@@ -161,14 +161,19 @@ jobs:
     name: Release
     if: github.event_name == 'release'
     needs: [ test-flutter, test-android, test-ios, build-android, build-ios ]
-    container: cirrusci/flutter:stable
-    permissions:
-      id-token: write
     runs-on: ubuntu-latest
+    container: cirrusci/flutter:stable
+    env:
+      PUB_DEV_CREDENTIAL: ${{ secrets.PUB_DEV_CREDENTIAL }}
+
     steps:
-      - uses: actions/checkout@v3
-      - uses: dart-lang/setup-dart@v1
-      - name: Install dependencies
-        run: dart pub get
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Validate version
+        run: dart scripts/check_release_version.dart ${{ github.ref }}
+      - name: Setup credentials
+        run: ./scripts/setup_pub_credentials.sh
+      - name: Get dependencies
+        run: flutter pub get
       - name: Publish
-        run: dart pub publish --force
+        run: flutter pub publish -f
