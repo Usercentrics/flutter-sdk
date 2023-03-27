@@ -161,5 +161,4 @@ jobs:
     name: Release
     if: github.event_name == 'release'
     needs: [ test-flutter, test-android, test-ios, build-android, build-ios ]
-    steps:
-      uses: dart-lang/setup-dart/.github/workflows/publish.yml
+    uses: dart-lang/setup-dart/.github/workflows/publish.yml
