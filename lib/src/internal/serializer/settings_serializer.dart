@@ -49,6 +49,8 @@ class SecondLayerSerializer {
     return SecondLayer(
       tabsCategoriesLabel: value['tabsCategoriesLabel'] ?? "",
       tabsServicesLabel: value['tabsServicesLabel'] ?? "",
+      acceptButtonText: value['acceptButtonText'] ?? "",
+      denyButtonText: value['denyButtonText'] ?? "",
       hideButtonDeny: value['hideButtonDeny'],
       hideLanguageSwitch: value['hideLanguageSwitch'],
     );

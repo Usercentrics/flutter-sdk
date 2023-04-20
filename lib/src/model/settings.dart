@@ -140,12 +140,16 @@ class SecondLayer {
   const SecondLayer({
     required this.tabsCategoriesLabel,
     required this.tabsServicesLabel,
+    required this.acceptButtonText,
+    required this.denyButtonText,
     required this.hideButtonDeny,
     required this.hideLanguageSwitch,
   });
 
   final String tabsCategoriesLabel;
   final String tabsServicesLabel;
+  final String? acceptButtonText;
+  final String? denyButtonText;
   final bool? hideButtonDeny;
   final bool? hideLanguageSwitch;
 
@@ -156,14 +160,18 @@ class SecondLayer {
           runtimeType == other.runtimeType &&
           tabsCategoriesLabel == other.tabsCategoriesLabel &&
           tabsServicesLabel == other.tabsServicesLabel &&
+          acceptButtonText == other.acceptButtonText &&
+          denyButtonText == other.denyButtonText &&
           hideButtonDeny == other.hideButtonDeny &&
           hideLanguageSwitch == other.hideLanguageSwitch;
 
   @override
   int get hashCode =>
-      tabsCategoriesLabel.hashCode +
-      tabsServicesLabel.hashCode +
-      hideButtonDeny.hashCode +
+      tabsCategoriesLabel.hashCode ^
+      tabsServicesLabel.hashCode ^
+      acceptButtonText.hashCode ^
+      denyButtonText.hashCode ^
+      hideButtonDeny.hashCode ^
       hideLanguageSwitch.hashCode;
 
   @override

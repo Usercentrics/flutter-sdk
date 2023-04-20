@@ -16,6 +16,8 @@ const _responseSecondLayer = {
   "tabsServicesLabel": "Services",
   "hideButtonDeny": false,
   "hideLanguageSwitch": false,
+  "acceptButtonText": "Accept All",
+  "denyButtonText": "Deny All"
 };
 const _responseLabels = {
   "btnAcceptAll": "Accept All",
@@ -88,6 +90,8 @@ const _responseLabels = {
   "consent": "Consent",
   "secondLayerDescriptionHtml": "Second Layer Description",
   "secondLayerTitle": "Second Layer Title",
+  "btnMore": "more",
+  "retentionPeriod": "Retention Period",
 };
 const _responseTCF2Settings = {
   "firstLayerTitle": "Privacy Information",
@@ -249,7 +253,7 @@ const _responseServices = [
     "addressOfProcessingCompany": "Google Building Gordon House",
     "descriptionOfService": "This is a conversion tracking service. ",
     "languagesAvailable": ["en"],
-    "dataCollectedList": ["IP adress"],
+    "dataCollectedList": ["IP address"],
     "dataPurposesList": ["Analytics"],
     "dataRecipientsList": ["Google Ireland Limited"],
     "legalBasisList": ["Art. 6 para. 1 s. 1 lit. a GDPR"],
@@ -276,6 +280,7 @@ const _responseServices = [
     "isDeactivated": false,
     "disableLegalBasis": false,
     "isEssential": false,
+    "technologyUsed": ["Cookies", "Pixel Tags"],
   }
 ];
 
@@ -315,7 +320,7 @@ const _expectedServices = [
     addressOfProcessingCompany: "Google Building Gordon House",
     descriptionOfService: "This is a conversion tracking service. ",
     languagesAvailable: ["en"],
-    dataCollectedList: ["IP adress"],
+    dataCollectedList: ["IP address"],
     dataPurposesList: ["Analytics"],
     dataRecipientsList: ["Google Ireland Limited"],
     legalBasisList: ["Art. 6 para. 1 s. 1 lit. a GDPR"],
@@ -342,6 +347,7 @@ const _expectedServices = [
     isDeactivated: false,
     disableLegalBasis: false,
     isEssential: false,
+    technologyUsed: ["Cookies", "Pixel Tags"],
   )
 ];
 
@@ -416,6 +422,8 @@ const _expectedLabels = UsercentricsLabels(
   secondLayerDescriptionHtml: "Second Layer Description",
   secondLayerTitle: "Second Layer Title",
   consent: "Consent",
+  btnMore: "more",
+  retentionPeriod: "Retention Period",
 );
 const _expectedFirstLayer = FirstLayer(
   hideButtonDeny: false,
@@ -425,7 +433,9 @@ const _expectedSecondLayer = SecondLayer(
     tabsServicesLabel: "Services",
     hideLanguageSwitch: false,
     tabsCategoriesLabel: "Categories",
-    hideButtonDeny: false);
+    hideButtonDeny: false,
+    acceptButtonText: "Accept All",
+    denyButtonText: "Deny All");
 const _expectedTCF2Settings = TCF2Settings(
     togglesSpecialFeaturesToggleOff: "Off",
     secondLayerTitle: "Privacy Settings Title",

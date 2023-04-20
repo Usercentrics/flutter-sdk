@@ -20,6 +20,7 @@ class ServiceSerializer {
       legalBasisList: value['legalBasisList']?.cast<String>() ?? [],
       retentionPeriodList: value['retentionPeriodList']?.cast<String>() ?? [],
       subConsents: value['subConsents']?.cast<String>() ?? [],
+      technologyUsed: value['technologyUsed']?.cast<String>() ?? [],
       language: value['language'] ?? "",
       linkToDpa: value['linkToDpa'] ?? "",
       legalGround: value['legalGround'] ?? "",
