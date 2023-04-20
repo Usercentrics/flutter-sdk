@@ -114,6 +114,7 @@ private fun UsercentricsLabels.serialize(): Any {
         "secondLayerDescriptionHtml" to secondLayerDescriptionHtml,
         "btnMore" to btnMore,
         "retentionPeriod" to retentionPeriod,
+        "explicit" to explicit,
     )
 }
 

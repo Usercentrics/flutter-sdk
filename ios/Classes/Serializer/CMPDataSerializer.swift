@@ -109,6 +109,7 @@ extension UsercentricsLabels {
             "secondLayerTitle" : self.secondLayerTitle,
             "btnMore": self.btnMore,
             "retentionPeriod": self.retentionPeriod,
+            "explicit": self.explicit_ as Any,
         ]
     }
 }

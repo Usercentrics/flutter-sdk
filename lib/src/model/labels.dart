@@ -65,6 +65,7 @@ class UsercentricsLabels {
     required this.secondLayerDescriptionHtml,
     required this.secondLayerTitle,
     required this.retentionPeriod,
+    required this.explicit,
   });
 
   final String btnAcceptAll;
@@ -132,6 +133,7 @@ class UsercentricsLabels {
   final String secondLayerDescriptionHtml;
   final String secondLayerTitle;
   final String retentionPeriod;
+  final String explicit;
 
   @override
   bool operator ==(Object other) =>
@@ -204,6 +206,7 @@ class UsercentricsLabels {
           consent == other.consent &&
           secondLayerDescriptionHtml == other.secondLayerDescriptionHtml &&
           secondLayerTitle == other.secondLayerTitle &&
+          explicit == other.explicit &&
           retentionPeriod == other.retentionPeriod;
 
   @override
@@ -272,6 +275,7 @@ class UsercentricsLabels {
       consent.hashCode ^
       secondLayerDescriptionHtml.hashCode ^
       secondLayerTitle.hashCode ^
+      explicit.hashCode ^
       retentionPeriod.hashCode;
 
   @override

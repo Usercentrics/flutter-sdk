@@ -70,6 +70,7 @@ class LabelsSerializer {
       secondLayerDescriptionHtml: value['secondLayerDescriptionHtml'] ?? "",
       secondLayerTitle: value['secondLayerTitle'] ?? "",
       retentionPeriod: value['retentionPeriod'] ?? "",
+      explicit: value['explicit'] ?? "",
     );
   }
 }

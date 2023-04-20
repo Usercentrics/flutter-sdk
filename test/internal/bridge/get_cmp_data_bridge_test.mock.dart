@@ -92,6 +92,7 @@ const _responseLabels = {
   "secondLayerTitle": "Second Layer Title",
   "btnMore": "more",
   "retentionPeriod": "Retention Period",
+  "explicit": "Explicit",
 };
 const _responseTCF2Settings = {
   "firstLayerTitle": "Privacy Information",
@@ -424,6 +425,7 @@ const _expectedLabels = UsercentricsLabels(
   consent: "Consent",
   btnMore: "more",
   retentionPeriod: "Retention Period",
+  explicit: "Explicit",
 );
 const _expectedFirstLayer = FirstLayer(
   hideButtonDeny: false,

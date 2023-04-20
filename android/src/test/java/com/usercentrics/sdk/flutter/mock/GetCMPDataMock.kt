@@ -55,6 +55,7 @@ internal object GetCMPDataMock {
             deviceStorageDisclosureUrl = null,
             isDeactivated = false,
             disableLegalBasis = false,
+            technologyUsed = listOf("Cookies", "Pixel Tags")
         )
     )
     private val fakeLabels = UsercentricsLabels(
@@ -162,6 +163,8 @@ internal object GetCMPDataMock {
         tabsCategoriesLabel = "Categories",
         hideButtonDeny = false,
         hideTogglesForServices = false,
+        acceptButtonText = "Accept All",
+        denyButtonText = "Deny All",
     )
     private val fakeTCF2Settings = TCF2Settings(
         togglesSpecialFeaturesToggleOff = "Off",
@@ -280,6 +283,8 @@ internal object GetCMPDataMock {
         "tabsServicesLabel" to "Services",
         "hideButtonDeny" to false,
         "hideLanguageSwitch" to false,
+        "acceptButtonText" to "Accept All",
+        "denyButtonText" to "Deny All",
     )
     private val expectedLabels = mapOf(
         "btnAcceptAll" to "Accept All",
@@ -345,6 +350,9 @@ internal object GetCMPDataMock {
         "consent" to "Consent",
         "secondLayerTitle" to "Privacy Settings Title",
         "secondLayerDescriptionHtml" to "Privacy Settings Description",
+        "btnMore" to "more",
+        "retentionPeriod" to "Retention Period",
+        "explicit" to "Explicit"
     )
     private val expectedTCF2Settings = mapOf(
         "firstLayerTitle" to "Privacy Information",
@@ -520,6 +528,7 @@ internal object GetCMPDataMock {
             "isDeactivated" to false,
             "disableLegalBasis" to false,
             "isEssential" to false,
+            "technologyUsed" to listOf("Cookies", "Pixel Tags")
         )
     )
 
