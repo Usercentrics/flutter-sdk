@@ -144,7 +144,7 @@ void main() {
       instance.isReadyCompleter = Completer();
       instance.isReadyCompleter?.complete();
 
-      const layout = UsercentricsLayout.sheet;
+      // const layout = UsercentricsLayout.sheet;
       const firstLayerSettings = FirstLayerStyleSettings(cornerRadius: 100);
       const secondLayerSettings =
           SecondLayerStyleSettings(showCloseButton: true);
@@ -165,13 +165,11 @@ void main() {
       );
 
       final response = await instance.showFirstLayer(
-        legacyLayout: layout,
         settings: bannerSettings,
       );
 
       expect(showFirstLayerBridge.invokeCount, 1);
       expect(showFirstLayerBridge.invokeChannelArgument?.name, "usercentrics");
-      expect(showFirstLayerBridge.invokeLegacyLayoutArgument, layout);
       expect(showFirstLayerBridge.invokeSettingsArgument, bannerSettings);
       expect(response, expectedResponse);
     });

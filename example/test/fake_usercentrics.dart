@@ -125,7 +125,6 @@ class FakeUsercentrics extends UsercentricsPlatform {
 
   @override
   Future<UsercentricsConsentUserResponse?> showFirstLayer({
-    UsercentricsLayout? legacyLayout,
     BannerSettings? settings,
   }) {
     throw UnimplementedError();

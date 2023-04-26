@@ -1,33 +1,25 @@
 import 'package:usercentrics_sdk/src/internal/internal.dart';
 import 'package:usercentrics_sdk/src/model/first_layer_style_settings.dart';
-import 'package:usercentrics_sdk/src/model/layout.dart';
 
 class FirstLayerStyleSettingsSerializer {
-  static dynamic serialize(
-    FirstLayerStyleSettings? value,
-    UsercentricsLayout? legacyLayout,
-  ) =>
-      value == null
-          ? null
-          : {
-              'layout':
-                  LayoutSerializer.serialize(value.layout ?? legacyLayout),
-              'headerImage': _serializeHeader(value.headerImage),
-              'title': _serializeTitle(value.title),
-              'message': _serializeMessage(value.message),
-              'buttonLayout': value.buttonLayout?.buttons
-                  .map(
-                    (row) => row
-                        .map((button) =>
-                            ButtonSettingsSerializer.serialize(button))
-                        .toList(),
-                  )
-                  .toList(),
-              'backgroundColor':
-                  ColorSerializer.serialize(value.backgroundColor),
-              'overlayColor': ColorSerializer.serialize(value.overlayColor),
-              'cornerRadius': value.cornerRadius,
-            };
+  static dynamic serialize(FirstLayerStyleSettings? value) => value == null
+      ? null
+      : {
+          'layout': LayoutSerializer.serialize(value.layout),
+          'headerImage': _serializeHeader(value.headerImage),
+          'title': _serializeTitle(value.title),
+          'message': _serializeMessage(value.message),
+          'buttonLayout': value.buttonLayout?.buttons
+              .map(
+                (row) => row
+                    .map((button) => ButtonSettingsSerializer.serialize(button))
+                    .toList(),
+              )
+              .toList(),
+          'backgroundColor': ColorSerializer.serialize(value.backgroundColor),
+          'overlayColor': ColorSerializer.serialize(value.overlayColor),
+          'cornerRadius': value.cornerRadius,
+        };
 
   static dynamic _serializeHeader(HeaderImageSettings? value) => value == null
       ? null
