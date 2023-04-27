@@ -3,6 +3,20 @@
 
 ## Features
 
+* Support US Frameworks
+
+## Improvements
+
+* Remove deprecated method (showFirstLayer(layout))
+
+## Resolved Issues
+
+* Resurface banner 
+
+### 2.7.16
+
+## Features
+
 * Supporting Limited Fields in Service Descriptions.
 
 ## Improvements
