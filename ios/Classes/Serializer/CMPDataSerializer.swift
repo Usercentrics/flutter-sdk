@@ -37,11 +37,6 @@ extension UsercentricsSettings {
             "enablePoweredBy" : self.enablePoweredBy,
             "editableLanguages" : self.editableLanguages,
             "customization" : self.customization?.serialize() as Any,
-            //        "googleConsentMode" : self.googleConsentMode,
-            //        "appIds" : self.appIds,
-            //        "privacyButtonUrls" : self.privacyButtonUrls,
-            //        "styles" : self.styles.serialize(),
-            //        "interactionAnalytics" : self.interactionAnalytics,
         ]
     }
 }
@@ -49,7 +44,6 @@ extension UsercentricsSettings {
 extension UsercentricsLabels {
     func serialize() -> Any {
         return [
-            // Required only
             "btnAcceptAll" : self.btnAcceptAll,
             "btnDeny" : self.btnDeny,
             "btnSave" : self.btnSave,
@@ -112,7 +106,10 @@ extension UsercentricsLabels {
             "second" : self.second,
             "consent" : self.consent,
             "secondLayerDescriptionHtml" : self.secondLayerDescriptionHtml,
-            "secondLayerTitle" : self.secondLayerTitle
+            "secondLayerTitle" : self.secondLayerTitle,
+            "btnMore": self.btnMore,
+            "retentionPeriod": self.retentionPeriod,
+            "explicit": self.explicit_ as Any,
         ]
     }
 }
@@ -271,14 +268,12 @@ extension FirstLayer {
 extension SecondLayer {
     func serialize() -> Any {
         return [
-            // Required
             "tabsCategoriesLabel" : self.tabsCategoriesLabel,
             "tabsServicesLabel" : self.tabsServicesLabel,
-            // Optional
-            //    "variant" : self.variant.name,
+            "acceptButtonText" : self.acceptButtonText as Any,
+            "denyButtonText" : self.denyButtonText as Any,
             "hideButtonDeny" : Bool(from: self.hideButtonDeny) as Any,
             "hideLanguageSwitch" : Bool(from: self.hideLanguageSwitch) as Any,
-            //        "side" : self.side.name,
         ]
     }
 }
@@ -291,12 +286,8 @@ extension UsercentricsService {
             "templateId" : self.templateId as Any,
             "version" : self.version as Any,
             "type" : self.type as Any,
-            //        "adminSettingsId" : self.adminSettingsId,
             "dataProcessor" : self.dataProcessor as Any,
             "dataPurposes" : self.dataPurposes,
-            //        "domAttributes" : self.domAttributes,
-            //        "domElements" : self.domElements,
-            //        "domKeys" : self.domKeys,
             "processingCompany" : self.processingCompany as Any,
             "nameOfProcessingCompany" : self.nameOfProcessingCompany,
             "addressOfProcessingCompany" : self.addressOfProcessingCompany,
@@ -309,14 +300,11 @@ extension UsercentricsService {
             "retentionPeriodList" : self.retentionPeriodList,
             "subConsents" : self.subConsents as Any,
             "language" : self.language,
-            //        "createdBy" : self.createdBy,
-            //        "updatedBy" : self.updatedBy,
             "linkToDpa" : self.linkToDpa,
             "legalGround" : self.legalGround,
             "optOutUrl" : self.optOutUrl,
             "policyOfProcessorUrl" : self.policyOfProcessorUrl,
             "categorySlug" : self.categorySlug as Any,
-            //        "recordsOfProcessingActivities" : self.recordsOfProcessingActivities,
             "retentionPeriodDescription" : self.retentionPeriodDescription,
             "dataProtectionOfficer" : self.dataProtectionOfficer,
             "privacyPolicyURL" : self.privacyPolicyURL,
@@ -328,12 +316,10 @@ extension UsercentricsService {
             "cookieMaxAgeSeconds" : self.cookieMaxAgeSeconds as Any,
             "usesNonCookieAccess" : Bool(from: self.usesNonCookieAccess) as Any,
             "deviceStorageDisclosureUrl" : self.deviceStorageDisclosureUrl as Any,
-            //    "deviceStorage" : self.deviceStorage.serialize(),
-            //        "isDeprecated" : self.isDeprecated,
             "isDeactivated" : Bool(from: self.isDeactivated) as Any,
-            //        "isAutoUpdateAllowed" : self.isAutoUpdateAllowed,
             "disableLegalBasis" : Bool(from: self.disableLegalBasis) as Any,
             "isEssential" : self.isEssential,
+            "technologyUsed": self.technologyUsed as Any,
         ]
     }
 }

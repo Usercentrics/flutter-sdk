@@ -58,11 +58,14 @@ class UsercentricsLabels {
     required this.yes,
     required this.storageInformationDescription,
     required this.btnBannerReadMore,
+    required this.btnMore,
     required this.linkToDpaInfo,
     required this.second,
     required this.consent,
     required this.secondLayerDescriptionHtml,
     required this.secondLayerTitle,
+    required this.retentionPeriod,
+    required this.explicit,
   });
 
   final String btnAcceptAll;
@@ -123,11 +126,14 @@ class UsercentricsLabels {
   final String yes;
   final String storageInformationDescription;
   final String btnBannerReadMore;
+  final String btnMore;
   final String linkToDpaInfo;
   final String second;
   final String consent;
   final String secondLayerDescriptionHtml;
   final String secondLayerTitle;
+  final String retentionPeriod;
+  final String explicit;
 
   @override
   bool operator ==(Object other) =>
@@ -194,77 +200,83 @@ class UsercentricsLabels {
           storageInformationDescription ==
               other.storageInformationDescription &&
           btnBannerReadMore == other.btnBannerReadMore &&
+          btnMore == other.btnMore &&
           linkToDpaInfo == other.linkToDpaInfo &&
           second == other.second &&
           consent == other.consent &&
           secondLayerDescriptionHtml == other.secondLayerDescriptionHtml &&
-          secondLayerTitle == other.secondLayerTitle;
+          secondLayerTitle == other.secondLayerTitle &&
+          explicit == other.explicit &&
+          retentionPeriod == other.retentionPeriod;
 
   @override
   int get hashCode =>
-      btnAcceptAll.hashCode +
-      btnDeny.hashCode +
-      btnSave.hashCode +
-      firstLayerTitle.hashCode +
-      accepted.hashCode +
-      denied.hashCode +
-      date.hashCode +
-      decision.hashCode +
-      dataCollectedList.hashCode +
-      dataCollectedInfo.hashCode +
-      locationOfProcessing.hashCode +
-      transferToThirdCountries.hashCode +
-      dataPurposes.hashCode +
-      dataPurposesInfo.hashCode +
-      dataRecipientsList.hashCode +
-      descriptionOfService.hashCode +
-      history.hashCode +
-      historyDescription.hashCode +
-      legalBasisList.hashCode +
-      legalBasisInfo.hashCode +
-      processingCompanyTitle.hashCode +
-      technologiesUsed.hashCode +
-      technologiesUsedInfo.hashCode +
-      cookiePolicyInfo.hashCode +
-      optOut.hashCode +
-      policyOf.hashCode +
-      imprintLinkText.hashCode +
-      privacyPolicyLinkText.hashCode +
-      categories.hashCode +
-      anyDomain.hashCode +
-      day.hashCode +
-      days.hashCode +
-      domain.hashCode +
-      duration.hashCode +
-      informationLoadingNotPossible.hashCode +
-      hour.hashCode +
-      hours.hashCode +
-      identifier.hashCode +
-      maximumAgeCookieStorage.hashCode +
-      minute.hashCode +
-      minutes.hashCode +
-      month.hashCode +
-      months.hashCode +
-      multipleDomains.hashCode +
-      no.hashCode +
-      nonCookieStorage.hashCode +
-      seconds.hashCode +
-      session.hashCode +
-      loadingStorageInformation.hashCode +
-      storageInformation.hashCode +
-      detailedStorageInformation.hashCode +
-      tryAgain.hashCode +
-      type.hashCode +
-      year.hashCode +
-      years.hashCode +
-      yes.hashCode +
-      storageInformationDescription.hashCode +
-      btnBannerReadMore.hashCode +
-      linkToDpaInfo.hashCode +
-      second.hashCode +
-      consent.hashCode +
-      secondLayerDescriptionHtml.hashCode +
-      secondLayerTitle.hashCode;
+      btnAcceptAll.hashCode ^
+      btnDeny.hashCode ^
+      btnSave.hashCode ^
+      firstLayerTitle.hashCode ^
+      accepted.hashCode ^
+      denied.hashCode ^
+      date.hashCode ^
+      decision.hashCode ^
+      dataCollectedList.hashCode ^
+      dataCollectedInfo.hashCode ^
+      locationOfProcessing.hashCode ^
+      transferToThirdCountries.hashCode ^
+      dataPurposes.hashCode ^
+      dataPurposesInfo.hashCode ^
+      dataRecipientsList.hashCode ^
+      descriptionOfService.hashCode ^
+      history.hashCode ^
+      historyDescription.hashCode ^
+      legalBasisList.hashCode ^
+      legalBasisInfo.hashCode ^
+      processingCompanyTitle.hashCode ^
+      technologiesUsed.hashCode ^
+      technologiesUsedInfo.hashCode ^
+      cookiePolicyInfo.hashCode ^
+      optOut.hashCode ^
+      policyOf.hashCode ^
+      imprintLinkText.hashCode ^
+      privacyPolicyLinkText.hashCode ^
+      categories.hashCode ^
+      anyDomain.hashCode ^
+      day.hashCode ^
+      days.hashCode ^
+      domain.hashCode ^
+      duration.hashCode ^
+      informationLoadingNotPossible.hashCode ^
+      hour.hashCode ^
+      hours.hashCode ^
+      identifier.hashCode ^
+      maximumAgeCookieStorage.hashCode ^
+      minute.hashCode ^
+      minutes.hashCode ^
+      month.hashCode ^
+      months.hashCode ^
+      multipleDomains.hashCode ^
+      no.hashCode ^
+      nonCookieStorage.hashCode ^
+      seconds.hashCode ^
+      session.hashCode ^
+      loadingStorageInformation.hashCode ^
+      storageInformation.hashCode ^
+      detailedStorageInformation.hashCode ^
+      tryAgain.hashCode ^
+      type.hashCode ^
+      year.hashCode ^
+      years.hashCode ^
+      yes.hashCode ^
+      storageInformationDescription.hashCode ^
+      btnBannerReadMore.hashCode ^
+      btnMore.hashCode ^
+      linkToDpaInfo.hashCode ^
+      second.hashCode ^
+      consent.hashCode ^
+      secondLayerDescriptionHtml.hashCode ^
+      secondLayerTitle.hashCode ^
+      explicit.hashCode ^
+      retentionPeriod.hashCode;
 
   @override
   String toString() => "$UsercentricsLabels($hashCode)";

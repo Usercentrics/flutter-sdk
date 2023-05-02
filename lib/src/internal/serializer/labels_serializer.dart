@@ -63,11 +63,14 @@ class LabelsSerializer {
       storageInformationDescription:
           value['storageInformationDescription'] ?? "",
       btnBannerReadMore: value['btnBannerReadMore'] ?? "",
+      btnMore: value['btnMore'] ?? "",
       linkToDpaInfo: value['linkToDpaInfo'] ?? "",
       second: value['second'] ?? "",
       consent: value['consent'] ?? "",
       secondLayerDescriptionHtml: value['secondLayerDescriptionHtml'] ?? "",
       secondLayerTitle: value['secondLayerTitle'] ?? "",
+      retentionPeriod: value['retentionPeriod'] ?? "",
+      explicit: value['explicit'] ?? "",
     );
   }
 }

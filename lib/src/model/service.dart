@@ -19,6 +19,7 @@ class UsercentricsService {
     required this.legalBasisList,
     required this.retentionPeriodList,
     required this.subConsents,
+    required this.technologyUsed,
     required this.language,
     required this.linkToDpa,
     required this.legalGround,
@@ -64,6 +65,7 @@ class UsercentricsService {
   final List<String> legalBasisList;
   final List<String> retentionPeriodList;
   final List<String> subConsents;
+  final List<String> technologyUsed;
   final String language;
   final String linkToDpa;
   final String legalGround;
