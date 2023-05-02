@@ -112,6 +112,9 @@ private fun UsercentricsLabels.serialize(): Any {
         "consent" to consent,
         "secondLayerTitle" to secondLayerTitle,
         "secondLayerDescriptionHtml" to secondLayerDescriptionHtml,
+        "btnMore" to btnMore,
+        "retentionPeriod" to retentionPeriod,
+        "explicit" to explicit,
     )
 }
 
@@ -246,14 +249,12 @@ private fun FirstLayer.serialize(): Any {
 
 private fun SecondLayer.serialize(): Any {
     return mapOf(
-        // Required
         "tabsCategoriesLabel" to tabsCategoriesLabel,
         "tabsServicesLabel" to tabsServicesLabel,
-        // Optional
-//    "variant" to variant.name,
+        "acceptButtonText" to acceptButtonText,
+        "denyButtonText" to denyButtonText,
         "hideButtonDeny" to hideButtonDeny,
         "hideLanguageSwitch" to hideLanguageSwitch,
-//        "side" to side.name,
     )
 }
 
@@ -262,12 +263,8 @@ private fun UsercentricsService.serialize(): Any {
         "templateId" to templateId,
         "version" to version,
         "type" to type,
-//        "adminSettingsId" to adminSettingsId,
         "dataProcessor" to dataProcessor,
         "dataPurposes" to dataPurposes,
-//        "domAttributes" to domAttributes,
-//        "domElements" to domElements,
-//        "domKeys" to domKeys,
         "processingCompany" to processingCompany,
         "nameOfProcessingCompany" to nameOfProcessingCompany,
         "addressOfProcessingCompany" to addressOfProcessingCompany,
@@ -280,14 +277,11 @@ private fun UsercentricsService.serialize(): Any {
         "retentionPeriodList" to retentionPeriodList,
         "subConsents" to subConsents,
         "language" to language,
-//        "createdBy" to createdBy,
-//        "updatedBy" to updatedBy,
         "linkToDpa" to linkToDpa,
         "legalGround" to legalGround,
         "optOutUrl" to optOutUrl,
         "policyOfProcessorUrl" to policyOfProcessorUrl,
         "categorySlug" to categorySlug,
-//        "recordsOfProcessingActivities" to recordsOfProcessingActivities,
         "retentionPeriodDescription" to retentionPeriodDescription,
         "dataProtectionOfficer" to dataProtectionOfficer,
         "privacyPolicyURL" to privacyPolicyURL,
@@ -299,12 +293,10 @@ private fun UsercentricsService.serialize(): Any {
         "cookieMaxAgeSeconds" to cookieMaxAgeSeconds,
         "usesNonCookieAccess" to usesNonCookieAccess,
         "deviceStorageDisclosureUrl" to deviceStorageDisclosureUrl,
-//    "deviceStorage" to deviceStorage.serialize(),
-//        "isDeprecated" to isDeprecated,
         "isDeactivated" to isDeactivated,
-//        "isAutoUpdateAllowed" to isAutoUpdateAllowed,
         "disableLegalBasis" to disableLegalBasis,
-        "isEssential" to isEssential
+        "isEssential" to isEssential,
+        "technologyUsed" to technologyUsed,
     )
 }
 
