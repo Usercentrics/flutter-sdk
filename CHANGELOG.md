@@ -1,5 +1,6 @@
 [Release Notes](https://docs.usercentrics.com/cmp_in_app_sdk/latest/about/history/)
-### 2.8.0
+
+### 2.8.0 - May 8, 2023
 
 ## Features
 
@@ -7,11 +8,12 @@
 
 ## Improvements
 
-* Remove deprecated method (showFirstLayer(layout))
+* Remove deprecated method (showFirstLayer(layout: UsercetricsLayout))
 
 ## Resolved Issues
 
-* Resurface banner 
+* Mediation issues
+* Solved general issues
 
 ### 2.7.16
 
