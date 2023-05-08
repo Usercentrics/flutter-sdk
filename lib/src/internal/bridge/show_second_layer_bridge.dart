@@ -24,7 +24,7 @@ class MethodChannelShowSecondLayer extends ShowSecondLayerBridge {
     final result = await channel.invokeMethod(
       _name,
       {
-        'bannerSettings': BannerSettingsSerializer.serialize(settings, null),
+        'bannerSettings': BannerSettingsSerializer.serialize(settings),
       },
     );
     return result == null

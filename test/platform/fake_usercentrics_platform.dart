@@ -2,7 +2,6 @@ import 'package:usercentrics_sdk/src/model/banner_settings.dart';
 import 'package:usercentrics_sdk/src/model/ccpa_data.dart';
 import 'package:usercentrics_sdk/src/model/cmp_data.dart';
 import 'package:usercentrics_sdk/src/model/consent_type.dart';
-import 'package:usercentrics_sdk/src/model/layout.dart';
 import 'package:usercentrics_sdk/src/model/logger_level.dart';
 import 'package:usercentrics_sdk/src/model/network_mode.dart';
 import 'package:usercentrics_sdk/src/model/ready_status.dart';
@@ -112,7 +111,6 @@ class FakeUsercentricsPlatform extends UsercentricsPlatform {
 
   @override
   Future<UsercentricsConsentUserResponse?> showFirstLayer({
-    UsercentricsLayout? legacyLayout,
     BannerSettings? settings,
   }) {
     showFirstLayerCount++;

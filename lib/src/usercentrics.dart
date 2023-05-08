@@ -69,7 +69,6 @@ class Usercentrics {
         SecondLayerStyleSettings? secondLayerSettings,
   }) =>
       _delegate.showFirstLayer(
-        legacyLayout: layout,
         settings: settings ??
             BannerSettings(
               general: generalStyleSettings,

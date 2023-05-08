@@ -105,13 +105,11 @@ class MethodChannelUsercentrics extends UsercentricsPlatform {
 
   @override
   Future<UsercentricsConsentUserResponse?> showFirstLayer({
-    UsercentricsLayout? legacyLayout,
     BannerSettings? settings,
   }) async {
     await _ensureIsReady();
     return await showFirstLayerBridge.invoke(
       channel: _channel,
-      legacyLayout: legacyLayout,
       settings: settings,
     );
   }
