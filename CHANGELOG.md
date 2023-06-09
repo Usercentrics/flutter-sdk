@@ -1,5 +1,19 @@
 [Release Notes](https://docs.usercentrics.com/cmp_in_app_sdk/latest/about/history/)
 
+### 2.8.1 - June 9, 2023
+
+## Improvements
+
+* `onConsentUpdated` event is not triggered after initialization
+* Banner reshow logic
+
+## Resolved Issues
+
+* Boolean values sent via consent mediation to Adjust
+*  Apple TV labels being cut off
+*  Android TV issue when showing TCF on 2nd layer
+*  Solved general issues
+
 ### 2.8.0 - May 8, 2023
 
 ## Features
