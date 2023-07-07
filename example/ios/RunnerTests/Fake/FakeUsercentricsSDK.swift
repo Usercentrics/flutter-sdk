@@ -57,4 +57,9 @@ final class FakeUsercentricsSDK: UsercentricsSDK {
         setABTestingVariantCount += 1
         setABTestingVariantArgument = variantName
     }
+
+    var trackCalls: Array<UsercentricsAnalyticsEventType> = []
+    override func track(event: UsercentricsAnalyticsEventType) {
+        trackCalls.append(event)
+    }
 }

@@ -144,4 +144,10 @@ class FakeUsercentrics extends UsercentricsPlatform {
   Future<void> setABTestingVariant({required String variant}) {
     throw UnimplementedError();
   }
+
+  @override
+  Future<void> track({required UsercentricsAnalyticsEventType event}) {
+    // TODO: implement track
+    throw UnimplementedError();
+  }
 }

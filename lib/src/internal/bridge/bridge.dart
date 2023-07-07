@@ -19,3 +19,6 @@ export 'save_opt_out_for_ccpa_bridge.dart';
 export 'set_cmp_id_bridge.dart';
 export 'show_first_layer_bridge.dart';
 export 'show_second_layer_bridge.dart';
+export 'track_bridge.dart';
+export 'set_ab_testing_variant_bridge.dart';
+export 'get_ab_testing_variant_bridge.dart';

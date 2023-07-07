@@ -197,4 +197,10 @@ class Usercentrics {
         isOptedOut: isOptedOut,
         consentType: consentType,
       );
+
+  /// Track
+  static Future<void> track({
+    required UsercentricsAnalyticsEventType event,
+  }) =>
+      _delegate.track(event: event);
 }
