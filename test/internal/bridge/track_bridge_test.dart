@@ -21,7 +21,9 @@ void main() {
     });
     const instance = MethodChannelTrack();
 
-    await instance.invoke(channel: channel, event: UsercentricsAnalyticsEventType.acceptAllFirstLayer);
+    await instance.invoke(
+        channel: channel,
+        event: UsercentricsAnalyticsEventType.acceptAllFirstLayer);
 
     expect(1, callCounter);
     expect('track', receivedCall?.method);

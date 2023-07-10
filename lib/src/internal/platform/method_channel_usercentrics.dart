@@ -94,7 +94,9 @@ class MethodChannelUsercentrics extends UsercentricsPlatform {
         networkMode: networkMode,
         consentMediation: consentMediation);
 
-    status.then((value) => isReadyCompleter?.complete(null)).onError((error, stackTrace) => isReadyCompleter?.complete(error));
+    status
+        .then((value) => isReadyCompleter?.complete(null))
+        .onError((error, stackTrace) => isReadyCompleter?.complete(error));
   }
 
   @override
@@ -104,7 +106,8 @@ class MethodChannelUsercentrics extends UsercentricsPlatform {
   }
 
   @override
-  Future<UsercentricsReadyStatus> get status => isReadyBridge.invoke(channel: _channel);
+  Future<UsercentricsReadyStatus> get status =>
+      isReadyBridge.invoke(channel: _channel);
 
   @override
   Future<UsercentricsConsentUserResponse?> showFirstLayer({
@@ -145,7 +148,8 @@ class MethodChannelUsercentrics extends UsercentricsPlatform {
     required String controllerId,
   }) async {
     await _ensureIsReady();
-    return await restoreUserSessionBridge.invoke(channel: _channel, controllerId: controllerId);
+    return await restoreUserSessionBridge.invoke(
+        channel: _channel, controllerId: controllerId);
   }
 
   @override
@@ -296,7 +300,8 @@ class MethodChannelUsercentrics extends UsercentricsPlatform {
     required String variant,
   }) async {
     await _ensureIsReady();
-    return await setABTestingVariantBridge.invoke(channel: _channel, variant: variant);
+    return await setABTestingVariantBridge.invoke(
+        channel: _channel, variant: variant);
   }
 
   Future<void> _ensureIsReady() async {
@@ -329,7 +334,8 @@ class FailedInitializationException implements Exception {
 }
 
 class NotInitializedException implements Exception {
-  static const message = "Usercentrics was not initialized, please ensure that you invoke 'Usercentrics.initialize()' before you start using it";
+  static const message =
+      "Usercentrics was not initialized, please ensure that you invoke 'Usercentrics.initialize()' before you start using it";
 
   const NotInitializedException();
 

@@ -64,10 +64,12 @@ void main() {
       userInteraction: UsercentricsUserInteraction.acceptAll,
       consents: [],
     );
-    final delegate = FakeUsercentricsPlatform(showFirstLayerAnswer: expectedResponse);
+    final delegate =
+        FakeUsercentricsPlatform(showFirstLayerAnswer: expectedResponse);
     Usercentrics.delegatePackingProperty = delegate;
 
-    const firstLayerSettings = FirstLayerStyleSettings(layout: UsercentricsLayout.sheet, cornerRadius: 100);
+    const firstLayerSettings = FirstLayerStyleSettings(
+        layout: UsercentricsLayout.sheet, cornerRadius: 100);
     const secondLayerSettings = SecondLayerStyleSettings(showCloseButton: true);
     const logo = BannerImage(assetPath: "asset/logo.png");
     const font = BannerFont(
@@ -99,7 +101,8 @@ void main() {
       userInteraction: UsercentricsUserInteraction.acceptAll,
       consents: [],
     );
-    final delegate = FakeUsercentricsPlatform(showSecondLayerAnswer: expectedResponse);
+    final delegate =
+        FakeUsercentricsPlatform(showSecondLayerAnswer: expectedResponse);
     Usercentrics.delegatePackingProperty = delegate;
 
     const secondLayerSettings = SecondLayerStyleSettings(showCloseButton: true);
@@ -140,7 +143,8 @@ void main() {
 
   test('controllerId', () async {
     const expectedControllerId = "ABC";
-    final delegate = FakeUsercentricsPlatform(controllerIdAnswer: expectedControllerId);
+    final delegate =
+        FakeUsercentricsPlatform(controllerIdAnswer: expectedControllerId);
     Usercentrics.delegatePackingProperty = delegate;
 
     final result = await Usercentrics.controllerId;
@@ -154,12 +158,14 @@ void main() {
       shouldCollectConsent: true,
       consents: [],
     );
-    final delegate = FakeUsercentricsPlatform(restoreUserSessionAnswer: expectedStatus);
+    final delegate =
+        FakeUsercentricsPlatform(restoreUserSessionAnswer: expectedStatus);
     Usercentrics.delegatePackingProperty = delegate;
 
     const controllerId = "ABC";
 
-    final result = await Usercentrics.restoreUserSession(controllerId: controllerId);
+    final result =
+        await Usercentrics.restoreUserSession(controllerId: controllerId);
 
     expect(delegate.restoreUserSessionCount, 1);
     expect(delegate.restoreUserSessionControllerIdArgument, controllerId);
@@ -180,9 +186,11 @@ void main() {
     final delegate = FakeUsercentricsPlatform();
     Usercentrics.delegatePackingProperty = delegate;
 
-    await Usercentrics.track(event: UsercentricsAnalyticsEventType.acceptAllFirstLayer);
+    await Usercentrics.track(
+        event: UsercentricsAnalyticsEventType.acceptAllFirstLayer);
 
     expect(delegate.trackCalls.length, 1);
-    expect(delegate.trackCalls[0], UsercentricsAnalyticsEventType.acceptAllFirstLayer);
+    expect(delegate.trackCalls[0],
+        UsercentricsAnalyticsEventType.acceptAllFirstLayer);
   });
 }

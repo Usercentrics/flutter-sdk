@@ -21,6 +21,7 @@ class MethodChannelTrack extends TrackBridge {
     required MethodChannel channel,
     required UsercentricsAnalyticsEventType event,
   }) async {
-    await channel.invokeMethod(_name, {'event': AnalyticsEventTypeSerializer.serialize(event)});
+    await channel.invokeMethod(
+        _name, {'event': AnalyticsEventTypeSerializer.serialize(event)});
   }
 }
