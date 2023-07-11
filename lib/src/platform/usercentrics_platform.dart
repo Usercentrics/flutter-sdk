@@ -93,4 +93,8 @@ abstract class UsercentricsPlatform {
   Future<void> setABTestingVariant({
     required String variant,
   });
+
+  Future<void> track({
+    required UsercentricsAnalyticsEventType event,
+  });
 }

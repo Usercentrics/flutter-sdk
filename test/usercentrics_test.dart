@@ -181,4 +181,16 @@ void main() {
     expect(delegate.cmpDataCount, 1);
     expect(result, mockCMPData);
   });
+
+  test('track', () async {
+    final delegate = FakeUsercentricsPlatform();
+    Usercentrics.delegatePackingProperty = delegate;
+
+    await Usercentrics.track(
+        event: UsercentricsAnalyticsEventType.acceptAllFirstLayer);
+
+    expect(delegate.trackCalls.length, 1);
+    expect(delegate.trackCalls[0],
+        UsercentricsAnalyticsEventType.acceptAllFirstLayer);
+  });
 }

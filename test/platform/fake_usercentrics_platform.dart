@@ -1,3 +1,4 @@
+import 'package:usercentrics_sdk/src/model/analytics_event_type.dart';
 import 'package:usercentrics_sdk/src/model/banner_settings.dart';
 import 'package:usercentrics_sdk/src/model/ccpa_data.dart';
 import 'package:usercentrics_sdk/src/model/cmp_data.dart';
@@ -328,6 +329,14 @@ class FakeUsercentricsPlatform extends UsercentricsPlatform {
   Future<void> setABTestingVariant({required String variant}) {
     setABTestingVariantArgument = variant;
     setABTestingVariantCount++;
+    return Future.value(null);
+  }
+
+  List<UsercentricsAnalyticsEventType> trackCalls = [];
+
+  @override
+  Future<void> track({required UsercentricsAnalyticsEventType event}) {
+    trackCalls.add(event);
     return Future.value(null);
   }
 }

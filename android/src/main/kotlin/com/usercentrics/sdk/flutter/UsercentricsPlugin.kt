@@ -61,7 +61,8 @@ class UsercentricsPlugin : FlutterPlugin,
             SaveOptOutForCCPABridge(),
             SetCMPIdBridge(),
             GetABTestingVariantBridge(),
-            SetABTestingVariantBridge()
+            SetABTestingVariantBridge(),
+            TrackBridge(),
         ).associateBy { it.name }
     }
 

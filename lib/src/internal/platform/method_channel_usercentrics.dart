@@ -3,8 +3,6 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:usercentrics_sdk/src/internal/bridge/bridge.dart';
-import 'package:usercentrics_sdk/src/internal/bridge/get_ab_testing_variant_bridge.dart';
-import 'package:usercentrics_sdk/src/internal/bridge/set_ab_testing_variant_bridge.dart';
 import 'package:usercentrics_sdk/src/model/model.dart';
 import 'package:usercentrics_sdk/src/platform/usercentrics_platform.dart';
 
@@ -33,6 +31,7 @@ class MethodChannelUsercentrics extends UsercentricsPlatform {
     this.setCMPIdBridge = const MethodChannelSetCMPId(),
     this.getABTestingVariantBridge = const MethodChannelGetABTestingVariant(),
     this.setABTestingVariantBridge = const MethodChannelSetABTestingVariant(),
+    this.trackBridge = const MethodChannelTrack(),
   });
 
   static const MethodChannel _channel = MethodChannel('usercentrics');
@@ -60,6 +59,7 @@ class MethodChannelUsercentrics extends UsercentricsPlatform {
   final SetCMPIdBridge setCMPIdBridge;
   final GetABTestingVariantBridge getABTestingVariantBridge;
   final SetABTestingVariantBridge setABTestingVariantBridge;
+  final TrackBridge trackBridge;
 
   @visibleForTesting
   Completer<Object?>? isReadyCompleter;
@@ -76,8 +76,13 @@ class MethodChannelUsercentrics extends UsercentricsPlatform {
     bool? consentMediation,
   }) async {
     final ongoingInit = isReadyCompleter;
+
     isReadyCompleter = Completer();
-    if (ongoingInit != null) await ongoingInit.future;
+
+    if (ongoingInit != null) {
+      await ongoingInit.future;
+    }
+
     initializeBridge.invoke(
         channel: _channel,
         settingsId: settingsId,
@@ -88,6 +93,7 @@ class MethodChannelUsercentrics extends UsercentricsPlatform {
         version: version,
         networkMode: networkMode,
         consentMediation: consentMediation);
+
     status
         .then((value) => isReadyCompleter?.complete(null))
         .onError((error, stackTrace) => isReadyCompleter?.complete(error));
@@ -309,6 +315,12 @@ class MethodChannelUsercentrics extends UsercentricsPlatform {
       final details = error is PlatformException ? error.message : null;
       throw FailedInitializationException(details ?? error.toString());
     }
+  }
+
+  @override
+  Future<void> track({required UsercentricsAnalyticsEventType event}) async {
+    await _ensureIsReady();
+    return await trackBridge.invoke(channel: _channel, event: event);
   }
 }
 
