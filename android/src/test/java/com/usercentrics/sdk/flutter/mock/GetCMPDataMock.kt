@@ -219,7 +219,12 @@ internal object GetCMPDataMock {
         firstLayerHideToggles = false,
         gdprApplies = true,
         linksVendorListLinkLabel = "Vendorlist",
-        tabsPurposeLabel = "Purposes"
+        tabsPurposeLabel = "Purposes",
+        categoriesOfDataLabel = "Categories of data",
+        dataRetentionPeriodLabel = "Data Retention Period",
+        legitimateInterestLabel = "Legitimate Interest at stake",
+        version = "2.2",
+        examplesLabel = "Examples",
     )
     private val fakeCCPASettings = CCPASettings(
         secondLayerHideLanguageSwitch = false,
@@ -404,6 +409,11 @@ internal object GetCMPDataMock {
         "togglesSpecialFeaturesToggleOff" to "Off",
         "appLayerNoteResurface" to "You can change your privacy settings or withdraw your consent at any time by opening the menu point Privacy Settings.",
         "firstLayerNoteResurface" to "You can change your privacy settings or withdraw your consent at any time by clicking on our Privacy Button.",
+        "examplesLabel" to "Examples",
+        "version" to "2.2",
+        "categoriesOfDataLabel" to "Categories of data",
+        "dataRetentionPeriodLabel" to "Data Retention Period",
+        "legitimateInterestLabel" to "Legitimate Interest at stake",
     )
     private val expectedCCPASettings = mapOf(
         "optOutNoticeLabel" to "Do not sell my personal information",

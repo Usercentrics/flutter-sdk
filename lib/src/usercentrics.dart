@@ -60,13 +60,13 @@ class Usercentrics {
   static Future<UsercentricsConsentUserResponse?> showFirstLayer({
     BannerSettings? settings,
     @Deprecated('Use [settings.firstLayer.layout] instead')
-        UsercentricsLayout? layout,
+    UsercentricsLayout? layout,
     @Deprecated('Use [settings.general] instead')
-        GeneralStyleSettings? generalStyleSettings,
+    GeneralStyleSettings? generalStyleSettings,
     @Deprecated('Use [settings.firstLayer] instead')
-        FirstLayerStyleSettings? firstLayerSettings,
+    FirstLayerStyleSettings? firstLayerSettings,
     @Deprecated('Use [settings.secondLayer] instead')
-        SecondLayerStyleSettings? secondLayerSettings,
+    SecondLayerStyleSettings? secondLayerSettings,
   }) =>
       _delegate.showFirstLayer(
         settings: settings ??
@@ -82,9 +82,9 @@ class Usercentrics {
   static Future<UsercentricsConsentUserResponse?> showSecondLayer({
     BannerSettings? settings,
     @Deprecated('Use [settings] instead')
-        GeneralStyleSettings? generalStyleSettings,
+    GeneralStyleSettings? generalStyleSettings,
     @Deprecated('Use [settings] instead')
-        SecondLayerStyleSettings? secondLayerSettings,
+    SecondLayerStyleSettings? secondLayerSettings,
   }) =>
       _delegate.showSecondLayer(
         settings: settings ??

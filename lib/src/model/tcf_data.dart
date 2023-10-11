@@ -2,15 +2,15 @@ import 'package:flutter/foundation.dart';
 
 /// All the data that needs to be disclosed to the end-user if TCF is enabled.
 class TCFData {
-  const TCFData({
-    required this.features,
-    required this.purposes,
-    required this.specialFeatures,
-    required this.specialPurposes,
-    required this.stacks,
-    required this.vendors,
-    required this.tcString,
-  });
+  const TCFData(
+      {required this.features,
+      required this.purposes,
+      required this.specialFeatures,
+      required this.specialPurposes,
+      required this.stacks,
+      required this.vendors,
+      required this.tcString,
+      required this.thirdPartyCount});
 
   /// A list of all the TCF features that need to be disclosed to the end-user if TCF is enabled.
   final List<TCFFeature> features;
@@ -38,6 +38,9 @@ class TCFData {
   /// The encoded IAB TCString
   final String tcString;
 
+  /// The total of vendors and services
+  final int thirdPartyCount;
+
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
@@ -49,17 +52,19 @@ class TCFData {
           listEquals(specialPurposes, other.specialPurposes) &&
           listEquals(stacks, other.stacks) &&
           listEquals(vendors, other.vendors) &&
-          tcString == other.tcString;
+          tcString == other.tcString &&
+          thirdPartyCount == other.thirdPartyCount;
 
   @override
   int get hashCode =>
-      features.hashCode +
-      purposes.hashCode +
-      specialFeatures.hashCode +
-      specialPurposes.hashCode +
-      stacks.hashCode +
-      vendors.hashCode +
-      tcString.hashCode;
+      features.hashCode ^
+      purposes.hashCode ^
+      specialFeatures.hashCode ^
+      specialPurposes.hashCode ^
+      stacks.hashCode ^
+      vendors.hashCode ^
+      tcString.hashCode ^
+      thirdPartyCount.hashCode;
 
   @override
   String toString() => "$TCFData($tcString)";
@@ -69,13 +74,13 @@ class TCFData {
 class TCFFeature {
   const TCFFeature({
     required this.purposeDescription,
-    required this.descriptionLegal,
+    required this.illustrations,
     required this.id,
     required this.name,
   });
 
   final String purposeDescription;
-  final String descriptionLegal;
+  final List<String> illustrations;
   final int id;
   final String name;
 
@@ -85,15 +90,15 @@ class TCFFeature {
       other is TCFFeature &&
           runtimeType == other.runtimeType &&
           purposeDescription == other.purposeDescription &&
-          descriptionLegal == other.descriptionLegal &&
+          listEquals(illustrations, other.illustrations) &&
           id == other.id &&
           name == other.name;
 
   @override
   int get hashCode =>
-      purposeDescription.hashCode +
-      descriptionLegal.hashCode +
-      id.hashCode +
+      purposeDescription.hashCode ^
+      illustrations.hashCode ^
+      id.hashCode ^
       name.hashCode;
 
   @override
@@ -104,7 +109,7 @@ class TCFFeature {
 class TCFPurpose {
   const TCFPurpose({
     required this.purposeDescription,
-    required this.descriptionLegal,
+    required this.illustrations,
     required this.id,
     required this.name,
     required this.consent,
@@ -116,7 +121,7 @@ class TCFPurpose {
   });
 
   final String purposeDescription;
-  final String descriptionLegal;
+  final List<String> illustrations;
   final int id;
   final String name;
   final bool? consent;
@@ -132,7 +137,7 @@ class TCFPurpose {
       other is TCFPurpose &&
           runtimeType == other.runtimeType &&
           purposeDescription == other.purposeDescription &&
-          descriptionLegal == other.descriptionLegal &&
+          listEquals(illustrations, other.illustrations) &&
           id == other.id &&
           name == other.name &&
           consent == other.consent &&
@@ -144,15 +149,15 @@ class TCFPurpose {
 
   @override
   int get hashCode =>
-      purposeDescription.hashCode +
-      descriptionLegal.hashCode +
-      id.hashCode +
-      name.hashCode +
-      consent.hashCode +
-      isPartOfASelectedStack.hashCode +
-      legitimateInterestConsent.hashCode +
-      showConsentToggle.hashCode +
-      showLegitimateInterestToggle.hashCode +
+      purposeDescription.hashCode ^
+      illustrations.hashCode ^
+      id.hashCode ^
+      name.hashCode ^
+      consent.hashCode ^
+      isPartOfASelectedStack.hashCode ^
+      legitimateInterestConsent.hashCode ^
+      showConsentToggle.hashCode ^
+      showLegitimateInterestToggle.hashCode ^
       stackId.hashCode;
 
   @override
@@ -163,7 +168,7 @@ class TCFPurpose {
 class TCFSpecialFeature {
   const TCFSpecialFeature({
     required this.purposeDescription,
-    required this.descriptionLegal,
+    required this.illustrations,
     required this.id,
     required this.name,
     required this.consent,
@@ -173,7 +178,7 @@ class TCFSpecialFeature {
   });
 
   final String purposeDescription;
-  final String descriptionLegal;
+  final List<String> illustrations;
   final int id;
   final String name;
   final bool? consent;
@@ -187,7 +192,7 @@ class TCFSpecialFeature {
       other is TCFSpecialFeature &&
           runtimeType == other.runtimeType &&
           purposeDescription == other.purposeDescription &&
-          descriptionLegal == other.descriptionLegal &&
+          listEquals(illustrations, other.illustrations) &&
           id == other.id &&
           name == other.name &&
           consent == other.consent &&
@@ -197,13 +202,13 @@ class TCFSpecialFeature {
 
   @override
   int get hashCode =>
-      purposeDescription.hashCode +
-      descriptionLegal.hashCode +
-      id.hashCode +
-      name.hashCode +
-      consent.hashCode +
-      isPartOfASelectedStack.hashCode +
-      stackId.hashCode +
+      purposeDescription.hashCode ^
+      illustrations.hashCode ^
+      id.hashCode ^
+      name.hashCode ^
+      consent.hashCode ^
+      isPartOfASelectedStack.hashCode ^
+      stackId.hashCode ^
       showConsentToggle.hashCode;
 
   @override
@@ -214,13 +219,13 @@ class TCFSpecialFeature {
 class TCFSpecialPurpose {
   const TCFSpecialPurpose({
     required this.purposeDescription,
-    required this.descriptionLegal,
+    required this.illustrations,
     required this.id,
     required this.name,
   });
 
   final String purposeDescription;
-  final String descriptionLegal;
+  final List<String> illustrations;
   final int id;
   final String name;
 
@@ -230,15 +235,15 @@ class TCFSpecialPurpose {
       other is TCFSpecialPurpose &&
           runtimeType == other.runtimeType &&
           purposeDescription == other.purposeDescription &&
-          descriptionLegal == other.descriptionLegal &&
+          listEquals(illustrations, other.illustrations) &&
           id == other.id &&
           name == other.name;
 
   @override
   int get hashCode =>
-      purposeDescription.hashCode +
-      descriptionLegal.hashCode +
-      id.hashCode +
+      purposeDescription.hashCode ^
+      illustrations.hashCode ^
+      id.hashCode ^
       name.hashCode;
 
   @override
@@ -275,10 +280,10 @@ class TCFStack {
 
   @override
   int get hashCode =>
-      description.hashCode +
-      id.hashCode +
-      name.hashCode +
-      purposeIds.hashCode +
+      description.hashCode ^
+      id.hashCode ^
+      name.hashCode ^
+      purposeIds.hashCode ^
       specialFeatureIds.hashCode;
 
   @override
@@ -288,26 +293,29 @@ class TCFStack {
 /// A TCF vendor (aka. advertiser, tracking service, third party) that is registered with the IAB global vendor list.
 /// A TCF vendor needs to be disclosed to the end-user and requires the end-user's consent and legitimate interest consent.
 class TCFVendor {
-  const TCFVendor({
-    required this.consent,
-    required this.features,
-    required this.flexiblePurposes,
-    required this.id,
-    required this.legitimateInterestConsent,
-    required this.legitimateInterestPurposes,
-    required this.name,
-    required this.policyUrl,
-    required this.purposes,
-    required this.specialFeatures,
-    required this.specialPurposes,
-    required this.showConsentToggle,
-    required this.showLegitimateInterestToggle,
-    required this.cookieMaxAgeSeconds,
-    required this.usesNonCookieAccess,
-    required this.deviceStorageDisclosureUrl,
-    required this.usesCookies,
-    required this.cookieRefresh,
-  });
+  const TCFVendor(
+      {required this.consent,
+      required this.features,
+      required this.flexiblePurposes,
+      required this.id,
+      required this.legitimateInterestConsent,
+      required this.legitimateInterestPurposes,
+      required this.name,
+      required this.policyUrl,
+      required this.purposes,
+      required this.specialFeatures,
+      required this.specialPurposes,
+      required this.showConsentToggle,
+      required this.showLegitimateInterestToggle,
+      required this.cookieMaxAgeSeconds,
+      required this.usesNonCookieAccess,
+      required this.deviceStorageDisclosureUrl,
+      required this.usesCookies,
+      required this.cookieRefresh,
+      required this.dataSharedOutsideEU,
+      required this.dataCategories,
+      required this.dataRetention,
+      required this.vendorUrls});
 
   final bool? consent;
   final List<int> features;
@@ -327,6 +335,10 @@ class TCFVendor {
   final String? deviceStorageDisclosureUrl;
   final bool usesCookies;
   final bool? cookieRefresh;
+  final bool? dataSharedOutsideEU;
+  final List<int> dataCategories;
+  final DataRetention? dataRetention;
+  final List<VendorUrl> vendorUrls;
 
   @override
   bool operator ==(Object other) =>
@@ -351,29 +363,111 @@ class TCFVendor {
           usesNonCookieAccess == other.usesNonCookieAccess &&
           deviceStorageDisclosureUrl == other.deviceStorageDisclosureUrl &&
           usesCookies == other.usesCookies &&
-          cookieRefresh == other.cookieRefresh;
+          cookieRefresh == other.cookieRefresh &&
+          dataSharedOutsideEU == other.dataSharedOutsideEU &&
+          listEquals(dataCategories, other.dataCategories) &&
+          dataRetention == other.dataRetention &&
+          listEquals(vendorUrls, other.vendorUrls);
 
   @override
   int get hashCode =>
-      consent.hashCode +
-      features.hashCode +
-      flexiblePurposes.hashCode +
-      id.hashCode +
-      legitimateInterestConsent.hashCode +
-      legitimateInterestPurposes.hashCode +
-      name.hashCode +
-      policyUrl.hashCode +
-      purposes.hashCode +
-      specialFeatures.hashCode +
-      specialPurposes.hashCode +
-      showConsentToggle.hashCode +
-      showLegitimateInterestToggle.hashCode +
-      cookieMaxAgeSeconds.hashCode +
-      usesNonCookieAccess.hashCode +
-      deviceStorageDisclosureUrl.hashCode +
-      usesCookies.hashCode +
-      cookieRefresh.hashCode;
+      consent.hashCode ^
+      features.hashCode ^
+      flexiblePurposes.hashCode ^
+      id.hashCode ^
+      legitimateInterestConsent.hashCode ^
+      legitimateInterestPurposes.hashCode ^
+      name.hashCode ^
+      policyUrl.hashCode ^
+      purposes.hashCode ^
+      specialFeatures.hashCode ^
+      specialPurposes.hashCode ^
+      showConsentToggle.hashCode ^
+      showLegitimateInterestToggle.hashCode ^
+      cookieMaxAgeSeconds.hashCode ^
+      usesNonCookieAccess.hashCode ^
+      deviceStorageDisclosureUrl.hashCode ^
+      usesCookies.hashCode ^
+      cookieRefresh.hashCode ^
+      dataSharedOutsideEU.hashCode ^
+      dataCategories.hashCode ^
+      dataRetention.hashCode ^
+      vendorUrls.hashCode;
 
   @override
   String toString() => "$TCFVendor(id: $id)";
+}
+
+class VendorUrl {
+  const VendorUrl({
+    required this.langId,
+    required this.privacy,
+    required this.legIntClaim,
+  });
+
+  final String? langId;
+  final String? privacy;
+  final String? legIntClaim;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is VendorUrl &&
+          runtimeType == other.runtimeType &&
+          langId == other.langId &&
+          privacy == other.privacy &&
+          legIntClaim == other.legIntClaim;
+
+  @override
+  int get hashCode => langId.hashCode + privacy.hashCode + legIntClaim.hashCode;
+
+  @override
+  String toString() =>
+      "$VendorUrl(langId: $langId privacy: $privacy legIntClaim: $legIntClaim)";
+}
+
+class DataRetention {
+  const DataRetention(
+      {required this.stdRetention,
+      required this.purposes,
+      required this.specialPurposes});
+
+  final int? stdRetention;
+  final RetentionPeriod? purposes;
+  final RetentionPeriod? specialPurposes;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is DataRetention &&
+          runtimeType == other.runtimeType &&
+          stdRetention == other.stdRetention &&
+          purposes == other.purposes &&
+          specialPurposes == other.specialPurposes;
+
+  @override
+  int get hashCode =>
+      stdRetention.hashCode + purposes.hashCode + specialPurposes.hashCode;
+
+  @override
+  String toString() => "$DataRetention(stdRetention: $stdRetention)";
+}
+
+class RetentionPeriod {
+  const RetentionPeriod({required this.idAndPeriod});
+
+  final Map<int, int> idAndPeriod;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is RetentionPeriod &&
+          runtimeType == other.runtimeType &&
+          mapEquals(idAndPeriod, other.idAndPeriod);
+
+  @override
+  int get hashCode => idAndPeriod.hashCode;
+
+  @override
+  String toString() => "$RetentionPeriod(idAndPeriod: $idAndPeriod)";
 }

@@ -52,17 +52,21 @@ void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
   tearDown(() async {
-    channel.setMockMethodCallHandler(null);
+    TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
+        .setMockMethodCallHandler(channel, null);
   });
 
   test('invoke', () async {
     int callCounter = 0;
     MethodCall? receivedCall;
-    channel.setMockMethodCallHandler((MethodCall methodCall) async {
+
+    TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
+        .setMockMethodCallHandler(channel, (MethodCall methodCall) async {
       callCounter++;
       receivedCall = methodCall;
       return mockResponse;
     });
+
     const instance = MethodChannelDenyAllForTCF();
 
     final result = await instance.invoke(

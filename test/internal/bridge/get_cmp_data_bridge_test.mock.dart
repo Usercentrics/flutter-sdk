@@ -146,6 +146,11 @@ const _responseTCF2Settings = {
       "You can change your privacy settings or withdraw your consent at any time by opening the menu point Privacy Settings.",
   "firstLayerNoteResurface":
       "You can change your privacy settings or withdraw your consent at any time by clicking on our Privacy Button.",
+  "examplesLabel": "Examples",
+  "version": "2.2",
+  "categoriesOfDataLabel": "Categories of data",
+  "dataRetentionPeriodLabel": "Data Retention Period",
+  "legitimateInterestLabel": "Legitimate Interest at stake",
 };
 const _responseCCPASettings = {
   "optOutNoticeLabel": "Do not sell my personal information",
@@ -489,7 +494,12 @@ const _expectedTCF2Settings = TCF2Settings(
     firstLayerHideToggles: false,
     gdprApplies: true,
     linksVendorListLinkLabel: "Vendorlist",
-    tabsPurposeLabel: "Purposes");
+    tabsPurposeLabel: "Purposes",
+    categoriesOfDataLabel: "Categories of data",
+    dataRetentionPeriodLabel: "Data Retention Period",
+    legitimateInterestLabel: "Legitimate Interest at stake",
+    version: "2.2",
+    examplesLabel: "Examples");
 
 const _expectedCCPASettings = CCPASettings(
   secondLayerHideLanguageSwitch: false,

@@ -2,4 +2,4 @@
 
 xcodebuild test -workspace 'Runner.xcworkspace' \
                 -scheme 'Runner' \
-                -destination 'platform=iOS Simulator,name=iPhone 12'
+                -destination 'platform=iOS Simulator,name=iPhone 14 Pro'

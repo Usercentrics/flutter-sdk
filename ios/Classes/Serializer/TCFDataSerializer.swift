@@ -9,7 +9,8 @@ extension TCFData {
             "specialFeatures" : specialFeatures.map { $0.serialize() },
             "specialPurposes" : specialPurposes.map { $0.serialize() },
             "stacks" : stacks.map { $0.serialize() },
-            "vendors" : vendors.map { $0.serialize() }
+            "vendors" : vendors.map { $0.serialize() },
+            "thirdPartyCount": thirdPartyCount
         ]
     }
 }
@@ -18,7 +19,7 @@ extension TCFFeature {
     func serialize()-> Any {
         return[
             "purposeDescription" : purposeDescription,
-            "descriptionLegal" : descriptionLegal,
+            "illustrations" : illustrations,
             "id" : id,
             "name" : name,
         ]
@@ -29,7 +30,7 @@ extension TCFPurpose {
     func serialize()-> Any {
         return[
             "purposeDescription" : purposeDescription,
-            "descriptionLegal" : descriptionLegal,
+            "illustrations" : illustrations,
             "id" : id,
             "name" : name,
             "consent" : Bool(from: self.consent) as Any,
@@ -46,7 +47,7 @@ extension TCFSpecialPurpose {
     func serialize()-> Any {
         return[
             "purposeDescription" : purposeDescription,
-            "descriptionLegal" : descriptionLegal,
+            "illustrations" : illustrations,
             "id" : id,
             "name" : name,
         ]
@@ -55,11 +56,11 @@ extension TCFSpecialPurpose {
 
 
 extension TCFSpecialFeature {
-
+    
     func serialize()-> Any {
         return[
             "purposeDescription" : purposeDescription,
-            "descriptionLegal" : descriptionLegal,
+            "illustrations" : illustrations,
             "id" : id,
             "name" : name,
             "consent" : Bool(from: self.consent) as Any ,
@@ -83,8 +84,9 @@ extension TCFStack {
 }
 
 extension TCFVendor {
+
     func serialize()-> Any {
-        return[
+        return [
             "consent" : Bool(from: self.consent) as Any ,
             "features" : features.map { $0.id },
             "flexiblePurposes" : flexiblePurposes.map { $0.id },
@@ -105,7 +107,32 @@ extension TCFVendor {
             //        "deviceStorage" : deviceStorage.serialize(),
             "usesCookies" : usesCookies,
             "cookieRefresh" : Bool(from: self.cookieRefresh) as Any ,
+            "dataSharedOutsideEU" : Bool(from: self.dataSharedOutsideEU) as Any,
+            "dataRetention": (dataRetention?.serialize() ?? nil) as Any,
+            "dataCategories" : dataCategories.map { $0.id },
+            "vendorUrls" : vendorUrls.map { $0.serialize() }
         ]
     }
+}
 
+extension DataRetention {
+
+    func serialize() -> Any {
+        return [
+            "stdRetention" : stdRetention?.intValue as? Any,
+            "purposes" : purposes.idAndPeriod,
+            "specialPurposes" : specialPurposes.idAndPeriod
+        ]
+    }
+}
+
+extension VendorUrl {
+
+    func serialize() -> Any {
+        return [
+            "langId" : self.langId,
+            "privacy" : self.privacy,
+            "legIntClaim" : self.legIntClaim
+        ]
+    }
 }

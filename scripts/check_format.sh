@@ -1,3 +1,3 @@
 #!/bin/sh -xe
 
-flutter format --line-length=80 -n --set-exit-if-changed .
+dart format --line-length=80 --set-exit-if-changed .

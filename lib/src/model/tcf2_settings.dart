@@ -48,6 +48,11 @@ class TCF2Settings {
     required this.togglesSpecialFeaturesToggleOff,
     required this.appLayerNoteResurface,
     required this.firstLayerNoteResurface,
+    required this.categoriesOfDataLabel,
+    required this.dataRetentionPeriodLabel,
+    required this.legitimateInterestLabel,
+    required this.version,
+    required this.examplesLabel,
   });
 
   final String firstLayerTitle;
@@ -96,6 +101,11 @@ class TCF2Settings {
   final String togglesSpecialFeaturesToggleOff;
   final String appLayerNoteResurface;
   final String firstLayerNoteResurface;
+  final String categoriesOfDataLabel;
+  final String dataRetentionPeriodLabel;
+  final String legitimateInterestLabel;
+  final String version;
+  final String examplesLabel;
 
   @override
   bool operator ==(Object other) =>
@@ -151,7 +161,12 @@ class TCF2Settings {
           togglesSpecialFeaturesToggleOff ==
               other.togglesSpecialFeaturesToggleOff &&
           appLayerNoteResurface == other.appLayerNoteResurface &&
-          firstLayerNoteResurface == other.firstLayerNoteResurface;
+          firstLayerNoteResurface == other.firstLayerNoteResurface &&
+          categoriesOfDataLabel == other.categoriesOfDataLabel &&
+          dataRetentionPeriodLabel == other.dataRetentionPeriodLabel &&
+          legitimateInterestLabel == other.legitimateInterestLabel &&
+          version == other.version &&
+          examplesLabel == other.examplesLabel;
 
   @override
   int get hashCode =>
@@ -200,7 +215,12 @@ class TCF2Settings {
       togglesSpecialFeaturesToggleOn.hashCode +
       togglesSpecialFeaturesToggleOff.hashCode +
       appLayerNoteResurface.hashCode +
-      firstLayerNoteResurface.hashCode;
+      firstLayerNoteResurface.hashCode +
+      categoriesOfDataLabel.hashCode +
+      dataRetentionPeriodLabel.hashCode +
+      legitimateInterestLabel.hashCode +
+      version.hashCode +
+      examplesLabel.hashCode;
 
   @override
   String toString() => "$TCF2Settings($hashCode)";

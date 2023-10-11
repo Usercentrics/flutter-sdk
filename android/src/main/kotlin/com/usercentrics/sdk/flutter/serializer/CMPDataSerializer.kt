@@ -167,6 +167,11 @@ private fun TCF2Settings.serialize(): Any {
         "linksVendorListLinkLabel" to linksVendorListLinkLabel,
         "cmpId" to cmpId,
         "cmpVersion" to cmpVersion,
+        "categoriesOfDataLabel" to categoriesOfDataLabel,
+        "dataRetentionPeriodLabel" to dataRetentionPeriodLabel,
+        "legitimateInterestLabel" to legitimateInterestLabel,
+        "version" to version,
+        "examplesLabel" to examplesLabel,
         // Optional
         "firstLayerHideToggles" to firstLayerHideToggles,
         "secondLayerHideToggles" to secondLayerHideToggles,
