@@ -53,6 +53,11 @@ class TCF2SettingsSerializer {
           value['togglesSpecialFeaturesToggleOff'] ?? "",
       appLayerNoteResurface: value['appLayerNoteResurface'] ?? "",
       firstLayerNoteResurface: value['firstLayerNoteResurface'] ?? "",
+      categoriesOfDataLabel: value['categoriesOfDataLabel'] ?? "",
+      dataRetentionPeriodLabel: value['dataRetentionPeriodLabel'] ?? "",
+      legitimateInterestLabel: value['legitimateInterestLabel'] ?? "",
+      version: value['version'] ?? "",
+      examplesLabel: value['examplesLabel'] ?? "",
     );
   }
 }

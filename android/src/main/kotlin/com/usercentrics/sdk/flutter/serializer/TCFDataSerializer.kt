@@ -1,6 +1,9 @@
 package com.usercentrics.sdk.flutter.serializer
 
 import com.usercentrics.sdk.services.tcf.interfaces.*
+import com.usercentrics.tcf.core.model.gvl.DataRetention
+import com.usercentrics.tcf.core.model.gvl.RetentionPeriod
+import com.usercentrics.tcf.core.model.gvl.VendorUrl
 
 internal fun TCFData.serialize(): Any {
     return mapOf(
@@ -10,14 +13,15 @@ internal fun TCFData.serialize(): Any {
         "specialPurposes" to specialPurposes.map { it.serialize() },
         "stacks" to stacks.map { it.serialize() },
         "vendors" to vendors.map { it.serialize() },
-        "tcString" to tcString
+        "tcString" to tcString,
+        "thirdPartyCount" to thirdPartyCount
     )
 }
 
 private fun TCFFeature.serialize(): Any {
     return mapOf(
         "purposeDescription" to purposeDescription,
-        "descriptionLegal" to descriptionLegal,
+        "illustrations" to illustrations,
         "id" to id,
         "name" to name,
     )
@@ -26,7 +30,7 @@ private fun TCFFeature.serialize(): Any {
 private fun TCFPurpose.serialize(): Any {
     return mapOf(
         "purposeDescription" to purposeDescription,
-        "descriptionLegal" to descriptionLegal,
+        "illustrations" to illustrations,
         "id" to id,
         "name" to name,
         "consent" to consent,
@@ -42,7 +46,7 @@ private fun TCFPurpose.serialize(): Any {
 private fun TCFSpecialPurpose.serialize(): Any {
     return mapOf(
         "purposeDescription" to purposeDescription,
-        "descriptionLegal" to descriptionLegal,
+        "illustrations" to illustrations,
         "id" to id,
         "name" to name,
     )
@@ -51,7 +55,7 @@ private fun TCFSpecialPurpose.serialize(): Any {
 private fun TCFSpecialFeature.serialize(): Any {
     return mapOf(
         "purposeDescription" to purposeDescription,
-        "descriptionLegal" to descriptionLegal,
+        "illustrations" to illustrations,
         "id" to id,
         "name" to name,
         "consent" to consent,
@@ -93,5 +97,24 @@ private fun TCFVendor.serialize(): Any {
 //        "deviceStorage" to deviceStorage.serialize(),
         "usesCookies" to usesCookies,
         "cookieRefresh" to cookieRefresh,
+        "dataSharedOutsideEU" to dataSharedOutsideEU,
+        "dataRetention" to dataRetention?.serializer(),
+        "dataCategories" to dataCategories.map { it.id },
+        "vendorUrls" to vendorUrls.map { it.serializer() }
+    )
+}
+
+private fun DataRetention.serializer(): Any {
+    return mapOf(
+        "stdRetention" to this.stdRetention,
+        "purposes" to this.purposes.idAndPeriod,
+        "specialPurposes" to this.specialPurposes.idAndPeriod
+    )
+}
+private fun VendorUrl.serializer(): Any {
+    return mapOf(
+        "langId" to this.langId,
+        "privacy" to this.privacy,
+        "legIntClaim" to this.legIntClaim
     )
 }

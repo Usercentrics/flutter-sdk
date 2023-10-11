@@ -1,12 +1,15 @@
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:usercentrics_sdk/src/internal/bridge/get_ab_testing_variant_bridge.dart';
+import 'package:usercentrics_sdk/src/internal/internal.dart';
+import 'package:usercentrics_sdk/src/model/model.dart';
+
+part 'get_tcf_data_bridge_test.mock.dart';
+
+// Exposed to make the creation of a mock instance of TCFData easier
+const mockTCFData = expectedResult;
 
 void main() {
-  const mockResponse = "variantA";
-  const expectedResult = "variantA";
-
-  const MethodChannel channel = MethodChannel("usercentrics");
+  const MethodChannel channel = MethodChannel('usercentrics');
   TestWidgetsFlutterBinding.ensureInitialized();
 
   tearDown(() async {
@@ -23,13 +26,12 @@ void main() {
       receivedCall = methodCall;
       return mockResponse;
     });
-
-    const instance = MethodChannelGetABTestingVariant();
+    const instance = MethodChannelGetTCFData();
 
     final result = await instance.invoke(channel: channel);
 
-    expect(callCounter, 1);
-    expect(receivedCall?.method, 'getABTestingVariant');
-    expect(result, expectedResult);
+    expect(1, callCounter);
+    expect('getTCFData', receivedCall?.method);
+    expect(expectedResult, result);
   });
 }

@@ -167,6 +167,11 @@ extension TCF2Settings {
             "linksVendorListLinkLabel" : self.linksVendorListLinkLabel,
             "cmpId" : self.cmpId,
             "cmpVersion" : self.cmpVersion,
+            "categoriesOfDataLabel" : self.categoriesOfDataLabel,
+            "dataRetentionPeriodLabel" : self.dataRetentionPeriodLabel,
+            "legitimateInterestLabel" : self.legitimateInterestLabel,
+            "version" : self.version,
+            "examplesLabel" : self.examplesLabel,
             // Optional
             "firstLayerHideToggles" : self.firstLayerHideToggles,
             "secondLayerHideToggles" : self.secondLayerHideToggles,

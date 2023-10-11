@@ -14,22 +14,22 @@ jobs:
   format:
     name: Format
     runs-on: ubuntu-latest
-    container: cirrusci/flutter:stable
+    container: ghcr.io/cirruslabs/flutter:3.13.5
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Check format
         run: scripts/check_format.sh
 
   lint:
     name: Lint
     runs-on: ubuntu-latest
-    container: cirrusci/flutter:stable
+    container: ghcr.io/cirruslabs/flutter:3.13.5
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Get dependencies
         run: flutter pub get
       - name: Lint using flutter analyze
@@ -38,11 +38,11 @@ jobs:
   pub-dry-run:
     name: Publish Dry Run
     runs-on: ubuntu-latest
-    container: cirrusci/flutter:stable
+    container: ghcr.io/cirruslabs/flutter:3.13.5
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Run publish dry run
         run: dart pub publish --dry-run
 
@@ -50,11 +50,11 @@ jobs:
     name: Test Flutter
     needs: [ lint, format, pub-dry-run ]
     runs-on: ubuntu-latest
-    container: cirrusci/flutter:stable
+    container: ghcr.io/cirruslabs/flutter:3.13.5
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Get dependencies
         run: flutter pub get
       - name: Run all tests
@@ -66,13 +66,13 @@ jobs:
     name: Test Android
     needs: [ lint, format, pub-dry-run ]
     runs-on: ubuntu-latest
-    container: cirrusci/flutter:stable
+    container: ghcr.io/cirruslabs/flutter:3.13.5
     env:
       GRADLE_VERSION: 7.2
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Cache Gradle
         id: cache-gradle
         uses: actions/cache@v2
@@ -106,7 +106,7 @@ jobs:
         with:
           xcode-version: '14.2'
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:
@@ -124,11 +124,11 @@ jobs:
     name: Build Android Example
     needs: [ lint, format, pub-dry-run ]
     runs-on: ubuntu-latest
-    container: cirrusci/flutter:stable
+    container: ghcr.io/cirruslabs/flutter:3.13.5
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Get dependencies
         run: flutter pub get
       - name: Build
@@ -146,7 +146,7 @@ jobs:
         with:
           xcode-version: '14.2'
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:
@@ -162,13 +162,13 @@ jobs:
     if: github.event_name == 'release'
     needs: [ test-flutter, test-android, test-ios, build-android, build-ios ]
     runs-on: ubuntu-latest
-    container: cirrusci/flutter:stable
+    container: ghcr.io/cirruslabs/flutter:3.13.5
     env:
       PUB_DEV_CREDENTIAL: ${{ secrets.PUB_DEV_CREDENTIAL }}
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Validate version
         run: dart scripts/check_release_version.dart ${{ github.ref }}
       - name: Setup credentials

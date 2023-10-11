@@ -2,15 +2,18 @@ package com.usercentrics.sdk.flutter.mock
 
 import com.usercentrics.sdk.flutter.api.FakeFlutterMethodCall
 import com.usercentrics.sdk.services.tcf.interfaces.*
+import com.usercentrics.tcf.core.model.gvl.DataRetention
+import com.usercentrics.tcf.core.model.gvl.VendorUrl
 
 internal object GetTCFDataMock {
 
     val fake = TCFData(
+        thirdPartyCount = 2,
         tcString = "abc",
         features = listOf(
             TCFFeature(
                 purposeDescription = "Data from offline data sources can be combined with your online activity in support of one or more purposes",
-                descriptionLegal = "Vendors can:\n* Combine data obtained offline with data collected online in support of one or more Purposes or Special Purposes.",
+                illustrations = listOf(),
                 id = 2,
                 name = "Link different devices",
             )
@@ -18,7 +21,7 @@ internal object GetTCFDataMock {
         purposes = listOf(
             TCFPurpose(
                 purposeDescription = "Cookies, device identifiers, or other information can be stored or accessed on your device for the purposes presented to you.",
-                descriptionLegal = "Vendors can:\n* Store and access information on the device such as cookies and device identifiers presented to a user.",
+                illustrations = listOf("Most purposes explained in this notice rely on the storage or accessing of information from your device when you use an app or visit a website. For example, a vendor or publisher might need to store a cookie on your device during your first visit on a website, to be able to recognise your device during your next visits (by accessing this cookie each time)."),
                 id = 1,
                 name = "Store and/or access information on a device",
                 consent = null,
@@ -32,7 +35,7 @@ internal object GetTCFDataMock {
         specialFeatures = listOf(
             TCFSpecialFeature(
                 purposeDescription = "Your precise geolocation data can be used in support of one or more purposes. This means your location can be accurate to within several meters.",
-                descriptionLegal = "Vendors can:\n* Collect and process precise geolocation data in support of one or more purposes.\nN.B. Precise geolocation means that there are no restrictions on the precision of a user’s location; this can be accurate to within several meters.",
+                illustrations = listOf(),
                 id = 1,
                 name = "Use precise geolocation data",
                 consent = null,
@@ -44,7 +47,7 @@ internal object GetTCFDataMock {
         specialPurposes = listOf(
             TCFSpecialPurpose(
                 purposeDescription = "Your data can be used to monitor for and prevent fraudulent activity, and ensure systems and processes work properly and securely.",
-                descriptionLegal = "To ensure security, prevent fraud and debug vendors can:\n* Ensure data are securely transmitted\n* Detect and prevent malicious, fraudulent, invalid, or illegal activity.\n* Ensure correct and efficient operation of systems and processes, including to monitor and enhance the performance of systems and processes engaged in permitted purposes\nVendors cannot:\n* Conduct any other data processing operation allowed under a different purpose under this purpose.\nNote: Data collected and used to ensure security, prevent fraud, and debug may include automatically-sent device characteristics for identification, precise geolocation data, and data obtained by actively scanning device characteristics for identification without separate disclosure and/or opt-in.",
+                illustrations = listOf("An advertising intermediary delivers ads from various advertisers to its network of partnering websites. It notices a large increase in clicks on ads relating to one advertiser, and uses data regarding the source of the clicks to determine that 80% of the clicks come from bots rather than humans."),
                 id = 1,
                 name = "Ensure security, prevent fraud, and debug",
             )
@@ -94,6 +97,10 @@ internal object GetTCFDataMock {
                 deviceStorage = null,
                 usesCookies = false,
                 cookieRefresh = null,
+                dataSharedOutsideEU = true,
+                dataRetention = null,
+                dataCategories = listOf(IdAndName(1, "")),
+                vendorUrls = listOf(),
             )
         ),
     )
@@ -101,11 +108,12 @@ internal object GetTCFDataMock {
     // From the debugger
     val call = FakeFlutterMethodCall(method = "getTCFData", arguments = null)
     val expected = mapOf(
+        "thirdPartyCount" to 2,
         "tcString" to "abc",
         "features" to listOf(
             mapOf(
                 "purposeDescription" to "Data from offline data sources can be combined with your online activity in support of one or more purposes",
-                "descriptionLegal" to "Vendors can:\n* Combine data obtained offline with data collected online in support of one or more Purposes or Special Purposes.",
+                "illustrations" to listOf<String>(),
                 "id" to 2,
                 "name" to "Link different devices",
             )
@@ -113,7 +121,7 @@ internal object GetTCFDataMock {
         "purposes" to listOf(
             mapOf(
                 "purposeDescription" to "Cookies, device identifiers, or other information can be stored or accessed on your device for the purposes presented to you.",
-                "descriptionLegal" to "Vendors can:\n* Store and access information on the device such as cookies and device identifiers presented to a user.",
+                "illustrations" to listOf("Most purposes explained in this notice rely on the storage or accessing of information from your device when you use an app or visit a website. For example, a vendor or publisher might need to store a cookie on your device during your first visit on a website, to be able to recognise your device during your next visits (by accessing this cookie each time)."),
                 "id" to 1,
                 "name" to "Store and/or access information on a device",
                 "consent" to null,
@@ -127,7 +135,7 @@ internal object GetTCFDataMock {
         "specialFeatures" to listOf(
             mapOf(
                 "purposeDescription" to "Your precise geolocation data can be used in support of one or more purposes. This means your location can be accurate to within several meters.",
-                "descriptionLegal" to "Vendors can:\n* Collect and process precise geolocation data in support of one or more purposes.\nN.B. Precise geolocation means that there are no restrictions on the precision of a user’s location; this can be accurate to within several meters.",
+                "illustrations" to listOf<String>(),
                 "id" to 1,
                 "name" to "Use precise geolocation data",
                 "consent" to null,
@@ -139,7 +147,7 @@ internal object GetTCFDataMock {
         "specialPurposes" to listOf(
             mapOf(
                 "purposeDescription" to "Your data can be used to monitor for and prevent fraudulent activity, and ensure systems and processes work properly and securely.",
-                "descriptionLegal" to "To ensure security, prevent fraud and debug vendors can:\n* Ensure data are securely transmitted\n* Detect and prevent malicious, fraudulent, invalid, or illegal activity.\n* Ensure correct and efficient operation of systems and processes, including to monitor and enhance the performance of systems and processes engaged in permitted purposes\nVendors cannot:\n* Conduct any other data processing operation allowed under a different purpose under this purpose.\nNote: Data collected and used to ensure security, prevent fraud, and debug may include automatically-sent device characteristics for identification, precise geolocation data, and data obtained by actively scanning device characteristics for identification without separate disclosure and/or opt-in.",
+                "illustrations" to listOf("An advertising intermediary delivers ads from various advertisers to its network of partnering websites. It notices a large increase in clicks on ads relating to one advertiser, and uses data regarding the source of the clicks to determine that 80% of the clicks come from bots rather than humans."),
                 "id" to 1,
                 "name" to "Ensure security, prevent fraud, and debug",
             )
@@ -186,6 +194,10 @@ internal object GetTCFDataMock {
                 "deviceStorageDisclosureUrl" to null,
                 "usesCookies" to false,
                 "cookieRefresh" to null,
+                "dataSharedOutsideEU" to true,
+                "dataRetention" to null,
+                "dataCategories" to  listOf(1),
+                "vendorUrls" to listOf<Any>()
             ),
         ),
     )
