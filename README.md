@@ -15,28 +15,23 @@
   </a>
 </p>
 
-## Overview
 
-The Usercentrics Apps SDK is a Consent Management Platform framework for mobile, TV, Web, and Unity applications, that enables the collection, documentation, and management of your user's privacy settings, in order to ensure legal compliance for different legal frameworks around the world.
+# Welcome!
+
+You are now one step closer from making **privacy** a core feature in your application. We are very happy that you decided to make this a priority. We are here to help you **build trust** with your users.
+
+## The Usercentrics Apps SDK
+The Usercentrics Apps SDK is a native Consent Management Platform solution for mobile apps, mobile games & TV applications, that enables the collection, documentation, and management of your user's privacy choices, in order to ensure legal compliance for legal regulations around the world.
 
 <p align="center">
 <img src="https://docs.usercentrics.com/cmp_in_app_sdk/latest/assets/media/predefinedUI.png" alt="Usercentrics UI" />
 </p>
 
-### Supported Legal Frameworks
+## Get started with a Trial
 
-* 🇪🇺 GDPR - European Union's General Data Protection Regulation
-* 🇺🇸 CCPA - California's Consumer Privacy Act
-* 🇧🇷 LGPD - Brazil’s Lei Geral de Proteção de Dados
-* 🌎 TCF 2.0 - Transparency & Consent Framework 2.0
+[Start a free trial](https://usercentrics.com/in-app-sdk/) of the Usercentrics Apps CMP.
 
-### Supported Platforms
-
-| Android | iOS |  Web  | tvOS | MacOS |
-|:-------:|:---:|:-----:|:----:|:-----:|
-|    ✅   |  ✅  |   ❌   |  ❌  |  ❌  |
-
-### Requirements
+## Requirements
 
 * Dart 2.17.1 or higher
 * Flutter 1.20.0 or higher
@@ -134,7 +129,7 @@ platform :ios, '11.0'
 
 ## Integration
 
-Continue to our [documentation](https://docs.usercentrics.com/cmp_in_app_sdk/) for a step by step integration guide.
+Continue to our [documentation](https://usercentrics.com/docs/apps/intro/) for a step by step integration guide.
 
 ## Example
 
@@ -171,9 +166,6 @@ tearDown(() {
   Usercentrics.delegatePackingProperty = null;
 });
 ```
-
-## Get an Account
-First step to get started with our SDK, is to create a Usercentrics Account, [get started with a free account](https://usercentrics.com/pricing/#mobile) or [request a quote](https://usercentrics.com/in-app-sdk/#in-app-demo) for your organization.
 
 ## Maintainers
 - [Usercentrics](https://github.com/Usercentrics)
