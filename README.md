@@ -27,10 +27,6 @@ The Usercentrics Apps SDK is a native Consent Management Platform solution for m
 <img src="https://docs.usercentrics.com/cmp_in_app_sdk/latest/assets/media/predefinedUI.png" alt="Usercentrics UI" />
 </p>
 
-## Get started with a Trial
-
-[Start a free trial](https://usercentrics.com/in-app-sdk/) of the Usercentrics Apps CMP.
-
 ## Requirements
 
 * Dart 2.17.1 or higher
@@ -126,6 +122,10 @@ platform :ios, '11.0'
 
 </p>
 </details>
+
+## Get started!
+
+In order to use and test the SDK, you will need a Usercentrics Account. Get [started with a free trial](https://usercentrics.com/in-app-sdk/).
 
 ## Integration
 
