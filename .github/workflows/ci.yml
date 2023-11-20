@@ -15,6 +15,7 @@ jobs:
     name: Format
     runs-on: ubuntu-latest
     container: ghcr.io/cirruslabs/flutter:3.13.5
+    timeout-minutes: 20
 
     steps:
       - name: Checkout code
@@ -26,6 +27,7 @@ jobs:
     name: Lint
     runs-on: ubuntu-latest
     container: ghcr.io/cirruslabs/flutter:3.13.5
+    timeout-minutes: 20
 
     steps:
       - name: Checkout code
@@ -39,6 +41,7 @@ jobs:
     name: Publish Dry Run
     runs-on: ubuntu-latest
     container: ghcr.io/cirruslabs/flutter:3.13.5
+    timeout-minutes: 20
 
     steps:
       - name: Checkout code
@@ -51,6 +54,7 @@ jobs:
     needs: [ lint, format, pub-dry-run ]
     runs-on: ubuntu-latest
     container: ghcr.io/cirruslabs/flutter:3.13.5
+    timeout-minutes: 20
 
     steps:
       - name: Checkout code
@@ -67,6 +71,7 @@ jobs:
     needs: [ lint, format, pub-dry-run ]
     runs-on: ubuntu-latest
     container: ghcr.io/cirruslabs/flutter:3.13.5
+    timeout-minutes: 20
     env:
       GRADLE_VERSION: 7.2
 
@@ -99,6 +104,7 @@ jobs:
     name: Test iOS
     needs: [ lint, format, pub-dry-run ]
     runs-on: macos-12
+    timeout-minutes: 20
 
     steps:
       - name: Setup code
@@ -125,6 +131,7 @@ jobs:
     needs: [ lint, format, pub-dry-run ]
     runs-on: ubuntu-latest
     container: ghcr.io/cirruslabs/flutter:3.13.5
+    timeout-minutes: 20
 
     steps:
       - name: Checkout code
@@ -139,6 +146,7 @@ jobs:
     name: Build iOS Example
     needs: [ lint, format, pub-dry-run ]
     runs-on: macos-12
+    timeout-minutes: 20
 
     steps:
       - name: Setup code
@@ -163,6 +171,7 @@ jobs:
     needs: [ test-flutter, test-android, test-ios, build-android, build-ios ]
     runs-on: ubuntu-latest
     container: ghcr.io/cirruslabs/flutter:3.13.5
+    timeout-minutes: 20
     env:
       PUB_DEV_CREDENTIAL: ${{ secrets.PUB_DEV_CREDENTIAL }}
 
