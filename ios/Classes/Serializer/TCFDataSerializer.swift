@@ -73,12 +73,12 @@ extension TCFSpecialFeature {
 
 extension TCFStack {
     func serialize()-> Any {
-        return[
-            "description" : description,
-            "id" : id,
-            "name" : name,
-            "purposeIds" : purposeIds,
-            "specialFeatureIds" : specialFeatureIds,
+        return [
+            "description" : self.description,
+            "id" : self.id,
+            "name" : self.name,
+            "purposeIds" : self.purposeIds,
+            "specialFeatureIds" : self.specialFeatureIds,
         ]
     }
 }
@@ -96,7 +96,6 @@ extension TCFVendor {
             "name" : name,
             "policyUrl" : policyUrl,
             "purposes" : purposes.map { $0.id },
-            //        "restrictions" : restrictions.map { restrictions.serialize() },
             "specialFeatures" : specialFeatures.map { $0.id },
             "specialPurposes" : specialPurposes.map { $0.id },
             "showConsentToggle" : showConsentToggle,
@@ -104,13 +103,13 @@ extension TCFVendor {
             "cookieMaxAgeSeconds" :  cookieMaxAgeSeconds as Any,
             "usesNonCookieAccess" : usesNonCookieAccess,
             "deviceStorageDisclosureUrl" : deviceStorageDisclosureUrl  as Any,
-            //        "deviceStorage" : deviceStorage.serialize(),
             "usesCookies" : usesCookies,
             "cookieRefresh" : Bool(from: self.cookieRefresh) as Any ,
             "dataSharedOutsideEU" : Bool(from: self.dataSharedOutsideEU) as Any,
             "dataRetention": (dataRetention?.serialize() ?? nil) as Any,
             "dataCategories" : dataCategories.map { $0.id },
-            "vendorUrls" : vendorUrls.map { $0.serialize() }
+            "vendorUrls" : vendorUrls.map { $0.serialize() },
+            "deviceStorage" : self.deviceStorage?.serialize() as Any,
         ]
     }
 }

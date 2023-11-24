@@ -11,6 +11,7 @@ import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertNotNull
 import org.junit.Assert.assertThrows
 import org.junit.Test
 
@@ -53,10 +54,12 @@ class GetCMPDataBridgeUnitTest {
         val resultMap = result.successResultArgument as? Map<*, *>
         assertEquals(5, resultMap?.size)
         assertEquals("TCF", resultMap?.get("activeVariant"))
-        assertEquals(GetCMPDataMock.expectedSettings, resultMap?.get("settings"))
-        assertEquals(GetCMPDataMock.expectedCategories, resultMap?.get("categories"))
-        assertEquals(GetCMPDataMock.expectedServices, resultMap?.get("services"))
-        assertEquals(GetCMPDataMock.expectedUserLocation, resultMap?.get("userLocation"))
+
+        assertNotNull(resultMap!!)
+        assertEquals(GetCMPDataMock.expectedSettings, resultMap["settings"])
+        assertEquals(GetCMPDataMock.expectedCategories, resultMap["categories"])
+        assertEquals(GetCMPDataMock.expectedServices, resultMap["services"])
+        assertEquals(GetCMPDataMock.expectedUserLocation, resultMap["userLocation"])
     }
 
 }

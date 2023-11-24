@@ -66,6 +66,13 @@ class UsercentricsLabels {
     required this.secondLayerTitle,
     required this.retentionPeriod,
     required this.explicit,
+    required this.transferToThirdCountriesInfo,
+    required this.more,
+    required this.headerModal,
+    required this.furtherInformationOptOut,
+    required this.cookiePolicyLinkText,
+    required this.noImplicit,
+    required this.yesImplicit,
   });
 
   final String btnAcceptAll;
@@ -134,6 +141,13 @@ class UsercentricsLabels {
   final String secondLayerTitle;
   final String retentionPeriod;
   final String explicit;
+  final String transferToThirdCountriesInfo;
+  final String more;
+  final String headerModal;
+  final String furtherInformationOptOut;
+  final String cookiePolicyLinkText;
+  final String noImplicit;
+  final String yesImplicit;
 
   @override
   bool operator ==(Object other) =>
@@ -207,7 +221,14 @@ class UsercentricsLabels {
           secondLayerDescriptionHtml == other.secondLayerDescriptionHtml &&
           secondLayerTitle == other.secondLayerTitle &&
           explicit == other.explicit &&
-          retentionPeriod == other.retentionPeriod;
+          retentionPeriod == other.retentionPeriod &&
+          transferToThirdCountriesInfo == other.transferToThirdCountriesInfo &&
+          more == other.more &&
+          headerModal == other.headerModal &&
+          furtherInformationOptOut == other.furtherInformationOptOut &&
+          cookiePolicyLinkText == other.cookiePolicyLinkText &&
+          noImplicit == other.noImplicit &&
+          yesImplicit == other.yesImplicit;
 
   @override
   int get hashCode =>
@@ -276,7 +297,14 @@ class UsercentricsLabels {
       secondLayerDescriptionHtml.hashCode ^
       secondLayerTitle.hashCode ^
       explicit.hashCode ^
-      retentionPeriod.hashCode;
+      retentionPeriod.hashCode ^
+      transferToThirdCountriesInfo.hashCode ^
+      more.hashCode ^
+      headerModal.hashCode ^
+      furtherInformationOptOut.hashCode ^
+      cookiePolicyLinkText.hashCode ^
+      noImplicit.hashCode ^
+      yesImplicit.hashCode;
 
   @override
   String toString() => "$UsercentricsLabels($hashCode)";

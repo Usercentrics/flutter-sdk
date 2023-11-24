@@ -1,46 +1,48 @@
 import 'package:flutter/foundation.dart';
+import 'package:usercentrics_sdk/src/model/consent_disclosure.dart';
 
 /// A service.
 class UsercentricsService {
-  const UsercentricsService({
-    required this.templateId,
-    required this.version,
-    required this.type,
-    required this.dataProcessor,
-    required this.dataPurposes,
-    required this.processingCompany,
-    required this.nameOfProcessingCompany,
-    required this.addressOfProcessingCompany,
-    required this.descriptionOfService,
-    required this.languagesAvailable,
-    required this.dataCollectedList,
-    required this.dataPurposesList,
-    required this.dataRecipientsList,
-    required this.legalBasisList,
-    required this.retentionPeriodList,
-    required this.subConsents,
-    required this.technologyUsed,
-    required this.language,
-    required this.linkToDpa,
-    required this.legalGround,
-    required this.optOutUrl,
-    required this.policyOfProcessorUrl,
-    required this.categorySlug,
-    required this.retentionPeriodDescription,
-    required this.dataProtectionOfficer,
-    required this.privacyPolicyURL,
-    required this.cookiePolicyURL,
-    required this.locationOfProcessing,
-    required this.dataCollectedDescription,
-    required this.thirdCountryTransfer,
-    required this.description,
-    required this.cookieMaxAgeSeconds,
-    required this.usesNonCookieAccess,
-    required this.deviceStorageDisclosureUrl,
-    required this.isDeactivated,
-    required this.disableLegalBasis,
-    required this.isEssential,
-  });
+  const UsercentricsService(
+      {required this.templateId,
+      required this.version,
+      required this.type,
+      required this.dataProcessor,
+      required this.dataPurposes,
+      required this.processingCompany,
+      required this.nameOfProcessingCompany,
+      required this.addressOfProcessingCompany,
+      required this.descriptionOfService,
+      required this.languagesAvailable,
+      required this.dataCollectedList,
+      required this.dataPurposesList,
+      required this.dataRecipientsList,
+      required this.legalBasisList,
+      required this.retentionPeriodList,
+      required this.subConsents,
+      required this.technologyUsed,
+      required this.language,
+      required this.linkToDpa,
+      required this.legalGround,
+      required this.optOutUrl,
+      required this.policyOfProcessorUrl,
+      required this.categorySlug,
+      required this.retentionPeriodDescription,
+      required this.dataProtectionOfficer,
+      required this.privacyPolicyURL,
+      required this.cookiePolicyURL,
+      required this.locationOfProcessing,
+      required this.dataCollectedDescription,
+      required this.thirdCountryTransfer,
+      required this.description,
+      required this.cookieMaxAgeSeconds,
+      required this.usesNonCookieAccess,
+      required this.deviceStorageDisclosureUrl,
+      required this.isDeactivated,
+      required this.disableLegalBasis,
+      required this.isEssential,
+      required this.deviceStorage,
+      required this.isHidden});
 
   /// The template ID of the service.
   final String templateId;
@@ -85,6 +87,8 @@ class UsercentricsService {
   final bool? isDeactivated;
   final bool? disableLegalBasis;
   final bool isEssential;
+  final ConsentDisclosureObject? deviceStorage;
+  final bool isHidden;
 
   @override
   bool operator ==(Object other) =>
@@ -126,7 +130,9 @@ class UsercentricsService {
           deviceStorageDisclosureUrl == other.deviceStorageDisclosureUrl &&
           isDeactivated == other.isDeactivated &&
           disableLegalBasis == other.disableLegalBasis &&
-          isEssential == other.isEssential;
+          isEssential == other.isEssential &&
+          deviceStorage == other.deviceStorage &&
+          isHidden == other.isHidden;
 
   @override
   int get hashCode =>
@@ -165,7 +171,9 @@ class UsercentricsService {
       deviceStorageDisclosureUrl.hashCode +
       isDeactivated.hashCode +
       disableLegalBasis.hashCode +
-      isEssential.hashCode;
+      isEssential.hashCode +
+      deviceStorage.hashCode +
+      isHidden.hashCode;
 
   @override
   String toString() =>

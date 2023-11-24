@@ -147,7 +147,6 @@ class FakeUsercentrics extends UsercentricsPlatform {
 
   @override
   Future<void> track({required UsercentricsAnalyticsEventType event}) {
-    // TODO: implement track
     throw UnimplementedError();
   }
 }

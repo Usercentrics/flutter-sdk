@@ -1,6 +1,7 @@
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:usercentrics_sdk/src/internal/internal.dart';
+import 'package:usercentrics_sdk/src/model/consent_disclosure.dart';
 import 'package:usercentrics_sdk/src/model/model.dart';
 
 part 'get_cmp_data_bridge_test.mock.dart';
@@ -32,6 +33,6 @@ void main() {
 
     expect(callCounter, 1);
     expect(receivedCall?.method, 'getCMPData');
-    expect(result, expectedResult);
+    expect(expectedResult, result);
   });
 }

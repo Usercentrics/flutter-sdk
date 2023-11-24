@@ -2,6 +2,9 @@ package com.usercentrics.sdk.flutter.mock
 
 import com.usercentrics.sdk.flutter.api.FakeFlutterMethodCall
 import com.usercentrics.sdk.services.tcf.interfaces.*
+import com.usercentrics.sdk.v2.settings.data.ConsentDisclosure
+import com.usercentrics.sdk.v2.settings.data.ConsentDisclosureObject
+import com.usercentrics.sdk.v2.settings.data.ConsentDisclosureType
 import com.usercentrics.tcf.core.model.gvl.DataRetention
 import com.usercentrics.tcf.core.model.gvl.VendorUrl
 
@@ -94,13 +97,26 @@ internal object GetTCFDataMock {
                 cookieMaxAgeSeconds = null,
                 usesNonCookieAccess = false,
                 deviceStorageDisclosureUrl = null,
-                deviceStorage = null,
                 usesCookies = false,
                 cookieRefresh = null,
                 dataSharedOutsideEU = true,
                 dataRetention = null,
                 dataCategories = listOf(IdAndName(1, "")),
                 vendorUrls = listOf(),
+                deviceStorage = ConsentDisclosureObject(
+                    disclosures = listOf(
+                        ConsentDisclosure(
+                            identifier = "identifier",
+                            type = ConsentDisclosureType.APP,
+                            name = "name",
+                            maxAgeSeconds = 123123L,
+                            cookieRefresh = true,
+                            purposes = listOf(1, 2, 3),
+                            domain = "domain",
+                            description = "description",
+                        )
+                    )
+                ),
             )
         ),
     )
@@ -196,8 +212,20 @@ internal object GetTCFDataMock {
                 "cookieRefresh" to null,
                 "dataSharedOutsideEU" to true,
                 "dataRetention" to null,
-                "dataCategories" to  listOf(1),
-                "vendorUrls" to listOf<Any>()
+                "dataCategories" to listOf(1),
+                "vendorUrls" to listOf<Any>(),
+                "deviceStorage" to listOf(
+                    mapOf(
+                        "identifier" to "identifier",
+                        "type" to "APP",
+                        "name" to "name",
+                        "maxAgeSeconds" to 123123L,
+                        "cookieRefresh" to true,
+                        "purposes" to listOf(1, 2, 3),
+                        "domain" to "domain",
+                        "description" to "description",
+                    )
+                ),
             ),
         ),
     )

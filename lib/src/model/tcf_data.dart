@@ -1,4 +1,5 @@
 import 'package:flutter/foundation.dart';
+import 'package:usercentrics_sdk/src/model/consent_disclosure.dart';
 
 /// All the data that needs to be disclosed to the end-user if TCF is enabled.
 class TCFData {
@@ -293,29 +294,31 @@ class TCFStack {
 /// A TCF vendor (aka. advertiser, tracking service, third party) that is registered with the IAB global vendor list.
 /// A TCF vendor needs to be disclosed to the end-user and requires the end-user's consent and legitimate interest consent.
 class TCFVendor {
-  const TCFVendor(
-      {required this.consent,
-      required this.features,
-      required this.flexiblePurposes,
-      required this.id,
-      required this.legitimateInterestConsent,
-      required this.legitimateInterestPurposes,
-      required this.name,
-      required this.policyUrl,
-      required this.purposes,
-      required this.specialFeatures,
-      required this.specialPurposes,
-      required this.showConsentToggle,
-      required this.showLegitimateInterestToggle,
-      required this.cookieMaxAgeSeconds,
-      required this.usesNonCookieAccess,
-      required this.deviceStorageDisclosureUrl,
-      required this.usesCookies,
-      required this.cookieRefresh,
-      required this.dataSharedOutsideEU,
-      required this.dataCategories,
-      required this.dataRetention,
-      required this.vendorUrls});
+  const TCFVendor({
+    required this.consent,
+    required this.features,
+    required this.flexiblePurposes,
+    required this.id,
+    required this.legitimateInterestConsent,
+    required this.legitimateInterestPurposes,
+    required this.name,
+    required this.policyUrl,
+    required this.purposes,
+    required this.specialFeatures,
+    required this.specialPurposes,
+    required this.showConsentToggle,
+    required this.showLegitimateInterestToggle,
+    required this.cookieMaxAgeSeconds,
+    required this.usesNonCookieAccess,
+    required this.deviceStorageDisclosureUrl,
+    required this.deviceStorage,
+    required this.usesCookies,
+    required this.cookieRefresh,
+    required this.dataSharedOutsideEU,
+    required this.dataCategories,
+    required this.dataRetention,
+    required this.vendorUrls,
+  });
 
   final bool? consent;
   final List<int> features;
@@ -333,11 +336,12 @@ class TCFVendor {
   final double? cookieMaxAgeSeconds;
   final bool usesNonCookieAccess;
   final String? deviceStorageDisclosureUrl;
+  final ConsentDisclosureObject? deviceStorage;
   final bool usesCookies;
   final bool? cookieRefresh;
   final bool? dataSharedOutsideEU;
-  final List<int> dataCategories;
   final DataRetention? dataRetention;
+  final List<int> dataCategories;
   final List<VendorUrl> vendorUrls;
 
   @override
@@ -362,6 +366,7 @@ class TCFVendor {
           cookieMaxAgeSeconds == other.cookieMaxAgeSeconds &&
           usesNonCookieAccess == other.usesNonCookieAccess &&
           deviceStorageDisclosureUrl == other.deviceStorageDisclosureUrl &&
+          deviceStorage == other.deviceStorage &&
           usesCookies == other.usesCookies &&
           cookieRefresh == other.cookieRefresh &&
           dataSharedOutsideEU == other.dataSharedOutsideEU &&
@@ -387,6 +392,7 @@ class TCFVendor {
       cookieMaxAgeSeconds.hashCode ^
       usesNonCookieAccess.hashCode ^
       deviceStorageDisclosureUrl.hashCode ^
+      deviceStorage.hashCode ^
       usesCookies.hashCode ^
       cookieRefresh.hashCode ^
       dataSharedOutsideEU.hashCode ^

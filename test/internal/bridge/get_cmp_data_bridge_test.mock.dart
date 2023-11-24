@@ -17,7 +17,9 @@ const _responseSecondLayer = {
   "hideButtonDeny": false,
   "hideLanguageSwitch": false,
   "acceptButtonText": "Accept All",
-  "denyButtonText": "Deny All"
+  "denyButtonText": "Deny All",
+  "hideTogglesForServices": false,
+  "hideDataProcessingServices": false,
 };
 const _responseLabels = {
   "btnAcceptAll": "Accept All",
@@ -93,6 +95,13 @@ const _responseLabels = {
   "btnMore": "more",
   "retentionPeriod": "Retention Period",
   "explicit": "Explicit",
+  "transferToThirdCountriesInfo": "transferToThirdCountriesInfo",
+  "more": "more",
+  "headerModal": "headerModal",
+  "furtherInformationOptOut": "furtherInformationOptOut",
+  "cookiePolicyLinkText": "cookiePolicyLinkText",
+  "noImplicit": "noImplicit",
+  "yesImplicit": "yesImplicit",
 };
 const _responseTCF2Settings = {
   "firstLayerTitle": "Privacy Information",
@@ -151,6 +160,15 @@ const _responseTCF2Settings = {
   "categoriesOfDataLabel": "Categories of data",
   "dataRetentionPeriodLabel": "Data Retention Period",
   "legitimateInterestLabel": "Legitimate Interest at stake",
+  "firstLayerMobileVariant": "FULL",
+  "showDataSharedOutsideEUText": true,
+  "dataSharedOutsideEUText": "dataSharedOutsideEUText",
+  "vendorIdsOutsideEUList": [1, 2, 3],
+  "scope": "SERVICE",
+  "changedPurposes": {
+    "purposes": [1, 2, 3],
+    "legIntPurposes": [1, 2, 3]
+  }
 };
 const _responseCCPASettings = {
   "optOutNoticeLabel": "Do not sell my personal information",
@@ -229,6 +247,16 @@ const _responseSettings = {
   "enablePoweredBy": true,
   "editableLanguages": ["en", "de"],
   "customization": _responseCustomization,
+  "variants": {
+    "enabled": true,
+    "experimentsJson": "experimentsJson",
+    "activateWith": "activateWith"
+  },
+  "dpsDisplayFormat": "ALL",
+  "framework": "CPA",
+  "publishedApps": [
+    {"bundleId": "bundleId", "platform": "ANDROID"}
+  ],
 };
 
 const _responseCategories = [
@@ -287,6 +315,19 @@ const _responseServices = [
     "disableLegalBasis": false,
     "isEssential": false,
     "technologyUsed": ["Cookies", "Pixel Tags"],
+    "deviceStorage": [
+      {
+        "identifier": "identifier",
+        "type": "APP",
+        "name": "name",
+        "maxAgeSeconds": 10,
+        "cookieRefresh": false,
+        "purposes": [1, 2, 3],
+        "domain": "domain",
+        "description": "description"
+      }
+    ],
+    "isHidden": false,
   }
 ];
 
@@ -354,6 +395,18 @@ const _expectedServices = [
     disableLegalBasis: false,
     isEssential: false,
     technologyUsed: ["Cookies", "Pixel Tags"],
+    deviceStorage: ConsentDisclosureObject(disclosures: [
+      ConsentDisclosure(
+          identifier: "identifier",
+          type: ConsentDisclosureType.app,
+          name: "name",
+          maxAgeSeconds: 10,
+          cookieRefresh: false,
+          purposes: [1, 2, 3],
+          domain: "domain",
+          description: "description")
+    ]),
+    isHidden: false,
   )
 ];
 
@@ -431,18 +484,28 @@ const _expectedLabels = UsercentricsLabels(
   btnMore: "more",
   retentionPeriod: "Retention Period",
   explicit: "Explicit",
+  transferToThirdCountriesInfo: "transferToThirdCountriesInfo",
+  more: "more",
+  headerModal: "headerModal",
+  furtherInformationOptOut: "furtherInformationOptOut",
+  cookiePolicyLinkText: "cookiePolicyLinkText",
+  noImplicit: "noImplicit",
+  yesImplicit: "yesImplicit",
 );
 const _expectedFirstLayer = FirstLayer(
   hideButtonDeny: false,
 );
 
 const _expectedSecondLayer = SecondLayer(
-    tabsServicesLabel: "Services",
-    hideLanguageSwitch: false,
-    tabsCategoriesLabel: "Categories",
-    hideButtonDeny: false,
-    acceptButtonText: "Accept All",
-    denyButtonText: "Deny All");
+  tabsServicesLabel: "Services",
+  hideLanguageSwitch: false,
+  tabsCategoriesLabel: "Categories",
+  hideButtonDeny: false,
+  acceptButtonText: "Accept All",
+  denyButtonText: "Deny All",
+  hideTogglesForServices: false,
+  hideDataProcessingServices: false,
+);
 const _expectedTCF2Settings = TCF2Settings(
     togglesSpecialFeaturesToggleOff: "Off",
     secondLayerTitle: "Privacy Settings Title",
@@ -499,7 +562,14 @@ const _expectedTCF2Settings = TCF2Settings(
     dataRetentionPeriodLabel: "Data Retention Period",
     legitimateInterestLabel: "Legitimate Interest at stake",
     version: "2.2",
-    examplesLabel: "Examples");
+    examplesLabel: "Examples",
+    firstLayerMobileVariant: FirstLayerMobileVariant.full,
+    showDataSharedOutsideEUText: true,
+    dataSharedOutsideEUText: "dataSharedOutsideEUText",
+    vendorIdsOutsideEUList: [1, 2, 3],
+    scope: TCF2Scope.service,
+    changedPurposes:
+        TCF2ChangedPurposes(purposes: [1, 2, 3], legIntPurposes: [1, 2, 3]));
 
 const _expectedCCPASettings = CCPASettings(
   secondLayerHideLanguageSwitch: false,
@@ -578,4 +648,13 @@ const _expectedSettings = UsercentricsSettings(
   enablePoweredBy: true,
   editableLanguages: ["en", "de"],
   customization: _expectedCustomization,
+  variants: VariantsSettings(
+      enabled: true,
+      experimentsJson: "experimentsJson",
+      activateWith: "activateWith"),
+  dpsDisplayFormat: DpsDisplayFormat.all,
+  framework: USAFrameworks.cpa,
+  publishedApps: [
+    PublishedApp(bundleId: "bundleId", platform: PublishedAppPlatform.android)
+  ],
 );
