@@ -53,6 +53,12 @@ class TCF2Settings {
     required this.legitimateInterestLabel,
     required this.version,
     required this.examplesLabel,
+    required this.firstLayerMobileVariant,
+    required this.showDataSharedOutsideEUText,
+    required this.dataSharedOutsideEUText,
+    required this.vendorIdsOutsideEUList,
+    required this.scope,
+    required this.changedPurposes,
   });
 
   final String firstLayerTitle;
@@ -106,6 +112,12 @@ class TCF2Settings {
   final String legitimateInterestLabel;
   final String version;
   final String examplesLabel;
+  final FirstLayerMobileVariant? firstLayerMobileVariant;
+  final bool showDataSharedOutsideEUText;
+  final String? dataSharedOutsideEUText;
+  final List<int> vendorIdsOutsideEUList;
+  final TCF2Scope scope;
+  final TCF2ChangedPurposes changedPurposes;
 
   @override
   bool operator ==(Object other) =>
@@ -166,7 +178,13 @@ class TCF2Settings {
           dataRetentionPeriodLabel == other.dataRetentionPeriodLabel &&
           legitimateInterestLabel == other.legitimateInterestLabel &&
           version == other.version &&
-          examplesLabel == other.examplesLabel;
+          examplesLabel == other.examplesLabel &&
+          firstLayerMobileVariant == other.firstLayerMobileVariant &&
+          showDataSharedOutsideEUText == other.showDataSharedOutsideEUText &&
+          dataSharedOutsideEUText == other.dataSharedOutsideEUText &&
+          listEquals(vendorIdsOutsideEUList, other.vendorIdsOutsideEUList) &&
+          scope == other.scope &&
+          changedPurposes == other.changedPurposes;
 
   @override
   int get hashCode =>
@@ -220,8 +238,37 @@ class TCF2Settings {
       dataRetentionPeriodLabel.hashCode +
       legitimateInterestLabel.hashCode +
       version.hashCode +
-      examplesLabel.hashCode;
+      examplesLabel.hashCode +
+      firstLayerMobileVariant.hashCode +
+      showDataSharedOutsideEUText.hashCode +
+      dataSharedOutsideEUText.hashCode +
+      vendorIdsOutsideEUList.hashCode +
+      scope.hashCode +
+      changedPurposes.hashCode;
 
   @override
   String toString() => "$TCF2Settings($hashCode)";
+}
+
+enum FirstLayerMobileVariant { sheet, full, popupBottom, popupCenter }
+
+enum TCF2Scope { global, service }
+
+class TCF2ChangedPurposes {
+  const TCF2ChangedPurposes(
+      {required this.purposes, required this.legIntPurposes});
+
+  final List<int> purposes;
+  final List<int> legIntPurposes;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is TCF2ChangedPurposes &&
+          runtimeType == other.runtimeType &&
+          listEquals(purposes, other.purposes) &&
+          listEquals(legIntPurposes, other.legIntPurposes);
+
+  @override
+  int get hashCode => purposes.hashCode ^ legIntPurposes.hashCode;
 }

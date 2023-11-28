@@ -29,6 +29,10 @@ class UsercentricsSettings {
     required this.customization,
     required this.firstLayer,
     required this.secondLayer,
+    required this.variants,
+    required this.dpsDisplayFormat,
+    required this.framework,
+    required this.publishedApps,
   });
 
   final UsercentricsLabels labels;
@@ -53,6 +57,10 @@ class UsercentricsSettings {
   final UsercentricsCustomization? customization;
   final FirstLayer? firstLayer;
   final SecondLayer? secondLayer;
+  final VariantsSettings? variants;
+  final DpsDisplayFormat? dpsDisplayFormat;
+  final USAFrameworks? framework;
+  final List<PublishedApp>? publishedApps;
 
   @override
   bool operator ==(Object other) =>
@@ -83,7 +91,11 @@ class UsercentricsSettings {
           tcf2 == other.tcf2 &&
           customization == other.customization &&
           firstLayer == other.firstLayer &&
-          secondLayer == other.secondLayer;
+          secondLayer == other.secondLayer &&
+          variants == other.variants &&
+          dpsDisplayFormat == other.dpsDisplayFormat &&
+          framework == other.framework &&
+          listEquals(publishedApps, other.publishedApps);
 
   @override
   int get hashCode =>
@@ -108,7 +120,11 @@ class UsercentricsSettings {
       tcf2.hashCode +
       customization.hashCode +
       firstLayer.hashCode +
-      secondLayer.hashCode;
+      secondLayer.hashCode +
+      variants.hashCode +
+      dpsDisplayFormat.hashCode +
+      framework.hashCode +
+      publishedApps.hashCode;
 
   @override
   String toString() =>
@@ -144,6 +160,8 @@ class SecondLayer {
     required this.denyButtonText,
     required this.hideButtonDeny,
     required this.hideLanguageSwitch,
+    required this.hideTogglesForServices,
+    required this.hideDataProcessingServices,
   });
 
   final String tabsCategoriesLabel;
@@ -152,6 +170,8 @@ class SecondLayer {
   final String? denyButtonText;
   final bool? hideButtonDeny;
   final bool? hideLanguageSwitch;
+  final bool hideTogglesForServices;
+  final bool hideDataProcessingServices;
 
   @override
   bool operator ==(Object other) =>
@@ -163,7 +183,9 @@ class SecondLayer {
           acceptButtonText == other.acceptButtonText &&
           denyButtonText == other.denyButtonText &&
           hideButtonDeny == other.hideButtonDeny &&
-          hideLanguageSwitch == other.hideLanguageSwitch;
+          hideLanguageSwitch == other.hideLanguageSwitch &&
+          hideTogglesForServices == other.hideTogglesForServices &&
+          hideDataProcessingServices == other.hideDataProcessingServices;
 
   @override
   int get hashCode =>
@@ -172,8 +194,64 @@ class SecondLayer {
       acceptButtonText.hashCode ^
       denyButtonText.hashCode ^
       hideButtonDeny.hashCode ^
-      hideLanguageSwitch.hashCode;
+      hideLanguageSwitch.hashCode ^
+      hideTogglesForServices.hashCode ^
+      hideDataProcessingServices.hashCode;
 
   @override
   String toString() => "$SecondLayer($hashCode)";
 }
+
+class VariantsSettings {
+  const VariantsSettings(
+      {required this.enabled,
+      required this.experimentsJson,
+      required this.activateWith});
+
+  final bool enabled;
+  final String experimentsJson;
+  final String activateWith;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is VariantsSettings &&
+          runtimeType == other.runtimeType &&
+          enabled == other.enabled &&
+          experimentsJson == other.experimentsJson &&
+          activateWith == other.activateWith;
+
+  @override
+  int get hashCode =>
+      enabled.hashCode ^ experimentsJson.hashCode ^ activateWith.hashCode;
+}
+
+enum DpsDisplayFormat { all, short }
+
+enum USAFrameworks {
+  cpra,
+  vcdpa,
+  cpa,
+  ctdpa,
+  ucpa,
+}
+
+class PublishedApp {
+  const PublishedApp({required this.bundleId, required this.platform});
+
+  final String bundleId;
+  final PublishedAppPlatform platform;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is PublishedApp &&
+          runtimeType == other.runtimeType &&
+          bundleId == other.bundleId &&
+          platform == other.platform;
+
+  @override
+  int get hashCode => bundleId.hashCode ^ platform.hashCode;
+}
+
+enum PublishedAppPlatform { android, ios }

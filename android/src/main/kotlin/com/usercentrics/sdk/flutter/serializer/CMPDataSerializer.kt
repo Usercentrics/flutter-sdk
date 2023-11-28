@@ -2,7 +2,20 @@ package com.usercentrics.sdk.flutter.serializer
 
 import com.usercentrics.sdk.UsercentricsCMPData
 import com.usercentrics.sdk.v2.location.data.UsercentricsLocation
-import com.usercentrics.sdk.v2.settings.data.*
+import com.usercentrics.sdk.v2.settings.data.CCPASettings
+import com.usercentrics.sdk.v2.settings.data.CustomizationColor
+import com.usercentrics.sdk.v2.settings.data.CustomizationFont
+import com.usercentrics.sdk.v2.settings.data.FirstLayer
+import com.usercentrics.sdk.v2.settings.data.PublishedApp
+import com.usercentrics.sdk.v2.settings.data.SecondLayer
+import com.usercentrics.sdk.v2.settings.data.TCF2ChangedPurposes
+import com.usercentrics.sdk.v2.settings.data.TCF2Settings
+import com.usercentrics.sdk.v2.settings.data.UsercentricsCategory
+import com.usercentrics.sdk.v2.settings.data.UsercentricsCustomization
+import com.usercentrics.sdk.v2.settings.data.UsercentricsLabels
+import com.usercentrics.sdk.v2.settings.data.UsercentricsService
+import com.usercentrics.sdk.v2.settings.data.UsercentricsSettings
+import com.usercentrics.sdk.v2.settings.data.VariantsSettings
 
 internal fun UsercentricsCMPData.serialize(): Any {
     return mapOf(
@@ -38,17 +51,15 @@ private fun UsercentricsSettings.serialize(): Any {
         "enablePoweredBy" to enablePoweredBy,
         "editableLanguages" to editableLanguages,
         "customization" to customization?.serialize(),
-//        "googleConsentMode" to googleConsentMode,
-//        "appIds" to appIds,
-//        "privacyButtonUrls" to privacyButtonUrls,
-//        "styles" to styles.serialize(),
-//        "interactionAnalytics" to interactionAnalytics,
+        "variants" to variants?.serialize(),
+        "dpsDisplayFormat" to (dpsDisplayFormat?.name ?: ""),
+        "framework" to (framework?.name ?: ""),
+        "publishedApps" to publishedApps?.map { it.serialize() },
     )
 }
 
 private fun UsercentricsLabels.serialize(): Any {
     return mapOf(
-        // Required only
         "btnAcceptAll" to btnAcceptAll,
         "btnDeny" to btnDeny,
         "btnSave" to btnSave,
@@ -115,6 +126,13 @@ private fun UsercentricsLabels.serialize(): Any {
         "btnMore" to btnMore,
         "retentionPeriod" to retentionPeriod,
         "explicit" to explicit,
+        "transferToThirdCountriesInfo" to transferToThirdCountriesInfo,
+        "more" to more,
+        "headerModal" to headerModal,
+        "furtherInformationOptOut" to furtherInformationOptOut,
+        "cookiePolicyLinkText" to cookiePolicyLinkText,
+        "noImplicit" to noImplicit,
+        "yesImplicit" to yesImplicit,
     )
 }
 
@@ -124,26 +142,21 @@ private fun CCPASettings.serialize(): Any {
         "btnSave" to btnSave,
         "firstLayerTitle" to firstLayerTitle,
         "isActive" to isActive,
-//        "region" to region.name,
         "showOnPageLoad" to showOnPageLoad,
         "reshowAfterDays" to reshowAfterDays,
         "iabAgreementExists" to iabAgreementExists,
         "appFirstLayerDescription" to appFirstLayerDescription,
         "firstLayerMobileDescriptionIsActive" to firstLayerMobileDescriptionIsActive,
         "firstLayerMobileDescription" to firstLayerMobileDescription,
-//        "firstLayerVariant" to firstLayerVariant.name,
         "secondLayerTitle" to secondLayerTitle,
         "secondLayerDescription" to secondLayerDescription,
-//        "secondLayerVariant" to secondLayerVariant.name,
         "secondLayerHideLanguageSwitch" to secondLayerHideLanguageSwitch,
         "btnMoreInfo" to btnMoreInfo,
-//        "secondLayerSide" to secondLayerSide.name,
     )
 }
 
 private fun TCF2Settings.serialize(): Any {
     return mapOf(
-        // Required
         "firstLayerTitle" to firstLayerTitle,
         "secondLayerTitle" to secondLayerTitle,
         "tabsPurposeLabel" to tabsPurposeLabel,
@@ -172,7 +185,6 @@ private fun TCF2Settings.serialize(): Any {
         "legitimateInterestLabel" to legitimateInterestLabel,
         "version" to version,
         "examplesLabel" to examplesLabel,
-        // Optional
         "firstLayerHideToggles" to firstLayerHideToggles,
         "secondLayerHideToggles" to secondLayerHideToggles,
         "hideLegitimateInterestToggles" to hideLegitimateInterestToggles,
@@ -183,7 +195,6 @@ private fun TCF2Settings.serialize(): Any {
         "selectedVendorIds" to selectedVendorIds,
         "gdprApplies" to gdprApplies,
         "selectedStacks" to selectedStacks,
-//        "scope" to scope.name,
         "disabledSpecialFeatures" to disabledSpecialFeatures,
         "firstLayerShowDescriptions" to firstLayerShowDescriptions,
         "hideNonIabOnFirstLayer" to hideNonIabOnFirstLayer,
@@ -197,8 +208,12 @@ private fun TCF2Settings.serialize(): Any {
         "togglesSpecialFeaturesToggleOff" to togglesSpecialFeaturesToggleOff,
         "appLayerNoteResurface" to appLayerNoteResurface,
         "firstLayerNoteResurface" to firstLayerNoteResurface,
-//        "labelsActivateAllVendors" to labelsActivateAllVendors,
-//    "changedPurposes" to changedPurposes.serialize(),
+        "firstLayerMobileVariant" to (firstLayerMobileVariant?.name ?: ""),
+        "showDataSharedOutsideEUText" to showDataSharedOutsideEUText,
+        "dataSharedOutsideEUText" to dataSharedOutsideEUText,
+        "vendorIdsOutsideEUList" to vendorIdsOutsideEUList,
+        "scope" to scope.name,
+        "changedPurposes" to changedPurposes?.serialize(),
     )
 }
 
@@ -260,6 +275,8 @@ private fun SecondLayer.serialize(): Any {
         "denyButtonText" to denyButtonText,
         "hideButtonDeny" to hideButtonDeny,
         "hideLanguageSwitch" to hideLanguageSwitch,
+        "hideTogglesForServices" to hideTogglesForServices,
+        "hideDataProcessingServices" to hideDataProcessingServices,
     )
 }
 
@@ -302,9 +319,10 @@ private fun UsercentricsService.serialize(): Any {
         "disableLegalBasis" to disableLegalBasis,
         "isEssential" to isEssential,
         "technologyUsed" to technologyUsed,
+        "deviceStorage" to deviceStorage.serializer(),
+        "isHidden" to isHidden,
     )
 }
-
 
 private fun UsercentricsCategory.serialize(): Any {
     return mapOf(
@@ -322,5 +340,33 @@ private fun UsercentricsLocation.serialize(): Any {
         "isInEU" to isInEU(),
         "isInUS" to isInUS(),
         "isInCalifornia" to isInCalifornia(),
+    )
+}
+
+private fun VariantsSettings?.serialize(): Any? {
+    if (this == null) {
+        return null
+    }
+    return mapOf(
+        "enabled" to enabled,
+        "experimentsJson" to experimentsJson,
+        "activateWith" to activateWith,
+    )
+}
+
+private fun PublishedApp.serialize(): Any {
+    return mapOf(
+        "bundleId" to bundleId,
+        "platform" to platform.name,
+    )
+}
+
+private fun TCF2ChangedPurposes?.serialize(): Any? {
+    if (this == null) {
+        return null
+    }
+    return mapOf(
+        "purposes" to purposes,
+        "legIntPurposes" to legIntPurposes
     )
 }

@@ -29,9 +29,9 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
-  Usercentrics: 6257d76d7ab3af9f4ab3e8b10159488c12045c22
-  usercentrics_sdk: 41e87c1c17f4f368de9db3391e76f0762303f965
-  UsercentricsUI: 79f3f848e2c34674af28f66b45eab76ae65b7abd
+  Usercentrics: be85dc92df056e85f72bf999b546bffb526757b6
+  usercentrics_sdk: 12e7b0257ba3baa73017284b27a259a4e8eba050
+  UsercentricsUI: 531c118d3c25218f23b6169ab398c72f744a48ba
   webview_flutter_wkwebview: b7e70ef1ddded7e69c796c7390ee74180182971f
 
 PODFILE CHECKSUM: 723de1cf6e2f18b51eb3426c945e31134a750097

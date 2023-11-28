@@ -32,6 +32,13 @@ class SettingsSerializer {
           CustomizationSerializer.deserialize(value['customization']),
       firstLayer: FirstLayerSerializer.deserialize(value['firstLayer']),
       secondLayer: SecondLayerSerializer.deserialize(value['secondLayer']),
+      variants: VariantsSettingsSerializer.deserialize(value['variants']),
+      dpsDisplayFormat:
+          DpsDisplayFormatSerializer.deserialize(value['dpsDisplayFormat']),
+      framework: USAFrameworksSerializer.deserialize(value['framework']),
+      publishedApps: ((value['publishedApps'] ?? []) as List)
+          .map((e) => PublishedAppSerializer.deserialize(e))
+          .toList(),
     );
   }
 }
@@ -53,6 +60,71 @@ class SecondLayerSerializer {
       denyButtonText: value['denyButtonText'] ?? "",
       hideButtonDeny: value['hideButtonDeny'],
       hideLanguageSwitch: value['hideLanguageSwitch'],
+      hideTogglesForServices: value['hideTogglesForServices'],
+      hideDataProcessingServices: value['hideDataProcessingServices'],
     );
+  }
+}
+
+class VariantsSettingsSerializer {
+  static VariantsSettings? deserialize(dynamic value) {
+    if (value == null) {
+      return null;
+    }
+    return VariantsSettings(
+        enabled: value['enabled'],
+        experimentsJson: value['experimentsJson'],
+        activateWith: value['activateWith']);
+  }
+}
+
+class DpsDisplayFormatSerializer {
+  static DpsDisplayFormat? deserialize(dynamic value) {
+    switch (value) {
+      case 'ALL':
+        return DpsDisplayFormat.all;
+      case 'SHORT':
+        return DpsDisplayFormat.short;
+    }
+    return null;
+  }
+}
+
+class USAFrameworksSerializer {
+  static USAFrameworks? deserialize(dynamic value) {
+    switch (value) {
+      case 'CPRA':
+        return USAFrameworks.cpra;
+      case 'VCDPA':
+        return USAFrameworks.vcdpa;
+      case 'CPA':
+        return USAFrameworks.cpa;
+      case 'CTDPA':
+        return USAFrameworks.ctdpa;
+      case 'UCPA':
+        return USAFrameworks.ucpa;
+    }
+    return null;
+  }
+}
+
+class PublishedAppSerializer {
+  static PublishedApp deserialize(dynamic value) {
+    return PublishedApp(
+        bundleId: value['bundleId'],
+        platform:
+            PublishedAppPlatformSerializer.deserialize(value['platform'])!);
+  }
+}
+
+class PublishedAppPlatformSerializer {
+  static PublishedAppPlatform? deserialize(dynamic value) {
+    switch (value) {
+      case 'ANDROID':
+        return PublishedAppPlatform.android;
+      case 'IOS':
+        return PublishedAppPlatform.ios;
+    }
+    return null;
   }
 }

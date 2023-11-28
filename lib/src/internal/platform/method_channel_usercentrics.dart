@@ -183,7 +183,6 @@ class MethodChannelUsercentrics extends UsercentricsPlatform {
   }
 
   @override
-  // TODO: implement ccpaData
   Future<CCPAData> get ccpaData async {
     await _ensureIsReady();
     return await getUSPDataBridge.invoke(channel: _channel);
@@ -276,14 +275,12 @@ class MethodChannelUsercentrics extends UsercentricsPlatform {
   }
 
   @override
-  // TODO: implement tcfData
   Future<TCFData> get tcfData async {
     await _ensureIsReady();
     return await getTCFDataBridge.invoke(channel: _channel);
   }
 
   @override
-  // TODO: implement userSessionData
   Future<String> get userSessionData async {
     await _ensureIsReady();
     return await getUserSessionDataBridge.invoke(channel: _channel);

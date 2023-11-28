@@ -71,6 +71,13 @@ class LabelsSerializer {
       secondLayerTitle: value['secondLayerTitle'] ?? "",
       retentionPeriod: value['retentionPeriod'] ?? "",
       explicit: value['explicit'] ?? "",
+      transferToThirdCountriesInfo: value["transferToThirdCountriesInfo"] ?? "",
+      more: value["more"] ?? "",
+      headerModal: value["headerModal"] ?? "",
+      furtherInformationOptOut: value['furtherInformationOptOut'] ?? "",
+      cookiePolicyLinkText: value['cookiePolicyLinkText'] ?? "",
+      noImplicit: value['noImplicit'] ?? "",
+      yesImplicit: value['yesImplicit'] ?? "",
     );
   }
 }

@@ -37,6 +37,10 @@ extension UsercentricsSettings {
             "enablePoweredBy" : self.enablePoweredBy,
             "editableLanguages" : self.editableLanguages,
             "customization" : self.customization?.serialize() as Any,
+            "variants": (self.variants?.serialize() ?? nil) as Any,
+            "dpsDisplayFormat": (self.dpsDisplayFormat?.name ?? "") as Any,
+            "framework": (self.framework?.name ?? "") as Any,
+            "publishedApps": (self.publishedApps?.map { $0.serialize() } ?? nil) as Any,
         ]
     }
 }
@@ -110,6 +114,13 @@ extension UsercentricsLabels {
             "btnMore": self.btnMore,
             "retentionPeriod": self.retentionPeriod,
             "explicit": self.explicit_ as Any,
+            "transferToThirdCountriesInfo": self.transferToThirdCountriesInfo,
+            "more": self.more,
+            "headerModal": self.headerModal,
+            "furtherInformationOptOut": self.furtherInformationOptOut,
+            "cookiePolicyLinkText": self.cookiePolicyLinkText,
+            "noImplicit": self.noImplicit,
+            "yesImplicit": self.yesImplicit,
         ]
     }
 }
@@ -121,20 +132,16 @@ extension CCPASettings {
             "btnSave" : self.btnSave,
             "firstLayerTitle" : self.firstLayerTitle,
             "isActive" : self.isActive,
-            //        "region" : self.region.name,
             "showOnPageLoad" : self.showOnPageLoad,
             "reshowAfterDays" : self.reshowAfterDays,
             "iabAgreementExists" : self.iabAgreementExists,
             "appFirstLayerDescription" : self.appFirstLayerDescription as Any,
             "firstLayerMobileDescriptionIsActive" : self.firstLayerMobileDescriptionIsActive,
             "firstLayerMobileDescription" : self.firstLayerMobileDescription as Any,
-            //        "firstLayerVariant" : self.firstLayerVariant.name,
             "secondLayerTitle" : self.secondLayerTitle as Any,
             "secondLayerDescription" : self.secondLayerDescription as Any,
-            //        "secondLayerVariant" : self.secondLayerVariant.name,
             "secondLayerHideLanguageSwitch" : self.secondLayerHideLanguageSwitch,
             "btnMoreInfo" : self.btnMoreInfo as Any,
-            //        "secondLayerSide" : self.secondLayerSide.name,
         ]
     }
 }
@@ -143,7 +150,6 @@ extension CCPASettings {
 extension TCF2Settings {
     func serialize() -> Any {
         return [
-            // Required
             "firstLayerTitle" : self.firstLayerTitle,
             "secondLayerTitle" : self.secondLayerTitle,
             "tabsPurposeLabel" : self.tabsPurposeLabel,
@@ -172,7 +178,6 @@ extension TCF2Settings {
             "legitimateInterestLabel" : self.legitimateInterestLabel,
             "version" : self.version,
             "examplesLabel" : self.examplesLabel,
-            // Optional
             "firstLayerHideToggles" : self.firstLayerHideToggles,
             "secondLayerHideToggles" : self.secondLayerHideToggles,
             "hideLegitimateInterestToggles" : self.hideLegitimateInterestToggles,
@@ -183,7 +188,6 @@ extension TCF2Settings {
             "selectedVendorIds" : self.selectedVendorIds,
             "gdprApplies" : self.gdprApplies,
             "selectedStacks" : self.selectedStacks,
-            //        "scope" : self.scope.name,
             "disabledSpecialFeatures" : self.disabledSpecialFeatures,
             "firstLayerShowDescriptions" : self.firstLayerShowDescriptions,
             "hideNonIabOnFirstLayer" : self.hideNonIabOnFirstLayer,
@@ -197,8 +201,12 @@ extension TCF2Settings {
             "togglesSpecialFeaturesToggleOff" : self.togglesSpecialFeaturesToggleOff as Any,
             "appLayerNoteResurface" : self.appLayerNoteResurface as Any,
             "firstLayerNoteResurface" : self.firstLayerNoteResurface as Any,
-            //        "labelsActivateAllVendors" : self.labelsActivateAllVendors,
-            //    "changedPurposes" : self.changedPurposes.serialize(),
+            "firstLayerMobileVariant": self.firstLayerMobileVariant?.name ?? "",
+            "showDataSharedOutsideEUText": self.showDataSharedOutsideEUText,
+            "dataSharedOutsideEUText": self.dataSharedOutsideEUText as Any,
+            "vendorIdsOutsideEUList": self.vendorIdsOutsideEUList,
+            "scope": self.scope.name,
+            "changedPurposes": self.changedPurposes?.serialize() as Any,
         ]
     }
 }
@@ -279,6 +287,8 @@ extension SecondLayer {
             "denyButtonText" : self.denyButtonText as Any,
             "hideButtonDeny" : Bool(from: self.hideButtonDeny) as Any,
             "hideLanguageSwitch" : Bool(from: self.hideLanguageSwitch) as Any,
+            "hideTogglesForServices": self.hideTogglesForServices,
+            "hideDataProcessingServices": self.hideDataProcessingServices,
         ]
     }
 }
@@ -325,6 +335,8 @@ extension UsercentricsService {
             "disableLegalBasis" : Bool(from: self.disableLegalBasis) as Any,
             "isEssential" : self.isEssential,
             "technologyUsed": self.technologyUsed as Any,
+            "deviceStorage": self.deviceStorage.serialize(),
+            "isHidden": self.isHidden
         ]
     }
 }
@@ -348,6 +360,34 @@ extension UsercentricsLocation {
             "isInEU" : self.isInEU(),
             "isInUS" : self.isInUS(),
             "isInCalifornia" : self.isInCalifornia(),
+        ] as [String : Any]
+    }
+}
+
+extension VariantsSettings {
+    func serialize() -> Any {
+        return [
+            "enabled": enabled,
+            "experimentsJson": experimentsJson,
+            "activateWith": activateWith,
+        ] as [String : Any]
+    }
+}
+
+extension PublishedApp {
+    func serialize() -> Any {
+        return [
+            "bundleId": bundleId,
+            "platform": platform.name,
+        ]
+    }
+}
+
+extension TCF2ChangedPurposes {
+    func serialize() -> Any {
+        return [
+            "purposes": purposes,
+            "legIntPurposes": legIntPurposes
         ]
     }
 }

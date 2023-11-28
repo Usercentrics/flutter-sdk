@@ -58,6 +58,51 @@ class TCF2SettingsSerializer {
       legitimateInterestLabel: value['legitimateInterestLabel'] ?? "",
       version: value['version'] ?? "",
       examplesLabel: value['examplesLabel'] ?? "",
+      firstLayerMobileVariant: FirstLayerMobileVariantSerializer.deserialize(
+          value['firstLayerMobileVariant']),
+      showDataSharedOutsideEUText: value['showDataSharedOutsideEUText'],
+      dataSharedOutsideEUText: value['dataSharedOutsideEUText'] ?? "",
+      vendorIdsOutsideEUList:
+          value['vendorIdsOutsideEUList']?.cast<int>() ?? [],
+      scope: TCF2ScopeSerializer.deserialize(value['scope'])!,
+      changedPurposes:
+          TCF2ChangedPurposesSerializer.deserialize(value['changedPurposes']),
     );
+  }
+}
+
+class FirstLayerMobileVariantSerializer {
+  static FirstLayerMobileVariant? deserialize(value) {
+    switch (value) {
+      case 'SHEET':
+        return FirstLayerMobileVariant.sheet;
+      case 'FULL':
+        return FirstLayerMobileVariant.full;
+      case 'POPUP_BOTTOM':
+        return FirstLayerMobileVariant.popupBottom;
+      case 'POPUP_CENTER':
+        return FirstLayerMobileVariant.popupCenter;
+    }
+    return null;
+  }
+}
+
+class TCF2ScopeSerializer {
+  static TCF2Scope? deserialize(value) {
+    switch (value) {
+      case 'GLOBAL':
+        return TCF2Scope.global;
+      case 'SERVICE':
+        return TCF2Scope.service;
+    }
+    return null;
+  }
+}
+
+class TCF2ChangedPurposesSerializer {
+  static TCF2ChangedPurposes deserialize(value) {
+    return TCF2ChangedPurposes(
+        purposes: value['purposes']?.cast<int>() ?? [],
+        legIntPurposes: value['legIntPurposes']?.cast<int>() ?? []);
   }
 }

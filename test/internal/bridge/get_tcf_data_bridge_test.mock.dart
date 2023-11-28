@@ -178,7 +178,19 @@ const _responseVendors = [
     "consent": true,
     "deviceStorageDisclosureUrl":
         "https://cdn.sirdata.eu/sirdata_device_storage_disclosure.json",
-    "cookieMaxAgeSeconds": 31536000.0
+    "cookieMaxAgeSeconds": 31536000.0,
+    "deviceStorage": [
+      {
+        "identifier": "identifier",
+        "type": "APP",
+        "name": "name",
+        "maxAgeSeconds": 10,
+        "cookieRefresh": false,
+        "purposes": [1, 2, 3],
+        "domain": "domain",
+        "description": "description"
+      }
+    ]
   }
 ];
 
@@ -346,5 +358,16 @@ const _expectedVendors = [
       consent: true,
       deviceStorageDisclosureUrl:
           "https://cdn.sirdata.eu/sirdata_device_storage_disclosure.json",
-      cookieMaxAgeSeconds: 31536000.0)
+      cookieMaxAgeSeconds: 31536000.0,
+      deviceStorage: ConsentDisclosureObject(disclosures: [
+        ConsentDisclosure(
+            identifier: "identifier",
+            type: ConsentDisclosureType.app,
+            name: "name",
+            maxAgeSeconds: 10,
+            cookieRefresh: false,
+            purposes: [1, 2, 3],
+            domain: "domain",
+            description: "description")
+      ]))
 ];

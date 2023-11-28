@@ -1,3 +1,4 @@
+import 'package:usercentrics_sdk/src/internal/serializer/consent_disclosure_object_serializer.dart';
 import 'package:usercentrics_sdk/src/model/service.dart';
 
 class ServiceSerializer {
@@ -40,6 +41,9 @@ class ServiceSerializer {
       isDeactivated: value['isDeactivated'],
       disableLegalBasis: value['disableLegalBasis'],
       isEssential: value['isEssential'],
+      deviceStorage:
+          ConsentDisclosureObjectSerializer.deserialize(value['deviceStorage']),
+      isHidden: value['isHidden'],
     );
   }
 }
