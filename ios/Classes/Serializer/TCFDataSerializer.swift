@@ -84,7 +84,6 @@ extension TCFStack {
 }
 
 extension TCFVendor {
-
     func serialize()-> Any {
         return [
             "consent" : Bool(from: self.consent) as Any ,
@@ -110,6 +109,7 @@ extension TCFVendor {
             "dataCategories" : dataCategories.map { $0.id },
             "vendorUrls" : vendorUrls.map { $0.serialize() },
             "deviceStorage" : self.deviceStorage?.serialize() as Any,
+            "restrictions": self.restrictions.map { $0.serialize() }
         ]
     }
 }
@@ -133,5 +133,15 @@ extension VendorUrl {
             "privacy" : self.privacy,
             "legIntClaim" : self.legIntClaim
         ]
+    }
+}
+
+extension TCFVendorRestriction {
+
+    func serialize() -> Any {
+        return [
+            "purposeId" : self.purposeId,
+            "restrictionType" : self.restrictionType.name
+        ] as [String : Any]
     }
 }

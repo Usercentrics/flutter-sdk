@@ -190,6 +190,9 @@ const _responseVendors = [
         "domain": "domain",
         "description": "description"
       }
+    ],
+    "restrictions": [
+      {"purposeId": 1, "restrictionType": "REQUIRE_LI"}
     ]
   }
 ];
@@ -369,5 +372,9 @@ const _expectedVendors = [
             purposes: [1, 2, 3],
             domain: "domain",
             description: "description")
-      ]))
+      ]),
+      restrictions: [
+        TCFVendorRestriction(
+            purposeId: 1, restrictionType: RestrictionType.requireLi)
+      ])
 ];

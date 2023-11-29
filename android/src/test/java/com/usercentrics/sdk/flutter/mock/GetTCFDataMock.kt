@@ -5,6 +5,7 @@ import com.usercentrics.sdk.services.tcf.interfaces.*
 import com.usercentrics.sdk.v2.settings.data.ConsentDisclosure
 import com.usercentrics.sdk.v2.settings.data.ConsentDisclosureObject
 import com.usercentrics.sdk.v2.settings.data.ConsentDisclosureType
+import com.usercentrics.tcf.core.model.RestrictionType
 import com.usercentrics.tcf.core.model.gvl.DataRetention
 import com.usercentrics.tcf.core.model.gvl.VendorUrl
 
@@ -89,7 +90,6 @@ internal object GetTCFDataMock {
                     IdAndName(7, ""),
                     IdAndName(8, "")
                 ),
-                restrictions = listOf(),
                 specialFeatures = listOf(IdAndName(1, "")),
                 specialPurposes = listOf(),
                 showConsentToggle = true,
@@ -116,6 +116,9 @@ internal object GetTCFDataMock {
                             description = "description",
                         )
                     )
+                ),
+                restrictions = listOf(
+                    TCFVendorRestriction(purposeId = 1, restrictionType = RestrictionType.REQUIRE_LI)
                 ),
             )
         ),
@@ -226,6 +229,12 @@ internal object GetTCFDataMock {
                         "description" to "description",
                     )
                 ),
+                "restrictions" to listOf(
+                    mapOf(
+                        "purposeId" to 1,
+                        "restrictionType" to "REQUIRE_LI"
+                    )
+                )
             ),
         ),
     )

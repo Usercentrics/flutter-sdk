@@ -7,6 +7,7 @@ import com.usercentrics.sdk.services.tcf.interfaces.TCFSpecialFeature
 import com.usercentrics.sdk.services.tcf.interfaces.TCFSpecialPurpose
 import com.usercentrics.sdk.services.tcf.interfaces.TCFStack
 import com.usercentrics.sdk.services.tcf.interfaces.TCFVendor
+import com.usercentrics.sdk.services.tcf.interfaces.TCFVendorRestriction
 import com.usercentrics.tcf.core.model.gvl.DataRetention
 import com.usercentrics.tcf.core.model.gvl.VendorUrl
 
@@ -105,6 +106,7 @@ private fun TCFVendor.serialize(): Any {
         "dataCategories" to dataCategories.map { it.id },
         "vendorUrls" to vendorUrls.map { it.serializer() },
         "deviceStorage" to deviceStorage.serializer(),
+        "restrictions" to restrictions.map { it.serializer() },
     )
 }
 
@@ -121,5 +123,12 @@ private fun VendorUrl.serializer(): Any {
         "langId" to this.langId,
         "privacy" to this.privacy,
         "legIntClaim" to this.legIntClaim
+    )
+}
+
+private fun TCFVendorRestriction.serializer(): Any {
+    return mapOf(
+        "purposeId" to purposeId,
+        "restrictionType" to restrictionType.name
     )
 }
