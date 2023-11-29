@@ -107,7 +107,8 @@ class TCFDataSerializer {
         dataRetention: _deserializeDataRetention(value['dataRetention']),
         vendorUrls: _deserializeVendorUrlList(value['vendorUrls']),
         deviceStorage: ConsentDisclosureObjectSerializer.deserialize(
-            value['deviceStorage']));
+            value['deviceStorage']),
+        restrictions: _deserializeRestrictions(value['restrictions']));
   }
 
   static DataRetention? _deserializeDataRetention(dynamic dataRetention) {
@@ -147,5 +148,34 @@ class TCFDataSerializer {
         langId: value['langId'],
         privacy: value['privacy'],
         legIntClaim: value['legIntClaim']);
+  }
+
+  static List<TCFVendorRestriction> _deserializeRestrictions(
+      dynamic restrictions) {
+    final List<TCFVendorRestriction> list = [];
+
+    for (var i = 0; i < restrictions.length; i++) {
+      list.add(_deserializeTCFVendorRestriction(restrictions[i]));
+    }
+    return list;
+  }
+
+  static TCFVendorRestriction _deserializeTCFVendorRestriction(dynamic value) {
+    return TCFVendorRestriction(
+        purposeId: value['purposeId'],
+        restrictionType:
+            _deserialiazeRestrictionType(value['restrictionType'])!);
+  }
+
+  static RestrictionType? _deserialiazeRestrictionType(dynamic value) {
+    switch (value) {
+      case 'NOT_ALLOWED':
+        return RestrictionType.notAllowed;
+      case 'REQUIRE_CONSENT':
+        return RestrictionType.requireConsent;
+      case 'REQUIRE_LI':
+        return RestrictionType.requireLi;
+    }
+    return null;
   }
 }

@@ -318,6 +318,7 @@ class TCFVendor {
     required this.dataCategories,
     required this.dataRetention,
     required this.vendorUrls,
+    required this.restrictions,
   });
 
   final bool? consent;
@@ -343,6 +344,7 @@ class TCFVendor {
   final DataRetention? dataRetention;
   final List<int> dataCategories;
   final List<VendorUrl> vendorUrls;
+  final List<TCFVendorRestriction> restrictions;
 
   @override
   bool operator ==(Object other) =>
@@ -372,7 +374,8 @@ class TCFVendor {
           dataSharedOutsideEU == other.dataSharedOutsideEU &&
           listEquals(dataCategories, other.dataCategories) &&
           dataRetention == other.dataRetention &&
-          listEquals(vendorUrls, other.vendorUrls);
+          listEquals(vendorUrls, other.vendorUrls) &&
+          listEquals(restrictions, other.restrictions);
 
   @override
   int get hashCode =>
@@ -398,7 +401,8 @@ class TCFVendor {
       dataSharedOutsideEU.hashCode ^
       dataCategories.hashCode ^
       dataRetention.hashCode ^
-      vendorUrls.hashCode;
+      vendorUrls.hashCode ^
+      restrictions.hashCode;
 
   @override
   String toString() => "$TCFVendor(id: $id)";
@@ -476,4 +480,29 @@ class RetentionPeriod {
 
   @override
   String toString() => "$RetentionPeriod(idAndPeriod: $idAndPeriod)";
+}
+
+class TCFVendorRestriction {
+  const TCFVendorRestriction(
+      {required this.purposeId, required this.restrictionType});
+
+  final int purposeId;
+  final RestrictionType restrictionType;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is TCFVendorRestriction &&
+          runtimeType == other.runtimeType &&
+          purposeId == other.purposeId &&
+          restrictionType == other.restrictionType;
+
+  @override
+  int get hashCode => purposeId.hashCode ^ restrictionType.hashCode;
+}
+
+enum RestrictionType {
+  notAllowed,
+  requireConsent,
+  requireLi,
 }
