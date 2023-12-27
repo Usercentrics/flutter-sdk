@@ -34,6 +34,7 @@ internal object GetTCFDataMock {
                 showConsentToggle = false,
                 showLegitimateInterestToggle = false,
                 stackId = null,
+                numberOfVendors = null
             )
         ),
         specialFeatures = listOf(
