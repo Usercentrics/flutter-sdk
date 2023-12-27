@@ -48,10 +48,6 @@ void main() {
     expect(1, callCounter);
     expect('getAdditionalConsentModeData', receivedCall?.method);
     expect(expectedResult.acString, result.acString);
-    expect(expectedResult.adTechProviders[0], result.adTechProviders[0]);
-    expect(expectedResult.adTechProviders[1], result.adTechProviders[1]);
-    expect(expectedResult.adTechProviders[2], result.adTechProviders[2]);
-    expect(expectedResult.adTechProviders[3], result.adTechProviders[3]);
-    expect(expectedResult.adTechProviders[4], result.adTechProviders[4]);
+    expect(expectedResult.adTechProviders, result.adTechProviders);
   });
 }

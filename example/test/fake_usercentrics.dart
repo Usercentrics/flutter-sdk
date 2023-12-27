@@ -1,4 +1,5 @@
 import 'package:usercentrics_sdk/usercentrics_sdk.dart';
+import 'package:usercentrics_sdk/src/model/additional_consent_mode_data.dart';
 
 // You can use your own Usercentrics implementation to test the integration.
 // Optionally, you can use a mock library such as `mockito`.
@@ -147,6 +148,11 @@ class FakeUsercentrics extends UsercentricsPlatform {
 
   @override
   Future<void> track({required UsercentricsAnalyticsEventType event}) {
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<AdditionalConsentModeData> get additionalConsentModeData {
     throw UnimplementedError();
   }
 }

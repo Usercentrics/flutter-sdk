@@ -3,8 +3,10 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:usercentrics_sdk/src/internal/bridge/bridge.dart';
+import 'package:usercentrics_sdk/src/internal/bridge/get_addittional_consent_mode_data_bridge.dart';
 import 'package:usercentrics_sdk/src/model/model.dart';
 import 'package:usercentrics_sdk/src/platform/usercentrics_platform.dart';
+import '../../model/additional_consent_mode_data.dart';
 
 class MethodChannelUsercentrics extends UsercentricsPlatform {
   MethodChannelUsercentrics({
@@ -32,6 +34,7 @@ class MethodChannelUsercentrics extends UsercentricsPlatform {
     this.getABTestingVariantBridge = const MethodChannelGetABTestingVariant(),
     this.setABTestingVariantBridge = const MethodChannelSetABTestingVariant(),
     this.trackBridge = const MethodChannelTrack(),
+    this.getAdditionalConsentModeData = const MethodChannelGetAdditionalConsentModeData()
   });
 
   static const MethodChannel _channel = MethodChannel('usercentrics');
@@ -60,6 +63,7 @@ class MethodChannelUsercentrics extends UsercentricsPlatform {
   final GetABTestingVariantBridge getABTestingVariantBridge;
   final SetABTestingVariantBridge setABTestingVariantBridge;
   final TrackBridge trackBridge;
+  final GetAdditionalConsentModeDataBridge getAdditionalConsentModeData;
 
   @visibleForTesting
   Completer<Object?>? isReadyCompleter;
@@ -318,6 +322,12 @@ class MethodChannelUsercentrics extends UsercentricsPlatform {
   Future<void> track({required UsercentricsAnalyticsEventType event}) async {
     await _ensureIsReady();
     return await trackBridge.invoke(channel: _channel, event: event);
+  }
+
+  @override
+  Future<AdditionalConsentModeData> get additionalConsentModeData async {
+    await _ensureIsReady();
+    return await getAdditionalConsentModeData.invoke(channel: _channel);
   }
 }
 
