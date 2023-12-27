@@ -173,6 +173,13 @@ class CustomUIPage extends StatelessWidget {
           "Template Id: ${service.templateId}");
     }
 
+    print("Additional Consent Mode V2 enabled: ${tcf2?.acmV2Enabled}");
+
+    var selectedIds = tcf2?.selectedATPIds;
+    for (var selectedATP in selectedIds!) {
+      print("Selected ATP id: $selectedATP");
+    }
+
     print("Accept All button: ${tcf2?.buttonsAcceptAllLabel}");
     print("Deny button: ${tcf2?.buttonsDenyAllLabel}");
     print("Save button: ${tcf2?.buttonsSaveLabel}");

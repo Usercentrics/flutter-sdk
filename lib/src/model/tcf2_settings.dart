@@ -59,6 +59,8 @@ class TCF2Settings {
     required this.vendorIdsOutsideEUList,
     required this.scope,
     required this.changedPurposes,
+    required this.acmV2Enabled,
+    required this.selectedATPIds
   });
 
   final String firstLayerTitle;
@@ -118,6 +120,8 @@ class TCF2Settings {
   final List<int> vendorIdsOutsideEUList;
   final TCF2Scope scope;
   final TCF2ChangedPurposes changedPurposes;
+  final bool acmV2Enabled;
+  final List<int> selectedATPIds;
 
   @override
   bool operator ==(Object other) =>
@@ -184,7 +188,9 @@ class TCF2Settings {
           dataSharedOutsideEUText == other.dataSharedOutsideEUText &&
           listEquals(vendorIdsOutsideEUList, other.vendorIdsOutsideEUList) &&
           scope == other.scope &&
-          changedPurposes == other.changedPurposes;
+          changedPurposes == other.changedPurposes &&
+          acmV2Enabled == other.acmV2Enabled &&
+          listEquals(selectedATPIds, other.selectedATPIds);
 
   @override
   int get hashCode =>
@@ -244,7 +250,9 @@ class TCF2Settings {
       dataSharedOutsideEUText.hashCode +
       vendorIdsOutsideEUList.hashCode +
       scope.hashCode +
-      changedPurposes.hashCode;
+      changedPurposes.hashCode +
+      acmV2Enabled.hashCode +
+      selectedATPIds.hashCode;
 
   @override
   String toString() => "$TCF2Settings($hashCode)";

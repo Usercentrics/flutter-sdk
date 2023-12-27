@@ -67,6 +67,8 @@ class TCF2SettingsSerializer {
       scope: TCF2ScopeSerializer.deserialize(value['scope'])!,
       changedPurposes:
           TCF2ChangedPurposesSerializer.deserialize(value['changedPurposes']),
+      acmV2Enabled: value['acmV2Enabled'] ?? false,
+      selectedATPIds: value['selectedATPIds']?.cast<int>() ?? []
     );
   }
 }
