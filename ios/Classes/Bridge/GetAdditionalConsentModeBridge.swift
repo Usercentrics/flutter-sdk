@@ -1,8 +1,12 @@
-//
-//  GetAdditionalConsentModeBridge.swift
-//  usercentrics_sdk
-//
-//  Created by Francisco Cunha on 27/12/2023.
-//
+import Usercentrics
 
-import Foundation
+struct GetAdditionalConsentModeBridge : MethodBridge {
+    let name: String = "getAdditionalConsentModeData"
+    let usercentrics: UsercentricsProxyProtocol
+
+    func invoke(_ call: FlutterMethodCall, _ result: @escaping FlutterResult) {
+        assert(call.method == name)
+        let acmData = usercentrics.shared.getAdditionalConsentModeData()
+        result(acmData.serialize())
+    }
+}

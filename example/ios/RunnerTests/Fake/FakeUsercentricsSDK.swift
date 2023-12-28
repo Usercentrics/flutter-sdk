@@ -11,6 +11,13 @@ final class FakeUsercentricsSDK: UsercentricsSDK {
         getConsentsDataCount += 1
         return getConsentsData!
     }
+    
+    var getAdditionalConsentModeAnswer: AdditionalConsentModeData?
+    var getAdditionalConsentModeCount = 0
+    override func getAdditionalConsentModeData() -> AdditionalConsentModeData {
+        getAdditionalConsentModeCount += 1
+        return getAdditionalConsentModeAnswer!
+    }
 
     var getControllerIdData: String?
 
