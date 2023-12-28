@@ -207,6 +207,8 @@ extension TCF2Settings {
             "vendorIdsOutsideEUList": self.vendorIdsOutsideEUList,
             "scope": self.scope.name,
             "changedPurposes": self.changedPurposes?.serialize() as Any,
+            "acmV2Enabled" : self.acmV2Enabled,
+            "selectedATPIds" : self.selectedATPIds
         ]
     }
 }
