@@ -214,6 +214,8 @@ private fun TCF2Settings.serialize(): Any {
         "vendorIdsOutsideEUList" to vendorIdsOutsideEUList,
         "scope" to scope.name,
         "changedPurposes" to changedPurposes?.serialize(),
+        "acmV2Enabled" to acmV2Enabled,
+        "selectedATPIds" to selectedATPIds
     )
 }
 

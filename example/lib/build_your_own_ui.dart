@@ -136,6 +136,7 @@ class CustomUIPage extends StatelessWidget {
     print("Second layer description: ${tcf2?.secondLayerDescription}");
 
     final tcfData = await Usercentrics.tcfData;
+    final acmData = await Usercentrics.additionalConsentModeData;
 
     print("TCString ${tcfData.tcString}");
 
@@ -174,6 +175,11 @@ class CustomUIPage extends StatelessWidget {
     }
 
     print("Additional Consent Mode V2 enabled: ${tcf2?.acmV2Enabled}");
+
+    print("AC String: ${acmData.acString}");
+    for (var atp in acmData.adTechProviders) {
+      print("Ad Tech Provider: ${atp.name}");
+    }
 
     var selectedIds = tcf2?.selectedATPIds;
     for (var selectedATP in selectedIds!) {
