@@ -6,6 +6,7 @@ import com.usercentrics.sdk.UsercentricsServiceConsent
 import com.usercentrics.sdk.flutter.api.FakeFlutterMethodCall
 import com.usercentrics.sdk.models.settings.UsercentricsConsentType
 import com.usercentrics.sdk.services.tcf.TCFDecisionUILayer
+import com.usercentrics.sdk.services.tcf.interfaces.AdTechProviderDecision
 import com.usercentrics.sdk.services.tcf.interfaces.TCFUserDecisionOnPurpose
 import com.usercentrics.sdk.services.tcf.interfaces.TCFUserDecisionOnSpecialFeature
 import com.usercentrics.sdk.services.tcf.interfaces.TCFUserDecisionOnVendor
@@ -54,6 +55,12 @@ internal object SaveDecisionsForTCFMock {
                         "legitimateInterestConsent" to null
                     )
                 ),
+                "adTechProviders" to listOf(
+                    mapOf(
+                        "id" to 1,
+                        "consent" to true,
+                    )
+                )
             ),
             "fromLayer" to "FIRST_LAYER",
             "serviceDecisions" to listOf(
@@ -86,6 +93,12 @@ internal object SaveDecisionsForTCFMock {
                 legitimateInterestConsent = null
             )
         ),
+        adTechProviders = listOf(
+            AdTechProviderDecision(
+                id = 1,
+                consent = true
+            )
+        )
     )
     val callFromLayer = TCFDecisionUILayer.FIRST_LAYER
     val callDecisions = listOf(
