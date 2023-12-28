@@ -1,3 +1,4 @@
+import 'package:usercentrics_sdk/src/model/additional_consent_mode_data.dart';
 import 'package:usercentrics_sdk/src/model/analytics_event_type.dart';
 import 'package:usercentrics_sdk/src/model/banner_settings.dart';
 import 'package:usercentrics_sdk/src/model/ccpa_data.dart';
@@ -34,6 +35,7 @@ class FakeUsercentricsPlatform extends UsercentricsPlatform {
     this.tcfDataAnswer,
     this.userSessionDataAnswer,
     this.aBTestingVariantAnswer,
+    this.acmDataAnswer
   });
 
   final List<UsercentricsServiceConsent>? consentsAnswer;
@@ -338,5 +340,13 @@ class FakeUsercentricsPlatform extends UsercentricsPlatform {
   Future<void> track({required UsercentricsAnalyticsEventType event}) {
     trackCalls.add(event);
     return Future.value(null);
+  }
+
+  final AdditionalConsentModeData? acmDataAnswer;
+  var acmDataCount = 0;
+  @override
+  Future<AdditionalConsentModeData> get additionalConsentModeData {
+    acmDataCount++;
+    return Future.value(acmDataAnswer!);
   }
 }

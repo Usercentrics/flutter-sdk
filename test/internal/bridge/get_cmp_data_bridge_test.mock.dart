@@ -168,7 +168,9 @@ const _responseTCF2Settings = {
   "changedPurposes": {
     "purposes": [1, 2, 3],
     "legIntPurposes": [1, 2, 3]
-  }
+  },
+  "acmV2Enabled": true,
+  "selectedATPIds": [1,2,3,4,5]
 };
 const _responseCCPASettings = {
   "optOutNoticeLabel": "Do not sell my personal information",
