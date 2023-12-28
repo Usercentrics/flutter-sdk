@@ -52,13 +52,19 @@ class GetAdditionalConsentModeBridgeTest: XCTestCase, BaseBridgeTestProtocol {
         let expectation = XCTestExpectation(description: "resultCompletion")
         
         let resultCompletion: FlutterResult = { result in
-            guard let result = result as? AdditionalConsentModeData else {
+            guard
+                let result = result as? [String: Any],
+                let atps = result["adTechProviders"] as? [[String: Any]]
+            else {
                 XCTFail()
                 return
             }
-
+            
+            let resultAcString = result["acString"] as? String
+            
             XCTAssertEqual(1, self.usercentrics.getAdditionalConsentModeCount)
-            XCTAssertEqual(result, additionalConsentModeData)
+            XCTAssertEqual(resultAcString, additionalConsentModeData.acString)
+            XCTAssertEqual(atps.count, additionalConsentModeData.adTechProviders.count)
             expectation.fulfill()
         }
 
