@@ -6,9 +6,7 @@ import 'package:usercentrics_sdk/src/model/additional_consent_mode_data.dart';
 part 'get_additional_consent_mode_data_bridge_test.mock.dart';
 
 const expectedResult = AdditionalConsentModeData(
-    acString: "2~1.2.3~dv.4.5",
-    adTechProviders: _expectedAdTechProviders
-);
+    acString: "2~1.2.3~dv.4.5", adTechProviders: _expectedAdTechProviders);
 
 const _expectedAdTechProviders = [
   AdTechProvider(

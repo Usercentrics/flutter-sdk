@@ -9,33 +9,33 @@ import 'package:usercentrics_sdk/src/platform/usercentrics_platform.dart';
 import '../../model/additional_consent_mode_data.dart';
 
 class MethodChannelUsercentrics extends UsercentricsPlatform {
-  MethodChannelUsercentrics({
-    this.initializeBridge = const MethodChannelInitialize(),
-    this.isReadyBridge = const MethodChannelIsReady(),
-    this.getConsentsBridge = const MethodChannelGetConsents(),
-    this.getControllerIdBridge = const MethodChannelGetControllerId(),
-    this.resetBridge = const MethodChannelReset(),
-    this.restoreUserSessionBridge = const MethodChannelRestoreUserSession(),
-    this.showFirstLayerBridge = const MethodChannelShowFirstLayer(),
-    this.showSecondLayerBridge = const MethodChannelShowSecondLayer(),
-    this.getCMPDataBridge = const MethodChannelGetCMPData(),
-    this.acceptAllBridge = const MethodChannelAcceptAll(),
-    this.acceptAllForTCFBridge = const MethodChannelAcceptAllForTCF(),
-    this.changeLanguageBridge = const MethodChannelChangeLanguage(),
-    this.denyAllBridge = const MethodChannelDenyAll(),
-    this.denyAllForTCFBridge = const MethodChannelDenyAllForTCF(),
-    this.getTCFDataBridge = const MethodChannelGetTCFData(),
-    this.getUserSessionDataBridge = const MethodChannelGetUserSessionData(),
-    this.getUSPDataBridge = const MethodChannelGetUSPData(),
-    this.saveDecisionsBridge = const MethodChannelSaveDecisions(),
-    this.saveDecisionsForTCFBridge = const MethodChannelSaveDecisionsForTCF(),
-    this.saveOptOutForCCPABridge = const MethodChannelSaveOptOutForCCPA(),
-    this.setCMPIdBridge = const MethodChannelSetCMPId(),
-    this.getABTestingVariantBridge = const MethodChannelGetABTestingVariant(),
-    this.setABTestingVariantBridge = const MethodChannelSetABTestingVariant(),
-    this.trackBridge = const MethodChannelTrack(),
-    this.getAdditionalConsentModeData = const MethodChannelGetAdditionalConsentModeData()
-  });
+  MethodChannelUsercentrics(
+      {this.initializeBridge = const MethodChannelInitialize(),
+      this.isReadyBridge = const MethodChannelIsReady(),
+      this.getConsentsBridge = const MethodChannelGetConsents(),
+      this.getControllerIdBridge = const MethodChannelGetControllerId(),
+      this.resetBridge = const MethodChannelReset(),
+      this.restoreUserSessionBridge = const MethodChannelRestoreUserSession(),
+      this.showFirstLayerBridge = const MethodChannelShowFirstLayer(),
+      this.showSecondLayerBridge = const MethodChannelShowSecondLayer(),
+      this.getCMPDataBridge = const MethodChannelGetCMPData(),
+      this.acceptAllBridge = const MethodChannelAcceptAll(),
+      this.acceptAllForTCFBridge = const MethodChannelAcceptAllForTCF(),
+      this.changeLanguageBridge = const MethodChannelChangeLanguage(),
+      this.denyAllBridge = const MethodChannelDenyAll(),
+      this.denyAllForTCFBridge = const MethodChannelDenyAllForTCF(),
+      this.getTCFDataBridge = const MethodChannelGetTCFData(),
+      this.getUserSessionDataBridge = const MethodChannelGetUserSessionData(),
+      this.getUSPDataBridge = const MethodChannelGetUSPData(),
+      this.saveDecisionsBridge = const MethodChannelSaveDecisions(),
+      this.saveDecisionsForTCFBridge = const MethodChannelSaveDecisionsForTCF(),
+      this.saveOptOutForCCPABridge = const MethodChannelSaveOptOutForCCPA(),
+      this.setCMPIdBridge = const MethodChannelSetCMPId(),
+      this.getABTestingVariantBridge = const MethodChannelGetABTestingVariant(),
+      this.setABTestingVariantBridge = const MethodChannelSetABTestingVariant(),
+      this.trackBridge = const MethodChannelTrack(),
+      this.getAdditionalConsentModeData =
+          const MethodChannelGetAdditionalConsentModeData()});
 
   static const MethodChannel _channel = MethodChannel('usercentrics');
 

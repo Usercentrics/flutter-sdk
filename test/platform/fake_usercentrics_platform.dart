@@ -16,27 +16,26 @@ import 'package:usercentrics_sdk/src/platform/usercentrics_platform.dart';
 
 // Mock UsercentricsPlatform implementation
 class FakeUsercentricsPlatform extends UsercentricsPlatform {
-  FakeUsercentricsPlatform({
-    this.consentsAnswer,
-    this.controllerIdAnswer,
-    this.restoreUserSessionAnswer,
-    this.showFirstLayerAnswer,
-    this.showSecondLayerAnswer,
-    this.statusAnswer,
-    this.cmpDataAnswer,
-    this.acceptAllAnswer,
-    this.acceptAllForTCFAnswer,
-    this.denyAllAnswer,
-    this.denyAllForTCFAnswer,
-    this.saveDecisionsAnswer,
-    this.saveDecisionsForTCFAnswer,
-    this.saveOptOutForCCPAAnswer,
-    this.ccpaDataAnswer,
-    this.tcfDataAnswer,
-    this.userSessionDataAnswer,
-    this.aBTestingVariantAnswer,
-    this.acmDataAnswer
-  });
+  FakeUsercentricsPlatform(
+      {this.consentsAnswer,
+      this.controllerIdAnswer,
+      this.restoreUserSessionAnswer,
+      this.showFirstLayerAnswer,
+      this.showSecondLayerAnswer,
+      this.statusAnswer,
+      this.cmpDataAnswer,
+      this.acceptAllAnswer,
+      this.acceptAllForTCFAnswer,
+      this.denyAllAnswer,
+      this.denyAllForTCFAnswer,
+      this.saveDecisionsAnswer,
+      this.saveDecisionsForTCFAnswer,
+      this.saveOptOutForCCPAAnswer,
+      this.ccpaDataAnswer,
+      this.tcfDataAnswer,
+      this.userSessionDataAnswer,
+      this.aBTestingVariantAnswer,
+      this.acmDataAnswer});
 
   final List<UsercentricsServiceConsent>? consentsAnswer;
   var consentsCount = 0;

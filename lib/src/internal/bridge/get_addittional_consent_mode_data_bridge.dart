@@ -5,12 +5,11 @@ import 'package:usercentrics_sdk/src/model/additional_consent_mode_data.dart';
 abstract class GetAdditionalConsentModeDataBridge {
   const GetAdditionalConsentModeDataBridge();
 
-  Future<AdditionalConsentModeData> invoke ({
-    required MethodChannel channel
-  });
+  Future<AdditionalConsentModeData> invoke({required MethodChannel channel});
 }
 
-class MethodChannelGetAdditionalConsentModeData extends GetAdditionalConsentModeDataBridge {
+class MethodChannelGetAdditionalConsentModeData
+    extends GetAdditionalConsentModeDataBridge {
   const MethodChannelGetAdditionalConsentModeData();
 
   static const String _name = 'getAdditionalConsentModeData';
@@ -23,4 +22,3 @@ class MethodChannelGetAdditionalConsentModeData extends GetAdditionalConsentMode
     return AdditionalConsentModeDataSerializer.deserialize(result);
   }
 }
-

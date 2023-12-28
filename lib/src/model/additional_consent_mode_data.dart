@@ -19,9 +19,7 @@ class AdditionalConsentModeData {
           listEquals(adTechProviders, other.adTechProviders);
 
   @override
-  int get hashCode =>
-    acString.hashCode  ^
-    adTechProviders.hashCode;
+  int get hashCode => acString.hashCode ^ adTechProviders.hashCode;
 
   @override
   String toString() => "$AdditionalConsentModeData($acString)";

@@ -170,7 +170,7 @@ const _responseTCF2Settings = {
     "legIntPurposes": [1, 2, 3]
   },
   "acmV2Enabled": true,
-  "selectedATPIds": [1,2,3,4,5]
+  "selectedATPIds": [1, 2, 3, 4, 5]
 };
 const _responseCCPASettings = {
   "optOutNoticeLabel": "Do not sell my personal information",
@@ -573,7 +573,7 @@ const _expectedTCF2Settings = TCF2Settings(
     changedPurposes:
         TCF2ChangedPurposes(purposes: [1, 2, 3], legIntPurposes: [1, 2, 3]),
     acmV2Enabled: true,
-    selectedATPIds: [1,2,3,4,5]);
+    selectedATPIds: [1, 2, 3, 4, 5]);
 
 const _expectedCCPASettings = CCPASettings(
   secondLayerHideLanguageSwitch: false,

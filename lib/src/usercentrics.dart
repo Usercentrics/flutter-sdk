@@ -125,7 +125,8 @@ class Usercentrics {
   static Future<String?> get aBTestingVariant => _delegate.aBTestingVariant;
 
   /// Get the additional consent mode data that needs to be disclosed to the end-user if TCF and ATP are enabled.
-  static Future<AdditionalConsentModeData> get additionalConsentModeData => _delegate.additionalConsentModeData;
+  static Future<AdditionalConsentModeData> get additionalConsentModeData =>
+      _delegate.additionalConsentModeData;
 
   /// Set the CMP ID value required by IAB for custom UI.
   static Future<void> setCmpIdForTCF({
