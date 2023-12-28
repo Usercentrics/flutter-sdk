@@ -267,6 +267,8 @@ internal object GetCMPDataMock {
         vendorIdsOutsideEUList = listOf(1, 2, 3),
         scope = TCF2Scope.SERVICE,
         changedPurposes = TCF2ChangedPurposes(purposes = listOf(1, 2, 3), legIntPurposes = listOf(1, 2, 3)),
+        acmV2Enabled = true,
+        selectedATPIds = listOf(1,2,3,4,5)
     )
     private val fakeCCPASettings = CCPASettings(
         secondLayerHideLanguageSwitch = false,
@@ -481,6 +483,8 @@ internal object GetCMPDataMock {
             "purposes" to listOf(1, 2, 3),
             "legIntPurposes" to listOf(1, 2, 3),
         ),
+        "acmV2Enabled" to true,
+        "selectedATPIds" to listOf(1,2,3,4,5)
     )
     private val expectedCCPASettings = mapOf(
         "optOutNoticeLabel" to "Do not sell my personal information",

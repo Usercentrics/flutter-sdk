@@ -56,7 +56,8 @@ class GetCMPDataBridgeUnitTest {
         assertEquals("TCF", resultMap?.get("activeVariant"))
 
         assertNotNull(resultMap!!)
-        assertEquals(GetCMPDataMock.expectedSettings, resultMap["settings"])
+        val expectedSettings = resultMap["settings"]
+        assertEquals(GetCMPDataMock.expectedSettings, expectedSettings)
         assertEquals(GetCMPDataMock.expectedCategories, resultMap["categories"])
         assertEquals(GetCMPDataMock.expectedServices, resultMap["services"])
         assertEquals(GetCMPDataMock.expectedUserLocation, resultMap["userLocation"])
