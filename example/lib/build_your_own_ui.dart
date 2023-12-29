@@ -267,6 +267,7 @@ class CustomUIPage extends StatelessWidget {
             purposes: _purposesExample(),
             specialFeatures: _specialFeaturesExample(),
             vendors: _vendorsExample(),
+            adTechProviders: _adTechProviderExample()
           ),
           fromLayer: TCFDecisionUILayer.firstLayer,
           serviceDecisions: _decisionsExample(),
@@ -309,6 +310,15 @@ class CustomUIPage extends StatelessWidget {
     return [
       const TCFUserDecisionOnVendor(
           id: 111, consent: false, legitimateInterestConsent: true),
+    ];
+  }
+
+  List<AdTechProviderDecision> _adTechProviderExample() {
+    return [
+      const AdTechProviderDecision(
+        id: 61,
+        consent: false,
+      ),
     ];
   }
 }

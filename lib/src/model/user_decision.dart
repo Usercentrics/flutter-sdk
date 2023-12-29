@@ -35,6 +35,7 @@ class TCFUserDecisions {
     required this.purposes,
     required this.specialFeatures,
     required this.vendors,
+    required this.adTechProviders,
   });
 
   /// A user's consent decision on TCF purposes.
@@ -45,6 +46,9 @@ class TCFUserDecisions {
 
   /// A user's consent decision on TCF vendors.
   final List<TCFUserDecisionOnVendor> vendors;
+
+  /// A user's consent decision on Ad Tech Providers.
+  final List<AdTechProviderDecision> adTechProviders;
 
   @override
   bool operator ==(Object other) =>
@@ -148,4 +152,30 @@ class TCFUserDecisionOnVendor {
   @override
   String toString() =>
       "$TCFUserDecisionOnVendor(id: $id, consent: $consent, legitimateInterestConsent: $legitimateInterestConsent)";
+}
+
+class AdTechProviderDecision {
+  const AdTechProviderDecision ({
+    required this.id,
+    required this.consent
+});
+
+  final int id;
+  final bool consent;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+          other is TCFUserDecisionOnVendor &&
+              runtimeType == other.runtimeType &&
+              id == other.id &&
+              consent == other.consent;
+
+  @override
+  int get hashCode =>
+      id.hashCode + consent.hashCode;
+
+  @override
+  String toString() =>
+      "$AdTechProviderDecision(id: $id, consent: $consent)";
 }
