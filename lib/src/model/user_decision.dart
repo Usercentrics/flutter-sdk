@@ -155,10 +155,7 @@ class TCFUserDecisionOnVendor {
 }
 
 class AdTechProviderDecision {
-  const AdTechProviderDecision ({
-    required this.id,
-    required this.consent
-});
+  const AdTechProviderDecision({required this.id, required this.consent});
 
   final int id;
   final bool consent;
@@ -166,16 +163,14 @@ class AdTechProviderDecision {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-          other is TCFUserDecisionOnVendor &&
-              runtimeType == other.runtimeType &&
-              id == other.id &&
-              consent == other.consent;
+      other is TCFUserDecisionOnVendor &&
+          runtimeType == other.runtimeType &&
+          id == other.id &&
+          consent == other.consent;
 
   @override
-  int get hashCode =>
-      id.hashCode + consent.hashCode;
+  int get hashCode => id.hashCode + consent.hashCode;
 
   @override
-  String toString() =>
-      "$AdTechProviderDecision(id: $id, consent: $consent)";
+  String toString() => "$AdTechProviderDecision(id: $id, consent: $consent)";
 }

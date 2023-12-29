@@ -264,11 +264,10 @@ class CustomUIPage extends StatelessWidget {
       case UsercentricsVariant.tcf:
         consents = await Usercentrics.saveDecisionsForTCF(
           tcfDecisions: TCFUserDecisions(
-            purposes: _purposesExample(),
-            specialFeatures: _specialFeaturesExample(),
-            vendors: _vendorsExample(),
-            adTechProviders: _adTechProviderExample()
-          ),
+              purposes: _purposesExample(),
+              specialFeatures: _specialFeaturesExample(),
+              vendors: _vendorsExample(),
+              adTechProviders: _adTechProviderExample()),
           fromLayer: TCFDecisionUILayer.firstLayer,
           serviceDecisions: _decisionsExample(),
           consentType: UsercentricsConsentType.explicit,
