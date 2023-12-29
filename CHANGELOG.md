@@ -10,7 +10,7 @@
 
 ## Improvements
 
-* TCFUserDecisions API update - All properties have been changed from var to val. The adTechProviders field has been added which represent consents for Google Additional Consent Mode. On iOS this is a required argument, so if this is irrelevant for your configuration, just set an empty list, when needed.
+* TCFUserDecisions API update - All properties have been changed from variables to constants. The adTechProviders field has been added which represent consents for Google Additional Consent Mode. On iOS this is a required argument, so if this is irrelevant for your configuration, just set an empty list, when needed. 
 * Location is only cached by the SDK for offline mode.
 
 ## Android Resolved Issues
