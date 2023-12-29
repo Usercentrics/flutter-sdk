@@ -63,13 +63,12 @@ extension AdTechProviderDecision {
     convenience init?(from dict: NSDictionary) {
         guard let id = dict["id"] as? Int else { return nil }
 
-        var consent: KotlinBoolean?
+        var consent: Bool?
         if let consentBool = dict["consent"] as? Bool {
-            consent = KotlinBoolean(bool: consentBool)
+            consent = consentBool
         }
 
-        self.init(id: Int32(id),
-                  consent: consent! as! Bool)
+        self.init(id: Int32(id), consent: consent!)
     }
 }
 
