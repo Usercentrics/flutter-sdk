@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1498D2341E8E89220040F4C2 /* GeneratedPluginRegistrant.m in Sources */ = {isa = PBXBuildFile; fileRef = 1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */; };
 		17F28FC4AC3BF66FC4301149 /* Pods_Runner_RunnerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 760C9E4CB26E7DAC6C729A22 /* Pods_Runner_RunnerTests.framework */; };
+		3453DCAF2B3D971200EFE874 /* GetAdditionalConsentModeBridgeTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3453DCAE2B3D971200EFE874 /* GetAdditionalConsentModeBridgeTest.swift */; };
 		3735A4C22A582462001666E4 /* TrackBridgeTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3735A4C12A582462001666E4 /* TrackBridgeTest.swift */; };
 		3735A4C42A582C54001666E4 /* UsercentricsAnalyticsEventTypeSerializerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3735A4C32A582C54001666E4 /* UsercentricsAnalyticsEventTypeSerializerTest.swift */; };
 		3B3967161E833CAA004F5970 /* AppFrameworkInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B3967151E833CAA004F5970 /* AppFrameworkInfo.plist */; };
@@ -62,6 +63,7 @@
 /* Begin PBXFileReference section */
 		1498D2321E8E86230040F4C2 /* GeneratedPluginRegistrant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GeneratedPluginRegistrant.h; sourceTree = "<group>"; };
 		1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeneratedPluginRegistrant.m; sourceTree = "<group>"; };
+		3453DCAE2B3D971200EFE874 /* GetAdditionalConsentModeBridgeTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAdditionalConsentModeBridgeTest.swift; sourceTree = "<group>"; };
 		3735A4C12A582462001666E4 /* TrackBridgeTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackBridgeTest.swift; sourceTree = "<group>"; };
 		3735A4C32A582C54001666E4 /* UsercentricsAnalyticsEventTypeSerializerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsercentricsAnalyticsEventTypeSerializerTest.swift; sourceTree = "<group>"; };
 		3B3967151E833CAA004F5970 /* AppFrameworkInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = AppFrameworkInfo.plist; path = Flutter/AppFrameworkInfo.plist; sourceTree = "<group>"; };
@@ -205,6 +207,7 @@
 			isa = PBXGroup;
 			children = (
 				A297F3FF271709F800F7AF8A /* BaseBridgeTest.swift */,
+				3453DCAE2B3D971200EFE874 /* GetAdditionalConsentModeBridgeTest.swift */,
 				A2DF521D2716CA3200204F07 /* GetConsentsBridgeTest.swift */,
 				A297F3FD2717097A00F7AF8A /* GetControllerIdBridgeTest.swift */,
 				A297F403271710F200F7AF8A /* InitializeBridgeTest.swift */,
@@ -501,6 +504,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3453DCAF2B3D971200EFE874 /* GetAdditionalConsentModeBridgeTest.swift in Sources */,
 				A297F3FE2717097A00F7AF8A /* GetControllerIdBridgeTest.swift in Sources */,
 				AD7CFFD427BA8FD300567D62 /* ShowSecondLayerBridgeTest.swift in Sources */,
 				3735A4C22A582462001666E4 /* TrackBridgeTest.swift in Sources */,

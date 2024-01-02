@@ -15,10 +15,13 @@ public extension TCFUserDecisions {
         let purposes = dict["purposes"] as? [NSDictionary]
         let specialFeatures = dict["specialFeatures"] as? [NSDictionary]
         let vendors = dict["vendors"] as? [NSDictionary]
-
+        let adTechProviders = dict["adTechProviders"] as? [NSDictionary]
+                
         self.init(purposes: purposes?.compactMap { TCFUserDecisionOnPurpose(from: $0) },
                   specialFeatures: specialFeatures?.compactMap { TCFUserDecisionOnSpecialFeature(from: $0) },
-                  vendors: vendors?.compactMap { TCFUserDecisionOnVendor(from: $0) })
+                  vendors: vendors?.compactMap { TCFUserDecisionOnVendor(from: $0) },
+                  adTechProviders: (adTechProviders?.compactMap { AdTechProviderDecision(from: $0) })!
+        )
     }
 }
 
@@ -53,6 +56,19 @@ extension TCFUserDecisionOnSpecialFeature {
 
         self.init(id: Int32(id),
                   consent: consent)
+    }
+}
+
+extension AdTechProviderDecision {
+    convenience init?(from dict: NSDictionary) {
+        guard let id = dict["id"] as? Int else { return nil }
+
+        var consent: Bool?
+        if let consentBool = dict["consent"] as? Bool {
+            consent = consentBool
+        }
+
+        self.init(id: Int32(id), consent: consent!)
     }
 }
 

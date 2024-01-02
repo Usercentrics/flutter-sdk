@@ -13,6 +13,9 @@ class TCFUserDecisionsSerializer {
         'specialFeatures':
             value.specialFeatures.map((e) => _serializeFeature(e)).toList(),
         'vendors': value.vendors.map((e) => _serializeVendor(e)).toList(),
+        'adTechProviders': value.adTechProviders
+            .map((e) => _serializeAdTechProvider(e))
+            .toList()
       };
 
   static dynamic _serializePurpose(TCFUserDecisionOnPurpose value) => {
@@ -30,5 +33,10 @@ class TCFUserDecisionsSerializer {
         'id': value.id,
         'consent': value.consent,
         'legitimateInterestConsent': value.legitimateInterestConsent,
+      };
+
+  static _serializeAdTechProvider(AdTechProviderDecision value) => {
+        'id': value.id,
+        'consent': value.consent,
       };
 }

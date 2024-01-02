@@ -1,3 +1,4 @@
+import 'package:usercentrics_sdk/src/model/additional_consent_mode_data.dart';
 import 'package:usercentrics_sdk/src/model/analytics_event_type.dart';
 import 'package:usercentrics_sdk/src/model/banner_settings.dart';
 import 'package:usercentrics_sdk/src/model/ccpa_data.dart';
@@ -15,26 +16,26 @@ import 'package:usercentrics_sdk/src/platform/usercentrics_platform.dart';
 
 // Mock UsercentricsPlatform implementation
 class FakeUsercentricsPlatform extends UsercentricsPlatform {
-  FakeUsercentricsPlatform({
-    this.consentsAnswer,
-    this.controllerIdAnswer,
-    this.restoreUserSessionAnswer,
-    this.showFirstLayerAnswer,
-    this.showSecondLayerAnswer,
-    this.statusAnswer,
-    this.cmpDataAnswer,
-    this.acceptAllAnswer,
-    this.acceptAllForTCFAnswer,
-    this.denyAllAnswer,
-    this.denyAllForTCFAnswer,
-    this.saveDecisionsAnswer,
-    this.saveDecisionsForTCFAnswer,
-    this.saveOptOutForCCPAAnswer,
-    this.ccpaDataAnswer,
-    this.tcfDataAnswer,
-    this.userSessionDataAnswer,
-    this.aBTestingVariantAnswer,
-  });
+  FakeUsercentricsPlatform(
+      {this.consentsAnswer,
+      this.controllerIdAnswer,
+      this.restoreUserSessionAnswer,
+      this.showFirstLayerAnswer,
+      this.showSecondLayerAnswer,
+      this.statusAnswer,
+      this.cmpDataAnswer,
+      this.acceptAllAnswer,
+      this.acceptAllForTCFAnswer,
+      this.denyAllAnswer,
+      this.denyAllForTCFAnswer,
+      this.saveDecisionsAnswer,
+      this.saveDecisionsForTCFAnswer,
+      this.saveOptOutForCCPAAnswer,
+      this.ccpaDataAnswer,
+      this.tcfDataAnswer,
+      this.userSessionDataAnswer,
+      this.aBTestingVariantAnswer,
+      this.acmDataAnswer});
 
   final List<UsercentricsServiceConsent>? consentsAnswer;
   var consentsCount = 0;
@@ -338,5 +339,13 @@ class FakeUsercentricsPlatform extends UsercentricsPlatform {
   Future<void> track({required UsercentricsAnalyticsEventType event}) {
     trackCalls.add(event);
     return Future.value(null);
+  }
+
+  final AdditionalConsentModeData? acmDataAnswer;
+  var acmDataCount = 0;
+  @override
+  Future<AdditionalConsentModeData> get additionalConsentModeData {
+    acmDataCount++;
+    return Future.value(acmDataAnswer!);
   }
 }

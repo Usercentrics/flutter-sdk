@@ -1,6 +1,7 @@
 package com.usercentrics.sdk.flutter.serializer
 
 import com.usercentrics.sdk.UserDecision
+import com.usercentrics.sdk.services.tcf.interfaces.AdTechProviderDecision
 import com.usercentrics.sdk.services.tcf.interfaces.TCFUserDecisionOnPurpose
 import com.usercentrics.sdk.services.tcf.interfaces.TCFUserDecisionOnSpecialFeature
 import com.usercentrics.sdk.services.tcf.interfaces.TCFUserDecisionOnVendor
@@ -20,6 +21,7 @@ internal fun Any?.deserializeTCFUserDecisions(): TCFUserDecisions {
         purposes = (this["purposes"] as List<*>).map { it.deserializeTCFUserDecisionOnPurpose() },
         specialFeatures = (this["specialFeatures"] as List<*>).map { it.deserializeTCFUserDecisionOnSpecialFeature() },
         vendors = (this["vendors"] as List<*>).map { it.deserializeTCFUserDecisionOnVendor() },
+        adTechProviders = (this["adTechProviders"] as List<*>).map { it.deserializeAdTechProviderDecision() }
     )
 }
 
@@ -46,5 +48,13 @@ private fun Any?.deserializeTCFUserDecisionOnVendor(): TCFUserDecisionOnVendor {
         id = this["id"] as Int,
         consent = this["consent"] as Boolean?,
         legitimateInterestConsent = this["legitimateInterestConsent"] as Boolean?,
+    )
+}
+
+private fun Any?.deserializeAdTechProviderDecision() : AdTechProviderDecision {
+    this as Map<*, *>
+    return AdTechProviderDecision(
+        id = this["id"] as Int,
+        consent = this["consent"] as Boolean
     )
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/foundation.dart';
+import 'package:usercentrics_sdk/src/model/additional_consent_mode_data.dart';
 import 'package:usercentrics_sdk/src/model/model.dart';
 import 'package:usercentrics_sdk/src/platform/usercentrics_platform.dart';
 
@@ -122,6 +123,10 @@ class Usercentrics {
 
   /// Get the a variant of the CMP to do A/B testing.
   static Future<String?> get aBTestingVariant => _delegate.aBTestingVariant;
+
+  /// Get the additional consent mode data that needs to be disclosed to the end-user if TCF and ATP are enabled.
+  static Future<AdditionalConsentModeData> get additionalConsentModeData =>
+      _delegate.additionalConsentModeData;
 
   /// Set the CMP ID value required by IAB for custom UI.
   static Future<void> setCmpIdForTCF({

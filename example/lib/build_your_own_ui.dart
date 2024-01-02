@@ -136,6 +136,7 @@ class CustomUIPage extends StatelessWidget {
     print("Second layer description: ${tcf2?.secondLayerDescription}");
 
     final tcfData = await Usercentrics.tcfData;
+    final acmData = await Usercentrics.additionalConsentModeData;
 
     print("TCString ${tcfData.tcString}");
 
@@ -171,6 +172,18 @@ class CustomUIPage extends StatelessWidget {
     for (var service in data.services) {
       print("Data processor: ${service.dataProcessor} with "
           "Template Id: ${service.templateId}");
+    }
+
+    print("Additional Consent Mode V2 enabled: ${tcf2?.acmV2Enabled}");
+
+    print("AC String: ${acmData.acString}");
+    for (var atp in acmData.adTechProviders) {
+      print("Ad Tech Provider: ${atp.name}");
+    }
+
+    var selectedIds = tcf2?.selectedATPIds;
+    for (var selectedATP in selectedIds!) {
+      print("Selected ATP id: $selectedATP");
     }
 
     print("Accept All button: ${tcf2?.buttonsAcceptAllLabel}");
@@ -251,10 +264,10 @@ class CustomUIPage extends StatelessWidget {
       case UsercentricsVariant.tcf:
         consents = await Usercentrics.saveDecisionsForTCF(
           tcfDecisions: TCFUserDecisions(
-            purposes: _purposesExample(),
-            specialFeatures: _specialFeaturesExample(),
-            vendors: _vendorsExample(),
-          ),
+              purposes: _purposesExample(),
+              specialFeatures: _specialFeaturesExample(),
+              vendors: _vendorsExample(),
+              adTechProviders: _adTechProviderExample()),
           fromLayer: TCFDecisionUILayer.firstLayer,
           serviceDecisions: _decisionsExample(),
           consentType: UsercentricsConsentType.explicit,
@@ -296,6 +309,15 @@ class CustomUIPage extends StatelessWidget {
     return [
       const TCFUserDecisionOnVendor(
           id: 111, consent: false, legitimateInterestConsent: true),
+    ];
+  }
+
+  List<AdTechProviderDecision> _adTechProviderExample() {
+    return [
+      const AdTechProviderDecision(
+        id: 61,
+        consent: false,
+      ),
     ];
   }
 }
