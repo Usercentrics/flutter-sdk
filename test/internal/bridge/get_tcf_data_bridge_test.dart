@@ -1,7 +1,6 @@
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:usercentrics_sdk/src/internal/internal.dart';
-import 'package:usercentrics_sdk/src/model/consent_disclosure.dart';
 import 'package:usercentrics_sdk/src/model/model.dart';
 
 part 'get_tcf_data_bridge_test.mock.dart';

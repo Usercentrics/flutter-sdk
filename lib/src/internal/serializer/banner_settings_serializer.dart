@@ -1,5 +1,4 @@
 import 'package:usercentrics_sdk/src/internal/internal.dart';
-import 'package:usercentrics_sdk/src/internal/serializer/general_style_settings_serializer.dart';
 import 'package:usercentrics_sdk/src/model/banner_settings.dart';
 
 class BannerSettingsSerializer {

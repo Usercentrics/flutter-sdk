@@ -3,10 +3,8 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:usercentrics_sdk/src/internal/bridge/bridge.dart';
-import 'package:usercentrics_sdk/src/internal/bridge/get_addittional_consent_mode_data_bridge.dart';
 import 'package:usercentrics_sdk/src/model/model.dart';
 import 'package:usercentrics_sdk/src/platform/usercentrics_platform.dart';
-import '../../model/additional_consent_mode_data.dart';
 
 class MethodChannelUsercentrics extends UsercentricsPlatform {
   MethodChannelUsercentrics(

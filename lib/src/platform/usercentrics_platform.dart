@@ -1,5 +1,4 @@
 import 'package:usercentrics_sdk/src/internal/platform/method_channel_usercentrics.dart';
-import 'package:usercentrics_sdk/src/model/additional_consent_mode_data.dart';
 import 'package:usercentrics_sdk/src/model/model.dart';
 
 abstract class UsercentricsPlatform {

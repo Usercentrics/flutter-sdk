@@ -36,6 +36,8 @@ jobs:
         run: flutter pub get
       - name: Lint using flutter analyze
         run: flutter analyze
+      - name: Assert that every file that should be public has been exported
+        run: scripts/assert_export.sh
 
   pub-dry-run:
     name: Publish Dry Run
