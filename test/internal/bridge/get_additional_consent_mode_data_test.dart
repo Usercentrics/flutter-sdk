@@ -1,6 +1,6 @@
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:usercentrics_sdk/src/internal/bridge/get_addittional_consent_mode_data_bridge.dart';
+import 'package:usercentrics_sdk/src/internal/bridge/get_additional_consent_mode_data_bridge.dart';
 import 'package:usercentrics_sdk/src/model/additional_consent_mode_data.dart';
 
 part 'get_additional_consent_mode_data_bridge_test.mock.dart';
