@@ -1,4 +1,11 @@
 [Release Notes](https://docs.usercentrics.com/cmp_in_app_sdk/latest/about/history/)
+
+### 2.11.1 - January 05, 2024
+
+## Resolved Issues
+
+* Google Additional Consent Mode V2 - models were not exported and publicly available :cry:
+
 ### 2.11.0 - December 22, 2023
 
 ## Features
