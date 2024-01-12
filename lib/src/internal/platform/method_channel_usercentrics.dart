@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:usercentrics_sdk/src/internal/bridge/bridge.dart';
+import 'package:usercentrics_sdk/src/model/exception.dart';
 import 'package:usercentrics_sdk/src/model/model.dart';
 import 'package:usercentrics_sdk/src/platform/usercentrics_platform.dart';
 
@@ -32,8 +33,7 @@ class MethodChannelUsercentrics extends UsercentricsPlatform {
       this.getABTestingVariantBridge = const MethodChannelGetABTestingVariant(),
       this.setABTestingVariantBridge = const MethodChannelSetABTestingVariant(),
       this.trackBridge = const MethodChannelTrack(),
-      this.getAdditionalConsentModeData =
-          const MethodChannelGetAdditionalConsentModeData()});
+      this.getAdditionalConsentModeData = const MethodChannelGetAdditionalConsentModeData()});
 
   static const MethodChannel _channel = MethodChannel('usercentrics');
 
@@ -108,8 +108,7 @@ class MethodChannelUsercentrics extends UsercentricsPlatform {
   }
 
   @override
-  Future<UsercentricsReadyStatus> get status =>
-      isReadyBridge.invoke(channel: _channel);
+  Future<UsercentricsReadyStatus> get status => isReadyBridge.invoke(channel: _channel);
 
   @override
   Future<UsercentricsConsentUserResponse?> showFirstLayer({
@@ -150,8 +149,7 @@ class MethodChannelUsercentrics extends UsercentricsPlatform {
     required String controllerId,
   }) async {
     await _ensureIsReady();
-    return await restoreUserSessionBridge.invoke(
-        channel: _channel, controllerId: controllerId);
+    return await restoreUserSessionBridge.invoke(channel: _channel, controllerId: controllerId);
   }
 
   @override
@@ -299,8 +297,7 @@ class MethodChannelUsercentrics extends UsercentricsPlatform {
     required String variant,
   }) async {
     await _ensureIsReady();
-    return await setABTestingVariantBridge.invoke(
-        channel: _channel, variant: variant);
+    return await setABTestingVariantBridge.invoke(channel: _channel, variant: variant);
   }
 
   Future<void> _ensureIsReady() async {
@@ -327,23 +324,4 @@ class MethodChannelUsercentrics extends UsercentricsPlatform {
     await _ensureIsReady();
     return await getAdditionalConsentModeData.invoke(channel: _channel);
   }
-}
-
-class FailedInitializationException implements Exception {
-  final String message;
-
-  const FailedInitializationException(this.message);
-
-  @override
-  String toString() => "$FailedInitializationException: $message";
-}
-
-class NotInitializedException implements Exception {
-  static const message =
-      "Usercentrics was not initialized, please ensure that you invoke 'Usercentrics.initialize()' before you start using it";
-
-  const NotInitializedException();
-
-  @override
-  String toString() => "$NotInitializedException: $message";
 }
