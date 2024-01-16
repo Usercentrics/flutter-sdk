@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:usercentrics_sdk/src/internal/bridge/bridge.dart';
+import 'package:usercentrics_sdk/src/model/exception.dart';
 import 'package:usercentrics_sdk/src/model/model.dart';
 import 'package:usercentrics_sdk/src/platform/usercentrics_platform.dart';
 
@@ -327,23 +328,4 @@ class MethodChannelUsercentrics extends UsercentricsPlatform {
     await _ensureIsReady();
     return await getAdditionalConsentModeData.invoke(channel: _channel);
   }
-}
-
-class FailedInitializationException implements Exception {
-  final String message;
-
-  const FailedInitializationException(this.message);
-
-  @override
-  String toString() => "$FailedInitializationException: $message";
-}
-
-class NotInitializedException implements Exception {
-  static const message =
-      "Usercentrics was not initialized, please ensure that you invoke 'Usercentrics.initialize()' before you start using it";
-
-  const NotInitializedException();
-
-  @override
-  String toString() => "$NotInitializedException: $message";
 }
