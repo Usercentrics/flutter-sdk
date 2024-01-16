@@ -39,6 +39,7 @@ extension TCFPurpose {
             "showConsentToggle" : showConsentToggle,
             "showLegitimateInterestToggle" : showLegitimateInterestToggle,
             "stackId" : stackId as Any,
+            "numberOfVendors": numberOfVendors as Any
         ]
     }
 }

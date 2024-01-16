@@ -46,6 +46,7 @@ class TCFDataSerializer {
       showConsentToggle: value['showConsentToggle'],
       showLegitimateInterestToggle: value['showLegitimateInterestToggle'],
       stackId: value['stackId'],
+      numberOfVendors: value['numberOfVendors'],
     );
   }
 
