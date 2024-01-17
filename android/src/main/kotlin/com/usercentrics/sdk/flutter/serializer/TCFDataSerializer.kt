@@ -45,6 +45,7 @@ private fun TCFPurpose.serialize(): Any {
         "showConsentToggle" to showConsentToggle,
         "showLegitimateInterestToggle" to showLegitimateInterestToggle,
         "stackId" to stackId,
+        "numberOfVendors" to numberOfVendors,
     )
 }
 

@@ -119,6 +119,7 @@ class TCFPurpose {
     required this.showConsentToggle,
     required this.showLegitimateInterestToggle,
     required this.stackId,
+    required this.numberOfVendors,
   });
 
   final String purposeDescription;
@@ -131,6 +132,7 @@ class TCFPurpose {
   final bool showConsentToggle;
   final bool showLegitimateInterestToggle;
   final int? stackId;
+  final int? numberOfVendors;
 
   @override
   bool operator ==(Object other) =>
@@ -146,7 +148,8 @@ class TCFPurpose {
           legitimateInterestConsent == other.legitimateInterestConsent &&
           showConsentToggle == other.showConsentToggle &&
           showLegitimateInterestToggle == other.showLegitimateInterestToggle &&
-          stackId == other.stackId;
+          stackId == other.stackId &&
+          numberOfVendors == other.numberOfVendors;
 
   @override
   int get hashCode =>
@@ -159,7 +162,8 @@ class TCFPurpose {
       legitimateInterestConsent.hashCode ^
       showConsentToggle.hashCode ^
       showLegitimateInterestToggle.hashCode ^
-      stackId.hashCode;
+      stackId.hashCode ^
+      numberOfVendors.hashCode;
 
   @override
   String toString() => "$TCFPurpose(id: $id)";
