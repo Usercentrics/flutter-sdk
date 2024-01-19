@@ -341,6 +341,8 @@ class TCFVendor {
   final double? cookieMaxAgeSeconds;
   final bool usesNonCookieAccess;
   final String? deviceStorageDisclosureUrl;
+  @Deprecated(
+      'replaces to deviceStorageDisclosureUrl, this field will be removed in the upcoming version')
   final ConsentDisclosureObject? deviceStorage;
   final bool usesCookies;
   final bool? cookieRefresh;
@@ -372,6 +374,7 @@ class TCFVendor {
           cookieMaxAgeSeconds == other.cookieMaxAgeSeconds &&
           usesNonCookieAccess == other.usesNonCookieAccess &&
           deviceStorageDisclosureUrl == other.deviceStorageDisclosureUrl &&
+          // ignore: deprecated_member_use_from_same_package
           deviceStorage == other.deviceStorage &&
           usesCookies == other.usesCookies &&
           cookieRefresh == other.cookieRefresh &&
@@ -399,6 +402,7 @@ class TCFVendor {
       cookieMaxAgeSeconds.hashCode ^
       usesNonCookieAccess.hashCode ^
       deviceStorageDisclosureUrl.hashCode ^
+      // ignore: deprecated_member_use_from_same_package
       deviceStorage.hashCode ^
       usesCookies.hashCode ^
       cookieRefresh.hashCode ^
