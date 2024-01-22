@@ -2,6 +2,9 @@ name: CI/CD
 
 on:
   push:
+    tags:
+      - '[0-9]+.[0-9]+.[0-9]+*'
+
     branches:
       - master
   pull_request:
@@ -169,6 +172,9 @@ jobs:
 
   release:
     name: Release
+    permissions:
+      id-token: write # Required for authentication using OIDC
+      uses: Usercentrics/flutter-sdk/.github/workflows/ci.yml@v1
     if: github.event_name == 'release'
     needs: [ test-flutter, test-android, test-ios, build-android, build-ios ]
     runs-on: ubuntu-latest
