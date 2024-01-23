@@ -170,30 +170,23 @@ jobs:
         working-directory: ./example
         run: flutter build ios --debug --no-codesign --simulator
 
+  # https://dart.dev/tools/pub/automated-publishing
   release:
     name: Release
     permissions:
-      id-token: write # Required for authentication using OIDC
-      uses: Usercentrics/flutter-sdk/.github/workflows/ci.yml@v1
+      id-token: write
     if: github.event_name == 'release'
     needs: [ test-flutter, test-android, test-ios, build-android, build-ios ]
     runs-on: ubuntu-latest
     container: ghcr.io/cirruslabs/flutter:3.13.5
     timeout-minutes: 20
-    env:
-      PUB_DEV_CREDENTIAL: ${{ secrets.PUB_DEV_CREDENTIAL }}
-      PUB_DEV_REFRESH_TOKEN: ${{ secrets.PUB_DEV_REFRESH_TOKEN }}
-      PUB_DEV_ID_TOKEN: ${{ secrets.PUB_DEV_ID_TOKEN }}
-      PUB_DEV_TOKEN_ENDPOINT: ${{ secrets.PUB_DEV_TOKEN_ENDPOINT }}
-      PUB_DEV_EXPIRATION: ${{ secrets.PUB_DEV_EXPIRATION }}
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+      - uses: dart-lang/setup-dart@v1
       - name: Validate version
         run: dart scripts/check_release_version.dart ${{ github.ref }}
-      - name: Setup credentials
-        run: ./scripts/setup_pub_credentials.sh
       - name: Get dependencies
         run: flutter pub get
       - name: Publish
