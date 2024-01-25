@@ -9,7 +9,8 @@
 ## Other Fixes
 
 * Ensures accurate and proper display of large links on the Banner First and Second layer
-* Deprecates deviceStorage field on TCF Vendor class
+* Deprecates `deviceStorage` field on TCF Vendor class
+* Field in CCPA Data `optedOut` is nullable
 
 ### 2.11.2 - January 10, 2024
 
