@@ -9,6 +9,7 @@ export 'cmp_data.dart';
 export 'consent_disclosure.dart';
 export 'consent_type.dart';
 export 'customization.dart';
+export 'exception.dart';
 export 'first_layer_style_settings.dart';
 export 'font.dart';
 export 'general_style_settings.dart';
