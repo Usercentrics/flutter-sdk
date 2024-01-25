@@ -181,7 +181,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      - uses: dart-lang/setup-dart@v1
       - name: Validate version
         run: dart scripts/check_release_version.dart ${{ github.ref }}
       - name: Set publishing token
