@@ -52,7 +52,8 @@ const _responsePurposes = [
     "illustrations": [
       "If you read several articles about the best bike accessories to buy",
       "An apparel company wishes to promote its new line of high-end baby clothes."
-    ]
+    ],
+    "numberOfVendors": 12
   },
   {
     "consent": true,
@@ -68,7 +69,8 @@ const _responsePurposes = [
     "illustrations": [
       "You read several articles on how to build a treehouse on a social media platform.",
       "You have viewed three videos on space exploration across different TV apps."
-    ]
+    ],
+    "numberOfVendors": 12
   }
 ];
 
@@ -246,7 +248,8 @@ const _expectedPurposes = [
       illustrations: [
         "If you read several articles about the best bike accessories to buy",
         "An apparel company wishes to promote its new line of high-end baby clothes."
-      ]),
+      ],
+      numberOfVendors: 12),
   TCFPurpose(
       consent: true,
       legitimateInterestConsent: false,
@@ -261,7 +264,8 @@ const _expectedPurposes = [
       illustrations: [
         "You read several articles on how to build a treehouse on a social media platform.",
         "You have viewed three videos on space exploration across different TV apps."
-      ])
+      ],
+      numberOfVendors: 12)
 ];
 
 const _expectedSpecialFeatures = [
