@@ -15,7 +15,7 @@ class CCPAData {
   final bool? noticeGiven;
 
   /// True if the user opted out the consents, so the user denies the services. False if not, so the user accepts the services.
-  final bool optedOut;
+  final bool? optedOut;
 
   /// Limited Service Provider Agreement Covered Transaction.
   final bool? lspact;
