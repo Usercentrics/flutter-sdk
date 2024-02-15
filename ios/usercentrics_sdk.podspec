@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'usercentrics_sdk'
-  s.version = '2.11.3'
+  s.version = '2.12.0'
   s.summary          = 'Usercentrics Flutter SDK.'
   s.description      = <<-DESC
   Usercentrics Flutter SDK.
