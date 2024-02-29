@@ -37,9 +37,9 @@ class IsReadyBridgeTest: XCTestCase, BaseBridgeTestProtocol {
 
     func testInvoke() {
         usercentrics.readyStatus = UsercentricsReadyStatus(shouldCollectConsent: false,
-                                                           consents: [
-                                                            consent
-                                                           ])
+                                                           consents: [consent],
+                                                           geolocationRuleset: GeolocationRuleset(activeSettingsId: "settingsId", bannerRequiredAtLocation: true),
+                                                           location: UsercentricsLocation(countryCode: "PT", regionCode: "PT11"))
         
         let expectation =  XCTestExpectation(description: "resultCompletion")
         let resultCompletion: FlutterResult = { [unowned self] result in
@@ -47,6 +47,8 @@ class IsReadyBridgeTest: XCTestCase, BaseBridgeTestProtocol {
                 let result = result as? [String: Any],
                 let shouldCollectConsent = result["shouldCollectConsent"] as? Bool,
                 let consentsMap = result["consents"] as? [[String: Any]],
+                let geolocationRulesetMap = result["geolocationRuleset"] as? NSDictionary,
+                let locationMap = result["location"] as? NSDictionary,
                 let consent = consentsMap.first
             else {
                 XCTFail()
@@ -54,6 +56,13 @@ class IsReadyBridgeTest: XCTestCase, BaseBridgeTestProtocol {
             }
 
             XCTAssertEqual(shouldCollectConsent, false)
+
+            XCTAssertEqual("settingsId", geolocationRulesetMap["activeSettingsId"] as! String)
+            XCTAssertEqual(true, geolocationRulesetMap["bannerRequiredAtLocation"] as! Bool)
+
+            XCTAssertEqual("PT", locationMap["countryCode"] as! String)
+            XCTAssertEqual("PT11", locationMap["regionCode"] as! String)
+
             XCTAssertEqual(consentsMap.count, 1)
             XCTAssertEqual(consent["version"] as! String, "1.0.1")
             XCTAssertEqual(consent["dataProcessor"] as! String, "Facebook SDK")
