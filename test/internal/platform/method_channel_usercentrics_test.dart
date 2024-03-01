@@ -27,9 +27,15 @@ void main() {
       final initializeBridge = FakeInitializeBridge();
       final isReadyBridge = FakeIsReadyBridge(
         invokeAnswer: const UsercentricsReadyStatus(
-          shouldCollectConsent: false,
-          consents: [],
-        ),
+            shouldCollectConsent: false,
+            consents: [],
+            geolocationRuleset: null,
+            location: UsercentricsLocation(
+                countryCode: "PT",
+                regionCode: "PT11",
+                isInEU: true,
+                isInUS: false,
+                isInCalifornia: false)),
       );
       final instance = MethodChannelUsercentrics(
         initializeBridge: initializeBridge,
@@ -104,9 +110,15 @@ void main() {
 
     test('success', () async {
       const expectedStatus = UsercentricsReadyStatus(
-        shouldCollectConsent: false,
-        consents: [],
-      );
+          shouldCollectConsent: false,
+          consents: [],
+          geolocationRuleset: null,
+          location: UsercentricsLocation(
+              countryCode: "PT",
+              regionCode: "PT11",
+              isInEU: true,
+              isInUS: false,
+              isInCalifornia: false));
       final isReadyBridge = FakeIsReadyBridge(
         invokeAnswer: expectedStatus,
       );
@@ -333,9 +345,15 @@ void main() {
 
     test('success', () async {
       const expectedStatus = UsercentricsReadyStatus(
-        shouldCollectConsent: false,
-        consents: [],
-      );
+          shouldCollectConsent: false,
+          consents: [],
+          geolocationRuleset: null,
+          location: UsercentricsLocation(
+              countryCode: "PT",
+              regionCode: "PT11",
+              isInEU: true,
+              isInUS: false,
+              isInCalifornia: false));
       final restoreUserSessionBridge = FakeRestoreUserSessionBridge(
         invokeAnswer: expectedStatus,
       );

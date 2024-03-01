@@ -1,10 +1,12 @@
 package com.usercentrics.sdk.flutter.mock
 
+import com.usercentrics.sdk.GeolocationRuleset
 import com.usercentrics.sdk.UsercentricsConsentHistoryEntry
 import com.usercentrics.sdk.UsercentricsReadyStatus
 import com.usercentrics.sdk.UsercentricsServiceConsent
 import com.usercentrics.sdk.flutter.api.FakeFlutterMethodCall
 import com.usercentrics.sdk.models.settings.UsercentricsConsentType
+import com.usercentrics.sdk.v2.location.data.UsercentricsLocation
 
 internal object RestoreUserSessionMock {
     val fake = UsercentricsReadyStatus(
@@ -25,7 +27,9 @@ internal object RestoreUserSessionMock {
                     )
                 )
             )
-        )
+        ),
+        geolocationRuleset = GeolocationRuleset(activeSettingsId = "settingsId", bannerRequiredAtLocation = true),
+        location = UsercentricsLocation(countryCode = "PT", regionCode = "PT11")
     )
 
     // From the debugger
@@ -50,8 +54,11 @@ internal object RestoreUserSessionMock {
                     )
                 )
             )
+        ),
+        "geolocationRuleset" to mapOf("activeSettingsId" to "settingsId", "bannerRequiredAtLocation" to true),
+        "location" to mapOf(
+            "countryCode" to "PT", "regionCode" to "PT11", "isInEU" to true, "isInUS" to false, "isInCalifornia" to false
         )
     )
-    val expectedControllerId =
-        "8620139AAAAAAAAAAAAAAAdddc2b52973f9807d6b45"
+    val expectedControllerId = "8620139AAAAAAAAAAAAAAAdddc2b52973f9807d6b45"
 }

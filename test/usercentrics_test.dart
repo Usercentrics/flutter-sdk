@@ -46,9 +46,17 @@ void main() {
 
   test('status', () async {
     const expectedStatus = UsercentricsReadyStatus(
-      shouldCollectConsent: true,
-      consents: [],
-    );
+        shouldCollectConsent: true,
+        consents: [],
+        geolocationRuleset: GeolocationRuleset(
+            activeSettingsId: "settingsId", bannerRequiredAtLocation: true),
+        location: UsercentricsLocation(
+            countryCode: "PT",
+            regionCode: "PT11",
+            isInEU: true,
+            isInUS: false,
+            isInCalifornia: false));
+
     final delegate = FakeUsercentricsPlatform(statusAnswer: expectedStatus);
     Usercentrics.delegatePackingProperty = delegate;
 
@@ -155,11 +163,20 @@ void main() {
 
   test('restoreUserSession', () async {
     const expectedStatus = UsercentricsReadyStatus(
-      shouldCollectConsent: true,
-      consents: [],
-    );
+        shouldCollectConsent: true,
+        consents: [],
+        geolocationRuleset: GeolocationRuleset(
+            activeSettingsId: "settingsId", bannerRequiredAtLocation: true),
+        location: UsercentricsLocation(
+            countryCode: "PT",
+            regionCode: "PT11",
+            isInEU: true,
+            isInUS: false,
+            isInCalifornia: false));
+
     final delegate =
         FakeUsercentricsPlatform(restoreUserSessionAnswer: expectedStatus);
+
     Usercentrics.delegatePackingProperty = delegate;
 
     const controllerId = "ABC";

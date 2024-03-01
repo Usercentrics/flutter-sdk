@@ -335,7 +335,7 @@ private fun UsercentricsCategory.serialize(): Any {
     )
 }
 
-private fun UsercentricsLocation.serialize(): Any {
+internal fun UsercentricsLocation.serialize(): Any {
     return mapOf(
         "countryCode" to countryCode,
         "regionCode" to regionCode,

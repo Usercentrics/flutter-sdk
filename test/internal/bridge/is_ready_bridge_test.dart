@@ -24,27 +24,45 @@ void main() {
         ]
       },
     ],
+    "geolocationRuleset": {
+      "activeSettingsId": "settingsId",
+      "bannerRequiredAtLocation": true
+    },
+    "location": {
+      "countryCode": "PT",
+      "regionCode": "PT11",
+      "isInEU": true,
+      "isInUS": false,
+      "isInCalifornia": false
+    }
   };
   const expectedResult = UsercentricsReadyStatus(
-    shouldCollectConsent: false,
-    consents: [
-      UsercentricsServiceConsent(
-        templateId: "SJKM9Ns_ibQ",
-        status: true,
-        dataProcessor: "Facebook Connect",
-        version: "10.4.5",
-        type: UsercentricsConsentType.explicit,
-        isEssential: true,
-        history: [
-          UsercentricsConsentHistoryEntry(
-            status: true,
-            timestampInMillis: 123,
-            type: UsercentricsConsentType.explicit,
-          )
-        ],
-      ),
-    ],
-  );
+      shouldCollectConsent: false,
+      consents: [
+        UsercentricsServiceConsent(
+          templateId: "SJKM9Ns_ibQ",
+          status: true,
+          dataProcessor: "Facebook Connect",
+          version: "10.4.5",
+          type: UsercentricsConsentType.explicit,
+          isEssential: true,
+          history: [
+            UsercentricsConsentHistoryEntry(
+              status: true,
+              timestampInMillis: 123,
+              type: UsercentricsConsentType.explicit,
+            )
+          ],
+        ),
+      ],
+      geolocationRuleset: GeolocationRuleset(
+          activeSettingsId: "settingsId", bannerRequiredAtLocation: true),
+      location: UsercentricsLocation(
+          countryCode: "PT",
+          regionCode: "PT11",
+          isInEU: false,
+          isInUS: false,
+          isInCalifornia: false));
 
   const MethodChannel channel = MethodChannel('usercentrics');
   TestWidgetsFlutterBinding.ensureInitialized();

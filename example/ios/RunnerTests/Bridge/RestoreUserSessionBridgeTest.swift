@@ -36,7 +36,10 @@ class RestoreUserSessionBridgeTest: XCTestCase, BaseBridgeTestProtocol {
     }
 
     func testInvoke() {
-        usercentrics.restoreUSSuccess = .init(shouldCollectConsent: false, consents: [consent])
+        usercentrics.restoreUSSuccess = .init(shouldCollectConsent: false,
+                                              consents: [consent],
+                                              geolocationRuleset: GeolocationRuleset(activeSettingsId: "settingsId", bannerRequiredAtLocation: true),
+                                              location: UsercentricsLocation(countryCode: "PT", regionCode: "PT11"))
 
         let expectation =  XCTestExpectation(description: "resultCompletion")
         let resultCompletion: FlutterResult = { result in
