@@ -15,9 +15,11 @@ class ReadyStatusSerializer {
 }
 
 class GeolocationRulesetSerializer {
-  static GeolocationRuleset deserialize(dynamic value) {
-    return GeolocationRuleset(
-        activeSettingsId: value["activeSettingsId"],
-        bannerRequiredAtLocation: value["bannerRequiredAtLocation"]);
+  static GeolocationRuleset? deserialize(dynamic value) {
+    return value == null
+        ? null
+        : GeolocationRuleset(
+            activeSettingsId: value["activeSettingsId"],
+            bannerRequiredAtLocation: value["bannerRequiredAtLocation"]);
   }
 }
