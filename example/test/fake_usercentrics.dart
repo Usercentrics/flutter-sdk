@@ -154,4 +154,9 @@ class FakeUsercentrics extends UsercentricsPlatform {
   Future<AdditionalConsentModeData> get additionalConsentModeData {
     throw UnimplementedError();
   }
+
+  @override
+  Future<UsercentricsReadyStatus> clearUserSession() {
+    throw UnimplementedError();
+  }
 }
