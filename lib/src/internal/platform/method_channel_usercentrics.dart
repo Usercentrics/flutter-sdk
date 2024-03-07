@@ -32,8 +32,9 @@ class MethodChannelUsercentrics extends UsercentricsPlatform {
       this.getABTestingVariantBridge = const MethodChannelGetABTestingVariant(),
       this.setABTestingVariantBridge = const MethodChannelSetABTestingVariant(),
       this.trackBridge = const MethodChannelTrack(),
-      this.getAdditionalConsentModeData =
-          const MethodChannelGetAdditionalConsentModeData()});
+      this.getAdditionalConsentModeData = const MethodChannelGetAdditionalConsentModeData(),
+      this.clearUserSessionBridge = const MethodChannelClearUserSession()
+      });
 
   static const MethodChannel _channel = MethodChannel('usercentrics');
 
@@ -62,6 +63,7 @@ class MethodChannelUsercentrics extends UsercentricsPlatform {
   final SetABTestingVariantBridge setABTestingVariantBridge;
   final TrackBridge trackBridge;
   final GetAdditionalConsentModeDataBridge getAdditionalConsentModeData;
+  final ClearUserSessionBridge clearUserSessionBridge;
 
   @visibleForTesting
   Completer<Object?>? isReadyCompleter;
@@ -326,5 +328,11 @@ class MethodChannelUsercentrics extends UsercentricsPlatform {
   Future<AdditionalConsentModeData> get additionalConsentModeData async {
     await _ensureIsReady();
     return await getAdditionalConsentModeData.invoke(channel: _channel);
+  }
+
+  @override
+  Future<UsercentricsReadyStatus> clearUserSession() async {
+    await _ensureIsReady();
+    return await clearUserSessionBridge.invoke(channel: _channel);
   }
 }

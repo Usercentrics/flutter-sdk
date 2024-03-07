@@ -210,4 +210,28 @@ void main() {
     expect(delegate.trackCalls[0],
         UsercentricsAnalyticsEventType.acceptAllFirstLayer);
   });
+
+  test('clearUserSession', () async {
+    const expectedStatus = UsercentricsReadyStatus(
+        shouldCollectConsent: true,
+        consents: [],
+        geolocationRuleset: GeolocationRuleset(
+            activeSettingsId: "settingsId", bannerRequiredAtLocation: true),
+        location: UsercentricsLocation(
+            countryCode: "PT",
+            regionCode: "PT11",
+            isInEU: true,
+            isInUS: false,
+            isInCalifornia: false));
+
+    final delegate =
+    FakeUsercentricsPlatform(clearUserSessionAnswer: expectedStatus);
+
+    Usercentrics.delegatePackingProperty = delegate;
+
+    final result = await Usercentrics.clearUserSession();
+
+    expect(delegate.clearUserSessionCount, 1);
+    expect(result, expectedStatus);
+  });
 }

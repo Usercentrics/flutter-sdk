@@ -11,6 +11,7 @@ import '../bridge/fake_initialize_bridge.dart';
 import '../bridge/fake_is_ready_bridge.dart';
 import '../bridge/fake_reset_bridge.dart';
 import '../bridge/fake_restore_user_session_bridge.dart';
+import '../bridge/fake_clear_user_session_bridge.dart';
 import '../bridge/fake_show_first_layer_bridge.dart';
 import '../bridge/fake_show_second_layer_bridge.dart';
 import '../bridge/get_cmp_data_bridge_test.dart';
@@ -415,6 +416,55 @@ void main() {
 
       expect(
         () => instance.cmpData,
+        throwsA(const TypeMatcher<NotInitializedException>()),
+      );
+    });
+  });
+
+  group('clearUserSession', () {
+    test('default', () {
+      final instance = MethodChannelUsercentrics();
+      expect(instance.clearUserSessionBridge,
+          const TypeMatcher<MethodChannelClearUserSession>());
+    });
+
+    test('success', () async {
+      const expectedStatus = UsercentricsReadyStatus(
+          shouldCollectConsent: true,
+          consents: [],
+          geolocationRuleset: null,
+          location: UsercentricsLocation(
+              countryCode: "PT",
+              regionCode: "PT11",
+              isInEU: true,
+              isInUS: false,
+              isInCalifornia: false));
+
+      final clearUserSessionBridge = FakeClearUserSessionBridge(
+        invokeAnswer: expectedStatus,
+      );
+
+      final instance = MethodChannelUsercentrics(
+        clearUserSessionBridge: clearUserSessionBridge,
+      );
+
+      instance.isReadyCompleter = Completer();
+      instance.isReadyCompleter?.complete();
+
+      final response = await instance.clearUserSession();
+
+      expect(clearUserSessionBridge.invokeCount, 1);
+      expect(
+          clearUserSessionBridge.invokeChannelArgument?.name, "usercentrics");
+      expect(response, expectedStatus);
+    });
+
+    test('when it is not ready', () {
+      final instance = MethodChannelUsercentrics();
+      instance.isReadyCompleter = null;
+
+      expect(
+            () => instance.clearUserSession(),
         throwsA(const TypeMatcher<NotInitializedException>()),
       );
     });

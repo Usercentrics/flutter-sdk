@@ -23,3 +23,4 @@ export 'set_cmp_id_bridge.dart';
 export 'show_first_layer_bridge.dart';
 export 'show_second_layer_bridge.dart';
 export 'track_bridge.dart';
+export 'clear_user_session_bridge.dart';
