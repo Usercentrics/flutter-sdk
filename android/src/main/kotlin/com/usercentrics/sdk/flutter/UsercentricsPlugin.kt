@@ -64,6 +64,7 @@ class UsercentricsPlugin : FlutterPlugin,
             SetABTestingVariantBridge(),
             TrackBridge(),
             GetAdditionalConsentModeDataBridge(),
+            ClearUserSessionBridge()
         ).associateBy { it.name }
     }
 
