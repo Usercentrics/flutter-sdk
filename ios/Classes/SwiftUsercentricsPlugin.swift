@@ -44,6 +44,7 @@ public class SwiftUsercentricsPlugin: NSObject, FlutterPlugin {
             SetABTestingVariantBridge(usercentrics: usercentrics),
             GetABTestingVariantBridge(usercentrics: usercentrics),
             GetAdditionalConsentModeBridge(usercentrics: usercentrics),
+            ClearUserSessionBridge(usercentrics: usercentrics)
         ]
         return bridges.reduce([String : MethodBridge]()) { dict, value in
             var dict = dict
