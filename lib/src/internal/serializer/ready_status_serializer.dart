@@ -19,7 +19,7 @@ class GeolocationRulesetSerializer {
     return value == null
         ? null
         : GeolocationRuleset(
-        activeSettingsId: value["activeSettingsId"],
-        bannerRequiredAtLocation: value["bannerRequiredAtLocation"]);
+            activeSettingsId: value["activeSettingsId"],
+            bannerRequiredAtLocation: value["bannerRequiredAtLocation"]);
   }
 }

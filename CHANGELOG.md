@@ -1,5 +1,11 @@
 [Release Notes](https://docs.usercentrics.com/cmp_in_app_sdk/latest/about/history/)
 
+### 2.13.1 - March 05, 2024
+
+## Hotfix
+
+* Initialization with SettingsId was not reporting the `status` correctly
+
 ### 2.13.0 - February 29, 2024
 
 ## Features
