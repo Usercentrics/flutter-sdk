@@ -464,7 +464,7 @@ void main() {
       instance.isReadyCompleter = null;
 
       expect(
-            () => instance.clearUserSession(),
+        () => instance.clearUserSession(),
         throwsA(const TypeMatcher<NotInitializedException>()),
       );
     });

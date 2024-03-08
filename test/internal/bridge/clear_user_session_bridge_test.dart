@@ -84,9 +84,7 @@ void main() {
     });
     const instance = MethodChannelClearUserSession();
 
-    final result = await instance.invoke(
-      channel: channel
-    );
+    final result = await instance.invoke(channel: channel);
 
     expect(callCounter, 1);
     expect(receivedCall?.method, 'clearUserSession');

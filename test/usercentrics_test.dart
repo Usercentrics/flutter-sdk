@@ -225,7 +225,7 @@ void main() {
             isInCalifornia: false));
 
     final delegate =
-    FakeUsercentricsPlatform(clearUserSessionAnswer: expectedStatus);
+        FakeUsercentricsPlatform(clearUserSessionAnswer: expectedStatus);
 
     Usercentrics.delegatePackingProperty = delegate;
 

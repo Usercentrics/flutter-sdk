@@ -32,9 +32,9 @@ class MethodChannelUsercentrics extends UsercentricsPlatform {
       this.getABTestingVariantBridge = const MethodChannelGetABTestingVariant(),
       this.setABTestingVariantBridge = const MethodChannelSetABTestingVariant(),
       this.trackBridge = const MethodChannelTrack(),
-      this.getAdditionalConsentModeData = const MethodChannelGetAdditionalConsentModeData(),
-      this.clearUserSessionBridge = const MethodChannelClearUserSession()
-      });
+      this.getAdditionalConsentModeData =
+          const MethodChannelGetAdditionalConsentModeData(),
+      this.clearUserSessionBridge = const MethodChannelClearUserSession()});
 
   static const MethodChannel _channel = MethodChannel('usercentrics');
 

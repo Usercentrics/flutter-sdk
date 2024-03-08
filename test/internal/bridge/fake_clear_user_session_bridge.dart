@@ -12,9 +12,7 @@ class FakeClearUserSessionBridge extends ClearUserSessionBridge {
   MethodChannel? invokeChannelArgument;
 
   @override
-  Future<UsercentricsReadyStatus> invoke({
-    required MethodChannel channel
-  }) {
+  Future<UsercentricsReadyStatus> invoke({required MethodChannel channel}) {
     invokeCount++;
     invokeChannelArgument = channel;
     return Future.value(invokeAnswer!);
