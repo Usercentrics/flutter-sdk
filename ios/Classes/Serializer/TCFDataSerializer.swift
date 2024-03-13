@@ -109,7 +109,6 @@ extension TCFVendor {
             "dataRetention": (dataRetention?.serialize() ?? nil) as Any,
             "dataCategories" : dataCategories.map { $0.id },
             "vendorUrls" : vendorUrls.map { $0.serialize() },
-            "deviceStorage" : self.deviceStorage?.serialize() as Any,
             "restrictions": self.restrictions.map { $0.serialize() }
         ]
     }

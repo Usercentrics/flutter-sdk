@@ -1,4 +1,3 @@
-import 'package:usercentrics_sdk/src/internal/serializer/consent_disclosure_object_serializer.dart';
 import 'package:usercentrics_sdk/src/model/tcf_data.dart';
 
 class TCFDataSerializer {
@@ -107,8 +106,6 @@ class TCFDataSerializer {
         dataCategories: value['dataCategories']?.cast<int>() ?? [],
         dataRetention: _deserializeDataRetention(value['dataRetention']),
         vendorUrls: _deserializeVendorUrlList(value['vendorUrls']),
-        deviceStorage: ConsentDisclosureObjectSerializer.deserialize(
-            value['deviceStorage']),
         restrictions: _deserializeRestrictions(value['restrictions']));
   }
 
