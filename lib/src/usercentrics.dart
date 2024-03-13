@@ -207,4 +207,8 @@ class Usercentrics {
     required UsercentricsAnalyticsEventType event,
   }) =>
       _delegate.track(event: event);
+
+  /// Clears the user session avoiding the sdk initialization.
+  static Future<UsercentricsReadyStatus> clearUserSession() =>
+      _delegate.clearUserSession();
 }

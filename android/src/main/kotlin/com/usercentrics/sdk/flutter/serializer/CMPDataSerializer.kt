@@ -258,8 +258,6 @@ private fun CustomizationColor.serialize(): Any {
         "toggleDisabledBackground" to toggleDisabledBackground,
         "toggleDisabledIcon" to toggleDisabledIcon,
         "secondLayerTab" to secondLayerTab,
-        "moreBtnBackground" to moreBtnBackground,
-        "moreBtnText" to moreBtnText,
     )
 }
 

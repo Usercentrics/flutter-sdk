@@ -99,4 +99,6 @@ abstract class UsercentricsPlatform {
   Future<void> track({
     required UsercentricsAnalyticsEventType event,
   });
+
+  Future<UsercentricsReadyStatus> clearUserSession();
 }

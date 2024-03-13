@@ -262,8 +262,6 @@ extension CustomizationColor {
             "toggleDisabledBackground" : self.toggleDisabledBackground,
             "toggleDisabledIcon" : self.toggleDisabledIcon,
             "secondLayerTab" : self.secondLayerTab,
-            "moreBtnBackground" : self.moreBtnBackground,
-            "moreBtnText" : self.moreBtnText,
         ]
     }
 }

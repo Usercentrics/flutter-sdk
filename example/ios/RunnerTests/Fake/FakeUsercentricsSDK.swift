@@ -69,4 +69,20 @@ final class FakeUsercentricsSDK: UsercentricsSDK {
     override func track(event: UsercentricsAnalyticsEventType) {
         trackCalls.append(event)
     }
+    
+    var clearUSError: Error?
+    var clearUSSuccess: UsercentricsReadyStatus?
+    
+    override func clearUserSession(onSuccess: @escaping (UsercentricsReadyStatus) -> Void, onError: @escaping (Error) -> Void) {
+       
+        if let clearUSError = clearUSError {
+            onError(clearUSError)
+            return
+        }
+
+        if let restoreUSSuccess = clearUSSuccess {
+            onSuccess(clearUSSuccess!)
+            return
+        }
+    }
 }

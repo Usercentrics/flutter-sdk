@@ -35,7 +35,8 @@ class FakeUsercentricsPlatform extends UsercentricsPlatform {
       this.tcfDataAnswer,
       this.userSessionDataAnswer,
       this.aBTestingVariantAnswer,
-      this.acmDataAnswer});
+      this.acmDataAnswer,
+      this.clearUserSessionAnswer});
 
   final List<UsercentricsServiceConsent>? consentsAnswer;
   var consentsCount = 0;
@@ -347,5 +348,14 @@ class FakeUsercentricsPlatform extends UsercentricsPlatform {
   Future<AdditionalConsentModeData> get additionalConsentModeData {
     acmDataCount++;
     return Future.value(acmDataAnswer!);
+  }
+
+  final UsercentricsReadyStatus? clearUserSessionAnswer;
+  var clearUserSessionCount = 0;
+
+  @override
+  Future<UsercentricsReadyStatus> clearUserSession() {
+    clearUserSessionCount++;
+    return Future.value(clearUserSessionAnswer!);
   }
 }

@@ -212,8 +212,6 @@ const _responseCustomization = {
     "toggleDisabledBackground": null,
     "toggleDisabledIcon": null,
     "secondLayerTab": null,
-    "moreBtnBackground": null,
-    "moreBtnText": null,
   },
   "font": {
     "family":
@@ -615,8 +613,6 @@ const _expectedCustomization = UsercentricsCustomization(
     toggleDisabledBackground: "",
     toggleDisabledIcon: "",
     secondLayerTab: "",
-    moreBtnBackground: "",
-    moreBtnText: "",
   ),
   font: CustomizationFont(
     family:
