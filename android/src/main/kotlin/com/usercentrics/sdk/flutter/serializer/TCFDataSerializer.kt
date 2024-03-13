@@ -106,7 +106,6 @@ private fun TCFVendor.serialize(): Any {
         "dataRetention" to dataRetention?.serializer(),
         "dataCategories" to dataCategories.map { it.id },
         "vendorUrls" to vendorUrls.map { it.serializer() },
-        "deviceStorage" to deviceStorage.serializer(),
         "restrictions" to restrictions.map { it.serializer() },
     )
 }

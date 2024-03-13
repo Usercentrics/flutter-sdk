@@ -1,5 +1,4 @@
 import 'package:flutter/foundation.dart';
-import 'package:usercentrics_sdk/src/model/consent_disclosure.dart';
 
 /// All the data that needs to be disclosed to the end-user if TCF is enabled.
 class TCFData {
@@ -315,7 +314,6 @@ class TCFVendor {
     required this.cookieMaxAgeSeconds,
     required this.usesNonCookieAccess,
     required this.deviceStorageDisclosureUrl,
-    required this.deviceStorage,
     required this.usesCookies,
     required this.cookieRefresh,
     required this.dataSharedOutsideEU,
@@ -341,9 +339,6 @@ class TCFVendor {
   final double? cookieMaxAgeSeconds;
   final bool usesNonCookieAccess;
   final String? deviceStorageDisclosureUrl;
-  @Deprecated(
-      'replaces to deviceStorageDisclosureUrl, this field will be removed in the upcoming version')
-  final ConsentDisclosureObject? deviceStorage;
   final bool usesCookies;
   final bool? cookieRefresh;
   final bool? dataSharedOutsideEU;
@@ -375,7 +370,6 @@ class TCFVendor {
           usesNonCookieAccess == other.usesNonCookieAccess &&
           deviceStorageDisclosureUrl == other.deviceStorageDisclosureUrl &&
           // ignore: deprecated_member_use_from_same_package
-          deviceStorage == other.deviceStorage &&
           usesCookies == other.usesCookies &&
           cookieRefresh == other.cookieRefresh &&
           dataSharedOutsideEU == other.dataSharedOutsideEU &&
@@ -403,7 +397,6 @@ class TCFVendor {
       usesNonCookieAccess.hashCode ^
       deviceStorageDisclosureUrl.hashCode ^
       // ignore: deprecated_member_use_from_same_package
-      deviceStorage.hashCode ^
       usesCookies.hashCode ^
       cookieRefresh.hashCode ^
       dataSharedOutsideEU.hashCode ^

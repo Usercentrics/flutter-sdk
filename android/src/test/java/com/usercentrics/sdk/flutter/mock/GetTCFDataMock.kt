@@ -104,20 +104,6 @@ internal object GetTCFDataMock {
                 dataRetention = null,
                 dataCategories = listOf(IdAndName(1, "")),
                 vendorUrls = listOf(),
-                deviceStorage = ConsentDisclosureObject(
-                    disclosures = listOf(
-                        ConsentDisclosure(
-                            identifier = "identifier",
-                            type = ConsentDisclosureType.APP,
-                            name = "name",
-                            maxAgeSeconds = 123123L,
-                            cookieRefresh = true,
-                            purposes = listOf(1, 2, 3),
-                            domain = "domain",
-                            description = "description",
-                        )
-                    )
-                ),
                 restrictions = listOf(
                     TCFVendorRestriction(purposeId = 1, restrictionType = RestrictionType.REQUIRE_LI)
                 ),
@@ -219,18 +205,6 @@ internal object GetTCFDataMock {
                 "dataRetention" to null,
                 "dataCategories" to listOf(1),
                 "vendorUrls" to listOf<Any>(),
-                "deviceStorage" to listOf(
-                    mapOf(
-                        "identifier" to "identifier",
-                        "type" to "APP",
-                        "name" to "name",
-                        "maxAgeSeconds" to 123123L,
-                        "cookieRefresh" to true,
-                        "purposes" to listOf(1, 2, 3),
-                        "domain" to "domain",
-                        "description" to "description",
-                    )
-                ),
                 "restrictions" to listOf(
                     mapOf(
                         "purposeId" to 1,
