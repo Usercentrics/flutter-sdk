@@ -181,18 +181,6 @@ const _responseVendors = [
     "deviceStorageDisclosureUrl":
         "https://cdn.sirdata.eu/sirdata_device_storage_disclosure.json",
     "cookieMaxAgeSeconds": 31536000.0,
-    "deviceStorage": [
-      {
-        "identifier": "identifier",
-        "type": "APP",
-        "name": "name",
-        "maxAgeSeconds": 10,
-        "cookieRefresh": false,
-        "purposes": [1, 2, 3],
-        "domain": "domain",
-        "description": "description"
-      }
-    ],
     "restrictions": [
       {"purposeId": 1, "restrictionType": "REQUIRE_LI"}
     ]
@@ -366,17 +354,6 @@ const _expectedVendors = [
       deviceStorageDisclosureUrl:
           "https://cdn.sirdata.eu/sirdata_device_storage_disclosure.json",
       cookieMaxAgeSeconds: 31536000.0,
-      deviceStorage: ConsentDisclosureObject(disclosures: [
-        ConsentDisclosure(
-            identifier: "identifier",
-            type: ConsentDisclosureType.app,
-            name: "name",
-            maxAgeSeconds: 10,
-            cookieRefresh: false,
-            purposes: [1, 2, 3],
-            domain: "domain",
-            description: "description")
-      ]),
       restrictions: [
         TCFVendorRestriction(
             purposeId: 1, restrictionType: RestrictionType.requireLi)
