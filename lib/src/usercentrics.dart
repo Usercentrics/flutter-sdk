@@ -17,7 +17,7 @@ class Usercentrics {
     return delegatePackingProperty ??= UsercentricsPlatform.instance;
   }
 
-  /// Initialize Usercentrics with the given arguments. Call this method only once in the whole life of the application. If you want to change the configuration and initialize again, please use the [reset] method before.
+  /// Initialize Usercentrics with the given arguments. Call this method only once in the whole life of the application. If you want to clear user consents', please use the [clearUserSession] method.
   /// - The [settingsId] is a Usercentrics generated ID, used to identify a unique CMP configuration.
   /// - The [ruleSetId] is a Usercentrics generated ID, used to identify a set of CMP configurations.
   /// - The [defaultLanguage] sets the default language in the language selection hierarchy. E.g. "en", "de", "fr". The default value is empty.
@@ -49,6 +49,8 @@ class Usercentrics {
   /// {@template initialize}
   /// Reset Usercentrics to enable the [initialize] again.
   /// {@endtemplate}
+  @Deprecated(
+      "This method will soon be removed, replace it to clearUserSession() method instead")
   static void reset() => _delegate.reset();
 
   /// Get the [UsercentricsReadyStatus] to catch the consent status of the user.
