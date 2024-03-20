@@ -34,7 +34,7 @@ void main() {
     expect(delegate.initializeTimeoutMillisArgument, timeoutMillis);
     expect(delegate.initializeVersionArgument, version);
   });
-  
+
   test('status', () async {
     const expectedStatus = UsercentricsReadyStatus(
         shouldCollectConsent: true,

@@ -50,7 +50,7 @@ class Usercentrics {
   /// Reset Usercentrics to enable the [initialize] again.
   /// {@endtemplate}
   @Deprecated(
-      "This method will be removed in the next version. Please consider using the clearUserSession() method instead")
+      "This method will soon be removed, replace it to clearUserSession() method instead")
   static void reset() => _delegate.reset();
 
   /// Get the [UsercentricsReadyStatus] to catch the consent status of the user.
