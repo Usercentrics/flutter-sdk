@@ -34,16 +34,7 @@ void main() {
     expect(delegate.initializeTimeoutMillisArgument, timeoutMillis);
     expect(delegate.initializeVersionArgument, version);
   });
-
-  /*test('reset', () {
-    final delegate = FakeUsercentricsPlatform();
-    Usercentrics.delegatePackingProperty = delegate;
-
-    Usercentrics.reset();
-
-    expect(delegate.resetCount, 1);
-  });*/
-
+  
   test('status', () async {
     const expectedStatus = UsercentricsReadyStatus(
         shouldCollectConsent: true,
