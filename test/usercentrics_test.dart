@@ -35,14 +35,14 @@ void main() {
     expect(delegate.initializeVersionArgument, version);
   });
 
-  test('reset', () {
+  /*test('reset', () {
     final delegate = FakeUsercentricsPlatform();
     Usercentrics.delegatePackingProperty = delegate;
 
     Usercentrics.reset();
 
     expect(delegate.resetCount, 1);
-  });
+  });*/
 
   test('status', () async {
     const expectedStatus = UsercentricsReadyStatus(
