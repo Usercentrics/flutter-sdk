@@ -16,8 +16,11 @@ environment:
   flutter: ">=1.20.0"
 
 dependencies:
+  applovin_max: ^3.8.1
+  adjust_sdk: ^4.31.0
   flutter:
     sdk: flutter
+  ironsource_mediation: ^1.2.1
 
 dev_dependencies:
   flutter_test:

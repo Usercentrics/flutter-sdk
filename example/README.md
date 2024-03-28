@@ -26,6 +26,10 @@ After running the app you should see a screen like this:
 
 <img src="screenshot-custom-ui.png" height="534" width="300"/>
 
+### Consent Mediation
+
+To run the sample app with Consent Mediation comment `_initializeUsercentrics()` and uncomment `_initializeUsercentricsConsentMediation()` in the `main.dart` file.
+
 ## Learn more
 
 - Check out the full [documentation](https://docs.usercentrics.com/cmp_in_app_sdk).
