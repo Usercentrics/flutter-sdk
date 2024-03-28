@@ -26,7 +26,7 @@ apply plugin: 'kotlin-android'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
 android {
-    compileSdkVersion 32
+    compileSdkVersion 33
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -44,8 +44,8 @@ android {
     defaultConfig {
         applicationId "com.usercentrics.sdk.flutter_example"
 //        minSdkVersion 16
-        minSdkVersion 20 // webview_flutter requirement
-        targetSdkVersion 31
+        minSdkVersion 21 // webview_flutter requirement
+        targetSdkVersion 33
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
         multiDexEnabled true

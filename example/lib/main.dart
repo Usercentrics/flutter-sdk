@@ -24,6 +24,7 @@ class _MyAppState extends State<MyApp> {
     super.initState();
 
     _initializeUsercentrics();
+//     _initializeUsercentricsConsentMediation()
   }
 
   void _initializeUsercentrics() {
@@ -34,6 +35,16 @@ class _MyAppState extends State<MyApp> {
       loggerLevel: UsercentricsLoggerLevel.debug,
     );
   }
+
+   void _initializeUsercentricsConsentMediation() {
+      /// Initialize Usercentrics with your configuration only once.
+      /// We should not call `initialize` directly inside [build].
+      Usercentrics.initialize(
+        settingsId: 'Nk6RDltio',
+        loggerLevel: UsercentricsLoggerLevel.debug,
+        consentMediation: true,
+      );
+    }
 
   @override
   Widget build(BuildContext context) {
