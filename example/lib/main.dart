@@ -30,7 +30,7 @@ class _MyAppState extends State<MyApp> {
     /// Initialize Usercentrics with your configuration only once.
     /// We should not call `initialize` directly inside [build].
     Usercentrics.initialize(
-      settingsId: 'egLMgjg9j',
+      settingsId: 'Yi9N3aXia',
       loggerLevel: UsercentricsLoggerLevel.debug,
     );
   }
