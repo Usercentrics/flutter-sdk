@@ -34,7 +34,7 @@ android {
         namespace 'com.usercentrics.sdk'
     }*/
 
-    compileSdkVersion 31
+    compileSdk 31 // we also can fix this deprecation warning
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
