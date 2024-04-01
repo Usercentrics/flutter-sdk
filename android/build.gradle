@@ -27,14 +27,9 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 
 android {
-    namespace "com.usercentrics.sdk" // we can define this way
+    namespace "com.usercentrics.sdk"
 
-    // or we can use this hack, but the abobe I think is the most desirable
-    /*if (project.android.hasProperty("namespace")) {
-        namespace 'com.usercentrics.sdk'
-    }*/
-
-    compileSdk 31 // we also can fix this deprecation warning
+    compileSdk 31
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
