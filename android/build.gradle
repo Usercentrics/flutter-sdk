@@ -27,6 +27,13 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 
 android {
+    namespace "com.usercentrics.sdk" // we can define this way
+
+    // or we can use this hack, but the abobe I think is the most desirable
+    /*if (project.android.hasProperty("namespace")) {
+        namespace 'com.usercentrics.sdk'
+    }*/
+
     compileSdkVersion 31
 
     compileOptions {
