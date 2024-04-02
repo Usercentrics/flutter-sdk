@@ -26,6 +26,10 @@ After running the app you should see a screen like this:
 
 <img src="screenshot-custom-ui.png" height="534" width="300"/>
 
+### Consent Mediation
+
+You can enable and run the Consent Mediation example in this example by following the [documentation](https://usercentrics.com/docs/apps/features/consent-mediation/#enable-mediation).
+
 ## Learn more
 
 - Check out the full [documentation](https://docs.usercentrics.com/cmp_in_app_sdk).
