@@ -1,5 +1,26 @@
 [Release Notes](https://docs.usercentrics.com/cmp_in_app_sdk/latest/about/history/)
 
+### 2.15.0 - April 25, 2024
+
+## Improvements
+
+* Upgrade to latest Kotlin version 1.9.23
+* Officially changed Android SDK minimum version to API 21
+* Releasing iOS SDKs that supports manual linkage
+* General improvements on Google Consent Mode
+* Apple Privacy Manifest** - Added new requirements to support new compliance rules, check them out [here](http://usercentrics.com/docs/apps/help/privacy_manifest/)
+
+## iOS Bug Fixes
+
+* Crashes on Xcode 15.2 when using new Apple's libraries linkage mechanism
+* IronSource Consent Mediation integration tweaks to support their latest release
+
+## Other Fixes
+
+* Links not supported on banner message customizations were being displayed
+* Controller ID card were not visible in certain conditions when Google Additional Providers were not present
+* GDPR Banner was reappearing after a very specific scenario that changed the rule if it should be resurfaced or not
+
 ### 2.14.2 - April 10, 2024
 
 ## Improvements
