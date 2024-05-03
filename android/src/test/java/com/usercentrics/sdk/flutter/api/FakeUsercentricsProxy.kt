@@ -38,11 +38,4 @@ internal class FakeUsercentricsProxy(
             onFailure(isReadyAnswer)
         }
     }
-
-    var resetCount: Int = 0
-        private set
-
-    override fun reset() {
-        resetCount++
-    }
 }

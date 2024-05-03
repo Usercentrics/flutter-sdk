@@ -88,13 +88,6 @@ class FakeUsercentricsPlatform extends UsercentricsPlatform {
     consentMediationArgument = consentMediation;
   }
 
-  var resetCount = 0;
-
-  @override
-  void reset() {
-    resetCount++;
-  }
-
   final UsercentricsReadyStatus? restoreUserSessionAnswer;
   var restoreUserSessionCount = 0;
   String? restoreUserSessionControllerIdArgument;

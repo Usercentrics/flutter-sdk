@@ -12,7 +12,6 @@ class MethodChannelUsercentrics extends UsercentricsPlatform {
       this.isReadyBridge = const MethodChannelIsReady(),
       this.getConsentsBridge = const MethodChannelGetConsents(),
       this.getControllerIdBridge = const MethodChannelGetControllerId(),
-      this.resetBridge = const MethodChannelReset(),
       this.restoreUserSessionBridge = const MethodChannelRestoreUserSession(),
       this.showFirstLayerBridge = const MethodChannelShowFirstLayer(),
       this.showSecondLayerBridge = const MethodChannelShowSecondLayer(),
@@ -42,7 +41,6 @@ class MethodChannelUsercentrics extends UsercentricsPlatform {
   final IsReadyBridge isReadyBridge;
   final GetConsentsBridge getConsentsBridge;
   final GetControllerIdBridge getControllerIdBridge;
-  final ResetBridge resetBridge;
   final RestoreUserSessionBridge restoreUserSessionBridge;
   final ShowFirstLayerBridge showFirstLayerBridge;
   final ShowSecondLayerBridge showSecondLayerBridge;
@@ -101,12 +99,6 @@ class MethodChannelUsercentrics extends UsercentricsPlatform {
     status
         .then((value) => isReadyCompleter?.complete(null))
         .onError((error, stackTrace) => isReadyCompleter?.complete(error));
-  }
-
-  @override
-  void reset() {
-    isReadyCompleter = null;
-    resetBridge.invoke(channel: _channel);
   }
 
   @override

@@ -22,7 +22,6 @@ public class SwiftUsercentricsPlugin: NSObject, FlutterPlugin {
         let bridges: [MethodBridge] = [
             InitializeBridge(usercentrics: usercentrics),
             IsReadyBridge(usercentrics: usercentrics),
-            ResetBridge(usercentrics: usercentrics),
             ShowFirstLayerBridge(assetProvider: assetProvider),
             ShowSecondLayerBridge(assetProvider: assetProvider),
             GetControllerIdBridge(usercentrics: usercentrics),

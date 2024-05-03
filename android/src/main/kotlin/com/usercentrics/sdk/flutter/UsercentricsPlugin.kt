@@ -32,7 +32,6 @@ class UsercentricsPlugin : FlutterPlugin,
             InitializeBridge(
                 activityProvider = this
             ),
-            ResetBridge(),
             IsReadyBridge(),
             ShowFirstLayerBridge(
                 assetsProvider = this,
