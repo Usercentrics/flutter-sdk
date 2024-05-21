@@ -19,7 +19,6 @@
 		97C146FC1CF9000F007C117D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FA1CF9000F007C117D /* Main.storyboard */; };
 		97C146FE1CF9000F007C117D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FD1CF9000F007C117D /* Assets.xcassets */; };
 		97C147011CF9000F007C117D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FF1CF9000F007C117D /* LaunchScreen.storyboard */; };
-		A21C377C271821020089601C /* ResetBridgeTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A21C377B271821020089601C /* ResetBridgeTest.swift */; };
 		A28883ED271824C4007E0C44 /* RestoreUserSessionBridgeTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28883EC271824C4007E0C44 /* RestoreUserSessionBridgeTest.swift */; };
 		A28883EF27182971007E0C44 /* ShowFirstLayerBridgeTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28883EE27182971007E0C44 /* ShowFirstLayerBridgeTest.swift */; };
 		A28883F127182BAF007E0C44 /* FakeFlutterAssetProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28883F027182BAF007E0C44 /* FakeFlutterAssetProvider.swift */; };
@@ -83,7 +82,6 @@
 		97C146FD1CF9000F007C117D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		97C147001CF9000F007C117D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		97C147021CF9000F007C117D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A21C377B271821020089601C /* ResetBridgeTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetBridgeTest.swift; sourceTree = "<group>"; };
 		A28883EC271824C4007E0C44 /* RestoreUserSessionBridgeTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestoreUserSessionBridgeTest.swift; sourceTree = "<group>"; };
 		A28883EE27182971007E0C44 /* ShowFirstLayerBridgeTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowFirstLayerBridgeTest.swift; sourceTree = "<group>"; };
 		A28883F027182BAF007E0C44 /* FakeFlutterAssetProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeFlutterAssetProvider.swift; sourceTree = "<group>"; };
@@ -214,7 +212,6 @@
 				A297F3FD2717097A00F7AF8A /* GetControllerIdBridgeTest.swift */,
 				A297F403271710F200F7AF8A /* InitializeBridgeTest.swift */,
 				A297F40B2717219300F7AF8A /* IsReadyBridgeTest.swift */,
-				A21C377B271821020089601C /* ResetBridgeTest.swift */,
 				3735A4C12A582462001666E4 /* TrackBridgeTest.swift */,
 				A28883EC271824C4007E0C44 /* RestoreUserSessionBridgeTest.swift */,
 				A28883EE27182971007E0C44 /* ShowFirstLayerBridgeTest.swift */,
@@ -519,7 +516,6 @@
 				A297F40A2717130C00F7AF8A /* FakeUsercentricsProxy.swift in Sources */,
 				A297F40C2717219300F7AF8A /* IsReadyBridgeTest.swift in Sources */,
 				A28883F127182BAF007E0C44 /* FakeFlutterAssetProvider.swift in Sources */,
-				A21C377C271821020089601C /* ResetBridgeTest.swift in Sources */,
 				AD9067E029439C86008B4204 /* GetABTestingVariantBridgeTest.swift in Sources */,
 				A28883EF27182971007E0C44 /* ShowFirstLayerBridgeTest.swift in Sources */,
 				A2DF521E2716CA3200204F07 /* GetConsentsBridgeTest.swift in Sources */,

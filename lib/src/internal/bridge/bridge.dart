@@ -13,7 +13,6 @@ export 'get_user_session_data_bridge.dart';
 export 'get_usp_data_bridge.dart';
 export 'initialize_bridge.dart';
 export 'is_ready_bridge.dart';
-export 'reset_bridge.dart';
 export 'restore_user_session_bridge.dart';
 export 'save_decisions_bridge.dart';
 export 'save_decisions_for_tcf_bridge.dart';

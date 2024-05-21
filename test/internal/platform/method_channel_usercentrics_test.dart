@@ -9,7 +9,6 @@ import '../bridge/fake_get_consents_bridge.dart';
 import '../bridge/fake_get_controller_id_bridge.dart';
 import '../bridge/fake_initialize_bridge.dart';
 import '../bridge/fake_is_ready_bridge.dart';
-import '../bridge/fake_reset_bridge.dart';
 import '../bridge/fake_restore_user_session_bridge.dart';
 import '../bridge/fake_clear_user_session_bridge.dart';
 import '../bridge/fake_show_first_layer_bridge.dart';
@@ -78,28 +77,6 @@ void main() {
       expect(isReadyBridge.invokeChannelArgument?.name, "usercentrics");
 
       expect(instance.isReadyCompleter?.isCompleted, true);
-    });
-  });
-
-  group('reset', () {
-    test('default', () {
-      final instance = MethodChannelUsercentrics();
-      expect(instance.resetBridge, const TypeMatcher<MethodChannelReset>());
-    });
-
-    test('success', () {
-      final resetBridge = FakeResetBridge();
-      final instance = MethodChannelUsercentrics(
-        resetBridge: resetBridge,
-      );
-      instance.isReadyCompleter = Completer();
-      instance.isReadyCompleter?.complete();
-
-      instance.reset();
-
-      expect(resetBridge.invokeChannelArgument?.name, "usercentrics");
-      expect(resetBridge.invokeCount, 1);
-      expect(instance.isReadyCompleter, null);
     });
   });
 

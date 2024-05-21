@@ -17,8 +17,6 @@ abstract class UsercentricsPlatform {
     bool? consentMediation,
   });
 
-  void reset();
-
   Future<UsercentricsReadyStatus> get status;
 
   Future<UsercentricsConsentUserResponse?> showFirstLayer({

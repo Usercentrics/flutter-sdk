@@ -22,9 +22,6 @@ class FakeUsercentrics extends UsercentricsPlatform {
   }
 
   @override
-  void reset() {}
-
-  @override
   Future<List<UsercentricsServiceConsent>> get consents {
     throw UnimplementedError();
   }

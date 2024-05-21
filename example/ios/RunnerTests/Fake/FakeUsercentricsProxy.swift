@@ -36,12 +36,6 @@ final class FakeUsercentricsProxy: UsercentricsProxyProtocol {
         configureCount += 1
         configureOptions = options
     }
-
-    var resetCount = 0
-
-    func reset() {
-        resetCount += 1
-    }
 }
 
 struct UsercentricsFakeError: Error {}

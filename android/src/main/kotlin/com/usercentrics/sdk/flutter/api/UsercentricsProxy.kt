@@ -16,8 +16,6 @@ internal interface UsercentricsProxy {
         onSuccess: (UsercentricsReadyStatus) -> Unit,
         onFailure: (UsercentricsError) -> Unit
     )
-
-    fun reset()
 }
 
 internal object UsercentricsProxySingleton : UsercentricsProxy {
@@ -35,7 +33,4 @@ internal object UsercentricsProxySingleton : UsercentricsProxy {
         onSuccess: (UsercentricsReadyStatus) -> Unit,
         onFailure: (UsercentricsError) -> Unit
     ) = Usercentrics.isReady(onSuccess, onFailure)
-
-    override fun reset() = Usercentrics.reset()
-
 }
