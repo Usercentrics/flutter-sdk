@@ -4,10 +4,10 @@
 
 ## Improvements
 
-* Consent mediation - Specific implementation for [Firebase Analytics and Advertising](https://usercentrics.com/docs/apps/features/google-consent-mode/) mediation sdk's
+* Consent mediation - Specific implementation for [Firebase Analytics and Advertising](https://usercentrics.com/docs/apps/features/google-consent-mode/) SDK
 * Reset method deprecated for the SDK, React Native, Flutter and Unity
 * Added support for new TCF languages
-* Change TCF resurface period: Changed the period from 13 months to 390 days
+* Change TCF resurface period: from 13 months to 390 days
 
 ## iOS Bug Fixes
 
@@ -15,7 +15,7 @@
 
 ## General Fixes
 
-* Some DPS had the cookie storage wrongly displayed
+* Some DPSs had the cookie storage wrongly displayed
 
 ### 2.15.0 - April 25, 2024
 
