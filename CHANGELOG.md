@@ -1,5 +1,22 @@
 [Release Notes](https://docs.usercentrics.com/cmp_in_app_sdk/latest/about/history/)
 
+### 2.15.1 - May 29, 2024
+
+## Improvements
+
+* Consent mediation - Specific implementation for [Firebase Analytics and Advertising](https://usercentrics.com/docs/apps/features/google-consent-mode/) SDK
+* Reset method deprecated for the SDK, React Native, Flutter and Unity
+* Added support for new TCF languages
+* Change TCF resurface period: from 13 months to 390 days
+
+## iOS Bug Fixes
+
+* UI improvement
+
+## General Fixes
+
+* Some DPSs had the cookie storage wrongly displayed
+
 ### 2.15.0 - April 25, 2024
 
 ## Improvements
