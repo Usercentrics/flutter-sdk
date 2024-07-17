@@ -1,5 +1,12 @@
 [Release Notes](https://docs.usercentrics.com/cmp_in_app_sdk/latest/about/history/)
 
+### 2.15.4 - July 17, 2024
+
+## Other Fixes
+
+* Rare crash when initializing the SDK with TCF configuration
+* Unity Ads SDK Mediation adjusts
+
 ### 2.15.2 - June 12, 2024
 
 ## Improvements
