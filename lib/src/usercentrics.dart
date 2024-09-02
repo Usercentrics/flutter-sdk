@@ -25,6 +25,8 @@ class Usercentrics {
   /// - The [timeoutMillis] sets a timeout for network requests in milliseconds. The default value is 10000 milliseconds.
   /// - The [version] freezes the configuration version shown to your users, you may pass a specific version here. E.g. "3.0.4". The default value is "latest".
   /// - The [networkMode] sets the network operation mode. Be careful, use this option only if we have confirmed that it is ready to use because it has a significant impact on the whole system's performance. The default value is "world".
+  /// - The [consentMediation] enables the feature of consent mediation, this feature works with a set of selected SDKs that you can find in the documentation.
+  /// - The [initTimeoutMillis] sets a timeout for the SDK to initialize. Minimum value is 5000ms. The default value is 10000ms.
   static void initialize({
     String settingsId = "",
     String ruleSetId = "",
@@ -34,6 +36,7 @@ class Usercentrics {
     String? version,
     NetworkMode? networkMode,
     bool? consentMediation,
+    int? initTimeoutMillis,
   }) =>
       _delegate.initialize(
         settingsId: settingsId,
@@ -44,6 +47,7 @@ class Usercentrics {
         version: version,
         networkMode: networkMode,
         consentMediation: consentMediation,
+        initTimeoutMillis : initTimeoutMillis
       );
 
   /// {@template initialize}
