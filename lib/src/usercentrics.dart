@@ -39,16 +39,15 @@ class Usercentrics {
     int? initTimeoutMillis,
   }) =>
       _delegate.initialize(
-        settingsId: settingsId,
-        ruleSetId: ruleSetId,
-        defaultLanguage: defaultLanguage,
-        loggerLevel: loggerLevel,
-        timeoutMillis: timeoutMillis,
-        version: version,
-        networkMode: networkMode,
-        consentMediation: consentMediation,
-        initTimeoutMillis : initTimeoutMillis
-      );
+          settingsId: settingsId,
+          ruleSetId: ruleSetId,
+          defaultLanguage: defaultLanguage,
+          loggerLevel: loggerLevel,
+          timeoutMillis: timeoutMillis,
+          version: version,
+          networkMode: networkMode,
+          consentMediation: consentMediation,
+          initTimeoutMillis: initTimeoutMillis);
 
   /// {@template initialize}
 

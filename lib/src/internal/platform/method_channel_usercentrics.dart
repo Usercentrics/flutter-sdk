@@ -96,8 +96,7 @@ class MethodChannelUsercentrics extends UsercentricsPlatform {
         version: version,
         networkMode: networkMode,
         consentMediation: consentMediation,
-        initTimeoutMillis: initTimeoutMillis
-    );
+        initTimeoutMillis: initTimeoutMillis);
 
     status
         .then((value) => isReadyCompleter?.complete(null))

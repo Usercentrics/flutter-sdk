@@ -74,7 +74,8 @@ void main() {
       expect(initializeBridge.invokeVersionArgument, version);
       expect(initializeBridge.invokeNetworkModeArgument, networkMode);
       expect(initializeBridge.invokeConsentMediationArgument, consentMediation);
-      expect(initializeBridge.invokeInitTimeoutMillisArgument, initTimeoutMillis);
+      expect(
+          initializeBridge.invokeInitTimeoutMillisArgument, initTimeoutMillis);
 
       expect(isReadyBridge.invokeCount, 1);
       expect(isReadyBridge.invokeChannelArgument?.name, "usercentrics");
