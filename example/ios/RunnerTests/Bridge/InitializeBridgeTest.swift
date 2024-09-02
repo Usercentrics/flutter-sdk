@@ -37,6 +37,7 @@ class InitializeBridgeTest: XCTestCase, BaseBridgeTestProtocol {
             XCTAssertEqual(self.usercentrics.configureOptions?.ruleSetId, "BBBBB")
             XCTAssertEqual(self.usercentrics.configureOptions?.loggerLevel, .debug)
             XCTAssertEqual(self.usercentrics.configureOptions?.timeoutMillis, 1000)
+            XCTAssertEqual(self.usercentrics.configureOptions?.initTimeoutMillis, 1500)
             XCTAssertEqual(self.usercentrics.configureOptions?.version, "1.2.3")
             XCTAssertEqual(self.usercentrics.configureOptions?.networkMode, .eu)
 
@@ -49,6 +50,7 @@ class InitializeBridgeTest: XCTestCase, BaseBridgeTestProtocol {
             "ruleSetId": "BBBBB",
             "loggerLevel": "DEBUG",
             "timeoutMillis": 1000,
+            "initTimeoutMillis": 1500,
             "version": "1.2.3",
             "networkMode": "EU"
         ]
@@ -68,6 +70,7 @@ class InitializeBridgeTest: XCTestCase, BaseBridgeTestProtocol {
             XCTAssertEqual(self.usercentrics.configureOptions?.settingsId, "AAAAA")
             XCTAssertEqual(self.usercentrics.configureOptions?.loggerLevel, .debug)
             XCTAssertEqual(self.usercentrics.configureOptions?.timeoutMillis, 1000)
+            XCTAssertEqual(self.usercentrics.configureOptions?.initTimeoutMillis, 1500)
             XCTAssertEqual(self.usercentrics.configureOptions?.version, "1.2.3")
 
             expectation.fulfill()
@@ -78,6 +81,7 @@ class InitializeBridgeTest: XCTestCase, BaseBridgeTestProtocol {
             "settingsId": "AAAAA",
             "loggerLevel": "DEBUG",
             "timeoutMillis": 1000,
+            "initTimeoutMillis": 1500,
             "version": "1.2.3"
         ]
 

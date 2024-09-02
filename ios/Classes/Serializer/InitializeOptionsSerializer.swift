@@ -39,6 +39,10 @@ extension UsercentricsOptions {
                 options.networkMode = networkMode
             }
         }
+        
+        if let initTimeoutMillis = dict["initTimeoutMillis"] as? Int {
+            options.initTimeoutMillis = Int64(initTimeoutMillis)
+        }
 
         return options
     }
