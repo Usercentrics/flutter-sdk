@@ -31,5 +31,8 @@ internal fun Any?.deserializeOptions(): UsercentricsOptions {
     this["consentMediation"]?.let {
         options.consentMediation = it as Boolean
     }
+    this["initTimeoutMillis"]?.let {
+        options.initTimeoutMillis = (it as Int).toLong()
+    }
     return options
 }

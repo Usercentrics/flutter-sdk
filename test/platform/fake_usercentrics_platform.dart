@@ -65,6 +65,7 @@ class FakeUsercentricsPlatform extends UsercentricsPlatform {
   String? initializeVersionArgument;
   NetworkMode? networkModeArgument;
   bool? consentMediationArgument;
+  int? initializeInitTimeoutMillisArgument;
 
   @override
   void initialize({
@@ -76,6 +77,7 @@ class FakeUsercentricsPlatform extends UsercentricsPlatform {
     String? version,
     NetworkMode? networkMode,
     bool? consentMediation,
+    int? initTimeoutMillis,
   }) {
     initializeCount++;
     initializeSettingsIdArgument = settingsId;
@@ -86,6 +88,7 @@ class FakeUsercentricsPlatform extends UsercentricsPlatform {
     initializeVersionArgument = version;
     networkModeArgument = networkMode;
     consentMediationArgument = consentMediation;
+    initializeInitTimeoutMillisArgument = initTimeoutMillis;
   }
 
   final UsercentricsReadyStatus? restoreUserSessionAnswer;

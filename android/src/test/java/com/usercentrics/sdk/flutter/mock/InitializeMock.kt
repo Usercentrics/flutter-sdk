@@ -17,6 +17,7 @@ internal object InitializeMock {
             "timeoutMillis" to 1000,
             "version" to "1.2.3",
             "networkMode" to "EU",
+            "initTimeoutMillis" to 1500,
         )
     )
     val callWithDataSettingsId = "AAAAA"
@@ -26,6 +27,7 @@ internal object InitializeMock {
     val callWithDataTimeoutMillis = 1000L
     val callWithDataVersion = "1.2.3"
     val callWithDataNetworkMode = NetworkMode.EU
+    val callWithDataInitTimeoutMillis = 1500L
     val callWithoutData = FakeFlutterMethodCall(
         method = "initialize",
         arguments = mapOf(

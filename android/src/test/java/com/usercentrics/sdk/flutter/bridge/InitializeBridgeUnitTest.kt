@@ -77,6 +77,10 @@ class InitializeBridgeUnitTest {
             InitializeMock.callWithDataNetworkMode,
             usercentricsProxy.initializeOptionsArgument?.networkMode
         )
+        assertEquals(
+            InitializeMock.callWithDataInitTimeoutMillis,
+            usercentricsProxy.initializeOptionsArgument?.initTimeoutMillis
+        )
         assertEquals(1, result.successCount)
         assertEquals(InitializeMock.expected, result.successResultArgument)
     }

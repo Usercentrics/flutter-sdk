@@ -17,6 +17,7 @@ class FakeUsercentrics extends UsercentricsPlatform {
     String? version,
     NetworkMode? networkMode,
     bool? consentMediation,
+    int? initTimeoutMillis,
   }) {
     initializeCount++;
   }

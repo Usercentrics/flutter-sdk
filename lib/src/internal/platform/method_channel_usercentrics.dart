@@ -76,6 +76,7 @@ class MethodChannelUsercentrics extends UsercentricsPlatform {
     String? version,
     NetworkMode? networkMode,
     bool? consentMediation,
+    int? initTimeoutMillis,
   }) async {
     final ongoingInit = isReadyCompleter;
 
@@ -94,7 +95,8 @@ class MethodChannelUsercentrics extends UsercentricsPlatform {
         timeoutMillis: timeoutMillis,
         version: version,
         networkMode: networkMode,
-        consentMediation: consentMediation);
+        consentMediation: consentMediation,
+        initTimeoutMillis: initTimeoutMillis);
 
     status
         .then((value) => isReadyCompleter?.complete(null))

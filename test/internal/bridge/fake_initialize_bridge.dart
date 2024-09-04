@@ -14,6 +14,7 @@ class FakeInitializeBridge extends InitializeBridge {
   String? invokeVersionArgument;
   NetworkMode? invokeNetworkModeArgument;
   bool? invokeConsentMediationArgument;
+  int? invokeInitTimeoutMillisArgument;
 
   @override
   void invoke({
@@ -26,6 +27,7 @@ class FakeInitializeBridge extends InitializeBridge {
     String? version,
     NetworkMode? networkMode,
     bool? consentMediation,
+    int? initTimeoutMillis,
   }) {
     invokeCount++;
     invokeChannelArgument = channel;
@@ -37,5 +39,6 @@ class FakeInitializeBridge extends InitializeBridge {
     invokeVersionArgument = version;
     invokeNetworkModeArgument = networkMode;
     invokeConsentMediationArgument = consentMediation;
+    invokeInitTimeoutMillisArgument = initTimeoutMillis;
   }
 }

@@ -15,6 +15,7 @@ abstract class UsercentricsPlatform {
     String? version,
     NetworkMode? networkMode,
     bool? consentMediation,
+    int? initTimeoutMillis,
   });
 
   Future<UsercentricsReadyStatus> get status;

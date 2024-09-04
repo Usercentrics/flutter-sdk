@@ -15,7 +15,8 @@ void main() {
     "version": "1.0.0",
     "timeoutMillis": 20000,
     "networkMode": "EU",
-    'consentMediation': true
+    'consentMediation': true,
+    "initTimeoutMillis": 25000
   };
   const mockSettingsId = 'Yi9N3aXia';
   const mockRuleSetId = 'XXxXXXYYyyyYY';
@@ -23,6 +24,7 @@ void main() {
   const mockVersion = "1.0.0";
   const mockDefaultLanguage = "en";
   const mockTimeoutMillis = 20000;
+  const mockInitTimeoutMillis = 25000;
   const mockNetworkMode = NetworkMode.eu;
   const mockConsentMediation = true;
 
@@ -54,7 +56,8 @@ void main() {
         defaultLanguage: mockDefaultLanguage,
         timeoutMillis: mockTimeoutMillis,
         networkMode: mockNetworkMode,
-        consentMediation: mockConsentMediation);
+        consentMediation: mockConsentMediation,
+        initTimeoutMillis: mockInitTimeoutMillis);
 
     expect(callCounter, 1);
     expect(receivedCall?.method, 'initialize');
