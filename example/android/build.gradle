@@ -4,6 +4,7 @@ buildscript {
     repositories {
         google()
         mavenCentral()
+        mavenLocal() // TODO REMOVE THIS
     }
 
     dependencies {
@@ -16,6 +17,7 @@ allprojects {
     repositories {
         google()
         mavenCentral()
+        mavenLocal() // TODO REMOVE THIS
     }
 }
 
