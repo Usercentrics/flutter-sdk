@@ -191,6 +191,7 @@ internal object GetCMPDataMock {
         storageInformationDescription = "Below you can see the longest potential duration for storage on a device, as set when using the cookie method of storage and if there are any other methods used.",
         noImplicit = "no (default)",
         yesImplicit = "yes (implicit)",
+        readLess = "Read Less"
     )
     private val fakeFirstLayer = FirstLayer(
         hideButtonDeny = false,
@@ -330,6 +331,7 @@ internal object GetCMPDataMock {
         publishedApps = listOf(
             PublishedApp(bundleId = "bundleId", platform = PublishedAppPlatform.ANDROID)
         ),
+        renewConsentsTimestamp = 1000L
     )
 
     // From the debugger
@@ -422,6 +424,7 @@ internal object GetCMPDataMock {
         "cookiePolicyLinkText" to "Cookie Policy",
         "noImplicit" to "no (default)",
         "yesImplicit" to "yes (implicit)",
+        "readLess" to "Read Less"
     )
     private val expectedTCF2Settings = mapOf(
         "firstLayerTitle" to "Privacy Information",
@@ -570,6 +573,7 @@ internal object GetCMPDataMock {
                 "platform" to "ANDROID"
             )
         ),
+        "renewConsentsTimestamp" to 1000L
     )
 
     val expectedCategories = listOf(
