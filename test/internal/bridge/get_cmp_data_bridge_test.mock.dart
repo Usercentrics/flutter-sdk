@@ -102,6 +102,7 @@ const _responseLabels = {
   "cookiePolicyLinkText": "cookiePolicyLinkText",
   "noImplicit": "noImplicit",
   "yesImplicit": "yesImplicit",
+  "readLess": "readLess",
 };
 const _responseTCF2Settings = {
   "firstLayerTitle": "Privacy Information",
@@ -257,6 +258,7 @@ const _responseSettings = {
   "publishedApps": [
     {"bundleId": "bundleId", "platform": "ANDROID"}
   ],
+  "renewConsentsTimestamp": 1000
 };
 
 const _responseCategories = [
@@ -491,6 +493,7 @@ const _expectedLabels = UsercentricsLabels(
   cookiePolicyLinkText: "cookiePolicyLinkText",
   noImplicit: "noImplicit",
   yesImplicit: "yesImplicit",
+  readLess: "readLess"
 );
 const _expectedFirstLayer = FirstLayer(
   hideButtonDeny: false,
@@ -657,4 +660,5 @@ const _expectedSettings = UsercentricsSettings(
   publishedApps: [
     PublishedApp(bundleId: "bundleId", platform: PublishedAppPlatform.android)
   ],
+  renewConsentsTimestamp: 1000
 );

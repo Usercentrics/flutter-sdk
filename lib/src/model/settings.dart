@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/foundation.dart';
 import 'package:usercentrics_sdk/src/model/ccpa_settings.dart';
 import 'package:usercentrics_sdk/src/model/customization.dart';
@@ -33,6 +35,7 @@ class UsercentricsSettings {
     required this.dpsDisplayFormat,
     required this.framework,
     required this.publishedApps,
+    required this.renewConsentsTimestamp,
   });
 
   final UsercentricsLabels labels;
@@ -61,6 +64,7 @@ class UsercentricsSettings {
   final DpsDisplayFormat? dpsDisplayFormat;
   final USAFrameworks? framework;
   final List<PublishedApp>? publishedApps;
+  final int? renewConsentsTimestamp;
 
   @override
   bool operator ==(Object other) =>
@@ -95,7 +99,8 @@ class UsercentricsSettings {
           variants == other.variants &&
           dpsDisplayFormat == other.dpsDisplayFormat &&
           framework == other.framework &&
-          listEquals(publishedApps, other.publishedApps);
+          listEquals(publishedApps, other.publishedApps) &&
+          renewConsentsTimestamp == other.renewConsentsTimestamp;
 
   @override
   int get hashCode =>
@@ -124,7 +129,8 @@ class UsercentricsSettings {
       variants.hashCode +
       dpsDisplayFormat.hashCode +
       framework.hashCode +
-      publishedApps.hashCode;
+      publishedApps.hashCode +
+      renewConsentsTimestamp.hashCode;
 
   @override
   String toString() =>

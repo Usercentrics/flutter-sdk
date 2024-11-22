@@ -78,6 +78,7 @@ class LabelsSerializer {
       cookiePolicyLinkText: value['cookiePolicyLinkText'] ?? "",
       noImplicit: value['noImplicit'] ?? "",
       yesImplicit: value['yesImplicit'] ?? "",
+      readLess: value['readLess'] ?? "",
     );
   }
 }
