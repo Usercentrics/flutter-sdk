@@ -55,6 +55,7 @@ private fun UsercentricsSettings.serialize(): Any {
         "dpsDisplayFormat" to (dpsDisplayFormat?.name ?: ""),
         "framework" to (framework?.name ?: ""),
         "publishedApps" to publishedApps?.map { it.serialize() },
+        "renewConsentsTimestamp" to renewConsentsTimestamp
     )
 }
 
@@ -133,6 +134,7 @@ private fun UsercentricsLabels.serialize(): Any {
         "cookiePolicyLinkText" to cookiePolicyLinkText,
         "noImplicit" to noImplicit,
         "yesImplicit" to yesImplicit,
+        "readLess" to readLess,
     )
 }
 

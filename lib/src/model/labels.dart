@@ -73,6 +73,7 @@ class UsercentricsLabels {
     required this.cookiePolicyLinkText,
     required this.noImplicit,
     required this.yesImplicit,
+    required this.readLess,
   });
 
   final String btnAcceptAll;
@@ -148,6 +149,7 @@ class UsercentricsLabels {
   final String cookiePolicyLinkText;
   final String noImplicit;
   final String yesImplicit;
+  final String readLess;
 
   @override
   bool operator ==(Object other) =>
@@ -228,7 +230,8 @@ class UsercentricsLabels {
           furtherInformationOptOut == other.furtherInformationOptOut &&
           cookiePolicyLinkText == other.cookiePolicyLinkText &&
           noImplicit == other.noImplicit &&
-          yesImplicit == other.yesImplicit;
+          yesImplicit == other.yesImplicit &&
+          readLess == other.readLess;
 
   @override
   int get hashCode =>
@@ -304,7 +307,8 @@ class UsercentricsLabels {
       furtherInformationOptOut.hashCode ^
       cookiePolicyLinkText.hashCode ^
       noImplicit.hashCode ^
-      yesImplicit.hashCode;
+      yesImplicit.hashCode ^
+      readLess.hashCode;
 
   @override
   String toString() => "$UsercentricsLabels($hashCode)";

@@ -41,6 +41,7 @@ extension UsercentricsSettings {
             "dpsDisplayFormat": (self.dpsDisplayFormat?.name ?? "") as Any,
             "framework": (self.framework?.name ?? "") as Any,
             "publishedApps": (self.publishedApps?.map { $0.serialize() } ?? nil) as Any,
+            "renewConsentsTimestamp": self.renewConsentsTimestamp as Any
         ]
     }
 }
@@ -121,6 +122,7 @@ extension UsercentricsLabels {
             "cookiePolicyLinkText": self.cookiePolicyLinkText,
             "noImplicit": self.noImplicit,
             "yesImplicit": self.yesImplicit,
+            "readLess": self.readLess
         ]
     }
 }

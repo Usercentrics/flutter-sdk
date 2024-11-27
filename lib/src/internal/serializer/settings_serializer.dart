@@ -7,39 +7,40 @@ import 'package:usercentrics_sdk/src/model/model.dart';
 class SettingsSerializer {
   static UsercentricsSettings deserialize(dynamic value) {
     return UsercentricsSettings(
-      labels: LabelsSerializer.deserialize(value['labels']),
-      version: value['version'] ?? "",
-      language: value['language'] ?? "",
-      imprintUrl: value['imprintUrl'] ?? "",
-      privacyPolicyUrl: value['privacyPolicyUrl'] ?? "",
-      cookiePolicyUrl: value['cookiePolicyUrl'] ?? "",
-      firstLayerDescriptionHtml: value['firstLayerDescriptionHtml'] ?? "",
-      firstLayerMobileDescriptionHtml:
-          value['firstLayerMobileDescriptionHtml'] ?? "",
-      settingsId: value['settingsId'] ?? "",
-      bannerMobileDescriptionIsActive: value['bannerMobileDescriptionIsActive'],
-      enablePoweredBy: value['enablePoweredBy'],
-      displayOnlyForEU: value['displayOnlyForEU'],
-      tcf2Enabled: value['tcf2Enabled'],
-      reshowBanner: value['reshowBanner'],
-      editableLanguages: value['editableLanguages']?.cast<String>() ?? [],
-      languagesAvailable: value['languagesAvailable']?.cast<String>() ?? [],
-      showInitialViewForVersionChange:
-          value['showInitialViewForVersionChange']?.cast<String>() ?? [],
-      ccpa: CCPASettingsSerializer.deserialize(value['ccpa']),
-      tcf2: TCF2SettingsSerializer.deserialize(value['tcf2']),
-      customization:
-          CustomizationSerializer.deserialize(value['customization']),
-      firstLayer: FirstLayerSerializer.deserialize(value['firstLayer']),
-      secondLayer: SecondLayerSerializer.deserialize(value['secondLayer']),
-      variants: VariantsSettingsSerializer.deserialize(value['variants']),
-      dpsDisplayFormat:
-          DpsDisplayFormatSerializer.deserialize(value['dpsDisplayFormat']),
-      framework: USAFrameworksSerializer.deserialize(value['framework']),
-      publishedApps: ((value['publishedApps'] ?? []) as List)
-          .map((e) => PublishedAppSerializer.deserialize(e))
-          .toList(),
-    );
+        labels: LabelsSerializer.deserialize(value['labels']),
+        version: value['version'] ?? "",
+        language: value['language'] ?? "",
+        imprintUrl: value['imprintUrl'] ?? "",
+        privacyPolicyUrl: value['privacyPolicyUrl'] ?? "",
+        cookiePolicyUrl: value['cookiePolicyUrl'] ?? "",
+        firstLayerDescriptionHtml: value['firstLayerDescriptionHtml'] ?? "",
+        firstLayerMobileDescriptionHtml:
+            value['firstLayerMobileDescriptionHtml'] ?? "",
+        settingsId: value['settingsId'] ?? "",
+        bannerMobileDescriptionIsActive:
+            value['bannerMobileDescriptionIsActive'],
+        enablePoweredBy: value['enablePoweredBy'],
+        displayOnlyForEU: value['displayOnlyForEU'],
+        tcf2Enabled: value['tcf2Enabled'],
+        reshowBanner: value['reshowBanner'],
+        editableLanguages: value['editableLanguages']?.cast<String>() ?? [],
+        languagesAvailable: value['languagesAvailable']?.cast<String>() ?? [],
+        showInitialViewForVersionChange:
+            value['showInitialViewForVersionChange']?.cast<String>() ?? [],
+        ccpa: CCPASettingsSerializer.deserialize(value['ccpa']),
+        tcf2: TCF2SettingsSerializer.deserialize(value['tcf2']),
+        customization:
+            CustomizationSerializer.deserialize(value['customization']),
+        firstLayer: FirstLayerSerializer.deserialize(value['firstLayer']),
+        secondLayer: SecondLayerSerializer.deserialize(value['secondLayer']),
+        variants: VariantsSettingsSerializer.deserialize(value['variants']),
+        dpsDisplayFormat:
+            DpsDisplayFormatSerializer.deserialize(value['dpsDisplayFormat']),
+        framework: USAFrameworksSerializer.deserialize(value['framework']),
+        publishedApps: ((value['publishedApps'] ?? []) as List)
+            .map((e) => PublishedAppSerializer.deserialize(e))
+            .toList(),
+        renewConsentsTimestamp: value['renewConsentsTimestamp']);
   }
 }
 

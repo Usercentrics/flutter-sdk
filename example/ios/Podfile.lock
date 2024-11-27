@@ -1,11 +1,11 @@
 PODS:
   - Flutter (1.0.0)
-  - Usercentrics (2.18.1)
-  - usercentrics_sdk (2.18.1):
+  - Usercentrics (2.18.2)
+  - usercentrics_sdk (2.18.2):
     - Flutter
-    - UsercentricsUI (= 2.18.1)
-  - UsercentricsUI (2.18.1):
-    - Usercentrics (= 2.18.1)
+    - UsercentricsUI (= 2.18.2)
+  - UsercentricsUI (2.18.2):
+    - Usercentrics (= 2.18.2)
   - webview_flutter_wkwebview (0.0.1):
     - Flutter
 
@@ -36,4 +36,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 723de1cf6e2f18b51eb3426c945e31134a750097
 
-COCOAPODS: 1.14.3
+COCOAPODS: 1.15.2
