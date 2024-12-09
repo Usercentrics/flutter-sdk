@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:usercentrics_sdk/src/model/model.dart';
+import 'package:usercentrics_sdk/src/model/legal_basis.dart';
 
 /// The CMP data.
 class UsercentricsCMPData {
@@ -9,6 +10,7 @@ class UsercentricsCMPData {
     required this.categories,
     required this.activeVariant,
     required this.userLocation,
+    required this.legalBasis,
   });
 
   /// The general settings defined for the settingsId.
@@ -26,6 +28,9 @@ class UsercentricsCMPData {
   /// The current user location.
   final UsercentricsLocation userLocation;
 
+  /// The legal basis localization
+  final LegalBasisLocalization legalBasis;
+
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
@@ -35,7 +40,8 @@ class UsercentricsCMPData {
           userLocation == other.userLocation &&
           activeVariant == other.activeVariant &&
           listEquals(services, other.services) &&
-          listEquals(categories, other.categories);
+          listEquals(categories, other.categories) &&
+          legalBasis == other.legalBasis;
 
   @override
   int get hashCode =>
@@ -43,9 +49,10 @@ class UsercentricsCMPData {
       userLocation.hashCode +
       activeVariant.hashCode +
       services.hashCode +
-      categories.hashCode;
+      categories.hashCode +
+      legalBasis.hashCode;
 
   @override
   String toString() =>
-      "$UsercentricsCMPData(activeVariant: $activeVariant, userLocation: $userLocation, settings: $settings, categories: $categories, services: $services)";
+      "$UsercentricsCMPData(activeVariant: $activeVariant, userLocation: $userLocation, settings: $settings, categories: $categories, services: $services, legalBasis: $legalBasis)";
 }

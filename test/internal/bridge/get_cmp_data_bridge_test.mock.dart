@@ -335,12 +335,51 @@ const _responseServices = [
 
 // Expected
 const expectedResult = UsercentricsCMPData(
-  settings: _expectedSettings,
-  services: _expectedServices,
-  categories: _expectedCategories,
-  activeVariant: UsercentricsVariant.tcf,
-  userLocation: _expectedUserLocation,
-);
+    settings: _expectedSettings,
+    services: _expectedServices,
+    categories: _expectedCategories,
+    activeVariant: UsercentricsVariant.tcf,
+    userLocation: _expectedUserLocation,
+    legalBasis: _expectedLegalBasis);
+
+const _expectedLegalBasis = LegalBasisLocalization(
+    labelsAria: _expectedTranslationsAriaLabels, data: _expectedData);
+
+const _expectedTranslationsAriaLabels = TranslationAriaLabels(
+    acceptAllButton: "acceptAllButton",
+    ccpaButton: "ccpaButton",
+    ccpaMoreInformation: "ccpaMoreInformation",
+    closeButton: "closeButton",
+    collapse: "collapse",
+    cookiePolicyButton: "cookiePolicyButton",
+    copyControllerId: "copyControllerId",
+    denyAllButton: "denyAllButton",
+    expand: "expand",
+    fullscreenButton: "fullscreenButton",
+    imprintButton: "imprintButton",
+    languageSelector: "languageSelector",
+    privacyButton: "privacyButton",
+    privacyPolicyButton: "privacyPolicyButton",
+    saveButton: "saveButton",
+    serviceInCategoryDetails: "serviceInCategoryDetails",
+    servicesInCategory: "servicesInCategory",
+    tabButton: "tabButton",
+    usercentricsCMPButtons: "usercentricsCMPButtons",
+    usercentricsCMPContent: "usercentricsCMPContent",
+    usercentricsCMPHeader: "usercentricsCMPHeader",
+    usercentricsCMPUI: "usercentricsCMPUI",
+    usercentricsCard: "usercentricsCard",
+    usercentricsList: "usercentricsList",
+    vendorConsentToggle: "vendorConsentToggle",
+    vendorDetailedStorageInformation: "vendorDetailedStorageInformation",
+    vendorLegIntToggle: "vendorLegIntToggle");
+
+const Map<String, String> _expectedData = {
+  'key1': 'value1',
+  'key2': 'value2',
+  'key3': 'value3',
+};
+
 const _expectedCategories = [
   UsercentricsCategory(
     categorySlug: "essential",
