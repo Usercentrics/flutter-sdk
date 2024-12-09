@@ -307,11 +307,7 @@ const _responseLabelsAria = {
   "vendorDetailedStorageInformation": "vendorDetailedStorageInformation",
   "vendorLegIntToggle": "vendorLegIntToggle"
 };
-const _responseData = {
-  "key1": "value1",
-  "key2": "value2",
-  "key3": "value3"
-};
+const _responseData = {"key1": "value1", "key2": "value2", "key3": "value3"};
 const _responseLegalBasis = {
   "labelsAria": _responseLabelsAria,
   "data": _responseData
