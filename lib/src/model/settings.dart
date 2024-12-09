@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:flutter/foundation.dart';
 import 'package:usercentrics_sdk/src/model/ccpa_settings.dart';
 import 'package:usercentrics_sdk/src/model/customization.dart';

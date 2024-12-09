@@ -1,3 +1,5 @@
+import 'package:flutter/foundation.dart';
+
 class LegalBasisLocalization {
   const LegalBasisLocalization({required this.labelsAria, required this.data});
 
@@ -10,7 +12,7 @@ class LegalBasisLocalization {
       other is LegalBasisLocalization &&
           runtimeType == other.runtimeType &&
           labelsAria == other.labelsAria &&
-          data == other.data;
+          mapEquals(data, other.data);
 
   @override
   int get hashCode => labelsAria.hashCode + data.hashCode;

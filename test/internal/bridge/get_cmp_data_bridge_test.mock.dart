@@ -6,7 +6,8 @@ const mockResponse = {
   "services": _responseServices,
   "categories": _responseCategories,
   "activeVariant": "TCF",
-  "userLocation": _responseUserLocation
+  "userLocation": _responseUserLocation,
+  "legalBasis": _responseLegalBasis
 };
 const _responseFirstLayer = {
   "hideButtonDeny": false,
@@ -277,6 +278,45 @@ const _responseUserLocation = {
   "isInUS": false,
   "isInCalifornia": false,
 };
+const _responseLabelsAria = {
+  "acceptAllButton": "acceptAllButton",
+  "ccpaButton": "ccpaButton",
+  "ccpaMoreInformation": "ccpaMoreInformation",
+  "closeButton": "closeButton",
+  "collapse": "collapse",
+  "cookiePolicyButton": "cookiePolicyButton",
+  "copyControllerId": "copyControllerId",
+  "denyAllButton": "denyAllButton",
+  "expand": "expand",
+  "fullscreenButton": "fullscreenButton",
+  "imprintButton": "imprintButton",
+  "languageSelector": "languageSelector",
+  "privacyButton": "privacyButton",
+  "privacyPolicyButton": "privacyPolicyButton",
+  "saveButton": "saveButton",
+  "serviceInCategoryDetails": "serviceInCategoryDetails",
+  "servicesInCategory": "servicesInCategory",
+  "tabButton": "tabButton",
+  "usercentricsCMPButtons": "usercentricsCMPButtons",
+  "usercentricsCMPContent": "usercentricsCMPContent",
+  "usercentricsCMPHeader": "usercentricsCMPHeader",
+  "usercentricsCMPUI": "usercentricsCMPUI",
+  "usercentricsCard": "usercentricsCard",
+  "usercentricsList": "usercentricsList",
+  "vendorConsentToggle": "vendorConsentToggle",
+  "vendorDetailedStorageInformation": "vendorDetailedStorageInformation",
+  "vendorLegIntToggle": "vendorLegIntToggle"
+};
+const _responseData = {
+  "key1": "value1",
+  "key2": "value2",
+  "key3": "value3"
+};
+const _responseLegalBasis = {
+  "labelsAria": _responseLabelsAria,
+  "data": _responseData
+};
+
 const _responseServices = [
   {
     "templateId": "ABC",

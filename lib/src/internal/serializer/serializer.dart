@@ -32,3 +32,4 @@ export 'user_decision_serializer.dart';
 export 'user_interaction_serializer.dart';
 export 'user_response_serializer.dart';
 export 'variant_serializer.dart';
+export 'legal_basis_serializer.dart';

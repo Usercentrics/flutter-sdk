@@ -1,6 +1,5 @@
 import 'package:flutter/foundation.dart';
 import 'package:usercentrics_sdk/src/model/model.dart';
-import 'package:usercentrics_sdk/src/model/legal_basis.dart';
 
 /// The CMP data.
 class UsercentricsCMPData {

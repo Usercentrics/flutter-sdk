@@ -1,6 +1,5 @@
 import 'package:usercentrics_sdk/src/internal/internal.dart';
 import 'package:usercentrics_sdk/src/model/cmp_data.dart';
-import 'legal_basis_serializer.dart';
 
 class CMPDataSerializer {
   static UsercentricsCMPData deserialize(dynamic value) {
