@@ -8,7 +8,7 @@ extension UsercentricsCMPData {
             "categories": self.categories.map { $0.serialize() },
             "activeVariant": self.activeVariant.name as Any,
             "userLocation": self.userLocation.serialize(),
-            "lagalBasis": self.legalBasis.serialize(),
+            "legalBasis": self.legalBasis.serialize(),
         ]
     }
 }
@@ -399,8 +399,8 @@ extension TCF2ChangedPurposes {
 extension LegalBasisLocalization {
     func serialize() -> Any {
         return [
-            "labelsAria": labelsAria?.serialize(),
-            "data": data
+            "labelsAria": self.labelsAria?.serialize(),
+            "data": self.data
         ]
     }
 }
@@ -408,33 +408,33 @@ extension LegalBasisLocalization {
 extension TranslationAriaLabels {
     func serialize() -> Any {
         return [
-              "acceptAllButton": acceptAllButton,
-              "ccpaButton": ccpaButton,
-              "ccpaMoreInformation": ccpaMoreInformation,
-              "closeButton": closeButton,
-              "collapse": collapse,
-              "cookiePolicyButton": cookiePolicyButton,
-              "copyControllerId": copyControllerId,
-              "denyAllButton": denyAllButton,
-              "expand": expand,
-              "fullscreenButton": fullscreenButton,
-              "imprintButton": imprintButton,
-              "languageSelector": languageSelector,
-              "privacyButton": privacyButton,
-              "privacyPolicyButton": privacyPolicyButton,
-              "saveButton": saveButton,
-              "serviceInCategoryDetails": serviceInCategoryDetails,
-              "servicesInCategory": servicesInCategory,
-              "tabButton": tabButton,
-              "usercentricsCMPButtons": usercentricsCMPButtons,
-              "usercentricsCMPContent": usercentricsCMPContent,
-              "usercentricsCMPHeader": usercentricsCMPHeader,
-              "usercentricsCMPUI": usercentricsCMPUI,
-              "usercentricsCard": usercentricsCard,
-              "usercentricsList": usercentricsList,
-              "vendorConsentToggle": vendorConsentToggle,
-              "vendorDetailedStorageInformation": vendorDetailedStorageInformation,
-              "vendorLegIntToggle": vendorLegIntToggle
+            "acceptAllButton": self.acceptAllButton,
+            "ccpaButton": self.ccpaButton,
+            "ccpaMoreInformation": self.ccpaMoreInformation,
+            "closeButton": self.closeButton,
+            "collapse": self.collapse,
+            "cookiePolicyButton": self.cookiePolicyButton,
+            "copyControllerId": self.copyControllerId,
+            "denyAllButton": self.denyAllButton,
+            "expand": self.expand,
+            "fullscreenButton": self.fullscreenButton,
+            "imprintButton": self.imprintButton,
+            "languageSelector": self.languageSelector,
+            "privacyButton": self.privacyButton,
+            "privacyPolicyButton": self.privacyPolicyButton,
+            "saveButton": self.saveButton,
+            "serviceInCategoryDetails": self.serviceInCategoryDetails,
+            "servicesInCategory": self.servicesInCategory,
+            "tabButton": self.tabButton,
+            "usercentricsCMPButtons": self.usercentricsCMPButtons,
+            "usercentricsCMPContent": self.usercentricsCMPContent,
+            "usercentricsCMPHeader": self.usercentricsCMPHeader,
+            "usercentricsCMPUI": self.usercentricsCMPUI,
+            "usercentricsCard": self.usercentricsCard,
+            "usercentricsList": self.usercentricsList,
+            "vendorConsentToggle": self.vendorConsentToggle,
+            "vendorDetailedStorageInformation": self.vendorDetailedStorageInformation,
+            "vendorLegIntToggle": self.vendorLegIntToggle
         ]
     }
 }
