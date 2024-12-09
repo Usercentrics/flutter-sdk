@@ -7,6 +7,7 @@ import com.usercentrics.sdk.flutter.api.FakeFlutterResult
 import com.usercentrics.sdk.flutter.api.FakeUsercentricsProxy
 import com.usercentrics.sdk.flutter.mock.GetCMPDataMock
 import com.usercentrics.sdk.models.common.UsercentricsVariant
+import com.usercentrics.sdk.v2.translation.data.LegalBasisLocalization
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
@@ -36,11 +37,18 @@ class GetCMPDataBridgeUnitTest {
     @Test
     fun testInvoke() {
         val cmpData = mockk<UsercentricsCMPData>()
+
+        val legalBasisLocalization = mockk<LegalBasisLocalization>()
+        every { legalBasisLocalization.data }.returns(GetCMPDataMock.fakeData)
+        every { legalBasisLocalization.labelsAria }.returns(GetCMPDataMock.fakeTranslationAriaLabels)
+
         every { cmpData.activeVariant }.returns(UsercentricsVariant.TCF)
         every { cmpData.settings }.returns(GetCMPDataMock.fakeSettings)
         every { cmpData.categories }.returns(GetCMPDataMock.fakeCategories)
         every { cmpData.services }.returns(GetCMPDataMock.fakeServices)
         every { cmpData.userLocation }.returns(GetCMPDataMock.fakeUserLocation)
+        every { cmpData.legalBasis }.returns(legalBasisLocalization)
+
         val usercentricsSDK = mockk<UsercentricsSDK>()
         every { usercentricsSDK.getCMPData() }.returns(cmpData)
         val usercentricsProxy = FakeUsercentricsProxy(usercentricsSDK)
@@ -52,7 +60,7 @@ class GetCMPDataBridgeUnitTest {
         verify(exactly = 1) { usercentricsSDK.getCMPData() }
         assertEquals(1, result.successCount)
         val resultMap = result.successResultArgument as? Map<*, *>
-        assertEquals(5, resultMap?.size)
+        assertEquals(6, resultMap?.size)
         assertEquals("TCF", resultMap?.get("activeVariant"))
 
         assertNotNull(resultMap!!)
@@ -61,6 +69,7 @@ class GetCMPDataBridgeUnitTest {
         assertEquals(GetCMPDataMock.expectedCategories, resultMap["categories"])
         assertEquals(GetCMPDataMock.expectedServices, resultMap["services"])
         assertEquals(GetCMPDataMock.expectedUserLocation, resultMap["userLocation"])
+        assertEquals(GetCMPDataMock.expectedLegalBasisLocalization, resultMap["legalBasis"])
     }
 
 }
