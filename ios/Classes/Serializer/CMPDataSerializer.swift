@@ -8,6 +8,7 @@ extension UsercentricsCMPData {
             "categories": self.categories.map { $0.serialize() },
             "activeVariant": self.activeVariant.name as Any,
             "userLocation": self.userLocation.serialize(),
+            "lagalBasis": self.legalBasis.serialize(),
         ]
     }
 }
@@ -390,6 +391,50 @@ extension TCF2ChangedPurposes {
         return [
             "purposes": purposes,
             "legIntPurposes": legIntPurposes
+        ]
+    }
+}
+
+
+extension LegalBasisLocalization {
+    func serialize() -> Any {
+        return [
+            "labelsAria": labelsAria?.serialize(),
+            "data": data
+        ]
+    }
+}
+
+extension TranslationAriaLabels {
+    func serialize() -> Any {
+        return [
+              "acceptAllButton": acceptAllButton,
+              "ccpaButton": ccpaButton,
+              "ccpaMoreInformation": ccpaMoreInformation,
+              "closeButton": closeButton,
+              "collapse": collapse,
+              "cookiePolicyButton": cookiePolicyButton,
+              "copyControllerId": copyControllerId,
+              "denyAllButton": denyAllButton,
+              "expand": expand,
+              "fullscreenButton": fullscreenButton,
+              "imprintButton": imprintButton,
+              "languageSelector": languageSelector,
+              "privacyButton": privacyButton,
+              "privacyPolicyButton": privacyPolicyButton,
+              "saveButton": saveButton,
+              "serviceInCategoryDetails": serviceInCategoryDetails,
+              "servicesInCategory": servicesInCategory,
+              "tabButton": tabButton,
+              "usercentricsCMPButtons": usercentricsCMPButtons,
+              "usercentricsCMPContent": usercentricsCMPContent,
+              "usercentricsCMPHeader": usercentricsCMPHeader,
+              "usercentricsCMPUI": usercentricsCMPUI,
+              "usercentricsCard": usercentricsCard,
+              "usercentricsList": usercentricsList,
+              "vendorConsentToggle": vendorConsentToggle,
+              "vendorDetailedStorageInformation": vendorDetailedStorageInformation,
+              "vendorLegIntToggle": vendorLegIntToggle
         ]
     }
 }
