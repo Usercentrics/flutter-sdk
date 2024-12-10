@@ -32,3 +32,4 @@ export 'user_decision.dart';
 export 'user_interaction.dart';
 export 'user_response.dart';
 export 'variant.dart';
+export 'legal_basis.dart';

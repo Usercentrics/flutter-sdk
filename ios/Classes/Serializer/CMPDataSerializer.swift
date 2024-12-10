@@ -8,6 +8,7 @@ extension UsercentricsCMPData {
             "categories": self.categories.map { $0.serialize() },
             "activeVariant": self.activeVariant.name as Any,
             "userLocation": self.userLocation.serialize(),
+            "legalBasis": self.legalBasis.serialize(),
         ]
     }
 }
@@ -390,6 +391,50 @@ extension TCF2ChangedPurposes {
         return [
             "purposes": purposes,
             "legIntPurposes": legIntPurposes
+        ]
+    }
+}
+
+
+extension LegalBasisLocalization {
+    func serialize() -> Any {
+        return [
+            "labelsAria": self.labelsAria?.serialize(),
+            "data": self.data
+        ]
+    }
+}
+
+extension TranslationAriaLabels {
+    func serialize() -> Any {
+        return [
+            "acceptAllButton": self.acceptAllButton,
+            "ccpaButton": self.ccpaButton,
+            "ccpaMoreInformation": self.ccpaMoreInformation,
+            "closeButton": self.closeButton,
+            "collapse": self.collapse,
+            "cookiePolicyButton": self.cookiePolicyButton,
+            "copyControllerId": self.copyControllerId,
+            "denyAllButton": self.denyAllButton,
+            "expand": self.expand,
+            "fullscreenButton": self.fullscreenButton,
+            "imprintButton": self.imprintButton,
+            "languageSelector": self.languageSelector,
+            "privacyButton": self.privacyButton,
+            "privacyPolicyButton": self.privacyPolicyButton,
+            "saveButton": self.saveButton,
+            "serviceInCategoryDetails": self.serviceInCategoryDetails,
+            "servicesInCategory": self.servicesInCategory,
+            "tabButton": self.tabButton,
+            "usercentricsCMPButtons": self.usercentricsCMPButtons,
+            "usercentricsCMPContent": self.usercentricsCMPContent,
+            "usercentricsCMPHeader": self.usercentricsCMPHeader,
+            "usercentricsCMPUI": self.usercentricsCMPUI,
+            "usercentricsCard": self.usercentricsCard,
+            "usercentricsList": self.usercentricsList,
+            "vendorConsentToggle": self.vendorConsentToggle,
+            "vendorDetailedStorageInformation": self.vendorDetailedStorageInformation,
+            "vendorLegIntToggle": self.vendorLegIntToggle
         ]
     }
 }

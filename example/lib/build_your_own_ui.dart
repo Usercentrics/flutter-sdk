@@ -91,6 +91,7 @@ class CustomUIPage extends StatelessWidget {
 
   void _printGDPR(UsercentricsCMPData data) {
     final settings = data.settings;
+    final legalBasis = data.legalBasis;
 
     print("Title: ${settings.labels.firstLayerTitle}");
     print("Description: ${settings.firstLayerDescriptionHtml}");
@@ -98,6 +99,8 @@ class CustomUIPage extends StatelessWidget {
     print("data.settings: $settings");
     print("data.services: ${data.services}");
     print("data.categories: ${data.categories}");
+    print("data.legalBasis labelsAria: ${legalBasis.labelsAria}");
+    print("data.legalBasis data: ${legalBasis.data}");
 
     print("Accept All button: ${settings.labels.btnAcceptAll}");
     print("Deny button: ${settings.labels.btnDeny}");
