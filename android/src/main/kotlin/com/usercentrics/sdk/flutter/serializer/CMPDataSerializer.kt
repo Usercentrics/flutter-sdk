@@ -16,6 +16,8 @@ import com.usercentrics.sdk.v2.settings.data.UsercentricsLabels
 import com.usercentrics.sdk.v2.settings.data.UsercentricsService
 import com.usercentrics.sdk.v2.settings.data.UsercentricsSettings
 import com.usercentrics.sdk.v2.settings.data.VariantsSettings
+import com.usercentrics.sdk.v2.translation.data.LegalBasisLocalization
+import com.usercentrics.sdk.v2.translation.data.TranslationAriaLabels
 
 internal fun UsercentricsCMPData.serialize(): Any {
     return mapOf(
@@ -23,7 +25,8 @@ internal fun UsercentricsCMPData.serialize(): Any {
         "services" to services.map { it.serialize() },
         "categories" to categories.map { it.serialize() },
         "activeVariant" to activeVariant.name,
-        "userLocation" to userLocation.serialize()
+        "userLocation" to userLocation.serialize(),
+        "legalBasis" to legalBasis.serialize()
     )
 }
 
@@ -342,6 +345,45 @@ internal fun UsercentricsLocation.serialize(): Any {
         "isInEU" to isInEU(),
         "isInUS" to isInUS(),
         "isInCalifornia" to isInCalifornia(),
+    )
+}
+
+internal fun LegalBasisLocalization.serialize(): Any {
+    return mapOf(
+        "labelsAria" to labelsAria?.serialize(),
+        "data" to data
+    )
+}
+
+internal fun TranslationAriaLabels.serialize(): Any {
+    return mapOf(
+        "acceptAllButton" to acceptAllButton,
+        "ccpaButton" to ccpaButton,
+        "ccpaMoreInformation" to ccpaMoreInformation,
+        "closeButton" to closeButton,
+        "collapse" to collapse,
+        "cookiePolicyButton" to cookiePolicyButton,
+        "copyControllerId" to copyControllerId,
+        "denyAllButton" to denyAllButton,
+        "expand" to expand,
+        "fullscreenButton" to fullscreenButton,
+        "imprintButton" to imprintButton,
+        "languageSelector" to languageSelector,
+        "privacyButton" to privacyButton,
+        "privacyPolicyButton" to privacyPolicyButton,
+        "saveButton" to saveButton,
+        "serviceInCategoryDetails" to serviceInCategoryDetails,
+        "servicesInCategory" to servicesInCategory,
+        "tabButton" to tabButton,
+        "usercentricsCMPButtons" to usercentricsCMPButtons,
+        "usercentricsCMPContent" to usercentricsCMPContent,
+        "usercentricsCMPHeader" to usercentricsCMPHeader,
+        "usercentricsCMPUI" to usercentricsCMPUI,
+        "usercentricsCard" to usercentricsCard,
+        "usercentricsList" to usercentricsList,
+        "vendorConsentToggle" to vendorConsentToggle,
+        "vendorDetailedStorageInformation" to vendorDetailedStorageInformation,
+        "vendorLegIntToggle" to vendorLegIntToggle
     )
 }
 
