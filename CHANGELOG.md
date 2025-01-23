@@ -1,5 +1,16 @@
 [Release Notes](https://docs.usercentrics.com/cmp_in_app_sdk/latest/about/history/)
 
+### 2.18.5 - January 23, 2025
+
+## Fixes
+* Issue causing a temporary unstable SDK state when calling the `clearUserSession()` API
+
+## Android Bug Fixes
+* Memory leak that occurred when displaying the banner's First Layer
+
+## iOS Bug Fixes
+* Accessibility by addressing instances where multiple links had identical link text
+
 ### 2.18.4 - January 07, 2025
 
 ## Android Bug Fixes
