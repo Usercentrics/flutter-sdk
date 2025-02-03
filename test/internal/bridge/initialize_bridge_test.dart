@@ -63,4 +63,35 @@ void main() {
     expect(receivedCall?.method, 'initialize');
     expect(receivedCall?.arguments, expectedArguments);
   });
+
+  test('invoke should throw error', () {
+    int callCounter = 0;
+    MethodCall? receivedCall;
+
+    TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
+        .setMockMethodCallHandler(channel, (MethodCall methodCall) async {
+
+      callCounter++;
+      receivedCall = methodCall;
+      return mockResponse;
+
+    });
+    const instance = MethodChannelInitialize();
+
+    instance.invoke(
+        channel: channel,
+        settingsId: mockSettingsId,
+        ruleSetId: mockRuleSetId,
+        loggerLevel: mockLoggerLevel,
+        version: mockVersion,
+        defaultLanguage: mockDefaultLanguage,
+        timeoutMillis: mockTimeoutMillis,
+        networkMode: mockNetworkMode,
+        consentMediation: mockConsentMediation,
+        initTimeoutMillis: mockInitTimeoutMillis);
+
+    expect(callCounter, 1);
+    expect(receivedCall?.method, 'initialize');
+    expect(receivedCall?.arguments, expectedArguments);
+  });
 }

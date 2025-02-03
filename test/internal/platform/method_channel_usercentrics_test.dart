@@ -82,6 +82,51 @@ void main() {
 
       expect(instance.isReadyCompleter?.isCompleted, true);
     });
+
+    test('expose stackTrace when initialization fails', () async {
+      final initializeBridge = FakeInitializeBridge();
+
+      final isReadyBridge = FakeIsReadyBridge(
+        shouldFailInitialization: true
+      );
+
+      final instance = MethodChannelUsercentrics(
+        initializeBridge: initializeBridge,
+        isReadyBridge: isReadyBridge,
+      );
+
+      const settingsId = "ABC";
+      const ruleSetId = "QWER";
+      const defaultLanguage = "en";
+      const loggerLevel = UsercentricsLoggerLevel.debug;
+      const timeoutMillis = 10000;
+      const version = "1.1.1";
+      const networkMode = NetworkMode.eu;
+      const consentMediation = true;
+      const initTimeoutMillis = 7000;
+
+      instance.initialize(
+          settingsId: settingsId,
+          ruleSetId: ruleSetId,
+          defaultLanguage: defaultLanguage,
+          loggerLevel: loggerLevel,
+          timeoutMillis: timeoutMillis,
+          version: version,
+          networkMode: networkMode,
+          consentMediation: consentMediation,
+          initTimeoutMillis: initTimeoutMillis);
+
+      await expectLater(
+        instance.isReadyCompleter!.future,
+        throwsA(isA<FailedInitializationException>()),
+      );
+
+      expect(initializeBridge.invokeCount, 1);
+      expect(instance.isReadyCompleter?.isCompleted, true);
+
+      expect(isReadyBridge.invokeCount, 1);
+      expect(isReadyBridge.invokeChannelArgument?.name, "usercentrics");
+    });
   });
 
   group('status', () {
