@@ -5,7 +5,8 @@ class FailedInitializationException implements Exception {
   const FailedInitializationException(this.message, [this.stackTrace]);
 
   @override
-  String toString() => 'FailedInitializationException: $message\nStackTrace: $stackTrace';
+  String toString() =>
+      'FailedInitializationException: $message\nStackTrace: $stackTrace';
 }
 
 class NotInitializedException implements Exception {

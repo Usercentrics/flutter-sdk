@@ -3,10 +3,7 @@ import 'package:usercentrics_sdk/src/internal/bridge/bridge.dart';
 import 'package:usercentrics_sdk/src/model/ready_status.dart';
 
 class FakeIsReadyBridge extends IsReadyBridge {
-  FakeIsReadyBridge({
-    this.invokeAnswer,
-    this.shouldFailInitialization = false
-  });
+  FakeIsReadyBridge({this.invokeAnswer, this.shouldFailInitialization = false});
 
   final UsercentricsReadyStatus? invokeAnswer;
   final bool shouldFailInitialization;

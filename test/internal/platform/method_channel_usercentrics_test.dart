@@ -86,9 +86,7 @@ void main() {
     test('expose stackTrace when initialization fails', () async {
       final initializeBridge = FakeInitializeBridge();
 
-      final isReadyBridge = FakeIsReadyBridge(
-        shouldFailInitialization: true
-      );
+      final isReadyBridge = FakeIsReadyBridge(shouldFailInitialization: true);
 
       final instance = MethodChannelUsercentrics(
         initializeBridge: initializeBridge,
