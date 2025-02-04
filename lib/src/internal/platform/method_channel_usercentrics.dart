@@ -86,21 +86,25 @@ class MethodChannelUsercentrics extends UsercentricsPlatform {
       await ongoingInit.future;
     }
 
-    initializeBridge.invoke(
-        channel: _channel,
-        settingsId: settingsId,
-        ruleSetId: ruleSetId,
-        defaultLanguage: defaultLanguage,
-        loggerLevel: loggerLevel,
-        timeoutMillis: timeoutMillis,
-        version: version,
-        networkMode: networkMode,
-        consentMediation: consentMediation,
-        initTimeoutMillis: initTimeoutMillis);
+    try {
+      initializeBridge.invoke(
+          channel: _channel,
+          settingsId: settingsId,
+          ruleSetId: ruleSetId,
+          defaultLanguage: defaultLanguage,
+          loggerLevel: loggerLevel,
+          timeoutMillis: timeoutMillis,
+          version: version,
+          networkMode: networkMode,
+          consentMediation: consentMediation,
+          initTimeoutMillis: initTimeoutMillis);
 
-    status
-        .then((value) => isReadyCompleter?.complete(null))
-        .onError((error, stackTrace) => isReadyCompleter?.complete(error));
+      await status.then((value) => isReadyCompleter?.complete(null));
+    } catch (error, stackTrace) {
+      isReadyCompleter?.completeError(
+        FailedInitializationException(error.toString(), stackTrace),
+      );
+    }
   }
 
   @override
