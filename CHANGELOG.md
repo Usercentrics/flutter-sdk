@@ -1,5 +1,11 @@
 [Release Notes](https://docs.usercentrics.com/cmp_in_app_sdk/latest/about/history/)
 
+### 2.18.9 - February 27, 2025
+
+## Fixes
+* Apple TV issue where focus would be lost when a cell contained a long description label.
+* Restore User Session issue where resurfacing did not occur when switching sessions between users.
+
 ### 2.18.6 - February 05, 2025
 
 ## Fixes
