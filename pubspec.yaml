@@ -8,6 +8,7 @@ repository: https://github.com/Usercentrics/flutter-sdk/
 #  [X] pubspec.yaml
 #  [X] android/build.gradle
 #  [X] ios/usercentrics_sdk.podspec + pod install/update
+#  [X] ios/usercentrics_sdk/Package.swift
 #  [X] CHANGELOG.md
 version: 2.18.9
 

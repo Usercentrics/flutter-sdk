@@ -1,4 +1,5 @@
 import UsercentricsUI
+import Flutter
 
 extension BannerFont {
     static func initialize(from value: Dictionary<String,Any>, assetProvider: FlutterAssetProvider) -> BannerFont? {

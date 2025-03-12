@@ -1,4 +1,5 @@
 import UsercentricsUI
+import Flutter
 
 extension UsercentricsUserInteraction {
     func serialize() -> Any {

@@ -1,4 +1,5 @@
 import UsercentricsUI
+import Flutter
 
 extension UsercentricsConsentUserResponse {
     func serialize() -> Any {

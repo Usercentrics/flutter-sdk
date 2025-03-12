@@ -1,4 +1,5 @@
 import UsercentricsUI
+import Flutter
 
 extension LegalLinksSettings {
     static func from(enumString: String?) -> LegalLinksSettings? {

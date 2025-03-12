@@ -1,4 +1,5 @@
 import UsercentricsUI
+import Flutter
 
 extension BannerSettings {
 

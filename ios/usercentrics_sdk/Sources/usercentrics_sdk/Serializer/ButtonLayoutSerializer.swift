@@ -1,4 +1,5 @@
 import UsercentricsUI
+import Flutter
 
 extension ButtonLayout {
     static func from(dict: [[NSDictionary]]?, fallbackFont: UIFont?, assetProvider: FlutterAssetProvider) -> ButtonLayout? {

@@ -1,4 +1,5 @@
 import UsercentricsUI
+import Flutter
 
 extension FirstLayerStyleSettings {
     init?(from value: Any?, bannerFont: BannerFont?, assetProvider: FlutterAssetProvider) {

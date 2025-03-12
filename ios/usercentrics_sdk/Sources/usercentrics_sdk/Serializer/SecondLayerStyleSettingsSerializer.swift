@@ -1,4 +1,5 @@
 import UsercentricsUI
+import Flutter
 
 extension SecondLayerStyleSettings {
     init?(from value: Any?, bannerFont: BannerFont?, assetProvider: FlutterAssetProvider) {

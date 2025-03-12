@@ -1,4 +1,5 @@
 import Foundation
+import Flutter
 
 extension UIColor {
     convenience init?(unsafeHex: String?) {

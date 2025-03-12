@@ -1,4 +1,5 @@
 import UsercentricsUI
+import Flutter
 
 extension UsercentricsLayout {
     static func initialize(from value: Any?) -> UsercentricsLayout? {

@@ -1,4 +1,5 @@
 import UsercentricsUI
+import Flutter
 
 extension UIImage {
     convenience init?(from value: String, assetProvider: FlutterAssetProvider) {
