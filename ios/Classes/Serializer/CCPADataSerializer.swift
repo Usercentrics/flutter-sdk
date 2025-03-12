@@ -1,4 +1,5 @@
 import Usercentrics
+import Flutter
 
 extension CCPAData {
     func serialize() -> Any {

@@ -1,6 +1,7 @@
 import XCTest
 
 @testable import Usercentrics
+import Flutter
 @testable import usercentrics_sdk
 
 class TrackBridgeTest: XCTestCase, BaseBridgeTestProtocol {

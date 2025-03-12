@@ -1,4 +1,5 @@
 import Usercentrics
+import Flutter
 
 struct GetCMPDataBridge : MethodBridge {
     let name: String = "getCMPData"

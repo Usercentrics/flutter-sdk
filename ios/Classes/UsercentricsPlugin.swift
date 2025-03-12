@@ -1,12 +1,13 @@
 import Flutter
 import UIKit
 import Usercentrics
+import Flutter
 
-public class SwiftUsercentricsPlugin: NSObject, FlutterPlugin {
+public class UsercentricsPlugin: NSObject, FlutterPlugin {
 
   public static func register(with registrar: FlutterPluginRegistrar) {
     let channel = FlutterMethodChannel(name: "usercentrics", binaryMessenger: registrar.messenger())
-    let instance = SwiftUsercentricsPlugin(assetProvider: FlutterAssetProviderImpl(registrar: registrar))
+    let instance = UsercentricsPlugin(assetProvider: FlutterAssetProviderImpl(registrar: registrar))
     registrar.addMethodCallDelegate(instance, channel: channel)
   }
 

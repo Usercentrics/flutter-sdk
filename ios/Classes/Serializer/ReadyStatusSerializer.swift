@@ -1,4 +1,5 @@
 import Usercentrics
+import Flutter
 
 extension UsercentricsReadyStatus {
     func serialize() -> Any {

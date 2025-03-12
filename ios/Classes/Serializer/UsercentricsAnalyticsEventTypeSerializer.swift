@@ -1,4 +1,5 @@
 import Usercentrics
+import Flutter
 
 internal let usercentricsAnalyticsEventKeysAndValues = [
     "CMP_SHOWN": UsercentricsAnalyticsEventType.cmpShown,

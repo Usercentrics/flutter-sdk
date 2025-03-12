@@ -1,4 +1,5 @@
 import Usercentrics
+import Flutter
 
 extension TCFData {
     func serialize()-> Any {

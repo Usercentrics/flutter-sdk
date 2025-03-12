@@ -1,5 +1,6 @@
 import Foundation
 import Usercentrics
+import Flutter
 
 public extension UserDecision {
     convenience init(from dict: NSDictionary) {

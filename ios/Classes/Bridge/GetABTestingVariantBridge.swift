@@ -1,4 +1,5 @@
 import Usercentrics
+import Flutter
 
 struct GetABTestingVariantBridge : MethodBridge {
     let name: String = "getABTestingVariant"

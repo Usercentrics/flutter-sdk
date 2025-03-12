@@ -1,4 +1,5 @@
 import Foundation
+import Flutter
 
 @testable import Usercentrics
 @testable import usercentrics_sdk

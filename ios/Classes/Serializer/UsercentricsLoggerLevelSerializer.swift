@@ -1,4 +1,5 @@
 import Usercentrics
+import Flutter
 
 extension UsercentricsLoggerLevel {
     static func initialize(from value: Any) -> UsercentricsLoggerLevel? {

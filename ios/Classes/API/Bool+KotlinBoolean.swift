@@ -1,4 +1,5 @@
 import Usercentrics
+import Flutter
 
 extension Bool {
     init?(from value: KotlinBoolean?) {

@@ -1,4 +1,5 @@
 import Usercentrics
+import Flutter
 
 extension UsercentricsConsentType {
     static func initialize(from value: Any?) -> UsercentricsConsentType? {

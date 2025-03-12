@@ -1,5 +1,6 @@
 import Foundation
 import Usercentrics
+import Flutter
 
 protocol UsercentricsProxyProtocol {
     var shared: UsercentricsSDK { get }

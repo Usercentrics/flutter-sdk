@@ -1,6 +1,7 @@
 import Foundation
 
 @testable import Usercentrics
+import Flutter
 
 final class FakeUsercentricsSDK: UsercentricsSDK {
 

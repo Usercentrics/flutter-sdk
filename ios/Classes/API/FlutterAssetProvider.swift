@@ -1,3 +1,5 @@
+import Flutter
+
 protocol FlutterAssetProvider {
     func lookupKey(forAsset: String) -> String
 }

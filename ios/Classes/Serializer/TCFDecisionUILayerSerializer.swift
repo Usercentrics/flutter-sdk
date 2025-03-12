@@ -1,4 +1,5 @@
 import Usercentrics
+import Flutter
 
 extension TCFDecisionUILayer {
     static func initialize(from value: Any?) -> TCFDecisionUILayer? {

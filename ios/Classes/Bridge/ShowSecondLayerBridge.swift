@@ -1,4 +1,5 @@
 import UsercentricsUI
+import Flutter
 
 struct ShowSecondLayerBridge : MethodBridge {
 

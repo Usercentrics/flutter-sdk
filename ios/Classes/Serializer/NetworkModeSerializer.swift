@@ -1,4 +1,5 @@
 import Usercentrics
+import Flutter
 
 extension NetworkMode {
     static func initialize(from value: Any) -> NetworkMode? {

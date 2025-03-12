@@ -1,4 +1,5 @@
 import Foundation
+import Flutter
 
 struct ClearUserSessionBridge : MethodBridge {
     
