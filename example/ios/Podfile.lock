@@ -29,11 +29,11 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
-  Usercentrics: 4f6fff625beccb4189233e6747e7516abfd1151a
-  usercentrics_sdk: d8a346f0134c1c4f976c178c8de590921d0f55c8
-  UsercentricsUI: a81a79d186d602bc7855e365e849413878dee9f4
-  webview_flutter_wkwebview: 6e6160e04b1e85872253adc5322afe416d9cdddc
+  Usercentrics: d8b539d3dcaf5798513a203073e296fc9d55164c
+  usercentrics_sdk: 0379d3d77e6819959c602eb64048bf7302fb0a24
+  UsercentricsUI: 0929c61f1b1cd8347c46568bd0d80258c96354fe
+  webview_flutter_wkwebview: b7e70ef1ddded7e69c796c7390ee74180182971f
 
 PODFILE CHECKSUM: 723de1cf6e2f18b51eb3426c945e31134a750097
 
-COCOAPODS: 1.16.2
+COCOAPODS: 1.14.3
