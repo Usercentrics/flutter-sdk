@@ -40,7 +40,8 @@ class SettingsSerializer {
         publishedApps: ((value['publishedApps'] ?? []) as List)
             .map((e) => PublishedAppSerializer.deserialize(e))
             .toList(),
-        renewConsentsTimestamp: value['renewConsentsTimestamp']);
+        renewConsentsTimestamp: value['renewConsentsTimestamp'],
+        consentWebhook: value['consentWebhook']);
   }
 }
 

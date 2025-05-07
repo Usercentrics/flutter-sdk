@@ -259,7 +259,8 @@ const _responseSettings = {
   "publishedApps": [
     {"bundleId": "bundleId", "platform": "ANDROID"}
   ],
-  "renewConsentsTimestamp": 1000
+  "renewConsentsTimestamp": 1000,
+  "consentWebhook": true
 };
 
 const _responseCategories = [
@@ -734,4 +735,5 @@ const _expectedSettings = UsercentricsSettings(
     publishedApps: [
       PublishedApp(bundleId: "bundleId", platform: PublishedAppPlatform.android)
     ],
-    renewConsentsTimestamp: 1000);
+    renewConsentsTimestamp: 1000,
+    consentWebhook: true);

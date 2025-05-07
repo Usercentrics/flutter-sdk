@@ -42,7 +42,8 @@ extension UsercentricsSettings {
             "dpsDisplayFormat": (self.dpsDisplayFormat?.name ?? "") as Any,
             "framework": (self.framework?.name ?? "") as Any,
             "publishedApps": (self.publishedApps?.map { $0.serialize() } ?? nil) as Any,
-            "renewConsentsTimestamp": self.renewConsentsTimestamp as Any
+            "renewConsentsTimestamp": self.renewConsentsTimestamp as Any,
+            "consentWebhook": self.consentWebhook as Any
         ]
     }
 }
