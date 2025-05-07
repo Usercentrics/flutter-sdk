@@ -34,6 +34,7 @@ class UsercentricsSettings {
     required this.framework,
     required this.publishedApps,
     required this.renewConsentsTimestamp,
+    required this.consentWebhook,
   });
 
   final UsercentricsLabels labels;
@@ -63,6 +64,7 @@ class UsercentricsSettings {
   final USAFrameworks? framework;
   final List<PublishedApp>? publishedApps;
   final int? renewConsentsTimestamp;
+  final bool? consentWebhook;
 
   @override
   bool operator ==(Object other) =>
@@ -98,7 +100,8 @@ class UsercentricsSettings {
           dpsDisplayFormat == other.dpsDisplayFormat &&
           framework == other.framework &&
           listEquals(publishedApps, other.publishedApps) &&
-          renewConsentsTimestamp == other.renewConsentsTimestamp;
+          renewConsentsTimestamp == other.renewConsentsTimestamp &&
+          consentWebhook == other.consentWebhook;
 
   @override
   int get hashCode =>
@@ -128,7 +131,8 @@ class UsercentricsSettings {
       dpsDisplayFormat.hashCode +
       framework.hashCode +
       publishedApps.hashCode +
-      renewConsentsTimestamp.hashCode;
+      renewConsentsTimestamp.hashCode +
+      consentWebhook.hashCode;
 
   @override
   String toString() =>
