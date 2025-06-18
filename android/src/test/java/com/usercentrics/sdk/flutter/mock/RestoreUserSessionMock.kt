@@ -25,7 +25,8 @@ internal object RestoreUserSessionMock {
                         type = UsercentricsConsentType.EXPLICIT,
                         timestampInMillis = 123,
                     )
-                )
+                ),
+                category = "essential"
             )
         ),
         geolocationRuleset = GeolocationRuleset(activeSettingsId = "settingsId", bannerRequiredAtLocation = true),
@@ -52,7 +53,8 @@ internal object RestoreUserSessionMock {
                     mapOf(
                         "status" to true, "timestampInMillis" to 123L, "type" to "EXPLICIT",
                     )
-                )
+                ),
+                "category" to "essential"
             )
         ),
         "geolocationRuleset" to mapOf("activeSettingsId" to "settingsId", "bannerRequiredAtLocation" to true),

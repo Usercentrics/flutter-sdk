@@ -95,7 +95,8 @@ internal object ShowFirstLayerMock {
                         type = UsercentricsConsentType.EXPLICIT,
                         timestampInMillis = 123,
                     )
-                )
+                ),
+                category = "essential"
             )
         ),
         controllerId = "8620135313b043696b806868b20da905886a3a2598ddddc2b52973f9807d6b45",
@@ -116,7 +117,8 @@ internal object ShowFirstLayerMock {
                     mapOf(
                         "status" to true, "timestampInMillis" to 123L, "type" to "EXPLICIT",
                     )
-                )
+                ),
+                "category" to "essential"
             )
         )
     )

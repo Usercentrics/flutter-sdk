@@ -20,7 +20,8 @@ internal object SaveOptOutForCCPAMock {
                     type = UsercentricsConsentType.EXPLICIT,
                     timestampInMillis = 123,
                 )
-            )
+            ),
+            category = "essential"
         )
     )
 
@@ -45,7 +46,8 @@ internal object SaveOptOutForCCPAMock {
                 mapOf(
                     "status" to true, "timestampInMillis" to 123L, "type" to "EXPLICIT",
                 )
-            )
+            ),
+            "category" to "essential"
         )
     )
 

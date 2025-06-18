@@ -22,7 +22,8 @@ internal object DenyAllForTCFMock {
                     type = UsercentricsConsentType.EXPLICIT,
                     timestampInMillis = 123,
                 )
-            )
+            ),
+            category = "essential"
         )
     )
 
@@ -47,7 +48,8 @@ internal object DenyAllForTCFMock {
                 mapOf(
                     "status" to true, "timestampInMillis" to 123L, "type" to "EXPLICIT",
                 )
-            )
+            ),
+            "category" to "essential"
         )
     )
 
