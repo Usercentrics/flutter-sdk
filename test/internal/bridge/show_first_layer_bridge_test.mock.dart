@@ -19,7 +19,8 @@ const mockResponse = {
           "timestampInMillis": 123,
           "type": "EXPLICIT",
         }
-      ]
+      ],
+      "category": "essential"
     },
   ],
 };
@@ -42,6 +43,7 @@ const expectedResult = UsercentricsConsentUserResponse(
           type: UsercentricsConsentType.explicit,
         )
       ],
+      category: "essential"
     ),
   ],
 );

@@ -484,7 +484,7 @@ const _expectedServices = [
           domain: "domain",
           description: "description")
     ]),
-    isHidden: false,
+    isHidden: false
   )
 ];
 

@@ -11,6 +11,7 @@ class UsercentricsServiceConsent {
     required this.type,
     required this.isEssential,
     required this.history,
+    required this.category,
   });
 
   /// A unique ID that represents the legal specifications of the service.
@@ -34,6 +35,9 @@ class UsercentricsServiceConsent {
   /// The consent history chronologically ordered.
   final List<UsercentricsConsentHistoryEntry> history;
 
+  // The corresponding category of this service.
+  final String category;
+
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
@@ -45,7 +49,8 @@ class UsercentricsServiceConsent {
           version == other.version &&
           isEssential == other.isEssential &&
           listEquals(history, other.history) &&
-          type == other.type;
+          type == other.type &&
+          category == other.category;
 
   @override
   int get hashCode =>
@@ -55,11 +60,12 @@ class UsercentricsServiceConsent {
       version.hashCode +
       isEssential.hashCode +
       history.hashCode +
-      type.hashCode;
+      type.hashCode +
+      category.hashCode;
 
   @override
   String toString() =>
-      "$UsercentricsServiceConsent(templateId: $templateId, status: $status, dataProcessor: $dataProcessor, version: $version, type: $type, isEssential: $isEssential)";
+      "$UsercentricsServiceConsent(templateId: $templateId, status: $status, dataProcessor: $dataProcessor, version: $version, type: $type, isEssential: $isEssential, category: $category)";
 }
 
 /// The consent history entry

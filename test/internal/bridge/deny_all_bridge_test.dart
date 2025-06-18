@@ -20,7 +20,8 @@ void main() {
           "timestampInMillis": 123,
           "type": "EXPLICIT",
         }
-      ]
+      ],
+      "category": "essential"
     },
   ];
   const expectedResult = [
@@ -38,6 +39,7 @@ void main() {
           type: UsercentricsConsentType.explicit,
         )
       ],
+      category: "essential"
     )
   ];
   const mockConsentType = UsercentricsConsentType.explicit;
