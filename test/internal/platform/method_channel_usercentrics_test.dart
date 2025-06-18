@@ -289,15 +289,14 @@ void main() {
     test('success', () async {
       const expectedResponse = [
         UsercentricsServiceConsent(
-          templateId: "ABC",
-          status: false,
-          dataProcessor: "123",
-          version: "1.1.1",
-          type: UsercentricsConsentType.explicit,
-          isEssential: true,
-          history: [],
-          category: "essential"
-        ),
+            templateId: "ABC",
+            status: false,
+            dataProcessor: "123",
+            version: "1.1.1",
+            type: UsercentricsConsentType.explicit,
+            isEssential: true,
+            history: [],
+            category: "essential"),
       ];
       final getConsentsBridge = FakeGetConsentsBridge(
         invokeAnswer: expectedResponse,

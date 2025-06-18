@@ -26,21 +26,20 @@ void main() {
   ];
   const expectedResult = [
     UsercentricsServiceConsent(
-      templateId: "SJKM9Ns_ibQ",
-      status: true,
-      dataProcessor: "Facebook Connect",
-      version: "10.4.5",
-      type: UsercentricsConsentType.explicit,
-      isEssential: true,
-      history: [
-        UsercentricsConsentHistoryEntry(
-          status: true,
-          timestampInMillis: 123,
-          type: UsercentricsConsentType.explicit,
-        )
-      ],
-      category: "essential"
-    )
+        templateId: "SJKM9Ns_ibQ",
+        status: true,
+        dataProcessor: "Facebook Connect",
+        version: "10.4.5",
+        type: UsercentricsConsentType.explicit,
+        isEssential: true,
+        history: [
+          UsercentricsConsentHistoryEntry(
+            status: true,
+            timestampInMillis: 123,
+            type: UsercentricsConsentType.explicit,
+          )
+        ],
+        category: "essential")
   ];
   const mockConsentType = UsercentricsConsentType.explicit;
   const expectedArguments = "EXPLICIT";
