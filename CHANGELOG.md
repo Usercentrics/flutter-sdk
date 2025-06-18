@@ -1,6 +1,6 @@
 [Release Notes](https://docs.usercentrics.com/cmp_in_app_sdk/latest/about/history/)
 
-### 2.20.1 - Jun 18, 2025
+### 2.21.0 - Jun 18, 2025
 ## Feature - Consent Mediation
 * Added support for AppsFlyer SDK
 * Added support for Singular SDK
