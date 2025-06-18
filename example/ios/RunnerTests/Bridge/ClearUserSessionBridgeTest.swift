@@ -17,7 +17,8 @@ class ClearUserSessionBridgeTest: XCTestCase, BaseBridgeTestProtocol {
         type: .explicit_,
         dataProcessor: "Facebook SDK",
         version: "1.0.1",
-        isEssential: true
+        isEssential: true,
+        category: "essential"
     )
 
     override func setUp() {

@@ -37,7 +37,8 @@ class GetConsentsBridgeTest: XCTestCase, BaseBridgeTestProtocol {
                                               type: .explicit_,
                                               dataProcessor: "TheProcessor",
                                               version: "1.3.4",
-                                              isEssential: true)
+                                              isEssential: true,
+                                              category: "essential")
 
         usercentrics.getConsentsData = [data]
 

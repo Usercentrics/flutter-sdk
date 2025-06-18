@@ -21,7 +21,8 @@ internal object GetConsentsMock {
                     type = UsercentricsConsentType.EXPLICIT,
                     timestampInMillis = 123,
                 )
-            )
+            ),
+            category = "essential"
         )
     )
     val fakeWithoutData = listOf<UsercentricsServiceConsent>()
@@ -40,7 +41,8 @@ internal object GetConsentsMock {
                 mapOf(
                     "status" to true, "timestampInMillis" to 123L, "type" to "EXPLICIT",
                 )
-            )
+            ),
+            "category" to "essential"
         )
     )
     val expectedWithoutData = listOf<Any>()

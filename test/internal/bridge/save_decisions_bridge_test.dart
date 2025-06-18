@@ -21,25 +21,26 @@ void main() {
           "timestampInMillis": 123,
           "type": "EXPLICIT",
         }
-      ]
+      ],
+      "category": "essential"
     },
   ];
   const expectedResult = [
     UsercentricsServiceConsent(
-      templateId: "SJKM9Ns_ibQ",
-      status: true,
-      dataProcessor: "Facebook Connect",
-      version: "10.4.5",
-      type: UsercentricsConsentType.explicit,
-      isEssential: true,
-      history: [
-        UsercentricsConsentHistoryEntry(
-          status: true,
-          timestampInMillis: 123,
-          type: UsercentricsConsentType.explicit,
-        )
-      ],
-    )
+        templateId: "SJKM9Ns_ibQ",
+        status: true,
+        dataProcessor: "Facebook Connect",
+        version: "10.4.5",
+        type: UsercentricsConsentType.explicit,
+        isEssential: true,
+        history: [
+          UsercentricsConsentHistoryEntry(
+            status: true,
+            timestampInMillis: 123,
+            type: UsercentricsConsentType.explicit,
+          )
+        ],
+        category: "essential")
   ];
   const mockDecisions = [
     UserDecision(
