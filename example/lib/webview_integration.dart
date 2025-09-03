@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:usercentrics_sdk/usercentrics_sdk.dart';
 import 'package:webview_flutter/webview_flutter.dart';
@@ -12,12 +10,26 @@ class WebViewIntegrationPage extends StatefulWidget {
 }
 
 class WebViewIntegrationPageState extends State<WebViewIntegrationPage> {
-  WebViewController? controller;
+  late final WebViewController controller;
 
   @override
   void initState() {
     super.initState();
-    if (Platform.isAndroid) WebView.platform = AndroidWebView();
+    // Initialize the controller
+    controller = WebViewController()
+      ..setJavaScriptMode(JavaScriptMode.unrestricted)
+      ..setNavigationDelegate(
+        NavigationDelegate(
+          onPageFinished: (String url) async {
+            final userSessionData = await Usercentrics.userSessionData;
+            await controller.runJavaScript("""
+              window.UC_UI_USER_SESSION_DATA = $userSessionData;
+              window.dispatchEvent(new Event('Usercentrics_userSessionData_injected'));
+            """);
+          },
+        ),
+      )
+      ..loadFlutterAsset('assets/webview_index.html');
   }
 
   @override
@@ -26,27 +38,7 @@ class WebViewIntegrationPageState extends State<WebViewIntegrationPage> {
       appBar: AppBar(
         title: const Text('Webview Integration'),
       ),
-      body: FutureBuilder<String>(
-          future: Usercentrics.userSessionData,
-          builder: (context, snapshot) {
-            final userSessionData = snapshot.data;
-            if (userSessionData == null) return const SizedBox();
-            return WebView(
-              onWebViewCreated: (WebViewController controller) async {
-                this.controller = controller;
-                await controller.loadFlutterAsset(
-                    'assets/webview_index.html'); // loadUrl or whatever
-              },
-              onPageFinished: (String url) async {
-                await controller?.runJavascript("""
-                window.UC_UI_USER_SESSION_DATA = $userSessionData;
-                window.dispatchEvent(new Event('Usercentrics_userSessionData_injected'));
-                """);
-              },
-              javascriptMode: JavascriptMode.unrestricted,
-              debuggingEnabled: true,
-            );
-          }),
+      body: WebViewWidget(controller: controller),
     );
   }
 }
