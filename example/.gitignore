@@ -31,16 +31,44 @@
 .pub/
 /build/
 
+# Android related
+android/.gradle/
+android/.idea/
+android/app/debug/
+android/app/profile/
+android/app/release/
+android/build/
+android/local.properties
+android/key.properties
+android/gradlew
+android/gradlew.bat
+android/gradle-wrapper.jar
+android/**/GeneratedPluginRegistrant.java
+android/captures/
+
+# iOS related
+ios/Flutter/.last_build_id
+ios/Flutter/App.framework
+ios/Flutter/Flutter.framework
+ios/Flutter/Flutter.podspec
+ios/Flutter/Generated.xcconfig
+ios/Flutter/app.flx
+ios/Flutter/app.zip
+ios/Flutter/flutter_assets/
+ios/Flutter/flutter_export_environment.sh
+ios/ServiceDefinitions.json
+ios/Runner/GeneratedPluginRegistrant.*
+ios/Pods/
+ios/.symlinks/
+ios/DerivedData/
+ios/xcuserdata/
+
 # Web related
 lib/generated_plugin_registrant.dart
+web/
 
 # Symbolication related
 app.*.symbols
 
 # Obfuscation related
 app.*.map.json
-
-# Android Studio will place build artifacts here
-/android/app/debug
-/android/app/profile
-/android/app/release
