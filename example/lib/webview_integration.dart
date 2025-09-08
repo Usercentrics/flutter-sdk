@@ -3,7 +3,7 @@ import 'package:usercentrics_sdk/usercentrics_sdk.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class WebViewIntegrationPage extends StatefulWidget {
-  const WebViewIntegrationPage({Key? key}) : super(key: key);
+  const WebViewIntegrationPage({super.key});
 
   @override
   WebViewIntegrationPageState createState() => WebViewIntegrationPageState();

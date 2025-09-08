@@ -49,8 +49,6 @@ class Usercentrics {
           consentMediation: consentMediation,
           initTimeoutMillis: initTimeoutMillis);
 
-  /// {@template initialize}
-
   /// Get the [UsercentricsReadyStatus] to catch the consent status of the user.
   static Future<UsercentricsReadyStatus> get status => _delegate.status;
 
