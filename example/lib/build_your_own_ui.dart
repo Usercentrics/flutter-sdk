@@ -4,7 +4,7 @@ import 'package:usercentrics_sdk/usercentrics_sdk.dart';
 import 'main.dart';
 
 class CustomUIPage extends StatelessWidget {
-  const CustomUIPage({Key? key}) : super(key: key);
+  const CustomUIPage({super.key});
 
   @override
   Widget build(BuildContext context) {
