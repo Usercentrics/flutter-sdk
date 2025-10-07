@@ -1,6 +1,6 @@
 [Release Notes](https://docs.usercentrics.com/cmp_in_app_sdk/latest/about/history/)
 
-### 2.23.2 – Oct 3, 2025
+### 2.23.3 – Oct 6, 2025
 ## Improvement
 * Patch with security fixes
 
