@@ -18,6 +18,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_web_plugins:
+    sdk: flutter
 
 dev_dependencies:
   flutter_test:
@@ -40,3 +42,6 @@ flutter:
         pluginClass: UsercentricsPlugin
       ios:
         pluginClass: UsercentricsPlugin
+      web:
+        pluginClass: UsercentricsWeb
+        fileName: src/web/usercentrics_web.dart
