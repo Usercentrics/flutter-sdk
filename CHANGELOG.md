@@ -1,5 +1,11 @@
 [Release Notes](https://docs.usercentrics.com/cmp_in_app_sdk/latest/about/history/)
 
+### 2.24.0 – Oct 31, 2025
+## Improvement
+* TCF 2.3 Support: Support the latest Transparency & Consent Framework 2.3.
+* Special Features Section: Added support for the new Special Features/Purposes section.
+* Fix issue where the SDK failed to initialize offline.
+
 ### 2.23.3 – Oct 6, 2025
 ## Improvement
 * Patch with security fixes
