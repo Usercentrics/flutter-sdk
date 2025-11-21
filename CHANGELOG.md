@@ -1,5 +1,9 @@
 [Release Notes](https://docs.usercentrics.com/cmp_in_app_sdk/latest/about/history/)
 
+### 2.24.1 – Oct 31, 2025
+## Improvement
+* TCF 2.3 Support: fixes about tcString
+
 ### 2.24.0 – Oct 31, 2025
 ## Improvement
 * TCF 2.3 Support: Support the latest Transparency & Consent Framework 2.3.
