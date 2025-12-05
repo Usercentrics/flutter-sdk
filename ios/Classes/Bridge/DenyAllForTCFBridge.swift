@@ -10,7 +10,8 @@ struct DenyAllForTCFBridge : MethodBridge {
         let argsDict = call.arguments as! Dictionary<String, Any>
         let fromLayer = TCFDecisionUILayer.initialize(from: argsDict["fromLayer"])!
         let consentType = UsercentricsConsentType.initialize(from: argsDict["consentType"])!
-        let consents = usercentrics.shared.denyAllForTCF(fromLayer: fromLayer, consentType: consentType)
+        let unsavedPurposeLIDecisions = (argsDict["unsavedPurposeLIDecisions"] as? [Int: Bool])?.asKotlinIntBooleanDict()
+        let consents = usercentrics.shared.denyAllForTCF(fromLayer: fromLayer, consentType: consentType, unsavedPurposeLIDecisions: unsavedPurposeLIDecisions)
         result(consents.map { $0.serialize() })
     }
 }

@@ -81,4 +81,35 @@ void main() {
     expect(receivedCall?.arguments, expectedArguments);
     expect(result, expectedResult);
   });
+
+  test('invoke with unsavedPurposeLIDecisions', () async {
+    int callCounter = 0;
+    MethodCall? receivedCall;
+
+    TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
+        .setMockMethodCallHandler(channel, (MethodCall methodCall) async {
+      callCounter++;
+      receivedCall = methodCall;
+      return mockResponse;
+    });
+
+    const instance = MethodChannelDenyAllForTCF();
+    const mockUnsavedPurposeLIDecisions = {1: true, 2: false, 3: true};
+
+    final result = await instance.invoke(
+      channel: channel,
+      fromLayer: mockFromLayer,
+      consentType: mockConsentType,
+      unsavedPurposeLIDecisions: mockUnsavedPurposeLIDecisions,
+    );
+
+    expect(callCounter, 1);
+    expect(receivedCall?.method, 'denyAllForTCF');
+    expect(receivedCall?.arguments, {
+      "fromLayer": "FIRST_LAYER",
+      "consentType": "EXPLICIT",
+      "unsavedPurposeLIDecisions": mockUnsavedPurposeLIDecisions,
+    });
+    expect(result, expectedResult);
+  });
 }
