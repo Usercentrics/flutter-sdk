@@ -34,8 +34,18 @@ internal object DenyAllForTCFMock {
             "consentType" to "EXPLICIT"
         )
     )
+
+    val callWithUnsavedPurposeLIDecisions = FakeFlutterMethodCall(
+        method = "denyAllForTCF", arguments = mapOf(
+            "fromLayer" to "FIRST_LAYER",
+            "consentType" to "EXPLICIT",
+            "unsavedPurposeLIDecisions" to mapOf(1 to true, 2 to false)
+        )
+    )
+
     val callFromLayer = TCFDecisionUILayer.FIRST_LAYER
     val callConsentType = UsercentricsConsentType.EXPLICIT
+    val callUnsavedPurposeLIDecisions = mapOf(1 to true, 2 to false)
     val expected = listOf(
         mapOf(
             "templateId" to "ocv9HNX_g",

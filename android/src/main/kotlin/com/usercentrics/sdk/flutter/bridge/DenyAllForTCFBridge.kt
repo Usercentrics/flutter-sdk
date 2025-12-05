@@ -15,12 +15,15 @@ internal class DenyAllForTCFBridge(
     override val name: String
         get() = "denyAllForTCF"
 
+    @Suppress("UNCHECKED_CAST")
     override fun invoke(call: FlutterMethodCall, result: FlutterResult) {
         assert(name == call.method)
         val argsMap = call.arguments as Map<*, *>
+        val unsavedPurposeLIDecisions = (argsMap["unsavedPurposeLIDecisions"] as? Map<Int, Boolean>)
         val consents = usercentrics.instance.denyAllForTCF(
             fromLayer = TCFDecisionUILayer.valueOf(argsMap["fromLayer"] as String),
-            consentType = UsercentricsConsentType.valueOf(argsMap["consentType"] as String)
+            consentType = UsercentricsConsentType.valueOf(argsMap["consentType"] as String),
+            unsavedPurposeLIDecisions = unsavedPurposeLIDecisions
         )
         result.success(consents.map { it.serialize() })
     }

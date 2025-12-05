@@ -216,12 +216,14 @@ class MethodChannelUsercentrics extends UsercentricsPlatform {
   Future<List<UsercentricsServiceConsent>> denyAllForTCF({
     required UsercentricsConsentType consentType,
     required TCFDecisionUILayer fromLayer,
+    Map<int, bool>? unsavedPurposeLIDecisions,
   }) async {
     await _ensureIsReady();
     return await denyAllForTCFBridge.invoke(
       channel: _channel,
       fromLayer: fromLayer,
       consentType: consentType,
+      unsavedPurposeLIDecisions: unsavedPurposeLIDecisions,
     );
   }
 

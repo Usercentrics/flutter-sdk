@@ -194,14 +194,17 @@ class FakeUsercentricsPlatform extends UsercentricsPlatform {
   var denyAllForTCFCount = 0;
   UsercentricsConsentType? denyAllForTCFConsentTypeArgument;
   TCFDecisionUILayer? denyAllForTCFFromLayerArgument;
+  Map<int, bool>? denyAllForTCFUnsavedPurposeLIDecisionsArgument;
 
   @override
   Future<List<UsercentricsServiceConsent>> denyAllForTCF({
     required UsercentricsConsentType consentType,
     required TCFDecisionUILayer fromLayer,
+    Map<int, bool>? unsavedPurposeLIDecisions,
   }) {
     denyAllForTCFFromLayerArgument = fromLayer;
     denyAllForTCFConsentTypeArgument = consentType;
+    denyAllForTCFUnsavedPurposeLIDecisionsArgument = unsavedPurposeLIDecisions;
     denyAllForTCFCount++;
     return Future.value(denyAllForTCFAnswer!);
   }
