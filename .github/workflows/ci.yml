@@ -61,12 +61,21 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+      - name: Install lcov
+        run: sudo apt-get update && sudo apt-get install -y lcov
       - name: Get dependencies
         run: flutter pub get
       - name: Run all tests
         run: flutter test --reporter=expanded --coverage
       - name: Check coverage
         run: dart scripts/check_coverage.dart coverage/lcov.info
+      - name: Generate HTML report
+        run: genhtml coverage/lcov.info -o coverage/html
+      - name: Upload coverage report
+        uses: actions/upload-artifact@v4
+        with:
+          name: flutter-coverage-report
+          path: coverage/html
 
   test-android:
     name: Test Android
@@ -98,9 +107,14 @@ jobs:
       - name: Validate Gradle
         working-directory: ./example/android
         run: dart ../../scripts/check_gradle_version.dart
-      - name: Run all tests
+      - name: Run all tests and coverage
         working-directory: ./example/android
-        run: ./gradlew :usercentrics_sdk:test
+        run: ./gradlew :usercentrics_sdk:koverHtmlReport
+      - name: Upload coverage report
+        uses: actions/upload-artifact@v4
+        with:
+          name: android-coverage-report
+          path: example/build/usercentrics_sdk/reports/kover/html
 
   test-ios:
     name: Test iOS
@@ -115,6 +129,8 @@ jobs:
           xcode-version: '14.2'
       - name: Checkout code
         uses: actions/checkout@v4
+      - name: Install Slather
+        run: gem install slather
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:
@@ -128,6 +144,14 @@ jobs:
       - name: Run all tests
         working-directory: ./example/ios
         run: ../../scripts/ios_unit_tests.sh
+      - name: Generate HTML report
+        working-directory: ./example/ios
+        run: slather coverage --html --scheme Runner --workspace Runner.xcworkspace --output-directory html_report
+      - name: Upload coverage report
+        uses: actions/upload-artifact@v4
+        with:
+          name: ios-coverage-report
+          path: example/ios/html_report
 
   build-android:
     name: Build Android Example

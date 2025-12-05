@@ -46,7 +46,7 @@ android {
 
     defaultConfig {
         applicationId "com.usercentrics.sdk.flutter_example"
-        minSdkVersion 21 // webview_flutter requirement
+        minSdkVersion flutter.minSdkVersion // webview_flutter requirement
         targetSdkVersion 31
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
