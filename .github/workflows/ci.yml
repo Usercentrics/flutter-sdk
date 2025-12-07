@@ -146,7 +146,7 @@ jobs:
         run: ../../scripts/ios_unit_tests.sh
       - name: Generate HTML report
         working-directory: ./example/ios
-        run: slather coverage --html --scheme Runner --workspace Runner.xcworkspace --output-directory html_report
+        run: slather coverage --html --scheme Runner --workspace Runner.xcworkspace --output-directory html_report Runner.xcodeproj
       - name: Upload coverage report
         uses: actions/upload-artifact@v4
         with:
