@@ -109,7 +109,7 @@ jobs:
         run: dart ../../scripts/check_gradle_version.dart
       - name: Run all tests and coverage
         working-directory: ./example/android
-        run: ./gradlew :usercentrics_sdk:testDebugUnitTest :usercentrics_sdk:koverHtmlReport
+        run: ./gradlew :usercentrics_sdk:testDebugUnitTest :usercentrics_sdk:koverHtmlReportDebug --stacktrace
       - name: List coverage files
         working-directory: ./example
         run: find build -name "*.html" -o -name "index.html" | head -20
@@ -117,7 +117,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: android-coverage-report
-          path: example/build/usercentrics_sdk/reports/kover/html
+          path: example/build/usercentrics_sdk/reports/kover/htmlDebug
 
   test-ios:
     name: Test iOS
