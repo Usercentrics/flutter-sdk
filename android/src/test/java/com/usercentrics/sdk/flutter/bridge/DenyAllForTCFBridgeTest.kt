@@ -32,7 +32,7 @@ class DenyAllForTCFBridgeTest {
     @Test
     fun testInvoke() {
         val usercentricsSDK = mockk<UsercentricsSDK>()
-        every { usercentricsSDK.denyAllForTCF(any(), any()) }.returns(DenyAllForTCFMock.fake)
+        every { usercentricsSDK.denyAllForTCF(any(), any(), any()) }.returns(DenyAllForTCFMock.fake)
         val usercentricsProxy = FakeUsercentricsProxy(usercentricsSDK)
         val instance = DenyAllForTCFBridge(usercentricsProxy)
         val result = FakeFlutterResult()
@@ -42,7 +42,30 @@ class DenyAllForTCFBridgeTest {
         verify(exactly = 1) {
             usercentricsSDK.denyAllForTCF(
                 fromLayer = DenyAllForTCFMock.callFromLayer,
-                consentType = DenyAllForTCFMock.callConsentType
+                consentType = DenyAllForTCFMock.callConsentType,
+                unsavedPurposeLIDecisions = null
+            )
+        }
+
+        Assert.assertEquals(1, result.successCount)
+        Assert.assertEquals(DenyAllForTCFMock.expected, result.successResultArgument)
+    }
+
+    @Test
+    fun testInvokeWithUnsavedPurposeLIDecisions() {
+        val usercentricsSDK = mockk<UsercentricsSDK>()
+        every { usercentricsSDK.denyAllForTCF(any(), any(), any()) }.returns(DenyAllForTCFMock.fake)
+        val usercentricsProxy = FakeUsercentricsProxy(usercentricsSDK)
+        val instance = DenyAllForTCFBridge(usercentricsProxy)
+        val result = FakeFlutterResult()
+
+        instance.invoke(DenyAllForTCFMock.callWithUnsavedPurposeLIDecisions, result)
+
+        verify(exactly = 1) {
+            usercentricsSDK.denyAllForTCF(
+                fromLayer = DenyAllForTCFMock.callFromLayer,
+                consentType = DenyAllForTCFMock.callConsentType,
+                unsavedPurposeLIDecisions = DenyAllForTCFMock.callUnsavedPurposeLIDecisions
             )
         }
 

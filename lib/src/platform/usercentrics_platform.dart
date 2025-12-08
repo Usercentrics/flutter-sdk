@@ -70,6 +70,7 @@ abstract class UsercentricsPlatform {
   Future<List<UsercentricsServiceConsent>> denyAllForTCF({
     required UsercentricsConsentType consentType,
     required TCFDecisionUILayer fromLayer,
+    Map<int, bool>? unsavedPurposeLIDecisions,
   });
 
   Future<List<UsercentricsServiceConsent>> saveDecisions({

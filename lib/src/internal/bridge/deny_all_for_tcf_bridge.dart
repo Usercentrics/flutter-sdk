@@ -11,6 +11,7 @@ abstract class DenyAllForTCFBridge {
     required MethodChannel channel,
     required TCFDecisionUILayer fromLayer,
     required UsercentricsConsentType consentType,
+    Map<int, bool>? unsavedPurposeLIDecisions,
   });
 }
 
@@ -24,12 +25,15 @@ class MethodChannelDenyAllForTCF extends DenyAllForTCFBridge {
     required MethodChannel channel,
     required TCFDecisionUILayer fromLayer,
     required UsercentricsConsentType consentType,
+    Map<int, bool>? unsavedPurposeLIDecisions,
   }) async {
     final result = await channel.invokeMethod(
       _name,
       {
         'fromLayer': TCFDecisionUILayerSerializer.serialize(fromLayer),
         'consentType': ConsentTypeSerializer.serialize(consentType),
+        if (unsavedPurposeLIDecisions != null)
+          'unsavedPurposeLIDecisions': unsavedPurposeLIDecisions,
       },
     );
     return (result as List)
