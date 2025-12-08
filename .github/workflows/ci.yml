@@ -132,8 +132,6 @@ jobs:
           xcode-version: 'latest-stable'
       - name: Checkout code
         uses: actions/checkout@v4
-      - name: Install slather
-        run: gem install slather
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:
@@ -147,22 +145,9 @@ jobs:
       - name: Run all tests
         working-directory: ./example/ios
         run: ../../scripts/ios_unit_tests.sh
-      - name: Generate coverage report
+      - name: Show coverage report
         working-directory: ./example/ios
-        run: |
-          slather coverage \
-            --html \
-            --output-directory html_report \
-            --scheme Runner \
-            --workspace Runner.xcworkspace \
-            --binary-basename usercentrics_sdk \
-            --source-directory ../../ios/Classes \
-            Runner.xcodeproj
-      - name: Upload coverage report
-        uses: actions/upload-artifact@v4
-        with:
-          name: ios-coverage-report
-          path: example/ios/html_report
+        run: xcrun xccov view --report TestResults.xcresult
 
   build-android:
     name: Build Android Example
