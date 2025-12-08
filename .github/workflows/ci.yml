@@ -122,14 +122,14 @@ jobs:
   test-ios:
     name: Test iOS
     needs: [ lint, format, pub-dry-run ]
-    runs-on: macos-13
+    runs-on: macos-latest
     timeout-minutes: 20
 
     steps:
       - name: Setup code
         uses: maxim-lobanov/setup-xcode@v1
         with:
-          xcode-version: '14.2'
+          xcode-version: 'latest-stable'
       - name: Checkout code
         uses: actions/checkout@v4
       - name: Install slather
@@ -183,14 +183,14 @@ jobs:
   build-ios:
     name: Build iOS Example
     needs: [ lint, format, pub-dry-run ]
-    runs-on: macos-13
+    runs-on: macos-latest
     timeout-minutes: 20
 
     steps:
       - name: Setup code
         uses: maxim-lobanov/setup-xcode@v1
         with:
-          xcode-version: '14.2'
+          xcode-version: 'latest-stable'
       - name: Checkout code
         uses: actions/checkout@v4
       - name: Setup Flutter
