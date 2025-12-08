@@ -1,0 +1,11 @@
+coverage_service: cobertura_xml
+xcodeproj: Runner.xcodeproj
+workspace: Runner.xcworkspace
+scheme: Runner
+source_directory: ../../ios
+output_directory: html_report
+ignore:
+  - Pods/*
+  - ../**/*/Tests/*
+  - ../**/*/Test/*
+

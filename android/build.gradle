@@ -28,6 +28,20 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'org.jetbrains.kotlinx.kover'
 
+kover {
+    reports {
+        filters {
+            excludes {
+                classes(
+                    '*BuildConfig',
+                    '*.R',
+                    '*.R$*'
+                )
+            }
+        }
+    }
+}
+
 android {
     namespace "com.usercentrics.sdk"
 
