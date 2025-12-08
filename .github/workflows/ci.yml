@@ -109,7 +109,7 @@ jobs:
         run: dart ../../scripts/check_gradle_version.dart
       - name: Run all tests and coverage
         working-directory: ./example/android
-        run: ./gradlew :usercentrics_sdk:testDebugUnitTest :usercentrics_sdk:koverHtmlReportDebug --stacktrace
+        run: ./gradlew :usercentrics_sdk:testDebugUnitTest :usercentrics_sdk:koverHtmlReportDebug
       - name: List coverage files
         working-directory: ./example
         run: find build -name "*.html" -o -name "index.html" | head -20
@@ -132,8 +132,8 @@ jobs:
           xcode-version: '14.2'
       - name: Checkout code
         uses: actions/checkout@v4
-      - name: Install Slather
-        run: gem install slather
+      - name: Install xcov
+        run: gem install xcov
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:
@@ -152,7 +152,7 @@ jobs:
         run: ls -la TestResults.xcresult || echo "No test results found"
       - name: Generate HTML report
         working-directory: ./example/ios
-        run: slather coverage --html
+        run: xcov --scheme Runner --workspace Runner.xcworkspace --output_directory html_report --include_targets usercentrics_sdk.framework
       - name: Upload coverage report
         uses: actions/upload-artifact@v4
         with:
