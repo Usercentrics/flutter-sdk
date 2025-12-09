@@ -122,14 +122,14 @@ jobs:
   test-ios:
     name: Test iOS
     needs: [ lint, format, pub-dry-run ]
-    runs-on: macos-latest
+    runs-on: macos-15
     timeout-minutes: 20
 
     steps:
       - name: Setup code
         uses: maxim-lobanov/setup-xcode@v1
         with:
-          xcode-version: 'latest-stable'
+          xcode-version: '16.1'
       - name: Checkout code
         uses: actions/checkout@v4
       - name: Setup Flutter
@@ -168,14 +168,14 @@ jobs:
   build-ios:
     name: Build iOS Example
     needs: [ lint, format, pub-dry-run ]
-    runs-on: macos-latest
+    runs-on: macos-15
     timeout-minutes: 20
 
     steps:
       - name: Setup code
         uses: maxim-lobanov/setup-xcode@v1
         with:
-          xcode-version: 'latest-stable'
+          xcode-version: '16.1'
       - name: Checkout code
         uses: actions/checkout@v4
       - name: Setup Flutter
