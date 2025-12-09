@@ -129,7 +129,7 @@ jobs:
       - name: Setup code
         uses: maxim-lobanov/setup-xcode@v1
         with:
-          xcode-version: '16.1'
+          xcode-version: '16.2'
       - name: Checkout code
         uses: actions/checkout@v4
       - name: Setup Flutter
@@ -175,7 +175,7 @@ jobs:
       - name: Setup code
         uses: maxim-lobanov/setup-xcode@v1
         with:
-          xcode-version: '16.1'
+          xcode-version: '16.2'
       - name: Checkout code
         uses: actions/checkout@v4
       - name: Setup Flutter
