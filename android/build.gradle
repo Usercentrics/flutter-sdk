@@ -51,9 +51,9 @@ android {
         consumerProguardFile "proguard-rules.pro"
     }
 
-    testOptions {
-        unitTests.returnDefaultValues = true
-    }
+//    testOptions {
+//        unitTests.returnDefaultValues = true
+//    }
 }
 
 dependencies {
