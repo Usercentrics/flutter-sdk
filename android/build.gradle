@@ -50,10 +50,6 @@ android {
         minSdkVersion 16
         consumerProguardFile "proguard-rules.pro"
     }
-
-//    testOptions {
-//        unitTests.returnDefaultValues = true
-//    }
 }
 
 dependencies {
