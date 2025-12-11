@@ -61,12 +61,21 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+      - name: Install lcov
+        run: sudo apt-get update && sudo apt-get install -y lcov
       - name: Get dependencies
         run: flutter pub get
       - name: Run all tests
         run: flutter test --reporter=expanded --coverage
       - name: Check coverage
         run: dart scripts/check_coverage.dart coverage/lcov.info
+      - name: Generate HTML report
+        run: genhtml coverage/lcov.info -o coverage/html
+      - name: Upload coverage report
+        uses: actions/upload-artifact@v4
+        with:
+          name: flutter-coverage-report
+          path: coverage/html
 
   test-android:
     name: Test Android
@@ -98,21 +107,29 @@ jobs:
       - name: Validate Gradle
         working-directory: ./example/android
         run: dart ../../scripts/check_gradle_version.dart
-      - name: Run all tests
+      - name: Run all tests and coverage
         working-directory: ./example/android
-        run: ./gradlew :usercentrics_sdk:test
+        run: ./gradlew :usercentrics_sdk:testDebugUnitTest :usercentrics_sdk:koverHtmlReportDebug
+      - name: List coverage files
+        working-directory: ./example
+        run: find build -name "*.html" -o -name "index.html" | head -20
+      - name: Upload coverage report
+        uses: actions/upload-artifact@v4
+        with:
+          name: android-coverage-report
+          path: example/build/usercentrics_sdk/reports/kover/htmlDebug
 
   test-ios:
     name: Test iOS
     needs: [ lint, format, pub-dry-run ]
-    runs-on: macos-13
+    runs-on: macos-14
     timeout-minutes: 20
 
     steps:
       - name: Setup code
         uses: maxim-lobanov/setup-xcode@v1
         with:
-          xcode-version: '14.2'
+          xcode-version: '15.4'
       - name: Checkout code
         uses: actions/checkout@v4
       - name: Setup Flutter
@@ -128,6 +145,9 @@ jobs:
       - name: Run all tests
         working-directory: ./example/ios
         run: ../../scripts/ios_unit_tests.sh
+      - name: Show coverage report
+        working-directory: ./example/ios
+        run: xcrun xccov view --report TestResults.xcresult
 
   build-android:
     name: Build Android Example
@@ -148,14 +168,14 @@ jobs:
   build-ios:
     name: Build iOS Example
     needs: [ lint, format, pub-dry-run ]
-    runs-on: macos-13
+    runs-on: macos-14
     timeout-minutes: 20
 
     steps:
       - name: Setup code
         uses: maxim-lobanov/setup-xcode@v1
         with:
-          xcode-version: '14.2'
+          xcode-version: '15.4'
       - name: Checkout code
         uses: actions/checkout@v4
       - name: Setup Flutter
