@@ -1,4 +1,7 @@
 [Release Notes](https://docs.usercentrics.com/cmp_in_app_sdk/latest/about/history/)
+### 2.24.3 – Dec 18, 2025
+## Improvement
+* Patch with security fixes
 
 ### 2.24.2 – Dec 5, 2025
 ## Improvement
