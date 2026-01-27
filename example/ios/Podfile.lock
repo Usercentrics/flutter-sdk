@@ -1,11 +1,11 @@
 PODS:
   - Flutter (1.0.0)
-  - Usercentrics (2.24.3)
-  - usercentrics_sdk (2.24.3):
+  - Usercentrics (2.24.4)
+  - usercentrics_sdk (2.24.4):
     - Flutter
-    - UsercentricsUI (= 2.24.3)
-  - UsercentricsUI (2.24.3):
-    - Usercentrics (= 2.24.3)
+    - UsercentricsUI (= 2.24.4)
+  - UsercentricsUI (2.24.4):
+    - Usercentrics (= 2.24.4)
   - webview_flutter_wkwebview (0.0.1):
     - Flutter
 
