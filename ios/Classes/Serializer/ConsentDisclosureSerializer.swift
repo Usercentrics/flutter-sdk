@@ -2,7 +2,10 @@ import Usercentrics
 
 extension ConsentDisclosureObject {
     func serialize() -> Any {
-        return self.disclosures.map { $0.serialize() }
+        return [
+            "disclosures": self.disclosures.map { $0.serialize() },
+            "sdks": self.sdks.map { ["name": $0.name, "use": $0.use] }
+        ] as [String: Any]
     }
 }
 

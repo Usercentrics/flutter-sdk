@@ -354,18 +354,21 @@ const _responseServices = [
     "disableLegalBasis": false,
     "isEssential": false,
     "technologyUsed": ["Cookies", "Pixel Tags"],
-    "deviceStorage": [
-      {
-        "identifier": "identifier",
-        "type": "APP",
-        "name": "name",
-        "maxAgeSeconds": 10,
-        "cookieRefresh": false,
-        "purposes": [1, 2, 3],
-        "domain": "domain",
-        "description": "description"
-      }
-    ],
+    "deviceStorage": {
+      "disclosures": [
+        {
+          "identifier": "identifier",
+          "type": "APP",
+          "name": "name",
+          "maxAgeSeconds": 10,
+          "cookieRefresh": false,
+          "purposes": [1, 2, 3],
+          "domain": "domain",
+          "description": "description"
+        }
+      ],
+      "sdks": []
+    },
     "isHidden": false,
   }
 ];
@@ -473,17 +476,19 @@ const _expectedServices = [
       disableLegalBasis: false,
       isEssential: false,
       technologyUsed: ["Cookies", "Pixel Tags"],
-      deviceStorage: ConsentDisclosureObject(disclosures: [
-        ConsentDisclosure(
-            identifier: "identifier",
-            type: ConsentDisclosureType.app,
-            name: "name",
-            maxAgeSeconds: 10,
-            cookieRefresh: false,
-            purposes: [1, 2, 3],
-            domain: "domain",
-            description: "description")
-      ]),
+      deviceStorage: ConsentDisclosureObject(
+        disclosures: [
+          ConsentDisclosure(
+              identifier: "identifier",
+              type: ConsentDisclosureType.app,
+              name: "name",
+              maxAgeSeconds: 10,
+              cookieRefresh: false,
+              purposes: [1, 2, 3],
+              domain: "domain",
+              description: "description")
+        ],
+        sdks: []),
       isHidden: false)
 ];
 
