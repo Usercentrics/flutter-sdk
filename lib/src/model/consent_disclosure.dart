@@ -1,19 +1,42 @@
 import 'package:flutter/foundation.dart';
 
+class ConsentDisclosureSDK {
+  const ConsentDisclosureSDK({required this.name, required this.use});
+
+  final String name;
+  final String use;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ConsentDisclosureSDK &&
+          runtimeType == other.runtimeType &&
+          name == other.name &&
+          use == other.use;
+
+  @override
+  int get hashCode => Object.hash(name, use);
+}
+
 class ConsentDisclosureObject {
-  const ConsentDisclosureObject({required this.disclosures});
+  const ConsentDisclosureObject({
+    required this.disclosures,
+    this.sdks = const [],
+  });
 
   final List<ConsentDisclosure> disclosures;
+  final List<ConsentDisclosureSDK> sdks;
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is ConsentDisclosureObject &&
           runtimeType == other.runtimeType &&
-          listEquals(disclosures, other.disclosures);
+          listEquals(disclosures, other.disclosures) &&
+          listEquals(sdks, other.sdks);
 
   @override
-  int get hashCode => disclosures.hashCode;
+  int get hashCode => Object.hash(disclosures, sdks);
 }
 
 class ConsentDisclosure {

@@ -6,15 +6,44 @@ class ConsentDisclosureObjectSerializer {
       return null;
     }
 
-    List<dynamic> values = value ?? [];
+    // New format: { disclosures: [...], sdks: [...] }
+    if (value is Map) {
+      final disclosures = value['disclosures'] as List<dynamic>? ?? [];
+      final sdks = value['sdks'] as List<dynamic>? ?? [];
+      if (disclosures.isEmpty && sdks.isEmpty) {
+        return null;
+      }
+      return ConsentDisclosureObject(
+        disclosures: disclosures
+            .map<ConsentDisclosure>(
+                (e) => ConsentDisclosureSerializer.deserialize(e))
+            .toList(),
+        sdks: sdks
+            .map<ConsentDisclosureSDK>(
+                (e) => ConsentDisclosureSDKSerializer.deserialize(e))
+            .toList(),
+      );
+    }
+
+    // Legacy format: array of disclosures
+    final values = value is List ? value : [];
     if (values.isEmpty) {
       return null;
     }
     return ConsentDisclosureObject(
-      disclosures: (value ?? [])
+      disclosures: values
           .map<ConsentDisclosure>(
               (e) => ConsentDisclosureSerializer.deserialize(e))
           .toList(),
+    );
+  }
+}
+
+class ConsentDisclosureSDKSerializer {
+  static ConsentDisclosureSDK deserialize(dynamic value) {
+    return ConsentDisclosureSDK(
+      name: value['name'] ?? '',
+      use: value['use'] ?? '',
     );
   }
 }
