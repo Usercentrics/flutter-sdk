@@ -1,0 +1,28 @@
+---
+description: Version management rules - version must stay in sync across files
+globs: "pubspec.yaml,android/build.gradle,ios/usercentrics_sdk.podspec,CHANGELOG.md"
+alwaysApply: false
+---
+
+# Version Management
+
+## Synced Version Files
+
+The SDK version **must** be identical across these 4 files:
+
+1. `pubspec.yaml` - `version: X.Y.Z`
+2. `android/build.gradle` - `def usercentrics_version = "X.Y.Z"`
+3. `ios/usercentrics_sdk.podspec` - `s.version = 'X.Y.Z'`
+4. `CHANGELOG.md` - new entry header `## X.Y.Z`
+
+## Release Process
+
+- CI validates version on tag push via `scripts/check_release_version.dart`
+- Tags follow `[0-9]+.[0-9]+.[0-9]+*` pattern (semver, optional pre-release suffix)
+- Publishing is automated via `flutter pub publish -f` using OIDC token
+
+## Rules
+
+- When bumping version, **always** update all 4 files in the same commit
+- Native SDK dependency version (`UsercentricsUI`) matches the plugin version
+- Never use `-SNAPSHOT` or other mutable version suffixes in release commits

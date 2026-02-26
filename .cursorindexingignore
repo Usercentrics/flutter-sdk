@@ -1,0 +1,29 @@
+# Example app - useful for reference but shouldn't pollute index
+example/android/
+example/ios/
+example/test/
+
+# Xcode project files
+**/*.xcodeproj/
+**/*.xcworkspace/
+
+# Android config files
+**/local.properties
+**/key.properties
+**/gradle-wrapper.properties
+**/gradle.properties
+
+# iOS config/plist
+example/**/*.plist
+example/**/*.storyboard
+example/**/*.xcassets/
+
+# Proguard
+**/proguard-rules.pro
+
+# HTML assets
+**/*.html
+
+# Git config
+.git/
+.github/ISSUE_TEMPLATE/

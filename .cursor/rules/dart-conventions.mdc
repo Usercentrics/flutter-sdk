@@ -1,0 +1,35 @@
+---
+description: Dart coding conventions for the Usercentrics Flutter SDK
+globs: "**/*.dart"
+alwaysApply: false
+---
+
+# Dart Conventions
+
+## Formatting
+
+- Line length: **80 characters** (enforced by `dart format --line-length=80`)
+- Use `flutter_lints` rules from `analysis_options.yaml`
+- Missing enum constants in switch statements are treated as **errors**
+
+## Code Style
+
+- Public API classes use **static methods** delegating to platform interface (see `Usercentrics` class)
+- Internal code lives under `lib/src/internal/` and is **not exported**
+- All public models are exported via barrel file `lib/src/model/model.dart`
+- Custom exceptions implement `Exception` (not `Error`)
+- Use `@visibleForTesting` for test-only accessors
+- Use `@Deprecated('Use [replacement] instead')` with migration guidance
+
+## File Organization
+
+- One class/enum per file, file name matches class in snake_case
+- Barrel exports via `bridge.dart`, `model.dart`, `internal.dart`
+- Bridges: `lib/src/internal/bridge/<method_name>_bridge.dart`
+- Serializers: `lib/src/internal/serializer/<type>_serializer.dart`
+
+## Public API Rules
+
+- Every public file in `lib/src/` **must** be exported (enforced by `scripts/assert_export.sh`)
+- Document all public APIs with `///` doc comments
+- Include parameter descriptions for non-obvious args
