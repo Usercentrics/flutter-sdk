@@ -1,4 +1,9 @@
 [Release Notes](https://docs.usercentrics.com/cmp_in_app_sdk/latest/about/history/)
+### 2.25.1 – Mar 02, 2026
+## Improvement
+* Patch with security fixes
+* UI improvements and fixes
+
 ### 2.25.0 – Feb 23, 2026
 ## Improvement
 * Added `specialPurposes` and `optOut` fields to TCF vendor disclosures for detailed storage information
