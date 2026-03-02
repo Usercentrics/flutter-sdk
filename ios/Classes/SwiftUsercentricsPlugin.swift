@@ -42,6 +42,7 @@ public class SwiftUsercentricsPlugin: NSObject, FlutterPlugin {
             GetUserSessionDataBridge(usercentrics: usercentrics),
             SetABTestingVariantBridge(usercentrics: usercentrics),
             GetABTestingVariantBridge(usercentrics: usercentrics),
+            TrackBridge(usercentrics: usercentrics),
             GetAdditionalConsentModeBridge(usercentrics: usercentrics),
             ClearUserSessionBridge(usercentrics: usercentrics)
         ]
