@@ -1,0 +1,34 @@
+---
+description: Testing conventions across all platforms
+globs: "**/test/**,**/test_*,**/*_test.dart,**/*Test.kt,**/*Tests.swift"
+alwaysApply: false
+---
+
+# Testing Conventions
+
+## Dart Tests (`test/`)
+
+- Framework: `flutter_test` + `test`
+- Run: `flutter test --reporter=expanded --coverage`
+- Coverage check: `dart scripts/check_coverage.dart coverage/lcov.info`
+- Structure mirrors `lib/src/` (e.g. `test/internal/bridge/` maps to `lib/src/internal/bridge/`)
+- Name files `<subject>_test.dart`
+
+## Android Tests (`android/src/test/java/`)
+
+- Framework: JUnit 4 + MockK
+- Run via Gradle: `./gradlew :usercentrics_sdk:testDebugUnitTest`
+- Coverage: Kover (`koverHtmlReportDebug`)
+
+## iOS Tests (`example/ios/RunnerTests/`)
+
+- Framework: XCTest
+- Run: `scripts/ios_unit_tests.sh`
+- Coverage: `xcrun xccov view --report TestResults.xcresult`
+
+## Guidelines
+
+- Every bridge and serializer should have corresponding tests on all platforms
+- Mock native SDK dependencies, never call real Usercentrics APIs in tests
+- Test serialization round-trips (serialize -> deserialize -> assert equality)
+- Test error/exception paths, not just happy paths

@@ -1,0 +1,39 @@
+---
+description: Usercentrics Flutter SDK project overview and architecture
+alwaysApply: true
+---
+
+# Usercentrics Flutter SDK
+
+This is a **Flutter plugin** (`usercentrics_sdk`) providing a Consent Management Platform (CMP) for mobile apps. It wraps native Usercentrics SDKs for Android and iOS.
+
+## Architecture
+
+- **`lib/`** - Public Dart API and internal implementation
+  - `lib/src/model/` - Data models (exported publicly)
+  - `lib/src/platform/` - Platform interface (abstract contract)
+  - `lib/src/internal/bridge/` - Method channel bridge implementations
+  - `lib/src/internal/serializer/` - JSON serialization/deserialization
+  - `lib/src/internal/platform/` - MethodChannel platform implementation
+- **`android/`** - Kotlin plugin (mirrors bridge/serializer pattern)
+- **`ios/`** - Swift/ObjC plugin (mirrors bridge/serializer pattern)
+- **`example/`** - Demo Flutter app
+- **`test/`** - Dart unit tests
+- **`scripts/`** - CI helper scripts
+
+## Key Patterns
+
+- Entry point: `Usercentrics` static class delegates to `UsercentricsPlatform`
+- All platform communication goes through Flutter MethodChannel
+- Each SDK method has a dedicated Bridge class on all 3 platforms (Dart, Kotlin, Swift)
+- Each data type has a dedicated Serializer class on all 3 platforms
+- Version must stay in sync across: `pubspec.yaml`, `android/build.gradle`, `ios/usercentrics_sdk.podspec`, `CHANGELOG.md`
+
+## Tech Stack
+
+| Layer | Language | Build System |
+|-------|----------|-------------|
+| Dart | Dart (SDK >=2.17.1 <4.0.0) | pub |
+| Android | Kotlin 1.9.24 | Gradle 8.7 |
+| iOS | Swift 5.3 | CocoaPods |
+| CI | GitHub Actions | Flutter 3.22.3 |
