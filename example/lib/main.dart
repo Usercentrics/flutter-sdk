@@ -51,7 +51,8 @@ class HomePageState extends State<HomePage> {
 
       setState(() {
         _sdkStatus = _SdkStatus.ready;
-        _statusMessage = 'SDK ready. shouldCollectConsent: ${status.shouldCollectConsent}';
+        _statusMessage =
+            'SDK ready. shouldCollectConsent: ${status.shouldCollectConsent}';
       });
 
       if (status.shouldCollectConsent) {

@@ -86,7 +86,8 @@ class MethodChannelUsercentrics extends UsercentricsPlatform {
       try {
         await ongoingInit.future;
       } catch (error, stackTrace) {
-        debugPrint('Usercentrics: Initialization failed, retrying. Error: $error\n$stackTrace');
+        debugPrint(
+            'Usercentrics: Initialization failed, retrying. Error: $error\n$stackTrace');
       }
     }
 
