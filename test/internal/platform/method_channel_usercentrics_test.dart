@@ -83,6 +83,42 @@ void main() {
       expect(instance.isReadyCompleter?.isCompleted, true);
     });
 
+    test('retry succeeds after previous initialization failure', () async {
+      const successStatus = UsercentricsReadyStatus(
+          shouldCollectConsent: false,
+          consents: [],
+          geolocationRuleset: null,
+          location: UsercentricsLocation(
+              countryCode: "PT",
+              regionCode: "PT11",
+              isInEU: true,
+              isInUS: false,
+              isInCalifornia: false));
+
+      final initializeBridge = FakeInitializeBridge();
+      final isReadyBridge = FakeIsReadyBridge(
+        invokeAnswer: successStatus,
+        failFirstNTimes: 1,
+      );
+      final instance = MethodChannelUsercentrics(
+        initializeBridge: initializeBridge,
+        isReadyBridge: isReadyBridge,
+      );
+
+      instance.initialize(settingsId: "ABC");
+      await expectLater(
+        instance.isReadyCompleter!.future,
+        throwsA(isA<FailedInitializationException>()),
+      );
+
+      instance.initialize(settingsId: "ABC");
+      await instance.isReadyCompleter?.future;
+
+      expect(initializeBridge.invokeCount, 2);
+      expect(instance.isReadyCompleter?.isCompleted, true);
+      expect(isReadyBridge.invokeCount, 2);
+    });
+
     test('expose stackTrace when initialization fails', () async {
       final initializeBridge = FakeInitializeBridge();
 
