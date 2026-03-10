@@ -83,7 +83,12 @@ class MethodChannelUsercentrics extends UsercentricsPlatform {
     isReadyCompleter = Completer();
 
     if (ongoingInit != null) {
-      await ongoingInit.future;
+      try {
+        await ongoingInit.future;
+      } catch (error, stackTrace) {
+        debugPrint(
+            'Usercentrics: Initialization failed, retrying. Error: $error\n$stackTrace');
+      }
     }
 
     try {
