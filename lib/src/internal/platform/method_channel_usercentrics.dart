@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:usercentrics_sdk/src/internal/bridge/bridge.dart';
+import 'package:usercentrics_sdk/src/internal/serializer/gpp_data_serializer.dart';
 import 'package:usercentrics_sdk/src/model/model.dart';
 import 'package:usercentrics_sdk/src/platform/usercentrics_platform.dart';
 
@@ -33,9 +34,14 @@ class MethodChannelUsercentrics extends UsercentricsPlatform {
       this.trackBridge = const MethodChannelTrack(),
       this.getAdditionalConsentModeData =
           const MethodChannelGetAdditionalConsentModeData(),
-      this.clearUserSessionBridge = const MethodChannelClearUserSession()});
+      this.clearUserSessionBridge = const MethodChannelClearUserSession(),
+      this.getGPPDataBridge = const MethodChannelGetGPPData(),
+      this.getGPPStringBridge = const MethodChannelGetGPPString(),
+      this.setGPPConsentBridge = const MethodChannelSetGPPConsent()});
 
   static const MethodChannel _channel = MethodChannel('usercentrics');
+  static const EventChannel _gppSectionChangeEventChannel =
+      EventChannel('usercentrics/onGppSectionChange');
 
   final InitializeBridge initializeBridge;
   final IsReadyBridge isReadyBridge;
@@ -62,6 +68,9 @@ class MethodChannelUsercentrics extends UsercentricsPlatform {
   final TrackBridge trackBridge;
   final GetAdditionalConsentModeDataBridge getAdditionalConsentModeData;
   final ClearUserSessionBridge clearUserSessionBridge;
+  final GetGPPDataBridge getGPPDataBridge;
+  final GetGPPStringBridge getGPPStringBridge;
+  final SetGPPConsentBridge setGPPConsentBridge;
 
   @visibleForTesting
   Completer<Object?>? isReadyCompleter;
@@ -334,5 +343,39 @@ class MethodChannelUsercentrics extends UsercentricsPlatform {
   Future<UsercentricsReadyStatus> clearUserSession() async {
     await _ensureIsReady();
     return await clearUserSessionBridge.invoke(channel: _channel);
+  }
+
+  @override
+  Future<GppData> get gppData async {
+    await _ensureIsReady();
+    return await getGPPDataBridge.invoke(channel: _channel);
+  }
+
+  @override
+  Future<String?> get gppString async {
+    await _ensureIsReady();
+    return await getGPPStringBridge.invoke(channel: _channel);
+  }
+
+  @override
+  Future<void> setGPPConsent({
+    required String sectionName,
+    required String fieldName,
+    required dynamic value,
+  }) async {
+    await _ensureIsReady();
+    await setGPPConsentBridge.invoke(
+      channel: _channel,
+      sectionName: sectionName,
+      fieldName: fieldName,
+      value: value,
+    );
+  }
+
+  @override
+  Stream<GppSectionChangePayload> get onGppSectionChange {
+    return _gppSectionChangeEventChannel
+        .receiveBroadcastStream()
+        .map((event) => GppDataSerializer.deserializePayload(event));
   }
 }

@@ -101,4 +101,16 @@ abstract class UsercentricsPlatform {
   });
 
   Future<UsercentricsReadyStatus> clearUserSession();
+
+  Future<GppData> get gppData;
+
+  Future<String?> get gppString;
+
+  Future<void> setGPPConsent({
+    required String sectionName,
+    required String fieldName,
+    required dynamic value,
+  });
+
+  Stream<GppSectionChangePayload> get onGppSectionChange;
 }

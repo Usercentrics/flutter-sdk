@@ -23,3 +23,6 @@ export 'show_first_layer_bridge.dart';
 export 'show_second_layer_bridge.dart';
 export 'track_bridge.dart';
 export 'clear_user_session_bridge.dart';
+export 'get_gpp_data_bridge.dart';
+export 'get_gpp_string_bridge.dart';
+export 'set_gpp_consent_bridge.dart';

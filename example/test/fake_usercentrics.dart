@@ -158,4 +158,23 @@ class FakeUsercentrics extends UsercentricsPlatform {
   Future<UsercentricsReadyStatus> clearUserSession() {
     throw UnimplementedError();
   }
+
+  @override
+  Future<GppData> get gppData => throw UnimplementedError();
+
+  @override
+  Future<String?> get gppString => throw UnimplementedError();
+
+  @override
+  Future<void> setGPPConsent({
+    required String sectionName,
+    required String fieldName,
+    required dynamic value,
+  }) {
+    throw UnimplementedError();
+  }
+
+  @override
+  Stream<GppSectionChangePayload> get onGppSectionChange =>
+      throw UnimplementedError();
 }
