@@ -8,11 +8,12 @@ PODS:
     - Usercentrics (= 2.25.1)
   - webview_flutter_wkwebview (0.0.1):
     - Flutter
+    - FlutterMacOS
 
 DEPENDENCIES:
   - Flutter (from `Flutter`)
   - usercentrics_sdk (from `.symlinks/plugins/usercentrics_sdk/ios`)
-  - webview_flutter_wkwebview (from `.symlinks/plugins/webview_flutter_wkwebview/ios`)
+  - webview_flutter_wkwebview (from `.symlinks/plugins/webview_flutter_wkwebview/darwin`)
 
 SPEC REPOS:
   trunk:
@@ -25,15 +26,15 @@ EXTERNAL SOURCES:
   usercentrics_sdk:
     :path: ".symlinks/plugins/usercentrics_sdk/ios"
   webview_flutter_wkwebview:
-    :path: ".symlinks/plugins/webview_flutter_wkwebview/ios"
+    :path: ".symlinks/plugins/webview_flutter_wkwebview/darwin"
 
 SPEC CHECKSUMS:
-  Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
-  Usercentrics: d8b539d3dcaf5798513a203073e296fc9d55164c
-  usercentrics_sdk: 0379d3d77e6819959c602eb64048bf7302fb0a24
-  UsercentricsUI: 0929c61f1b1cd8347c46568bd0d80258c96354fe
-  webview_flutter_wkwebview: b7e70ef1ddded7e69c796c7390ee74180182971f
+  Flutter: cabc95a1d2626b1b06e7179b784ebcf0c0cde467
+  Usercentrics: 093b435b1e1c8deae1564d3d30a4d565e260f488
+  usercentrics_sdk: 2dae37b3334d6e00a38d8a751922436a38051bea
+  UsercentricsUI: 70423bc65f51ed6f4cac3a6d20ebbee6e4e832aa
+  webview_flutter_wkwebview: 1821ceac936eba6f7984d89a9f3bcb4dea99ebb2
 
 PODFILE CHECKSUM: 723de1cf6e2f18b51eb3426c945e31134a750097
 
-COCOAPODS: 1.14.3
+COCOAPODS: 1.16.2

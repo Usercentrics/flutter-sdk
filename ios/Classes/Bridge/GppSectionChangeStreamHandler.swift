@@ -3,7 +3,7 @@ import Usercentrics
 
 class GppSectionChangeStreamHandler: NSObject, FlutterStreamHandler {
 
-    private var subscription: UsercentricsDisposableEvent?
+    private var subscription: UsercentricsDisposableEvent<GppSectionChangePayload>?
 
     func onListen(withArguments arguments: Any?, eventSink events: @escaping FlutterEventSink) -> FlutterError? {
         subscription = UsercentricsEvent.shared.onGppSectionChange { payload in
