@@ -12,11 +12,6 @@ if (localPropertiesFile.exists()) {
     }
 }
 
-def flutterRoot = localProperties.getProperty('flutter.sdk')
-if (flutterRoot == null) {
-    throw new GradleException("Flutter SDK not found. Define location with flutter.sdk in the local.properties file.")
-}
-
 def flutterVersionCode = localProperties.getProperty('flutter.versionCode')
 if (flutterVersionCode == null) {
     flutterVersionCode = '1'
@@ -28,16 +23,16 @@ if (flutterVersionName == null) {
 }
 
 android {
-    namespace 'com.usercentrics.sdk.flutter_example'
-    compileSdk 35
+    namespace "com.usercentrics.sdk.flutter_example"
+    compileSdk 36
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
 
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = '17'
     }
 
     sourceSets {
@@ -46,8 +41,8 @@ android {
 
     defaultConfig {
         applicationId "com.usercentrics.sdk.flutter_example"
-        minSdkVersion 21 // webview_flutter requirement
-        targetSdkVersion 31
+        minSdk flutter.minSdkVersion
+        targetSdk 34
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
         multiDexEnabled true
@@ -66,6 +61,5 @@ flutter {
 }
 
 dependencies {
-    implementation "androidx.multidex:multidex:$multidex_version"
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "androidx.multidex:multidex:2.0.1"
 }
