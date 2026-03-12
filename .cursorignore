@@ -1,0 +1,63 @@
+# Build outputs
+build/
+**/android/build/
+**/ios/DerivedData/
+
+# Dart/Flutter caches
+.dart_tool/
+.pub-cache/
+.pub/
+.packages
+.flutter-plugins
+.flutter-plugins-dependencies
+
+# Gradle caches and wrappers
+**/android/.gradle
+**/android/**/gradle-wrapper.jar
+**/android/gradlew
+**/android/gradlew.bat
+**/ci-cache/
+
+# CocoaPods
+**/ios/Pods/
+**/ios/**/.symlinks/
+
+# Generated files
+lib/generated_plugin_registrant.dart
+**/GeneratedPluginRegistrant.*
+**/ios/.generated/
+**/ios/Flutter/*.framework
+**/ios/Flutter/flutter_assets/
+**/ios/Flutter/Generated.xcconfig
+**/ios/Flutter/app.flx
+**/ios/Flutter/app.zip
+**/ios/Flutter/flutter_export_environment.sh
+**/ios/Flutter/.last_build_id
+
+# Coverage reports
+coverage/
+
+# IDE
+.idea/
+.vscode/
+*.iml
+
+# OS
+.DS_Store
+
+# Xcode noise
+**/ios/**/*.mode1v3
+**/ios/**/*.mode2v3
+**/ios/**/*.moved-aside
+**/ios/**/*.pbxuser
+**/ios/**/*.perspectivev3
+**/ios/**/*sync/
+**/ios/**/.sconsign.dblite
+**/ios/**/.tags*
+**/ios/**/xcuserdata
+**/ios/ServiceDefinitions.json
+# Binary/asset files
+**/Assets.xcassets/
+*.storyboard
+*.pbxproj
+*.xcworkspace/

@@ -1,0 +1,35 @@
+---
+description: Kotlin coding conventions for the Android plugin
+globs: "**/*.kt"
+alwaysApply: false
+---
+
+# Kotlin Conventions (Android Plugin)
+
+## Project Setup
+
+- Package: `com.usercentrics.sdk.flutter`
+- Kotlin: 1.9.24, JVM target: 1.8
+- Min SDK: 16, Compile SDK: 31
+- Dependencies managed in `android/build.gradle`
+
+## Architecture
+
+- `UsercentricsPlugin.kt` - Main Flutter plugin entry point
+- `api/` - Proxy abstractions (`UsercentricsProxy`, `UsercentricsBannerProxy`, `FlutterResult`, `FlutterMethodCall`)
+- `bridge/` - One bridge per SDK method, extending `MethodBridge`
+- `serializer/` - One serializer per data type, converting to/from `Map`
+
+## Patterns
+
+- Each bridge handles a single MethodChannel call and returns results via `FlutterResult`
+- Serializers convert between native Usercentrics SDK types and Flutter-compatible Maps
+- Use `io.mockk` for mocking in tests
+- Tests live in `android/src/test/java/`
+
+## Code Style
+
+- Follow Kotlin coding conventions
+- Prefer `val` over `var`
+- Use data classes for pure data holders
+- Keep bridge classes focused on single method handling

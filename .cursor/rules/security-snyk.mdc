@@ -1,0 +1,53 @@
+---
+description: Security best practices and Snyk compliance rules
+alwaysApply: true
+---
+
+# Security & Snyk Compliance
+
+## Dependency Management
+
+- **Never** pin to wildcard versions (`any`) - always use bounded ranges
+- Keep dependencies minimal; this plugin only depends on `flutter` SDK at runtime
+- Dev dependencies (`flutter_test`, `test`, `flutter_lints`) must also use version constraints
+- Regularly check for outdated deps: `flutter pub outdated`
+- Native deps (Gradle, CocoaPods) must also use explicit version pins
+
+## Snyk Scans - What Gets Checked
+
+Snyk analyzes these manifests in the pipeline:
+- `pubspec.yaml` / `pubspec.lock` - Dart/Flutter dependencies
+- `android/build.gradle` - Android/Gradle dependencies
+- `ios/usercentrics_sdk.podspec` - iOS CocoaPods dependencies
+- `example/pubspec.yaml` - Example app dependencies
+- `example/android/build.gradle` - Example Android dependencies
+- `example/ios/Podfile` / `Podfile.lock` - Example iOS dependencies
+
+## Vulnerability Rules
+
+- **Never** ignore Snyk findings without a documented reason
+- Address critical/high severity vulns before merging to master
+- If a transitive dependency has a vuln, upgrade the direct parent dependency
+- For native SDK vulns (Usercentrics Android/iOS), coordinate with Usercentrics team
+
+## Secrets & Credentials
+
+- **Never** commit API keys, secrets, tokens, or credentials
+- `settingsId` and `ruleSetId` in example code are public demo IDs only
+- Files that must never be committed: `local.properties`, `key.properties`, `.env`, `*.keystore`, `*.jks`, `*.p12`, `*.mobileprovision`
+- The `android/key.properties` pattern is already in `.gitignore` - keep it there
+
+## Code Security Patterns
+
+- Validate all data coming from MethodChannel before use
+- Serializers must handle null/missing fields gracefully (no crashes on malformed data)
+- Never log sensitive user consent data at production log levels
+- Use `UsercentricsLoggerLevel.none` as default, only `debug`/`warning`/`error` when explicitly set
+- ProGuard rules (`proguard-rules.pro`) must be maintained for release builds
+
+## Secure CI/CD
+
+- CI uses `ghcr.io/cirruslabs/flutter:3.22.3` container - keep this image version explicit
+- Release job uses `id-token: write` for OIDC-based pub.dev publishing (no long-lived tokens)
+- Never add `--no-verify` or skip security checks in CI scripts
+- Gradle and Xcode versions are pinned in CI - don't use `latest`
