@@ -56,12 +56,6 @@ coverage/
 **/ios/**/.tags*
 **/ios/**/xcuserdata
 **/ios/ServiceDefinitions.json
-
-# Lock files (not useful for AI context)
-pubspec.lock
-**/pubspec.lock
-**/Podfile.lock
-
 # Binary/asset files
 **/Assets.xcassets/
 *.storyboard

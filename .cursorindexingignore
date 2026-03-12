@@ -18,6 +18,11 @@ example/**/*.plist
 example/**/*.storyboard
 example/**/*.xcassets/
 
+# Lock files (large/noisy, but useful for debugging dependency issues and Snyk scans)
+pubspec.lock
+**/pubspec.lock
+**/Podfile.lock
+
 # Proguard
 **/proguard-rules.pro
 
