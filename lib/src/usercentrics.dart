@@ -164,15 +164,18 @@ class Usercentrics {
 
   /// Deny all services and TCF.
   /// - The [unsavedPurposeLIDecisions] is an optional map of purpose IDs to their legitimate interest decisions that have not yet been saved.
+  /// - The [unsavedVendorLIDecisions] is an optional map of vendor IDs to their legitimate interest decisions that have not yet been saved.
   static Future<List<UsercentricsServiceConsent>> denyAllForTCF({
     required TCFDecisionUILayer fromLayer,
     required UsercentricsConsentType consentType,
     Map<int, bool>? unsavedPurposeLIDecisions,
+    Map<int, bool>? unsavedVendorLIDecisions,
   }) =>
       _delegate.denyAllForTCF(
         consentType: consentType,
         fromLayer: fromLayer,
         unsavedPurposeLIDecisions: unsavedPurposeLIDecisions,
+        unsavedVendorLIDecisions: unsavedVendorLIDecisions,
       );
 
   /// Save service decisions.

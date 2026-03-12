@@ -71,6 +71,7 @@ abstract class UsercentricsPlatform {
     required UsercentricsConsentType consentType,
     required TCFDecisionUILayer fromLayer,
     Map<int, bool>? unsavedPurposeLIDecisions,
+    Map<int, bool>? unsavedVendorLIDecisions,
   });
 
   Future<List<UsercentricsServiceConsent>> saveDecisions({

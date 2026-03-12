@@ -81,6 +81,7 @@ class FakeUsercentrics extends UsercentricsPlatform {
     required UsercentricsConsentType consentType,
     required TCFDecisionUILayer fromLayer,
     Map<int, bool>? unsavedPurposeLIDecisions,
+    Map<int, bool>? unsavedVendorLIDecisions,
   }) {
     throw UnimplementedError();
   }
