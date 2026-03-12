@@ -201,6 +201,7 @@ class FakeUsercentricsPlatform extends UsercentricsPlatform {
     required UsercentricsConsentType consentType,
     required TCFDecisionUILayer fromLayer,
     Map<int, bool>? unsavedPurposeLIDecisions,
+    Map<int, bool>? unsavedVendorLIDecisions,
   }) {
     denyAllForTCFFromLayerArgument = fromLayer;
     denyAllForTCFConsentTypeArgument = consentType;

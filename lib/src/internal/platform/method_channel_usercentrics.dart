@@ -222,6 +222,7 @@ class MethodChannelUsercentrics extends UsercentricsPlatform {
     required UsercentricsConsentType consentType,
     required TCFDecisionUILayer fromLayer,
     Map<int, bool>? unsavedPurposeLIDecisions,
+    Map<int, bool>? unsavedVendorLIDecisions,
   }) async {
     await _ensureIsReady();
     return await denyAllForTCFBridge.invoke(
@@ -229,6 +230,7 @@ class MethodChannelUsercentrics extends UsercentricsPlatform {
       fromLayer: fromLayer,
       consentType: consentType,
       unsavedPurposeLIDecisions: unsavedPurposeLIDecisions,
+      unsavedVendorLIDecisions: unsavedVendorLIDecisions,
     );
   }
 
