@@ -1,0 +1,38 @@
+---
+description: Platform bridge pattern used across Dart, Kotlin, and Swift
+globs: "**/bridge/**"
+alwaysApply: false
+---
+
+# Platform Bridge Pattern
+
+## Overview
+
+Every SDK method is implemented as a dedicated Bridge class on all 3 platforms. This keeps each method's serialization and channel logic isolated.
+
+## Adding a New Bridge
+
+When adding a new SDK method, you must create **3 bridge files** + update barrel exports:
+
+### 1. Dart (`lib/src/internal/bridge/`)
+- Create `<method_name>_bridge.dart`
+- Add export to `bridge.dart` barrel file
+- Wire it in `method_channel_usercentrics.dart`
+
+### 2. Kotlin (`android/src/main/kotlin/.../bridge/`)
+- Create `<MethodName>Bridge.kt` extending `MethodBridge`
+- Register in `UsercentricsPlugin.kt`
+
+### 3. Swift (`ios/Classes/Bridge/`)
+- Create `<MethodName>Bridge.swift` conforming to `MethodBridge`
+- Register in `SwiftUsercentricsPlugin.swift`
+
+### 4. Tests
+- Add tests for each platform's bridge implementation
+
+## MethodChannel Contract
+
+- Channel name must match across all 3 platforms
+- Arguments are passed as `Map<String, dynamic>` (Dart) / `Map<String, Any?>` (Kotlin) / `[String: Any?]` (Swift)
+- Results are returned as Maps serialized by the corresponding Serializer
+- Errors use `FlutterError` with code, message, and details

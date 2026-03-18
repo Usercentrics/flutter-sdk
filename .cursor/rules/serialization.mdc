@@ -1,0 +1,34 @@
+---
+description: Serialization pattern for data transfer across platform channels
+globs: "**/serializer/**,**/Serializer/**"
+alwaysApply: false
+---
+
+# Serialization Pattern
+
+## Overview
+
+Each data type has a dedicated Serializer on all 3 platforms (Dart, Kotlin, Swift) that converts between native types and MethodChannel-compatible Maps/Dictionaries.
+
+## Adding a New Serializer
+
+### Dart (`lib/src/internal/serializer/`)
+- File: `<type>_serializer.dart`
+- Export in `serializer.dart` barrel
+- Convert `Map<String, dynamic>` to/from model class
+
+### Kotlin (`android/.../serializer/`)
+- File: `<Type>Serializer.kt`
+- Convert `Map<String, Any?>` to/from native SDK type
+
+### Swift (`ios/Classes/Serializer/`)
+- File: `<Type>Serializer.swift`
+- Convert `[String: Any?]` to/from native SDK type
+
+## Rules
+
+- Handle null/missing keys defensively - never force-unwrap without a fallback
+- Keep serialization logic pure (no side effects, no network calls)
+- Enum serialization uses string values, not ordinals
+- Nested objects delegate to their own serializer
+- Test round-trip: serialize -> deserialize -> assert structural equality

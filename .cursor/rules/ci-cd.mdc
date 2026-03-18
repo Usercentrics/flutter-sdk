@@ -1,0 +1,53 @@
+---
+description: CI/CD pipeline conventions and constraints
+globs: ".github/**,scripts/**"
+alwaysApply: false
+---
+
+# CI/CD Conventions
+
+## Pipeline Overview (GitHub Actions)
+
+Triggers: push to `master`, version tags, PRs, manual dispatch.
+
+```
+format -> lint -> pub-dry-run
+                      |
+        +-------------+-------------+
+        |             |             |
+  test-flutter   test-android   test-ios
+        |             |             |
+  build-android  build-ios         |
+        |             |             |
+        +-------------+-------------+
+                      |
+                   release (tags only)
+```
+
+## Pinned Versions
+
+- Flutter: `3.22.3`
+- Gradle: `8.7`
+- Xcode: `15.4`
+- Container: `ghcr.io/cirruslabs/flutter:3.22.3`
+
+Do **not** change these without testing the full pipeline.
+
+## Scripts (`scripts/`)
+
+| Script | Purpose |
+|--------|---------|
+| `check_format.sh` | `dart format --line-length=80 --set-exit-if-changed .` |
+| `assert_export.sh` | Ensures all public files are exported |
+| `check_coverage.dart` | Validates test coverage thresholds |
+| `check_release_version.dart` | Validates tag matches pubspec version |
+| `check_gradle_version.dart` | Validates Gradle wrapper version |
+| `setup_gradle.sh` | Downloads and configures Gradle wrapper |
+| `ios_unit_tests.sh` | Runs iOS unit tests via xcodebuild |
+
+## Rules
+
+- All CI scripts must be executable and use `#!/bin/sh -xe` for traceability
+- Never add `--no-analyze` or skip lint steps
+- Coverage thresholds are enforced - don't lower them without team approval
+- Android tests use Kover for coverage, Dart uses lcov, iOS uses xccov
