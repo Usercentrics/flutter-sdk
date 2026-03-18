@@ -20,10 +20,12 @@ internal class DenyAllForTCFBridge(
         assert(name == call.method)
         val argsMap = call.arguments as Map<*, *>
         val unsavedPurposeLIDecisions = (argsMap["unsavedPurposeLIDecisions"] as? Map<Int, Boolean>)
+        val unsavedVendorLIDecisions = (argsMap["unsavedVendorLIDecisions"] as? Map<Int, Boolean>)
         val consents = usercentrics.instance.denyAllForTCF(
             fromLayer = TCFDecisionUILayer.valueOf(argsMap["fromLayer"] as String),
             consentType = UsercentricsConsentType.valueOf(argsMap["consentType"] as String),
-            unsavedPurposeLIDecisions = unsavedPurposeLIDecisions
+            unsavedPurposeLIDecisions = unsavedPurposeLIDecisions,
+            unsavedVendorLIDecisions = unsavedVendorLIDecisions
         )
         result.success(consents.map { it.serialize() })
     }
