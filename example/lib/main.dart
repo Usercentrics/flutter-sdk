@@ -12,29 +12,8 @@ void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatefulWidget {
+class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
-  @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  @override
-  void initState() {
-    super.initState();
-
-    _initializeUsercentrics();
-  }
-
-  void _initializeUsercentrics() {
-    /// Initialize Usercentrics with your configuration only once.
-    /// We should not call `initialize` directly inside [build].
-    Usercentrics.initialize(
-      settingsId: 'Yi9N3aXia',
-      loggerLevel: UsercentricsLoggerLevel.debug,
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -44,6 +23,8 @@ class _MyAppState extends State<MyApp> {
   }
 }
 
+enum _SdkStatus { idle, loading, ready, error }
+
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -52,15 +33,28 @@ class HomePage extends StatefulWidget {
 }
 
 class HomePageState extends State<HomePage> {
-  @override
-  void initState() {
-    super.initState();
-    _showCMPIfNeeded();
-  }
+  _SdkStatus _sdkStatus = _SdkStatus.idle;
+  String? _statusMessage;
 
-  void _showCMPIfNeeded() async {
+  void _initializeUsercentrics() async {
+    setState(() {
+      _sdkStatus = _SdkStatus.loading;
+      _statusMessage = null;
+    });
+
     try {
+      Usercentrics.initialize(
+        settingsId: 'Yi9N3aXia',
+        loggerLevel: UsercentricsLoggerLevel.debug,
+      );
+
       final status = await Usercentrics.status;
+
+      setState(() {
+        _sdkStatus = _SdkStatus.ready;
+        _statusMessage =
+            'SDK ready. shouldCollectConsent: ${status.shouldCollectConsent}';
+      });
 
       if (status.shouldCollectConsent) {
         _showFirstLayer();
@@ -68,7 +62,10 @@ class HomePageState extends State<HomePage> {
         applyConsent(status.consents);
       }
     } catch (error) {
-      // Handle non-localized error
+      setState(() {
+        _sdkStatus = _SdkStatus.error;
+        _statusMessage = error.toString();
+      });
     }
   }
 
@@ -127,64 +124,104 @@ class HomePageState extends State<HomePage> {
       default:
         return const BannerSettings(/* Default Settings */);
     }
-
-    // 'Activate with third-party tool' option
-    // final selectedVariant = WhateverTool.getABTestingVariant();
-    // switch (variant) {
-    //   case "variantA":
-    //     return const BannerSettings(variantName: "variantA");
-    //   case "variantB":
-    //     return const BannerSettings(variantName: "variantB");
-    //   default:
-    //     return const BannerSettings();
-    // }
   }
 
   @override
   Widget build(BuildContext context) {
+    final bool isSdkReady = _sdkStatus == _SdkStatus.ready;
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Usercentrics Flutter Sample'),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(50.0),
+        padding: const EdgeInsets.all(20.0),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
+            Card(
+              color: _statusColor,
+              child: Padding(
+                padding: const EdgeInsets.all(16),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Text(
+                      'SDK status: ${_sdkStatus.name.toUpperCase()}',
+                      style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 13,
+                      ),
+                    ),
+                    if (_statusMessage != null) ...[
+                      const SizedBox(height: 6),
+                      Text(
+                        _statusMessage!,
+                        style: const TextStyle(fontSize: 12),
+                      ),
+                    ],
+                    const SizedBox(height: 12),
+                    ElevatedButton(
+                      onPressed: _sdkStatus == _SdkStatus.loading
+                          ? null
+                          : _initializeUsercentrics,
+                      child: _sdkStatus == _SdkStatus.loading
+                          ? const SizedBox(
+                              height: 16,
+                              width: 16,
+                              child: CircularProgressIndicator(strokeWidth: 2),
+                            )
+                          : const Text('Initialize SDK'),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            // ── END TEMPORARY ──────────────────────────────────────────────
+            const SizedBox(height: 16),
             ElevatedButton(
-              onPressed: () => _showFirstLayer(),
+              onPressed: isSdkReady ? () => _showFirstLayer() : null,
               child: const Text("Show First Layer"),
             ),
             ElevatedButton(
-              onPressed: () => _showSecondLayer(),
+              onPressed: isSdkReady ? () => _showSecondLayer() : null,
               child: const Text("Show Second Layer"),
             ),
             ElevatedButton(
-              onPressed: () => _showFirstLayer(
-                settings: bannerSettingsCustomizationExample1,
-              ),
+              onPressed: isSdkReady
+                  ? () => _showFirstLayer(
+                        settings: bannerSettingsCustomizationExample1,
+                      )
+                  : null,
               child: const Text("Customization Example 1"),
             ),
             ElevatedButton(
-              onPressed: () => _showFirstLayer(
-                settings: bannerSettingsCustomizationExample2,
-              ),
+              onPressed: isSdkReady
+                  ? () => _showFirstLayer(
+                        settings: bannerSettingsCustomizationExample2,
+                      )
+                  : null,
               child: const Text("Customization Example 2"),
             ),
             ElevatedButton(
-              onPressed: () => Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const CustomUIPage()),
-              ),
+              onPressed: isSdkReady
+                  ? () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const CustomUIPage()),
+                      )
+                  : null,
               child: const Text("Custom UI"),
             ),
             ElevatedButton(
-              onPressed: () => Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => const WebViewIntegrationPage()),
-              ),
+              onPressed: isSdkReady
+                  ? () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                const WebViewIntegrationPage()),
+                      )
+                  : null,
               child: const Text("Webview Integration"),
             ),
             ElevatedButton(
@@ -199,6 +236,19 @@ class HomePageState extends State<HomePage> {
         ),
       ),
     );
+  }
+
+  Color get _statusColor {
+    switch (_sdkStatus) {
+      case _SdkStatus.idle:
+        return Colors.grey.shade200;
+      case _SdkStatus.loading:
+        return Colors.blue.shade50;
+      case _SdkStatus.ready:
+        return Colors.green.shade100;
+      case _SdkStatus.error:
+        return Colors.red.shade100;
+    }
   }
 }
 
