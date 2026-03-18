@@ -11,6 +11,10 @@ import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.embedding.engine.plugins.FlutterPlugin.FlutterAssets
 import io.flutter.embedding.engine.plugins.activity.ActivityAware
 import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding
+import com.usercentrics.sdk.UsercentricsEvent
+import com.usercentrics.sdk.services.gpp.GppSectionChangePayload
+import com.usercentrics.sdk.flutter.serializer.serialize
+import io.flutter.plugin.common.EventChannel
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
@@ -24,6 +28,8 @@ class UsercentricsPlugin : FlutterPlugin,
     FlutterAssetsProvider {
 
     private lateinit var channel: MethodChannel
+    private var gppSectionChangeEventChannel: EventChannel? = null
+    private var gppSectionChangeSubscription: com.usercentrics.sdk.UsercentricsDisposableEvent<GppSectionChangePayload>? = null
     private var activityBinding: ActivityPluginBinding? = null
     private var flutterAssets: FlutterAssets? = null
 
@@ -63,7 +69,10 @@ class UsercentricsPlugin : FlutterPlugin,
             SetABTestingVariantBridge(),
             TrackBridge(),
             GetAdditionalConsentModeDataBridge(),
-            ClearUserSessionBridge()
+            ClearUserSessionBridge(),
+            GetGPPDataBridge(),
+            GetGPPStringBridge(),
+            SetGPPConsentBridge()
         ).associateBy { it.name }
     }
 
@@ -94,11 +103,29 @@ class UsercentricsPlugin : FlutterPlugin,
         flutterAssets = binding.flutterAssets
         channel = MethodChannel(binding.binaryMessenger, "usercentrics")
         channel.setMethodCallHandler(this)
+
+        gppSectionChangeEventChannel = EventChannel(binding.binaryMessenger, "usercentrics/onGppSectionChange")
+        gppSectionChangeEventChannel?.setStreamHandler(object : EventChannel.StreamHandler {
+            override fun onListen(arguments: Any?, events: EventChannel.EventSink?) {
+                gppSectionChangeSubscription = UsercentricsEvent.onGppSectionChange { payload ->
+                    events?.success(payload.serialize())
+                }
+            }
+
+            override fun onCancel(arguments: Any?) {
+                gppSectionChangeSubscription?.dispose()
+                gppSectionChangeSubscription = null
+            }
+        })
     }
 
     override fun onDetachedFromEngine(@NonNull binding: FlutterPlugin.FlutterPluginBinding) {
         flutterAssets = null
         channel.setMethodCallHandler(null)
+        gppSectionChangeSubscription?.dispose()
+        gppSectionChangeSubscription = null
+        gppSectionChangeEventChannel?.setStreamHandler(null)
+        gppSectionChangeEventChannel = null
     }
 
     override fun onAttachedToActivity(activityBinding: ActivityPluginBinding) {

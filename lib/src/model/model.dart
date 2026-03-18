@@ -1,4 +1,6 @@
 export 'additional_consent_mode_data.dart';
+export 'gpp_data.dart';
+export 'gpp_section_change_payload.dart';
 export 'analytics_event_type.dart';
 export 'banner_settings.dart';
 export 'button_settings.dart';

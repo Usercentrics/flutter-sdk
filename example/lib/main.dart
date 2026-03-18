@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:usercentrics_example/gpp_testing.dart';
 import 'package:usercentrics_example/webview_integration.dart';
 import 'package:usercentrics_sdk/usercentrics_sdk.dart';
 
@@ -222,6 +223,14 @@ class HomePageState extends State<HomePage> {
                       )
                   : null,
               child: const Text("Webview Integration"),
+            ),
+            ElevatedButton(
+              onPressed: () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const GppTestingPage()),
+              ),
+              child: const Text("GPP Testing"),
             ),
           ],
         ),

@@ -1,4 +1,8 @@
+import 'dart:async';
+
 import 'package:usercentrics_sdk/src/model/additional_consent_mode_data.dart';
+import 'package:usercentrics_sdk/src/model/gpp_data.dart';
+import 'package:usercentrics_sdk/src/model/gpp_section_change_payload.dart';
 import 'package:usercentrics_sdk/src/model/analytics_event_type.dart';
 import 'package:usercentrics_sdk/src/model/banner_settings.dart';
 import 'package:usercentrics_sdk/src/model/ccpa_data.dart';
@@ -356,5 +360,42 @@ class FakeUsercentricsPlatform extends UsercentricsPlatform {
   Future<UsercentricsReadyStatus> clearUserSession() {
     clearUserSessionCount++;
     return Future.value(clearUserSessionAnswer!);
+  }
+
+  var gppDataCount = 0;
+
+  @override
+  Future<GppData> get gppData {
+    gppDataCount++;
+    return Future.value(const GppData(
+      gppString: '',
+      applicableSections: [],
+      sections: {},
+    ));
+  }
+
+  var gppStringCount = 0;
+
+  @override
+  Future<String?> get gppString {
+    gppStringCount++;
+    return Future.value(null);
+  }
+
+  var setGPPConsentCount = 0;
+
+  @override
+  Future<void> setGPPConsent({
+    required String sectionName,
+    required String fieldName,
+    required dynamic value,
+  }) {
+    setGPPConsentCount++;
+    return Future.value(null);
+  }
+
+  @override
+  Stream<GppSectionChangePayload> get onGppSectionChange {
+    return const Stream.empty();
   }
 }

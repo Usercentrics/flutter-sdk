@@ -215,4 +215,26 @@ class Usercentrics {
   /// Clears the user session avoiding the sdk initialization.
   static Future<UsercentricsReadyStatus> clearUserSession() =>
       _delegate.clearUserSession();
+
+  /// Get the GPP data including the GPP string, applicable sections, and section field values.
+  static Future<GppData> get gppData => _delegate.gppData;
+
+  /// Get the GPP string encoding the user's consent preferences.
+  static Future<String?> get gppString => _delegate.gppString;
+
+  /// Set a GPP consent value for a specific section and field.
+  static Future<void> setGPPConsent({
+    required String sectionName,
+    required String fieldName,
+    required dynamic value,
+  }) =>
+      _delegate.setGPPConsent(
+        sectionName: sectionName,
+        fieldName: fieldName,
+        value: value,
+      );
+
+  /// Stream of GPP section change events.
+  static Stream<GppSectionChangePayload> get onGppSectionChange =>
+      _delegate.onGppSectionChange;
 }
