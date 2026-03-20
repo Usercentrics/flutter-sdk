@@ -37,7 +37,8 @@ class MethodChannelUsercentrics extends UsercentricsPlatform {
       this.clearUserSessionBridge = const MethodChannelClearUserSession(),
       this.getGPPDataBridge = const MethodChannelGetGPPData(),
       this.getGPPStringBridge = const MethodChannelGetGPPString(),
-      this.setGPPConsentBridge = const MethodChannelSetGPPConsent()});
+      this.setGPPConsentBridge = const MethodChannelSetGPPConsent(),
+      this.getDpsMetadataBridge = const MethodChannelGetDpsMetadata()});
 
   static const MethodChannel _channel = MethodChannel('usercentrics');
   static const EventChannel _gppSectionChangeEventChannel =
@@ -71,6 +72,7 @@ class MethodChannelUsercentrics extends UsercentricsPlatform {
   final GetGPPDataBridge getGPPDataBridge;
   final GetGPPStringBridge getGPPStringBridge;
   final SetGPPConsentBridge setGPPConsentBridge;
+  final GetDpsMetadataBridge getDpsMetadataBridge;
 
   @visibleForTesting
   Completer<Object?>? isReadyCompleter;
@@ -376,6 +378,17 @@ class MethodChannelUsercentrics extends UsercentricsPlatform {
       sectionName: sectionName,
       fieldName: fieldName,
       value: value,
+    );
+  }
+
+  @override
+  Future<Map<String, dynamic>?> getDpsMetadata({
+    required String templateId,
+  }) async {
+    await _ensureIsReady();
+    return await getDpsMetadataBridge.invoke(
+      channel: _channel,
+      templateId: templateId,
     );
   }
 
