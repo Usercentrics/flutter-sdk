@@ -54,7 +54,8 @@ public class SwiftUsercentricsPlugin: NSObject, FlutterPlugin {
             ClearUserSessionBridge(usercentrics: usercentrics),
             GetGPPDataBridge(usercentrics: usercentrics),
             GetGPPStringBridge(usercentrics: usercentrics),
-            SetGPPConsentBridge(usercentrics: usercentrics)
+            SetGPPConsentBridge(usercentrics: usercentrics),
+            GetDpsMetadataBridge(usercentrics: usercentrics)
         ]
         return bridges.reduce([String : MethodBridge]()) { dict, value in
             var dict = dict

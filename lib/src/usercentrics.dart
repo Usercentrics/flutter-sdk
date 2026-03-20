@@ -240,4 +240,12 @@ class Usercentrics {
   /// Stream of GPP section change events.
   static Stream<GppSectionChangePayload> get onGppSectionChange =>
       _delegate.onGppSectionChange;
+
+  /// Get the DPS metadata for a given template ID.
+  /// Returns null if the templateId is not found, an empty map if metadata is absent/empty,
+  /// and a parsed map for valid JSON metadata.
+  static Future<Map<String, dynamic>?> getDpsMetadata({
+    required String templateId,
+  }) =>
+      _delegate.getDpsMetadata(templateId: templateId);
 }

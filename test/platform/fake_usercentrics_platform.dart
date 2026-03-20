@@ -399,4 +399,17 @@ class FakeUsercentricsPlatform extends UsercentricsPlatform {
   Stream<GppSectionChangePayload> get onGppSectionChange {
     return const Stream.empty();
   }
+
+  Map<String, dynamic>? dpsMetadataAnswer;
+  var dpsMetadataCount = 0;
+  String? dpsMetadataTemplateIdArgument;
+
+  @override
+  Future<Map<String, dynamic>?> getDpsMetadata({
+    required String templateId,
+  }) {
+    dpsMetadataCount++;
+    dpsMetadataTemplateIdArgument = templateId;
+    return Future.value(dpsMetadataAnswer);
+  }
 }
