@@ -114,4 +114,8 @@ abstract class UsercentricsPlatform {
   });
 
   Stream<GppSectionChangePayload> get onGppSectionChange;
+
+  Future<Map<String, dynamic>?> getDpsMetadata({
+    required String templateId,
+  });
 }

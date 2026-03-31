@@ -72,7 +72,8 @@ class UsercentricsPlugin : FlutterPlugin,
             ClearUserSessionBridge(),
             GetGPPDataBridge(),
             GetGPPStringBridge(),
-            SetGPPConsentBridge()
+            SetGPPConsentBridge(),
+            GetDpsMetadataBridge()
         ).associateBy { it.name }
     }
 
