@@ -563,7 +563,9 @@ internal object GetCMPDataMock {
             "toggleActiveIcon" to null,
             "toggleDisabledBackground" to null,
             "toggleDisabledIcon" to null,
-            "secondLayerTab" to null
+            "secondLayerTab" to null,
+            "moreBtnText" to null,
+            "moreBtnBackground" to null
         ),
         "font" to mapOf(
             "family" to "BlinkMacSystemFont,-apple-system,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,Helvetica,Arial,sans-serif",

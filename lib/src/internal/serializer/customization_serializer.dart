@@ -44,6 +44,8 @@ class CustomizationColorSerializer {
       toggleDisabledBackground: value['toggleDisabledBackground'] ?? "",
       toggleDisabledIcon: value['toggleDisabledIcon'] ?? "",
       secondLayerTab: value['secondLayerTab'] ?? "",
+      moreBtnText: value['moreBtnText'] ?? "",
+      moreBtnBackground: value['moreBtnBackground'] ?? "",
     );
   }
 }
