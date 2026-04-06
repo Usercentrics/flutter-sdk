@@ -64,8 +64,31 @@ class GetCMPDataBridgeUnitTest {
         assertEquals("TCF", resultMap?.get("activeVariant"))
 
         assertNotNull(resultMap!!)
-        val expectedSettings = resultMap["settings"]
-        assertEquals(GetCMPDataMock.expectedSettings, expectedSettings)
+        val expectedSettings = resultMap["settings"] as? Map<*, *>
+        assertNotNull(expectedSettings)
+        assertEquals(GetCMPDataMock.expectedSettings["labels"], expectedSettings?.get("labels"))
+        val tcf2 = expectedSettings?.get("tcf2") as? Map<*, *>
+        assertNotNull(tcf2)
+        assertEquals("Privacy Information", tcf2?.get("firstLayerTitle"))
+        assertEquals("Privacy Settings Title", tcf2?.get("secondLayerTitle"))
+        assertEquals(5, tcf2?.get("cmpId"))
+        assertEquals(3, tcf2?.get("cmpVersion"))
+        assertEquals("SERVICE", tcf2?.get("scope"))
+        assertEquals(true, tcf2?.get("acmV2Enabled"))
+        assertEquals(listOf(1, 2, 3, 4, 5), tcf2?.get("selectedATPIds"))
+        val ccpa = expectedSettings?.get("ccpa") as? Map<*, *>
+        assertNotNull(ccpa)
+        assertEquals("Do not sell my personal information", ccpa?.get("optOutNoticeLabel"))
+        assertEquals("OK", ccpa?.get("btnSave"))
+        assertEquals(false, ccpa?.get("isActive"))
+        assertEquals(GetCMPDataMock.expectedSettings["languagesAvailable"], expectedSettings?.get("languagesAvailable"))
+        assertEquals(GetCMPDataMock.expectedSettings["publishedApps"], expectedSettings?.get("publishedApps"))
+        assertEquals("6.0.4", expectedSettings?.get("version"))
+        assertEquals("lQ_Dio7QL", expectedSettings?.get("settingsId"))
+        assertEquals("ALL", expectedSettings?.get("dpsDisplayFormat"))
+        assertEquals("CTDPA", expectedSettings?.get("framework"))
+        assertEquals(false, expectedSettings?.get("gppSignalingEnabled"))
+        assertEquals(false, expectedSettings?.get("gpcSignalHonoured"))
         assertEquals(GetCMPDataMock.expectedCategories, resultMap["categories"])
         assertEquals(GetCMPDataMock.expectedServices, resultMap["services"])
         assertEquals(GetCMPDataMock.expectedUserLocation, resultMap["userLocation"])
