@@ -143,11 +143,35 @@ jobs:
         working-directory: ./example/ios
         run: pod install
       - name: Run all tests
+        id: run_ios_tests
         working-directory: ./example/ios
         run: ../../scripts/ios_unit_tests.sh
+      - name: Extract iOS crash diagnostics on failure
+        if: ${{ failure() }}
+        working-directory: ./example/ios
+        run: |
+          set +e
+          mkdir -p ci-ios-diagnostics
+          xcrun xcresulttool get --legacy --path TestResults.xcresult --format json > ci-ios-diagnostics/xcresult-full.json
+          xcrun xcresulttool export diagnostics --path TestResults.xcresult --output-path ci-ios-diagnostics/TestResultsDiagnostics
+          xcrun xcresulttool export attachments --path TestResults.xcresult --output-path ci-ios-diagnostics/attachments
+          cp ~/Library/Logs/DiagnosticReports/*.crash ci-ios-diagnostics/ 2>/dev/null || true
+          cp ~/Library/Logs/DiagnosticReports/*.ips ci-ios-diagnostics/ 2>/dev/null || true
+          cp -R ~/Library/Developer/CoreSimulator/Devices/*/data/Library/Logs/CrashReporter ci-ios-diagnostics/CoreSimulatorCrashReporter 2>/dev/null || true
+          set -e
       - name: Show coverage report
+        if: ${{ always() }}
         working-directory: ./example/ios
         run: xcrun xccov view --report TestResults.xcresult
+      - name: Upload iOS test results and crash diagnostics
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: ios-test-results-and-diagnostics
+          if-no-files-found: warn
+          path: |
+            example/ios/TestResults.xcresult
+            example/ios/ci-ios-diagnostics
 
   build-android:
     name: Build Android Example
