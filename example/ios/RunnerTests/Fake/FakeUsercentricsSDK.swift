@@ -11,7 +11,7 @@ final class FakeUsercentricsSDK: UsercentricsSDK {
         getConsentsDataCount += 1
         return getConsentsData!
     }
-    
+
     var getAdditionalConsentModeAnswer: AdditionalConsentModeData?
     var getAdditionalConsentModeCount = 0
     override func getAdditionalConsentModeData() -> AdditionalConsentModeData {
@@ -76,7 +76,7 @@ final class FakeUsercentricsSDK: UsercentricsSDK {
     override func track(event: UsercentricsAnalyticsEventType) {
         trackCalls.append(event)
     }
-    
+
     var clearUSError: Error?
     var clearUSSuccess: UsercentricsReadyStatus?
 
@@ -93,81 +93,16 @@ final class FakeUsercentricsSDK: UsercentricsSDK {
         }
     }
 
-    // MSDK-3160: GPP API
-    var getGPPDataAnswer: GppData?
-    override func getGPPData() -> GppData {
-        return getGPPDataAnswer!
-    }
-
-    var getGPPStringAnswer: String?
-    override func getGPPString() -> String? {
-        return getGPPStringAnswer
-    }
-
-    override func setGPPConsent(sectionName: String, fieldName: String, value: Any) {}
-
     // MSDK-3297: denyAllForTCF gained unsavedVendorLIDecisions parameter
     var denyAllForTCFAnswer: [UsercentricsServiceConsent]?
+    var denyAllForTCFUnsavedVendorLIDecisionsArg: [KotlinInt: KotlinBoolean]?
     override func denyAllForTCF(
         fromLayer: TCFDecisionUILayer,
         consentType: UsercentricsConsentType,
         unsavedPurposeLIDecisions: [KotlinInt: KotlinBoolean]?,
         unsavedVendorLIDecisions: [KotlinInt: KotlinBoolean]?
     ) -> [UsercentricsServiceConsent] {
+        denyAllForTCFUnsavedVendorLIDecisionsArg = unsavedVendorLIDecisions
         return denyAllForTCFAnswer!
-    }
-
-    override func acceptAll(consentType: UsercentricsConsentType) -> [UsercentricsServiceConsent] {
-        fatalError("not implemented")
-    }
-
-    override func acceptAllForTCF(fromLayer: TCFDecisionUILayer, consentType: UsercentricsConsentType) -> [UsercentricsServiceConsent] {
-        fatalError("not implemented")
-    }
-
-    override func changeLanguage(language: String, onSuccess: @escaping () -> Void, onFailure: @escaping (Error) -> Void) {
-        fatalError("not implemented")
-    }
-
-    override func denyAll(consentType: UsercentricsConsentType) -> [UsercentricsServiceConsent] {
-        fatalError("not implemented")
-    }
-
-    override func getTCFData(callback: @escaping (TCFData) -> Void) {
-        fatalError("not implemented")
-    }
-
-    override func getUIApplication(predefinedUIVariant: PredefinedUIVariant) -> PredefinedUIApplicationManager {
-        fatalError("not implemented")
-    }
-
-    override func getUIFactoryHolder(abTestingVariant: String?, predefinedUIVariant: PredefinedUIVariant?, callback: @escaping (PredefinedUIFactoryHolder) -> Void) {
-        fatalError("not implemented")
-    }
-
-    override func getUSPData() -> CCPAData {
-        fatalError("not implemented")
-    }
-
-    override func getUserSessionData() -> String {
-        fatalError("not implemented")
-    }
-
-    override func saveDecisions(decisions: [UserDecision], consentType: UsercentricsConsentType) -> [UsercentricsServiceConsent] {
-        fatalError("not implemented")
-    }
-
-    override func saveDecisionsForTCF(tcfDecisions: TCFUserDecisions, fromLayer: TCFDecisionUILayer, serviceDecisions: [UserDecision], consentType: UsercentricsConsentType) -> [UsercentricsServiceConsent] {
-        fatalError("not implemented")
-    }
-
-    override func saveOptOutForCCPA(isOptedOut: Bool, consentType: UsercentricsConsentType) -> [UsercentricsServiceConsent] {
-        fatalError("not implemented")
-    }
-
-    override func setCMPId(id: Int32) {}
-
-    override func shouldCollectConsent() -> Bool {
-        fatalError("not implemented")
     }
 }
