@@ -4,6 +4,6 @@ rm -rf TestResults.xcresult
 
 xcodebuild test -workspace 'Runner.xcworkspace' \
                 -scheme 'Runner' \
-                -destination 'platform=iOS Simulator,name=iPad (10th generation),OS=18.2' \
+                -destination 'platform=macOS,arch=arm64,variant=Designed for [iPad,iPhone]' \
                 -enableCodeCoverage YES \
                 -resultBundlePath TestResults
