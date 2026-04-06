@@ -45,7 +45,7 @@ class _GppTestingPageState extends State<GppTestingPage> {
   Future<void> _fetchGppData() async {
     try {
       final value = await Usercentrics.gppData;
-      final encoder = const JsonEncoder.withIndent('  ');
+      const encoder = JsonEncoder.withIndent('  ');
       final json = encoder.convert({
         'gppString': value.gppString,
         'applicableSections': value.applicableSections,
@@ -146,7 +146,8 @@ class _GppTestingPageState extends State<GppTestingPage> {
                   const SizedBox(height: 8),
                   Text(
                     _lastEvent,
-                    style: const TextStyle(fontFamily: 'monospace', fontSize: 12),
+                    style:
+                        const TextStyle(fontFamily: 'monospace', fontSize: 12),
                   ),
                 ],
               ),
