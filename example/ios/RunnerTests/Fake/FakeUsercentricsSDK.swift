@@ -79,9 +79,9 @@ final class FakeUsercentricsSDK: UsercentricsSDK {
     
     var clearUSError: Error?
     var clearUSSuccess: UsercentricsReadyStatus?
-    
+
     override func clearUserSession(onSuccess: @escaping (UsercentricsReadyStatus) -> Void, onError: @escaping (Error) -> Void) {
-       
+
         if let clearUSError = clearUSError {
             onError(clearUSError)
             return
@@ -91,5 +91,29 @@ final class FakeUsercentricsSDK: UsercentricsSDK {
             onSuccess(clearUSSuccess!)
             return
         }
+    }
+
+    // MSDK-3160: GPP API
+    var getGPPDataAnswer: GppData?
+    override func getGPPData() -> GppData {
+        return getGPPDataAnswer!
+    }
+
+    var getGPPStringAnswer: String?
+    override func getGPPString() -> String? {
+        return getGPPStringAnswer
+    }
+
+    override func setGPPConsent(sectionName: String, fieldName: String, value: Any) {}
+
+    // MSDK-3297: denyAllForTCF gained unsavedVendorLIDecisions parameter
+    var denyAllForTCFAnswer: [UsercentricsServiceConsent]?
+    override func denyAllForTCF(
+        fromLayer: TCFDecisionUILayer,
+        consentType: UsercentricsConsentType,
+        unsavedPurposeLIDecisions: [KotlinInt: KotlinBoolean]?,
+        unsavedVendorLIDecisions: [KotlinInt: KotlinBoolean]?
+    ) -> [UsercentricsServiceConsent] {
+        return denyAllForTCFAnswer!
     }
 }
