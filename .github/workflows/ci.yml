@@ -141,17 +141,9 @@ jobs:
         run: flutter pub get
       - name: Setup iOS Simulator
         run: |
-          BUNDLED_RUNTIME="/Applications/Xcode_16.2.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS.simruntime"
-          if [ -d "$BUNDLED_RUNTIME" ]; then
-            echo "Registering bundled runtime: $BUNDLED_RUNTIME"
-            xcrun simctl runtime add "$BUNDLED_RUNTIME" 2>&1 || true
-          else
-            echo "Bundled runtime not found at expected path, searching..."
-            find /Applications/Xcode_16.2.app -name "iOS.simruntime" -type d 2>/dev/null | head -3
-          fi
-          xcrun simctl create "iPhone 16 Pro" "iPhone 16 Pro" com.apple.CoreSimulator.SimRuntime.iOS-18-2 2>/dev/null || true
-          xcrun simctl list runtimes
-          xcrun simctl list devices | grep "iPhone 16 Pro" || true
+          xcrun simctl runtime install "iOS 18.2"
+          xcrun simctl create "iPhone 16 Pro" "iPhone 16 Pro" com.apple.CoreSimulator.SimRuntime.iOS-18-2
+          xcrun simctl list devices | grep "iPhone 16 Pro"
       - name: Setup Pods
         working-directory: ./example/ios
         run: pod install
