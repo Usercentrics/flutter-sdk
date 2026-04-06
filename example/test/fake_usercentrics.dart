@@ -178,4 +178,9 @@ class FakeUsercentrics extends UsercentricsPlatform {
   @override
   Stream<GppSectionChangePayload> get onGppSectionChange =>
       throw UnimplementedError();
+
+  @override
+  Future<Map<String, dynamic>?> getDpsMetadata({required String templateId}) {
+    throw UnimplementedError();
+  }
 }
