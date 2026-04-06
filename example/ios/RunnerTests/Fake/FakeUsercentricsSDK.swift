@@ -51,6 +51,13 @@ final class FakeUsercentricsSDK: UsercentricsSDK {
         return getCMPDataAnswer!
     }
 
+    var getDpsMetadataAnswer: [String: Any]?
+    var getDpsMetadataTemplateIdArg: String?
+    override func getDpsMetadata(templateId: String) -> [String: Any]? {
+        getDpsMetadataTemplateIdArg = templateId
+        return getDpsMetadataAnswer
+    }
+
     var getABTestingVariantAnswer: String?
     var getABTestingVariantCount = 0
     override func getABTestingVariant() -> String? {
