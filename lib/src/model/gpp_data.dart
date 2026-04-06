@@ -26,9 +26,7 @@ class GppData {
 
   @override
   int get hashCode =>
-      gppString.hashCode +
-      applicableSections.hashCode +
-      sections.hashCode;
+      gppString.hashCode + applicableSections.hashCode + sections.hashCode;
 
   @override
   String toString() =>
@@ -45,8 +43,7 @@ bool _listEquals<T>(List<T> a, List<T> b) {
 }
 
 bool _sectionsEquals(
-    Map<String, Map<String, dynamic>> a,
-    Map<String, Map<String, dynamic>> b) {
+    Map<String, Map<String, dynamic>> a, Map<String, Map<String, dynamic>> b) {
   if (identical(a, b)) return true;
   if (a.length != b.length) return false;
   for (final key in a.keys) {
@@ -55,7 +52,8 @@ bool _sectionsEquals(
     final bInner = b[key]!;
     if (aInner.length != bInner.length) return false;
     for (final innerKey in aInner.keys) {
-      if (!bInner.containsKey(innerKey) || aInner[innerKey] != bInner[innerKey]) {
+      if (!bInner.containsKey(innerKey) ||
+          aInner[innerKey] != bInner[innerKey]) {
         return false;
       }
     }
