@@ -13,6 +13,7 @@ export 'consent_type_serializer.dart';
 export 'customization_serializer.dart';
 export 'first_layer_style_settings_serializer.dart';
 export 'general_style_settings_serializer.dart';
+export 'gpp_data_serializer.dart';
 export 'initialize_options_serializer.dart';
 export 'labels_serializer.dart';
 export 'layout_serializer.dart';
