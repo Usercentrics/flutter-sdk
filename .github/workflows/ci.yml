@@ -122,8 +122,8 @@ jobs:
   test-ios:
     name: Test iOS
     needs: [ lint, format, pub-dry-run ]
-    runs-on: macos-14
-    timeout-minutes: 20
+    runs-on: macos-15
+    timeout-minutes: 45
 
     steps:
       - name: Setup code
@@ -139,6 +139,8 @@ jobs:
           channel: 'stable'
       - name: Get dependencies
         run: flutter pub get
+      - name: Install iOS Simulator Runtime
+        run: xcodebuild -downloadPlatform iOS
       - name: Setup Pods
         working-directory: ./example/ios
         run: pod install
