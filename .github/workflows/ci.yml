@@ -139,33 +139,6 @@ jobs:
           channel: 'stable'
       - name: Get dependencies
         run: flutter pub get
-      - name: Setup iOS Simulator
-        run: |
-          echo "=== CoreSimulator Volumes ==="
-          ls /Library/Developer/CoreSimulator/Volumes/ 2>/dev/null || echo "No volumes dir"
-          echo "=== CoreSimulator Runtimes ==="
-          ls /Library/Developer/CoreSimulator/Profiles/Runtimes/ 2>/dev/null || echo "No runtimes dir"
-          echo "=== Searching for .simruntime in Xcode bundle ==="
-          find /Applications/Xcode_16.2.app -name "*.simruntime" -type d 2>/dev/null | head -5 || echo "None found"
-          echo "=== Searching for .simruntime in CoreSimulator Volumes ==="
-          find /Library/Developer/CoreSimulator -name "*.simruntime" -type d 2>/dev/null | head -5 || echo "None found"
-          echo "=== scan-and-mount ==="
-          xcrun simctl runtime scan-and-mount 2>&1 || true
-          echo "=== Runtime list ==="
-          xcrun simctl runtime list -v
-          echo "=== Trying to add from any found path ==="
-          RUNTIME=$(find /Library/Developer/CoreSimulator/Volumes -name "*.simruntime" -type d 2>/dev/null | grep -i "iOS" | head -1)
-          if [ -z "$RUNTIME" ]; then
-            RUNTIME=$(find /Applications/Xcode_16.2.app -name "iOS.simruntime" -type d 2>/dev/null | head -1)
-          fi
-          if [ -n "$RUNTIME" ]; then
-            echo "Adding runtime: $RUNTIME"
-            xcrun simctl runtime add "$RUNTIME" 2>&1 || true
-          else
-            echo "NO RUNTIME FOUND ANYWHERE"
-          fi
-          echo "=== Final device list ==="
-          xcrun simctl list
       - name: Setup Pods
         working-directory: ./example/ios
         run: pod install

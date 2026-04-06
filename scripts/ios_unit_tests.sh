@@ -4,6 +4,6 @@ rm -rf TestResults.xcresult
 
 xcodebuild test -workspace 'Runner.xcworkspace' \
                 -scheme 'Runner' \
-                -destination 'platform=iOS Simulator,name=iPhone 16 Pro' \
+                -destination 'platform=iOS Simulator,name=iPhone 16 Pro,OS=18.5' \
                 -enableCodeCoverage YES \
                 -resultBundlePath TestResults
