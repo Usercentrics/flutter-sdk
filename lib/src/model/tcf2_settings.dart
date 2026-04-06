@@ -38,7 +38,7 @@ class TCF2Settings {
       required this.disabledSpecialFeatures,
       required this.firstLayerShowDescriptions,
       required this.hideNonIabOnFirstLayer,
-      required this.resurfacePeriodEnded,
+      required this.resurfacePeriod,
       required this.resurfacePurposeChanged,
       required this.resurfaceVendorAdded,
       required this.firstLayerDescription,
@@ -98,7 +98,7 @@ class TCF2Settings {
   final List<int> disabledSpecialFeatures;
   final bool firstLayerShowDescriptions;
   final bool hideNonIabOnFirstLayer;
-  final bool resurfacePeriodEnded;
+  final int resurfacePeriod;
   final bool resurfacePurposeChanged;
   final bool resurfaceVendorAdded;
   final String firstLayerDescription;
@@ -165,7 +165,7 @@ class TCF2Settings {
           listEquals(disabledSpecialFeatures, other.disabledSpecialFeatures) &&
           firstLayerShowDescriptions == other.firstLayerShowDescriptions &&
           hideNonIabOnFirstLayer == other.hideNonIabOnFirstLayer &&
-          resurfacePeriodEnded == other.resurfacePeriodEnded &&
+          resurfacePeriod == other.resurfacePeriod &&
           resurfacePurposeChanged == other.resurfacePurposeChanged &&
           resurfaceVendorAdded == other.resurfaceVendorAdded &&
           firstLayerDescription == other.firstLayerDescription &&
@@ -229,7 +229,7 @@ class TCF2Settings {
       disabledSpecialFeatures.hashCode +
       firstLayerShowDescriptions.hashCode +
       hideNonIabOnFirstLayer.hashCode +
-      resurfacePeriodEnded.hashCode +
+      resurfacePeriod.hashCode +
       resurfacePurposeChanged.hashCode +
       resurfaceVendorAdded.hashCode +
       firstLayerDescription.hashCode +

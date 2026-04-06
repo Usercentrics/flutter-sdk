@@ -41,7 +41,9 @@ class SettingsSerializer {
             .map((e) => PublishedAppSerializer.deserialize(e))
             .toList(),
         renewConsentsTimestamp: value['renewConsentsTimestamp'],
-        consentWebhook: value['consentWebhook']);
+        consentWebhook: value['consentWebhook'],
+        gppSignalingEnabled: value['gppSignalingEnabled'] ?? false,
+        gpcSignalHonoured: value['gpcSignalHonoured'] ?? false);
   }
 }
 

@@ -41,7 +41,7 @@ class TCF2SettingsSerializer {
             value['disabledSpecialFeatures']?.cast<int>() ?? [],
         firstLayerShowDescriptions: value['firstLayerShowDescriptions'],
         hideNonIabOnFirstLayer: value['hideNonIabOnFirstLayer'],
-        resurfacePeriodEnded: value['resurfacePeriodEnded'],
+        resurfacePeriod: value['resurfacePeriod'],
         resurfacePurposeChanged: value['resurfacePurposeChanged'],
         resurfaceVendorAdded: value['resurfaceVendorAdded'],
         firstLayerDescription: value['firstLayerDescription'] ?? "",

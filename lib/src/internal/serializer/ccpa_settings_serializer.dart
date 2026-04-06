@@ -18,6 +18,22 @@ class CCPASettingsSerializer {
       secondLayerDescription: value['secondLayerDescription'] ?? "",
       secondLayerHideLanguageSwitch: value['secondLayerHideLanguageSwitch'],
       btnMoreInfo: value['btnMoreInfo'] ?? "",
+      mspaCoveredTransaction: value['mspaCoveredTransaction'] ?? false,
+      mspaMode: MspaModeSerializer.deserialize(value['mspaMode']),
     );
+  }
+}
+
+class MspaModeSerializer {
+  static MspaMode? deserialize(dynamic value) {
+    switch (value) {
+      case 'NOT_APPLICABLE':
+        return MspaMode.notApplicable;
+      case 'SERVICE_PROVIDER':
+        return MspaMode.serviceProvider;
+      case 'OPT_OUT_OPTION':
+        return MspaMode.optOutOption;
+    }
+    return null;
   }
 }

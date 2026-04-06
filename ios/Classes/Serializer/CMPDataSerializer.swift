@@ -43,7 +43,9 @@ extension UsercentricsSettings {
             "framework": (self.framework?.name ?? "") as Any,
             "publishedApps": (self.publishedApps?.map { $0.serialize() } ?? nil) as Any,
             "renewConsentsTimestamp": self.renewConsentsTimestamp as Any,
-            "consentWebhook": self.consentWebhook as Any
+            "consentWebhook": self.consentWebhook as Any,
+            "gppSignalingEnabled": self.gppSignalingEnabled,
+            "gpcSignalHonoured": self.gpcSignalHonoured
         ]
     }
 }
@@ -146,6 +148,8 @@ extension CCPASettings {
             "secondLayerDescription" : self.secondLayerDescription as Any,
             "secondLayerHideLanguageSwitch" : self.secondLayerHideLanguageSwitch,
             "btnMoreInfo" : self.btnMoreInfo as Any,
+            "mspaCoveredTransaction" : self.mspaCoveredTransaction,
+            "mspaMode" : self.mspaMode?.name as Any,
         ]
     }
 }
@@ -195,6 +199,7 @@ extension TCF2Settings {
             "disabledSpecialFeatures" : self.disabledSpecialFeatures,
             "firstLayerShowDescriptions" : self.firstLayerShowDescriptions,
             "hideNonIabOnFirstLayer" : self.hideNonIabOnFirstLayer,
+            "resurfacePeriod" : self.resurfacePeriod,
             "resurfacePurposeChanged" : self.resurfacePurposeChanged,
             "resurfaceVendorAdded" : self.resurfaceVendorAdded,
             "firstLayerDescription" : self.firstLayerDescription as Any,
