@@ -227,8 +227,7 @@ class HomePageState extends State<HomePage> {
             ElevatedButton(
               onPressed: () => Navigator.push(
                 context,
-                MaterialPageRoute(
-                    builder: (context) => const GppTestingPage()),
+                MaterialPageRoute(builder: (context) => const GppTestingPage()),
               ),
               child: const Text("GPP Testing"),
             ),
