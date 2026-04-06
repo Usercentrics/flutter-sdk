@@ -106,13 +106,11 @@ final class FakeUsercentricsSDK: UsercentricsSDK {
 
     override func setGPPConsent(sectionName: String, fieldName: String, value: Any) {}
 
-    // MSDK-3297: denyAllForTCF gained unsavedVendorLIDecisions parameter
     var denyAllForTCFAnswer: [UsercentricsServiceConsent]?
     override func denyAllForTCF(
         fromLayer: TCFDecisionUILayer,
         consentType: UsercentricsConsentType,
-        unsavedPurposeLIDecisions: [KotlinInt: KotlinBoolean]?,
-        unsavedVendorLIDecisions: [KotlinInt: KotlinBoolean]?
+        unsavedPurposeLIDecisions: [KotlinInt: KotlinBoolean]?
     ) -> [UsercentricsServiceConsent] {
         return denyAllForTCFAnswer!
     }
