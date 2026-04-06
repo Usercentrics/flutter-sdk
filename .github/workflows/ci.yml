@@ -185,6 +185,8 @@ jobs:
           channel: 'stable'
       - name: Get dependencies
         run: flutter pub get
+      - name: Update CocoaPods repo
+        run: pod repo update
       - name: Build
         working-directory: ./example
         run: flutter build ios --debug --no-codesign --simulator
