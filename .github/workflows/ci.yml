@@ -187,9 +187,7 @@ jobs:
         run: flutter pub get
       - name: Build
         working-directory: ./example
-        run: |
-          cd ios && pod install --repo-update && cd ..
-          flutter build ios --debug --no-codesign --simulator
+        run: flutter build ios --debug --no-codesign --simulator
 
   # https://dart.dev/tools/pub/automated-publishing
   release:
