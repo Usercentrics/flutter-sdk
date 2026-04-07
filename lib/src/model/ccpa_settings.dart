@@ -14,6 +14,8 @@ class CCPASettings {
     required this.secondLayerDescription,
     required this.secondLayerHideLanguageSwitch,
     required this.btnMoreInfo,
+    required this.mspaCoveredTransaction,
+    this.mspaMode,
   });
 
   final String optOutNoticeLabel;
@@ -30,6 +32,8 @@ class CCPASettings {
   final String secondLayerDescription;
   final bool secondLayerHideLanguageSwitch;
   final String btnMoreInfo;
+  final bool mspaCoveredTransaction;
+  final MspaMode? mspaMode;
 
   @override
   bool operator ==(Object other) =>
@@ -51,7 +55,9 @@ class CCPASettings {
           secondLayerDescription == other.secondLayerDescription &&
           secondLayerHideLanguageSwitch ==
               other.secondLayerHideLanguageSwitch &&
-          btnMoreInfo == other.btnMoreInfo;
+          btnMoreInfo == other.btnMoreInfo &&
+          mspaCoveredTransaction == other.mspaCoveredTransaction &&
+          mspaMode == other.mspaMode;
 
   @override
   int get hashCode =>
@@ -68,8 +74,12 @@ class CCPASettings {
       secondLayerTitle.hashCode +
       secondLayerDescription.hashCode +
       secondLayerHideLanguageSwitch.hashCode +
-      btnMoreInfo.hashCode;
+      btnMoreInfo.hashCode +
+      mspaCoveredTransaction.hashCode +
+      mspaMode.hashCode;
 
   @override
   String toString() => "$CCPASettings($hashCode)";
 }
+
+enum MspaMode { notApplicable, serviceProvider, optOutOption }

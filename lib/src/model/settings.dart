@@ -35,6 +35,8 @@ class UsercentricsSettings {
     required this.publishedApps,
     required this.renewConsentsTimestamp,
     required this.consentWebhook,
+    required this.gppSignalingEnabled,
+    required this.gpcSignalHonoured,
   });
 
   final UsercentricsLabels labels;
@@ -65,6 +67,8 @@ class UsercentricsSettings {
   final List<PublishedApp>? publishedApps;
   final int? renewConsentsTimestamp;
   final bool? consentWebhook;
+  final bool gppSignalingEnabled;
+  final bool gpcSignalHonoured;
 
   @override
   bool operator ==(Object other) =>
@@ -101,7 +105,9 @@ class UsercentricsSettings {
           framework == other.framework &&
           listEquals(publishedApps, other.publishedApps) &&
           renewConsentsTimestamp == other.renewConsentsTimestamp &&
-          consentWebhook == other.consentWebhook;
+          consentWebhook == other.consentWebhook &&
+          gppSignalingEnabled == other.gppSignalingEnabled &&
+          gpcSignalHonoured == other.gpcSignalHonoured;
 
   @override
   int get hashCode =>
@@ -132,7 +138,9 @@ class UsercentricsSettings {
       framework.hashCode +
       publishedApps.hashCode +
       renewConsentsTimestamp.hashCode +
-      consentWebhook.hashCode;
+      consentWebhook.hashCode +
+      gppSignalingEnabled.hashCode +
+      gpcSignalHonoured.hashCode;
 
   @override
   String toString() =>

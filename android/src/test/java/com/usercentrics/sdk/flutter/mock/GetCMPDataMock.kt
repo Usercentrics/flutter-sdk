@@ -501,6 +501,7 @@ internal object GetCMPDataMock {
         "disabledSpecialFeatures" to listOf<Any>(),
         "firstLayerShowDescriptions" to false,
         "hideNonIabOnFirstLayer" to false,
+        "resurfacePeriod" to 0,
         "resurfacePurposeChanged" to true,
         "resurfaceVendorAdded" to true,
         "firstLayerDescription" to "We and our third-party vendors use technologies (e.g. cookies) to store and/or access information on user's devices in order to process personal data such as IP addresses or browsing data. You may consent to the processing of your personal data for the listed purposes below. Alternatively you can set your preferences before consenting or refuse to consent. Please note that some vendors may process your personal data based on their legitimate business interest and do not ask for your consent. To exercise your right to object to processing based on legitimate interest please view our vendorlist.",
@@ -542,6 +543,8 @@ internal object GetCMPDataMock {
         "secondLayerDescription" to "Here you can find detailed information about the categories of personal information we collect and the purposes for which information may be used and which Data Processing Services may have access to this information.",
         "secondLayerHideLanguageSwitch" to false,
         "btnMoreInfo" to "More Information",
+        "mspaCoveredTransaction" to false,
+        "mspaMode" to null,
     )
     private val expectedCustomization = mapOf(
         "color" to mapOf(
@@ -611,7 +614,9 @@ internal object GetCMPDataMock {
             )
         ),
         "renewConsentsTimestamp" to 1000L,
-        "consentWebhook" to true
+        "consentWebhook" to true,
+        "gppSignalingEnabled" to false,
+        "gpcSignalHonoured" to false
     )
 
     val expectedCategories = listOf(

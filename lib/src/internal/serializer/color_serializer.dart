@@ -14,9 +14,14 @@ extension _HexColor on Color {
   // }
 
   /// Prefixes a hash sign if [leadingHashSign] is set to `true` (default is `true`).
+  // ignore: deprecated_member_use
   String toHex({bool leadingHashSign = true}) => '${leadingHashSign ? '#' : ''}'
+      // ignore: deprecated_member_use
       '${alpha.toRadixString(16).padLeft(2, '0')}'
+      // ignore: deprecated_member_use
       '${red.toRadixString(16).padLeft(2, '0')}'
+      // ignore: deprecated_member_use
       '${green.toRadixString(16).padLeft(2, '0')}'
+      // ignore: deprecated_member_use
       '${blue.toRadixString(16).padLeft(2, '0')}';
 }

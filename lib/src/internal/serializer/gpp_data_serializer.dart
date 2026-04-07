@@ -13,8 +13,7 @@ class GppDataSerializer {
 
     return GppData(
       gppString: value['gppString'] as String,
-      applicableSections:
-          (value['applicableSections'] as List).cast<int>(),
+      applicableSections: (value['applicableSections'] as List).cast<int>(),
       sections: sections,
     );
   }

@@ -59,7 +59,9 @@ private fun UsercentricsSettings.serialize(): Any {
         "framework" to (framework?.name ?: ""),
         "publishedApps" to publishedApps?.map { it.serialize() },
         "renewConsentsTimestamp" to renewConsentsTimestamp,
-        "consentWebhook" to consentWebhook
+        "consentWebhook" to consentWebhook,
+        "gppSignalingEnabled" to gppSignalingEnabled,
+        "gpcSignalHonoured" to gpcSignalHonoured
     )
 }
 
@@ -158,6 +160,8 @@ private fun CCPASettings.serialize(): Any {
         "secondLayerDescription" to secondLayerDescription,
         "secondLayerHideLanguageSwitch" to secondLayerHideLanguageSwitch,
         "btnMoreInfo" to btnMoreInfo,
+        "mspaCoveredTransaction" to mspaCoveredTransaction,
+        "mspaMode" to mspaMode?.name,
     )
 }
 
@@ -204,6 +208,7 @@ private fun TCF2Settings.serialize(): Any {
         "disabledSpecialFeatures" to disabledSpecialFeatures,
         "firstLayerShowDescriptions" to firstLayerShowDescriptions,
         "hideNonIabOnFirstLayer" to hideNonIabOnFirstLayer,
+        "resurfacePeriod" to resurfacePeriod,
         "resurfacePurposeChanged" to resurfacePurposeChanged,
         "resurfaceVendorAdded" to resurfaceVendorAdded,
         "firstLayerDescription" to firstLayerDescription,

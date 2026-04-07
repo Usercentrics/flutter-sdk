@@ -11,7 +11,7 @@ final class FakeUsercentricsSDK: UsercentricsSDK {
         getConsentsDataCount += 1
         return getConsentsData!
     }
-    
+
     var getAdditionalConsentModeAnswer: AdditionalConsentModeData?
     var getAdditionalConsentModeCount = 0
     override func getAdditionalConsentModeData() -> AdditionalConsentModeData {
@@ -51,6 +51,13 @@ final class FakeUsercentricsSDK: UsercentricsSDK {
         return getCMPDataAnswer!
     }
 
+    var getDpsMetadataAnswer: [String: Any]?
+    var getDpsMetadataTemplateIdArg: String?
+    override func getDpsMetadata(templateId: String) -> [String: Any]? {
+        getDpsMetadataTemplateIdArg = templateId
+        return getDpsMetadataAnswer
+    }
+
     var getABTestingVariantAnswer: String?
     var getABTestingVariantCount = 0
     override func getABTestingVariant() -> String? {
@@ -69,12 +76,12 @@ final class FakeUsercentricsSDK: UsercentricsSDK {
     override func track(event: UsercentricsAnalyticsEventType) {
         trackCalls.append(event)
     }
-    
+
     var clearUSError: Error?
     var clearUSSuccess: UsercentricsReadyStatus?
-    
+
     override func clearUserSession(onSuccess: @escaping (UsercentricsReadyStatus) -> Void, onError: @escaping (Error) -> Void) {
-       
+
         if let clearUSError = clearUSError {
             onError(clearUSError)
             return
@@ -84,5 +91,18 @@ final class FakeUsercentricsSDK: UsercentricsSDK {
             onSuccess(clearUSSuccess!)
             return
         }
+    }
+
+    // MSDK-3297: denyAllForTCF gained unsavedVendorLIDecisions parameter
+    var denyAllForTCFAnswer: [UsercentricsServiceConsent]?
+    var denyAllForTCFUnsavedVendorLIDecisionsArg: [KotlinInt: KotlinBoolean]?
+    override func denyAllForTCF(
+        fromLayer: TCFDecisionUILayer,
+        consentType: UsercentricsConsentType,
+        unsavedPurposeLIDecisions: [KotlinInt: KotlinBoolean]?,
+        unsavedVendorLIDecisions: [KotlinInt: KotlinBoolean]?
+    ) -> [UsercentricsServiceConsent] {
+        denyAllForTCFUnsavedVendorLIDecisionsArg = unsavedVendorLIDecisions
+        return denyAllForTCFAnswer!
     }
 }

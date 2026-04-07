@@ -141,7 +141,7 @@ const _responseTCF2Settings = {
   "disabledSpecialFeatures": [],
   "firstLayerShowDescriptions": false,
   "hideNonIabOnFirstLayer": false,
-  "resurfacePeriodEnded": true,
+  "resurfacePeriod": 1,
   "resurfacePurposeChanged": true,
   "resurfaceVendorAdded": true,
   "firstLayerDescription":
@@ -598,7 +598,7 @@ const _expectedTCF2Settings = TCF2Settings(
   tabsVendorsLabel: "Vendors",
   labelsIabVendors: "Vendors who are part of the IAB TCF",
   buttonsDenyAllLabel: "Deny all",
-  resurfacePeriodEnded: true,
+  resurfacePeriod: 1,
   vendorSpecialPurposes: "Special Purposes",
   firstLayerAdditionalInfo: "",
   resurfaceVendorAdded: true,
@@ -679,6 +679,7 @@ const _expectedCCPASettings = CCPASettings(
   reshowAfterDays: 365,
   firstLayerMobileDescription:
       "We and our partners are using technologies like cookies and process personal data in order to improve your experience. In case of sale of your personal information you may exercise your consumer right to opt-out by activating the toggle 'Do Not Sell My Personal Information' below.",
+  mspaCoveredTransaction: false,
 );
 const _expectedCustomization = UsercentricsCustomization(
   color: CustomizationColor(
@@ -748,4 +749,6 @@ const _expectedSettings = UsercentricsSettings(
   ],
   renewConsentsTimestamp: 1000,
   consentWebhook: true,
+  gppSignalingEnabled: false,
+  gpcSignalHonoured: false,
 );

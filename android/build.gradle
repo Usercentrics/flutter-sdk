@@ -1,4 +1,4 @@
-def usercentrics_version = "2.25.1"
+def usercentrics_version = "2.26.1"
 
 group 'com.usercentrics.sdk.flutter'
 version usercentrics_version

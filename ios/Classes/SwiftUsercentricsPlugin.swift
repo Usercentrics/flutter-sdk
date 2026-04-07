@@ -7,11 +7,18 @@ public class SwiftUsercentricsPlugin: NSObject, FlutterPlugin {
   private static var gppStreamHandler: GppSectionChangeStreamHandler?
 
   public static func register(with registrar: FlutterPluginRegistrar) {
-    let channel = FlutterMethodChannel(name: "usercentrics", binaryMessenger: registrar.messenger())
+    // XCTest bootstraps app plugins differently; avoid channel registration there.
+    // Plugin behavior is covered by dedicated bridge tests.
+    if ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] != nil {
+      return
+    }
+
+    let messenger = registrar.messenger()
+    let channel = FlutterMethodChannel(name: "usercentrics", binaryMessenger: messenger)
     let instance = SwiftUsercentricsPlugin(assetProvider: FlutterAssetProviderImpl(registrar: registrar))
     registrar.addMethodCallDelegate(instance, channel: channel)
 
-    let gppEventChannel = FlutterEventChannel(name: "usercentrics/onGppSectionChange", binaryMessenger: registrar.messenger())
+    let gppEventChannel = FlutterEventChannel(name: "usercentrics/onGppSectionChange", binaryMessenger: messenger)
     let streamHandler = GppSectionChangeStreamHandler()
     gppEventChannel.setStreamHandler(streamHandler)
     gppStreamHandler = streamHandler
