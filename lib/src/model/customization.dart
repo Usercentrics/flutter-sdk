@@ -85,6 +85,8 @@ class CustomizationColor {
     required this.toggleDisabledBackground,
     required this.toggleDisabledIcon,
     required this.secondLayerTab,
+    required this.moreBtnText,
+    required this.moreBtnBackground,
   });
 
   final String primary;
@@ -106,6 +108,8 @@ class CustomizationColor {
   final String toggleDisabledBackground;
   final String toggleDisabledIcon;
   final String secondLayerTab;
+  final String moreBtnText;
+  final String moreBtnBackground;
 
   @override
   bool operator ==(Object other) =>
@@ -130,7 +134,9 @@ class CustomizationColor {
           toggleActiveIcon == other.toggleActiveIcon &&
           toggleDisabledBackground == other.toggleDisabledBackground &&
           toggleDisabledIcon == other.toggleDisabledIcon &&
-          secondLayerTab == other.secondLayerTab;
+          secondLayerTab == other.secondLayerTab &&
+          moreBtnText == other.moreBtnText &&
+          moreBtnBackground == other.moreBtnBackground;
 
   @override
   int get hashCode =>
@@ -152,7 +158,9 @@ class CustomizationColor {
       toggleActiveIcon.hashCode +
       toggleDisabledBackground.hashCode +
       toggleDisabledIcon.hashCode +
-      secondLayerTab.hashCode;
+      secondLayerTab.hashCode +
+      moreBtnText.hashCode +
+      moreBtnBackground.hashCode;
 
   @override
   String toString() => "$CustomizationColor($hashCode)";
