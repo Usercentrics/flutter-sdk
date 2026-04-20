@@ -19,7 +19,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
       - name: Check format
         run: scripts/check_format.sh
 
@@ -31,7 +31,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
       - name: Get dependencies
         run: flutter pub get
       - name: Lint using flutter analyze
@@ -47,7 +47,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
       - name: Run publish dry run
         run: flutter pub publish --dry-run
 
@@ -60,7 +60,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
       - name: Install lcov
         run: sudo apt-get update && sudo apt-get install -y lcov
       - name: Get dependencies
@@ -72,7 +72,7 @@ jobs:
       - name: Generate HTML report
         run: genhtml coverage/lcov.info -o coverage/html
       - name: Upload coverage report
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: flutter-coverage-report
           path: coverage/html
@@ -88,10 +88,10 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
       - name: Cache Gradle
         id: cache-gradle
-        uses: actions/cache@v4
+        uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
         with:
           path: |
             ./example/android/ci-cache/gradle
@@ -114,7 +114,7 @@ jobs:
         working-directory: ./example
         run: find build -name "*.html" -o -name "index.html" | head -20
       - name: Upload coverage report
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: android-coverage-report
           path: example/build/usercentrics_sdk/reports/kover/htmlDebug
@@ -127,13 +127,13 @@ jobs:
 
     steps:
       - name: Setup code
-        uses: maxim-lobanov/setup-xcode@v1
+        uses: maxim-lobanov/setup-xcode@ed7a3b1fda3918c0306d1b724322adc0b8cc0a90 # v1
         with:
           xcode-version: '15.4'
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
       - name: Setup Flutter
-        uses: subosito/flutter-action@v2
+        uses: subosito/flutter-action@1a449444c387b1966244ae4d4f8c696479add0b2 # v2
         with:
           flutter-version: '3.22.3'
           channel: 'stable'
@@ -165,7 +165,7 @@ jobs:
         run: xcrun xccov view --report TestResults.xcresult
       - name: Upload iOS test results and crash diagnostics
         if: ${{ always() }}
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: ios-test-results-and-diagnostics
           if-no-files-found: warn
@@ -182,7 +182,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
       - name: Get dependencies
         run: flutter pub get
       - name: Build
@@ -197,13 +197,13 @@ jobs:
 
     steps:
       - name: Setup code
-        uses: maxim-lobanov/setup-xcode@v1
+        uses: maxim-lobanov/setup-xcode@ed7a3b1fda3918c0306d1b724322adc0b8cc0a90 # v1
         with:
           xcode-version: '15.4'
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
       - name: Setup Flutter
-        uses: subosito/flutter-action@v2
+        uses: subosito/flutter-action@1a449444c387b1966244ae4d4f8c696479add0b2 # v2
         with:
           flutter-version: '3.22.3'
           channel: 'stable'
@@ -217,7 +217,7 @@ jobs:
   release:
     name: Release
     permissions:
-      id-token: write
+      id-token: write # Required for flutter pub publish (OIDC automated publishing — cannot be removed)
     if: startsWith(github.ref, 'refs/tags/')
     needs: [ test-flutter, test-android, test-ios, build-android, build-ios ]
     runs-on: ubuntu-latest
@@ -226,11 +226,11 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
       - name: Validate version
         run: dart scripts/check_release_version.dart ${{ github.ref }}
       - name: Set publishing token
-        uses: dart-lang/setup-dart@v1
+        uses: dart-lang/setup-dart@65eb853c7ba17dde3be364c3d2858773e7144260 # v1
       - name: Get dependencies
         run: flutter pub get
       - name: Publish
