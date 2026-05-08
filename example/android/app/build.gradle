@@ -2,7 +2,10 @@ plugins {
     id "com.android.application"
     id "kotlin-android"
     id "dev.flutter.flutter-gradle-plugin"
-    id "com.google.gms.google-services"
+    // Uncomment to enable Firebase Analytics (required for consent mediation testing).
+    // Place google-services.json in example/android/app/ before building.
+    // See example/README.md for setup instructions.
+    // id "com.google.gms.google-services"
 }
 
 def localProperties = new Properties()
