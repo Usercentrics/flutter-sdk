@@ -10,7 +10,8 @@ import 'customization_example_2.dart';
 // Build-time flag — shows the consent mediation toggle when true.
 // Usage: flutter run --dart-define=MEDIATION_TEST=true
 // Omit (or false) for normal builds — safe to publish.
-const bool _kMediationTestEnabled = bool.fromEnvironment('MEDIATION_TEST', defaultValue: true);
+const bool _kMediationTestEnabled =
+    bool.fromEnvironment('MEDIATION_TEST', defaultValue: true);
 
 // Settings ID for the sample app. When testing consent mediation this must be a
 // settings ID that has the target 3rd-party SDKs configured in the Usercentrics dashboard.
