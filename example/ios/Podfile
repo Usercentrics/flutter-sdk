@@ -29,6 +29,12 @@ target 'Runner' do
 
     flutter_install_all_ios_pods File.dirname(File.realpath(__FILE__))
 
+    # Local override — picks up mobile-sdk UsercentricsUI source changes without a full release
+    pod 'UsercentricsUI', :path => '../../../mobile-sdk/platforms/ios/UsercentricsUI'
+
+    # Firebase — required to test MSDK-3667 (setAnalyticsCollectionEnabled via NSInvocation)
+    pod 'FirebaseAnalytics'
+
     target 'RunnerTests' do
         inherit! :complete
     end
