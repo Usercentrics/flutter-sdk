@@ -129,7 +129,7 @@ jobs:
       - name: Setup code
         uses: maxim-lobanov/setup-xcode@ed7a3b1fda3918c0306d1b724322adc0b8cc0a90 # v1
         with:
-          xcode-version: '15.4'
+          xcode-version: '16.2'
       - name: Checkout code
         uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
       - name: Setup Flutter
@@ -139,6 +139,28 @@ jobs:
           channel: 'stable'
       - name: Get dependencies
         run: flutter pub get
+      - name: Create stub GoogleService-Info.plist for CI
+        run: |
+          cat > example/ios/Runner/GoogleService-Info.plist << 'EOF'
+          <?xml version="1.0" encoding="UTF-8"?>
+          <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+          <plist version="1.0">
+          <dict>
+            <key>API_KEY</key><string>AIzaCI00000000000000000000000000000000</string>
+            <key>GCM_SENDER_ID</key><string>000000000000</string>
+            <key>PLIST_VERSION</key><string>1</string>
+            <key>BUNDLE_ID</key><string>com.placeholder.ci</string>
+            <key>PROJECT_ID</key><string>placeholder-ci</string>
+            <key>STORAGE_BUCKET</key><string>placeholder-ci.appspot.com</string>
+            <key>IS_ADS_ENABLED</key><false/>
+            <key>IS_ANALYTICS_ENABLED</key><false/>
+            <key>IS_APPINVITE_ENABLED</key><true/>
+            <key>IS_GCM_ENABLED</key><true/>
+            <key>IS_SIGNIN_ENABLED</key><true/>
+            <key>GOOGLE_APP_ID</key><string>1:000000000000:ios:0000000000000000000000</string>
+          </dict>
+          </plist>
+          EOF
       - name: Setup Pods
         working-directory: ./example/ios
         run: pod install
@@ -199,7 +221,7 @@ jobs:
       - name: Setup code
         uses: maxim-lobanov/setup-xcode@ed7a3b1fda3918c0306d1b724322adc0b8cc0a90 # v1
         with:
-          xcode-version: '15.4'
+          xcode-version: '16.2'
       - name: Checkout code
         uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
       - name: Setup Flutter
@@ -209,6 +231,28 @@ jobs:
           channel: 'stable'
       - name: Get dependencies
         run: flutter pub get
+      - name: Create stub GoogleService-Info.plist for CI
+        run: |
+          cat > example/ios/Runner/GoogleService-Info.plist << 'EOF'
+          <?xml version="1.0" encoding="UTF-8"?>
+          <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+          <plist version="1.0">
+          <dict>
+            <key>API_KEY</key><string>AIzaCI00000000000000000000000000000000</string>
+            <key>GCM_SENDER_ID</key><string>000000000000</string>
+            <key>PLIST_VERSION</key><string>1</string>
+            <key>BUNDLE_ID</key><string>com.placeholder.ci</string>
+            <key>PROJECT_ID</key><string>placeholder-ci</string>
+            <key>STORAGE_BUCKET</key><string>placeholder-ci.appspot.com</string>
+            <key>IS_ADS_ENABLED</key><false/>
+            <key>IS_ANALYTICS_ENABLED</key><false/>
+            <key>IS_APPINVITE_ENABLED</key><true/>
+            <key>IS_GCM_ENABLED</key><true/>
+            <key>IS_SIGNIN_ENABLED</key><true/>
+            <key>GOOGLE_APP_ID</key><string>1:000000000000:ios:0000000000000000000000</string>
+          </dict>
+          </plist>
+          EOF
       - name: Build
         working-directory: ./example
         run: flutter build ios --debug --no-codesign --simulator

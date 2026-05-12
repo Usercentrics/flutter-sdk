@@ -72,3 +72,7 @@ app.*.symbols
 
 # Obfuscation related
 app.*.map.json
+
+# Firebase config files — kept locally, not committed
+android/app/google-services.json
+ios/Runner/GoogleService-Info.plist

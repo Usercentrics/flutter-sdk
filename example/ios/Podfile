@@ -29,6 +29,13 @@ target 'Runner' do
 
     flutter_install_all_ios_pods File.dirname(File.realpath(__FILE__))
 
+    # Uncomment to use a local UsercentricsUI build (requires mobile-sdk repo checked out
+    # at ../../../mobile-sdk/platforms/ios/UsercentricsUI relative to this file).
+    # pod 'UsercentricsUI', :path => '../../../mobile-sdk/platforms/ios/UsercentricsUI'
+
+    # Firebase Analytics — required for consent mediation testing.
+    pod 'FirebaseAnalytics'
+
     target 'RunnerTests' do
         inherit! :complete
     end

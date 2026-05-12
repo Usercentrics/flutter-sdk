@@ -7,6 +7,16 @@ import 'build_your_own_ui.dart';
 import 'customization_example_1.dart';
 import 'customization_example_2.dart';
 
+// Build-time flag — shows the consent mediation toggle when true.
+// Usage: flutter run --dart-define=MEDIATION_TEST=true
+// Omit (or false) for normal builds — safe to publish.
+const bool _kMediationTestEnabled =
+    bool.fromEnvironment('MEDIATION_TEST', defaultValue: true);
+
+// Settings ID for the sample app. When testing consent mediation this must be a
+// settings ID that has the target 3rd-party SDKs configured in the Usercentrics dashboard.
+const String _kSettingsId = 'Yi9N3aXia';
+
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
@@ -35,7 +45,6 @@ class HomePage extends StatefulWidget {
 class HomePageState extends State<HomePage> {
   _SdkStatus _sdkStatus = _SdkStatus.idle;
   String? _statusMessage;
-
   void _initializeUsercentrics() async {
     setState(() {
       _sdkStatus = _SdkStatus.loading;
@@ -44,8 +53,9 @@ class HomePageState extends State<HomePage> {
 
     try {
       Usercentrics.initialize(
-        settingsId: 'Yi9N3aXia',
+        settingsId: _kSettingsId,
         loggerLevel: UsercentricsLoggerLevel.debug,
+        consentMediation: _kMediationTestEnabled,
       );
 
       final status = await Usercentrics.status;
@@ -177,7 +187,6 @@ class HomePageState extends State<HomePage> {
                 ),
               ),
             ),
-            // ── END TEMPORARY ──────────────────────────────────────────────
             const SizedBox(height: 16),
             ElevatedButton(
               onPressed: isSdkReady ? () => _showFirstLayer() : null,
