@@ -44,6 +44,10 @@ extension UsercentricsOptions {
             options.initTimeoutMillis = Int64(initTimeoutMillis)
         }
 
+        if let consentMediation = dict["consentMediation"] as? Bool {
+            options.consentMediation = consentMediation
+        }
+
         return options
     }
     
