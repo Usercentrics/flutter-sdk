@@ -1,4 +1,12 @@
 [Release Notes](https://docs.usercentrics.com/cmp_in_app_sdk/latest/about/history/)
+
+### 2.26.3 – May 14, 2026
+## Fixes
+* **[Mediation]** Fixed `FirebaseAnalyticsMediationSDK` failing for apps using Firebase 32+ due to the Firebase KTX migration
+* **[Mediation]** Fixed `setAnalyticsCollectionEnabled(true)` not being called after consent is granted, causing Firebase Analytics to remain permanently disabled
+* **[Android]** Fixed Protobuf dependency conflict causing runtime errors
+* **[iOS]** Fixed `consentMediation` flag not being forwarded to the native iOS SDK — `InitializeOptionsSerializer` now correctly deserializes the `consentMediation` option, ensuring mediation is activated on iOS when enabled
+
 ### 2.26.2 – Apr 15, 2026
 ## Improvements
 * Improved SDK initialization logging
