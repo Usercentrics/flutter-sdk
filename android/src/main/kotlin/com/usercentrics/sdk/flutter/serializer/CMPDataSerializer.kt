@@ -227,7 +227,8 @@ private fun TCF2Settings.serialize(): Any {
         "changedPurposes" to changedPurposes?.serialize(),
         "acmV2Enabled" to acmV2Enabled,
         "selectedATPIds" to selectedATPIds,
-        "consentOrPay" to consentOrPay?.serialize()
+        "consentOrPay" to consentOrPay?.serialize(),
+        "mandatoryLabel" to mandatoryLabel
     )
 }
 

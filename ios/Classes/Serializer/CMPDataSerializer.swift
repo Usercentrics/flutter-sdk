@@ -217,7 +217,8 @@ extension TCF2Settings {
             "changedPurposes": self.changedPurposes?.serialize() as Any,
             "acmV2Enabled" : self.acmV2Enabled,
             "selectedATPIds" : self.selectedATPIds,
-            "consentOrPay": self.consentOrPay?.serialize() as Any
+            "consentOrPay": self.consentOrPay?.serialize() as Any,
+            "mandatoryLabel": self.mandatoryLabel
         ]
     }
 }
