@@ -70,7 +70,8 @@ class TCF2SettingsSerializer {
         acmV2Enabled: value['acmV2Enabled'] ?? false,
         selectedATPIds: value['selectedATPIds']?.cast<int>() ?? [],
         consentOrPay: TCF2ConsentOrPaySettingsSerializer.deserialize(
-            value['consentOrPay']));
+            value['consentOrPay']),
+        mandatoryLabel: value['mandatoryLabel'] ?? "Mandatory");
   }
 }
 

@@ -61,7 +61,8 @@ class TCF2Settings {
       required this.changedPurposes,
       required this.acmV2Enabled,
       required this.selectedATPIds,
-      this.consentOrPay});
+      this.consentOrPay,
+      this.mandatoryLabel = "Mandatory"});
 
   final String firstLayerTitle;
   final String secondLayerTitle;
@@ -123,6 +124,7 @@ class TCF2Settings {
   final bool acmV2Enabled;
   final List<int> selectedATPIds;
   final TCF2ConsentOrPaySettings? consentOrPay;
+  final String mandatoryLabel;
 
   @override
   bool operator ==(Object other) =>
@@ -192,7 +194,8 @@ class TCF2Settings {
           changedPurposes == other.changedPurposes &&
           acmV2Enabled == other.acmV2Enabled &&
           listEquals(selectedATPIds, other.selectedATPIds) &&
-          consentOrPay == other.consentOrPay;
+          consentOrPay == other.consentOrPay &&
+          mandatoryLabel == other.mandatoryLabel;
 
   @override
   int get hashCode =>
@@ -255,7 +258,8 @@ class TCF2Settings {
       changedPurposes.hashCode +
       acmV2Enabled.hashCode +
       selectedATPIds.hashCode +
-      consentOrPay.hashCode;
+      consentOrPay.hashCode +
+      mandatoryLabel.hashCode;
 
   @override
   String toString() => "$TCF2Settings($hashCode)";
