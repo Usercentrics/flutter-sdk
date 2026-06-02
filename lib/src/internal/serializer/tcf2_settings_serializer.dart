@@ -68,7 +68,9 @@ class TCF2SettingsSerializer {
         changedPurposes:
             TCF2ChangedPurposesSerializer.deserialize(value['changedPurposes']),
         acmV2Enabled: value['acmV2Enabled'] ?? false,
-        selectedATPIds: value['selectedATPIds']?.cast<int>() ?? []);
+        selectedATPIds: value['selectedATPIds']?.cast<int>() ?? [],
+        consentOrPay: TCF2ConsentOrPaySettingsSerializer.deserialize(
+            value['consentOrPay']));
   }
 }
 
@@ -105,5 +107,19 @@ class TCF2ChangedPurposesSerializer {
     return TCF2ChangedPurposes(
         purposes: value['purposes']?.cast<int>() ?? [],
         legIntPurposes: value['legIntPurposes']?.cast<int>() ?? []);
+  }
+}
+
+class TCF2ConsentOrPaySettingsSerializer {
+  static TCF2ConsentOrPaySettings? deserialize(value) {
+    if (value == null) return null;
+    return TCF2ConsentOrPaySettings(
+        enableConsentOrPay: value['enableConsentOrPay'] ?? false,
+        showTogglesForVendors: value['showTogglesForVendors'] ?? true,
+        publisherRestrictions:
+            (value['publisherRestrictions'] as Map?)?.cast<String, String>() ??
+                {},
+        specialFeatures:
+            (value['specialFeatures'] as Map?)?.cast<String, String>() ?? {});
   }
 }

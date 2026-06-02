@@ -60,7 +60,8 @@ class TCF2Settings {
       required this.scope,
       required this.changedPurposes,
       required this.acmV2Enabled,
-      required this.selectedATPIds});
+      required this.selectedATPIds,
+      this.consentOrPay});
 
   final String firstLayerTitle;
   final String secondLayerTitle;
@@ -121,6 +122,7 @@ class TCF2Settings {
   final TCF2ChangedPurposes changedPurposes;
   final bool acmV2Enabled;
   final List<int> selectedATPIds;
+  final TCF2ConsentOrPaySettings? consentOrPay;
 
   @override
   bool operator ==(Object other) =>
@@ -189,7 +191,8 @@ class TCF2Settings {
           scope == other.scope &&
           changedPurposes == other.changedPurposes &&
           acmV2Enabled == other.acmV2Enabled &&
-          listEquals(selectedATPIds, other.selectedATPIds);
+          listEquals(selectedATPIds, other.selectedATPIds) &&
+          consentOrPay == other.consentOrPay;
 
   @override
   int get hashCode =>
@@ -251,7 +254,8 @@ class TCF2Settings {
       scope.hashCode +
       changedPurposes.hashCode +
       acmV2Enabled.hashCode +
-      selectedATPIds.hashCode;
+      selectedATPIds.hashCode +
+      consentOrPay.hashCode;
 
   @override
   String toString() => "$TCF2Settings($hashCode)";
@@ -278,4 +282,38 @@ class TCF2ChangedPurposes {
 
   @override
   int get hashCode => purposes.hashCode ^ legIntPurposes.hashCode;
+}
+
+class TCF2ConsentOrPaySettings {
+  const TCF2ConsentOrPaySettings(
+      {required this.enableConsentOrPay,
+      required this.showTogglesForVendors,
+      required this.publisherRestrictions,
+      required this.specialFeatures});
+
+  final bool enableConsentOrPay;
+  final bool showTogglesForVendors;
+
+  /// Maps TCF Purpose ID (as string) to "flexible". Absent entries are mandatory.
+  final Map<String, String> publisherRestrictions;
+
+  /// Maps Special Feature ID (as string) to "flexible". Absent entries are mandatory.
+  final Map<String, String> specialFeatures;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is TCF2ConsentOrPaySettings &&
+          runtimeType == other.runtimeType &&
+          enableConsentOrPay == other.enableConsentOrPay &&
+          showTogglesForVendors == other.showTogglesForVendors &&
+          mapEquals(publisherRestrictions, other.publisherRestrictions) &&
+          mapEquals(specialFeatures, other.specialFeatures);
+
+  @override
+  int get hashCode =>
+      enableConsentOrPay.hashCode ^
+      showTogglesForVendors.hashCode ^
+      publisherRestrictions.hashCode ^
+      specialFeatures.hashCode;
 }

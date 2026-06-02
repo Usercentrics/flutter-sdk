@@ -216,11 +216,22 @@ extension TCF2Settings {
             "scope": self.scope.name,
             "changedPurposes": self.changedPurposes?.serialize() as Any,
             "acmV2Enabled" : self.acmV2Enabled,
-            "selectedATPIds" : self.selectedATPIds
+            "selectedATPIds" : self.selectedATPIds,
+            "consentOrPay": self.consentOrPay?.serialize() as Any
         ]
     }
 }
 
+extension ConsentOrPaySettings {
+    func serialize() -> [String: Any] {
+        return [
+            "enableConsentOrPay": self.enableConsentOrPay,
+            "showTogglesForVendors": self.showTogglesForVendors,
+            "publisherRestrictions": self.publisherRestrictions,
+            "specialFeatures": self.specialFeatures
+        ]
+    }
+}
 
 extension UsercentricsCustomization {
     func serialize() -> Any {

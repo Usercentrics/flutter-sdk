@@ -8,6 +8,7 @@ import com.usercentrics.sdk.v2.settings.data.CustomizationFont
 import com.usercentrics.sdk.v2.settings.data.FirstLayer
 import com.usercentrics.sdk.v2.settings.data.PublishedApp
 import com.usercentrics.sdk.v2.settings.data.SecondLayer
+import com.usercentrics.sdk.v2.settings.data.ConsentOrPaySettings
 import com.usercentrics.sdk.v2.settings.data.TCF2ChangedPurposes
 import com.usercentrics.sdk.v2.settings.data.TCF2Settings
 import com.usercentrics.sdk.v2.settings.data.UsercentricsCategory
@@ -225,9 +226,17 @@ private fun TCF2Settings.serialize(): Any {
         "scope" to scope.name,
         "changedPurposes" to changedPurposes?.serialize(),
         "acmV2Enabled" to acmV2Enabled,
-        "selectedATPIds" to selectedATPIds
+        "selectedATPIds" to selectedATPIds,
+        "consentOrPay" to consentOrPay?.serialize()
     )
 }
+
+private fun ConsentOrPaySettings.serialize(): Map<String, Any?> = mapOf(
+    "enableConsentOrPay" to enableConsentOrPay,
+    "showTogglesForVendors" to showTogglesForVendors,
+    "publisherRestrictions" to publisherRestrictions,
+    "specialFeatures" to specialFeatures
+)
 
 private fun UsercentricsCustomization.serialize(): Any {
     return mapOf(
