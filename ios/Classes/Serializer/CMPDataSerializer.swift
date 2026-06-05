@@ -218,7 +218,8 @@ extension TCF2Settings {
             "acmV2Enabled" : self.acmV2Enabled,
             "selectedATPIds" : self.selectedATPIds,
             "consentOrPay": self.consentOrPay?.serialize() as Any,
-            "mandatoryLabel": self.mandatoryLabel
+            "mandatoryLabel": self.mandatoryLabel,
+            "specialFeaturesConsentOrPay": self.specialFeaturesConsentOrPay?.map { $0.serialize() } as Any,
         ]
     }
 }
@@ -409,7 +410,17 @@ extension TCF2ChangedPurposes {
     func serialize() -> Any {
         return [
             "purposes": purposes,
-            "legIntPurposes": legIntPurposes
+            "legIntPurposes": legIntPurposes,
+            "consentOrPay": consentOrPay?.map { $0.serialize() } as Any,
+        ]
+    }
+}
+
+extension ConsentOrPayRestriction {
+    func serialize() -> [String: Any] {
+        return [
+            "id": self.id,
+            "value": self.value,
         ]
     }
 }

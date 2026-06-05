@@ -62,7 +62,8 @@ class TCF2Settings {
       required this.acmV2Enabled,
       required this.selectedATPIds,
       this.consentOrPay,
-      this.mandatoryLabel = "Mandatory"});
+      this.mandatoryLabel = "Mandatory",
+      this.specialFeaturesConsentOrPay});
 
   final String firstLayerTitle;
   final String secondLayerTitle;
@@ -125,6 +126,7 @@ class TCF2Settings {
   final List<int> selectedATPIds;
   final TCF2ConsentOrPaySettings? consentOrPay;
   final String mandatoryLabel;
+  final List<ConsentOrPayRestriction>? specialFeaturesConsentOrPay;
 
   @override
   bool operator ==(Object other) =>
@@ -271,10 +273,13 @@ enum TCF2Scope { global, service }
 
 class TCF2ChangedPurposes {
   const TCF2ChangedPurposes(
-      {required this.purposes, required this.legIntPurposes});
+      {required this.purposes,
+      required this.legIntPurposes,
+      this.consentOrPay});
 
   final List<int> purposes;
   final List<int> legIntPurposes;
+  final List<ConsentOrPayRestriction>? consentOrPay;
 
   @override
   bool operator ==(Object other) =>
@@ -282,10 +287,32 @@ class TCF2ChangedPurposes {
       other is TCF2ChangedPurposes &&
           runtimeType == other.runtimeType &&
           listEquals(purposes, other.purposes) &&
-          listEquals(legIntPurposes, other.legIntPurposes);
+          listEquals(legIntPurposes, other.legIntPurposes) &&
+          listEquals(consentOrPay, other.consentOrPay);
 
   @override
-  int get hashCode => purposes.hashCode ^ legIntPurposes.hashCode;
+  int get hashCode =>
+      purposes.hashCode ^ legIntPurposes.hashCode ^ consentOrPay.hashCode;
+}
+
+class ConsentOrPayRestriction {
+  const ConsentOrPayRestriction({required this.id, required this.value});
+
+  final int id;
+  final String value;
+
+  bool isFlexible() => value.toUpperCase() == 'FLEXIBLE';
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ConsentOrPayRestriction &&
+          runtimeType == other.runtimeType &&
+          id == other.id &&
+          value == other.value;
+
+  @override
+  int get hashCode => id.hashCode ^ value.hashCode;
 }
 
 class TCF2ConsentOrPaySettings {

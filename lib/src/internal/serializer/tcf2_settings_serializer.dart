@@ -71,7 +71,10 @@ class TCF2SettingsSerializer {
         selectedATPIds: value['selectedATPIds']?.cast<int>() ?? [],
         consentOrPay: TCF2ConsentOrPaySettingsSerializer.deserialize(
             value['consentOrPay']),
-        mandatoryLabel: value['mandatoryLabel'] ?? "Mandatory");
+        mandatoryLabel: value['mandatoryLabel'] ?? "Mandatory",
+        specialFeaturesConsentOrPay:
+            ConsentOrPayRestrictionSerializer.deserializeList(
+                value['specialFeaturesConsentOrPay']));
   }
 }
 
@@ -107,7 +110,19 @@ class TCF2ChangedPurposesSerializer {
   static TCF2ChangedPurposes deserialize(value) {
     return TCF2ChangedPurposes(
         purposes: value['purposes']?.cast<int>() ?? [],
-        legIntPurposes: value['legIntPurposes']?.cast<int>() ?? []);
+        legIntPurposes: value['legIntPurposes']?.cast<int>() ?? [],
+        consentOrPay: ConsentOrPayRestrictionSerializer.deserializeList(
+            value['consentOrPay']));
+  }
+}
+
+class ConsentOrPayRestrictionSerializer {
+  static List<ConsentOrPayRestriction>? deserializeList(value) {
+    if (value == null) return null;
+    return (value as List)
+        .map((e) => ConsentOrPayRestriction(
+            id: e['id'] as int, value: e['value'] as String))
+        .toList();
   }
 }
 
