@@ -4,6 +4,11 @@ import XCTest
 @testable import usercentrics_sdk
 import UsercentricsUI
 
+private func intValue(_ value: KotlinInt?) -> Int? {
+    guard let value = value else { return nil }
+    return Int(value.intValue)
+}
+
 class ShowFirstLayerBridgeTest: XCTestCase, BaseBridgeTestProtocol {
 
     var bridgeName: String! = "showFirstLayer"
@@ -74,6 +79,11 @@ class ShowFirstLayerBridgeTest: XCTestCase, BaseBridgeTestProtocol {
             XCTAssertEqual(self.bannerProxy.showFirstLayerBannerSettingsArg?.firstLayerStyleSettings?.layout, .popup(position: .center))
             // TODO Assert style settings
 
+            let initCustomization = self.bannerProxy.showFirstLayerBannerSettingsArg?.initCustomization
+            XCTAssertEqual(initCustomization?.buttonBorderColor, "#004dcf")
+            XCTAssertEqual(intValue(initCustomization?.paddingTop), 16)
+            XCTAssertEqual(initCustomization?.purposeListStyle, .flat)
+
             expectation.fulfill()
         }
 
@@ -109,6 +119,11 @@ class ShowFirstLayerBridgeTest: XCTestCase, BaseBridgeTestProtocol {
                 ],
                 "generalStyleSettings": [
                     "links": "BOTH"
+                ],
+                "initCustomization": [
+                    "paddingTop": 16,
+                    "buttonBorderColor": "#004dcf",
+                    "purposeListStyle": "FLAT"
                 ]
             ]
         ]

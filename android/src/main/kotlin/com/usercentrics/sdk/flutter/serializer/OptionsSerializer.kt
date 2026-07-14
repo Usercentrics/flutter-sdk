@@ -4,6 +4,7 @@ import com.usercentrics.sdk.UsercentricsOptions
 import com.usercentrics.sdk.models.common.NetworkMode
 import com.usercentrics.sdk.models.common.UsercentricsLoggerLevel
 
+@Suppress("DEPRECATION")
 internal fun Any?.deserializeOptions(): UsercentricsOptions {
     this as Map<*, *>
     val options = UsercentricsOptions()
@@ -33,6 +34,9 @@ internal fun Any?.deserializeOptions(): UsercentricsOptions {
     }
     this["initTimeoutMillis"]?.let {
         options.initTimeoutMillis = (it as Int).toLong()
+    }
+    this["bannerCustomization"]?.let {
+        options.bannerCustomization = it.deserializeBannerInitCustomization()
     }
     return options
 }

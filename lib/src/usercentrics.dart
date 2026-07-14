@@ -27,6 +27,8 @@ class Usercentrics {
   /// - The [networkMode] sets the network operation mode. Be careful, use this option only if we have confirmed that it is ready to use because it has a significant impact on the whole system's performance. The default value is "world".
   /// - The [consentMediation] enables the feature of consent mediation, this feature works with a set of selected SDKs that you can find in the documentation.
   /// - The [initTimeoutMillis] sets a timeout for the SDK to initialize. Minimum value is 5000ms. The default value is 10000ms.
+  /// - The [bannerCustomization] enables further programmatic customization of the predefined Banner UI, applied at init-time.
+  /// **Deprecated:** [bannerCustomization] is deprecated and will be removed in a future release. Configure banner appearance via the Usercentrics dashboard instead.
   static void initialize({
     String settingsId = "",
     String ruleSetId = "",
@@ -37,6 +39,9 @@ class Usercentrics {
     NetworkMode? networkMode,
     bool? consentMediation,
     int? initTimeoutMillis,
+    @Deprecated(
+        'BannerInitCustomization is deprecated and will be removed in a future release. Configure banner appearance via the Usercentrics dashboard instead.')
+    BannerInitCustomization? bannerCustomization,
   }) =>
       _delegate.initialize(
           settingsId: settingsId,
@@ -47,7 +52,9 @@ class Usercentrics {
           version: version,
           networkMode: networkMode,
           consentMediation: consentMediation,
-          initTimeoutMillis: initTimeoutMillis);
+          initTimeoutMillis: initTimeoutMillis,
+          // ignore: deprecated_member_use_from_same_package
+          bannerCustomization: bannerCustomization);
 
   /// Get the [UsercentricsReadyStatus] to catch the consent status of the user.
   static Future<UsercentricsReadyStatus> get status => _delegate.status;

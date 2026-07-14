@@ -1,5 +1,6 @@
 export 'additional_consent_mode_data_serializer.dart';
 export 'analytics_event_type_serializer.dart';
+export 'banner_init_customization_serializer.dart';
 export 'banner_settings_serializer.dart';
 export 'button_settings_serializer.dart';
 export 'category_serializer.dart';

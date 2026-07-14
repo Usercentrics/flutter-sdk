@@ -48,7 +48,11 @@ extension UsercentricsOptions {
             options.consentMediation = consentMediation
         }
 
+        if let bannerCustomization = BannerInitCustomization.from(value: dict["bannerCustomization"]) {
+            options.bannerCustomization = bannerCustomization
+        }
+
         return options
     }
-    
+
 }

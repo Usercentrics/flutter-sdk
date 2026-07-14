@@ -88,6 +88,7 @@ class MethodChannelUsercentrics extends UsercentricsPlatform {
     NetworkMode? networkMode,
     bool? consentMediation,
     int? initTimeoutMillis,
+    BannerInitCustomization? bannerCustomization,
   }) async {
     final ongoingInit = isReadyCompleter;
 
@@ -113,7 +114,8 @@ class MethodChannelUsercentrics extends UsercentricsPlatform {
           version: version,
           networkMode: networkMode,
           consentMediation: consentMediation,
-          initTimeoutMillis: initTimeoutMillis);
+          initTimeoutMillis: initTimeoutMillis,
+          bannerCustomization: bannerCustomization);
 
       await status.then((value) => isReadyCompleter?.complete(null));
     } catch (error, stackTrace) {

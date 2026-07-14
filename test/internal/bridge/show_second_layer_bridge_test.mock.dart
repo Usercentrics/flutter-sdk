@@ -91,7 +91,36 @@ const expectedArguments = {
       'links': 'HIDDEN',
       'disableSystemBackButton': false
     },
-    "variantName": 'variantA'
+    "variantName": 'variantA',
+    "initCustomization": {
+      'paddingTop': null,
+      'paddingBottom': null,
+      'paddingStart': null,
+      'paddingEnd': null,
+      'lineSpacingMultiplier': null,
+      'titleFontSize': null,
+      'bodyFontSize': null,
+      'linkFontSize': null,
+      'titleFontBold': null,
+      'headerPaddingTop': null,
+      'headerPaddingSides': null,
+      'headerPaddingBetweenElements': null,
+      'buttonBorderColor': '#004dcf',
+      'buttonBorderWidth': null,
+      'purposeListStyle': 'FLAT',
+      'stickyHeader': null,
+      'hideLanguageSwitcher': null,
+      'buttonHeightDp': null,
+      'buttonHorizontalPaddingDp': null,
+      'buttonSpacingDp': null,
+      'linkUnderline': null,
+      'showSecondLayerCloseButton': null,
+      'tabFontSize': null,
+      'tabActiveColor': null,
+      'denyAllButtonBackground': null,
+      'acceptAllButtonBackground': null,
+      'linkColor': null,
+    }
   }
 };
 const mockFont = BannerFont(
@@ -124,3 +153,9 @@ const mockGeneralStyleSettings = GeneralStyleSettings(
 );
 
 const mockVariant = "variantA";
+
+// ignore: deprecated_member_use
+const mockBannerInitCustomization = BannerInitCustomization(
+  buttonBorderColor: '#004dcf',
+  purposeListStyle: PurposeListStyle.flat,
+);

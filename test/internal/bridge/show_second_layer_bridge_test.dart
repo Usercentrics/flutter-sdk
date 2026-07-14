@@ -31,6 +31,8 @@ void main() {
         secondLayer: mockSecondLayerSettings,
         general: mockGeneralStyleSettings,
         variantName: mockVariant,
+        // ignore: deprecated_member_use
+        initCustomization: mockBannerInitCustomization,
       ),
     );
 

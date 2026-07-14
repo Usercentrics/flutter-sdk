@@ -16,6 +16,7 @@ abstract class UsercentricsPlatform {
     NetworkMode? networkMode,
     bool? consentMediation,
     int? initTimeoutMillis,
+    BannerInitCustomization? bannerCustomization,
   });
 
   Future<UsercentricsReadyStatus> get status;
