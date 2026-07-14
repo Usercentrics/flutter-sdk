@@ -64,7 +64,6 @@ extension PurposeListStyle {
         case "FLAT":
             return PurposeListStyle.flat
         default:
-            assert(false)
             return nil
         }
     }
