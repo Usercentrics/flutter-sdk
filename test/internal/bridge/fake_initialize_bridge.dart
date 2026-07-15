@@ -1,5 +1,6 @@
 import 'package:flutter/src/services/platform_channel.dart';
 import 'package:usercentrics_sdk/src/internal/bridge/bridge.dart';
+import 'package:usercentrics_sdk/src/model/banner_init_customization.dart';
 import 'package:usercentrics_sdk/src/model/logger_level.dart';
 import 'package:usercentrics_sdk/src/model/network_mode.dart';
 
@@ -15,6 +16,8 @@ class FakeInitializeBridge extends InitializeBridge {
   NetworkMode? invokeNetworkModeArgument;
   bool? invokeConsentMediationArgument;
   int? invokeInitTimeoutMillisArgument;
+  // ignore: deprecated_member_use_from_same_package
+  BannerInitCustomization? invokeBannerCustomizationArgument;
 
   @override
   void invoke({
@@ -28,6 +31,8 @@ class FakeInitializeBridge extends InitializeBridge {
     NetworkMode? networkMode,
     bool? consentMediation,
     int? initTimeoutMillis,
+    // ignore: deprecated_member_use_from_same_package
+    BannerInitCustomization? bannerCustomization,
   }) {
     invokeCount++;
     invokeChannelArgument = channel;
@@ -40,5 +45,6 @@ class FakeInitializeBridge extends InitializeBridge {
     invokeNetworkModeArgument = networkMode;
     invokeConsentMediationArgument = consentMediation;
     invokeInitTimeoutMillisArgument = initTimeoutMillis;
+    invokeBannerCustomizationArgument = bannerCustomization;
   }
 }

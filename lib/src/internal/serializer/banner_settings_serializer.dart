@@ -13,5 +13,9 @@ class BannerSettingsSerializer {
         'generalStyleSettings':
             GeneralStyleSettingsSerializer.serialize(settings?.general),
         'variantName': settings?.variantName,
+        'initCustomization': BannerInitCustomizationSerializer.serialize(
+          // ignore: deprecated_member_use_from_same_package
+          settings?.initCustomization,
+        ),
       };
 }

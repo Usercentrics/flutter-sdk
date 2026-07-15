@@ -1,3 +1,4 @@
+import Usercentrics
 import UsercentricsUI
 
 extension BannerSettings {
@@ -27,6 +28,7 @@ extension BannerSettings {
         self.init(generalStyleSettings: generalStyleSettings,
                   firstLayerStyleSettings: firstLayerSettings,
                   secondLayerStyleSettings: secondLayerSettings,
-                  variantName: dict["variantName"] as? String)
+                  variantName: dict["variantName"] as? String,
+                  initCustomization: BannerInitCustomization.from(value: dict["initCustomization"]))
     }
 }

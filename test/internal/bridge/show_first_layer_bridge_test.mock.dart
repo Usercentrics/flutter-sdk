@@ -115,7 +115,8 @@ const expectedArguments = {
       'links': 'BOTH',
       'disableSystemBackButton': false,
     },
-    "variantName": "variantA"
+    "variantName": "variantA",
+    "initCustomization": null
   },
 };
 

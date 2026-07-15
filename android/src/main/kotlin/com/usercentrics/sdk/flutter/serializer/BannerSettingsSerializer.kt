@@ -4,6 +4,7 @@ import com.usercentrics.sdk.BannerSettings
 import com.usercentrics.sdk.flutter.api.FlutterActivityProvider
 import com.usercentrics.sdk.flutter.api.FlutterAssetsProvider
 
+@Suppress("DEPRECATION")
 internal fun Any?.deserializeBannerSettings(
     assetsProvider: FlutterAssetsProvider,
     activityProvider: FlutterActivityProvider
@@ -24,7 +25,8 @@ internal fun Any?.deserializeBannerSettings(
             assetsProvider,
             activityProvider
         ),
-        variantName = this["variantName"] as? String?
+        variantName = this["variantName"] as? String?,
+        initCustomization = this["initCustomization"].deserializeBannerInitCustomization()
     )
 }
 

@@ -4,6 +4,7 @@ import 'package:usercentrics_sdk/src/model/additional_consent_mode_data.dart';
 import 'package:usercentrics_sdk/src/model/gpp_data.dart';
 import 'package:usercentrics_sdk/src/model/gpp_section_change_payload.dart';
 import 'package:usercentrics_sdk/src/model/analytics_event_type.dart';
+import 'package:usercentrics_sdk/src/model/banner_init_customization.dart';
 import 'package:usercentrics_sdk/src/model/banner_settings.dart';
 import 'package:usercentrics_sdk/src/model/ccpa_data.dart';
 import 'package:usercentrics_sdk/src/model/cmp_data.dart';
@@ -70,6 +71,8 @@ class FakeUsercentricsPlatform extends UsercentricsPlatform {
   NetworkMode? networkModeArgument;
   bool? consentMediationArgument;
   int? initializeInitTimeoutMillisArgument;
+  // ignore: deprecated_member_use_from_same_package
+  BannerInitCustomization? initializeBannerCustomizationArgument;
 
   @override
   void initialize({
@@ -82,6 +85,8 @@ class FakeUsercentricsPlatform extends UsercentricsPlatform {
     NetworkMode? networkMode,
     bool? consentMediation,
     int? initTimeoutMillis,
+    // ignore: deprecated_member_use_from_same_package
+    BannerInitCustomization? bannerCustomization,
   }) {
     initializeCount++;
     initializeSettingsIdArgument = settingsId;
@@ -93,6 +98,7 @@ class FakeUsercentricsPlatform extends UsercentricsPlatform {
     networkModeArgument = networkMode;
     consentMediationArgument = consentMediation;
     initializeInitTimeoutMillisArgument = initTimeoutMillis;
+    initializeBannerCustomizationArgument = bannerCustomization;
   }
 
   final UsercentricsReadyStatus? restoreUserSessionAnswer;

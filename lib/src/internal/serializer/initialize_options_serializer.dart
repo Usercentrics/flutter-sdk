@@ -1,6 +1,8 @@
+import 'package:usercentrics_sdk/src/model/banner_init_customization.dart';
 import 'package:usercentrics_sdk/src/model/logger_level.dart';
 import 'package:usercentrics_sdk/src/model/network_mode.dart';
 
+import 'banner_init_customization_serializer.dart';
 import 'logger_level_serializer.dart';
 import 'network_mode_serializer.dart';
 
@@ -15,6 +17,8 @@ class InitializeOptionsSerializer {
     NetworkMode? networkMode,
     bool? consentMediation,
     int? initTimeoutMillis,
+    // ignore: deprecated_member_use_from_same_package
+    BannerInitCustomization? bannerCustomization,
   }) =>
       {
         'settingsId': settingsId,
@@ -26,5 +30,8 @@ class InitializeOptionsSerializer {
         'networkMode': NetworkModeSerializer.serialize(networkMode),
         'consentMediation': consentMediation,
         'initTimeoutMillis': initTimeoutMillis,
+        'bannerCustomization': BannerInitCustomizationSerializer.serialize(
+          bannerCustomization,
+        ),
       };
 }
