@@ -1,6 +1,7 @@
 import 'package:usercentrics_sdk/src/model/banner_init_customization.dart';
 
 class BannerInitCustomizationSerializer {
+  // ignore: deprecated_member_use_from_same_package
   static dynamic serialize(BannerInitCustomization? value) => value == null
       ? null
       : {

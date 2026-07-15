@@ -18,6 +18,7 @@ abstract class InitializeBridge {
     NetworkMode? networkMode,
     bool? consentMediation,
     int? initTimeoutMillis,
+    // ignore: deprecated_member_use_from_same_package
     BannerInitCustomization? bannerCustomization,
   });
 }
@@ -39,6 +40,7 @@ class MethodChannelInitialize extends InitializeBridge {
     NetworkMode? networkMode,
     bool? consentMediation,
     int? initTimeoutMillis,
+    // ignore: deprecated_member_use_from_same_package
     BannerInitCustomization? bannerCustomization,
   }) {
     final arguments = InitializeOptionsSerializer.serialize(

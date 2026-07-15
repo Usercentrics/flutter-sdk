@@ -154,7 +154,7 @@ const mockGeneralStyleSettings = GeneralStyleSettings(
 
 const mockVariant = "variantA";
 
-// ignore: deprecated_member_use
+// ignore: deprecated_member_use_from_same_package
 const mockBannerInitCustomization = BannerInitCustomization(
   buttonBorderColor: '#004dcf',
   purposeListStyle: PurposeListStyle.flat,

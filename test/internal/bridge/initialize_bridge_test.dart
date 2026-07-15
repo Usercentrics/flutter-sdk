@@ -57,7 +57,7 @@ void main() {
   const mockInitTimeoutMillis = 25000;
   const mockNetworkMode = NetworkMode.eu;
   const mockConsentMediation = true;
-  // ignore: deprecated_member_use
+  // ignore: deprecated_member_use_from_same_package
   const mockBannerCustomization = BannerInitCustomization(
     paddingTop: 16,
     buttonBorderColor: '#004dcf',

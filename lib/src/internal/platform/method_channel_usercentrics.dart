@@ -88,6 +88,7 @@ class MethodChannelUsercentrics extends UsercentricsPlatform {
     NetworkMode? networkMode,
     bool? consentMediation,
     int? initTimeoutMillis,
+    // ignore: deprecated_member_use_from_same_package
     BannerInitCustomization? bannerCustomization,
   }) async {
     final ongoingInit = isReadyCompleter;

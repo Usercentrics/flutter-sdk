@@ -16,6 +16,7 @@ class FakeInitializeBridge extends InitializeBridge {
   NetworkMode? invokeNetworkModeArgument;
   bool? invokeConsentMediationArgument;
   int? invokeInitTimeoutMillisArgument;
+  // ignore: deprecated_member_use_from_same_package
   BannerInitCustomization? invokeBannerCustomizationArgument;
 
   @override
@@ -30,6 +31,7 @@ class FakeInitializeBridge extends InitializeBridge {
     NetworkMode? networkMode,
     bool? consentMediation,
     int? initTimeoutMillis,
+    // ignore: deprecated_member_use_from_same_package
     BannerInitCustomization? bannerCustomization,
   }) {
     invokeCount++;
