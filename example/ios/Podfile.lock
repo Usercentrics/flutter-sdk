@@ -88,12 +88,12 @@ PODS:
   - nanopb/decode (3.30910.0)
   - nanopb/encode (3.30910.0)
   - PromisesObjC (2.4.0)
-  - Usercentrics (2.28.0)
-  - usercentrics_sdk (2.28.0):
+  - Usercentrics (2.28.1)
+  - usercentrics_sdk (2.28.1):
     - Flutter
-    - UsercentricsUI (= 2.28.0)
-  - UsercentricsUI (2.28.0):
-    - Usercentrics (= 2.28.0)
+    - UsercentricsUI (= 2.28.1)
+  - UsercentricsUI (2.28.1):
+    - Usercentrics (= 2.28.1)
   - webview_flutter_wkwebview (0.0.1):
     - Flutter
     - FlutterMacOS
@@ -137,9 +137,9 @@ SPEC CHECKSUMS:
   GoogleUtilities: 00c88b9a86066ef77f0da2fab05f65d7768ed8e1
   nanopb: fad817b59e0457d11a5dfbde799381cd727c1275
   PromisesObjC: f5707f49cb48b9636751c5b2e7d227e43fba9f47
-  Usercentrics: 700664d1dcf3dc2109589609c4ea848cfa510959
-  usercentrics_sdk: 6f20a4b1185282dd16ec300c98edba783ffebb41
-  UsercentricsUI: 7fc0ea725ad1eb82c544e417aea4618bb659e5ef
+  Usercentrics: ebc354ea9d6a8c266bd6af52d2a947ae8f8ad23a
+  usercentrics_sdk: e5b00c9de140a4c2af17987f53a3af06dd4cfb6b
+  UsercentricsUI: ee98a324992a0aa466703d9b7965934bdc868c61
   webview_flutter_wkwebview: 1821ceac936eba6f7984d89a9f3bcb4dea99ebb2
 
 PODFILE CHECKSUM: e97bfdbafeca8809c8aa9477153c465633bd1c02
