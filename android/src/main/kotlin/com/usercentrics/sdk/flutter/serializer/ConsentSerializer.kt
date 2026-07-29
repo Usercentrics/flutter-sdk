@@ -12,7 +12,8 @@ internal fun UsercentricsServiceConsent.serialize(): Any {
         "dataProcessor" to dataProcessor,
         "isEssential" to isEssential,
         "history" to history.map { it.serialize() },
-        "category" to category
+        "category" to category,
+        "isExempt" to isExempt
     )
 }
 

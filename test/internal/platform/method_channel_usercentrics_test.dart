@@ -332,7 +332,7 @@ void main() {
             type: UsercentricsConsentType.explicit,
             isEssential: true,
             history: [],
-            category: "essential"),
+            category: "essential", isExempt: false),
       ];
       final getConsentsBridge = FakeGetConsentsBridge(
         invokeAnswer: expectedResponse,

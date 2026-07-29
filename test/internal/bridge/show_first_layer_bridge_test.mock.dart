@@ -20,7 +20,8 @@ const mockResponse = {
           "type": "EXPLICIT",
         }
       ],
-      "category": "essential"
+      "category": "essential",
+      "isExempt": false
     },
   ],
 };
@@ -43,7 +44,7 @@ const expectedResult = UsercentricsConsentUserResponse(
             type: UsercentricsConsentType.explicit,
           )
         ],
-        category: "essential"),
+        category: "essential", isExempt: false),
   ],
 );
 const expectedArguments = {
