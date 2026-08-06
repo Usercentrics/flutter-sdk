@@ -55,7 +55,8 @@ void main() {
                 type: UsercentricsConsentType.explicit,
               )
             ],
-            category: "essential", isExempt: false),
+            category: "essential",
+            isExempt: false),
       ],
       geolocationRuleset: GeolocationRuleset(
           activeSettingsId: "settingsId", bannerRequiredAtLocation: true),

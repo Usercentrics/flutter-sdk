@@ -41,7 +41,8 @@ void main() {
             type: UsercentricsConsentType.explicit,
           )
         ],
-        category: "essential", isExempt: false)
+        category: "essential",
+        isExempt: false)
   ];
   const mockFromLayer = TCFDecisionUILayer.firstLayer;
   const mockConsentType = UsercentricsConsentType.explicit;
