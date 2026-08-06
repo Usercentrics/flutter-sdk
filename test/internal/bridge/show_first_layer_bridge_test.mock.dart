@@ -44,7 +44,8 @@ const expectedResult = UsercentricsConsentUserResponse(
             type: UsercentricsConsentType.explicit,
           )
         ],
-        category: "essential", isExempt: false),
+        category: "essential",
+        isExempt: false),
   ],
 );
 const expectedArguments = {

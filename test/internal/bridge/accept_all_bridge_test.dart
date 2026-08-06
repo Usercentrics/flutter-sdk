@@ -40,7 +40,8 @@ void main() {
             type: UsercentricsConsentType.explicit,
           )
         ],
-        category: "essential", isExempt: false)
+        category: "essential",
+        isExempt: false)
   ];
   const mockConsentType = UsercentricsConsentType.explicit;
   const expectedArguments = "EXPLICIT";

@@ -12,7 +12,7 @@ struct DenyAllForTCFBridge : MethodBridge {
         let consentType = UsercentricsConsentType.initialize(from: argsDict["consentType"])!
         let unsavedPurposeLIDecisions = (argsDict["unsavedPurposeLIDecisions"] as? [Int: Bool])?.asKotlinIntBooleanDict()
         let unsavedVendorLIDecisions = (argsDict["unsavedVendorLIDecisions"] as? [Int: Bool])?.asKotlinIntBooleanDict()
-        let consents = usercentrics.shared.denyAllForTCF(fromLayer: fromLayer, consentType: consentType, unsavedPurposeLIDecisions: unsavedPurposeLIDecisions, unsavedVendorLIDecisions: unsavedVendorLIDecisions)
+        let consents = usercentrics.shared.denyAllForTCF(fromLayer: fromLayer, consentType: consentType, unsavedPurposeLIDecisions: unsavedPurposeLIDecisions, unsavedVendorLIDecisions: unsavedVendorLIDecisions, unsavedServiceDecisions: nil)
         result(consents.map { $0.serialize() })
     }
 }
