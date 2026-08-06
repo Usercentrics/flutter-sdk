@@ -12,6 +12,7 @@ class UsercentricsServiceConsent {
     required this.isEssential,
     required this.history,
     required this.category,
+    required this.isExempt,
   });
 
   /// A unique ID that represents the legal specifications of the service.
@@ -38,6 +39,9 @@ class UsercentricsServiceConsent {
   // The corresponding category of this service.
   final String category;
 
+  /// True if the service is a UK DUAA statistical exception, excluded from Reject All.
+  final bool isExempt;
+
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
@@ -50,7 +54,8 @@ class UsercentricsServiceConsent {
           isEssential == other.isEssential &&
           listEquals(history, other.history) &&
           type == other.type &&
-          category == other.category;
+          category == other.category &&
+          isExempt == other.isExempt;
 
   @override
   int get hashCode =>
@@ -61,11 +66,12 @@ class UsercentricsServiceConsent {
       isEssential.hashCode +
       history.hashCode +
       type.hashCode +
-      category.hashCode;
+      category.hashCode +
+      isExempt.hashCode;
 
   @override
   String toString() =>
-      "$UsercentricsServiceConsent(templateId: $templateId, status: $status, dataProcessor: $dataProcessor, version: $version, type: $type, isEssential: $isEssential, category: $category)";
+      "$UsercentricsServiceConsent(templateId: $templateId, status: $status, dataProcessor: $dataProcessor, version: $version, type: $type, isEssential: $isEssential, category: $category, isExempt: $isExempt)";
 }
 
 /// The consent history entry

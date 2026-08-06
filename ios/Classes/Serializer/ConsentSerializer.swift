@@ -10,7 +10,8 @@ extension UsercentricsServiceConsent {
             "dataProcessor": self.dataProcessor,
             "isEssential": self.isEssential,
             "history": self.history.map { $0.serialize() },
-            "category": self.category
+            "category": self.category,
+            "isExempt": self.isExempt
         ]
     }
 }

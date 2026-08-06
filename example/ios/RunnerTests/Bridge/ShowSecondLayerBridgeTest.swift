@@ -37,7 +37,8 @@ class ShowSecondLayerBridgeTest: XCTestCase, BaseBridgeTestProtocol {
                                                  dataProcessor: "TheProcessor",
                                                  version: "1.3.4",
                                                  isEssential: true,
-                                                 category: "essential")
+                                                 category: "essential",
+                                                 isExempt: false)
         bannerProxy.showSecondLayerAnswer = UsercentricsConsentUserResponse(consents: [consent],
                                                                             controllerId: "controllerIdABC",
                                                                             userInteraction: .acceptAll)

@@ -22,7 +22,8 @@ internal object AcceptAllForTCFMock {
                     timestampInMillis = 123,
                 )
             ),
-            category = "essential"
+            category = "essential",
+            isExempt = false
         )
     )
 
@@ -48,7 +49,8 @@ internal object AcceptAllForTCFMock {
                     "status" to true, "timestampInMillis" to 123L, "type" to "EXPLICIT",
                 )
             ),
-            "category" to "essential"
+            "category" to "essential",
+            "isExempt" to false
         )
     )
 }

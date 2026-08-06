@@ -27,7 +27,8 @@ internal object IsReadyMock {
                         timestampInMillis = 123,
                     )
                 ),
-                category = "essential"
+                category = "essential",
+                isExempt = false
             )
         ),
         geolocationRuleset = GeolocationRuleset(activeSettingsId = "settingsId", bannerRequiredAtLocation = true),
@@ -57,7 +58,8 @@ internal object IsReadyMock {
                         "status" to true, "timestampInMillis" to 123L, "type" to "EXPLICIT",
                     )
                 ),
-                "category" to "essential"
+                "category" to "essential",
+                "isExempt" to false
             )
         ),
         "geolocationRuleset" to mapOf("activeSettingsId" to "settingsId", "bannerRequiredAtLocation" to true),
