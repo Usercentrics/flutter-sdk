@@ -100,9 +100,16 @@ final class FakeUsercentricsSDK: UsercentricsSDK {
         fromLayer: TCFDecisionUILayer,
         consentType: UsercentricsConsentType,
         unsavedPurposeLIDecisions: [KotlinInt: KotlinBoolean]?,
-        unsavedVendorLIDecisions: [KotlinInt: KotlinBoolean]?
+        unsavedVendorLIDecisions: [KotlinInt: KotlinBoolean]?,
+        unsavedServiceDecisions: [String: KotlinBoolean]?
     ) -> [UsercentricsServiceConsent] {
         denyAllForTCFUnsavedVendorLIDecisionsArg = unsavedVendorLIDecisions
         return denyAllForTCFAnswer!
+    }
+
+    // MSDK-4514: denyAll gained unsavedServiceDecisions parameter
+    var denyAllAnswer: [UsercentricsServiceConsent]?
+    override func denyAll(consentType: UsercentricsConsentType, unsavedServiceDecisions: [String: KotlinBoolean]?) -> [UsercentricsServiceConsent] {
+        return denyAllAnswer!
     }
 }
