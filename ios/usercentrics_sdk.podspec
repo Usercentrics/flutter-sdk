@@ -9,7 +9,7 @@ Pod::Spec.new do |s|
   s.license          = { :file => '../LICENSE' }
   s.author           = { 'Usercentrics' => 'developer@usercentrics.com' }
   s.source           = { :path => '.' }
-  s.source_files = 'Classes/**/*'
+  s.source_files = 'usercentrics_sdk/Sources/usercentrics_sdk/**/*'
   s.dependency 'Flutter'
   s.dependency 'UsercentricsUI', "#{s.version}"
   s.platform = :ios
