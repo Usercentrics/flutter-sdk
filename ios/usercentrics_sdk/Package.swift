@@ -8,8 +8,8 @@ let package = Package(
         .library(name: "usercentrics-sdk", targets: ["usercentrics_sdk"])
     ],
     dependencies: [
-        .package(url: "https://bitbucket.org/usercentricscode/usercentrics-spm-ui", exact: "2.28.2"),
-        .package(url: "https://bitbucket.org/usercentricscode/usercentrics-spm-sdk", exact: "2.28.2")
+        .package(url: "https://bitbucket.org/usercentricscode/usercentrics-spm-ui", exact: "2.29.1"),
+        .package(url: "https://bitbucket.org/usercentricscode/usercentrics-spm-sdk", exact: "2.29.1")
     ],
     targets: [
         .target(

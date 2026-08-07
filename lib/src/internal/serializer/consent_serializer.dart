@@ -14,6 +14,7 @@ class ConsentSerializer {
           .map((e) => _deserializeHistoryEntry(e))
           .toList(),
       category: value['category'],
+      isExempt: value['isExempt'],
     );
   }
 

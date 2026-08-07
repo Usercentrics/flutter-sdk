@@ -17,7 +17,8 @@ class IsReadyBridgeTest: XCTestCase, BaseBridgeTestProtocol {
         dataProcessor: "Facebook SDK",
         version: "1.0.1",
         isEssential: true,
-        category: "essential"
+        category: "essential",
+        isExempt: false
     )
 
     private var usercentrics: FakeUsercentricsProxy!

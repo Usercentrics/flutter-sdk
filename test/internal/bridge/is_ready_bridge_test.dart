@@ -22,8 +22,9 @@ void main() {
             "type": "EXPLICIT",
           }
         ],
-        "category": "essential"
-      },
+        "category": "essential",
+        "isExempt": false
+      }
     ],
     "geolocationRuleset": {
       "activeSettingsId": "settingsId",
@@ -54,7 +55,8 @@ void main() {
                 type: UsercentricsConsentType.explicit,
               )
             ],
-            category: "essential"),
+            category: "essential",
+            isExempt: false),
       ],
       geolocationRuleset: GeolocationRuleset(
           activeSettingsId: "settingsId", bannerRequiredAtLocation: true),

@@ -20,7 +20,8 @@ void main() {
           "type": "EXPLICIT",
         }
       ],
-      "category": "essential"
+      "category": "essential",
+      "isExempt": false
     },
   ];
   const expectedResult = [
@@ -38,7 +39,8 @@ void main() {
             type: UsercentricsConsentType.explicit,
           )
         ],
-        category: "essential")
+        category: "essential",
+        isExempt: false)
   ];
 
   const MethodChannel channel = MethodChannel('usercentrics');

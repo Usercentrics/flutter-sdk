@@ -22,7 +22,8 @@ internal object SaveDecisionsMock {
                     timestampInMillis = 123,
                 )
             ),
-            category = "essential"
+            category = "essential",
+            isExempt = false
         )
     )
 
@@ -58,7 +59,8 @@ internal object SaveDecisionsMock {
                     "status" to true, "timestampInMillis" to 123L, "type" to "EXPLICIT",
                 )
             ),
-            "category" to "essential"
+            "category" to "essential",
+            "isExempt" to false
         )
     )
 

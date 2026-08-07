@@ -21,7 +21,8 @@ internal object AcceptAllMock {
                     timestampInMillis = 123,
                 )
             ),
-            category = "essential"
+            category = "essential",
+            isExempt = false
         )
     )
 
@@ -41,7 +42,8 @@ internal object AcceptAllMock {
                     "status" to true, "timestampInMillis" to 123L, "type" to "EXPLICIT",
                 )
             ),
-            "category" to "essential"
+            "category" to "essential",
+            "isExempt" to false
         )
     )
 }

@@ -8,7 +8,7 @@ struct DenyAllBridge : MethodBridge {
 
     func invoke(_ call: FlutterMethodCall, _ result: @escaping FlutterResult) {
         assert(call.method == name)
-        let consents = usercentrics.shared.denyAll(consentType: UsercentricsConsentType.initialize(from: call.arguments)!)
+        let consents = usercentrics.shared.denyAll(consentType: UsercentricsConsentType.initialize(from: call.arguments)!, unsavedServiceDecisions: nil)
         result(consents.map { $0.serialize() })
     }
 }

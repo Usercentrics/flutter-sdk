@@ -43,7 +43,8 @@ class ShowFirstLayerBridgeTest: XCTestCase, BaseBridgeTestProtocol {
                                                  dataProcessor: "TheProcessor",
                                                  version: "1.3.4",
                                                  isEssential: true,
-                                                 category: "essential")
+                                                 category: "essential",
+                                                 isExempt: false)
         bannerProxy.showFirstLayerAnswer = UsercentricsConsentUserResponse(consents: [consent],
                                                                            controllerId: "controllerIdABC",
                                                                            userInteraction: .acceptAll)
