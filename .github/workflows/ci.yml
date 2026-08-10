@@ -120,10 +120,14 @@ jobs:
           path: example/build/usercentrics_sdk/reports/kover/htmlDebug
 
   test-ios:
-    name: Test iOS
+    name: Test iOS (${{ matrix.build_system }})
     needs: [ lint, format, pub-dry-run ]
     runs-on: macos-14
     timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        build_system: [ cocoapods, spm ]
 
     steps:
       - name: Setup code
@@ -137,6 +141,9 @@ jobs:
         with:
           flutter-version: '3.41.6'
           channel: 'stable'
+      - name: Enable Swift Package Manager
+        if: matrix.build_system == 'spm'
+        run: flutter config --enable-swift-package-manager
       - name: Get dependencies
         run: flutter pub get
       - name: Create stub GoogleService-Info.plist for CI
@@ -162,6 +169,7 @@ jobs:
           </plist>
           EOF
       - name: Setup Pods
+        if: matrix.build_system == 'cocoapods'
         working-directory: ./example/ios
         run: pod install
       - name: Run all tests
@@ -189,7 +197,7 @@ jobs:
         if: ${{ always() }}
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
-          name: ios-test-results-and-diagnostics
+          name: ios-test-results-and-diagnostics-${{ matrix.build_system }}
           if-no-files-found: warn
           path: |
             example/ios/TestResults.xcresult
@@ -212,10 +220,14 @@ jobs:
         run: flutter build apk
 
   build-ios:
-    name: Build iOS Example
+    name: Build iOS Example (${{ matrix.build_system }})
     needs: [ lint, format, pub-dry-run ]
     runs-on: macos-14
     timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        build_system: [ cocoapods, spm ]
 
     steps:
       - name: Setup code
@@ -229,6 +241,9 @@ jobs:
         with:
           flutter-version: '3.41.6'
           channel: 'stable'
+      - name: Enable Swift Package Manager
+        if: matrix.build_system == 'spm'
+        run: flutter config --enable-swift-package-manager
       - name: Get dependencies
         run: flutter pub get
       - name: Create stub GoogleService-Info.plist for CI
