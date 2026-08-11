@@ -271,13 +271,51 @@ jobs:
         working-directory: ./example
         run: flutter build ios --debug --no-codesign --simulator
 
+  build-ios-spm-pure:
+    name: Build iOS SPM-Pure Example
+    needs: [ lint, format, pub-dry-run ]
+    runs-on: macos-14
+    timeout-minutes: 20
+
+    steps:
+      - name: Setup code
+        uses: maxim-lobanov/setup-xcode@ed7a3b1fda3918c0306d1b724322adc0b8cc0a90 # v1
+        with:
+          xcode-version: '16.2'
+      - name: Checkout code
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+      - name: Setup Flutter
+        uses: subosito/flutter-action@1a449444c387b1966244ae4d4f8c696479add0b2 # v2
+        with:
+          flutter-version: '3.41.6'
+          channel: 'stable'
+      - name: Enable Swift Package Manager
+        run: flutter config --enable-swift-package-manager
+      - name: Get dependencies
+        working-directory: ./example_spm
+        run: flutter pub get
+      - name: Build
+        working-directory: ./example_spm
+        run: flutter build ios --debug --no-codesign --simulator
+      - name: Assert no CocoaPods artifacts were introduced
+        working-directory: ./example_spm
+        run: |
+          if [ -d ios/Pods ]; then
+            echo "::error::ios/Pods exists - a dependency reintroduced a CocoaPods requirement in the pure-SPM sample app"
+            exit 1
+          fi
+          if grep -q "Pods" ios/Flutter/Debug.xcconfig; then
+            echo "::error::ios/Flutter/Debug.xcconfig references Pods - CocoaPods was integrated unexpectedly"
+            exit 1
+          fi
+
   # https://dart.dev/tools/pub/automated-publishing
   release:
     name: Release
     permissions:
       id-token: write # Required for flutter pub publish (OIDC automated publishing — cannot be removed)
     if: startsWith(github.ref, 'refs/tags/')
-    needs: [ test-flutter, test-android, test-ios, build-android, build-ios ]
+    needs: [ test-flutter, test-android, test-ios, build-android, build-ios, build-ios-spm-pure ]
     runs-on: ubuntu-latest
     container: ghcr.io/cirruslabs/flutter:3.22.3
     timeout-minutes: 20
