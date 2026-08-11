@@ -34,6 +34,14 @@ jobs:
         uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
       - name: Get dependencies
         run: flutter pub get
+      - name: Get example_spm dependencies
+        # example/ gets resolved automatically by the root `flutter pub get` above
+        # (Flutter's plugin tooling auto-resolves a directory literally named
+        # `example/`) - example_spm isn't named that, so it needs an explicit
+        # pub get or `flutter analyze` treats its files as part of the root
+        # context and fails to resolve imports like webview_flutter.
+        working-directory: ./example_spm
+        run: flutter pub get
       - name: Lint using flutter analyze
         run: flutter analyze
       - name: Assert that every file that should be public has been exported
