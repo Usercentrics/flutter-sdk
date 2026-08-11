@@ -169,7 +169,6 @@ jobs:
           </plist>
           EOF
       - name: Setup Pods
-        if: matrix.build_system == 'cocoapods'
         working-directory: ./example/ios
         run: pod install
       - name: Run all tests
