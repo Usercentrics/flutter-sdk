@@ -1,3 +1,4 @@
+import Flutter
 import XCTest
 
 @testable import Usercentrics

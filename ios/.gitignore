@@ -9,6 +9,9 @@ profile
 
 DerivedData/
 build/
+usercentrics_sdk/.build/
+usercentrics_sdk/.swiftpm/
+usercentrics_sdk/Package.resolved
 GeneratedPluginRegistrant.h
 GeneratedPluginRegistrant.m
 
