@@ -33,7 +33,7 @@ internal class UsercentricsBannerProxyImpl(
         callback: (UsercentricsConsentUserResponse?) -> Unit,
     ) {
         val context = activityProvider.provide() ?: return
-        UsercentricsBanner(context, bannerSettings).showSecondLayer(callback)
+        UsercentricsBanner(context, bannerSettings).showSecondLayer(callback = callback)
     }
 
 }
