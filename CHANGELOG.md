@@ -1,4 +1,8 @@
 [Release Notes](https://docs.usercentrics.com/cmp_in_app_sdk/latest/about/history/)
+### 999.999.999 – Aug 18, 2026
+## Chores
+* **[Core]** Bumped native Usercentrics SDK to 999.999.999.
+
 ### 2.29.1 – Aug 5, 2026
 ## Features
 * **[Unity]** Added `isExempt` to the Unity `ServiceConsent` model, propagating the statistical exception flag to the Unity bridge
