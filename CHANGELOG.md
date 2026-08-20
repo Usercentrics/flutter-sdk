@@ -1,4 +1,8 @@
 [Release Notes](https://docs.usercentrics.com/cmp_in_app_sdk/latest/about/history/)
+### 2.30.0 – Aug 20, 2026
+## Features
+* **[iOS]** Added Swift Package Manager (SPM) support to the Flutter plugin
+
 ### 2.29.1 – Aug 5, 2026
 ## Features
 * **[Unity]** Added `isExempt` to the Unity `ServiceConsent` model, propagating the statistical exception flag to the Unity bridge
