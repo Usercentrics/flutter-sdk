@@ -23,5 +23,6 @@ internal fun Any?.deserializeGeneralStyleSettings(
         font = this["font"].deserializeBannerFont(assetsProvider, activityProvider),
         links = this["links"].deserializeLegalLinksSettings(),
         disableSystemBackButton = this["disableSystemBackButton"] as? Boolean,
+        windowFullscreen = this["windowFullscreen"] as? Boolean,
     )
 }

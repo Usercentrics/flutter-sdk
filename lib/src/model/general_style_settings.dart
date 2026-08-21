@@ -17,6 +17,7 @@ class GeneralStyleSettings {
     this.logo,
     this.links,
     this.disableSystemBackButton,
+    this.windowFullscreen,
   });
 
   /// The text color.
@@ -51,6 +52,11 @@ class GeneralStyleSettings {
 
   final bool? disableSystemBackButton;
 
+  /// Android-only. Backward-compat workaround for publishers who relied on the
+  /// legacy fullscreen dialog behavior prior to the edge-to-edge fix. Has no
+  /// effect on iOS.
+  final bool? windowFullscreen;
+
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
@@ -67,7 +73,8 @@ class GeneralStyleSettings {
           font == other.font &&
           logo == other.logo &&
           links == other.links &&
-          disableSystemBackButton == other.disableSystemBackButton;
+          disableSystemBackButton == other.disableSystemBackButton &&
+          windowFullscreen == other.windowFullscreen;
 
   @override
   int get hashCode =>
@@ -81,11 +88,12 @@ class GeneralStyleSettings {
       font.hashCode ^
       logo.hashCode ^
       links.hashCode ^
-      disableSystemBackButton.hashCode;
+      disableSystemBackButton.hashCode ^
+      windowFullscreen.hashCode;
 
   @override
   String toString() {
-    return 'GeneralStyleSettings{textColor: $textColor, layerBackgroundColor: $layerBackgroundColor, layerBackgroundSecondaryColor: $layerBackgroundSecondaryColor, linkColor: $linkColor, tabColor: $tabColor, bordersColor: $bordersColor, toggleStyleSettings: $toggleStyleSettings, font: $font, logo: $logo, links: $links, disableSystemBackButton: $disableSystemBackButton}';
+    return 'GeneralStyleSettings{textColor: $textColor, layerBackgroundColor: $layerBackgroundColor, layerBackgroundSecondaryColor: $layerBackgroundSecondaryColor, linkColor: $linkColor, tabColor: $tabColor, bordersColor: $bordersColor, toggleStyleSettings: $toggleStyleSettings, font: $font, logo: $logo, links: $links, disableSystemBackButton: $disableSystemBackButton, windowFullscreen: $windowFullscreen}';
   }
 }
 

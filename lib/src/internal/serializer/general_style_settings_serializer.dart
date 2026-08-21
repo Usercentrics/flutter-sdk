@@ -22,6 +22,7 @@ class GeneralStyleSettingsSerializer {
           'logo': value.logo?.assetPath,
           'links': LegalLinksSettingsSerializer.serialize(value.links),
           'disableSystemBackButton': value.disableSystemBackButton,
+          'windowFullscreen': value.windowFullscreen,
         };
 
   static dynamic _serializeFont(BannerFont? customFont) {
