@@ -18,6 +18,7 @@ class FakeUsercentrics extends UsercentricsPlatform {
     NetworkMode? networkMode,
     bool? consentMediation,
     int? initTimeoutMillis,
+    String? controllerId,
     // ignore: deprecated_member_use
     BannerInitCustomization? bannerCustomization,
   }) {
