@@ -27,6 +27,14 @@ class Usercentrics {
   /// - The [networkMode] sets the network operation mode. Be careful, use this option only if we have confirmed that it is ready to use because it has a significant impact on the whole system's performance. The default value is "world".
   /// - The [consentMediation] enables the feature of consent mediation, this feature works with a set of selected SDKs that you can find in the documentation.
   /// - The [initTimeoutMillis] sets a timeout for the SDK to initialize. Minimum value is 5000ms. The default value is 10000ms.
+  /// - The [controllerId] can be used to inject a previously-issued controllerID at SDK
+  /// initialisation. Use this to preserve user identity across login/logout flows that clear
+  /// local consent storage. Store the controllerId server-side after the first successful init,
+  /// then pass it here on every subsequent login. The SDK will skip generating a new ID and use
+  /// this value instead. It is persisted to local storage, so subsequent re-initialisations
+  /// without this option continue to use it. The value must be a 64-character lowercase
+  /// hexadecimal string (the format produced internally by the SDK). Invalid values are ignored
+  /// with a warning log and the SDK falls back to its normal ID resolution (stored → generated).
   /// - The [bannerCustomization] enables further programmatic customization of the predefined Banner UI, applied at init-time.
   /// **Deprecated:** [bannerCustomization] is deprecated and will be removed in a future release. Configure banner appearance via the Usercentrics dashboard instead.
   static void initialize({
@@ -39,6 +47,7 @@ class Usercentrics {
     NetworkMode? networkMode,
     bool? consentMediation,
     int? initTimeoutMillis,
+    String? controllerId,
     @Deprecated(
         'BannerInitCustomization is deprecated and will be removed in a future release. Configure banner appearance via the Usercentrics dashboard instead.')
     BannerInitCustomization? bannerCustomization,
@@ -53,6 +62,7 @@ class Usercentrics {
           networkMode: networkMode,
           consentMediation: consentMediation,
           initTimeoutMillis: initTimeoutMillis,
+          controllerId: controllerId,
           // ignore: deprecated_member_use_from_same_package
           bannerCustomization: bannerCustomization);
 

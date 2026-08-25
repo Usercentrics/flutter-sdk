@@ -51,6 +51,8 @@ void main() {
       const networkMode = NetworkMode.eu;
       const consentMediation = true;
       const initTimeoutMillis = 7000;
+      const controllerId =
+          "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
 
       instance.initialize(
           settingsId: settingsId,
@@ -61,7 +63,8 @@ void main() {
           version: version,
           networkMode: networkMode,
           consentMediation: consentMediation,
-          initTimeoutMillis: initTimeoutMillis);
+          initTimeoutMillis: initTimeoutMillis,
+          controllerId: controllerId);
       await instance.isReadyCompleter?.future;
 
       expect(initializeBridge.invokeCount, 1);
@@ -76,6 +79,7 @@ void main() {
       expect(initializeBridge.invokeConsentMediationArgument, consentMediation);
       expect(
           initializeBridge.invokeInitTimeoutMillisArgument, initTimeoutMillis);
+      expect(initializeBridge.invokeControllerIdArgument, controllerId);
 
       expect(isReadyBridge.invokeCount, 1);
       expect(isReadyBridge.invokeChannelArgument?.name, "usercentrics");

@@ -88,6 +88,7 @@ class MethodChannelUsercentrics extends UsercentricsPlatform {
     NetworkMode? networkMode,
     bool? consentMediation,
     int? initTimeoutMillis,
+    String? controllerId,
     // ignore: deprecated_member_use_from_same_package
     BannerInitCustomization? bannerCustomization,
   }) async {
@@ -116,6 +117,7 @@ class MethodChannelUsercentrics extends UsercentricsPlatform {
           networkMode: networkMode,
           consentMediation: consentMediation,
           initTimeoutMillis: initTimeoutMillis,
+          controllerId: controllerId,
           bannerCustomization: bannerCustomization);
 
       await status.then((value) => isReadyCompleter?.complete(null));

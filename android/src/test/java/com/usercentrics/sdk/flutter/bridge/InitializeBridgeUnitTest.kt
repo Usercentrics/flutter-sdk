@@ -81,6 +81,10 @@ class InitializeBridgeUnitTest {
             InitializeMock.callWithDataInitTimeoutMillis,
             usercentricsProxy.initializeOptionsArgument?.initTimeoutMillis
         )
+        assertEquals(
+            InitializeMock.callWithDataControllerId,
+            usercentricsProxy.initializeOptionsArgument?.controllerId
+        )
         assertEquals(1, result.successCount)
         assertEquals(InitializeMock.expected, result.successResultArgument)
     }
@@ -117,6 +121,10 @@ class InitializeBridgeUnitTest {
         assertEquals(
             defaultOptions.networkMode,
             usercentricsProxy.initializeOptionsArgument?.networkMode
+        )
+        assertEquals(
+            defaultOptions.controllerId,
+            usercentricsProxy.initializeOptionsArgument?.controllerId
         )
         assertEquals(1, result.successCount)
         assertEquals(InitializeMock.expected, result.successResultArgument)
