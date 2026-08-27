@@ -91,7 +91,8 @@ const expectedArguments = {
       },
       'logo': 'images/flutter-logo.png',
       'links': 'HIDDEN',
-      'disableSystemBackButton': false
+      'disableSystemBackButton': false,
+      'windowFullscreen': null
     },
     "variantName": 'variantA',
     "initCustomization": {

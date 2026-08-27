@@ -6,6 +6,7 @@ import 'package:usercentrics_sdk/usercentrics_sdk.dart';
 import 'build_your_own_ui.dart';
 import 'customization_example_1.dart';
 import 'customization_example_2.dart';
+import 'window_fullscreen_example.dart';
 
 // Build-time flag — shows the consent mediation toggle when true.
 // Usage: flutter run --dart-define=MEDIATION_TEST=true
@@ -211,6 +212,14 @@ class HomePageState extends State<HomePage> {
                       )
                   : null,
               child: const Text("Customization Example 2"),
+            ),
+            ElevatedButton(
+              onPressed: isSdkReady
+                  ? () => _showFirstLayer(
+                        settings: bannerSettingsWindowFullscreenExample,
+                      )
+                  : null,
+              child: const Text("Window Fullscreen (Android)"),
             ),
             ElevatedButton(
               onPressed: isSdkReady

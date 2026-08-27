@@ -116,6 +116,7 @@ const expectedArguments = {
       'logo': 'images/flutter-logo.png',
       'links': 'BOTH',
       'disableSystemBackButton': false,
+      'windowFullscreen': null,
     },
     "variantName": "variantA",
     "initCustomization": null
