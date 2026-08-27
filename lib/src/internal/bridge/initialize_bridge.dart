@@ -18,6 +18,7 @@ abstract class InitializeBridge {
     NetworkMode? networkMode,
     bool? consentMediation,
     int? initTimeoutMillis,
+    String? controllerId,
     // ignore: deprecated_member_use_from_same_package
     BannerInitCustomization? bannerCustomization,
   });
@@ -40,6 +41,7 @@ class MethodChannelInitialize extends InitializeBridge {
     NetworkMode? networkMode,
     bool? consentMediation,
     int? initTimeoutMillis,
+    String? controllerId,
     // ignore: deprecated_member_use_from_same_package
     BannerInitCustomization? bannerCustomization,
   }) {
@@ -53,6 +55,7 @@ class MethodChannelInitialize extends InitializeBridge {
       networkMode: networkMode,
       consentMediation: consentMediation,
       initTimeoutMillis: initTimeoutMillis,
+      controllerId: controllerId,
       bannerCustomization: bannerCustomization,
     );
     channel.invokeMethod(_name, arguments);

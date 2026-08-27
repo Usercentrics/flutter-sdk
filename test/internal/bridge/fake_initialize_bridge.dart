@@ -16,6 +16,7 @@ class FakeInitializeBridge extends InitializeBridge {
   NetworkMode? invokeNetworkModeArgument;
   bool? invokeConsentMediationArgument;
   int? invokeInitTimeoutMillisArgument;
+  String? invokeControllerIdArgument;
   // ignore: deprecated_member_use_from_same_package
   BannerInitCustomization? invokeBannerCustomizationArgument;
 
@@ -31,6 +32,7 @@ class FakeInitializeBridge extends InitializeBridge {
     NetworkMode? networkMode,
     bool? consentMediation,
     int? initTimeoutMillis,
+    String? controllerId,
     // ignore: deprecated_member_use_from_same_package
     BannerInitCustomization? bannerCustomization,
   }) {
@@ -45,6 +47,7 @@ class FakeInitializeBridge extends InitializeBridge {
     invokeNetworkModeArgument = networkMode;
     invokeConsentMediationArgument = consentMediation;
     invokeInitTimeoutMillisArgument = initTimeoutMillis;
+    invokeControllerIdArgument = controllerId;
     invokeBannerCustomizationArgument = bannerCustomization;
   }
 }

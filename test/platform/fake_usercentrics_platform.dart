@@ -71,6 +71,7 @@ class FakeUsercentricsPlatform extends UsercentricsPlatform {
   NetworkMode? networkModeArgument;
   bool? consentMediationArgument;
   int? initializeInitTimeoutMillisArgument;
+  String? initializeControllerIdArgument;
   // ignore: deprecated_member_use_from_same_package
   BannerInitCustomization? initializeBannerCustomizationArgument;
 
@@ -85,6 +86,7 @@ class FakeUsercentricsPlatform extends UsercentricsPlatform {
     NetworkMode? networkMode,
     bool? consentMediation,
     int? initTimeoutMillis,
+    String? controllerId,
     // ignore: deprecated_member_use_from_same_package
     BannerInitCustomization? bannerCustomization,
   }) {
@@ -98,6 +100,7 @@ class FakeUsercentricsPlatform extends UsercentricsPlatform {
     networkModeArgument = networkMode;
     consentMediationArgument = consentMediation;
     initializeInitTimeoutMillisArgument = initTimeoutMillis;
+    initializeControllerIdArgument = controllerId;
     initializeBannerCustomizationArgument = bannerCustomization;
   }
 
