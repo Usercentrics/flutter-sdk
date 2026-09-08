@@ -27,3 +27,5 @@ export 'get_gpp_data_bridge.dart';
 export 'get_gpp_string_bridge.dart';
 export 'set_gpp_consent_bridge.dart';
 export 'get_dps_metadata_bridge.dart';
+export 'notify_login_success_bridge.dart';
+export 'notify_subscribe_success_bridge.dart';

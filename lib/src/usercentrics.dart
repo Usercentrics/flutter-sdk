@@ -255,4 +255,21 @@ class Usercentrics {
     required String templateId,
   }) =>
       _delegate.getDpsMetadata(templateId: templateId);
+
+  /// Fires when the user taps the Consent-or-Pay 1st-layer subscriber-login link.
+  /// The banner is not dismissed automatically — call [notifyLoginSuccess] once the
+  /// host app confirms login, then dismiss the banner yourself.
+  static Stream<String?> get onLoginClicked => _delegate.onLoginClicked;
+
+  /// Fires when the user taps the Consent-or-Pay 1st-layer Reject & Subscribe button.
+  /// The banner is not dismissed automatically — call [notifySubscribeSuccess] once the
+  /// host app confirms the subscription, then dismiss the banner yourself.
+  static Stream<String?> get onSubscribeClicked => _delegate.onSubscribeClicked;
+
+  /// Clears stored TCF consent data after a successful Consent-or-Pay login.
+  static Future<void> notifyLoginSuccess() => _delegate.notifyLoginSuccess();
+
+  /// Clears stored TCF consent data after a successful Consent-or-Pay subscription.
+  static Future<void> notifySubscribeSuccess() =>
+      _delegate.notifySubscribeSuccess();
 }
