@@ -35,6 +35,9 @@ internal fun Any?.deserializeOptions(): UsercentricsOptions {
     this["initTimeoutMillis"]?.let {
         options.initTimeoutMillis = (it as Int).toLong()
     }
+    this["controllerId"]?.let {
+        options.controllerId = it as String
+    }
     this["bannerCustomization"]?.let {
         options.bannerCustomization = it.deserializeBannerInitCustomization()
     }

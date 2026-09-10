@@ -18,6 +18,8 @@ void main() {
     "networkMode": "EU",
     'consentMediation': true,
     "initTimeoutMillis": 25000,
+    "controllerId":
+        "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
     "bannerCustomization": {
       'paddingTop': 16,
       'paddingBottom': null,
@@ -55,6 +57,8 @@ void main() {
   const mockDefaultLanguage = "en";
   const mockTimeoutMillis = 20000;
   const mockInitTimeoutMillis = 25000;
+  const mockControllerId =
+      "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
   const mockNetworkMode = NetworkMode.eu;
   const mockConsentMediation = true;
   // ignore: deprecated_member_use_from_same_package
@@ -94,6 +98,7 @@ void main() {
         networkMode: mockNetworkMode,
         consentMediation: mockConsentMediation,
         initTimeoutMillis: mockInitTimeoutMillis,
+        controllerId: mockControllerId,
         // ignore: deprecated_member_use
         bannerCustomization: mockBannerCustomization);
 

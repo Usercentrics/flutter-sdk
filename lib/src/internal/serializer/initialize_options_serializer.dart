@@ -17,6 +17,7 @@ class InitializeOptionsSerializer {
     NetworkMode? networkMode,
     bool? consentMediation,
     int? initTimeoutMillis,
+    String? controllerId,
     // ignore: deprecated_member_use_from_same_package
     BannerInitCustomization? bannerCustomization,
   }) =>
@@ -30,6 +31,7 @@ class InitializeOptionsSerializer {
         'networkMode': NetworkModeSerializer.serialize(networkMode),
         'consentMediation': consentMediation,
         'initTimeoutMillis': initTimeoutMillis,
+        'controllerId': controllerId,
         'bannerCustomization': BannerInitCustomizationSerializer.serialize(
           bannerCustomization,
         ),
