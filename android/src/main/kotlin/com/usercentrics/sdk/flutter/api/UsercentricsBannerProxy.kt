@@ -18,6 +18,9 @@ internal interface UsercentricsBannerProxy {
 
 internal class UsercentricsBannerProxyImpl(
     private val activityProvider: FlutterActivityProvider,
+    // Optional: only Consent-or-Pay first-layer screens ever invoke these, so a plain first-layer
+    // call with no such buttons configured never touches this at all.
+    private val consentOrPayEventNotifier: ConsentOrPayEventNotifier? = null,
 ) : UsercentricsBannerProxy {
 
     override fun showFirstLayer(
@@ -25,7 +28,11 @@ internal class UsercentricsBannerProxyImpl(
         callback: (UsercentricsConsentUserResponse?) -> Unit,
     ) {
         val context = activityProvider.provide() ?: return
-        UsercentricsBanner(context, bannerSettings).showFirstLayer(callback)
+        UsercentricsBanner(context, bannerSettings).showFirstLayer(
+            callback = callback,
+            onLoginClicked = { url -> consentOrPayEventNotifier?.onLoginClicked(url) },
+            onSubscribeClicked = { url -> consentOrPayEventNotifier?.onSubscribeClicked(url) },
+        )
     }
 
     override fun showSecondLayer(

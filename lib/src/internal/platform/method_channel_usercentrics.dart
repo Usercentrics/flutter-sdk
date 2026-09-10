@@ -38,11 +38,18 @@ class MethodChannelUsercentrics extends UsercentricsPlatform {
       this.getGPPDataBridge = const MethodChannelGetGPPData(),
       this.getGPPStringBridge = const MethodChannelGetGPPString(),
       this.setGPPConsentBridge = const MethodChannelSetGPPConsent(),
-      this.getDpsMetadataBridge = const MethodChannelGetDpsMetadata()});
+      this.getDpsMetadataBridge = const MethodChannelGetDpsMetadata(),
+      this.notifyLoginSuccessBridge = const MethodChannelNotifyLoginSuccess(),
+      this.notifySubscribeSuccessBridge =
+          const MethodChannelNotifySubscribeSuccess()});
 
   static const MethodChannel _channel = MethodChannel('usercentrics');
   static const EventChannel _gppSectionChangeEventChannel =
       EventChannel('usercentrics/onGppSectionChange');
+  static const EventChannel _loginClickedEventChannel =
+      EventChannel('usercentrics/onLoginClicked');
+  static const EventChannel _subscribeClickedEventChannel =
+      EventChannel('usercentrics/onSubscribeClicked');
 
   final InitializeBridge initializeBridge;
   final IsReadyBridge isReadyBridge;
@@ -73,6 +80,8 @@ class MethodChannelUsercentrics extends UsercentricsPlatform {
   final GetGPPStringBridge getGPPStringBridge;
   final SetGPPConsentBridge setGPPConsentBridge;
   final GetDpsMetadataBridge getDpsMetadataBridge;
+  final NotifyLoginSuccessBridge notifyLoginSuccessBridge;
+  final NotifySubscribeSuccessBridge notifySubscribeSuccessBridge;
 
   @visibleForTesting
   Completer<Object?>? isReadyCompleter;
@@ -402,5 +411,31 @@ class MethodChannelUsercentrics extends UsercentricsPlatform {
     return _gppSectionChangeEventChannel
         .receiveBroadcastStream()
         .map((event) => GppDataSerializer.deserializePayload(event));
+  }
+
+  @override
+  Stream<String?> get onLoginClicked {
+    return _loginClickedEventChannel
+        .receiveBroadcastStream()
+        .map((event) => event as String?);
+  }
+
+  @override
+  Stream<String?> get onSubscribeClicked {
+    return _subscribeClickedEventChannel
+        .receiveBroadcastStream()
+        .map((event) => event as String?);
+  }
+
+  @override
+  Future<void> notifyLoginSuccess() async {
+    await _ensureIsReady();
+    await notifyLoginSuccessBridge.invoke(channel: _channel);
+  }
+
+  @override
+  Future<void> notifySubscribeSuccess() async {
+    await _ensureIsReady();
+    await notifySubscribeSuccessBridge.invoke(channel: _channel);
   }
 }
