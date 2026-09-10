@@ -334,7 +334,7 @@ jobs:
       - name: Validate version
         run: dart scripts/check_release_version.dart ${{ github.ref }}
       - name: Set publishing token
-        uses: dart-lang/setup-dart@65eb853c7ba17dde3be364c3d2858773e7144260 # v1
+        uses: dart-lang/setup-dart@6afc89df92d6eb3834022f73cd65adc8cdfcb92d # v1
       - name: Get dependencies
         run: flutter pub get
       - name: Publish
