@@ -272,4 +272,11 @@ class Usercentrics {
   /// Clears stored TCF consent data after a successful Consent-or-Pay subscription.
   static Future<void> notifySubscribeSuccess() =>
       _delegate.notifySubscribeSuccess();
+
+  /// Notifies the SDK that the host app's user is no longer an active Consent-or-Pay
+  /// subscriber (e.g. their subscription lapsed or was cancelled). Resets the subscriber
+  /// flag so the host app can re-surface the Consent-or-Pay banner; does not alter any
+  /// existing consent data, which remains accurate.
+  static Future<void> notifySubscriptionLapsed() =>
+      _delegate.notifySubscriptionLapsed();
 }

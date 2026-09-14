@@ -420,14 +420,10 @@ class FakeUsercentricsPlatform extends UsercentricsPlatform {
   }
 
   @override
-  Stream<String?> get onLoginClicked {
-    return const Stream.empty();
-  }
+  Stream<String?> get onLoginClicked => const Stream.empty();
 
   @override
-  Stream<String?> get onSubscribeClicked {
-    return const Stream.empty();
-  }
+  Stream<String?> get onSubscribeClicked => const Stream.empty();
 
   var notifyLoginSuccessCount = 0;
 
@@ -442,6 +438,14 @@ class FakeUsercentricsPlatform extends UsercentricsPlatform {
   @override
   Future<void> notifySubscribeSuccess() {
     notifySubscribeSuccessCount++;
+    return Future.value(null);
+  }
+
+  var notifySubscriptionLapsedCount = 0;
+
+  @override
+  Future<void> notifySubscriptionLapsed() {
+    notifySubscriptionLapsedCount++;
     return Future.value(null);
   }
 }

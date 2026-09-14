@@ -81,6 +81,7 @@ class UsercentricsPlugin : FlutterPlugin,
             GetDpsMetadataBridge(),
             NotifyLoginSuccessBridge(),
             NotifySubscribeSuccessBridge(),
+            NotifySubscriptionLapsedBridge(),
         ).associateBy { it.name }
     }
 
