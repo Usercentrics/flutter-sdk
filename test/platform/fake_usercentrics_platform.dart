@@ -418,4 +418,34 @@ class FakeUsercentricsPlatform extends UsercentricsPlatform {
     dpsMetadataTemplateIdArgument = templateId;
     return Future.value(dpsMetadataAnswer);
   }
+
+  @override
+  Stream<String?> get onLoginClicked => const Stream.empty();
+
+  @override
+  Stream<String?> get onSubscribeClicked => const Stream.empty();
+
+  var notifyLoginSuccessCount = 0;
+
+  @override
+  Future<void> notifyLoginSuccess() {
+    notifyLoginSuccessCount++;
+    return Future.value(null);
+  }
+
+  var notifySubscribeSuccessCount = 0;
+
+  @override
+  Future<void> notifySubscribeSuccess() {
+    notifySubscribeSuccessCount++;
+    return Future.value(null);
+  }
+
+  var notifySubscriptionLapsedCount = 0;
+
+  @override
+  Future<void> notifySubscriptionLapsed() {
+    notifySubscriptionLapsedCount++;
+    return Future.value(null);
+  }
 }
