@@ -29,3 +29,4 @@ export 'set_gpp_consent_bridge.dart';
 export 'get_dps_metadata_bridge.dart';
 export 'notify_login_success_bridge.dart';
 export 'notify_subscribe_success_bridge.dart';
+export 'notify_subscription_lapsed_bridge.dart';
