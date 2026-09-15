@@ -258,6 +258,17 @@ class HomePageState extends State<HomePage> {
               ),
               child: const Text("GPP Testing"),
             ),
+            ElevatedButton(
+              onPressed: isSdkReady
+                  ? () async {
+                      await Usercentrics.notifySubscriptionLapsed();
+                      setState(() {
+                        _statusMessage = 'notifySubscriptionLapsed() called';
+                      });
+                    }
+                  : null,
+              child: const Text("Notify Subscription Lapsed"),
+            ),
           ],
         ),
       ),

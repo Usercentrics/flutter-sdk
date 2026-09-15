@@ -13,6 +13,7 @@ import '../bridge/fake_restore_user_session_bridge.dart';
 import '../bridge/fake_clear_user_session_bridge.dart';
 import '../bridge/fake_show_first_layer_bridge.dart';
 import '../bridge/fake_show_second_layer_bridge.dart';
+import '../bridge/fake_notify_subscription_lapsed_bridge.dart';
 import '../bridge/get_cmp_data_bridge_test.dart';
 
 void main() {
@@ -530,6 +531,42 @@ void main() {
 
       expect(
         () => instance.clearUserSession(),
+        throwsA(const TypeMatcher<NotInitializedException>()),
+      );
+    });
+  });
+
+  group('notifySubscriptionLapsed', () {
+    test('default', () {
+      final instance = MethodChannelUsercentrics();
+      expect(instance.notifySubscriptionLapsedBridge,
+          const TypeMatcher<MethodChannelNotifySubscriptionLapsed>());
+    });
+
+    test('success', () async {
+      final notifySubscriptionLapsedBridge =
+          FakeNotifySubscriptionLapsedBridge();
+
+      final instance = MethodChannelUsercentrics(
+        notifySubscriptionLapsedBridge: notifySubscriptionLapsedBridge,
+      );
+
+      instance.isReadyCompleter = Completer();
+      instance.isReadyCompleter?.complete();
+
+      await instance.notifySubscriptionLapsed();
+
+      expect(notifySubscriptionLapsedBridge.invokeCount, 1);
+      expect(notifySubscriptionLapsedBridge.invokeChannelArgument?.name,
+          "usercentrics");
+    });
+
+    test('when it is not ready', () {
+      final instance = MethodChannelUsercentrics();
+      instance.isReadyCompleter = null;
+
+      expect(
+        () => instance.notifySubscriptionLapsed(),
         throwsA(const TypeMatcher<NotInitializedException>()),
       );
     });
