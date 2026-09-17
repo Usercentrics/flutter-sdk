@@ -121,4 +121,20 @@ abstract class UsercentricsPlatform {
   Future<Map<String, dynamic>?> getDpsMetadata({
     required String templateId,
   });
+
+  /// Fires when the user taps the Consent-or-Pay 1st-layer subscriber-login link.
+  /// The banner is not dismissed automatically — call [notifyLoginSuccess] once the
+  /// host app confirms login, then dismiss the banner yourself.
+  Stream<String?> get onLoginClicked;
+
+  /// Fires when the user taps the Consent-or-Pay 1st-layer Reject & Subscribe button.
+  /// The banner is not dismissed automatically — call [notifySubscribeSuccess] once the
+  /// host app confirms the subscription, then dismiss the banner yourself.
+  Stream<String?> get onSubscribeClicked;
+
+  /// Clears stored TCF consent data after a successful Consent-or-Pay login.
+  Future<void> notifyLoginSuccess();
+
+  /// Clears stored TCF consent data after a successful Consent-or-Pay subscription.
+  Future<void> notifySubscribeSuccess();
 }
