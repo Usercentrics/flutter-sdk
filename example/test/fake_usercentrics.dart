@@ -202,4 +202,9 @@ class FakeUsercentrics extends UsercentricsPlatform {
   Future<void> notifySubscribeSuccess() {
     throw UnimplementedError();
   }
+
+  @override
+  Future<void> notifySubscriptionLapsed() {
+    throw UnimplementedError();
+  }
 }
