@@ -157,8 +157,7 @@ class TCF2ConsentOrPayFirstLayerSettingsSerializer {
       optinBannerTitle: value['optinBannerTitle'],
       optinBannerMessage: value['optinBannerMessage'],
       rejectAndSubscribeTitle: value['rejectAndSubscribeTitle'],
-      rejectAndSubscribeBannerMessage:
-          value['rejectAndSubscribeBannerMessage'],
+      rejectAndSubscribeBannerMessage: value['rejectAndSubscribeBannerMessage'],
       pricingText: value['pricingText'],
       subscriberLoginMessage: value['subscriberLoginMessage'],
       subscriberLoginHyperlinkText: value['subscriberLoginHyperlinkText'],
