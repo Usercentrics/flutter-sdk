@@ -6,6 +6,8 @@ import Usercentrics
 public class UsercentricsPlugin: NSObject, FlutterPlugin {
 
   private static var gppStreamHandler: GppSectionChangeStreamHandler?
+  private static var loginClickedStreamHandler: LoginClickedStreamHandler?
+  private static var subscribeClickedStreamHandler: SubscribeClickedStreamHandler?
 
   public static func register(with registrar: FlutterPluginRegistrar) {
     // XCTest bootstraps app plugins differently; avoid channel registration there.
@@ -16,28 +18,45 @@ public class UsercentricsPlugin: NSObject, FlutterPlugin {
 
     let messenger = registrar.messenger()
     let channel = FlutterMethodChannel(name: "usercentrics", binaryMessenger: messenger)
-    let instance = UsercentricsPlugin(assetProvider: FlutterAssetProviderImpl(registrar: registrar))
+    let consentOrPayEventNotifier = ConsentOrPayEventNotifier()
+    let instance = UsercentricsPlugin(assetProvider: FlutterAssetProviderImpl(registrar: registrar),
+                                       consentOrPayEventNotifier: consentOrPayEventNotifier)
     registrar.addMethodCallDelegate(instance, channel: channel)
 
     let gppEventChannel = FlutterEventChannel(name: "usercentrics/onGppSectionChange", binaryMessenger: messenger)
     let streamHandler = GppSectionChangeStreamHandler()
     gppEventChannel.setStreamHandler(streamHandler)
     gppStreamHandler = streamHandler
+
+    let loginClickedEventChannel = FlutterEventChannel(name: "usercentrics/onLoginClicked", binaryMessenger: messenger)
+    let loginHandler = LoginClickedStreamHandler(notifier: consentOrPayEventNotifier)
+    loginClickedEventChannel.setStreamHandler(loginHandler)
+    loginClickedStreamHandler = loginHandler
+
+    let subscribeClickedEventChannel = FlutterEventChannel(name: "usercentrics/onSubscribeClicked", binaryMessenger: messenger)
+    let subscribeHandler = SubscribeClickedStreamHandler(notifier: consentOrPayEventNotifier)
+    subscribeClickedEventChannel.setStreamHandler(subscribeHandler)
+    subscribeClickedStreamHandler = subscribeHandler
   }
 
     let assetProvider: FlutterAssetProvider
     let usercentrics: UsercentricsProxyProtocol
+    let consentOrPayEventNotifier: ConsentOrPayEventNotifier
 
-    init(assetProvider: FlutterAssetProvider, usercentrics: UsercentricsProxyProtocol = UsercentricsProxy()) {
+    init(assetProvider: FlutterAssetProvider,
+         usercentrics: UsercentricsProxyProtocol = UsercentricsProxy(),
+         consentOrPayEventNotifier: ConsentOrPayEventNotifier = ConsentOrPayEventNotifier()) {
         self.assetProvider = assetProvider
         self.usercentrics = usercentrics
+        self.consentOrPayEventNotifier = consentOrPayEventNotifier
     }
 
     lazy var methods: [String : MethodBridge] = {
         let bridges: [MethodBridge] = [
             InitializeBridge(usercentrics: usercentrics),
             IsReadyBridge(usercentrics: usercentrics),
-            ShowFirstLayerBridge(assetProvider: assetProvider),
+            ShowFirstLayerBridge(assetProvider: assetProvider,
+                                 bannerProxy: UsercentricsBannerProxy(consentOrPayEventNotifier: consentOrPayEventNotifier)),
             ShowSecondLayerBridge(assetProvider: assetProvider),
             GetControllerIdBridge(usercentrics: usercentrics),
             GetConsentsBridge(usercentrics: usercentrics),
@@ -63,7 +82,9 @@ public class UsercentricsPlugin: NSObject, FlutterPlugin {
             GetGPPDataBridge(usercentrics: usercentrics),
             GetGPPStringBridge(usercentrics: usercentrics),
             SetGPPConsentBridge(usercentrics: usercentrics),
-            GetDpsMetadataBridge(usercentrics: usercentrics)
+            GetDpsMetadataBridge(usercentrics: usercentrics),
+            NotifyLoginSuccessBridge(usercentrics: usercentrics),
+            NotifySubscribeSuccessBridge(usercentrics: usercentrics)
         ]
         return bridges.reduce([String : MethodBridge]()) { dict, value in
             var dict = dict

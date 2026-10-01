@@ -59,6 +59,15 @@ class HomePageState extends State<HomePage> {
         consentMediation: _kMediationTestEnabled,
       );
 
+      // Consent-or-Pay: notify the SDK once the host app confirms a successful login/subscription
+      // so it can clear stored TCF consent data. The banner is not dismissed automatically.
+      Usercentrics.onLoginClicked.listen((url) async {
+        await Usercentrics.notifyLoginSuccess();
+      });
+      Usercentrics.onSubscribeClicked.listen((url) async {
+        await Usercentrics.notifySubscribeSuccess();
+      });
+
       final status = await Usercentrics.status;
 
       setState(() {

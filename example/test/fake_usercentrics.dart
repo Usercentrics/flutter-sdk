@@ -186,4 +186,20 @@ class FakeUsercentrics extends UsercentricsPlatform {
   Future<Map<String, dynamic>?> getDpsMetadata({required String templateId}) {
     throw UnimplementedError();
   }
+
+  @override
+  Stream<String?> get onLoginClicked => throw UnimplementedError();
+
+  @override
+  Stream<String?> get onSubscribeClicked => throw UnimplementedError();
+
+  @override
+  Future<void> notifyLoginSuccess() {
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<void> notifySubscribeSuccess() {
+    throw UnimplementedError();
+  }
 }

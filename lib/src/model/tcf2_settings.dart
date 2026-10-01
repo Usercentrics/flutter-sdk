@@ -320,7 +320,14 @@ class TCF2ConsentOrPaySettings {
       {required this.enableConsentOrPay,
       required this.showTogglesForVendors,
       required this.publisherRestrictions,
-      required this.specialFeatures});
+      required this.specialFeatures,
+      this.loginLink,
+      this.rejectLink,
+      this.rejectButtonText,
+      this.rejectButtonBgColor,
+      this.rejectButtonTextColor,
+      this.firstLayer,
+      this.secondLayer});
 
   final bool enableConsentOrPay;
   final bool showTogglesForVendors;
@@ -331,6 +338,17 @@ class TCF2ConsentOrPaySettings {
   /// Maps Special Feature ID (as string) to "flexible". Absent entries are mandatory.
   final Map<String, String> specialFeatures;
 
+  /// URL the host app should open in response to the 1st-layer subscriber-login link.
+  final String? loginLink;
+
+  /// URL the host app should open in response to the 1st-layer Reject & Subscribe button.
+  final String? rejectLink;
+  final String? rejectButtonText;
+  final String? rejectButtonBgColor;
+  final String? rejectButtonTextColor;
+  final TCF2ConsentOrPayFirstLayerSettings? firstLayer;
+  final TCF2ConsentOrPaySecondLayerSettings? secondLayer;
+
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
@@ -339,12 +357,90 @@ class TCF2ConsentOrPaySettings {
           enableConsentOrPay == other.enableConsentOrPay &&
           showTogglesForVendors == other.showTogglesForVendors &&
           mapEquals(publisherRestrictions, other.publisherRestrictions) &&
-          mapEquals(specialFeatures, other.specialFeatures);
+          mapEquals(specialFeatures, other.specialFeatures) &&
+          loginLink == other.loginLink &&
+          rejectLink == other.rejectLink &&
+          rejectButtonText == other.rejectButtonText &&
+          rejectButtonBgColor == other.rejectButtonBgColor &&
+          rejectButtonTextColor == other.rejectButtonTextColor &&
+          firstLayer == other.firstLayer &&
+          secondLayer == other.secondLayer;
 
   @override
   int get hashCode =>
       enableConsentOrPay.hashCode ^
       showTogglesForVendors.hashCode ^
       publisherRestrictions.hashCode ^
-      specialFeatures.hashCode;
+      specialFeatures.hashCode ^
+      loginLink.hashCode ^
+      rejectLink.hashCode ^
+      rejectButtonText.hashCode ^
+      rejectButtonBgColor.hashCode ^
+      rejectButtonTextColor.hashCode ^
+      firstLayer.hashCode ^
+      secondLayer.hashCode;
+}
+
+class TCF2ConsentOrPayFirstLayerSettings {
+  const TCF2ConsentOrPayFirstLayerSettings({
+    this.headerTitle,
+    this.optinBannerTitle,
+    this.optinBannerMessage,
+    this.rejectAndSubscribeTitle,
+    this.rejectAndSubscribeBannerMessage,
+    this.pricingText,
+    this.subscriberLoginMessage,
+    this.subscriberLoginHyperlinkText,
+  });
+
+  final String? headerTitle;
+  final String? optinBannerTitle;
+  final String? optinBannerMessage;
+  final String? rejectAndSubscribeTitle;
+  final String? rejectAndSubscribeBannerMessage;
+  final String? pricingText;
+  final String? subscriberLoginMessage;
+  final String? subscriberLoginHyperlinkText;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is TCF2ConsentOrPayFirstLayerSettings &&
+          runtimeType == other.runtimeType &&
+          headerTitle == other.headerTitle &&
+          optinBannerTitle == other.optinBannerTitle &&
+          optinBannerMessage == other.optinBannerMessage &&
+          rejectAndSubscribeTitle == other.rejectAndSubscribeTitle &&
+          rejectAndSubscribeBannerMessage ==
+              other.rejectAndSubscribeBannerMessage &&
+          pricingText == other.pricingText &&
+          subscriberLoginMessage == other.subscriberLoginMessage &&
+          subscriberLoginHyperlinkText == other.subscriberLoginHyperlinkText;
+
+  @override
+  int get hashCode =>
+      headerTitle.hashCode ^
+      optinBannerTitle.hashCode ^
+      optinBannerMessage.hashCode ^
+      rejectAndSubscribeTitle.hashCode ^
+      rejectAndSubscribeBannerMessage.hashCode ^
+      pricingText.hashCode ^
+      subscriberLoginMessage.hashCode ^
+      subscriberLoginHyperlinkText.hashCode;
+}
+
+class TCF2ConsentOrPaySecondLayerSettings {
+  const TCF2ConsentOrPaySecondLayerSettings({this.granularConsentMessage});
+
+  final String? granularConsentMessage;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is TCF2ConsentOrPaySecondLayerSettings &&
+          runtimeType == other.runtimeType &&
+          granularConsentMessage == other.granularConsentMessage;
+
+  @override
+  int get hashCode => granularConsentMessage.hashCode;
 }

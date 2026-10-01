@@ -136,6 +136,40 @@ class TCF2ConsentOrPaySettingsSerializer {
             (value['publisherRestrictions'] as Map?)?.cast<String, String>() ??
                 {},
         specialFeatures:
-            (value['specialFeatures'] as Map?)?.cast<String, String>() ?? {});
+            (value['specialFeatures'] as Map?)?.cast<String, String>() ?? {},
+        loginLink: value['loginLink'],
+        rejectLink: value['rejectLink'],
+        rejectButtonText: value['rejectButtonText'],
+        rejectButtonBgColor: value['rejectButtonBgColor'],
+        rejectButtonTextColor: value['rejectButtonTextColor'],
+        firstLayer: TCF2ConsentOrPayFirstLayerSettingsSerializer.deserialize(
+            value['firstLayer']),
+        secondLayer: TCF2ConsentOrPaySecondLayerSettingsSerializer.deserialize(
+            value['secondLayer']));
+  }
+}
+
+class TCF2ConsentOrPayFirstLayerSettingsSerializer {
+  static TCF2ConsentOrPayFirstLayerSettings? deserialize(value) {
+    if (value == null) return null;
+    return TCF2ConsentOrPayFirstLayerSettings(
+      headerTitle: value['headerTitle'],
+      optinBannerTitle: value['optinBannerTitle'],
+      optinBannerMessage: value['optinBannerMessage'],
+      rejectAndSubscribeTitle: value['rejectAndSubscribeTitle'],
+      rejectAndSubscribeBannerMessage: value['rejectAndSubscribeBannerMessage'],
+      pricingText: value['pricingText'],
+      subscriberLoginMessage: value['subscriberLoginMessage'],
+      subscriberLoginHyperlinkText: value['subscriberLoginHyperlinkText'],
+    );
+  }
+}
+
+class TCF2ConsentOrPaySecondLayerSettingsSerializer {
+  static TCF2ConsentOrPaySecondLayerSettings? deserialize(value) {
+    if (value == null) return null;
+    return TCF2ConsentOrPaySecondLayerSettings(
+      granularConsentMessage: value['granularConsentMessage'],
+    );
   }
 }

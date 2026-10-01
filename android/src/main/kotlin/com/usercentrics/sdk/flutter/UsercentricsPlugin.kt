@@ -2,6 +2,7 @@ package com.usercentrics.sdk.flutter
 
 import android.app.Activity
 import androidx.annotation.NonNull
+import com.usercentrics.sdk.flutter.api.ConsentOrPayEventNotifier
 import com.usercentrics.sdk.flutter.api.FlutterActivityProvider
 import com.usercentrics.sdk.flutter.api.FlutterAssetsProvider
 import com.usercentrics.sdk.flutter.api.FlutterMethodCallWrapper
@@ -33,6 +34,10 @@ class UsercentricsPlugin : FlutterPlugin,
     private var activityBinding: ActivityPluginBinding? = null
     private var flutterAssets: FlutterAssets? = null
 
+    private val consentOrPayEventNotifier = ConsentOrPayEventNotifier()
+    private var loginClickedEventChannel: EventChannel? = null
+    private var subscribeClickedEventChannel: EventChannel? = null
+
     private val methods: Map<String, MethodBridge> by lazy {
         listOf(
             InitializeBridge(
@@ -42,7 +47,7 @@ class UsercentricsPlugin : FlutterPlugin,
             ShowFirstLayerBridge(
                 assetsProvider = this,
                 activityProvider = this,
-                bannerProxy = UsercentricsBannerProxyImpl(this),
+                bannerProxy = UsercentricsBannerProxyImpl(this, consentOrPayEventNotifier),
             ),
             ShowSecondLayerBridge(
                 assetsProvider = this,
@@ -73,7 +78,9 @@ class UsercentricsPlugin : FlutterPlugin,
             GetGPPDataBridge(),
             GetGPPStringBridge(),
             SetGPPConsentBridge(),
-            GetDpsMetadataBridge()
+            GetDpsMetadataBridge(),
+            NotifyLoginSuccessBridge(),
+            NotifySubscribeSuccessBridge(),
         ).associateBy { it.name }
     }
 
@@ -118,6 +125,28 @@ class UsercentricsPlugin : FlutterPlugin,
                 gppSectionChangeSubscription = null
             }
         })
+
+        loginClickedEventChannel = EventChannel(binding.binaryMessenger, "usercentrics/onLoginClicked")
+        loginClickedEventChannel?.setStreamHandler(object : EventChannel.StreamHandler {
+            override fun onListen(arguments: Any?, events: EventChannel.EventSink?) {
+                consentOrPayEventNotifier.loginClickedSink = events
+            }
+
+            override fun onCancel(arguments: Any?) {
+                consentOrPayEventNotifier.loginClickedSink = null
+            }
+        })
+
+        subscribeClickedEventChannel = EventChannel(binding.binaryMessenger, "usercentrics/onSubscribeClicked")
+        subscribeClickedEventChannel?.setStreamHandler(object : EventChannel.StreamHandler {
+            override fun onListen(arguments: Any?, events: EventChannel.EventSink?) {
+                consentOrPayEventNotifier.subscribeClickedSink = events
+            }
+
+            override fun onCancel(arguments: Any?) {
+                consentOrPayEventNotifier.subscribeClickedSink = null
+            }
+        })
     }
 
     override fun onDetachedFromEngine(@NonNull binding: FlutterPlugin.FlutterPluginBinding) {
@@ -127,6 +156,12 @@ class UsercentricsPlugin : FlutterPlugin,
         gppSectionChangeSubscription = null
         gppSectionChangeEventChannel?.setStreamHandler(null)
         gppSectionChangeEventChannel = null
+        consentOrPayEventNotifier.loginClickedSink = null
+        consentOrPayEventNotifier.subscribeClickedSink = null
+        loginClickedEventChannel?.setStreamHandler(null)
+        loginClickedEventChannel = null
+        subscribeClickedEventChannel?.setStreamHandler(null)
+        subscribeClickedEventChannel = null
     }
 
     override fun onAttachedToActivity(activityBinding: ActivityPluginBinding) {
