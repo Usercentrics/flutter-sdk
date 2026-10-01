@@ -50,4 +50,21 @@ post_install do |installer|
       config.build_settings["EXCLUDED_ARCHS[sdk=iphonesimulator*]"] = "x86_64"
     end
   end
+
+  # WORKAROUND (MSDK-4832): excluding x86_64 on the Pods project's own targets (above) isn't
+  # enough — Xcode builds "generic/platform=iOS Simulator" destinations (what `flutter build ios
+  # --simulator` uses) for the full ARCHS_STANDARD set (arm64 + x86_64) regardless of
+  # ONLY_ACTIVE_ARCH, since there's no concrete active device. The Runner app target itself
+  # (in Runner.xcodeproj, not Pods.xcodeproj) still tries to compile/link an x86_64 slice, and
+  # fails with "Module 'usercentrics_sdk' not found" once the Pods frameworks it imports have no
+  # x86_64 slice. Mirror the exclusion onto the main user project until a corrected native SDK
+  # version is published.
+  installer.aggregate_targets.each do |aggregate_target|
+    aggregate_target.user_project.native_targets.each do |target|
+      target.build_configurations.each do |config|
+        config.build_settings["EXCLUDED_ARCHS[sdk=iphonesimulator*]"] = "x86_64"
+      end
+    end
+    aggregate_target.user_project.save
+  end
 end
