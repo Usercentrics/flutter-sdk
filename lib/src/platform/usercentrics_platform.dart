@@ -137,4 +137,10 @@ abstract class UsercentricsPlatform {
 
   /// Clears stored TCF consent data after a successful Consent-or-Pay subscription.
   Future<void> notifySubscribeSuccess();
+
+  /// Notifies the SDK that the host app's user is no longer an active Consent-or-Pay
+  /// subscriber (e.g. their subscription lapsed or was cancelled). Resets the subscriber
+  /// flag and clears TCF consent storage, so the user is presented a fresh consent banner
+  /// next time, exactly as a new user would see it.
+  Future<void> notifySubscriptionLapsed();
 }

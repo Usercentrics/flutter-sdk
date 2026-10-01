@@ -41,7 +41,9 @@ class MethodChannelUsercentrics extends UsercentricsPlatform {
       this.getDpsMetadataBridge = const MethodChannelGetDpsMetadata(),
       this.notifyLoginSuccessBridge = const MethodChannelNotifyLoginSuccess(),
       this.notifySubscribeSuccessBridge =
-          const MethodChannelNotifySubscribeSuccess()});
+          const MethodChannelNotifySubscribeSuccess(),
+      this.notifySubscriptionLapsedBridge =
+          const MethodChannelNotifySubscriptionLapsed()});
 
   static const MethodChannel _channel = MethodChannel('usercentrics');
   static const EventChannel _gppSectionChangeEventChannel =
@@ -82,6 +84,7 @@ class MethodChannelUsercentrics extends UsercentricsPlatform {
   final GetDpsMetadataBridge getDpsMetadataBridge;
   final NotifyLoginSuccessBridge notifyLoginSuccessBridge;
   final NotifySubscribeSuccessBridge notifySubscribeSuccessBridge;
+  final NotifySubscriptionLapsedBridge notifySubscriptionLapsedBridge;
 
   @visibleForTesting
   Completer<Object?>? isReadyCompleter;
@@ -437,5 +440,11 @@ class MethodChannelUsercentrics extends UsercentricsPlatform {
   Future<void> notifySubscribeSuccess() async {
     await _ensureIsReady();
     await notifySubscribeSuccessBridge.invoke(channel: _channel);
+  }
+
+  @override
+  Future<void> notifySubscriptionLapsed() async {
+    await _ensureIsReady();
+    await notifySubscriptionLapsedBridge.invoke(channel: _channel);
   }
 }
