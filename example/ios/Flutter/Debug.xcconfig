@@ -1,2 +1,10 @@
 #include? "Pods/Target Support Files/Pods-Runner/Pods-Runner.debug.xcconfig"
 #include "Generated.xcconfig"
+
+// WORKAROUND (MSDK-4832): native UsercentricsUI.xcframework 2.32.0 (and 2.31.1+) ships
+// arm64-only iOS/tvOS Simulator slices. When Flutter resolves plugins via Swift Package
+// Manager (no CocoaPods Podfile post_install hook runs in that path), Runner still tries
+// to compile/link an x86_64 Simulator slice and fails with "Cannot find type 'X' in scope"
+// for every UsercentricsUI/Usercentrics public type. Exclude x86_64 until a corrected
+// native SDK version is published (tracked in mobile-sdk Jira MSDK-4832).
+EXCLUDED_ARCHS[sdk=iphonesimulator*] = x86_64

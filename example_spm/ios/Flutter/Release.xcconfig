@@ -1,1 +1,4 @@
 #include "Generated.xcconfig"
+
+// WORKAROUND (MSDK-4832): see Debug.xcconfig.
+EXCLUDED_ARCHS[sdk=iphonesimulator*] = x86_64
