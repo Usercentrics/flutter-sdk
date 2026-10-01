@@ -277,6 +277,14 @@ jobs:
           EOF
       - name: Build
         working-directory: ./example
+        # TEMPORARY (MSDK-4832): non-blocking for the spm variant only. Usercentrics.xcframework
+        # ships a fat ios-arm64_x86_64-simulator slice, but UsercentricsUI.xcframework ships only
+        # ios-arm64-simulator (x86_64 unnecessarily excluded upstream) — SPM can't reconcile two
+        # linked binary targets with mismatched simulator slice identifiers, so every public
+        # UsercentricsUI/Usercentrics type fails to resolve. This is a real native XCFramework
+        # defect, not fixable from flutter-sdk. cocoapods (this same job) and spm-test both pass
+        # and validate the real SDK. Revert to blocking once MSDK-4832 ships.
+        continue-on-error: ${{ matrix.build_system == 'spm' }}
         run: flutter build ios --debug --no-codesign --simulator
 
   build-ios-spm-pure:
@@ -284,6 +292,8 @@ jobs:
     needs: [ lint, format, pub-dry-run ]
     runs-on: macos-14
     timeout-minutes: 20
+    # TEMPORARY (MSDK-4832): see build-ios's spm variant above for why.
+    continue-on-error: true
 
     steps:
       - name: Setup code
