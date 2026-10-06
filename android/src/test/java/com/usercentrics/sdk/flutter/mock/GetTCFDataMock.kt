@@ -14,6 +14,7 @@ internal object GetTCFDataMock {
     val fake = TCFData(
         thirdPartyCount = 2,
         tcString = "abc",
+        featuresStandardText = "These means of processing can be used solely in pursuit of one or several purposes for which you are given a choice in this notice.",
         features = listOf(
             TCFFeature(
                 purposeDescription = "Data from offline data sources can be combined with your online activity in support of one or more purposes",
@@ -116,6 +117,7 @@ internal object GetTCFDataMock {
     val expected = mapOf(
         "thirdPartyCount" to 2,
         "tcString" to "abc",
+        "featuresStandardText" to "These means of processing can be used solely in pursuit of one or several purposes for which you are given a choice in this notice.",
         "features" to listOf(
             mapOf(
                 "purposeDescription" to "Data from offline data sources can be combined with your online activity in support of one or more purposes",

@@ -10,7 +10,8 @@ class TCFData {
       required this.stacks,
       required this.vendors,
       required this.tcString,
-      required this.thirdPartyCount});
+      required this.thirdPartyCount,
+      this.featuresStandardText});
 
   /// A list of all the TCF features that need to be disclosed to the end-user if TCF is enabled.
   final List<TCFFeature> features;
@@ -41,6 +42,9 @@ class TCFData {
   /// The total of vendors and services
   final int thirdPartyCount;
 
+  /// IAB-mandated standard text for the Features category (TCF 2.4), sourced from the GVL.
+  final String? featuresStandardText;
+
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
@@ -53,7 +57,8 @@ class TCFData {
           listEquals(stacks, other.stacks) &&
           listEquals(vendors, other.vendors) &&
           tcString == other.tcString &&
-          thirdPartyCount == other.thirdPartyCount;
+          thirdPartyCount == other.thirdPartyCount &&
+          featuresStandardText == other.featuresStandardText;
 
   @override
   int get hashCode =>
@@ -63,6 +68,7 @@ class TCFData {
       specialPurposes.hashCode ^
       stacks.hashCode ^
       vendors.hashCode ^
+      featuresStandardText.hashCode ^
       tcString.hashCode ^
       thirdPartyCount.hashCode;
 

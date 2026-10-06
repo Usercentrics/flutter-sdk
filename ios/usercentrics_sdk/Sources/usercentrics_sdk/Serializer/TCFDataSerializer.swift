@@ -10,7 +10,8 @@ extension TCFData {
             "specialPurposes" : specialPurposes.map { $0.serialize() },
             "stacks" : stacks.map { $0.serialize() },
             "vendors" : vendors.map { $0.serialize() },
-            "thirdPartyCount": thirdPartyCount
+            "thirdPartyCount": thirdPartyCount,
+            "featuresStandardText": featuresStandardText as Any
         ]
     }
 }
