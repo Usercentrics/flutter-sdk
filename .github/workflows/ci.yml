@@ -80,7 +80,7 @@ jobs:
       - name: Generate HTML report
         run: genhtml coverage/lcov.info -o coverage/html
       - name: Upload coverage report
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: flutter-coverage-report
           path: coverage/html
@@ -122,7 +122,7 @@ jobs:
         working-directory: ./example
         run: find build -name "*.html" -o -name "index.html" | head -20
       - name: Upload coverage report
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: android-coverage-report
           path: example/build/usercentrics_sdk/reports/kover/htmlDebug
@@ -202,7 +202,7 @@ jobs:
         run: xcrun xccov view --report TestResults.xcresult
       - name: Upload iOS test results and crash diagnostics
         if: ${{ always() }}
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: ios-test-results-and-diagnostics-${{ matrix.build_system }}
           if-no-files-found: warn
@@ -359,7 +359,7 @@ jobs:
         run: ./scripts/measure_binary_sizes.sh --compare --output binary-sizes-flutter.json
       - name: Upload binary sizes artifact
         continue-on-error: true
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: binary-sizes-flutter
           path: binary-sizes-flutter.json
