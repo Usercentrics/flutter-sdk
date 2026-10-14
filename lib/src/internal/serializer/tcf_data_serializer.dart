@@ -21,7 +21,8 @@ class TCFDataSerializer {
             .map((e) => _deserializeVendor(e))
             .toList(),
         tcString: value['tcString'],
-        thirdPartyCount: value['thirdPartyCount']);
+        thirdPartyCount: value['thirdPartyCount'],
+        featuresStandardText: value['featuresStandardText']);
   }
 
   static TCFFeature _deserializeFeature(dynamic value) {

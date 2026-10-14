@@ -10,7 +10,9 @@ const mockResponse = {
   "vendors": _responseVendors,
   "tcString":
       "CPzYJkAPzYJkAAFADBENAVEsAP_gAEPgAAYgAawAQAagBrABABqAAAAA.YAAAAAAAAAAA",
-  "thirdPartyCount": 2
+  "thirdPartyCount": 2,
+  "featuresStandardText":
+      "These means of processing can be used solely in pursuit of one or several purposes for which you are given a choice in this notice."
 };
 
 const _responseFeatures = [
@@ -198,6 +200,8 @@ const expectedResult = TCFData(
   tcString:
       "CPzYJkAPzYJkAAFADBENAVEsAP_gAEPgAAYgAawAQAagBrABABqAAAAA.YAAAAAAAAAAA",
   thirdPartyCount: 2,
+  featuresStandardText:
+      "These means of processing can be used solely in pursuit of one or several purposes for which you are given a choice in this notice.",
 );
 
 const _expectedFeatures = [
