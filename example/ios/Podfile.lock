@@ -88,16 +88,12 @@ PODS:
   - nanopb/decode (3.30910.0)
   - nanopb/encode (3.30910.0)
   - PromisesObjC (2.4.1)
-  - Sentry (8.58.4):
-    - Sentry/Core (= 8.58.4)
-  - Sentry/Core (8.58.4)
-  - Usercentrics (2.32.0):
-    - Sentry (~> 8.52)
-  - usercentrics_sdk (2.32.0):
+  - Usercentrics (2.33.0)
+  - usercentrics_sdk (2.33.0):
     - Flutter
-    - UsercentricsUI (= 2.32.0)
-  - UsercentricsUI (2.32.0):
-    - Usercentrics (= 2.32.0)
+    - UsercentricsUI (= 2.33.0)
+  - UsercentricsUI (2.33.0):
+    - Usercentrics (= 2.33.0)
   - webview_flutter_wkwebview (0.0.1):
     - Flutter
     - FlutterMacOS
@@ -119,7 +115,6 @@ SPEC REPOS:
     - GoogleUtilities
     - nanopb
     - PromisesObjC
-    - Sentry
     - Usercentrics
     - UsercentricsUI
 
@@ -142,10 +137,9 @@ SPEC CHECKSUMS:
   GoogleUtilities: 766ace00c6b10d8148408f329d10c4f051931850
   nanopb: fad817b59e0457d11a5dfbde799381cd727c1275
   PromisesObjC: 752c3227f599e3467650e47ea36f433eeb10c273
-  Sentry: 5321d74bdd28d6f6f8beaa1ca06f1fdc746bff49
-  Usercentrics: 7bc3a4042e492b9204ed137ce5c6806365e9e0e4
-  usercentrics_sdk: 6d1f9725f1902ffd63b1ab907c681052e0c37509
-  UsercentricsUI: 0bf3d1a5ff33d34ff98be8645cc0358bc213b37b
+  Usercentrics: 7be91756eee224a1326bdbc2a3662ccce8e4e9bf
+  usercentrics_sdk: f90438094e65208299ff202261219ab8136a7565
+  UsercentricsUI: ddd0025f20a50d287f5dd6c9cd64499ee26b4c8e
   webview_flutter_wkwebview: 1821ceac936eba6f7984d89a9f3bcb4dea99ebb2
 
 PODFILE CHECKSUM: 581a2ac2a2086d49335330c9671c962a6fa61351
