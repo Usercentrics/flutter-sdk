@@ -88,12 +88,12 @@ PODS:
   - nanopb/decode (3.30910.0)
   - nanopb/encode (3.30910.0)
   - PromisesObjC (2.4.1)
-  - Usercentrics (2.33.0)
-  - usercentrics_sdk (2.33.0):
+  - Usercentrics (2.33.1)
+  - usercentrics_sdk (2.33.1):
     - Flutter
-    - UsercentricsUI (= 2.33.0)
-  - UsercentricsUI (2.33.0):
-    - Usercentrics (= 2.33.0)
+    - UsercentricsUI (= 2.33.1)
+  - UsercentricsUI (2.33.1):
+    - Usercentrics (= 2.33.1)
   - webview_flutter_wkwebview (0.0.1):
     - Flutter
     - FlutterMacOS
@@ -131,17 +131,17 @@ SPEC CHECKSUMS:
   FirebaseCore: efb3893e5b94f32b86e331e3bd6dadf18b66568e
   FirebaseCoreInternal: 9afa45b1159304c963da48addb78275ef701c6b4
   FirebaseInstallations: 317270fec08a5d418fdbc8429282238cab3ac843
-  Flutter: cabc95a1d2626b1b06e7179b784ebcf0c0cde467
+  Flutter: 71a624a5bc0c04062bf19101d501e466baf2fb47
   GoogleAdsOnDeviceConversion: 2be6297a4f048459e0ae17fad9bfd2844e10cf64
   GoogleAppMeasurement: 700dce7541804bec33db590a5c496b663fbe2539
   GoogleUtilities: 766ace00c6b10d8148408f329d10c4f051931850
   nanopb: fad817b59e0457d11a5dfbde799381cd727c1275
   PromisesObjC: 752c3227f599e3467650e47ea36f433eeb10c273
-  Usercentrics: 7be91756eee224a1326bdbc2a3662ccce8e4e9bf
-  usercentrics_sdk: f90438094e65208299ff202261219ab8136a7565
-  UsercentricsUI: ddd0025f20a50d287f5dd6c9cd64499ee26b4c8e
+  Usercentrics: f9712a332f83f78d2deffe2a6adfba1522d29f2f
+  usercentrics_sdk: 33fb73da6770545024ad8d84a758d9ce10787d96
+  UsercentricsUI: 59a94f2b0581d8e295bdb2bcdfad5ceb33b0cd46
   webview_flutter_wkwebview: 1821ceac936eba6f7984d89a9f3bcb4dea99ebb2
 
-PODFILE CHECKSUM: 581a2ac2a2086d49335330c9671c962a6fa61351
+PODFILE CHECKSUM: 0a56c8052f4497fcaf0bc6ef99feeba9366ddbfd
 
-COCOAPODS: 1.16.2
+COCOAPODS: 1.17.0
