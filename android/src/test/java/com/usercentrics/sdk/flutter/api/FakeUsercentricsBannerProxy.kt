@@ -2,6 +2,7 @@ package com.usercentrics.sdk.flutter.api
 
 import com.usercentrics.sdk.BannerSettings
 import com.usercentrics.sdk.UsercentricsConsentUserResponse
+import com.usercentrics.sdk.models.settings.SecondLayerTab
 
 internal class FakeUsercentricsBannerProxy(
     private val showFirstLayerAnswer: UsercentricsConsentUserResponse? = null,
@@ -22,13 +23,16 @@ internal class FakeUsercentricsBannerProxy(
 
     var showSecondLayerCount = 0
     var showSecondLayerBannerSettingsArgument: BannerSettings? = null
+    var showSecondLayerTabArgument: SecondLayerTab? = null
 
     override fun showSecondLayer(
         bannerSettings: BannerSettings?,
+        tab: SecondLayerTab?,
         callback: (UsercentricsConsentUserResponse?) -> Unit
     ) {
         showSecondLayerCount++
         showSecondLayerBannerSettingsArgument = bannerSettings
+        showSecondLayerTabArgument = tab
         callback(showSecondLayerAnswer)
     }
 

@@ -41,4 +41,39 @@ void main() {
     expect(receivedCall?.arguments, expectedArguments);
     expect(result, expectedResult);
   });
+
+  test('invoke without tab does not send it', () async {
+    MethodCall? receivedCall;
+    TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
+        .setMockMethodCallHandler(channel, (MethodCall methodCall) async {
+      receivedCall = methodCall;
+      return mockResponse;
+    });
+    const instance = MethodChannelShowSecondLayer();
+
+    await instance.invoke(channel: channel);
+
+    expect((receivedCall?.arguments as Map).containsKey('tab'), isFalse);
+  });
+
+  test('invoke with tab', () async {
+    final expectedTabs = {
+      SecondLayerTab.services: 'SERVICES',
+      SecondLayerTab.partners: 'PARTNERS',
+    };
+    for (final entry in expectedTabs.entries) {
+      MethodCall? receivedCall;
+      TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
+          .setMockMethodCallHandler(channel, (MethodCall methodCall) async {
+        receivedCall = methodCall;
+        return mockResponse;
+      });
+      const instance = MethodChannelShowSecondLayer();
+
+      await instance.invoke(channel: channel, tab: entry.key);
+
+      expect(receivedCall?.method, 'showSecondLayer');
+      expect((receivedCall?.arguments as Map)['tab'], entry.value);
+    }
+  });
 }
