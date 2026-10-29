@@ -2,6 +2,7 @@ package com.usercentrics.sdk.flutter.bridge
 
 import com.usercentrics.sdk.flutter.api.*
 import com.usercentrics.sdk.flutter.serializer.deserializeBannerSettings
+import com.usercentrics.sdk.flutter.serializer.deserializeSecondLayerTab
 import com.usercentrics.sdk.flutter.serializer.serialize
 
 internal class ShowSecondLayerBridge(
@@ -23,6 +24,7 @@ internal class ShowSecondLayerBridge(
                 assetsProvider,
                 activityProvider
             ),
+            tab = argsMap["tab"].deserializeSecondLayerTab(),
         ) { response ->
             result.success(response?.serialize())
         }

@@ -22,6 +22,14 @@ internal object ShowSecondLayerMock {
             )
         )
     )
+
+    fun callWithTab(tab: Any?) = FakeFlutterMethodCall(
+        method = "showSecondLayer", arguments = mapOf(
+            "bannerSettings" to null,
+            "tab" to tab,
+        )
+    )
+
     val expectedBannerSettings = BannerSettings(
         secondLayerStyleSettings = SecondLayerStyleSettings(
             showCloseButton = true,

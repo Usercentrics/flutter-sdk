@@ -29,6 +29,7 @@ abstract class UsercentricsPlatform {
 
   Future<UsercentricsConsentUserResponse?> showSecondLayer({
     BannerSettings? settings,
+    SecondLayerTab? tab,
   });
 
   Future<List<UsercentricsServiceConsent>> get consents;

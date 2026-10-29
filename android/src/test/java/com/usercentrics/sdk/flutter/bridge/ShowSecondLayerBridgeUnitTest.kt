@@ -2,7 +2,9 @@ package com.usercentrics.sdk.flutter.bridge
 
 import com.usercentrics.sdk.flutter.api.*
 import com.usercentrics.sdk.flutter.mock.ShowSecondLayerMock
+import com.usercentrics.sdk.models.settings.SecondLayerTab
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertNull
 import org.junit.Assert.assertThrows
 import org.junit.Test
 
@@ -51,8 +53,46 @@ class ShowSecondLayerBridgeUnitTest {
             ShowSecondLayerMock.expectedBannerSettings,
             bannerProxy.showSecondLayerBannerSettingsArgument
         )
+        assertNull(bannerProxy.showSecondLayerTabArgument)
         assertEquals(1, result.successCount)
         assertEquals(ShowSecondLayerMock.expectedWithData, result.successResultArgument)
+    }
+
+    @Test
+    fun testInvokeWithTab() {
+        listOf(
+            "SERVICES" to SecondLayerTab.SERVICES,
+            "PARTNERS" to SecondLayerTab.PARTNERS,
+        ).forEach { (value, expectedTab) ->
+            val bannerProxy = FakeUsercentricsBannerProxy()
+            val instance = ShowSecondLayerBridge(
+                FakeFlutterAssetsProvider(),
+                FakeFlutterActivityProvider(),
+                bannerProxy
+            )
+
+            instance.invoke(ShowSecondLayerMock.callWithTab(value), FakeFlutterResult())
+
+            assertEquals(1, bannerProxy.showSecondLayerCount)
+            assertEquals(expectedTab, bannerProxy.showSecondLayerTabArgument)
+        }
+    }
+
+    @Test
+    fun testInvokeWithUnknownTabFallsBackToDefault() {
+        listOf("UNKNOWN", 1, null).forEach { value ->
+            val bannerProxy = FakeUsercentricsBannerProxy()
+            val instance = ShowSecondLayerBridge(
+                FakeFlutterAssetsProvider(),
+                FakeFlutterActivityProvider(),
+                bannerProxy
+            )
+
+            instance.invoke(ShowSecondLayerMock.callWithTab(value), FakeFlutterResult())
+
+            assertEquals(1, bannerProxy.showSecondLayerCount)
+            assertNull(bannerProxy.showSecondLayerTabArgument)
+        }
     }
 
     @Test

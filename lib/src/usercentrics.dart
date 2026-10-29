@@ -94,12 +94,16 @@ class Usercentrics {
 
   /// Show the Banner second layer to **manage** consents.
   /// - The [settings] that enables you to style the banner programmatically.
+  /// - The [tab] to open the second layer on: [SecondLayerTab.services] for GDPR/CCPA
+  ///   layouts, [SecondLayerTab.partners] for TCF layouts. A tab the layout does not have,
+  ///   or `null`, opens the default tab.
   static Future<UsercentricsConsentUserResponse?> showSecondLayer({
     BannerSettings? settings,
     @Deprecated('Use [settings] instead')
     GeneralStyleSettings? generalStyleSettings,
     @Deprecated('Use [settings] instead')
     SecondLayerStyleSettings? secondLayerSettings,
+    SecondLayerTab? tab,
   }) =>
       _delegate.showSecondLayer(
         settings: settings ??
@@ -107,6 +111,7 @@ class Usercentrics {
               general: generalStyleSettings,
               secondLayer: secondLayerSettings,
             ),
+        tab: tab,
       );
 
   /// Get the complete list of [UsercentricsServiceConsent] with the last status of the user.

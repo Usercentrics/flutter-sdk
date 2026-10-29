@@ -1,4 +1,5 @@
 import Flutter
+import Usercentrics
 import UsercentricsUI
 
 struct ShowSecondLayerBridge : MethodBridge {
@@ -17,7 +18,8 @@ struct ShowSecondLayerBridge : MethodBridge {
         assert(call.method == name)
         let argsDict = call.arguments as! Dictionary<String, Any>
         let bannerSettings = BannerSettings(from: argsDict["bannerSettings"], assetProvider: assetProvider)
-        bannerProxy.showSecondLayer(bannerSettings: bannerSettings) { response in
+        let tab = SecondLayerTab.initialize(from: argsDict["tab"])
+        bannerProxy.showSecondLayer(bannerSettings: bannerSettings, tab: tab) { response in
             result(response.serialize())
         }
     }
