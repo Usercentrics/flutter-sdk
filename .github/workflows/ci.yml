@@ -130,7 +130,7 @@ jobs:
   test-ios:
     name: Test iOS (${{ matrix.build_system }})
     needs: [ lint, format, pub-dry-run ]
-    runs-on: macos-14
+    runs-on: macos-15
     timeout-minutes: 20
     strategy:
       fail-fast: false
@@ -141,7 +141,7 @@ jobs:
       - name: Setup code
         uses: maxim-lobanov/setup-xcode@ed7a3b1fda3918c0306d1b724322adc0b8cc0a90 # v1
         with:
-          xcode-version: '16.2'
+          xcode-version: '16.4'
       - name: Checkout code
         uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
       - name: Setup Flutter
@@ -229,7 +229,7 @@ jobs:
   build-ios:
     name: Build iOS Example (${{ matrix.build_system }})
     needs: [ lint, format, pub-dry-run ]
-    runs-on: macos-14
+    runs-on: macos-15
     timeout-minutes: 20
     strategy:
       fail-fast: false
@@ -240,7 +240,7 @@ jobs:
       - name: Setup code
         uses: maxim-lobanov/setup-xcode@ed7a3b1fda3918c0306d1b724322adc0b8cc0a90 # v1
         with:
-          xcode-version: '16.2'
+          xcode-version: '16.4'
       - name: Checkout code
         uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
       - name: Setup Flutter
@@ -295,7 +295,7 @@ jobs:
   # build-ios-spm-pure:
   #   name: Build iOS SPM-Pure Example
   #   needs: [ lint, format, pub-dry-run ]
-  #   runs-on: macos-14
+  #   runs-on: macos-15
   #   timeout-minutes: 20
   #   # TEMPORARY (MSDK-4832): see build-ios's spm variant above for why.
   #   continue-on-error: true
@@ -304,7 +304,7 @@ jobs:
   #     - name: Setup code
   #       uses: maxim-lobanov/setup-xcode@ed7a3b1fda3918c0306d1b724322adc0b8cc0a90 # v1
   #       with:
-  #         xcode-version: '16.2'
+  #         xcode-version: '16.4'
   #     - name: Checkout code
   #       uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
   #     - name: Setup Flutter
