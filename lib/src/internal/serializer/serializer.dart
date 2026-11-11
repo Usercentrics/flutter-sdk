@@ -24,6 +24,7 @@ export 'logger_level_serializer.dart';
 export 'network_mode_serializer.dart';
 export 'ready_status_serializer.dart';
 export 'second_layer_style_settings_serializer.dart';
+export 'second_layer_tab_serializer.dart';
 export 'service_serializer.dart';
 export 'settings_serializer.dart';
 export 'tcf2_settings_serializer.dart';

@@ -3,6 +3,7 @@ package com.usercentrics.sdk.flutter.api
 import com.usercentrics.sdk.BannerSettings
 import com.usercentrics.sdk.UsercentricsBanner
 import com.usercentrics.sdk.UsercentricsConsentUserResponse
+import com.usercentrics.sdk.models.settings.SecondLayerTab
 
 internal interface UsercentricsBannerProxy {
     fun showFirstLayer(
@@ -12,6 +13,7 @@ internal interface UsercentricsBannerProxy {
 
     fun showSecondLayer(
         bannerSettings: BannerSettings?,
+        tab: SecondLayerTab?,
         callback: (UsercentricsConsentUserResponse?) -> Unit,
     )
 }
@@ -37,10 +39,11 @@ internal class UsercentricsBannerProxyImpl(
 
     override fun showSecondLayer(
         bannerSettings: BannerSettings?,
+        tab: SecondLayerTab?,
         callback: (UsercentricsConsentUserResponse?) -> Unit,
     ) {
         val context = activityProvider.provide() ?: return
-        UsercentricsBanner(context, bannerSettings).showSecondLayer(callback)
+        UsercentricsBanner(context, bannerSettings).showSecondLayer(tab, callback)
     }
 
 }

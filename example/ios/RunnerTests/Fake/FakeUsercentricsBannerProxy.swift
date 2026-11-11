@@ -20,11 +20,14 @@ class FakeUsercentricsBannerProxy: UsercentricsBannerProxyProtocol {
     var showSecondLayerAnswer: UsercentricsConsentUserResponse? = nil
     var showSecondLayerCount = 0
     var showSecondLayerBannerSettingsArg: BannerSettings? = nil
+    var showSecondLayerTabArg: SecondLayerTab? = nil
 
     func showSecondLayer(bannerSettings: BannerSettings?,
+                         tab: SecondLayerTab?,
                          completionHandler: @escaping (UsercentricsConsentUserResponse) -> Void) {
         showSecondLayerCount += 1
         showSecondLayerBannerSettingsArg = bannerSettings
+        showSecondLayerTabArg = tab
 
         completionHandler(showSecondLayerAnswer!)
     }

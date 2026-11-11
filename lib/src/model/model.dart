@@ -25,6 +25,7 @@ export 'logger_level.dart';
 export 'network_mode.dart';
 export 'ready_status.dart';
 export 'second_layer_style_settings.dart';
+export 'second_layer_tab.dart';
 export 'service.dart';
 export 'service_consent.dart';
 export 'settings.dart';

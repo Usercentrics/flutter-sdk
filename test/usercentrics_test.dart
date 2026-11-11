@@ -126,6 +126,26 @@ void main() {
 
     expect(delegate.showSecondLayerCount, 1);
     expect(delegate.showSecondLayerSettingsArgument, bannerSettings);
+    expect(delegate.showSecondLayerTabArgument, isNull);
+    expect(result, expectedResponse);
+  });
+
+  test('showSecondLayer with tab', () async {
+    const expectedResponse = UsercentricsConsentUserResponse(
+      controllerId: "abc",
+      userInteraction: UsercentricsUserInteraction.acceptAll,
+      consents: [],
+    );
+    final delegate =
+        FakeUsercentricsPlatform(showSecondLayerAnswer: expectedResponse);
+    Usercentrics.delegatePackingProperty = delegate;
+
+    final result = await Usercentrics.showSecondLayer(
+      tab: SecondLayerTab.partners,
+    );
+
+    expect(delegate.showSecondLayerCount, 1);
+    expect(delegate.showSecondLayerTabArgument, SecondLayerTab.partners);
     expect(result, expectedResponse);
   });
 

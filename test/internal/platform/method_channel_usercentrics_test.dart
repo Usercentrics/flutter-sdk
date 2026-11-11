@@ -301,11 +301,13 @@ void main() {
 
       final response = await instance.showSecondLayer(
         settings: bannerSettings,
+        tab: SecondLayerTab.services,
       );
 
       expect(showSecondLayerBridge.invokeCount, 1);
       expect(showSecondLayerBridge.invokeChannelArgument?.name, "usercentrics");
       expect(showSecondLayerBridge.invokeSettingsArgument, bannerSettings);
+      expect(showSecondLayerBridge.invokeTabArgument, SecondLayerTab.services);
       expect(response, expectedResponse);
     });
 

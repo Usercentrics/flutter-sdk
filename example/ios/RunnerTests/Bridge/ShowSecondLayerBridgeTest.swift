@@ -90,5 +90,37 @@ class ShowSecondLayerBridgeTest: XCTestCase, BaseBridgeTestProtocol {
         ]
         bridge.invoke(call, resultCompletion)
         wait(for: [expectation], timeout: 2.0)
+        XCTAssertNil(bannerProxy.showSecondLayerTabArg)
+    }
+
+    func testInvokeWithTab() {
+        let cases: [(String, SecondLayerTab)] = [
+            ("SERVICES", SecondLayerTab.services),
+            ("PARTNERS", SecondLayerTab.partners),
+        ]
+        for (value, expectedTab) in cases {
+            invokeWithTab(value)
+
+            XCTAssertEqual(bannerProxy.showSecondLayerTabArg, expectedTab, "tab \(value)")
+        }
+    }
+
+    func testInvokeWithUnknownTabFallsBackToDefault() {
+        let values: [Any] = ["UNKNOWN", 1, NSNull()]
+        for value in values {
+            invokeWithTab(value)
+
+            XCTAssertNil(bannerProxy.showSecondLayerTabArg, "tab \(value)")
+        }
+    }
+
+    private func invokeWithTab(_ tab: Any) {
+        bannerProxy.showSecondLayerTabArg = nil
+        bannerProxy.showSecondLayerAnswer = UsercentricsConsentUserResponse(consents: [],
+                                                                            controllerId: "controllerIdABC",
+                                                                            userInteraction: .noInteraction)
+        let call = FakeFlutterMethodCall(methodName: bridgeName)
+        call.argumentsMap = ["bannerSettings": NSNull(), "tab": tab]
+        bridge.invoke(call, { _ in })
     }
 }

@@ -8,6 +8,7 @@ abstract class ShowSecondLayerBridge {
   Future<UsercentricsConsentUserResponse?> invoke({
     required MethodChannel channel,
     BannerSettings? settings,
+    SecondLayerTab? tab,
   });
 }
 
@@ -20,11 +21,14 @@ class MethodChannelShowSecondLayer extends ShowSecondLayerBridge {
   Future<UsercentricsConsentUserResponse?> invoke({
     required MethodChannel channel,
     BannerSettings? settings,
+    SecondLayerTab? tab,
   }) async {
     final result = await channel.invokeMethod(
       _name,
       {
         'bannerSettings': BannerSettingsSerializer.serialize(settings),
+        // Only sent when requested, so a plain call keeps the same payload as before.
+        if (tab != null) 'tab': SecondLayerTabSerializer.serialize(tab),
       },
     );
     return result == null

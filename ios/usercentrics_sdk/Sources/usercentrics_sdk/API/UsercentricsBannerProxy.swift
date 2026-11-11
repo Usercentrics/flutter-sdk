@@ -1,4 +1,5 @@
 import Foundation
+import Usercentrics
 import UsercentricsUI
 import UIKit
 
@@ -7,6 +8,7 @@ protocol UsercentricsBannerProxyProtocol {
                         completionHandler: @escaping (UsercentricsConsentUserResponse) -> Void)
 
     func showSecondLayer(bannerSettings: BannerSettings?,
+                         tab: SecondLayerTab?,
                          completionHandler: @escaping (UsercentricsConsentUserResponse) -> Void)
 }
 
@@ -32,8 +34,9 @@ struct UsercentricsBannerProxy: UsercentricsBannerProxyProtocol {
     }
 
     func showSecondLayer(bannerSettings: BannerSettings?,
+                         tab: SecondLayerTab?,
                          completionHandler: @escaping (UsercentricsConsentUserResponse) -> Void) {
-        UsercentricsBanner(bannerSettings:bannerSettings).showSecondLayer() { response in
+        UsercentricsBanner(bannerSettings:bannerSettings).showSecondLayer(tab: tab) { response in
             completionHandler(response)
         }
     }

@@ -158,11 +158,13 @@ class MethodChannelUsercentrics extends UsercentricsPlatform {
   @override
   Future<UsercentricsConsentUserResponse?> showSecondLayer({
     BannerSettings? settings,
+    SecondLayerTab? tab,
   }) async {
     await _ensureIsReady();
     return await showSecondLayerBridge.invoke(
       channel: _channel,
       settings: settings,
+      tab: tab,
     );
   }
 

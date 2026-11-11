@@ -136,6 +136,7 @@ class FakeUsercentrics extends UsercentricsPlatform {
   @override
   Future<UsercentricsConsentUserResponse?> showSecondLayer({
     BannerSettings? settings,
+    SecondLayerTab? tab,
   }) {
     throw UnimplementedError();
   }
