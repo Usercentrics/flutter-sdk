@@ -10,6 +10,10 @@ on:
   pull_request:
   workflow_dispatch:
 
+# Default to read-only for any job; jobs that need more declare it themselves.
+permissions:
+  contents: read
+
 jobs:
   format:
     name: Format
