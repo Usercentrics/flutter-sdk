@@ -1,4 +1,5 @@
 export 'additional_consent_mode_data.dart';
+export 'age_signal_decision.dart';
 export 'gpp_data.dart';
 export 'gpp_section_change_payload.dart';
 export 'analytics_event_type.dart';
@@ -23,6 +24,7 @@ export 'legal_links_settings.dart';
 export 'location.dart';
 export 'logger_level.dart';
 export 'network_mode.dart';
+export 'publisher_age_signal.dart';
 export 'ready_status.dart';
 export 'second_layer_style_settings.dart';
 export 'second_layer_tab.dart';

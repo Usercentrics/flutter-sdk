@@ -82,6 +82,7 @@ class UsercentricsPlugin : FlutterPlugin,
             NotifyLoginSuccessBridge(),
             NotifySubscribeSuccessBridge(),
             NotifySubscriptionLapsedBridge(),
+            SetAgeSignalBridge(),
         ).associateBy { it.name }
     }
 

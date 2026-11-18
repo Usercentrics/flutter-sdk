@@ -208,4 +208,11 @@ class FakeUsercentrics extends UsercentricsPlatform {
   Future<void> notifySubscriptionLapsed() {
     throw UnimplementedError();
   }
+
+  @override
+  Future<UsercentricsAgeSignalDecision> setAgeSignal({
+    required UsercentricsPublisherAgeSignal signal,
+  }) {
+    throw UnimplementedError();
+  }
 }

@@ -294,4 +294,31 @@ class Usercentrics {
   /// existing consent data, which remains accurate.
   static Future<void> notifySubscriptionLapsed() =>
       _delegate.notifySubscriptionLapsed();
+
+  /// **Experimental.** Hands the SDK an age range the host app already knows about its user,
+  /// for example a "16+" flag from the host's own age gate. Build the [signal] with
+  /// [UsercentricsPublisherAgeSignal.atLeast], [UsercentricsPublisherAgeSignal.below] or
+  /// [UsercentricsPublisherAgeSignal.between].
+  ///
+  /// The SDK checks the range, tags it as provided by the publisher
+  /// ([UsercentricsAgeSignalTrust.publisherProvided], which the host cannot change, so it is
+  /// never mistaken for an age that a platform verified), resolves the band with the same
+  /// rules as the Apple and Google signals and returns the [UsercentricsAgeSignalDecision].
+  /// With the default thresholds "16+" is [UsercentricsAgeBand.minor] and "under 16" is
+  /// [UsercentricsAgeBand.belowMinimum].
+  ///
+  /// The signal counts from now on and the last call wins. Nothing is stored or sent, and
+  /// consent does not change. Send it again after each start.
+  ///
+  /// Call it after [initialize], like the other methods: it waits for the SDK to be ready.
+  /// A range that is not valid (no age, an age outside 0..120, a lower age above the upper
+  /// one, a label that is not 1 to 32 characters of `A-Z`, `a-z`, `0-9`, `.`, `_` or `-`)
+  /// completes the future with a `PlatformException`, with a fixed message that does not
+  /// repeat what was passed.
+  ///
+  /// The API is experimental: signatures and behaviour may change in any release.
+  static Future<UsercentricsAgeSignalDecision> setAgeSignal({
+    required UsercentricsPublisherAgeSignal signal,
+  }) =>
+      _delegate.setAgeSignal(signal: signal);
 }

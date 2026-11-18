@@ -43,7 +43,8 @@ class MethodChannelUsercentrics extends UsercentricsPlatform {
       this.notifySubscribeSuccessBridge =
           const MethodChannelNotifySubscribeSuccess(),
       this.notifySubscriptionLapsedBridge =
-          const MethodChannelNotifySubscriptionLapsed()});
+          const MethodChannelNotifySubscriptionLapsed(),
+      this.setAgeSignalBridge = const MethodChannelSetAgeSignal()});
 
   static const MethodChannel _channel = MethodChannel('usercentrics');
   static const EventChannel _gppSectionChangeEventChannel =
@@ -85,6 +86,7 @@ class MethodChannelUsercentrics extends UsercentricsPlatform {
   final NotifyLoginSuccessBridge notifyLoginSuccessBridge;
   final NotifySubscribeSuccessBridge notifySubscribeSuccessBridge;
   final NotifySubscriptionLapsedBridge notifySubscriptionLapsedBridge;
+  final SetAgeSignalBridge setAgeSignalBridge;
 
   @visibleForTesting
   Completer<Object?>? isReadyCompleter;
@@ -448,5 +450,13 @@ class MethodChannelUsercentrics extends UsercentricsPlatform {
   Future<void> notifySubscriptionLapsed() async {
     await _ensureIsReady();
     await notifySubscriptionLapsedBridge.invoke(channel: _channel);
+  }
+
+  @override
+  Future<UsercentricsAgeSignalDecision> setAgeSignal({
+    required UsercentricsPublisherAgeSignal signal,
+  }) async {
+    await _ensureIsReady();
+    return await setAgeSignalBridge.invoke(channel: _channel, signal: signal);
   }
 }

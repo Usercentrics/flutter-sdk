@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:usercentrics_sdk/src/model/additional_consent_mode_data.dart';
+import 'package:usercentrics_sdk/src/model/age_signal_decision.dart';
 import 'package:usercentrics_sdk/src/model/gpp_data.dart';
 import 'package:usercentrics_sdk/src/model/gpp_section_change_payload.dart';
 import 'package:usercentrics_sdk/src/model/analytics_event_type.dart';
@@ -11,6 +12,7 @@ import 'package:usercentrics_sdk/src/model/cmp_data.dart';
 import 'package:usercentrics_sdk/src/model/consent_type.dart';
 import 'package:usercentrics_sdk/src/model/logger_level.dart';
 import 'package:usercentrics_sdk/src/model/network_mode.dart';
+import 'package:usercentrics_sdk/src/model/publisher_age_signal.dart';
 import 'package:usercentrics_sdk/src/model/ready_status.dart';
 import 'package:usercentrics_sdk/src/model/second_layer_tab.dart';
 import 'package:usercentrics_sdk/src/model/service_consent.dart';
@@ -42,7 +44,8 @@ class FakeUsercentricsPlatform extends UsercentricsPlatform {
       this.userSessionDataAnswer,
       this.aBTestingVariantAnswer,
       this.acmDataAnswer,
-      this.clearUserSessionAnswer});
+      this.clearUserSessionAnswer,
+      this.setAgeSignalAnswer});
 
   final List<UsercentricsServiceConsent>? consentsAnswer;
   var consentsCount = 0;
@@ -454,5 +457,18 @@ class FakeUsercentricsPlatform extends UsercentricsPlatform {
   Future<void> notifySubscriptionLapsed() {
     notifySubscriptionLapsedCount++;
     return Future.value(null);
+  }
+
+  final UsercentricsAgeSignalDecision? setAgeSignalAnswer;
+  var setAgeSignalCount = 0;
+  UsercentricsPublisherAgeSignal? setAgeSignalSignalArgument;
+
+  @override
+  Future<UsercentricsAgeSignalDecision> setAgeSignal({
+    required UsercentricsPublisherAgeSignal signal,
+  }) {
+    setAgeSignalCount++;
+    setAgeSignalSignalArgument = signal;
+    return Future.value(setAgeSignalAnswer!);
   }
 }
