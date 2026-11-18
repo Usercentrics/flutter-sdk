@@ -112,4 +112,25 @@ final class FakeUsercentricsSDK: UsercentricsSDK {
     override func denyAll(consentType: UsercentricsConsentType, unsavedServiceDecisions: [String: KotlinBoolean]?) -> [UsercentricsServiceConsent] {
         return denyAllAnswer!
     }
+
+    // MSDK-4778: publisher age signal
+    var setAgeSignalDecision: UsercentricsAgeSignalDecision?
+    var setAgeSignalError: Error?
+    var setAgeSignalSignalArg: UsercentricsPublisherAgeSignal?
+    var setAgeSignalCount = 0
+
+    override func setAgeSignal(signal: UsercentricsPublisherAgeSignal, onSuccess: @escaping (UsercentricsAgeSignalDecision) -> Void, onError: @escaping (Error) -> Void) {
+        setAgeSignalCount += 1
+        setAgeSignalSignalArg = signal
+
+        if let setAgeSignalError = setAgeSignalError {
+            onError(setAgeSignalError)
+            return
+        }
+
+        if let setAgeSignalDecision = setAgeSignalDecision {
+            onSuccess(setAgeSignalDecision)
+            return
+        }
+    }
 }

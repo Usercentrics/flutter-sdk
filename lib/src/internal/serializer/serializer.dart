@@ -1,4 +1,5 @@
 export 'additional_consent_mode_data_serializer.dart';
+export 'age_signal_decision_serializer.dart';
 export 'analytics_event_type_serializer.dart';
 export 'banner_init_customization_serializer.dart';
 export 'banner_settings_serializer.dart';
@@ -22,6 +23,7 @@ export 'legal_links_settings_serializer.dart';
 export 'location_serializer.dart';
 export 'logger_level_serializer.dart';
 export 'network_mode_serializer.dart';
+export 'publisher_age_signal_serializer.dart';
 export 'ready_status_serializer.dart';
 export 'second_layer_style_settings_serializer.dart';
 export 'second_layer_tab_serializer.dart';

@@ -245,4 +245,30 @@ void main() {
     expect(delegate.clearUserSessionCount, 1);
     expect(result, expectedStatus);
   });
+
+  test('setAgeSignal', () async {
+    const expectedDecision = UsercentricsAgeSignalDecision(
+      source: UsercentricsAgeSignalSource.publisherProvided,
+      trust: UsercentricsAgeSignalTrust.publisherProvided,
+      band: UsercentricsAgeBand.belowMinimum,
+      ageLower: 13,
+      ageUpper: 15,
+      unavailableReason: null,
+    );
+    final delegate =
+        FakeUsercentricsPlatform(setAgeSignalAnswer: expectedDecision);
+    Usercentrics.delegatePackingProperty = delegate;
+
+    const signal = UsercentricsPublisherAgeSignal.between(
+      lower: 13,
+      upper: 15,
+      sourceLabel: "my-age-gate",
+    );
+
+    final result = await Usercentrics.setAgeSignal(signal: signal);
+
+    expect(delegate.setAgeSignalCount, 1);
+    expect(delegate.setAgeSignalSignalArgument, signal);
+    expect(result, expectedDecision);
+  });
 }

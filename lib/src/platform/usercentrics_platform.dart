@@ -144,4 +144,10 @@ abstract class UsercentricsPlatform {
   /// flag and clears TCF consent storage, so the user is presented a fresh consent banner
   /// next time, exactly as a new user would see it.
   Future<void> notifySubscriptionLapsed();
+
+  /// **Experimental.** Hands the SDK an age range the host app already knows about its user.
+  /// See `Usercentrics.setAgeSignal`.
+  Future<UsercentricsAgeSignalDecision> setAgeSignal({
+    required UsercentricsPublisherAgeSignal signal,
+  });
 }

@@ -11,6 +11,7 @@ import '../bridge/fake_initialize_bridge.dart';
 import '../bridge/fake_is_ready_bridge.dart';
 import '../bridge/fake_restore_user_session_bridge.dart';
 import '../bridge/fake_clear_user_session_bridge.dart';
+import '../bridge/fake_set_age_signal_bridge.dart';
 import '../bridge/fake_show_first_layer_bridge.dart';
 import '../bridge/fake_show_second_layer_bridge.dart';
 import '../bridge/fake_notify_subscription_lapsed_bridge.dart';
@@ -571,6 +572,61 @@ void main() {
         () => instance.notifySubscriptionLapsed(),
         throwsA(const TypeMatcher<NotInitializedException>()),
       );
+    });
+  });
+
+  group('setAgeSignal', () {
+    test('default', () {
+      final instance = MethodChannelUsercentrics();
+      expect(instance.setAgeSignalBridge,
+          const TypeMatcher<MethodChannelSetAgeSignal>());
+    });
+
+    test('success', () async {
+      const expectedDecision = UsercentricsAgeSignalDecision(
+        source: UsercentricsAgeSignalSource.publisherProvided,
+        trust: UsercentricsAgeSignalTrust.publisherProvided,
+        band: UsercentricsAgeBand.minor,
+        ageLower: 16,
+        ageUpper: null,
+        unavailableReason: null,
+      );
+      final setAgeSignalBridge = FakeSetAgeSignalBridge(
+        invokeAnswer: expectedDecision,
+      );
+      final instance = MethodChannelUsercentrics(
+        setAgeSignalBridge: setAgeSignalBridge,
+      );
+      instance.isReadyCompleter = Completer();
+      instance.isReadyCompleter?.complete();
+      const signal = UsercentricsPublisherAgeSignal.atLeast(
+        age: 16,
+        sourceLabel: "my-age-gate",
+      );
+
+      final response = await instance.setAgeSignal(signal: signal);
+
+      expect(setAgeSignalBridge.invokeCount, 1);
+      expect(setAgeSignalBridge.invokeChannelArgument?.name, "usercentrics");
+      expect(setAgeSignalBridge.invokeSignalArgument, signal);
+      expect(response, expectedDecision);
+    });
+
+    test('when it is not ready', () {
+      final setAgeSignalBridge = FakeSetAgeSignalBridge();
+      final instance = MethodChannelUsercentrics(
+        setAgeSignalBridge: setAgeSignalBridge,
+      );
+      instance.isReadyCompleter = null;
+
+      expect(
+        () => instance.setAgeSignal(
+          signal: const UsercentricsPublisherAgeSignal.atLeast(age: 16),
+        ),
+        throwsA(const TypeMatcher<NotInitializedException>()),
+      );
+      // The native SDK is not reached before it is ready
+      expect(setAgeSignalBridge.invokeCount, 0);
     });
   });
 }
