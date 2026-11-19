@@ -1,6 +1,7 @@
 package com.usercentrics.sdk.flutter.serializer
 
 import com.usercentrics.sdk.GeneralStyleSettings
+import com.usercentrics.sdk.LandscapeLayoutSettings
 import com.usercentrics.sdk.flutter.api.FlutterActivityProvider
 import com.usercentrics.sdk.flutter.api.FlutterAssetsProvider
 
@@ -24,5 +25,13 @@ internal fun Any?.deserializeGeneralStyleSettings(
         links = this["links"].deserializeLegalLinksSettings(),
         disableSystemBackButton = this["disableSystemBackButton"] as? Boolean,
         windowFullscreen = this["windowFullscreen"] as? Boolean,
+        landscapeLayout = this["landscapeLayout"].deserializeLandscapeLayoutSettings(),
     )
+}
+
+private fun Any?.deserializeLandscapeLayoutSettings(): LandscapeLayoutSettings? {
+    if (this !is Map<*, *>) {
+        return null
+    }
+    return LandscapeLayoutSettings(enabled = this["enabled"] as? Boolean ?: false)
 }
