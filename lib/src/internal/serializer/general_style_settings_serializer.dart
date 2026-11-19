@@ -23,6 +23,9 @@ class GeneralStyleSettingsSerializer {
           'links': LegalLinksSettingsSerializer.serialize(value.links),
           'disableSystemBackButton': value.disableSystemBackButton,
           'windowFullscreen': value.windowFullscreen,
+          'landscapeLayout': value.landscapeLayout == null
+              ? null
+              : {'enabled': value.landscapeLayout!.enabled},
         };
 
   static dynamic _serializeFont(BannerFont? customFont) {

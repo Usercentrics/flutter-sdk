@@ -1,4 +1,8 @@
 [Release Notes](https://docs.usercentrics.com/cmp_in_app_sdk/latest/about/history/)
+### Unreleased
+## Features
+* **[Android/iOS]** Added the experimental `GeneralStyleSettings.landscapeLayout` (`LandscapeLayoutSettings(enabled: true)`) to opt in to the two-panel landscape layout of the first and second layer, intended for landscape-only experiences such as games. Off by default; the standard layout is used on portrait and small screens
+
 ### 2.35.0 – Nov 11, 2026
 ## Features
 * **[Android]** Added a deep link to the second layer: `showSecondLayer(tab:)` opens the second layer directly on a given tab (Services or Partners), matching iOS. A tab the layout does not have, or `null`, opens the default tab

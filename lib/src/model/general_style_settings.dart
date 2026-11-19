@@ -18,6 +18,7 @@ class GeneralStyleSettings {
     this.links,
     this.disableSystemBackButton,
     this.windowFullscreen,
+    this.landscapeLayout,
   });
 
   /// The text color.
@@ -57,6 +58,11 @@ class GeneralStyleSettings {
   /// effect on iOS.
   final bool? windowFullscreen;
 
+  /// Experimental. Opt-in to the two-panel landscape layout of the first and
+  /// second layer, intended for landscape-only experiences such as games. Off
+  /// by default. The shape of this setting may change in a later release.
+  final LandscapeLayoutSettings? landscapeLayout;
+
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
@@ -74,7 +80,8 @@ class GeneralStyleSettings {
           logo == other.logo &&
           links == other.links &&
           disableSystemBackButton == other.disableSystemBackButton &&
-          windowFullscreen == other.windowFullscreen;
+          windowFullscreen == other.windowFullscreen &&
+          landscapeLayout == other.landscapeLayout;
 
   @override
   int get hashCode =>
@@ -89,11 +96,42 @@ class GeneralStyleSettings {
       logo.hashCode ^
       links.hashCode ^
       disableSystemBackButton.hashCode ^
-      windowFullscreen.hashCode;
+      windowFullscreen.hashCode ^
+      landscapeLayout.hashCode;
 
   @override
   String toString() {
-    return 'GeneralStyleSettings{textColor: $textColor, layerBackgroundColor: $layerBackgroundColor, layerBackgroundSecondaryColor: $layerBackgroundSecondaryColor, linkColor: $linkColor, tabColor: $tabColor, bordersColor: $bordersColor, toggleStyleSettings: $toggleStyleSettings, font: $font, logo: $logo, links: $links, disableSystemBackButton: $disableSystemBackButton, windowFullscreen: $windowFullscreen}';
+    return 'GeneralStyleSettings{textColor: $textColor, layerBackgroundColor: $layerBackgroundColor, layerBackgroundSecondaryColor: $layerBackgroundSecondaryColor, linkColor: $linkColor, tabColor: $tabColor, bordersColor: $bordersColor, toggleStyleSettings: $toggleStyleSettings, font: $font, logo: $logo, links: $links, disableSystemBackButton: $disableSystemBackButton, windowFullscreen: $windowFullscreen, landscapeLayout: $landscapeLayout}';
+  }
+}
+
+/// Experimental. Settings of the two-panel landscape layout.
+///
+/// The landscape layout is used only when the screen is wider than it is tall
+/// and at least about 700 x 300 dp/pt. In every other case, including portrait,
+/// small screens and very large text, the standard layout is used. If the
+/// device is rotated while the banner is showing and the host handles the
+/// rotation itself, the banner switches layout to match.
+class LandscapeLayoutSettings {
+  /// Creates a LandscapeLayoutSettings.
+  const LandscapeLayoutSettings({this.enabled = false});
+
+  /// Whether the landscape layout is enabled. Defaults to `false`.
+  final bool enabled;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is LandscapeLayoutSettings &&
+          runtimeType == other.runtimeType &&
+          enabled == other.enabled;
+
+  @override
+  int get hashCode => enabled.hashCode;
+
+  @override
+  String toString() {
+    return 'LandscapeLayoutSettings{enabled: $enabled}';
   }
 }
 

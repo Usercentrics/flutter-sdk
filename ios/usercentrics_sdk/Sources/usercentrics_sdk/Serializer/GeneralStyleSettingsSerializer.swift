@@ -15,6 +15,11 @@ extension GeneralStyleSettings {
 
         let toggleStyleSettings = ToggleStyleSettings(from: dict["toggleStyleSettings"])
 
+        var landscapeLayout: LandscapeLayoutSettings?
+        if let landscapeDict = dict["landscapeLayout"] as? Dictionary<String, Any> {
+            landscapeLayout = LandscapeLayoutSettings(enabled: landscapeDict["enabled"] as? Bool ?? false)
+        }
+
         self.init(font: bannerFont,
                   logo: logo,
                   links: links,
@@ -24,6 +29,7 @@ extension GeneralStyleSettings {
                   linkColor: UIColor(unsafeHex: dict["linkColor"] as? String),
                   tabColor: UIColor(unsafeHex: dict["tabColor"] as? String),
                   bordersColor: UIColor(unsafeHex: dict["bordersColor"] as? String),
-                  toggleStyleSettings: toggleStyleSettings)
+                  toggleStyleSettings: toggleStyleSettings,
+                  landscapeLayout: landscapeLayout)
     }
 }

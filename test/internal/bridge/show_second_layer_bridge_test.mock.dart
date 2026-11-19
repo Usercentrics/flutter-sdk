@@ -92,7 +92,8 @@ const expectedArguments = {
       'logo': 'images/flutter-logo.png',
       'links': 'HIDDEN',
       'disableSystemBackButton': false,
-      'windowFullscreen': null
+      'windowFullscreen': null,
+      'landscapeLayout': {'enabled': true},
     },
     "variantName": 'variantA',
     "initCustomization": {
@@ -153,6 +154,7 @@ const mockGeneralStyleSettings = GeneralStyleSettings(
   logo: mockLogo,
   links: LegalLinksSettings.hidden,
   disableSystemBackButton: mockDisableSystemBackButton,
+  landscapeLayout: LandscapeLayoutSettings(enabled: true),
 );
 
 const mockVariant = "variantA";

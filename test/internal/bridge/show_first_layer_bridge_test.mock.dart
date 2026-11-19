@@ -117,6 +117,7 @@ const expectedArguments = {
       'links': 'BOTH',
       'disableSystemBackButton': false,
       'windowFullscreen': null,
+      'landscapeLayout': {'enabled': true},
     },
     "variantName": "variantA",
     "initCustomization": null
@@ -180,6 +181,7 @@ const mockGeneralStyleSettings = GeneralStyleSettings(
   logo: mockLogo,
   links: LegalLinksSettings.both,
   disableSystemBackButton: mockDisableSystemBackButton,
+  landscapeLayout: LandscapeLayoutSettings(enabled: true),
 );
 
 const mockVariant = "variantA";
